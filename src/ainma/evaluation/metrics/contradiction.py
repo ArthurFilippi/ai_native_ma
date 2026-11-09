@@ -28,9 +28,8 @@ def contradiction_scores(
     false_positive = sum(1 for f in control_flagged if f)
     recall = share(planted_detected)
     precision = ratio(true_positive, true_positive + false_positive)
-    f1: float | None = None
-    if recall is not None and precision is not None and recall + precision > 0:
-        f1 = 2 * precision * recall / (precision + recall)
+    false_negative = len(planted_detected) - true_positive
+    f1 = ratio(2 * true_positive, 2 * true_positive + false_positive + false_negative)
     return ContradictionScores(
         recall=recall,
         false_positive_rate=share(control_flagged),

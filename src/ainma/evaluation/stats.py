@@ -68,6 +68,8 @@ def bootstrap_weights(
 ) -> FloatArray:
     """Multiplicities of shape `(n_resamples, n_units)`. With `clusters`, whole clusters are
     drawn with replacement and every unit of a drawn cluster is included."""
+    if n_units == 0:
+        return np.zeros((n_resamples, 0), dtype=np.float64)
     rng = np.random.default_rng(seed)
     if clusters is None:
         draws = rng.integers(0, n_units, size=(n_resamples, n_units))
@@ -162,6 +164,8 @@ def bootstrap_function(
 ) -> Interval:
     """Percentile interval for a statistic that is not a ratio of sums (a kappa, an F1).
     `statistic` receives the indices of one resample and the full index range for the estimate."""
+    if n_units == 0:
+        return Interval(None, None, None)
     rng = np.random.default_rng(seed)
     estimate = statistic(np.arange(n_units, dtype=np.int64))
     draws = rng.integers(0, n_units, size=(n_resamples, n_units))

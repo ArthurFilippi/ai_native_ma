@@ -144,3 +144,10 @@ def test_holm_by_hand() -> None:
         "b": pytest.approx(0.06),
     }
     assert holm_adjust({"x": 0.9}) == {"x": 0.9}
+
+
+def test_no_units_give_no_interval() -> None:
+    weights = bootstrap_weights(0, seed=1, n_resamples=10)
+    assert weights.shape == (10, 0)
+    assert bootstrap_interval(mean_sample([]), weights).lo is None
+    assert bootstrap_function(0, lambda idx: 1.0, seed=1).estimate is None

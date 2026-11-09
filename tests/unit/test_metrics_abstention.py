@@ -81,7 +81,8 @@ def test_frozen_tau_false_abstention_stays_under_target_on_dev() -> None:
 def test_contradiction_scores_by_hand() -> None:
     # Planted pairs detected: T, T, F, F -> recall 2/4 = 0.5.
     # Controls flagged: T, F, F, F -> false positive rate 1/4.
-    # Precision = TP / (TP + FP) = 2 / 3. F1 = 2 * (2/3) * (1/2) / (2/3 + 1/2) = 4/7.
+    # Precision = TP / (TP + FP) = 2 / 3. F1 = 2TP / (2TP + FP + FN) = 4 / (4 + 1 + 2) = 4/7,
+    # the harmonic mean of precision 2/3 and recall 1/2.
     scores = contradiction_scores([True, True, False, False], [True, False, False, False])
     assert scores.recall == pytest.approx(0.5)
     assert scores.false_positive_rate == pytest.approx(0.25)
@@ -93,4 +94,5 @@ def test_contradiction_scores_without_detection() -> None:
     scores = contradiction_scores([False, False], [False])
     assert scores.recall == 0.0
     assert scores.precision is None
-    assert scores.f1 is None
+    assert scores.f1 == 0.0  # 2*0 / (0 + 0 + 2)
+    assert contradiction_scores([], []).f1 is None
