@@ -157,6 +157,8 @@ async def run_evaluation(
         "n_resamples": n_resamples,
         "bootstrap_seed": BOOTSTRAP_SEED,
         "sweeps": notes,
+        "backends": first_adapter.backends(),
+        "adapter_config": first_adapter.config_snapshot(),
         "generation_params": {r.label: r.params for r in results},
         "smoke": smoke_run,
     }
@@ -166,6 +168,7 @@ async def run_evaluation(
         seeds=sources,
         config_hash=config_hash(configuration),
         modes=first_adapter.modes,
+        backends=first_adapter.backends(),
         dataset="tiny built-in fixture corpus (smoke)"
         if smoke_run
         else f"generated corpora under {data_dir.as_posix()}/<seed>/",

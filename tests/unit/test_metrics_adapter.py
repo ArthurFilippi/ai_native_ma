@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import types
 from collections.abc import AsyncIterator
+from pathlib import Path
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, Literal
 
 import pytest
 from pydantic import BaseModel
@@ -128,32 +130,59 @@ async def test_stub_adapter_has_no_sweeps_to_run(stub_adapter: Adapter) -> None:
     sweeps = stub_adapter.sweeps()
     assert [s.name for s in sweeps] == ["tier prior uniform", "RRF weights", "recency half-life"]
     assert all(s.variants == () for s in sweeps)
+    assert stub_adapter.backends() == {"dense": "stub", "reranker": "stub"}
+    assert stub_adapter.config_snapshot() == {}
 
 
 # ---------------------------------------------------------------------- real path by name
 
 
+class FakeRanker(BaseModel):
+    tier_weights: dict[int, float] = {1: 1.0, 2: 0.8}
+    half_life_days: dict[str, float] = {"press_article": 120.0, "deal_document": 365.0}
+
+
 class FakeRetrievalConfig(BaseModel):
     system: str = "A5"
     top_k: int = 10
-    tier_weights: dict[int, float] = {1: 1.0, 2: 0.8}
-    rrf_weights: dict[str, float] = {"bm25": 1.0, "dense": 1.0}
-    half_life_days: float = 365.0
+    rrf_weights: tuple[float, float] = (1.0, 1.0)
+    embedder: str = "lsa"
+    reranker: str = "features"
+    ranker: FakeRanker = FakeRanker()
 
 
 class FakePipelineConfig(BaseModel):
     retrieval: FakeRetrievalConfig = FakeRetrievalConfig()
     verifier: bool = True
     tau: float = 0.1
+    abstain_score: Literal["relevance", "final"] = "relevance"
+    answers_log: Path | None = Path("data/cache/answers.jsonl")
+
+
+class FakeJudgeRequest(BaseModel):
+    claim: str
+    quotes: list[str]
+    context: str = ""
+
+
+class FakeJudgeResult(BaseModel):
+    label: Literal["supported", "partial", "unsupported"]
+    rationale: str = ""
 
 
 @pytest.fixture
 def fake_modules(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     seen: dict[str, Any] = {}
 
-    async def search(query: str, *, store: Any, access: Any, deal_id: Any, config: Any) -> Any:
+    class FakeEngine:
+        pass
+
+    async def search(
+        query: str, *, store: Any, access: Any, deal_id: Any, config: Any, engine: Any = None
+    ) -> Any:
         seen["search_config"] = config
-        passage = SimpleNamespace(final_score=0.5)
+        seen["engine"] = engine
+        passage = SimpleNamespace(final_score=0.5, components={"relevance": 0.9})
         return [SimpleNamespace(chunk=SimpleNamespace(id="c_real"), passage=passage)]
 
     async def ask(
@@ -164,23 +193,26 @@ def fake_modules(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
             question, store=store, access=access, deal_id=deal_id, verifier=True, tau=None
         )
 
-    async def judge_claim(claim: str, passage: str, *, llm: Any) -> Any:
-        return SimpleNamespace(label="partial")
-
     module = types.ModuleType("fake_real")
     module.search = search  # type: ignore[attr-defined]
+    module.RetrievalEngine = FakeEngine  # type: ignore[attr-defined]
     module.ask = ask  # type: ignore[attr-defined]
-    module.judge_claim = judge_claim  # type: ignore[attr-defined]
     module.RetrievalConfig = FakeRetrievalConfig  # type: ignore[attr-defined]
     module.PipelineConfig = FakePipelineConfig  # type: ignore[attr-defined]
+    module.JudgeRequest = FakeJudgeRequest  # type: ignore[attr-defined]
+    module.JudgeResult = FakeJudgeResult  # type: ignore[attr-defined]
+    module.JUDGE = "judge system prompt"  # type: ignore[attr-defined]
     module.verbatim_span = lambda quote, text: quote in text  # type: ignore[attr-defined]
     module.numeric_match = lambda claim, quote: (True, "")  # type: ignore[attr-defined]
     monkeypatch.setitem(sys.modules, "fake_real", module)
     wiring = {
         "search": "search",
         "ask": "ask",
-        "judge": "judge_claim",
+        "judge_request": "JudgeRequest",
+        "judge_result": "JudgeResult",
+        "judge_prompt": "JUDGE",
         "retrieval_config": "RetrievalConfig",
+        "retrieval_engine": "RetrievalEngine",
         "pipeline_config": "PipelineConfig",
         "verbatim_span": "verbatim_span",
         "numeric_match": "numeric_match",
@@ -190,19 +222,42 @@ def fake_modules(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     return seen
 
 
+class RecordingJudgeLLM:
+    provider = "fake"
+    model = "fake"
+
+    def __init__(self) -> None:
+        self.calls: list[dict[str, Any]] = []
+
+    async def complete_json(
+        self, *, task: str, system: str, user: str, schema: Any, stage: str
+    ) -> tuple[Any, Any]:
+        self.calls.append({"task": task, "system": system, "user": user, "stage": stage})
+        return schema(label="partial", rationale="r"), None
+
+
 async def test_real_modules_are_called_by_name(fake_modules: dict[str, Any]) -> None:
     store = await load_smoke_store()
-    adapter = Adapter(store=store, llm=build_mock_llm())
+    llm = RecordingJudgeLLM()
+    adapter = Adapter(store=store, llm=llm)  # type: ignore[arg-type]
     assert adapter.modes["search"] == "real"
     assert adapter.modes["ask"] == "real"
     assert adapter.modes["judge"] == "real"
     assert adapter.modes["checks"] == "real"
     assert adapter.modes["screening"] == "stub"
+    assert adapter.backends() == {"dense": "lsa", "reranker": "features"}
+    assert adapter.abstain_basis == "relevance"
+    assert adapter.config_snapshot()["retrieval"]["system"] == "A5"
 
     hits = await adapter.search("q", access=ACCESS, deal_id=None, system="A3", top_k=7)
-    assert hits == [RankedChunk("c_real", 0.5)]
+    # `support` is the relevance component because the pipeline thresholds on it
+    assert hits == [RankedChunk("c_real", 0.5, 0.9)]
     assert fake_modules["search_config"].system == "A3"
     assert fake_modules["search_config"].top_k == 7
+    first_engine = fake_modules["engine"]
+    assert first_engine is not None  # one engine is passed so fitted indexes are reused
+    await adapter.search("q2", access=ACCESS, deal_id=None, system="A1")
+    assert fake_modules["engine"] is first_engine
 
     await adapter.ask(
         "What was Aurora net revenue for FY2024?",
@@ -215,28 +270,34 @@ async def test_real_modules_are_called_by_name(fake_modules: dict[str, Any]) -> 
     assert config.verifier is False
     assert config.tau == 0.3
     assert config.retrieval.system == "A5"
+    assert config.answers_log is None  # the evaluation does not write to the live answer log
 
     verdict = await adapter.judge("claim 1", "passage 1", quote="not in passage")
     assert verdict.label == "partial"
     assert not verdict.checks_passed  # the real verbatim check rejects the quote
+    assert llm.calls[0]["task"] == "judge"
+    assert llm.calls[0]["system"] == "judge system prompt"
+    assert json.loads(llm.calls[0]["user"])["quotes"] == ["not in passage"]
     await store.close()
 
 
-async def test_real_adapter_builds_sweeps_from_config_fields(fake_modules: dict[str, Any]) -> None:
+async def test_real_adapter_builds_sweeps_from_nested_config(
+    fake_modules: dict[str, Any],
+) -> None:
     store = await load_smoke_store()
     adapter = Adapter(store=store, llm=build_mock_llm())
     sweeps = {s.name: s for s in adapter.sweeps()}
-    assert sweeps["tier prior uniform"].variants == (
-        ("uniform", {"tier_weights": {1: 1.0, 2: 1.0}}),
-    )
-    labels = [label for label, _ in sweeps["recency half-life"].variants]
-    assert labels == ["x0.5", "x2"]
-    assert dict(sweeps["recency half-life"].variants[0][1]) == {"half_life_days": 182.5}
-    assert [label for label, _ in sweeps["RRF weights"].variants] == ["bm25 x2", "dense x2"]
-    await adapter.search(
-        "q", access=ACCESS, deal_id=None, system="A5", overrides={"half_life_days": 10.0}
-    )
-    assert fake_modules["search_config"].half_life_days == 10.0
+    tier = sweeps["tier prior uniform"]
+    assert tier.field == "ranker.tier_weights"
+    assert dict(tier.variants)["uniform"]["ranker"].tier_weights == {1: 1.0, 2: 1.0}
+    half = dict(sweeps["recency half-life"].variants)
+    assert half["x0.5"]["ranker"].half_life_days == {"press_article": 60.0, "deal_document": 182.5}
+    assert [label for label, _ in sweeps["RRF weights"].variants] == ["first x2", "second x2"]
+    assert dict(sweeps["RRF weights"].variants)["second x2"] == {"rrf_weights": (1.0, 2.0)}
+    # an override produced by a sweep is accepted by the search entry point
+    _, overrides = tier.variants[0]
+    await adapter.search("q", access=ACCESS, deal_id=None, system="A5", overrides=overrides)
+    assert fake_modules["search_config"].ranker.tier_weights == {1: 1.0, 2: 1.0}
     with pytest.raises(AdapterError, match="no field"):
         await adapter.search("q", access=ACCESS, deal_id=None, system="A5", overrides={"nope": 1})
     await store.close()

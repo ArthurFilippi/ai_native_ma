@@ -67,6 +67,7 @@ class RunMeta:
     commit: str
     machine: str
     regression: Mapping[str, Any] = field(default_factory=dict)
+    backends: Mapping[str, str] = field(default_factory=dict)
 
     @property
     def stub_components(self) -> list[str]:
@@ -613,6 +614,8 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
                     f"- Seeds: {', '.join(meta.seeds)}",
                     f"- Configuration hash: {meta.config_hash}",
                     "- Components: " + ", ".join(f"{k}={v}" for k, v in sorted(meta.modes.items())),
+                    "- Backends: "
+                    + ", ".join(f"{k}={v}" for k, v in sorted(meta.backends.items())),
                     f"- Dataset: {meta.dataset}",
                     f"- Bootstrap: {meta.n_resamples} resamples, 95 percent percentile intervals",
                 ]

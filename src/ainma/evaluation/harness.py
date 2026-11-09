@@ -156,7 +156,8 @@ def gold_facts(query: Query, facts: dict[str, Fact]) -> list[GoldFact]:
 
 
 def top_score(ranked: list[RankedChunk]) -> float | None:
-    return ranked[0].score if ranked else None
+    """Best support score of a ranking: what the pipeline compares with tau."""
+    return max(r.support for r in ranked) if ranked else None
 
 
 def retrieval_metrics(

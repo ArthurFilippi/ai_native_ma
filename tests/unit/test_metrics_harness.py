@@ -61,9 +61,12 @@ class OracleAdapter(Adapter):
     ) -> list[RankedChunk]:
         query_row = self._by_text.get(query)
         if query_row is None:
-            return [RankedChunk("doc_playbook_p1_01", 0.01)]
+            return [RankedChunk("doc_playbook_p1_01", 0.01, 0.01)]
         ordered = sorted(query_row.relevance.items(), key=lambda kv: (-kv[1], kv[0]))
-        return [RankedChunk(chunk_id, 0.9 - 0.01 * i) for i, (chunk_id, _) in enumerate(ordered)]
+        return [
+            RankedChunk(chunk_id, 0.9 - 0.01 * i, 0.9 - 0.01 * i)
+            for i, (chunk_id, _) in enumerate(ordered)
+        ]
 
     async def _citation(self, chunk_id: str) -> Citation:
         chunk = await self._store.get_chunk(chunk_id, self._truth.access())
