@@ -1,0 +1,23 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "text": "{\"label\": \"supported\", \"rationale\": \"the quote states EUR 182.4 million\"}"
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 812,
+    "candidatesTokenCount": 23,
+    "thoughtsTokenCount": 40,
+    "totalTokenCount": 875
+  },
+  "modelVersion": "gemini-2.5-flash"
+}
