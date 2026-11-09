@@ -22,7 +22,7 @@ make web         # run the web client
 make demo        # reproducible five-minute demo (fixed seeds)
 ```
 
-Targets not yet implemented fail loudly with the milestone that delivers them.
+Targets not yet implemented fail loudly with the phase that delivers them.
 
 ## Architecture in ten lines
 
