@@ -118,3 +118,29 @@ async def test_a_stated_value_is_used_when_the_inputs_are_not_available(
 async def test_a_user_without_access_gets_nothing(store: SqliteStore) -> None:
     values = await _extract(store, "u_outsider")
     assert {v.status for v in values} == {"missing"}
+
+
+async def test_restricting_kpi_ids_reads_dependencies_but_returns_only_the_request(
+    store: SqliteStore,
+) -> None:
+    access = await store.access_for("u_lead")
+    values = await extract_kpis(
+        DEAL_ID,
+        store=store,
+        access=access,
+        llm=MockLLM({}),
+        periods=["FY2024"],
+        kpi_ids=["gross_margin", "ebitda"],
+        search=keyword_search,
+    )
+    assert [v.kpi_id for v in values] == ["gross_margin", "ebitda"]
+    assert values[0].status == "computed" and values[1].value == 31.5
+    with pytest.raises(ValueError, match="unknown KPI ids"):
+        await extract_kpis(
+            DEAL_ID,
+            store=store,
+            access=access,
+            llm=MockLLM({}),
+            kpi_ids=["nope"],
+            search=keyword_search,
+        )

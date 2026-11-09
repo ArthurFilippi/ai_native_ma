@@ -46,13 +46,12 @@ class _Extractor:
         store: Store,
         access: AccessContext,
         search: SearchFn,
-        definitions: Sequence[KpiDef],
     ) -> None:
         self._deal_id = deal_id
         self._store = store
         self._access = access
         self._search = search
-        self._index = LabelIndex(KPI_LABELS, {d.id: d.unit for d in definitions})
+        self._index = LabelIndex(KPI_LABELS, {d.id: d.unit for d in kpi_definitions()})
         self._citations = CitationBuilder(store, access)
         self._parsed: dict[str, list[Candidate]] = {}
 
@@ -121,32 +120,50 @@ async def extract_kpis(
     access: AccessContext,
     llm: LLM,
     periods: Sequence[str] | None = None,
+    kpi_ids: Sequence[str] | None = None,
     search: SearchFn | None = None,
 ) -> list[KpiValue]:
     """One `KpiValue` per definition and period, in definition order then period order.
+
+    `kpi_ids` restricts the result to some KPIs (their dependencies are still read to compute them).
 
     `llm` is part of the entry point for live providers; the offline reader is a regex routine in
     this package and does not call it. `search` defaults to `ainma.retrieval.search`.
     """
     del llm
     defs = kpi_definitions()
-    ordered = topological_order(defs)
+    by_id = {d.id: d for d in defs}
+    selected = list(kpi_ids) if kpi_ids is not None else [d.id for d in defs]
+    unknown = sorted(set(selected) - set(by_id))
+    if unknown:
+        raise ValueError(f"unknown KPI ids: {unknown}")
+    needed = _with_dependencies(selected, by_id)
     wanted = list(periods) if periods is not None else list(DEFAULT_PERIODS)
     extractor = _Extractor(
-        deal_id=deal_id,
-        store=store,
-        access=access,
-        search=search or resolve_search(),
-        definitions=defs,
+        deal_id=deal_id, store=store, access=access, search=search or resolve_search()
     )
+    ordered = topological_order(defs)
     values: dict[tuple[str, str], KpiValue] = {}
     for period in wanted:
         known: dict[str, KpiValue] = {}
         for definition in ordered:
+            if definition.id not in needed:
+                continue
             value = _computed(definition, period, known) if definition.kind == "compute" else None
             if value is None:
                 value = await extractor.sourced(definition, period)
             known[definition.id] = value or _missing(definition, period)
         for kpi_id, value in known.items():
             values[(kpi_id, period)] = value
-    return [values[(d.id, period)] for d in defs for period in wanted]
+    return [values[(d.id, period)] for d in defs if d.id in set(selected) for period in wanted]
+
+
+def _with_dependencies(selected: Sequence[str], by_id: dict[str, KpiDef]) -> set[str]:
+    needed: set[str] = set()
+    pending = list(selected)
+    while pending:
+        kpi_id = pending.pop()
+        if kpi_id not in needed:
+            needed.add(kpi_id)
+            pending.extend(by_id[kpi_id].depends_on)
+    return needed

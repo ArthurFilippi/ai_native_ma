@@ -128,6 +128,13 @@ def _numbers_in(text: str, periods: Sequence[tuple[int, int, str]]) -> list[_Num
     return found
 
 
+def find_money(text: str) -> list[tuple[int, int, float]]:
+    """Money amounts in the text as `(start, end, EUR millions)`. Years are not amounts."""
+    return [
+        (n.start, n.end, n.value) for n in _numbers_in(text, _periods_in(text)) if n.kind == "money"
+    ]
+
+
 def _compatible(unit: str, number: _Number) -> bool:
     if unit == EUR_M:
         return number.kind == "money"
