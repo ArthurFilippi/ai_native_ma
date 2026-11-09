@@ -37,6 +37,10 @@ src = ["src", "tests", "eval"]
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
 
+[tool.ruff.lint.per-file-ignores]
+# contracts.py is a verbatim copy of the specification (str, Enum is intentional)
+"src/ainma/contracts.py" = ["UP042"]
+
 [tool.mypy]
 python_version = "3.12"
 strict = true
