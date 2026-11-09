@@ -1,0 +1,325 @@
+{
+  "description": "Shared scoring vectors. score = sum(w*met)/sum(w over known); coverage = known weight / total weight; contribution_k = w_k*met_k/sum(w over known) (sums to score); a card with a not_met dealbreaker ranks after every card without one; inside a group: score desc (null last), coverage desc, buyer id asc. Compare numbers with absolute tolerance 1e-6.",
+  "criteria": [
+    {
+      "key": "ticket_fit",
+      "weight": 3.0,
+      "dealbreaker": true
+    },
+    {
+      "key": "sector_focus",
+      "weight": 2.0,
+      "dealbreaker": false
+    },
+    {
+      "key": "fund_lifecycle",
+      "weight": 1.0,
+      "dealbreaker": false
+    },
+    {
+      "key": "recent_activity",
+      "weight": 2.0,
+      "dealbreaker": false
+    },
+    {
+      "key": "antitrust",
+      "weight": 1.0,
+      "dealbreaker": false
+    }
+  ],
+  "buyers": {
+    "b_a": {
+      "ticket_fit": "met",
+      "sector_focus": "met",
+      "fund_lifecycle": "unknown",
+      "recent_activity": "met",
+      "antitrust": "unknown"
+    },
+    "b_b": {
+      "ticket_fit": "met",
+      "sector_focus": "not_met",
+      "fund_lifecycle": "met",
+      "recent_activity": "unknown",
+      "antitrust": "unknown"
+    },
+    "b_c": {
+      "ticket_fit": "not_met",
+      "sector_focus": "met",
+      "fund_lifecycle": "met",
+      "recent_activity": "met",
+      "antitrust": "met"
+    },
+    "b_d": {
+      "ticket_fit": "unknown",
+      "sector_focus": "unknown",
+      "fund_lifecycle": "unknown",
+      "recent_activity": "unknown",
+      "antitrust": "unknown"
+    },
+    "b_e": {
+      "ticket_fit": "met",
+      "sector_focus": "met",
+      "fund_lifecycle": "not_met",
+      "recent_activity": "not_met",
+      "antitrust": "unknown"
+    }
+  },
+  "cases": [
+    {
+      "name": "default_weights",
+      "weight_overrides": {},
+      "expected": {
+        "weights": {
+          "ticket_fit": 3.0,
+          "sector_focus": 2.0,
+          "fund_lifecycle": 1.0,
+          "recent_activity": 2.0,
+          "antitrust": 1.0
+        },
+        "cards": {
+          "b_a": {
+            "score": 1.0,
+            "coverage": 0.777777778,
+            "contributions": {
+              "ticket_fit": 0.428571429,
+              "sector_focus": 0.285714286,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.285714286,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_b": {
+            "score": 0.666666667,
+            "coverage": 0.666666667,
+            "contributions": {
+              "ticket_fit": 0.5,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.166666667,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_c": {
+            "score": 0.666666667,
+            "coverage": 1.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.222222222,
+              "fund_lifecycle": 0.111111111,
+              "recent_activity": 0.222222222,
+              "antitrust": 0.111111111
+            },
+            "dealbreakers": [
+              "ticket_fit"
+            ]
+          },
+          "b_d": {
+            "score": null,
+            "coverage": 0.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_e": {
+            "score": 0.625,
+            "coverage": 0.888888889,
+            "contributions": {
+              "ticket_fit": 0.375,
+              "sector_focus": 0.25,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          }
+        },
+        "ranking": [
+          "b_a",
+          "b_b",
+          "b_e",
+          "b_d",
+          "b_c"
+        ]
+      }
+    },
+    {
+      "name": "sector_heavy",
+      "weight_overrides": {
+        "sector_focus": 6.0
+      },
+      "expected": {
+        "weights": {
+          "ticket_fit": 3.0,
+          "sector_focus": 6.0,
+          "fund_lifecycle": 1.0,
+          "recent_activity": 2.0,
+          "antitrust": 1.0
+        },
+        "cards": {
+          "b_a": {
+            "score": 1.0,
+            "coverage": 0.846153846,
+            "contributions": {
+              "ticket_fit": 0.272727273,
+              "sector_focus": 0.545454545,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.181818182,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_b": {
+            "score": 0.4,
+            "coverage": 0.769230769,
+            "contributions": {
+              "ticket_fit": 0.3,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.1,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_c": {
+            "score": 0.769230769,
+            "coverage": 1.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.461538462,
+              "fund_lifecycle": 0.076923077,
+              "recent_activity": 0.153846154,
+              "antitrust": 0.076923077
+            },
+            "dealbreakers": [
+              "ticket_fit"
+            ]
+          },
+          "b_d": {
+            "score": null,
+            "coverage": 0.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_e": {
+            "score": 0.75,
+            "coverage": 0.923076923,
+            "contributions": {
+              "ticket_fit": 0.25,
+              "sector_focus": 0.5,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          }
+        },
+        "ranking": [
+          "b_a",
+          "b_e",
+          "b_b",
+          "b_d",
+          "b_c"
+        ]
+      }
+    },
+    {
+      "name": "ticket_zero",
+      "weight_overrides": {
+        "ticket_fit": 0.0
+      },
+      "expected": {
+        "weights": {
+          "ticket_fit": 0.0,
+          "sector_focus": 2.0,
+          "fund_lifecycle": 1.0,
+          "recent_activity": 2.0,
+          "antitrust": 1.0
+        },
+        "cards": {
+          "b_a": {
+            "score": 1.0,
+            "coverage": 0.666666667,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.5,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.5,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_b": {
+            "score": 0.333333333,
+            "coverage": 0.5,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.333333333,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_c": {
+            "score": 1.0,
+            "coverage": 1.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.333333333,
+              "fund_lifecycle": 0.166666667,
+              "recent_activity": 0.333333333,
+              "antitrust": 0.166666667
+            },
+            "dealbreakers": [
+              "ticket_fit"
+            ]
+          },
+          "b_d": {
+            "score": null,
+            "coverage": 0.0,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.0,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          },
+          "b_e": {
+            "score": 0.4,
+            "coverage": 0.833333333,
+            "contributions": {
+              "ticket_fit": 0.0,
+              "sector_focus": 0.4,
+              "fund_lifecycle": 0.0,
+              "recent_activity": 0.0,
+              "antitrust": 0.0
+            },
+            "dealbreakers": []
+          }
+        },
+        "ranking": [
+          "b_a",
+          "b_e",
+          "b_b",
+          "b_d",
+          "b_c"
+        ]
+      }
+    }
+  ]
+}
