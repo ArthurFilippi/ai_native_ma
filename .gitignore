@@ -34,3 +34,10 @@ PROGRESS.md
 
 # OS
 .DS_Store
+
+# generated synthetic corpora (regenerate with `make data`), except seed 1234 ground truth
+data/synthetic/*
+!data/synthetic/.gitkeep
+!data/synthetic/1234/
+data/synthetic/1234/*
+!data/synthetic/1234/truth/

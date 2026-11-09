@@ -1,0 +1,59 @@
+{
+  "buyer": {
+    "id": "b_nordvik",
+    "name": "Nordvik Industrial Partners III",
+    "buyer_type": "financial",
+    "sectors": [
+      "industrial components"
+    ],
+    "geographies": [
+      "DACH",
+      "Nordics"
+    ],
+    "size_eur_m": 1800.0,
+    "ticket_min_eur_m": 60.0,
+    "ticket_max_eur_m": 250.0,
+    "fund_vintage_year": 2022,
+    "listed": false,
+    "synthetic": true
+  },
+  "stage1_passed": true,
+  "results": [
+    {
+      "criterion_key": "ticket_fit",
+      "status": "met",
+      "rationale": "Indicative equity cheque of EUR 110m is 6.1% of EUR 1.8bn fund size, inside the 5% to 40% band.",
+      "citations": [
+        {
+          "chunk_id": "ch_nv_p3_02",
+          "document_id": "doc_nv_filing",
+          "doc_title": "Nordvik fund III, regulatory filing",
+          "doc_type": "regulatory_filing",
+          "tier": 1,
+          "published_on": "2024-06-30",
+          "page": 3,
+          "char_start": 200,
+          "char_end": 290,
+          "quote": "Fund III has total commitments of EUR 1.8 billion."
+        }
+      ],
+      "conflicting_evidence": false
+    },
+    {
+      "criterion_key": "fund_lifecycle",
+      "status": "unknown",
+      "rationale": "No source states the investment period end date.",
+      "citations": [],
+      "conflicting_evidence": false
+    }
+  ],
+  "score": 0.78,
+  "coverage": 0.85,
+  "contributions": {
+    "ticket_fit": 0.55,
+    "fund_lifecycle": 0.0,
+    "sector_focus": 0.23
+  },
+  "dealbreakers": [],
+  "rank": 1
+}

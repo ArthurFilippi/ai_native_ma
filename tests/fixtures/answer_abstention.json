@@ -1,0 +1,38 @@
+{
+  "id": "ans_0002",
+  "deal_id": "deal_aurora",
+  "user_id": "u_analyst",
+  "question": "What is the CEO's compensation package?",
+  "sub_questions": [],
+  "summary": "Not found in the sources available for this deal. No claim is made.",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "CEO compensation: not established by the sources.",
+      "status": "missing",
+      "citations": [],
+      "derived_from": [],
+      "verification": null,
+      "flags": []
+    }
+  ],
+  "contradictions": [],
+  "missing": [
+    {
+      "topic": "CEO compensation",
+      "reason": "not_found"
+    }
+  ],
+  "abstained": true,
+  "abstention_reason": "No retrieved passage scored above the support threshold.",
+  "trace": {
+    "provider": "mock",
+    "model": "mock-extractive-v1",
+    "stage_latency_ms": {},
+    "retrieved": [],
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": null
+  },
+  "value_contract": "I summarise the evidence clearly and show you the sources, so that you can examine them and make informed decisions."
+}
