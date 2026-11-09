@@ -133,20 +133,20 @@
         },
         {
           "criterion_key": "recent_activity",
-          "status": "met",
-          "rationale": "A 2024 acquisition of a comparable industrial business is reported.",
+          "status": "not_met",
+          "rationale": "The latest comparable acquisition is dated 2021, outside the 24 month window.",
           "citations": [
             {
               "chunk_id": "ch_nv_pr_p1_00",
               "document_id": "doc_nv_pr",
-              "doc_title": "Nordvik completes acquisition, press release",
+              "doc_title": "Nordvik completes add-on acquisition, press release",
               "doc_type": "press_release",
               "tier": 3,
-              "published_on": "2024-11-05",
+              "published_on": "2021-11-05",
               "page": 1,
               "char_start": 40,
-              "char_end": 115,
-              "quote": "Nordvik completed the acquisition of a Swiss precision parts maker in 2024."
+              "char_end": 113,
+              "quote": "Nordvik completed an add-on acquisition of a Swiss precision parts maker."
             }
           ],
           "conflicting_evidence": false
@@ -159,14 +159,14 @@
           "conflicting_evidence": false
         }
       ],
-      "score": 1.0,
+      "score": 0.7142857142857143,
       "coverage": 0.5833333333333334,
       "contributions": {
         "ticket_fit": 0.42857142857142855,
         "ev_ratio": 0.0,
         "sector_focus": 0.2857142857142857,
         "fund_lifecycle": 0.0,
-        "recent_activity": 0.2857142857142857,
+        "recent_activity": 0.0,
         "antitrust": 0.0
       },
       "dealbreakers": [],
@@ -366,20 +366,33 @@
         },
         {
           "criterion_key": "antitrust",
-          "status": "unknown",
-          "rationale": "No market share data found in the sources.",
-          "citations": [],
+          "status": "not_met",
+          "rationale": "The annual report states a 38% share of the DACH precision components market, which is likely to draw merger control scrutiny.",
+          "citations": [
+            {
+              "chunk_id": "ch_br_p5_02",
+              "document_id": "doc_br_ar",
+              "doc_title": "Brandt Industrie, annual report excerpt",
+              "doc_type": "company_report",
+              "tier": 2,
+              "published_on": "2025-02-28",
+              "page": 5,
+              "char_start": 140,
+              "char_end": 212,
+              "quote": "Brandt holds a 38 percent share of the DACH precision components market."
+            }
+          ],
           "conflicting_evidence": false
         }
       ],
-      "score": 1.0,
-      "coverage": 0.5833333333333334,
+      "score": 0.875,
+      "coverage": 0.6666666666666666,
       "contributions": {
         "ticket_fit": 0.0,
-        "ev_ratio": 0.42857142857142855,
-        "sector_focus": 0.2857142857142857,
+        "ev_ratio": 0.375,
+        "sector_focus": 0.25,
         "fund_lifecycle": 0.0,
-        "recent_activity": 0.2857142857142857,
+        "recent_activity": 0.25,
         "antitrust": 0.0
       },
       "dealbreakers": [],
