@@ -1,0 +1,492 @@
+{
+  "deal_id": "deal_aurora",
+  "request": {
+    "deal_id": "deal_aurora",
+    "filters": {
+      "buyer_types": [],
+      "sectors": [],
+      "geographies": [],
+      "min_size_eur_m": null,
+      "max_size_eur_m": null
+    },
+    "weights": {},
+    "stage2_top_n": 10
+  },
+  "criteria": [
+    {
+      "key": "ticket_fit",
+      "label": "Ticket fit",
+      "kind": "deep",
+      "weight": 3.0,
+      "dealbreaker": true,
+      "description": "Indicative equity cheque as a share of fund size: below 5% or above 40% is not met."
+    },
+    {
+      "key": "ev_ratio",
+      "label": "EV ratio",
+      "kind": "deep",
+      "weight": 3.0,
+      "dealbreaker": true,
+      "description": "Target EV over buyer EV: above 60% is not met."
+    },
+    {
+      "key": "sector_focus",
+      "label": "Sector focus",
+      "kind": "prefilter",
+      "weight": 2.0,
+      "dealbreaker": false,
+      "description": "Structured sector field, confirmed by a retrieved passage."
+    },
+    {
+      "key": "fund_lifecycle",
+      "label": "Fund lifecycle",
+      "kind": "deep",
+      "weight": 1.0,
+      "dealbreaker": false,
+      "description": "Investment period remaining, from fund documents."
+    },
+    {
+      "key": "recent_activity",
+      "label": "Recent activity",
+      "kind": "deep",
+      "weight": 2.0,
+      "dealbreaker": false,
+      "description": "Similar acquisitions found in dated sources."
+    },
+    {
+      "key": "antitrust",
+      "label": "Antitrust",
+      "kind": "deep",
+      "weight": 1.0,
+      "dealbreaker": false,
+      "description": "Evaluated only when market share data is found in sources."
+    }
+  ],
+  "cards": [
+    {
+      "buyer": {
+        "id": "b_nordvik",
+        "name": "Nordvik Industrial Partners III",
+        "buyer_type": "financial",
+        "sectors": [
+          "industrial components"
+        ],
+        "geographies": [
+          "DACH",
+          "Nordics"
+        ],
+        "size_eur_m": 1800.0,
+        "ticket_min_eur_m": 60.0,
+        "ticket_max_eur_m": 250.0,
+        "fund_vintage_year": 2022,
+        "listed": false,
+        "synthetic": true
+      },
+      "stage1_passed": true,
+      "results": [
+        {
+          "criterion_key": "ticket_fit",
+          "status": "met",
+          "rationale": "Indicative equity cheque of EUR 110m is 6.1% of EUR 1.8bn fund size, inside the 5% to 40% band.",
+          "citations": [
+            {
+              "chunk_id": "ch_nv_p3_02",
+              "document_id": "doc_nv_filing",
+              "doc_title": "Nordvik fund III, regulatory filing",
+              "doc_type": "regulatory_filing",
+              "tier": 1,
+              "published_on": "2024-06-30",
+              "page": 3,
+              "char_start": 200,
+              "char_end": 290,
+              "quote": "Fund III has total commitments of EUR 1.8 billion."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "sector_focus",
+          "status": "met",
+          "rationale": "Fund III targets industrial components, as stated in its profile page.",
+          "citations": [
+            {
+              "chunk_id": "ch_nv_p1_01",
+              "document_id": "doc_nv_profile",
+              "doc_title": "Nordvik fund III, profile page",
+              "doc_type": "web",
+              "tier": 5,
+              "published_on": "2025-01-20",
+              "page": 1,
+              "char_start": 150,
+              "char_end": 226,
+              "quote": "Nordvik invests in industrial components businesses in DACH and the Nordics."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "fund_lifecycle",
+          "status": "unknown",
+          "rationale": "No source states the investment period end date.",
+          "citations": [],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "recent_activity",
+          "status": "not_met",
+          "rationale": "The latest comparable acquisition is dated 2021, outside the 24 month window.",
+          "citations": [
+            {
+              "chunk_id": "ch_nv_pr_p1_00",
+              "document_id": "doc_nv_pr",
+              "doc_title": "Nordvik completes add-on acquisition, press release",
+              "doc_type": "press_release",
+              "tier": 3,
+              "published_on": "2021-11-05",
+              "page": 1,
+              "char_start": 40,
+              "char_end": 113,
+              "quote": "Nordvik completed an add-on acquisition of a Swiss precision parts maker."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "antitrust",
+          "status": "unknown",
+          "rationale": "No market share data found in the sources.",
+          "citations": [],
+          "conflicting_evidence": false
+        }
+      ],
+      "score": 0.7142857142857143,
+      "coverage": 0.5833333333333334,
+      "contributions": {
+        "ticket_fit": 0.42857142857142855,
+        "ev_ratio": 0.0,
+        "sector_focus": 0.2857142857142857,
+        "fund_lifecycle": 0.0,
+        "recent_activity": 0.0,
+        "antitrust": 0.0
+      },
+      "dealbreakers": [],
+      "rank": 2
+    },
+    {
+      "buyer": {
+        "id": "b_karlsen",
+        "name": "Karlsen Capital Fund II",
+        "buyer_type": "financial",
+        "sectors": [
+          "industrial components",
+          "logistics"
+        ],
+        "geographies": [
+          "DACH"
+        ],
+        "size_eur_m": 300.0,
+        "ticket_min_eur_m": 20.0,
+        "ticket_max_eur_m": 90.0,
+        "fund_vintage_year": 2019,
+        "listed": false,
+        "synthetic": true
+      },
+      "stage1_passed": true,
+      "results": [
+        {
+          "criterion_key": "ticket_fit",
+          "status": "not_met",
+          "rationale": "Indicative equity cheque of EUR 110m is 36.7% of EUR 300m fund size, above the 25% healthy band and past the ticket ceiling of EUR 90m.",
+          "citations": [
+            {
+              "chunk_id": "ch_ka_p2_01",
+              "document_id": "doc_ka_filing",
+              "doc_title": "Karlsen fund II, regulatory filing",
+              "doc_type": "regulatory_filing",
+              "tier": 1,
+              "published_on": "2024-03-31",
+              "page": 2,
+              "char_start": 88,
+              "char_end": 139,
+              "quote": "Karlsen Fund II has commitments of EUR 300 million."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "sector_focus",
+          "status": "met",
+          "rationale": "Profile lists industrial components.",
+          "citations": [
+            {
+              "chunk_id": "ch_ka_p1_02",
+              "document_id": "doc_ka_profile",
+              "doc_title": "Karlsen Capital, profile page",
+              "doc_type": "web",
+              "tier": 5,
+              "published_on": "2024-09-02",
+              "page": 1,
+              "char_start": 210,
+              "char_end": 278,
+              "quote": "Karlsen Capital backs industrial components and logistics companies."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "fund_lifecycle",
+          "status": "met",
+          "rationale": "Investment period runs to 2026 according to the fund filing.",
+          "citations": [
+            {
+              "chunk_id": "ch_ka_p2_03",
+              "document_id": "doc_ka_filing",
+              "doc_title": "Karlsen fund II, regulatory filing",
+              "doc_type": "regulatory_filing",
+              "tier": 1,
+              "published_on": "2024-03-31",
+              "page": 2,
+              "char_start": 402,
+              "char_end": 457,
+              "quote": "The investment period of Fund II ends in December 2026."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "recent_activity",
+          "status": "unknown",
+          "rationale": "No dated acquisition found in the last 24 months.",
+          "citations": [],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "antitrust",
+          "status": "unknown",
+          "rationale": "No market share data found in the sources.",
+          "citations": [],
+          "conflicting_evidence": false
+        }
+      ],
+      "score": 0.5,
+      "coverage": 0.5,
+      "contributions": {
+        "ticket_fit": 0.0,
+        "ev_ratio": 0.0,
+        "sector_focus": 0.3333333333333333,
+        "fund_lifecycle": 0.16666666666666666,
+        "recent_activity": 0.0,
+        "antitrust": 0.0
+      },
+      "dealbreakers": [
+        "ticket_fit"
+      ],
+      "rank": 3
+    },
+    {
+      "buyer": {
+        "id": "b_brandt",
+        "name": "Brandt Industrie AG",
+        "buyer_type": "strategic",
+        "sectors": [
+          "industrial components"
+        ],
+        "geographies": [
+          "DACH",
+          "France"
+        ],
+        "size_eur_m": 2400.0,
+        "ticket_min_eur_m": null,
+        "ticket_max_eur_m": null,
+        "fund_vintage_year": null,
+        "listed": true,
+        "synthetic": true
+      },
+      "stage1_passed": true,
+      "results": [
+        {
+          "criterion_key": "ev_ratio",
+          "status": "met",
+          "rationale": "Target EV is about 21% of buyer enterprise value, below the 40% transformational threshold.",
+          "citations": [
+            {
+              "chunk_id": "ch_br_p4_00",
+              "document_id": "doc_br_ar",
+              "doc_title": "Brandt Industrie, annual report excerpt",
+              "doc_type": "company_report",
+              "tier": 2,
+              "published_on": "2025-02-28",
+              "page": 4,
+              "char_start": 300,
+              "char_end": 371,
+              "quote": "Brandt Industrie AG reports a market capitalisation of EUR 2.4 billion."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "sector_focus",
+          "status": "met",
+          "rationale": "Annual report names industrial components as the core segment.",
+          "citations": [
+            {
+              "chunk_id": "ch_br_p1_01",
+              "document_id": "doc_br_ar",
+              "doc_title": "Brandt Industrie, annual report excerpt",
+              "doc_type": "company_report",
+              "tier": 2,
+              "published_on": "2025-02-28",
+              "page": 1,
+              "char_start": 120,
+              "char_end": 166,
+              "quote": "Industrial components remain our core segment."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "recent_activity",
+          "status": "met",
+          "rationale": "Two acquisitions of component suppliers are reported, one source is a trade article.",
+          "citations": [
+            {
+              "chunk_id": "ch_br_pr_p1_00",
+              "document_id": "doc_br_news",
+              "doc_title": "Trade press: Brandt keeps buying",
+              "doc_type": "press_article",
+              "tier": 4,
+              "published_on": "2024-10-12",
+              "page": 1,
+              "char_start": 60,
+              "char_end": 144,
+              "quote": "Brandt Industrie AG announced the acquisition of two component suppliers since 2023."
+            }
+          ],
+          "conflicting_evidence": true
+        },
+        {
+          "criterion_key": "antitrust",
+          "status": "not_met",
+          "rationale": "The annual report states a 38% share of the DACH precision components market, which is likely to draw merger control scrutiny.",
+          "citations": [
+            {
+              "chunk_id": "ch_br_p5_02",
+              "document_id": "doc_br_ar",
+              "doc_title": "Brandt Industrie, annual report excerpt",
+              "doc_type": "company_report",
+              "tier": 2,
+              "published_on": "2025-02-28",
+              "page": 5,
+              "char_start": 140,
+              "char_end": 212,
+              "quote": "Brandt holds a 38 percent share of the DACH precision components market."
+            }
+          ],
+          "conflicting_evidence": false
+        }
+      ],
+      "score": 0.875,
+      "coverage": 0.6666666666666666,
+      "contributions": {
+        "ticket_fit": 0.0,
+        "ev_ratio": 0.375,
+        "sector_focus": 0.25,
+        "fund_lifecycle": 0.0,
+        "recent_activity": 0.25,
+        "antitrust": 0.0
+      },
+      "dealbreakers": [],
+      "rank": 1
+    },
+    {
+      "buyer": {
+        "id": "b_orion",
+        "name": "Orion Strategic Holdings",
+        "buyer_type": "strategic",
+        "sectors": [
+          "industrial components"
+        ],
+        "geographies": [
+          "Nordics"
+        ],
+        "size_eur_m": 410.0,
+        "ticket_min_eur_m": null,
+        "ticket_max_eur_m": null,
+        "fund_vintage_year": null,
+        "listed": true,
+        "synthetic": true
+      },
+      "stage1_passed": true,
+      "results": [
+        {
+          "criterion_key": "ev_ratio",
+          "status": "not_met",
+          "rationale": "Target EV is above 60% of the buyer enterprise value, so the deal would be transformational beyond the threshold.",
+          "citations": [
+            {
+              "chunk_id": "ch_or_p2_00",
+              "document_id": "doc_or_ar",
+              "doc_title": "Orion Strategic, annual report excerpt",
+              "doc_type": "company_report",
+              "tier": 2,
+              "published_on": "2025-03-03",
+              "page": 2,
+              "char_start": 75,
+              "char_end": 148,
+              "quote": "Orion Strategic Holdings reported an enterprise value of EUR 410 million."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "sector_focus",
+          "status": "met",
+          "rationale": "Profile lists industrial components.",
+          "citations": [
+            {
+              "chunk_id": "ch_or_p1_00",
+              "document_id": "doc_or_profile",
+              "doc_title": "Orion Strategic, profile page",
+              "doc_type": "web",
+              "tier": 5,
+              "published_on": "2024-12-01",
+              "page": 1,
+              "char_start": 50,
+              "char_end": 125,
+              "quote": "Orion Strategic Holdings is active in industrial components in the Nordics."
+            }
+          ],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "recent_activity",
+          "status": "unknown",
+          "rationale": "No dated acquisition found.",
+          "citations": [],
+          "conflicting_evidence": false
+        },
+        {
+          "criterion_key": "antitrust",
+          "status": "unknown",
+          "rationale": "No market share data found in the sources.",
+          "citations": [],
+          "conflicting_evidence": false
+        }
+      ],
+      "score": 0.4,
+      "coverage": 0.4166666666666667,
+      "contributions": {
+        "ticket_fit": 0.0,
+        "ev_ratio": 0.0,
+        "sector_focus": 0.4,
+        "fund_lifecycle": 0.0,
+        "recent_activity": 0.0,
+        "antitrust": 0.0
+      },
+      "dealbreakers": [
+        "ev_ratio"
+      ],
+      "rank": 4
+    }
+  ]
+}

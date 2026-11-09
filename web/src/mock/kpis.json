@@ -1,0 +1,120 @@
+[
+  {
+    "kpi_id": "revenue",
+    "period": "FY2024",
+    "value": 182.4,
+    "unit": "EUR m",
+    "status": "sourced",
+    "citations": [
+      {
+        "chunk_id": "doc_cim_p2_00",
+        "document_id": "doc_cim",
+        "doc_title": "Project Aurora, Confidential Information Memorandum",
+        "doc_type": "deal_document",
+        "tier": 2,
+        "published_on": "2025-03-14",
+        "page": 2,
+        "char_start": 0,
+        "char_end": 77,
+        "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+      }
+    ],
+    "formula_inputs": {}
+  },
+  {
+    "kpi_id": "revenue",
+    "period": "FY2023",
+    "value": 168.0,
+    "unit": "EUR m",
+    "status": "sourced",
+    "citations": [
+      {
+        "chunk_id": "doc_cim_p2_00",
+        "document_id": "doc_cim",
+        "doc_title": "Project Aurora, Confidential Information Memorandum",
+        "doc_type": "deal_document",
+        "tier": 2,
+        "published_on": "2025-03-14",
+        "page": 2,
+        "char_start": 0,
+        "char_end": 77,
+        "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+      }
+    ],
+    "formula_inputs": {}
+  },
+  {
+    "kpi_id": "revenue_growth",
+    "period": "FY2024",
+    "value": 8.5714,
+    "unit": "%",
+    "status": "computed",
+    "citations": [],
+    "formula_inputs": {
+      "revenue_FY2024": 182.4,
+      "revenue_FY2023": 168.0
+    }
+  },
+  {
+    "kpi_id": "gross_margin",
+    "period": "FY2024",
+    "value": 38.5,
+    "unit": "%",
+    "status": "sourced",
+    "citations": [
+      {
+        "chunk_id": "doc_cim_p2_01",
+        "document_id": "doc_cim",
+        "doc_title": "Project Aurora, Confidential Information Memorandum",
+        "doc_type": "deal_document",
+        "tier": 2,
+        "published_on": "2025-03-14",
+        "page": 2,
+        "char_start": 79,
+        "char_end": 119,
+        "quote": "Gross margin was 38.5 percent in FY2024."
+      }
+    ],
+    "formula_inputs": {}
+  },
+  {
+    "kpi_id": "largest_customer_share",
+    "period": "FY2024",
+    "value": 17.0,
+    "unit": "%",
+    "status": "sourced",
+    "citations": [
+      {
+        "chunk_id": "doc_cim_p2_02",
+        "document_id": "doc_cim",
+        "doc_title": "Project Aurora, Confidential Information Memorandum",
+        "doc_type": "deal_document",
+        "tier": 2,
+        "published_on": "2025-03-14",
+        "page": 2,
+        "char_start": 121,
+        "char_end": 183,
+        "quote": "The largest customer represented 17 percent of FY2024 revenue."
+      }
+    ],
+    "formula_inputs": {}
+  },
+  {
+    "kpi_id": "ebitda",
+    "period": "FY2024",
+    "value": null,
+    "unit": "EUR m",
+    "status": "missing",
+    "citations": [],
+    "formula_inputs": {}
+  },
+  {
+    "kpi_id": "ebitda",
+    "period": "FY2023",
+    "value": null,
+    "unit": "EUR m",
+    "status": "missing",
+    "citations": [],
+    "formula_inputs": {}
+  }
+]
