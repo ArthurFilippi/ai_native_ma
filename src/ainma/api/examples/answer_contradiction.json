@@ -1,0 +1,205 @@
+{
+  "id": "ans_0001",
+  "deal_id": "deal_aurora",
+  "user_id": "u_analyst",
+  "question": "What was Aurora's FY2024 revenue and how did it grow?",
+  "sub_questions": [
+    "FY2024 revenue of Aurora",
+    "FY2023 revenue of Aurora",
+    "Revenue growth FY2024"
+  ],
+  "summary": "The CIM states FY2024 revenue of EUR 182.4m. A trade press article gives about EUR 179m. The sources disagree; the CIM is the higher-tier source. FY2025 guidance was not found.",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "FY2024 net revenue is stated as EUR 182.4 million in the CIM.",
+      "status": "sourced",
+      "citations": [
+        {
+          "chunk_id": "ch_cim_p12_03",
+          "document_id": "doc_cim",
+          "doc_title": "Project Aurora, Confidential Information Memorandum",
+          "doc_type": "deal_document",
+          "tier": 2,
+          "published_on": "2025-03-14",
+          "page": 12,
+          "char_start": 410,
+          "char_end": 498,
+          "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+        }
+      ],
+      "derived_from": [],
+      "verification": {
+        "supported": true,
+        "checks": [
+          {
+            "name": "verbatim_span",
+            "passed": true,
+            "detail": ""
+          },
+          {
+            "name": "numeric_match",
+            "passed": true,
+            "detail": "182.4 found in span"
+          },
+          {
+            "name": "judge",
+            "passed": true,
+            "detail": ""
+          }
+        ],
+        "judge_label": "supported"
+      },
+      "flags": [
+        "contradicted"
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Trade press reports roughly EUR 179 million of 2024 revenue.",
+      "status": "sourced",
+      "citations": [
+        {
+          "chunk_id": "ch_news_p1_01",
+          "document_id": "doc_news_17",
+          "doc_title": "Trade press: Aurora Components posts record year",
+          "doc_type": "press_article",
+          "tier": 4,
+          "published_on": "2025-02-02",
+          "page": 1,
+          "char_start": 120,
+          "char_end": 196,
+          "quote": "Aurora booked roughly EUR 179 million of revenue in 2024."
+        }
+      ],
+      "derived_from": [],
+      "verification": {
+        "supported": true,
+        "checks": [
+          {
+            "name": "verbatim_span",
+            "passed": true,
+            "detail": ""
+          },
+          {
+            "name": "numeric_match",
+            "passed": true,
+            "detail": ""
+          }
+        ],
+        "judge_label": "supported"
+      },
+      "flags": [
+        "contradicted",
+        "single_low_tier_source"
+      ]
+    },
+    {
+      "id": "c3",
+      "text": "Using the CIM figures, revenue grew about 8.6% from FY2023 to FY2024 (182.4 / 168.0 - 1).",
+      "status": "inferred",
+      "citations": [],
+      "derived_from": [
+        "c1"
+      ],
+      "verification": null,
+      "flags": []
+    },
+    {
+      "id": "c4",
+      "text": "No FY2025 guidance was found in the sources available for this deal.",
+      "status": "missing",
+      "citations": [],
+      "derived_from": [],
+      "verification": null,
+      "flags": []
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "k1",
+      "subject": "Aurora FY2024 revenue",
+      "sides": [
+        {
+          "label": "EUR 182.4m",
+          "claim_id": "c1",
+          "citations": [
+            {
+              "chunk_id": "ch_cim_p12_03",
+              "document_id": "doc_cim",
+              "doc_title": "Project Aurora, Confidential Information Memorandum",
+              "doc_type": "deal_document",
+              "tier": 2,
+              "published_on": "2025-03-14",
+              "page": 12,
+              "char_start": 410,
+              "char_end": 498,
+              "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+            }
+          ],
+          "strength": 0.8
+        },
+        {
+          "label": "about EUR 179m",
+          "claim_id": "c2",
+          "citations": [
+            {
+              "chunk_id": "ch_news_p1_01",
+              "document_id": "doc_news_17",
+              "doc_title": "Trade press: Aurora Components posts record year",
+              "doc_type": "press_article",
+              "tier": 4,
+              "published_on": "2025-02-02",
+              "page": 1,
+              "char_start": 120,
+              "char_end": 196,
+              "quote": "Aurora booked roughly EUR 179 million of revenue in 2024."
+            }
+          ],
+          "strength": 0.45
+        }
+      ],
+      "stronger_side": 0,
+      "note": "Sources disagree. The system does not pick a winner."
+    }
+  ],
+  "missing": [
+    {
+      "topic": "FY2025 guidance",
+      "reason": "not_found"
+    }
+  ],
+  "abstained": false,
+  "abstention_reason": null,
+  "trace": {
+    "provider": "mock",
+    "model": "mock-extractive-v1",
+    "stage_latency_ms": {
+      "understand": 3.1,
+      "retrieve": 18.4,
+      "write": 6.0,
+      "verify": 9.7
+    },
+    "retrieved": [
+      {
+        "chunk_id": "ch_cim_p12_03",
+        "rank": 1,
+        "final_score": 0.91,
+        "components": {
+          "bm25": 12.3,
+          "dense": 0.71,
+          "rrf": 0.032,
+          "rerank": 0.88,
+          "tier_weight": 0.8,
+          "recency": 0.97,
+          "corroboration": 0.0
+        },
+        "explanation": "Exact phrase match on revenue and FY2024; tier 2 deal document; recent."
+      }
+    ],
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": null
+  },
+  "value_contract": "I summarise the evidence clearly and show you the sources, so that you can examine them and make informed decisions."
+}
