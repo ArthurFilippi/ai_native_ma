@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -140,3 +141,35 @@ def test_scored_card_round_trips_through_json() -> None:
     scored = score_cards(_criteria(), _cards(), {})
     for card in scored:
         assert BuyerCard.model_validate_json(card.model_dump_json()) == card
+
+
+def test_edge_rules_match_the_hand_computed_extra_vectors() -> None:
+    extra: dict[str, Any] = json.loads(
+        (Path(__file__).parents[1] / "fixtures_biz" / "scoring_vectors_extra.json").read_text(
+            "utf-8"
+        )
+    )
+    criteria = [
+        Criterion(
+            key=c["key"],
+            label=c["key"],
+            kind="deep",
+            weight=c["weight"],
+            dealbreaker=c["dealbreaker"],
+        )
+        for c in extra["criteria"]
+    ]
+    cards = [_card(c["id"], c["results"], passed=c["stage1_passed"]) for c in extra["cards"]]
+    scored = score_cards(criteria, cards, {})
+    expected = extra["expected"]
+    assert [c.buyer.id for c in scored] == expected["ranking"]
+    for card in scored:
+        assert card.rank == expected["ranks"][card.buyer.id]
+        want = expected["cards"][card.buyer.id]
+        if want["score"] is None:
+            assert card.score is None
+        else:
+            assert card.score == pytest.approx(want["score"], abs=TOL)
+        assert card.coverage == pytest.approx(want["coverage"], abs=TOL)
+        assert card.dealbreakers == want["dealbreakers"]
+        assert card.contributions == pytest.approx(want["contributions"], abs=TOL)

@@ -58,7 +58,7 @@ class CitationBuilder:
         self._access = access
         self._documents: dict[str, DocumentMeta] = {}
 
-    async def _document(self, document_id: str) -> DocumentMeta:
+    async def document(self, document_id: str) -> DocumentMeta:
         if document_id not in self._documents:
             meta = await self._store.get_document(document_id, self._access)
             if meta is None:
@@ -70,7 +70,7 @@ class CitationBuilder:
         if not quote:
             raise ValueError("a citation needs a non-empty quote")
         offset = chunk.text.index(quote)
-        meta = await self._document(chunk.document_id)
+        meta = await self.document(chunk.document_id)
         return Citation(
             chunk_id=chunk.id,
             document_id=chunk.document_id,
