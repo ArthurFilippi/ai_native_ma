@@ -92,7 +92,7 @@ def statement_text(title: str, keys: list[str]) -> str:
     return "\n".join([title, header, *rows])
 
 
-def _doc(
+def make_doc(
     doc_id: str,
     title: str,
     doc_type: DocType,
@@ -119,14 +119,14 @@ def _doc(
 
 def documents() -> list[TinyDoc]:
     pages = [f"{MARK}\n\n" + "\n\n".join(statement_text(t, k) for t, k in STATEMENTS.items())]
-    model = _doc(
+    model = make_doc(
         "doc_model",
         "Project Aurora, financial model",
         DocType.DEAL_DOCUMENT,
         pages,
         date(2025, 3, 14),
     )
-    cim = _doc(
+    cim = make_doc(
         "doc_cim",
         "Project Aurora, Confidential Information Memorandum",
         DocType.DEAL_DOCUMENT,
@@ -139,7 +139,7 @@ def documents() -> list[TinyDoc]:
         ],
         date(2025, 3, 14),
     )
-    news = _doc(
+    news = make_doc(
         "doc_news_17",
         "Trade press: Aurora Components posts record year",
         DocType.PRESS_ARTICLE,

@@ -17,10 +17,10 @@ from __future__ import annotations
 import logging
 from collections.abc import Sequence
 
-from ainma.contracts import AccessContext, KpiDef, KpiValue
+from ainma.contracts import AccessContext, Chunk, KpiDef, KpiValue
 from ainma.kpi.definitions import DEFAULT_PERIODS, KPI_LABELS, kpi_definitions
 from ainma.kpi.formula import FormulaError, evaluate_formula, topological_order
-from ainma.kpi.parse import Candidate, LabelIndex, parse_chunk, value_in_quote
+from ainma.kpi.parse import Candidate, LabelIndex, last_header, parse_chunk, value_in_quote
 from ainma.kpi.sources import CitationBuilder, SearchFn, resolve_search
 from ainma.llm import LLM
 from ainma.store import Store
@@ -54,6 +54,26 @@ class _Extractor:
         self._index = LabelIndex(KPI_LABELS, {d.id: d.unit for d in kpi_definitions()})
         self._citations = CitationBuilder(store, access)
         self._parsed: dict[str, list[Candidate]] = {}
+        self._pages: dict[tuple[str, int], list[Chunk]] | None = None
+
+    async def _columns_before(self, chunk: Chunk) -> list[str]:
+        """Period columns of the nearest table header before `chunk` on the same page."""
+        if self._pages is None:
+            self._pages = {}
+            for candidate in await self._store.candidates(self._access, deal_id=self._deal_id):
+                self._pages.setdefault((candidate.document_id, candidate.page), []).append(
+                    candidate
+                )
+        earlier = [
+            c
+            for c in self._pages.get((chunk.document_id, chunk.page), [])
+            if c.char_start < chunk.char_start
+        ]
+        for previous in sorted(earlier, key=lambda c: c.char_start, reverse=True):
+            columns = last_header(previous.text)
+            if columns:
+                return columns
+        return []
 
     async def sourced(self, definition: KpiDef, period: str) -> KpiValue | None:
         query = f"{definition.name} {KPI_LABELS[definition.id][0]} {period}"
@@ -63,7 +83,8 @@ class _Extractor:
         for hit in hits:
             chunk = hit.chunk
             if chunk.id not in self._parsed:
-                self._parsed[chunk.id] = parse_chunk(chunk.text, self._index)
+                columns = await self._columns_before(chunk) if chunk.kind == "table" else []
+                self._parsed[chunk.id] = parse_chunk(chunk.text, self._index, columns)
             for candidate in self._parsed[chunk.id]:
                 if candidate.kpi_id != definition.id or candidate.period != period:
                     continue

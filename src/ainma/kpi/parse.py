@@ -252,20 +252,35 @@ def _table_scale(text: str) -> float | None:
     return _FACTORS.get(raw)
 
 
-def _table_candidates(text: str, index: LabelIndex) -> list[Candidate]:
+def _header_columns(line: str) -> list[str] | None:
+    periods = _periods_in(line)
+    residue = _NUMBER_RE.sub(" ", _PERIOD_RE.sub(" ", line))
+    if len(periods) >= 2 and not re.search(r"\d", residue):
+        return [name for _, _, name in periods]
+    return None
+
+
+def last_header(text: str) -> list[str]:
+    """Period columns of the last table header line in the text, empty when there is none."""
+    columns: list[str] = []
+    for line in text.split("\n"):
+        columns = _header_columns(line) or columns
+    return columns
+
+
+def _table_candidates(text: str, index: LabelIndex, columns: Sequence[str]) -> list[Candidate]:
     scale = _table_scale(text)
     out: list[Candidate] = []
-    columns: list[str] = []
+    columns = list(columns)
     cursor = 0
     for line in text.split("\n"):
         start = cursor
         cursor += len(line) + 1
         if not line.strip():
             continue
-        periods = _periods_in(line)
-        residue = _NUMBER_RE.sub(" ", _PERIOD_RE.sub(" ", line))
-        if len(periods) >= 2 and not re.search(r"\d", residue):
-            columns = [name for _, _, name in periods]
+        header = _header_columns(line)
+        if header is not None:
+            columns = header
             continue
         first = _NUMBER_RE.search(line)
         if not columns or first is None:
@@ -295,9 +310,13 @@ def _table_candidates(text: str, index: LabelIndex) -> list[Candidate]:
     return out
 
 
-def parse_chunk(text: str, index: LabelIndex) -> list[Candidate]:
-    """All candidates in a chunk: table rows first, then sentences, each in text order."""
-    out = _table_candidates(text, index)
+def parse_chunk(text: str, index: LabelIndex, columns: Sequence[str] = ()) -> list[Candidate]:
+    """All candidates in a chunk: table rows first, then sentences, each in text order.
+
+    `columns` are the period columns of a table header that sits in an earlier chunk, used for
+    rows that come before any header of their own (a long table is cut on row boundaries).
+    """
+    out = _table_candidates(text, index, columns)
     for start, end in _sentence_spans(text):
         out.extend(_sentence_candidates(text[start:end], start, index))
     return out

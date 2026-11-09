@@ -1,15 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import AsyncIterator
+from datetime import date
 
 import pytest
 
-from ainma.contracts import KpiValue
+from ainma.contracts import Deal, DocType, KpiValue, Membership, Role, User
 from ainma.kpi import extract_kpis
 from ainma.kpi.definitions import DEFAULT_PERIODS, kpi_definitions
 from ainma.llm import MockLLM
 from ainma.store import SqliteStore
-from tests.fixtures_biz.data_room import DEAL_ID, PERIODS, ROWS, load_data_room
+from tests.fixtures.tiny import chunk_document
+from tests.fixtures_biz.data_room import DEAL_ID, PERIODS, ROWS, load_data_room, make_doc
 from tests.fixtures_biz.keyword_search import keyword_search
 
 REL_TOL = 0.005  # the acceptance tolerance of the evaluation plan
@@ -144,3 +146,36 @@ async def test_restricting_kpi_ids_reads_dependencies_but_returns_only_the_reque
             kpi_ids=["nope"],
             search=keyword_search,
         )
+
+
+async def test_a_table_cut_on_row_boundaries_keeps_its_header_for_later_chunks() -> None:
+    opened = await SqliteStore.open(":memory:")
+    await opened.put_user(User(id="u_lead", name="Lena Lead"))
+    await opened.put_deal(Deal(id=DEAL_ID, name="Project Aurora", sector="industrial components"))
+    await opened.put_membership(Membership(deal_id=DEAL_ID, user_id="u_lead", role=Role.LEAD))
+    cut = make_doc(
+        "doc_split",
+        "Project Aurora, financial model",
+        DocType.DEAL_DOCUMENT,
+        [
+            "Income statement (EUR m)\nLine item | FY2023 | FY2024\nRevenue | 168.0 | 182.4\n\n"
+            "EBIT | 21.1 | 23.6\nNet income | 13.0 | 14.9"
+        ],
+        date(2025, 3, 15),
+    )
+    await opened.put_document(cut.meta, cut.pages)
+    chunks = [c.model_copy(update={"kind": "table"}) for c in chunk_document(cut)]
+    assert len(chunks) == 2 and "FY2024" not in chunks[1].text
+    await opened.put_chunks(chunks)
+    values = await extract_kpis(
+        DEAL_ID,
+        store=opened,
+        access=await opened.access_for("u_lead"),
+        llm=MockLLM({}),
+        periods=["FY2023", "FY2024"],
+        kpi_ids=["net_income"],
+        search=keyword_search,
+    )
+    assert [v.value for v in values] == [13.0, 14.9]
+    assert {v.citations[0].chunk_id for v in values} == {chunks[1].id}
+    await opened.close()

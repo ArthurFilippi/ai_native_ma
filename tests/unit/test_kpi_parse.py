@@ -6,6 +6,7 @@ from ainma.kpi.definitions import KPI_LABELS, kpi_definitions
 from ainma.kpi.parse import (
     Candidate,
     LabelIndex,
+    last_header,
     normalise_period,
     parse_chunk,
     parse_number,
@@ -151,3 +152,23 @@ def test_quotes_are_verbatim_slices_of_the_text() -> None:
 )
 def test_value_in_quote(value: float, quote: str, found: bool) -> None:
     assert value_in_quote(value, quote) is found
+
+
+def test_rows_without_their_own_header_use_the_columns_of_an_earlier_chunk() -> None:
+    rows = "EBITDA | 24.1 | 26.0\nEBIT | 17.0 | 18.3"
+    assert _read(rows) == {}
+    read = {
+        (c.kpi_id, c.period): c.value
+        for c in parse_chunk(rows, INDEX, columns=["FY2023", "FY2024"])
+    }
+    assert read == {
+        ("ebitda", "FY2023"): 24.1,
+        ("ebitda", "FY2024"): 26.0,
+        ("ebit", "FY2023"): 17.0,
+        ("ebit", "FY2024"): 18.3,
+    }
+    assert last_header("Title\nLine item | FY2022 | FY2023\nRevenue | 1.0 | 2.0") == [
+        "FY2022",
+        "FY2023",
+    ]
+    assert last_header("Revenue | 1.0 | 2.0") == []
