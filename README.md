@@ -64,7 +64,7 @@ The target team's rule is adopted as is: you do not improve what you do not meas
 | Citation recall (verifier on) | 0.931 [0.917, 0.945] |
 | Correct abstention, end to end | 0.913 [0.867, 0.953] |
 | Contradiction detection recall | 0.954 [0.920, 0.983] |
-| Clicks to verify a claim | 1 by design; asserted by the end to end test of the app, not measured in the harness |
+| Clicks to verify a claim | 1 by design; asserted by a jsdom test of the web client (one citation click, one passage request), not measured in the harness |
 
 Retrieval ablation (nDCG@10, 1188 test queries pooled over the seeds):
 
@@ -93,7 +93,7 @@ Other measured quantities, same run:
 | Screening agreement with the buyer truth (n=1600 cells) | 0.702 [0.679, 0.724] |
 | Screening unknown rate | 47.2 percent |
 | Screening, predicted met although not met | 0.002 [0.000, 0.005] |
-| Ask, total latency p50 / p95 (warm, in memory store, one machine) | 42.30 ms / 225.23 ms |
+| Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 42.30 ms / 225.23 ms |
 
 ### How to read these numbers
 
@@ -196,13 +196,13 @@ The generator is seeded and byte deterministic (tested by hashing every output t
 
 **Judge (`judge/`).** Labels a (claim, passage) pair `supported`, `partial` or `unsupported`; `make judge-daily` replays logged answers, and confirmed failures become regression cases that every `make eval` replays. No regression case is committed yet.
 
-**Screening (`screening/`).** Stage 1 prefilters on buyer type, sector, geography and size. Stage 2 evaluates deep criteria with evidence from the buyer's own documents: ticket fit (financial buyers), EV ratio and integration bandwidth (strategic buyers), fund lifecycle, recent activity, antitrust and FDI. Every number the deep stage assumes (the EBITDA multiple, the equity share, the reference date) lives in one documented parameter object and none of them comes from a source. A criterion without evidence is `unknown`; some criteria are dealbreakers. Weights are adjustable and the ranking is recomputed by the same function in Python and in TypeScript.
+**Screening (`screening/`).** Stage 1 prefilters on buyer type, sector, geography and size. Stage 2 evaluates deep criteria with evidence from the buyer's own documents: ticket fit (financial buyers), EV ratio and integration bandwidth (strategic buyers), fund lifecycle, recent activity, antitrust and FDI. Every number the deep stage assumes (the EBITDA multiple, the equity share, the reference date) lives in one documented parameter object and none of them comes from a source. A criterion without evidence is `unknown`; some criteria are dealbreakers. Weights are adjustable and the ranking is recomputed by the same function in Python and in TypeScript. The score is computed over the criteria that have evidence, so a score of 1.00 can rest on well under all of the weight: read it together with the coverage shown on the card.
 
 **KPIs (`kpi/`).** KPI definitions with formulas, a safe evaluator over the Python `ast` (no `eval`), extraction from the deal's own documents only, and an adjusted measure is never read as the plain KPI. Computed values show their inputs.
 
 **Connectors (`connectors/`).** A `Connector` interface and a simulated news connector that files dated items into a deal space, so market news feeds the screening evidence. No network access.
 
-**API (`api/`).** FastAPI. Authentication is a demo header, `X-User-Id` (`DEMO_AUTH`), and is not production authentication. Every `/deals/{id}` route checks membership and answers 404 to a non-member.
+**API (`api/`).** FastAPI. Authentication is a demo header, `X-User-Id` (`DEMO_AUTH`), and is not production authentication. Every `/deals/{id}` route checks membership and answers 404 to a non-member. A `viewer` can read documents, ask and open passages, but gets 403 on screening and on the market intelligence run (decision D81). Membership management is not implemented: memberships come from the data loader.
 
 | Route | Purpose |
 |---|---|
@@ -214,7 +214,7 @@ The generator is seeded and byte deterministic (tested by hashing every output t
 | `GET /deals/{id}/kpis` | KPI values |
 | `POST /deals/{id}/market-intel/run` | file the simulated news feed in the deal |
 
-**Web client (`web/`).** Next.js, TypeScript strict, plain CSS, no UI library. The structured answer is on the left and the evidence panel on the right: one click on a citation opens the passage with the cited span marked, with the tier chip and the date. Contradiction and abstention have their own states, and the answer screen carries the value contract. Tabs: Ask, Documents, Screening, KPIs, Market. Without `NEXT_PUBLIC_API_URL` it runs on example payloads and a badge says `mock data`.
+**Web client (`web/`).** The checks run in CI (build, lint, vitest); an optional real browser script is `web/e2e/one-click.mjs` (Playwright is not a dependency). Next.js, TypeScript strict, plain CSS, no UI library. The structured answer is on the left and the evidence panel on the right: one click on a citation opens the passage with the cited span marked, with the tier chip and the date. Contradiction and abstention have their own states, and the answer screen carries the value contract. Tabs: Ask, Documents, Screening, KPIs, Market. Without `NEXT_PUBLIC_API_URL` it runs on example payloads and a badge says `mock data`.
 
 **Evaluation (`evaluation/`).** One adapter module is the only place that imports `search`, `ask`, `run_screening` and `extract_kpis`; when a component is missing, the harness uses a labelled stub and the report header says `stub` instead of `real`. Every metric has a unit test on a small hand-computed example. The report prints the static limitations paragraph with every table.
 
