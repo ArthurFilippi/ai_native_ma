@@ -214,6 +214,19 @@ def _citation(results: Sequence[SeedResult], pool: Pooler) -> Summary:
             "difference": iv(cmp.diff),
             "share_positive": cmp.share_positive,
         }
+    if all("text_only" in r.citation for r in results):
+        # routing ablation (D92): the product against text search only, verifier on in both
+        out["routing"] = {}
+        for key, (num, den) in metrics.items():
+            routed = count_sample(column("on", num), column("on", den))
+            text_only = count_sample(column("text_only", num), column("text_only", den))
+            cmp = paired_bootstrap(routed, text_only, weights)
+            out["routing"][key] = {
+                "structured_on": iv(cmp.a),
+                "text_only": iv(cmp.b),
+                "difference": iv(cmp.diff),
+                "share_positive": cmp.share_positive,
+            }
     on_claims, off_claims = sum(column("on", "n_claims")), sum(column("off", "n_claims"))
     out["claims_with_verifier"] = on_claims
     out["claims_without_verifier"] = off_claims

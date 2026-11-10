@@ -144,14 +144,21 @@ class Asker:
         self._adapter = adapter
         self._access = truth.access()
         self._tau = None if tau == NO_EVIDENCE else tau
-        self._cache: dict[tuple[str, str | None, bool], Timed] = {}
+        self._cache: dict[tuple[str, str | None, bool, bool], Timed] = {}
 
-    async def ask(self, question: str, deal_id: str | None, *, verifier: bool = True) -> Timed:
-        key = (question, deal_id, verifier)
+    async def ask(
+        self, question: str, deal_id: str | None, *, verifier: bool = True, structured: bool = True
+    ) -> Timed:
+        key = (question, deal_id, verifier, structured)
         if key not in self._cache:
             started = time.perf_counter()
             answer = await self._adapter.ask(
-                question, access=self._access, deal_id=deal_id, verifier=verifier, tau=self._tau
+                question,
+                access=self._access,
+                deal_id=deal_id,
+                verifier=verifier,
+                tau=self._tau,
+                structured=structured,
             )
             self._cache[key] = Timed(answer, (time.perf_counter() - started) * 1000.0)
         return self._cache[key]
@@ -259,10 +266,18 @@ async def _citations(
     texts: dict[str, str],
 ) -> None:
     facts = truth.facts_by_id()
-    for setting, verifier in (("on", True), ("off", False)):
+    # "on" and "off" are the product (structured routing on) with and without the verifier;
+    # "text_only" is the verifier on without the structured fact base, the routing ablation (D92)
+    for setting, verifier, structured in (
+        ("on", True, True),
+        ("off", False, True),
+        ("text_only", True, False),
+    ):
         units = CitationUnits()
         for query in test_queries:
-            timed = await asker.ask(query.text, query.deal_id, verifier=verifier)
+            timed = await asker.ask(
+                query.text, query.deal_id, verifier=verifier, structured=structured
+            )
             sourced = [c for c in timed.answer.claims if c.status is ClaimStatus.SOURCED]
             claims = [CitedClaim(c.text, tuple(x.chunk_id for x in c.citations)) for c in sourced]
             counts = citation_counts(claims, gold_facts(query, facts))
@@ -278,7 +293,7 @@ async def _citations(
             units.n_facts.append(counts.n_facts)
             units.n_covered.append(counts.n_covered)
             units.n_unsupported.append(unsupported)
-            if verifier:
+            if verifier and structured:
                 _record_trace(result, timed)
         result.citation[setting] = units
 

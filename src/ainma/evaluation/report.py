@@ -287,8 +287,34 @@ def _citation(meta: RunMeta, s: Mapping[str, Any]) -> str:
             ],
             seed_rows,
         ),
+        *_routing_block(c, names),
     ]
     return section("2. Citation fidelity and verifier ablation", body)
+
+
+def _routing_block(c: Mapping[str, Any], names: Mapping[str, str]) -> list[str]:
+    """The structured routing ablation (D92): the product against text search only, verifier on
+    in both, same queries and resamples."""
+    routing = c.get("routing")
+    if not routing:
+        return []
+    rows = [
+        [
+            names[key],
+            interval(routing[key]["structured_on"]),
+            interval(routing[key]["text_only"]),
+            interval(routing[key]["difference"]),
+        ]
+        for key in names
+    ]
+    return [
+        "Structured routing ablation: keyed sub-questions answered from the structured fact base "
+        "(its provenance as citation) against text search only, verifier on in both:",
+        table(
+            ["Metric", "Structured routing [95% CI]", "Text only [95% CI]", "Difference [95% CI]"],
+            rows,
+        ),
+    ]
 
 
 def _verifier(meta: RunMeta, s: Mapping[str, Any]) -> str:

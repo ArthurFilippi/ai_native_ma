@@ -27,6 +27,7 @@ async def ask(runtime: Runtime, access: AccessContext, deal_id: str, question: s
         llm=runtime.llm,
         judge_llm=runtime.judge_llm,
         engine=runtime.engine,
+        factbase=runtime.factbase,
     )
 
 

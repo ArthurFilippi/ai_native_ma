@@ -31,6 +31,14 @@ function ClaimRow({ claim, onOpen, activeChunk }: OpenProps & { claim: Claim }) 
           </span>
         )}
         {date && <span className="claim-date">{date}</span>}
+        {claim.origin === "structured" && (
+          <span
+            className="chip chip-structured"
+            title="Value from the structured fact base; the citation is its document of record"
+          >
+            Structured record
+          </span>
+        )}
         <FlagChips flags={claim.flags} date={date} />
       </div>
       <p className="claim-text">{claim.text}</p>

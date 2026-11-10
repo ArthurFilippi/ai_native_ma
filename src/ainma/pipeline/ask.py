@@ -25,6 +25,7 @@ from ainma.contracts import (
     RankedPassage,
     Trace,
 )
+from ainma.factbase import FactBase
 from ainma.llm.base import LLM, Usage
 from ainma.pipeline import abstain
 from ainma.pipeline.config import PipelineConfig
@@ -38,10 +39,11 @@ from ainma.pipeline.flags import apply_flags
 from ainma.pipeline.log import append_answer, entry_for
 from ainma.pipeline.rules import subject_of
 from ainma.pipeline.schemas import DroppedClaim
+from ainma.pipeline.structured import Routed, asks_for_change, route_request, routed_claims
 from ainma.pipeline.summary import build_summary
 from ainma.pipeline.understand import topic_of, understand
 from ainma.pipeline.verify import verify_claims
-from ainma.pipeline.write import write_claims
+from ainma.pipeline.write import WriteOutcome, write_claims
 from ainma.retrieval.engine import RetrievalEngine, SearchHit
 from ainma.store.base import Store
 
@@ -151,6 +153,7 @@ async def ask_detailed(
     config: PipelineConfig | None = None,
     engine: RetrievalEngine | None = None,
     judge_llm: LLM | None = None,
+    factbase: FactBase | None = None,
 ) -> AskOutcome:
     cfg = config or PipelineConfig()
     engine = engine or RetrievalEngine()
@@ -199,6 +202,17 @@ async def ask_detailed(
     subs = subs or [text]
     run.lap("understand")
 
+    # 1b. route: a sub-question asking for one keyed value is answered by the structured base
+    routed: dict[int, Routed] = {}
+    if factbase is not None and cfg.structured_routing and not asks_for_change(text):
+        for i, sq in enumerate(subs):
+            record = route_request(sq, factbase, access=access, deal_id=deal_id)
+            if record is None:
+                continue
+            claims_of = await routed_claims(record, store=store, access=access, start=100 * (i + 1))
+            if claims_of is not None:
+                routed[i] = claims_of
+
     # 2. retrieve, per sub-question, through the access filter
     results = [
         await engine.search(sq, store=store, access=access, deal_id=deal_id, config=cfg.retrieval)
@@ -209,7 +223,7 @@ async def ask_detailed(
     chunks: dict[str, Chunk] = {}
     usable: list[list[SearchHit]] = []
     withdrawn: list[list[SearchHit]] = []
-    for result in results:
+    for index, result in enumerate(results):
         every = [*result.hits, *result.superseded, *result.withdrawn]
         for hit in every:
             documents[hit.document.id] = hit.document
@@ -223,7 +237,9 @@ async def ask_detailed(
         # `tau` decides whether the sources speak to the question at all (their best passage);
         # the weaker passages around a convincing one still reach the writer, because they are
         # the second opinion that makes a disagreement visible (a press article next to a CIM)
-        speaks = any(abstain.support_score(h, cfg.abstain_score) >= cfg.tau for h in about)
+        speaks = index not in routed and any(
+            abstain.support_score(h, cfg.abstain_score) >= cfg.tau for h in about
+        )
         usable.append(
             [h for h in about if abstain.support_score(h, "relevance") >= cfg.passage_min]
             if speaks
@@ -238,6 +254,9 @@ async def ask_detailed(
                 and abstain.support_score(h, "relevance") >= cfg.tau
             ]
         )
+    for item in routed.values():
+        chunks.update(item.chunks)
+        documents.update(item.documents)
     seen_ids: set[str] = set()
     retrieved: list[RankedPassage] = []
     for hit in [h for items in [*usable, *withdrawn] for h in items]:
@@ -249,7 +268,7 @@ async def ask_detailed(
     def topic_reason(index: int) -> str:
         return "withdrawn_only" if withdrawn[index] and not usable[index] else "not_found"
 
-    if not any(usable):
+    if not any(usable) and not routed:
         reason = abstain.REASON_WITHDRAWN if any(withdrawn) else abstain.REASON_NO_PASSAGE
         topics = [
             MissingInfo(topic=topic_of(sq), reason=topic_reason(i)) for i, sq in enumerate(subs)
@@ -261,21 +280,29 @@ async def ask_detailed(
         [abstain.writer_window(items, cfg.writer_passages) for items in usable],
         cfg.writer_passages,
     )
-    written = await write_claims(
-        llm,
-        question=text,
-        sub_questions=subs,
-        hits=passages,
-        max_claims=cfg.max_claims_per_sub_question,
-        min_quote_chars=cfg.min_quote_chars,
-    )
+    text_subs = [sq for i, sq in enumerate(subs) if i not in routed]
+    if passages and text_subs:
+        written = await write_claims(
+            llm,
+            question=text,
+            sub_questions=text_subs,
+            hits=passages,
+            max_claims=cfg.max_claims_per_sub_question,
+            min_quote_chars=cfg.min_quote_chars,
+        )
+    else:
+        written = WriteOutcome(
+            claims=[],
+            missing=[sq for i, sq in enumerate(text_subs) if not usable[subs.index(sq)]],
+            rejected=[],
+        )
     if written.usage is not None:
         run.usages.append(written.usage)
     dropped = list(written.rejected)
     run.lap("write")
 
-    # 4. verify
-    claims = written.claims
+    # 4. verify (structured claims go through the same checks as text claims)
+    claims = [c for item in routed.values() for c in item.claims] + written.claims
     if cfg.verifier:
         verified = await verify_claims(
             claims,
@@ -394,11 +421,13 @@ async def ask(
     config: PipelineConfig | None = None,
     engine: RetrievalEngine | None = None,
     judge_llm: LLM | None = None,
+    factbase: FactBase | None = None,
 ) -> Answer:
     """Answer `question` for the user of `access` in `deal_id` (or the general layer).
 
     Pass one `RetrievalEngine` across calls to reuse the fitted indexes (hundreds of queries).
     `judge_llm` judges the claims when given (a model distinct from the writer, D88).
+    `factbase` answers the sub-questions that ask for one keyed value (D92).
     """
     outcome = await ask_detailed(
         question,
@@ -409,5 +438,6 @@ async def ask(
         config=config,
         engine=engine,
         judge_llm=judge_llm,
+        factbase=factbase,
     )
     return outcome.answer

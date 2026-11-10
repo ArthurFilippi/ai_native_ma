@@ -219,6 +219,8 @@ class Claim(Strict):
     derived_from: list[str] = Field(default_factory=list)  # claim ids, for INFERRED
     verification: Verification | None = None
     flags: list[Flag] = Field(default_factory=list)
+    # "structured": the value comes from the structured fact base and cites its provenance (D92)
+    origin: Literal["text", "structured"] = "text"
 
     @model_validator(mode="after")
     def _status_is_consistent(self) -> Claim:

@@ -104,6 +104,8 @@ export interface Claim {
   derived_from: string[];
   verification: Verification | null;
   flags: Flag[];
+  // "structured": value from the structured fact base, cited to its document of record (D92)
+  origin?: "text" | "structured";
 }
 
 export interface ContradictionSide {

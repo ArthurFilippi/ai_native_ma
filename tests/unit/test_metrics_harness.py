@@ -93,6 +93,7 @@ class OracleAdapter(Adapter):
         deal_id: str | None,
         verifier: bool = True,
         tau: float | None = None,
+        structured: bool = True,
     ) -> Answer:
         trace = Trace(provider="oracle", model="oracle", stage_latency_ms={"write": 1.0})
         base = {"id": "a", "deal_id": deal_id, "user_id": "u", "question": question, "trace": trace}

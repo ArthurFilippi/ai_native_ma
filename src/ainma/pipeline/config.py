@@ -39,4 +39,7 @@ class PipelineConfig(BaseModel):
     min_quote_chars: int = 10
     contradiction_tolerance: float = 0.005
     judge_concurrency: int = 8
+    # a sub-question asking for one keyed value is answered from the structured fact base when
+    # one is passed to `ask` (D92); False: text search only, for the ablation
+    structured_routing: bool = True
     answers_log: Path | None = DEFAULT_ANSWERS_LOG  # None disables the log (tests)

@@ -162,12 +162,14 @@ class Adapter:
         use_real: bool = True,
         answers_log: Path | None = None,
         judge_llm: LLM | None = None,
+        factbase: Any | None = None,
     ) -> None:
         """`answers_log` is where the real pipeline appends every answer (`None`: no log).
         `judge_llm` judges claims when given (a model distinct from the writer, D88)."""
         self._store = store
         self._llm = llm
         self._judge_llm = judge_llm
+        self._factbase = factbase  # structured fact base of the seed (D92), None: text only
         self._buyers = list(buyers)
         self._answers_log = answers_log
         found = {name: (_find(name) if use_real else None) for name in TARGETS}
@@ -326,9 +328,10 @@ class Adapter:
         deal_id: str | None,
         verifier: bool = True,
         tau: float | None = None,
+        structured: bool = True,
     ) -> Answer:
         """The full pipeline on system A5, with or without the verifier, at threshold `tau`
-        (`None` keeps the pipeline default)."""
+        (`None` keeps the pipeline default), with or without the structured fact base."""
         if self._ask is None:
             return await stubs.stub_ask(
                 question,
@@ -360,6 +363,7 @@ class Adapter:
             config=self._pipeline_config(**fields),
             **_engine_kwargs(self._ask, self._engine),
             **({"judge_llm": self._judge_llm} if self._judge_llm is not None else {}),
+            **({"factbase": self._factbase} if structured and self._factbase is not None else {}),
         )
         return cast(Answer, answer)
 

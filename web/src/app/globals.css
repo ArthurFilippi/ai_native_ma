@@ -550,3 +550,8 @@ mark {
   white-space: nowrap;
   color: var(--muted);
 }
+
+.chip-structured {
+  border-color: var(--line);
+  background: var(--panel);
+}
