@@ -1,0 +1,29 @@
+{
+  "description": "Edge rules the shared vectors do not cover, computed by hand. A criterion without a result on a card does not apply (its weight leaves both sums). A card with stage1_passed=false is unscored (score null, coverage 0, empty contributions, no dealbreakers, rank null) and listed after the ranked cards. Order keys are compared after rounding to 9 decimals.",
+  "criteria": [
+    {"key": "ticket_fit", "weight": 3.0, "dealbreaker": true},
+    {"key": "ev_ratio", "weight": 3.0, "dealbreaker": true},
+    {"key": "sector_focus", "weight": 2.0, "dealbreaker": false},
+    {"key": "recent_activity", "weight": 2.0, "dealbreaker": false}
+  ],
+  "cards": [
+    {"id": "b_fin", "stage1_passed": true, "results": {"ticket_fit": "met", "sector_focus": "met", "recent_activity": "unknown"}},
+    {"id": "b_str", "stage1_passed": true, "results": {"ev_ratio": "not_met", "sector_focus": "met", "recent_activity": "met"}},
+    {"id": "b_out", "stage1_passed": false, "results": {"sector_focus": "not_met"}},
+    {"id": "b_zero", "stage1_passed": true, "results": {"ticket_fit": "unknown", "sector_focus": "unknown", "recent_activity": "unknown"}},
+    {"id": "b_tie2", "stage1_passed": true, "results": {"ev_ratio": "unknown", "sector_focus": "met", "recent_activity": "unknown"}},
+    {"id": "b_tie1", "stage1_passed": true, "results": {"ev_ratio": "unknown", "sector_focus": "met", "recent_activity": "unknown"}}
+  ],
+  "expected": {
+    "ranking": ["b_fin", "b_tie1", "b_tie2", "b_zero", "b_str", "b_out"],
+    "ranks": {"b_fin": 1, "b_tie1": 2, "b_tie2": 3, "b_zero": 4, "b_str": 5, "b_out": null},
+    "cards": {
+      "b_fin": {"score": 1.0, "coverage": 0.714285714, "dealbreakers": [], "contributions": {"ticket_fit": 0.6, "ev_ratio": 0.0, "sector_focus": 0.4, "recent_activity": 0.0}},
+      "b_str": {"score": 0.571428571, "coverage": 1.0, "dealbreakers": ["ev_ratio"], "contributions": {"ticket_fit": 0.0, "ev_ratio": 0.0, "sector_focus": 0.285714286, "recent_activity": 0.285714286}},
+      "b_out": {"score": null, "coverage": 0.0, "dealbreakers": [], "contributions": {}},
+      "b_zero": {"score": null, "coverage": 0.0, "dealbreakers": [], "contributions": {"ticket_fit": 0.0, "ev_ratio": 0.0, "sector_focus": 0.0, "recent_activity": 0.0}},
+      "b_tie1": {"score": 1.0, "coverage": 0.285714286, "dealbreakers": [], "contributions": {"ticket_fit": 0.0, "ev_ratio": 0.0, "sector_focus": 1.0, "recent_activity": 0.0}},
+      "b_tie2": {"score": 1.0, "coverage": 0.285714286, "dealbreakers": [], "contributions": {"ticket_fit": 0.0, "ev_ratio": 0.0, "sector_focus": 1.0, "recent_activity": 0.0}}
+    }
+  }
+}
