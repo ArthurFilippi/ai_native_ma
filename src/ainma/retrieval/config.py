@@ -26,6 +26,7 @@ class RerankerWeights(BaseModel):
     metric: float = 0.10  # share of query metrics (revenue, gross margin) mentioned
     period: float = 0.15  # 1 period match, 0 only other periods, `period_unmentioned` otherwise
     fact: float = 0.25  # share of (metric, period) pairs the passage states as a number
+    entity_floor: float = 0.1  # score kept by a passage whose document does not name the entity
     period_unmentioned: float = 0.30
     fact_undated: float = 0.5  # credit for a number of the right metric with no period
 
@@ -67,6 +68,8 @@ class RankerConfig(BaseModel):
             DocStatus.WITHDRAWN: 0.0,
         }
     )
+    trust_exponent: float = 0.1  # final = relevance * (tier * recency) ** exponent * status
+    out_of_scope_weight: float = 0.7  # general layer passages not named by a deal question
     undated_recency: float = 0.5
     corroboration_step: float = 0.05
     corroboration_cap: int = 3
@@ -80,6 +83,7 @@ class RetrievalConfig(BaseModel):
     rrf_k: int = 60
     rrf_weights: tuple[float, float] = (1.0, 1.0)  # (bm25, dense)
     rerank_top: int = 30
+    entity_expansion: int = 40  # extra chunks of documents naming the asked entity (0: off)
     top_k: int = 10
     bm25_k1: float = 1.5
     bm25_b: float = 0.75
@@ -87,6 +91,7 @@ class RetrievalConfig(BaseModel):
     embedder: Literal["lsa", "fastembed"] = "lsa"
     embedder_model: str = "BAAI/bge-small-en-v1.5"
     lsa_dim: int = 128
+    concept_tokens: bool = True  # BM25 and LSA also read one token per metric a text states
     seed: int = DEFAULT_SEED
     reranker: Literal["features", "cross_encoder"] = "features"
     reranker_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"

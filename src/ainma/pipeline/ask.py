@@ -192,23 +192,31 @@ async def ask_detailed(
     usable: list[list[SearchHit]] = []
     withdrawn: list[list[SearchHit]] = []
     for result in results:
-        every = [*result.hits, *result.withdrawn]
+        every = [*result.hits, *result.superseded, *result.withdrawn]
         for hit in every:
             documents[hit.document.id] = hit.document
             chunks[hit.chunk.id] = hit.chunk
+        about = [
+            h
+            for h in [*result.hits, *result.superseded]
+            if h.document.status is not DocStatus.WITHDRAWN
+            and abstain.about_entity(h, cfg.entity_gate)
+        ]
+        # `tau` decides whether the sources speak to the question at all (their best passage);
+        # the weaker passages around a convincing one still reach the writer, because they are
+        # the second opinion that makes a disagreement visible (a press article next to a CIM)
+        speaks = any(abstain.support_score(h, cfg.abstain_score) >= cfg.tau for h in about)
         usable.append(
-            [
-                h
-                for h in result.hits
-                if h.document.status is not DocStatus.WITHDRAWN
-                and abstain.support_score(h, cfg.abstain_score) >= cfg.tau
-            ]
+            [h for h in about if abstain.support_score(h, "relevance") >= cfg.passage_min]
+            if speaks
+            else []
         )
         withdrawn.append(
             [
                 h
                 for h in every
                 if h.document.status is DocStatus.WITHDRAWN
+                and abstain.about_entity(h, cfg.entity_gate)
                 and abstain.support_score(h, "relevance") >= cfg.tau
             ]
         )
@@ -231,7 +239,10 @@ async def ask_detailed(
         return await finish(abstained(reason, topics, subs, retrieved), [])
 
     # 3. write: claims from numbered passages, citations built by code
-    passages = _round_robin(usable, cfg.writer_passages)
+    passages = _round_robin(
+        [abstain.writer_window(items, cfg.writer_passages) for items in usable],
+        cfg.writer_passages,
+    )
     written = await write_claims(
         llm,
         question=text,

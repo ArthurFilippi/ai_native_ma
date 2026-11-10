@@ -11,6 +11,7 @@ a winner; `stronger_side` (tier weight times recency) is informative only.
 from __future__ import annotations
 
 import asyncio
+import math
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import date
@@ -31,6 +32,7 @@ from ainma.pipeline import prompts
 from ainma.pipeline.schemas import ExtractFactsRequest, ExtractFactsResult, FactItem
 from ainma.retrieval.config import RankerConfig
 from ainma.retrieval.lexicon import METRIC_BY_KEY
+from ainma.retrieval.quantities import STATIC_PERIOD, parse_quantities
 from ainma.retrieval.ranker import independent, recency_factor
 
 
@@ -60,6 +62,19 @@ async def extract_facts(llm: LLM, text: str) -> tuple[list[FactItem], Usage]:
     return result.facts, usage
 
 
+def _as_written(fact: FactItem, quote: str) -> str | None:
+    """The amount as the source writes it (`EUR 179 million`), for the label of a side."""
+    for quantity in parse_quantities(quote):
+        value = (
+            quantity.value / 1e6
+            if fact.unit.endswith(" m") and quantity.scale != 1.0
+            else quantity.raw
+        )
+        if math.isclose(value, fact.value, rel_tol=1e-6):
+            return quantity.text
+    return None
+
+
 def entity_of(chunk: Chunk) -> str:
     return chunk.entity_id or chunk.deal_id or "general"
 
@@ -71,29 +86,30 @@ async def collect_claim_facts(
     documents: Mapping[str, DocumentMeta],
     llm: LLM,
 ) -> FactIndex:
-    """Keyed facts of every sourced claim, one extraction per distinct quote."""
-    ordered = sorted(
-        {
-            c.quote
-            for claim in claims
-            if claim.status is ClaimStatus.SOURCED
-            for c in claim.citations
-        }
-    )
-    extracted = await asyncio.gather(*(extract_facts(llm, q) for q in ordered))
-    facts_of = {q: facts for q, (facts, _) in zip(ordered, extracted, strict=True)}
+    """Keyed facts of every sourced claim, one extraction per distinct claim text.
+
+    The facts are read from the claim, not from its quote: the claim names the metric and the
+    period the question asked for (`revenue for FY2024`), while a quote may be a table row or a
+    press sentence that leaves the period implicit. The verifier has already established that
+    the quote supports the claim. Each fact is attached to every document the claim cites.
+    """
+    ordered = sorted({c.text for c in claims if c.status is ClaimStatus.SOURCED})
+    extracted = await asyncio.gather(*(extract_facts(llm, t) for t in ordered))
+    facts_of = {t: facts for t, (facts, _) in zip(ordered, extracted, strict=True)}
     index = FactIndex(usages=[usage for _, usage in extracted])
     for claim in claims:
         if claim.status is not ClaimStatus.SOURCED:
             continue
         for citation in claim.citations:
             chunk = chunks[citation.chunk_id]
-            for fact in facts_of[citation.quote]:
+            for fact in facts_of[claim.text]:
                 index.entries.append(
                     ClaimFact(
                         claim_id=claim.id,
                         citation=citation,
-                        fact=fact,
+                        fact=fact.model_copy(
+                            update={"label": _as_written(fact, citation.quote) or fact.label}
+                        ),
                         entity=entity_of(chunk),
                         document=documents[citation.document_id],
                     )
@@ -136,9 +152,10 @@ def detect_contradictions(
 ) -> list[Contradiction]:
     groups: dict[tuple[str, str, str, str], list[ClaimFact]] = {}
     for entry in index.entries:
-        if entry.fact.period is None or entry.document.status is not DocStatus.CURRENT:
+        if entry.document.status is not DocStatus.CURRENT:
             continue
-        key = (entry.entity, entry.fact.metric, entry.fact.period, entry.fact.unit)
+        period = entry.fact.period or STATIC_PERIOD
+        key = (entry.entity, entry.fact.metric, period, entry.fact.unit)
         groups.setdefault(key, []).append(entry)
 
     found: list[Contradiction] = []

@@ -27,21 +27,34 @@ def verbatim_span(quote: str, chunk_text: str) -> bool:
     return bool(quote) and quote in chunk_text
 
 
-def numeric_match(claim_text: str, quote: str) -> tuple[bool, str]:
+def numeric_match(claim_text: str, quote: str, context: str = "") -> tuple[bool, str]:
     """Every number of the claim appears in the quote after unit and scale normalisation.
 
     `EUR 182.4 million`, `182.4m` and a bare table cell `182.4` agree; `1.8 billion` equals
     `1,800 million`; a percent never matches a currency amount; `FY2024` and `2024` are the same
     year. A claim without numbers passes (the judge decides on the words). Binding a number to its
     metric and period inside a quote that holds several is the judge's job, not this check's.
+
+    A quote that states no year at all (a table row `Revenue | 140.1 | 152.6`) takes its period
+    from the header of the chunk it comes from: with `context` (the chunk) the years of the claim
+    are then looked up there. A quote that states another year is never rescued by the context. A
+    source that states no year at all leaves the year of the claim unchecked (an undated press
+    sentence is evidence, not a period); the judge still compares the periods that are stated.
     """
     claim_numbers = parse_quantities(claim_text)
     if not claim_numbers:
         return True, "no number in claim"
     quote_numbers = parse_quantities(quote)
-    missing = [
-        q for q in claim_numbers if not any(quantities_match(q, other) for other in quote_numbers)
-    ]
+    pool = quote_numbers
+    if not any(q.kind == "year" for q in quote_numbers):
+        context_years = [q for q in parse_quantities(context) if q.kind == "year"]
+        if context_years:
+            pool = [*quote_numbers, *context_years]
+        elif context:
+            # no year anywhere in the source (`X is reported to manage roughly EUR 680 million`):
+            # the period of the claim can be neither confirmed nor contradicted by this check
+            claim_numbers = [q for q in claim_numbers if q.kind != "year"]
+    missing = [q for q in claim_numbers if not any(quantities_match(q, other) for other in pool)]
     if missing:
         return False, "not found in quote: " + ", ".join(q.text for q in missing)
     return True, ", ".join(format_number(q.raw) for q in claim_numbers) + " found in span"
@@ -76,6 +89,11 @@ def _citation_check(claim: Claim, chunks: Mapping[str, Chunk]) -> VerificationCh
     return VerificationCheck(name="verbatim_span", passed=True)
 
 
+def judge_context(claim: Claim, chunks: Mapping[str, Chunk]) -> str:
+    """What the judge may read besides the quotes: each cited chunk."""
+    return "\n\n".join(chunks[c.chunk_id].text for c in claim.citations)
+
+
 async def verify_claim(
     claim: Claim, *, chunks: Mapping[str, Chunk], llm: LLM
 ) -> tuple[Verification, Usage | None]:
@@ -85,14 +103,11 @@ async def verify_claim(
     label: Literal["supported", "partial", "unsupported"] | None = None
     if checks[0].passed:
         quotes = [c.quote for c in claim.citations]
-        passed, detail = numeric_match(claim.text, " ".join(quotes))
+        context = judge_context(claim, chunks)
+        passed, detail = numeric_match(claim.text, " ".join(quotes), context)
         checks.append(VerificationCheck(name="numeric_match", passed=passed, detail=detail))
         if passed:
-            request = JudgeRequest(
-                claim=claim.text,
-                quotes=quotes,
-                context=" ".join(chunks[c.chunk_id].text for c in claim.citations),
-            )
+            request = JudgeRequest(claim=claim.text, quotes=quotes, context=context)
             result, usage = await llm.complete_json(
                 task=TASK_JUDGE,
                 system=prompts.JUDGE,

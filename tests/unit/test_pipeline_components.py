@@ -67,9 +67,16 @@ def test_mock_judge_labels_by_number_binding_entity_and_words() -> None:
         ).label
         == "partial"
     )
+    # the entity check needs positive evidence of another company: a quote that names nobody
+    # (a table row, `the company`) cannot contradict a name
+    named = "Aurora Components reported net revenue of EUR 182.4 million for FY2024."
     assert (
-        judge_support("Borealis revenue for FY2024 reached EUR 182.4 million.", [quote]).label
+        judge_support("Borealis revenue for FY2024 reached EUR 182.4 million.", [named]).label
         == "unsupported"
+    )
+    assert (
+        judge_support("Aurora revenue for FY2024 reached EUR 182.4 million.", [named]).label
+        == "supported"
     )
     assert (
         judge_support("The weather was sunny in Paris yesterday afternoon.", [quote]).label

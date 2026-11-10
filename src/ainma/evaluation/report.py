@@ -68,6 +68,7 @@ class RunMeta:
     machine: str
     regression: Mapping[str, Any] = field(default_factory=dict)
     backends: Mapping[str, str] = field(default_factory=dict)
+    split: str = "test"
 
     @property
     def stub_components(self) -> list[str]:
@@ -590,6 +591,12 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
             + ", ".join(meta.stub_components)
             + ". Numbers that depend on them come from deterministic stubs, not from the system.**"
         )
+    if meta.split != "test":
+        banners.append(
+            f"**SPLIT `{meta.split}`: development measurement. Thresholds and design choices are "
+            "made on the dev split, so this file must not be quoted as a result; the report is "
+            "the default run on the test split.**"
+        )
     if meta.smoke:
         banners.append(
             "**SMOKE RUN on a tiny fixture corpus. It proves that the flow runs, it measures "
@@ -612,6 +619,7 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
                 [
                     f"- Provider: {meta.provider}, model: {meta.model}",
                     f"- Seeds: {', '.join(meta.seeds)}",
+                    f"- Split: {meta.split}",
                     f"- Configuration hash: {meta.config_hash}",
                     "- Components: " + ", ".join(f"{k}={v}" for k, v in sorted(meta.modes.items())),
                     "- Backends: "

@@ -13,13 +13,15 @@ from ainma.llm.base import LLM, Usage
 from ainma.llm.tasks import TASK_UNDERSTAND
 from ainma.pipeline import prompts
 from ainma.pipeline.schemas import UnderstandRequest, UnderstandResult
+from ainma.retrieval.entities import entity_phrases
 from ainma.retrieval.lexicon import (
     METRIC_BY_KEY,
     detect_metrics,
     detect_periods,
+    find_metrics,
     previous_period,
+    target_metrics,
 )
-from ainma.retrieval.text import tokenize
 
 _GROWTH = re.compile(
     r"\b(grow|grew|grown|growth|increase[ds]?|decline[ds]?|decrease[ds]?|change[ds]?|"
@@ -28,38 +30,11 @@ _GROWTH = re.compile(
 )
 _SPLIT = re.compile(r"\s*(?:;|,|\band\b|\bas well as\b)\s*", re.IGNORECASE)
 _LEADING = re.compile(
-    r"^(?:what|who|which|when|where|why|how|is|are|was|were|does|did|do|has|have|can|could|"
-    r"tell me|give me|list|show me|show|compare)\b(?:\s+(?:is|are|was|were|the|a|an|of|about))*\s*",
+    r"^(?:how\s+(?:many|much|long|large|high)|what|who|which|when|where|why|how|is|are|was|were|"
+    r"does|did|do|has|have|can|could|tell me|give me|list|show me|show|compare)\b"
+    r"(?:\s+(?:is|are|was|were|did|does|do|the|a|an|of|about)\b)*\s*",
     re.IGNORECASE,
 )
-_QUESTION_WORDS = frozenset(
-    [
-        "What",
-        "Who",
-        "Which",
-        "When",
-        "Where",
-        "Why",
-        "How",
-        "Is",
-        "Are",
-        "Was",
-        "Were",
-        "Does",
-        "Did",
-        "Do",
-        "Has",
-        "Have",
-        "Can",
-        "Could",
-        "Tell",
-        "Give",
-        "List",
-        "Show",
-        "Compare",
-    ]
-)
-_ENTITY = re.compile(r"\b[A-Z][A-Za-z0-9-]*(?:\s+[A-Z][A-Za-z0-9-]*)*")
 MAX_SUB_QUESTIONS = 4
 
 
@@ -70,30 +45,48 @@ def topic_of(text: str) -> str:
 
 
 def _entities(question: str) -> list[str]:
-    found: dict[str, None] = {}
-    for match in _ENTITY.finditer(question):
-        words = [
-            w
-            for w in match.group(0).split()
-            if w not in _QUESTION_WORDS and not re.fullmatch(r"(?:FY|H[12]|Q[1-4])\d*", w)
-        ]
-        if words:
-            found.setdefault(" ".join(words))
-    return list(found)
+    return entity_phrases(question)
+
+
+def _pieces(body: str) -> list[str]:
+    """`body` cut at `and`, commas and semicolons that are not inside a metric name (`earnings
+    before interest, tax, depreciation and amortisation`)."""
+    protected = [(a, b) for _, a, b in find_metrics(body)]
+    pieces: list[str] = []
+    cursor = 0
+    for match in _SPLIT.finditer(body):
+        if any(a < match.start() < b for a, b in protected):
+            continue
+        pieces.append(body[cursor : match.start()])
+        cursor = match.end()
+    pieces.append(body[cursor:])
+    return [p.strip() for p in pieces if p.strip()]
+
+
+def _clauses(body: str) -> list[str]:
+    """Compound questions are split where both sides ask for a metric: `revenue change between
+    FY2023 and FY2024` stays one question."""
+    clauses: list[str] = []
+    for piece in _pieces(body):
+        if clauses and (not detect_metrics(piece) or not detect_metrics(clauses[-1])):
+            clauses[-1] = f"{clauses[-1]} {piece}"
+        else:
+            clauses.append(piece)
+    return clauses
 
 
 def understand_rules(question: str) -> UnderstandResult:
     text = question.strip()
-    metrics, periods = detect_metrics(text), detect_periods(text)
+    metrics, periods = target_metrics(text), detect_periods(text)
     entities = _entities(text)
     body = text.rstrip("?.! ")
-    clauses = [c for c in _SPLIT.split(body) if c]
-    useful = [c for c in clauses if len(tokenize(c)) >= 2 or detect_metrics(c)]
+    clauses = _clauses(body)
     sub_questions: list[str] = []
-    if len(useful) >= 2:
-        for clause in useful:
-            extra = [p for p in periods if p not in detect_periods(clause)]
-            sub_questions.append(" ".join([clause, *extra]).strip())
+    if len(clauses) >= 2:
+        for clause in clauses:
+            extra_periods = [p for p in periods if p not in detect_periods(clause)]
+            names = [] if entity_phrases(clause) else entities
+            sub_questions.append(" ".join([clause, *extra_periods, *names]).strip())
     else:
         sub_questions.append(text)
     if _GROWTH.search(text) and len(metrics) >= 1 and len(periods) == 1:

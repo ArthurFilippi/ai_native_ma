@@ -93,6 +93,14 @@ def _engine_kwargs(function: Any, engine: Any) -> dict[str, Any]:
     return {}
 
 
+def _numeric_check(function: Any, claim: str, evidence: str, passage: str) -> bool:
+    """The numeric check, given the passage as context when the check accepts one (so that a
+    table row without a year takes its period from the chunk, as in the pipeline)."""
+    if "context" in inspect.signature(function).parameters:
+        return bool(function(claim, evidence, context=passage)[0])
+    return bool(function(claim, evidence)[0])
+
+
 def _find(target: str) -> Any | None:
     for module, attribute in TARGETS[target]:
         found = resolve(module, attribute)
@@ -315,8 +323,9 @@ class Adapter:
                 verifier=verifier,
                 tau=tau,
             )
+        default_retrieval = self._pipeline_config().retrieval  # the pipeline's own list length
         fields: dict[str, Any] = {
-            "retrieval": self._make_retrieval_config("A5", None, {}),
+            "retrieval": default_retrieval.model_copy(update={"system": "A5"}),
             "verifier": verifier,
         }
         if tau is not None:
@@ -377,7 +386,7 @@ class Adapter:
                 raise AdapterError(f"the judge returned {label!r}, not one of {JUDGE_LABELS}")
         if self._verbatim is not None and self._numeric is not None:
             verbatim = quote is None or bool(self._verbatim(quote, passage))
-            numeric = bool(self._numeric(claim, evidence)[0])
+            numeric = bool(_numeric_check(self._numeric, claim, evidence, passage))
         else:
             verbatim = quote is None or quote in passage
             numeric = numbers_covered(claim, [evidence])

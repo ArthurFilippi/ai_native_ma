@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
+from typing import Literal
 
 from ainma.contracts import Answer, ClaimStatus, Flag, ScreeningRequest
 from ainma.evaluation.adapter import Adapter, RankedChunk, Sweep
@@ -34,7 +35,14 @@ SYSTEMS = ("A1", "A2", "A3", "A4", "A5")
 RETRIEVAL_METRICS = ("ndcg@10", "recall@5", "recall@10", "recall@30", "mrr")
 TOP_K = 30
 TARGET_FALSE_ABSTENTION = 0.10
+EvalSplit = Literal["dev", "test", "both"]
 FLAG_FOR = {"flag_superseded": Flag.SUPERSEDED, "flag_withdrawn": Flag.WITHDRAWN}
+
+
+def in_split(split: EvalSplit, key: str) -> bool:
+    """Whether the unit with id `key` belongs to the selected split (`both` keeps everything)."""
+    return split == "both" or split_of(key) == split
+
 
 MetricTable = dict[str, dict[str, list[float | None]]]  # metric -> system or variant -> per query
 
@@ -287,6 +295,7 @@ async def _abstention(
     truth: TruthBundle,
     test_queries: list[Query],
     a5_test: list[list[RankedChunk]],
+    split: EvalSplit,
 ) -> AbstentionUnits:
     access = truth.access()
     dev_queries = [q for q in truth.queries if split_of(q.id) == "dev"]
@@ -303,7 +312,7 @@ async def _abstention(
         value = await score(item.text, item.deal_id)
         if split_of(item.id) == "dev":
             units_scores.dev_unanswerable.append(value)
-        else:
+        if in_split(split, item.id):
             units_scores.test_unanswerable.append(value)
             units_scores.test_unanswerable_hard.append(item.hard)
     if units_scores.dev_answerable:
@@ -312,11 +321,13 @@ async def _abstention(
     return units_scores
 
 
-async def _e2e_abstention(units: AbstentionUnits, asker: Asker, truth: TruthBundle) -> None:
-    for query in (q for q in truth.queries if split_of(q.id) == "test"):
+async def _e2e_abstention(
+    units: AbstentionUnits, asker: Asker, truth: TruthBundle, split: EvalSplit
+) -> None:
+    for query in (q for q in truth.queries if in_split(split, q.id)):
         timed = await asker.ask(query.text, query.deal_id)
         units.e2e_answerable.append(timed.answer.abstained)
-    for item in (u for u in truth.unanswerable if split_of(u.id) == "test"):
+    for item in (u for u in truth.unanswerable if in_split(split, u.id)):
         timed = await asker.ask(item.text, item.deal_id)
         units.e2e_unanswerable.append(timed.answer.abstained)
 
@@ -331,11 +342,16 @@ def _docs_of_contradiction(answer: Answer) -> list[tuple[set[str], int, bool, in
     return rows
 
 
-async def _contradictions(result: SeedResult, asker: Asker, truth: TruthBundle) -> None:
+async def _contradictions(
+    result: SeedResult, asker: Asker, truth: TruthBundle, split: EvalSplit
+) -> None:
     queries = truth.queries_by_id()
     facts = truth.facts_by_id()
     units = result.contradiction
     for case in truth.contradictions:
+        # planted cases are split by the hash of their own id, like every other truth unit
+        if not in_split(split, case.id):
+            continue
         question = (
             queries[case.query_id].text if case.query_id in queries else f"What is {case.subject}?"
         )
@@ -374,6 +390,8 @@ async def _contradictions(result: SeedResult, asker: Asker, truth: TruthBundle) 
             else:
                 units.flag_outcomes.append("not_surfaced")
     for stale in truth.stale:
+        if not in_split(split, stale.id):
+            continue
         query = queries.get(stale.query_id)
         fact = facts.get(stale.fact_id)
         if query is None or fact is None:
@@ -388,11 +406,16 @@ async def _contradictions(result: SeedResult, asker: Asker, truth: TruthBundle) 
 
 
 async def _verifier(
-    result: SeedResult, adapter: Adapter, store: Store, truth: TruthBundle, texts: dict[str, str]
+    result: SeedResult,
+    adapter: Adapter,
+    store: Store,
+    truth: TruthBundle,
+    texts: dict[str, str],
+    split: EvalSplit,
 ) -> None:
     units = result.verifier
     for label in truth.judge_labels:
-        if label.split != "test":
+        if split != "both" and label.split != split:
             continue
         passage = await _chunk_text(store, truth, texts, label.chunk_id)
         verdict = await adapter.judge(label.claim, passage, label.quote)
@@ -438,22 +461,32 @@ async def _screening(result: SeedResult, adapter: Adapter, truth: TruthBundle) -
 
 
 async def evaluate_seed(
-    label: str, *, store: Store, truth: TruthBundle, adapter: Adapter, run_sweeps: bool = True
+    label: str,
+    *,
+    store: Store,
+    truth: TruthBundle,
+    adapter: Adapter,
+    run_sweeps: bool = True,
+    split: EvalSplit = "test",
 ) -> SeedResult:
-    """All measurements for one seed. `store` holds the loaded corpus of that seed."""
+    """All measurements for one seed. `store` holds the loaded corpus of that seed.
+
+    `split` selects the units that are measured. `tau` is always chosen on the dev queries, so on
+    `dev` and `both` it is applied to queries it was chosen on (in sample, for development only).
+    """
     params: dict[str, object] = truth.params.model_dump() if truth.params is not None else {}
     result = SeedResult(label=label, params=params, missing_truth_files=truth.missing_files)
-    test_queries = [q for q in truth.queries if split_of(q.id) == "test"]
+    test_queries = [q for q in truth.queries if in_split(split, q.id)]
     sweeps = adapter.sweeps() if run_sweeps else []
     rankings = await _retrieval(result, adapter, truth, test_queries, sweeps)
-    abstention = await _abstention(result, adapter, truth, test_queries, rankings["A5"])
+    abstention = await _abstention(result, adapter, truth, test_queries, rankings["A5"], split)
     asker = Asker(adapter, truth, abstention.tau)
     texts: dict[str, str] = {}
     await _citations(result, asker, store, truth, test_queries, texts)
-    await _e2e_abstention(abstention, asker, truth)
+    await _e2e_abstention(abstention, asker, truth, split)
     result.abstention = abstention
-    await _contradictions(result, asker, truth)
-    await _verifier(result, adapter, store, truth, texts)
+    await _contradictions(result, asker, truth, split)
+    await _verifier(result, adapter, store, truth, texts, split)
     await _kpis(result, adapter, truth)
     await _screening(result, adapter, truth)
     result.counts.update(

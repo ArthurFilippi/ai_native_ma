@@ -29,6 +29,27 @@ def support_score(hit: SearchHit, basis: Literal["relevance", "final"]) -> float
     return hit.passage.components.get("relevance", hit.passage.final_score)
 
 
+def about_entity(hit: SearchHit, gate: float) -> bool:
+    """The document of the passage names the entity the question asks about (always true when
+    the question names none). Without this a passage about another company wins on shared
+    words, and a claim about it would answer the wrong question."""
+    share = hit.passage.components.get("entity")
+    return share is None or share >= gate
+
+
+def relevance_order(hit: SearchHit) -> tuple[float, float]:
+    """Sort key: most relevant first, trust (the final score) breaks ties."""
+    relevance = hit.passage.components.get("relevance", hit.passage.final_score)
+    return (-relevance, -hit.passage.final_score)
+
+
+def writer_window(hits: Sequence[SearchHit], size: int) -> list[SearchHit]:
+    """The passages the writer reads: the `size` most relevant ones, ordered by trust. Tier and
+    recency order the evidence, they never hide a relevant but old or low tier source."""
+    chosen = sorted(hits, key=relevance_order)[:size]
+    return sorted(chosen, key=lambda h: -h.passage.final_score)
+
+
 @dataclass(frozen=True)
 class TauCalibration:
     tau: float

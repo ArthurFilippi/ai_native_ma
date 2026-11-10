@@ -20,12 +20,16 @@ DEFAULT_ANSWERS_LOG = Path("data/cache/answers.jsonl")
 class PipelineConfig(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
-    retrieval: RetrievalConfig = Field(default_factory=RetrievalConfig)
+    # the writer reads the most relevant passages of a wider list than `search` returns: trust
+    # orders the evidence, it must not push a relevant press article out of reach
+    retrieval: RetrievalConfig = Field(default_factory=lambda: RetrievalConfig(top_k=20))
     verifier: bool = True  # False: no checks at all, for the ablation
     drop_unverified: bool = True  # False: keep failing claims with Flag.UNVERIFIED
     tau: float = DEFAULT_TAU
+    passage_min: float = 0.35  # relevance below which a passage never reaches the writer
     abstain_score: Literal["relevance", "final"] = "relevance"
     writer_passages: int = 8
+    entity_gate: float = 0.5  # passages of documents that do not name the asked entity are dropped
     max_sub_questions: int = 4
     max_claims_per_sub_question: int = 4
     min_quote_chars: int = 10
