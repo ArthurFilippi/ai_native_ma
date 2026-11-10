@@ -29,18 +29,18 @@ An analyst preparing a sell-side process reads a data room, press, filings and b
 
 | Mechanism | Behaviour |
 |---|---|
-| Verified citations | The writer proposes claims with quotes. Code, not the model, locates each quote in the stored chunk and builds the citation (page, character offsets). A claim whose quote is not verbatim, or whose number is not in the quote, is dropped or downgraded. |
+| Verified citations | The writer proposes claims with quotes. Code, not the model, locates each quote in the stored chunk and builds the citation (page, character offsets). A claim whose quote is not verbatim, whose number is not in the quote, or whose number the source gives to another role, period or table column (a top five share read as the largest customer, an FY2022 column read as FY2024), is dropped or downgraded. |
 | Source reliability | Each document type maps to a tier, T1 (signed agreements, regulatory filings) to T5 (generic web). The tier is shown on every citation, and feeds the source ranker together with recency, status (current, superseded, withdrawn) and corroboration. |
 | Contradictions | When two sources disagree on a keyed fact, both sides are shown with their tiers and strengths. The system does not pick a winner. |
 | Abstention | When the evidence is below a threshold calibrated on a development split, the answer says that the information was not found and why. |
 | Access control | The access predicate is applied inside the store query, before any scoring. A user who is not a member of a deal gets a 404 and no passage of it. |
 | Three claim statuses | `sourced` (verified quote), `inferred` (derived, with its inputs shown), `missing` (the information is not in the sources). |
-| Screening | Two stages (cheap prefilter, then evidence per criterion for the buyers that pass). A criterion without evidence is `unknown` and is never guessed. One scoring function, mirrored in TypeScript and tested against shared vectors, gives the weighted score and the coverage. |
+| Screening | Two stages (cheap prefilter, then evidence per criterion for the buyers that pass). A criterion without evidence is `unknown` and is never guessed. Stage 1 is prefilled from the deal record (region, value) when no filter is typed. One scoring function, mirrored in TypeScript and tested against shared vectors, gives the weighted score, the coverage and the range the score can still take; buyers rank by the floor of that range, so one met criterion does not outrank broad evidence. |
 | KPI extraction | KPI definitions with formulas, a safe `ast` evaluator for computed KPIs, and span verification of every extracted value. |
 
 ### Pipeline
 
-`understand` (period, entity, metric) then `retrieve` (BM25 and dense retrieval fused by reciprocal rank fusion, a reranker, then the source ranker) then `write` (claims with quotes) then `verify` (verbatim span, numeric match, judge) then `contradictions` then `abstain`. The pipeline is linear and asynchronous, and every stage records its latency in a trace.
+`understand` (period, entity, metric) then `retrieve` (BM25 and dense retrieval fused by reciprocal rank fusion, a reranker, then the source ranker) then `write` (claims with quotes) then `verify` (verbatim span, numeric match, binding of each number to its role and period, judge) then `contradictions` then `abstain`. The pipeline is linear and asynchronous, and every stage records its latency in a trace.
 
 ### Methods and the evaluation harness
 
@@ -148,7 +148,8 @@ Commands:
 | `make install` | install the package and the development tools |
 | `make check` | ruff, `mypy --strict` on `src/`, and the tests; must be green before a commit |
 | `make data` | generate and verify the corpus of one seed (default 1234) |
-| `make eval` | generate the five seeds, run the harness, write `eval/results/` (`PROVIDER` and `SEEDS` are options) |
+| `make eval` | generate the five seeds, run the harness, write `eval/results/` (`PROVIDER` and `SEEDS` are options; a live provider writes `RESULTS_LIVE.md`, never `RESULTS.md`) |
+| `make live-smoke` | a few real queries through the pipeline with the configured live writer and judge; prints `live run not executed` without a key |
 | `make label-sample` | write the 40 pair blind labelling sheet for the hand labels |
 | `make judge-daily` | replay the answer log through the judge |
 | `make inspect ID=<answer id>` | print the raw trace of a logged answer |
@@ -193,11 +194,11 @@ The generator is seeded and byte deterministic (tested by hashing every output t
 
 **Pipeline (`pipeline/`).** `ask(question, store, access, deal_id, llm, config)` returns a validated `Answer`. `verify.py` holds the pure checks (`verbatim_span`, `numeric_match`). A compound question is split into sub-questions: each is answered with citations or listed as missing, so an answerable half is never hidden by an unanswerable one. Abstention compares the best passage score with one frozen `tau` (`DEFAULT_TAU`, chosen once on the pooled dev queries of the five seeds, used by the API, the demo and the test split; `python -m ainma.evaluation.run --calibrate-tau --seeds 5` recomputes it, and the report header shows any drift). Answers are appended to a log that `make inspect` and `make judge-daily` read.
 
-**LLM layer (`llm/`).** A provider interface with `mock` (deterministic, offline), `gemini` and `openai` (HTTP, tested on recorded fixtures only, never against a live service in the tests), a disk cache, and a fallback that is never silent (the usage record says which provider failed). Structured outputs are validated with one retry. Citations are built by code from verbatim quotes, so a model cannot fabricate a quote. To use Gemini, set `LLM_PROVIDER=gemini`, `LLM_MODEL` and `GEMINI_API_KEY` in `.env` (never commit that file).
+**LLM layer (`llm/`).** A provider interface with `mock` (deterministic, offline), `gemini` and `openai` (HTTP, tested on recorded fixtures only, never against a live service in the tests) and a disk cache. Gemini receives the output schema as `responseSchema`; retries honour `Retry-After`; each provider caps its calls in flight (`LLM_MAX_CONCURRENCY`). Structured outputs are validated with one retry. A failed live call is an error (the API answers 503); the mock answers instead only with `LLM_ALLOW_MOCK_FALLBACK=true`, and the answer is then marked `degraded` on screen. The judge can be another model (`JUDGE_PROVIDER`, `JUDGE_MODEL`), and the trace and the report name both. Citations are built by code from verbatim quotes, so a model cannot fabricate a quote. To use Gemini, set `LLM_PROVIDER=gemini`, `LLM_MODEL` and `GEMINI_API_KEY` in `.env` (never commit that file), then `make live-smoke`.
 
 **Judge (`judge/`).** Labels a (claim, passage) pair `supported`, `partial` or `unsupported`; `make judge-daily` replays logged answers, and confirmed failures become regression cases that every `make eval` replays. No regression case is committed yet.
 
-**Screening (`screening/`).** Stage 1 prefilters on buyer type, sector, geography and size. Stage 2 evaluates deep criteria with evidence from the buyer's own documents: ticket fit (financial buyers), EV ratio and integration bandwidth (strategic buyers), fund lifecycle, recent activity, antitrust and FDI. Every number the deep stage assumes (the EBITDA multiple, the equity share, the reference date) lives in one documented parameter object and none of them comes from a source. A criterion without evidence is `unknown`; some criteria are dealbreakers. Weights are adjustable and the ranking is recomputed by the same function in Python and in TypeScript. The score is computed over the criteria that have evidence, so a score of 1.00 can rest on well under all of the weight: read it together with the coverage shown on the card.
+**Screening (`screening/`).** Stage 1 prefilters on buyer type, sector, geography and size. Stage 2 evaluates deep criteria with evidence from the buyer's own documents: ticket fit (financial buyers), EV ratio and integration bandwidth (strategic buyers), fund lifecycle, recent activity, antitrust and FDI. Every number the deep stage assumes (the EBITDA multiple, the equity share, the reference date) lives in one documented parameter object and none of them comes from a source. A criterion without evidence is `unknown`; some criteria are dealbreakers. Weights are adjustable and the ranking is recomputed by the same function in Python and in TypeScript. The score is computed over the criteria that have evidence, so a score of 1.00 can rest on well under all of the weight: the card shows the coverage and the possible range (every unknown counted as not met, then as met), and the rank uses the floor of that range (decision D86).
 
 **KPIs (`kpi/`).** KPI definitions with formulas, a safe evaluator over the Python `ast` (no `eval`), extraction from the deal's own documents only, and an adjusted measure is never read as the plain KPI. Computed values show their inputs.
 
