@@ -10,8 +10,8 @@ from ainma.contracts import BuyerType, DocStatus, DocType
 from ainma.synth import filler
 from ainma.synth.builder import DocWriter, FactBook
 from ainma.synth.common import REFERENCE_DATE, Params, rng_for
-from ainma.synth.docspec import DocSpec
 from ainma.synth.docs_company import MARK, days
+from ainma.synth.docspec import DocSpec, Fmt
 from ainma.synth.truthio import NewsItem
 from ainma.synth.world import SECTORS, Acquisition, Buyer, World
 
@@ -30,11 +30,27 @@ class BuyerDocs:
     published_acquisitions: set[tuple[str, str]]
 
 
-def _spec(b: Buyer, suffix: str, fmt: str, title: str, doc_type: DocType, published: date, **kw: object) -> DocSpec:
+def _spec(
+    b: Buyer,
+    suffix: str,
+    fmt: Fmt,
+    title: str,
+    doc_type: DocType,
+    published: date,
+    status: DocStatus = DocStatus.CURRENT,
+    superseded_by: str | None = None,
+) -> DocSpec:
     return DocSpec(
-        id=f"doc_{b.profile.id}_{suffix}", folder="buyers", fmt=fmt,  # type: ignore[arg-type]
-        title=title, doc_type=doc_type, published_on=published, deal_id=None,
-        entity_id=b.profile.id, **kw,  # type: ignore[arg-type]
+        id=f"doc_{b.profile.id}_{suffix}",
+        folder="buyers",
+        fmt=fmt,
+        title=title,
+        doc_type=doc_type,
+        published_on=published,
+        deal_id=None,
+        entity_id=b.profile.id,
+        status=status,
+        superseded_by=superseded_by,
     )
 
 
@@ -60,7 +76,9 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
     docs: list[DocSpec] = []
 
     # profile page (web, tier 5)
-    d_profile = date(2025, 5, 1) + (date(2025, 6, 10) - date(2025, 5, 1)) * rng.randrange(100) // 100
+    d_profile = (
+        date(2025, 5, 1) + (date(2025, 6, 10) - date(2025, 5, 1)) * rng.randrange(100) // 100
+    )
     prof = _spec(b, "profile", "txt", f"{name}: company profile", DocType.WEB, d_profile)
     w = _writer(prof, book, params)
     prof.heading(f"{name}: company profile")
@@ -72,8 +90,20 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
         assert p.ticket_min_eur_m is not None and p.ticket_max_eur_m is not None
         prof.para(w.ticket(name, p.ticket_min_eur_m, p.ticket_max_eur_m))
         if p.fund_vintage_year is not None:
-            prof.para(w.stated(name, "fund_vintage_year", "static", float(p.fund_vintage_year), with_entity=True))
-    prof.para("The company is listed on a regulated exchange." if p.listed else "The company is privately held.")
+            prof.para(
+                w.stated(
+                    name,
+                    "fund_vintage_year",
+                    "static",
+                    float(p.fund_vintage_year),
+                    with_entity=True,
+                )
+            )
+    prof.para(
+        "The company is listed on a regulated exchange."
+        if p.listed
+        else "The company is privately held."
+    )
     if b.reg_in_profile and b.reg_state in REG_TEXT:
         prof.para(REG_TEXT[b.reg_state])
     docs.append(prof)
@@ -83,7 +113,9 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
     if fin:
         rep = _spec(b, "report", "docx", f"{name}: fund summary", DocType.COMPANY_REPORT, d_report)
     else:
-        rep = _spec(b, "report", "pdf", f"{name}: annual report excerpt", DocType.COMPANY_REPORT, d_report)
+        rep = _spec(
+            b, "report", "pdf", f"{name}: annual report excerpt", DocType.COMPANY_REPORT, d_report
+        )
     w = _writer(rep, book, params)
     rep.heading(f"{name}: {'fund summary' if fin else 'annual report excerpt'}")
     rep.para(f"{MARK} Document of {name}.")
@@ -91,13 +123,33 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
     if fin:
         assert p.ticket_min_eur_m is not None and p.ticket_max_eur_m is not None
         rep.para(w.ticket(name, p.ticket_min_eur_m, p.ticket_max_eur_m))
-        rep.para(w.stated(name, "portfolio_companies", "FY2024", float(b.portfolio), with_entity=True))
+        rep.para(
+            w.stated(name, "portfolio_companies", "FY2024", float(b.portfolio), with_entity=True)
+        )
         if p.fund_vintage_year is not None:
-            rep.para(w.stated(name, "fund_vintage_year", "static", float(p.fund_vintage_year), with_entity=True))
+            rep.para(
+                w.stated(
+                    name,
+                    "fund_vintage_year",
+                    "static",
+                    float(p.fund_vintage_year),
+                    with_entity=True,
+                )
+            )
         if b.end_stated and b.investment_end is not None:
-            rep.para(w.stated(name, "investment_period_end_year", "static", float(b.investment_end), with_entity=True))
+            rep.para(
+                w.stated(
+                    name,
+                    "investment_period_end_year",
+                    "static",
+                    float(b.investment_end),
+                    with_entity=True,
+                )
+            )
         elif p.listed:
-            rep.para("The vehicle is a permanent capital structure without a fixed investment period.")
+            rep.para(
+                "The vehicle is a permanent capital structure without a fixed investment period."
+            )
     else:
         rep.para(w.stated(name, "revenue", "FY2024", b.revenue, with_entity=True))
         rep.para(w.stated(name, "headcount", "FY2024", float(b.employees), with_entity=True))
@@ -111,8 +163,12 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
     optional: list[DocSpec] = []
     # conflicting trade article
     if b.article_conflict is not None:
-        d_art = date(2025, 2, 1) + (date(2025, 5, 20) - date(2025, 2, 1)) * rng.randrange(100) // 100
-        art = _spec(b, "article", "txt", f"Trade press: {name} in the market", DocType.PRESS_ARTICLE, d_art)
+        d_art = (
+            date(2025, 2, 1) + (date(2025, 5, 20) - date(2025, 2, 1)) * rng.randrange(100) // 100
+        )
+        art = _spec(
+            b, "article", "txt", f"Trade press: {name} in the market", DocType.PRESS_ARTICLE, d_art
+        )
         w = _writer(art, book, params)
         art.heading(f"{name} in the market")
         short = name.split(" ")[0]
@@ -120,40 +176,107 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
         art.para(filler.paragraph(rng, "markets", _ctx(name, p.sectors[0], p.geographies[0]), 2))
         optional.append(art)
     if b.old_pr:
-        d_old = date(2023, 1, 10) + (date(2023, 10, 30) - date(2023, 1, 10)) * rng.randrange(100) // 100
-        old = _spec(b, "pr_old", "txt", f"{name} announces its position", DocType.PRESS_RELEASE, d_old)
+        d_old = (
+            date(2023, 1, 10) + (date(2023, 10, 30) - date(2023, 1, 10)) * rng.randrange(100) // 100
+        )
+        old = _spec(
+            b, "pr_old", "txt", f"{name} announces its position", DocType.PRESS_RELEASE, d_old
+        )
         w = _writer(old, book, params)
         old.heading(f"{name} announces its position")
-        old.para(w.stated(name, size_metric, "FY2022", b.aum_old, with_entity=True, form="lit", force=0 if size_metric == "market_cap" else 1))
+        old.para(
+            w.stated(
+                name,
+                size_metric,
+                "FY2022",
+                b.aum_old,
+                with_entity=True,
+                form="lit",
+                force=0 if size_metric == "market_cap" else 1,
+            )
+        )
         old.para(filler.paragraph(rng, "overview", _ctx(name, p.sectors[0], p.geographies[0]), 2))
         optional.append(old)
     if b.old_filing:
-        d_fil = date(2022, 3, 1) + (date(2022, 11, 30) - date(2022, 3, 1)) * rng.randrange(100) // 100
-        fil = _spec(b, "filing", "pdf", f"{name}: annual filing excerpt", DocType.REGULATORY_FILING, d_fil)
+        d_fil = (
+            date(2022, 3, 1) + (date(2022, 11, 30) - date(2022, 3, 1)) * rng.randrange(100) // 100
+        )
+        fil = _spec(
+            b, "filing", "pdf", f"{name}: annual filing excerpt", DocType.REGULATORY_FILING, d_fil
+        )
         w = _writer(fil, book, params)
         fil.heading(f"{name}: annual filing excerpt")
         fil.para(f"{MARK} Filing excerpt of {name}.")
-        fil.para(w.stated(name, "headcount", "FY2021", float(b.employees_old), with_entity=True, form="lit", force=0))
+        fil.para(
+            w.stated(
+                name,
+                "headcount",
+                "FY2021",
+                float(b.employees_old),
+                with_entity=True,
+                form="lit",
+                force=0,
+            )
+        )
         optional.append(fil)
     if b.withdrawn_pr:
         d_o = date(2025, 4, 2) + (date(2025, 5, 2) - date(2025, 4, 2)) * rng.randrange(100) // 100
         orig = _spec(
-            b, "pr_orig", "txt", f"{name} reports its position (original, withdrawn)",
-            DocType.PRESS_RELEASE, d_o, status=DocStatus.WITHDRAWN, superseded_by=f"doc_{p.id}_pr_corr",
+            b,
+            "pr_orig",
+            "txt",
+            f"{name} reports its position (original, withdrawn)",
+            DocType.PRESS_RELEASE,
+            d_o,
+            status=DocStatus.WITHDRAWN,
+            superseded_by=f"doc_{p.id}_pr_corr",
         )
         w = _writer(orig, book, params)
         orig.heading(f"{name} reports its position")
         wrong = round(p.size_eur_m * 1.12 / 10) * 10.0
-        orig.para(w.stated(name, size_metric, "FY2024", wrong, with_entity=True, form="lit", force=0, style="mn"))
-        corr = _spec(b, "pr_corr", "txt", f"{name} corrects its position release", DocType.PRESS_RELEASE, days(d_o, 4))
+        orig.para(
+            w.stated(
+                name,
+                size_metric,
+                "FY2024",
+                wrong,
+                with_entity=True,
+                form="lit",
+                force=0,
+                style="mn",
+            )
+        )
+        corr = _spec(
+            b,
+            "pr_corr",
+            "txt",
+            f"{name} corrects its position release",
+            DocType.PRESS_RELEASE,
+            days(d_o, 4),
+        )
         w = _writer(corr, book, params)
         corr.heading(f"{name} corrects its position release")
         corr.para(f"This release corrects the release of {d_o.isoformat()}, which is withdrawn.")
-        corr.para(w.stated(name, size_metric, "FY2024", p.size_eur_m, with_entity=True, form="lit", force=0, style="mn"))
+        corr.para(
+            w.stated(
+                name,
+                size_metric,
+                "FY2024",
+                p.size_eur_m,
+                with_entity=True,
+                form="lit",
+                force=0,
+                style="mn",
+            )
+        )
         optional.extend([orig, corr])
     if b.extra_article and len(docs) + len(optional) < MAX_DOCS - 1:
-        d_x = date(2025, 1, 15) + (date(2025, 5, 25) - date(2025, 1, 15)) * rng.randrange(100) // 100
-        xa = _spec(b, "news", "txt", f"Trade press: what {name} looks for", DocType.PRESS_ARTICLE, d_x)
+        d_x = (
+            date(2025, 1, 15) + (date(2025, 5, 25) - date(2025, 1, 15)) * rng.randrange(100) // 100
+        )
+        xa = _spec(
+            b, "news", "txt", f"Trade press: what {name} looks for", DocType.PRESS_ARTICLE, d_x
+        )
         xa.heading(f"What {name} looks for")
         xa.para(filler.paragraph(rng, "markets", _ctx(name, p.sectors[0], p.geographies[0]), 3))
         optional.append(xa)
@@ -165,17 +288,30 @@ def build_buyer_docs(world: World, b: Buyer, book: FactBook) -> BuyerDocs:
         if room <= 0 or len(published) >= 2:
             break
         pr = _spec(
-            b, f"pr_{len(published) + 1}", "txt", f"{name} announces an acquisition",
-            DocType.PRESS_RELEASE, acq.when,
+            b,
+            f"pr_{len(published) + 1}",
+            "txt",
+            f"{name} announces an acquisition",
+            DocType.PRESS_RELEASE,
+            acq.when,
         )
         pr.heading(f"{name} announces an acquisition")
-        pr.para(f"{name} announces the acquisition of {acq.target}, a {SECTORS[acq.sector].label} company.")
+        pr.para(
+            f"{name} announces the acquisition of {acq.target}, a {SECTORS[acq.sector].label} company."
+        )
         pr.para(filler.paragraph(rng, "strategy", _ctx(name, acq.sector, p.geographies[0]), 2))
         docs.append(pr)
         published.add((p.id, acq.target))
         room -= 1
     while len(docs) < 3:
-        xa = _spec(b, "news", "txt", f"Trade press: what {name} looks for", DocType.PRESS_ARTICLE, date(2025, 2, 20))
+        xa = _spec(
+            b,
+            "news",
+            "txt",
+            f"Trade press: what {name} looks for",
+            DocType.PRESS_ARTICLE,
+            date(2025, 2, 20),
+        )
         xa.heading(f"What {name} looks for")
         xa.para(filler.paragraph(rng, "markets", _ctx(name, p.sectors[0], p.geographies[0]), 3))
         docs.append(xa)
@@ -209,16 +345,41 @@ def build_news(world: World, published: set[tuple[str, str]]) -> list[NewsItem]:
     pad: list[NewsItem] = []
     while len(items) + len(pad) < 60:
         deal = world.companies[n % len(world.companies)]
-        topic = topics[n % len(topics)] if deal.deal_id == "deal_aurora" else (
-            f"{deal.name} prepares its data room" if n % 2 else f"Investors weigh interest in {deal.sector_label}"
+        topic = (
+            topics[n % len(topics)]
+            if deal.deal_id == "deal_aurora"
+            else (
+                f"{deal.name} prepares its data room"
+                if n % 2
+                else f"Investors weigh interest in {deal.sector_label}"
+            )
         )
         when = date(2025, 1, 6) + (date(2025, 6, 20) - date(2025, 1, 6)) * rng.randrange(100) // 100
         pad.append(
             NewsItem(
-                connector="simulated-news", retrieved_on=REFERENCE_DATE, title=topic, url=None,
-                published_on=when, doc_type=DocType.PRESS_ARTICLE,
-                text=f"{MARK} {topic}. " + filler.paragraph(rng, "markets", filler.context(deal.name, deal.sector_label, deal.products, deal.customers, deal.site, deal.hq, "Central Europe"), 3),
-                simulated=True, entity=deal.deal_id,
+                connector="simulated-news",
+                retrieved_on=REFERENCE_DATE,
+                title=topic,
+                url=None,
+                published_on=when,
+                doc_type=DocType.PRESS_ARTICLE,
+                text=f"{MARK} {topic}. "
+                + filler.paragraph(
+                    rng,
+                    "markets",
+                    filler.context(
+                        deal.name,
+                        deal.sector_label,
+                        deal.products,
+                        deal.customers,
+                        deal.site,
+                        deal.hq,
+                        "Central Europe",
+                    ),
+                    3,
+                ),
+                simulated=True,
+                entity=deal.deal_id,
             )
         )
         n += 1
@@ -231,8 +392,13 @@ def build_news(world: World, published: set[tuple[str, str]]) -> list[NewsItem]:
 def _acq_item(b: Buyer, acq: Acquisition) -> NewsItem:
     title = f"{b.profile.name} completes acquisition of {acq.target}"
     return NewsItem(
-        connector="simulated-news", retrieved_on=REFERENCE_DATE, title=title, url=None,
-        published_on=acq.when, doc_type=DocType.PRESS_ARTICLE,
+        connector="simulated-news",
+        retrieved_on=REFERENCE_DATE,
+        title=title,
+        url=None,
+        published_on=acq.when,
+        doc_type=DocType.PRESS_ARTICLE,
         text=f"{MARK} {title}. The target is a {SECTORS[acq.sector].label} company.",
-        simulated=True, entity=b.profile.id,
+        simulated=True,
+        entity=b.profile.id,
     )

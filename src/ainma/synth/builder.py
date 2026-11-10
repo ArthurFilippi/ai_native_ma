@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from random import Random
 
@@ -121,19 +122,31 @@ class DocWriter:
         chosen = form or self.choose_form()
         prev_arg = (prev_period(period), prev) if prev is not None else None
         text, used_prev = render_sentence(
-            m, entity=entity, period=period, value=value, form=chosen, rng=self.rng, prev=prev_arg,
-            with_entity=with_entity, force=force, value_style=style,
+            m,
+            entity=entity,
+            period=period,
+            value=value,
+            form=chosen,
+            rng=self.rng,
+            prev=prev_arg,
+            with_entity=with_entity,
+            force=force,
+            value_style=style,
         )
         ids = [self.book.get_or_create(self.spec, entity, metric, period, value)]
         if used_prev and prev is not None:
-            ids.append(self.book.get_or_create(self.spec, entity, metric, prev_period(period), prev))
+            ids.append(
+                self.book.get_or_create(self.spec, entity, metric, prev_period(period), prev)
+            )
         return Part(text, tuple(ids))
 
     def ticket(self, entity: str, low: float, high: float, form: str | None = None) -> Part:
         m = METRICS["ticket_min"]
         chosen = form or self.choose_form()
         template = (m.lit if chosen == "lit" else m.par)[0]
-        text = template.format(V=fmt_value("money", low, None, "mn"), V2=fmt_value("money", high, None, "mn"))
+        text = template.format(
+            V=fmt_value("money", low, None, "mn"), V2=fmt_value("money", high, None, "mn")
+        )
         ids = (
             self.book.get_or_create(self.spec, entity, "ticket_min", "static", low),
             self.book.get_or_create(self.spec, entity, "ticket_max", "static", high),
@@ -159,9 +172,7 @@ class DocWriter:
         fid = self.book.get_or_create(self.spec, entity, metric, period, value)
         return Part(text, (fid,))
 
-    def footnote(
-        self, entity: str, metric: str, period: str, value: float, number: int
-    ) -> Part:
+    def footnote(self, entity: str, metric: str, period: str, value: float, number: int) -> Part:
         m = METRICS[metric]
         text = f"Note {number}: " + m.foot.format(P=period, V=fmt_value(m.vkind, value, None, "mn"))
         fid = self.book.get_or_create(self.spec, entity, metric, period, value)
@@ -171,7 +182,7 @@ class DocWriter:
         self,
         entity: str,
         header: list[Cell],
-        rows: list[tuple[str, str | None, list[Cell]]],
+        rows: Sequence[tuple[str, str | None, Sequence[float]]],
         periods: list[str],
     ) -> None:
         """Table whose rows with a metric plant one fact per period (quote is the whole row)."""

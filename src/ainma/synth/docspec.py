@@ -15,6 +15,7 @@ from ainma.contracts import DocStatus, DocType
 from ainma.ingest.base import row_text
 
 Cell = str | int | float
+Fmt = Literal["pdf", "docx", "xlsx", "txt"]
 
 
 @dataclass(frozen=True)
@@ -59,7 +60,7 @@ Block = Para | Heading | Table | PageBreak
 class DocSpec:
     id: str
     folder: str
-    fmt: Literal["pdf", "docx", "xlsx", "txt"]
+    fmt: Fmt
     title: str
     doc_type: DocType
     published_on: date
@@ -82,7 +83,9 @@ class DocSpec:
         self.blocks.append(block)
         return block
 
-    def table(self, rows: list[list[Cell]], facts: dict[int, tuple[str, ...]] | None = None) -> None:
+    def table(
+        self, rows: list[list[Cell]], facts: dict[int, tuple[str, ...]] | None = None
+    ) -> None:
         self.blocks.append(Table(rows, facts or {}))
 
     def page_break(self) -> None:

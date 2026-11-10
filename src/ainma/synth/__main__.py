@@ -1,4 +1,4 @@
-"""CLI: `python -m ainma.synth generate --seed 1234 --out data/synthetic` and `verify <seed_dir>`."""
+"""CLI: `python -m ainma.synth generate` and `python -m ainma.synth verify <seed_dir>`."""
 
 from __future__ import annotations
 
@@ -28,7 +28,9 @@ def main(argv: list[str] | None = None) -> int:
         from ainma.synth.generate import generate
 
         seed_dir = generate(
-            args.seed, args.out, paraphrase_rate=args.paraphrase_rate,
+            args.seed,
+            args.out,
+            paraphrase_rate=args.paraphrase_rate,
             hard_negative_rate=args.hard_negative_rate,
         )
         log.info("generated %s", seed_dir)

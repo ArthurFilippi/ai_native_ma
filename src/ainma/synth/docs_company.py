@@ -11,7 +11,7 @@ from ainma.contracts import DocStatus, DocType
 from ainma.synth import filler
 from ainma.synth.builder import DocWriter, FactBook
 from ainma.synth.common import YEARS, Params, rng_for
-from ainma.synth.docspec import DocSpec, Part
+from ainma.synth.docspec import Cell, DocSpec, Fmt, Part
 from ainma.synth.finance import tenths
 from ainma.synth.world import AURORA_REGION, Company
 
@@ -44,7 +44,7 @@ class Ctx:
         self,
         doc_id: str,
         folder: str,
-        fmt: str,
+        fmt: Fmt,
         title: str,
         doc_type: DocType,
         published: date,
@@ -55,7 +55,7 @@ class Ctx:
         spec = DocSpec(
             id=doc_id,
             folder=folder,
-            fmt=fmt,  # type: ignore[arg-type]
+            fmt=fmt,
             title=title,
             doc_type=doc_type,
             published_on=published,
@@ -68,7 +68,9 @@ class Ctx:
 
     def fctx(self) -> dict[str, str]:
         c = self.comp
-        return filler.context(c.name, c.sector_label, c.products, c.customers, c.site, c.hq, self.region)
+        return filler.context(
+            c.name, c.sector_label, c.products, c.customers, c.site, c.hq, self.region
+        )
 
     @property
     def folder(self) -> str:
@@ -80,7 +82,9 @@ def _intro(spec: DocSpec, title: str, extra: str = "") -> None:
     spec.para(f"{MARK} {extra}".strip())
 
 
-def _filler(spec: DocSpec, rng: Random, ctx: Ctx, theme: str, paragraphs: int = 2, n: int = 4) -> None:
+def _filler(
+    spec: DocSpec, rng: Random, ctx: Ctx, theme: str, paragraphs: int = 2, n: int = 4
+) -> None:
     for _ in range(paragraphs):
         spec.para(filler.paragraph(rng, theme, ctx.fctx(), n))
 
@@ -91,16 +95,21 @@ def _filler(spec: DocSpec, rng: Random, ctx: Ctx, theme: str, paragraphs: int = 
 def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "pdf", f"Project {c.project}, Confidential Information Memorandum",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "pdf",
+        f"Project {c.project}, Confidential Information Memorandum",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
     fin = c.fin
-    last, prev = "FY2024", "FY2023"
+    last, _prev = "FY2024", "FY2023"
     name = c.name
 
     def table_pl() -> None:
         w.fact_table(
-            name, ["EUR m", *YEARS],
+            name,
+            ["EUR m", *YEARS],
             [
                 ("Revenue", "revenue", tenths(fin.revenue)),
                 ("Gross profit", None, tenths(fin.gross_profit)),
@@ -113,8 +122,26 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
 
     def financial() -> None:
         spec.para(
-            w.stated(name, "revenue", last, c.revenue_last, form="lit", prev=fin.revenue[3] / 10, force=0, style="mn"),
-            w.stated(name, "ebitda", last, c.ebitda_last, prev=fin.ebitda[3] / 10, force=0, form="lit", style="mn"),
+            w.stated(
+                name,
+                "revenue",
+                last,
+                c.revenue_last,
+                form="lit",
+                prev=fin.revenue[3] / 10,
+                force=0,
+                style="mn",
+            ),
+            w.stated(
+                name,
+                "ebitda",
+                last,
+                c.ebitda_last,
+                prev=fin.ebitda[3] / 10,
+                force=0,
+                form="lit",
+                style="mn",
+            ),
         )
         spec.para(
             w.stated(name, "gross_margin", last, c.gross_margin_last),
@@ -122,6 +149,14 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
         )
         spec.para(w.footnote(name, "revenue", last, c.revenue_last, 1))
         _filler(spec, rng, ctx, "overview", 2)
+
+    def income() -> None:
+        table_pl()
+        _filler(spec, rng, ctx, "governance", 1)
+
+    def financial_and_table() -> None:
+        financial()
+        table_pl()
 
     def customers() -> None:
         spec.para(
@@ -131,7 +166,10 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
         _filler(spec, rng, ctx, "customers", 3)
 
     def operations() -> None:
-        spec.para(w.stated(name, "order_backlog", last, c.backlog), w.stated(name, "plants", last, float(c.plants)))
+        spec.para(
+            w.stated(name, "order_backlog", last, c.backlog),
+            w.stated(name, "plants", last, float(c.plants)),
+        )
         _filler(spec, rng, ctx, "operations", 3)
 
     def exec_summary() -> None:
@@ -152,17 +190,27 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
         )
         _filler(spec, rng, ctx, "process", 2)
 
-    _intro(spec, f"Project {c.project}", "Confidential Information Memorandum. Prepared by the sell-side advisers.")
+    _intro(
+        spec,
+        f"Project {c.project}",
+        "Confidential Information Memorandum. Prepared by the sell-side advisers.",
+    )
     spec.para(f"Subject: {name}, {c.hq}. Dated {published.isoformat()}.")
     spec.page_break()
     if big:
         spec.heading("Important notice")
-        spec.para("This memorandum has been prepared for qualified bidders who signed a confidentiality undertaking.")
-        spec.para("The information is fictional and provided for evaluation purposes only. No representation is made as to its completeness.")
+        spec.para(
+            "This memorandum has been prepared for qualified bidders who signed a confidentiality undertaking."
+        )
+        spec.para(
+            "The information is fictional and provided for evaluation purposes only. No representation is made as to its completeness."
+        )
         _filler(spec, rng, ctx, "process", 2)
         spec.page_break()
         spec.heading("Contents")
-        spec.para("1. Executive summary. 2. Investment highlights. 3. Company history. 4. Products, part one. 5. Products, part two. 6. Market overview. 7. Competitive position. 8. Customers. 9. Financial overview. 10. Income statement. 11. Balance sheet. 12. Cash flow. 13. Operations. 14. People and organisation. 15. Governance. 16. Strategy. 17. Outlook. 18. Risk factors. 19. Transaction overview. 20. Sale process. 21. Glossary.")
+        spec.para(
+            "1. Executive summary. 2. Investment highlights. 3. Company history. 4. Products, part one. 5. Products, part two. 6. Market overview. 7. Competitive position. 8. Customers. 9. Financial overview. 10. Income statement. 11. Balance sheet. 12. Cash flow. 13. Operations. 14. People and organisation. 15. Governance. 16. Strategy. 17. Outlook. 18. Risk factors. 19. Transaction overview. 20. Sale process. 21. Glossary."
+        )
         spec.page_break()
         plan = [
             ("1. Executive summary", exec_summary),
@@ -174,7 +222,7 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
             ("7. Competitive position", lambda: _filler(spec, rng, ctx, "markets", 4)),
             ("8. Customers", customers),
             ("9. Financial overview", financial),
-            ("10. Income statement", lambda: (table_pl(), _filler(spec, rng, ctx, "governance", 1))),
+            ("10. Income statement", income),
             ("11. Balance sheet", lambda: _balance(spec, w, ctx, rng)),
             ("12. Cash flow", lambda: _cashflow(spec, w, ctx, rng)),
             ("13. Operations", operations),
@@ -185,7 +233,12 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
             ("18. Risk factors", lambda: _filler(spec, rng, ctx, "risks", 4)),
             ("19. Transaction overview", transaction),
             ("20. Sale process", lambda: _filler(spec, rng, ctx, "process", 4)),
-            ("21. Glossary", lambda: spec.para("EBITDA means earnings before interest, tax, depreciation and amortisation. A bidder is a party that submits an offer. The data room is the secure repository of documents.")),
+            (
+                "21. Glossary",
+                lambda: spec.para(
+                    "EBITDA means earnings before interest, tax, depreciation and amortisation. A bidder is a party that submits an offer. The data room is the secure repository of documents."
+                ),
+            ),
         ]
     else:
         plan = [
@@ -193,7 +246,7 @@ def build_cim(ctx: Ctx, doc_id: str, published: date, *, big: bool) -> DocSpec:
             ("2. Business overview", lambda: _filler(spec, rng, ctx, "products", 3)),
             ("3. Customers", customers),
             ("4. Operations", operations),
-            ("5. Financial overview", lambda: (financial(), table_pl())),
+            ("5. Financial overview", financial_and_table),
             ("6. Transaction overview", transaction),
         ]
     for index, (title, body) in enumerate(plan):
@@ -225,8 +278,12 @@ def _cashflow(spec: DocSpec, w: DocWriter, ctx: Ctx, rng: Random) -> None:
     fin = c.fin
     spec.para(w.stated(c.name, "capex", "FY2024", fin.capex[4] / 10))
     w.fact_table(
-        c.name, ["EUR m", *YEARS],
-        [("Operating cash flow", None, tenths(fin.ocf)), ("Capital expenditure", "capex", tenths(fin.capex))],
+        c.name,
+        ["EUR m", *YEARS],
+        [
+            ("Operating cash flow", None, tenths(fin.ocf)),
+            ("Capital expenditure", "capex", tenths(fin.capex)),
+        ],
         YEARS,
     )
     _filler(spec, rng, ctx, "governance", 1)
@@ -238,8 +295,12 @@ def _cashflow(spec: DocSpec, w: DocWriter, ctx: Ctx, rng: Random) -> None:
 def build_mgmt(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "docx", f"Project {c.project}, management presentation",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "docx",
+        f"Project {c.project}, management presentation",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
     name = c.name
     _intro(spec, f"Project {c.project}: management presentation")
@@ -256,7 +317,9 @@ def build_mgmt(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     spec.heading("Financial highlights", 2)
     spec.para(w.stated(name, "gross_margin", "FY2024", c.gross_margin_last, with_entity=True))
     if c.restated_prior_revenue is not None:
-        text_part = w.stated(name, "revenue", "FY2023", c.restated_prior_revenue, form="lit", force=2, style="mn")
+        text_part = w.stated(
+            name, "revenue", "FY2023", c.restated_prior_revenue, form="lit", force=2, style="mn"
+        )
         spec.para(Part("Restated figure: " + text_part.text, text_part.facts))
     _filler(spec, rng, ctx, "strategy", 1)
     return spec
@@ -269,13 +332,18 @@ def build_model(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     fin = c.fin
     spec, w, _ = ctx.doc(
-        doc_id, ctx.folder, "xlsx", f"Project {c.project}, financial model",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "xlsx",
+        f"Project {c.project}, financial model",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
-    hdr: list[object] = ["EUR m", *YEARS]
+    hdr: list[Cell] = ["EUR m", *YEARS]
     spec.heading("Income Statement")
     w.fact_table(
-        c.name, hdr,  # type: ignore[arg-type]
+        c.name,
+        hdr,
         [
             ("Revenue", "revenue", tenths(fin.revenue)),
             ("Cost of goods sold", None, tenths(fin.cogs)),
@@ -294,7 +362,7 @@ def build_model(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     spec.heading("Balance Sheet")
     spec.table(
         [
-            hdr,  # type: ignore[list-item]
+            hdr,
             ["Cash", *tenths(fin.cash)],
             ["Receivables", *tenths(fin.receivables)],
             ["Inventory", *tenths(fin.inventory)],
@@ -314,7 +382,8 @@ def build_model(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     )
     spec.heading("Cash Flow")
     w.fact_table(
-        c.name, hdr,  # type: ignore[arg-type]
+        c.name,
+        hdr,
         [
             ("Net income", None, tenths(fin.net_income)),
             ("Depreciation and amortisation", None, tenths(fin.da)),
@@ -330,15 +399,33 @@ def build_model(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 def build_nda(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "pdf", f"Project {c.project}, non-disclosure agreement (signed)",
-        DocType.SIGNED_AGREEMENT, published,
+        doc_id,
+        ctx.folder,
+        "pdf",
+        f"Project {c.project}, non-disclosure agreement (signed)",
+        DocType.SIGNED_AGREEMENT,
+        published,
     )
     _intro(spec, f"Non-disclosure agreement, Project {c.project}", "Executed copy.")
-    spec.para(f"This agreement is made between {c.legal} (the Company) and the bidder named in the signature page.")
+    spec.para(
+        f"This agreement is made between {c.legal} (the Company) and the bidder named in the signature page."
+    )
     spec.heading("1. Confidential information", 2)
-    spec.para("Confidential information means all information about the Company disclosed to the bidder in connection with the transaction.")
+    spec.para(
+        "Confidential information means all information about the Company disclosed to the bidder in connection with the transaction."
+    )
     spec.heading("2. Term", 2)
-    spec.para(w.stated(f"Project {c.project} NDA", "nda_term_months", "static", 24.0, form="lit", force=1, with_entity=True))
+    spec.para(
+        w.stated(
+            f"Project {c.project} NDA",
+            "nda_term_months",
+            "static",
+            24.0,
+            form="lit",
+            force=1,
+            with_entity=True,
+        )
+    )
     spec.heading("3. General", 2)
     for text in rng.sample(LEGAL, 5):
         spec.para(text)
@@ -349,16 +436,24 @@ def build_nda(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 def build_qoe(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "pdf", f"Project {c.project}, quality of earnings summary",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "pdf",
+        f"Project {c.project}, quality of earnings summary",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
     _intro(spec, f"Quality of earnings summary, Project {c.project}")
     spec.para(
         w.stated(c.name, "adjusted_ebitda", "FY2024", round(c.ebitda_last * 1.03, 1)),
-        w.stated(c.name, "gross_margin", "FY2024", c.gross_margin_last, form="lit", with_entity=True),
+        w.stated(
+            c.name, "gross_margin", "FY2024", c.gross_margin_last, form="lit", with_entity=True
+        ),
     )
     spec.para(w.stated(c.name, "net_debt", "FY2024", c.net_debt_last, with_entity=True))
-    spec.para("Adjustments relate to one-off restructuring items and the normalisation of owner related costs.")
+    spec.para(
+        "Adjustments relate to one-off restructuring items and the normalisation of owner related costs."
+    )
     _filler(spec, rng, ctx, "governance", 2)
     return spec
 
@@ -366,28 +461,44 @@ def build_qoe(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 def build_board(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "docx", f"Project {c.project}, board minutes",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "docx",
+        f"Project {c.project}, board minutes",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
-    _intro(spec, f"Minutes of the board meeting, {c.name}", f"Meeting held on {published.isoformat()}.")
+    _intro(
+        spec, f"Minutes of the board meeting, {c.name}", f"Meeting held on {published.isoformat()}."
+    )
     spec.heading("Item 1: financial update", 2)
     spec.para(w.stated(c.name, "capex", "FY2024", c.fin.capex[4] / 10, with_entity=True))
-    spec.para(w.stated(c.name, "ebitda_margin", "FY2024", c.margin(c.fin.ebitda, 4), with_entity=True))
+    spec.para(
+        w.stated(c.name, "ebitda_margin", "FY2024", c.margin(c.fin.ebitda, 4), with_entity=True)
+    )
     spec.heading("Item 2: sale process", 2)
     _filler(spec, rng, ctx, "process", 2)
-    spec.para("The board resolved to proceed with the sale process and authorised management to open the data room.")
+    spec.para(
+        "The board resolved to proceed with the sale process and authorised management to open the data room."
+    )
     return spec
 
 
 def build_concentration(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "docx", f"Project {c.project}, customer concentration note",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "docx",
+        f"Project {c.project}, customer concentration note",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
     _intro(spec, f"Customer concentration note, {c.name}")
     spec.para(
-        w.stated(c.name, "top_customer_share", "FY2024", c.top_customer, with_entity=True, form="lit"),
+        w.stated(
+            c.name, "top_customer_share", "FY2024", c.top_customer, with_entity=True, form="lit"
+        ),
         w.stated(c.name, "top10_customer_share", "FY2024", c.top10, with_entity=True, form="lit"),
     )
     _filler(spec, rng, ctx, "customers", 2)
@@ -397,19 +508,32 @@ def build_concentration(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 # ---- agreements and press ---------------------------------------------------------------------
 
 
-def build_spa(ctx: Ctx, doc_id: str, published: date, *, draft: bool, superseded_by: str | None = None) -> DocSpec:
+def build_spa(
+    ctx: Ctx, doc_id: str, published: date, *, draft: bool, superseded_by: str | None = None
+) -> DocSpec:
     c = ctx.comp
     kind = "draft" if draft else "executed"
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "pdf", f"Project {c.project}, share purchase agreement ({kind})",
-        DocType.DEAL_DOCUMENT if draft else DocType.SIGNED_AGREEMENT, published,
-        status=DocStatus.SUPERSEDED if draft else DocStatus.CURRENT, superseded_by=superseded_by,
+        doc_id,
+        ctx.folder,
+        "pdf",
+        f"Project {c.project}, share purchase agreement ({kind})",
+        DocType.DEAL_DOCUMENT if draft else DocType.SIGNED_AGREEMENT,
+        published,
+        status=DocStatus.SUPERSEDED if draft else DocStatus.CURRENT,
+        superseded_by=superseded_by,
     )
     value = c.draft_ev if draft else c.ev
-    _intro(spec, f"Share purchase agreement, Project {c.project}", "Draft for discussion." if draft else "Executed version.")
+    _intro(
+        spec,
+        f"Share purchase agreement, Project {c.project}",
+        "Draft for discussion." if draft else "Executed version.",
+    )
     spec.para(f"This share purchase agreement relates to the shares in {c.legal}.")
     spec.heading("1. Purchase price", 2)
-    spec.para(w.stated(c.name, "enterprise_value", "static", value, with_entity=True, form="lit", force=1))
+    spec.para(
+        w.stated(c.name, "enterprise_value", "static", value, with_entity=True, form="lit", force=1)
+    )
     spec.heading("2. Undertakings", 2)
     for text in rng.sample(LEGAL, 6):
         spec.para(text)
@@ -426,10 +550,17 @@ def build_article(
     c = ctx.comp
     short = _short(c)
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "txt", f"Trade press: {short} prepares for a sale", DocType.PRESS_ARTICLE, published
+        doc_id,
+        ctx.folder,
+        "txt",
+        f"Trade press: {short} prepares for a sale",
+        DocType.PRESS_ARTICLE,
+        published,
     )
     _intro(spec, f"{short} prepares for a sale")
-    spec.para(f"{short}, a {c.sector_label} company based in {c.hq}, is preparing a sale process, according to people familiar with the matter.")
+    spec.para(
+        f"{short}, a {c.sector_label} company based in {c.hq}, is preparing a sale process, according to people familiar with the matter."
+    )
     anchor = 0 if aurora else None
     spec.para(
         w.press(c.name, short, "revenue", "FY2024", c.press_revenue, force=anchor),
@@ -439,7 +570,16 @@ def build_article(
     if ctx.params.hard_negative_rate > rng.random():
         spec.para(
             f"Not to be confused with {c.distractor}, a separate company.",
-            w.stated(c.distractor, "revenue", "FY2024", c.distractor_revenue, form="lit", force=1, with_entity=True, style="mn"),
+            w.stated(
+                c.distractor,
+                "revenue",
+                "FY2024",
+                c.distractor_revenue,
+                form="lit",
+                force=1,
+                with_entity=True,
+                style="mn",
+            ),
         )
     spec.para(filler.paragraph(rng, "markets", ctx.fctx(), 2))
     return spec
@@ -449,10 +589,19 @@ def build_article2(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     short = _short(c)
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "txt", f"Trade press: {short} balance sheet in focus", DocType.PRESS_ARTICLE, published
+        doc_id,
+        ctx.folder,
+        "txt",
+        f"Trade press: {short} balance sheet in focus",
+        DocType.PRESS_ARTICLE,
+        published,
     )
     _intro(spec, f"{short} balance sheet in focus")
-    spec.para(w.stated(c.name, "net_debt", "FY2024", c.net_debt_last, with_entity=True, form="lit", force=1))
+    spec.para(
+        w.stated(
+            c.name, "net_debt", "FY2024", c.net_debt_last, with_entity=True, form="lit", force=1
+        )
+    )
     spec.para(filler.paragraph(rng, "strategy", ctx.fctx(), 3))
     return spec
 
@@ -460,7 +609,12 @@ def build_article2(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 def build_pr(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "txt", f"{c.name} reports order backlog", DocType.PRESS_RELEASE, published
+        doc_id,
+        ctx.folder,
+        "txt",
+        f"{c.name} reports order backlog",
+        DocType.PRESS_RELEASE,
+        published,
     )
     _intro(spec, f"{c.name} reports order backlog")
     spec.para(w.stated(c.name, "order_backlog", "FY2024", c.backlog, with_entity=True))
@@ -473,18 +627,51 @@ def build_pr_pair(
 ) -> tuple[DocSpec, DocSpec]:
     c = ctx.comp
     orig, w1, rng = ctx.doc(
-        orig_id, ctx.folder, "txt", f"{c.name} reports results (original, withdrawn)",
-        DocType.PRESS_RELEASE, orig_date, status=DocStatus.WITHDRAWN, superseded_by=corr_id,
+        orig_id,
+        ctx.folder,
+        "txt",
+        f"{c.name} reports results (original, withdrawn)",
+        DocType.PRESS_RELEASE,
+        orig_date,
+        status=DocStatus.WITHDRAWN,
+        superseded_by=corr_id,
     )
     _intro(orig, f"{c.name} reports results")
-    orig.para(w1.stated(c.name, "ebitda", "FY2024", c.orig_pr_ebitda, with_entity=True, form="lit", force=1, style="mn"))
+    orig.para(
+        w1.stated(
+            c.name,
+            "ebitda",
+            "FY2024",
+            c.orig_pr_ebitda,
+            with_entity=True,
+            form="lit",
+            force=1,
+            style="mn",
+        )
+    )
     orig.para(filler.paragraph(rng, "overview", ctx.fctx(), 2))
     corr, w2, rng2 = ctx.doc(
-        corr_id, ctx.folder, "txt", f"{c.name} corrects results release", DocType.PRESS_RELEASE, corr_date
+        corr_id,
+        ctx.folder,
+        "txt",
+        f"{c.name} corrects results release",
+        DocType.PRESS_RELEASE,
+        corr_date,
     )
     _intro(corr, f"{c.name} corrects results release")
     corr.para(f"This release corrects the release of {orig_date.isoformat()}, which is withdrawn.")
-    corr.para(w2.stated(c.name, "ebitda", "FY2024", c.ebitda_last, with_entity=True, form="lit", force=1, style="mn"))
+    corr.para(
+        w2.stated(
+            c.name,
+            "ebitda",
+            "FY2024",
+            c.ebitda_last,
+            with_entity=True,
+            form="lit",
+            force=1,
+            style="mn",
+        )
+    )
     corr.para(filler.paragraph(rng2, "overview", ctx.fctx(), 2))
     return orig, corr
 
@@ -493,10 +680,25 @@ def build_old_article(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     short = _short(c)
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "txt", f"Trade press: {short} export strategy", DocType.PRESS_ARTICLE, published
+        doc_id,
+        ctx.folder,
+        "txt",
+        f"Trade press: {short} export strategy",
+        DocType.PRESS_ARTICLE,
+        published,
     )
     _intro(spec, f"{short} export strategy")
-    spec.para(w.stated(c.name, "export_share", "FY2023", c.export_share_old, with_entity=True, form="lit", force=1))
+    spec.para(
+        w.stated(
+            c.name,
+            "export_share",
+            "FY2023",
+            c.export_share_old,
+            with_entity=True,
+            form="lit",
+            force=1,
+        )
+    )
     spec.para(filler.paragraph(rng, "markets", ctx.fctx(), 2))
     return spec
 
@@ -504,11 +706,19 @@ def build_old_article(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
 def build_old_deck(ctx: Ctx, doc_id: str, published: date) -> DocSpec:
     c = ctx.comp
     spec, w, rng = ctx.doc(
-        doc_id, ctx.folder, "docx", f"Project {c.project}, prior-year management presentation",
-        DocType.DEAL_DOCUMENT, published,
+        doc_id,
+        ctx.folder,
+        "docx",
+        f"Project {c.project}, prior-year management presentation",
+        DocType.DEAL_DOCUMENT,
+        published,
     )
     _intro(spec, f"Prior-year management presentation, {c.name}")
-    spec.para(w.stated(c.name, "plants", "FY2022", float(c.plants_old), with_entity=True, form="lit", force=1))
+    spec.para(
+        w.stated(
+            c.name, "plants", "FY2022", float(c.plants_old), with_entity=True, form="lit", force=1
+        )
+    )
     spec.para(filler.paragraph(rng, "operations", ctx.fctx(), 2))
     return spec
 

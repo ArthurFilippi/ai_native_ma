@@ -14,7 +14,7 @@ from datetime import UTC, datetime
 from docx import Document
 from docx.shared import Pt
 from fpdf import FPDF
-from openpyxl import Workbook
+from openpyxl import Workbook  # type: ignore[import-untyped,unused-ignore]
 
 from ainma.ingest.base import row_text
 from ainma.synth.docspec import Block, DocSpec, Heading, PageBreak, Para, Table
@@ -172,7 +172,7 @@ def write_docx(spec: DocSpec) -> bytes:
     props.revision = 1
     props.comments = ""
     normal = document.styles["Normal"]
-    normal.font.size = Pt(10)  # type: ignore[attr-defined]
+    normal.font.size = Pt(10)
     for block in spec.blocks:
         if isinstance(block, Heading):
             _check_ascii(block.text, f"{spec.id} heading")
@@ -190,7 +190,7 @@ def write_docx(spec: DocSpec) -> bytes:
                     texts = row_text([value]) if value != "" else ""
                     table.cell(r_index, c_index).text = texts
         elif isinstance(block, PageBreak):
-            document.add_page_break()
+            document.add_page_break()  # type: ignore[no-untyped-call]
     buffer = io.BytesIO()
     document.save(buffer)
     return normalize_zip(buffer.getvalue())
@@ -202,7 +202,7 @@ def write_docx(spec: DocSpec) -> bytes:
 def write_xlsx(spec: DocSpec) -> bytes:
     """Sheets are described as a Heading (sheet name) followed by a Table."""
     workbook = Workbook()
-    workbook.remove(workbook.active)  # type: ignore[arg-type]
+    workbook.remove(workbook.active)
     props = workbook.properties
     props.creator = "Synthetic generator"
     props.lastModifiedBy = "Synthetic generator"

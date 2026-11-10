@@ -140,12 +140,36 @@ def generate_financials(
     ocf = [n + d - w for n, d, w in zip(ni, da, d_wc, strict=True)]
     capex = [round(r * _u(rng, 0.03, 0.055)) for r in rev]
     return Financials(
-        years=list(YEARS), revenue=rev, cogs=cogs, gross_profit=gp, sga=sga, ebitda=ebitda,
-        da=da, ebit=ebit, interest=interest, ebt=ebt, tax=tax, net_income=ni, cash=cash,
-        receivables=receivables, inventory=inventory, current_assets=current_assets, ppe=ppe,
-        other_nc=other_nc, total_assets=total_assets, payables=payables, other_cl=other_cl,
-        st_debt=st_debt, current_liabilities=current_liabilities, lt_debt=lt_debt,
-        total_debt=total_debt, equity=equity, total_le=total_le, d_wc=d_wc, ocf=ocf, capex=capex,
+        years=list(YEARS),
+        revenue=rev,
+        cogs=cogs,
+        gross_profit=gp,
+        sga=sga,
+        ebitda=ebitda,
+        da=da,
+        ebit=ebit,
+        interest=interest,
+        ebt=ebt,
+        tax=tax,
+        net_income=ni,
+        cash=cash,
+        receivables=receivables,
+        inventory=inventory,
+        current_assets=current_assets,
+        ppe=ppe,
+        other_nc=other_nc,
+        total_assets=total_assets,
+        payables=payables,
+        other_cl=other_cl,
+        st_debt=st_debt,
+        current_liabilities=current_liabilities,
+        lt_debt=lt_debt,
+        total_debt=total_debt,
+        equity=equity,
+        total_le=total_le,
+        d_wc=d_wc,
+        ocf=ocf,
+        capex=capex,
     )
 
 
@@ -156,7 +180,10 @@ def tenths(values: list[int]) -> list[float]:
 def kpi_truth_values(fin: Financials, year: str) -> dict[str, float]:
     """Exact KPI values for one year, from the same integers the spreadsheet prints."""
     i = fin.idx(year)
-    t = lambda xs: xs[i] / 10  # noqa: E731
+
+    def t(xs: list[int]) -> float:
+        return xs[i] / 10
+
     rev, gp, ebitda, ni = t(fin.revenue), t(fin.gross_profit), t(fin.ebitda), t(fin.net_income)
     debt, cash = t(fin.total_debt), t(fin.cash)
     return {

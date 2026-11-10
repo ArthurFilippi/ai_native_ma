@@ -48,18 +48,35 @@ from ainma.truth import (
 
 NUM = re.compile(r"\d[\d,]*\.?\d*")
 MIN_SIZES = {
-    "answerable": 150, "unanswerable": 40, "contradictions": 30, "controls": 30, "stale": 15,
-    "superseded_withdrawn": 10, "judge": 300,
+    "answerable": 150,
+    "unanswerable": 40,
+    "contradictions": 30,
+    "controls": 30,
+    "stale": 15,
+    "superseded_withdrawn": 10,
+    "judge": 300,
 }
 REG_SENTENCES = {
-    "not_met": ("majority owned by a sovereign wealth entity", "significant exposure to defense contracts"),
+    "not_met": (
+        "majority owned by a sovereign wealth entity",
+        "significant exposure to defense contracts",
+    ),
     "met": ("privately owned and has no state shareholders",),
 }
 MODEL_ROWS = {
-    "revenue": "Revenue", "cogs": "Cost of goods sold", "ebitda": "EBITDA", "ebit": "EBIT",
-    "net_income": "Net income", "operating_cash_flow": "Operating cash flow", "capex": "Capital expenditure",
-    "cash": "Cash", "total_debt": "Total debt", "total_assets": "Total assets",
-    "total_equity": "Total equity", "interest_expense": "Interest expense", "gross_profit": "Gross profit",
+    "revenue": "Revenue",
+    "cogs": "Cost of goods sold",
+    "ebitda": "EBITDA",
+    "ebit": "EBIT",
+    "net_income": "Net income",
+    "operating_cash_flow": "Operating cash flow",
+    "capex": "Capital expenditure",
+    "cash": "Cash",
+    "total_debt": "Total debt",
+    "total_assets": "Total assets",
+    "total_equity": "Total equity",
+    "interest_expense": "Interest expense",
+    "gross_profit": "Gross profit",
 }
 
 
@@ -92,7 +109,9 @@ def numbers(text: str) -> list[float]:
 def has_value(text: str, value: float) -> bool:
     nums = numbers(text)
     return any(
-        abs(n - value) < 1e-6 or abs(n * 1000 - value) < 1e-6 or abs(n - value) < 1e-6 * max(1.0, abs(value))
+        abs(n - value) < 1e-6
+        or abs(n * 1000 - value) < 1e-6
+        or abs(n - value) < 1e-6 * max(1.0, abs(value))
         for n in nums
     )
 
@@ -120,17 +139,21 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     facts: list[Fact] = _load(seed_dir, "facts", TypeAdapter(list[Fact]))
     queries: list[Query] = _load(seed_dir, "queries", TypeAdapter(list[Query]))
     unans: list[Unanswerable] = _load(seed_dir, "unanswerable", TypeAdapter(list[Unanswerable]))
-    contras: list[ContradictionTruth] = _load(seed_dir, "contradictions", TypeAdapter(list[ContradictionTruth]))
+    contras: list[ContradictionTruth] = _load(
+        seed_dir, "contradictions", TypeAdapter(list[ContradictionTruth])
+    )
     stale: list[StaleCase] = _load(seed_dir, "stale", TypeAdapter(list[StaleCase]))
     kpis: list[KpiTruth] = _load(seed_dir, "kpi_truth", TypeAdapter(list[KpiTruth]))
     btruth: list[BuyerTruth] = _load(seed_dir, "buyer_truth", TypeAdapter(list[BuyerTruth]))
     judge: list[JudgeLabel] = _load(seed_dir, "judge_labels", TypeAdapter(list[JudgeLabel]))
     buyers: list[BuyerProfile] = _load(seed_dir, "buyers", TypeAdapter(list[BuyerProfile]))
     deals: list[Deal] = _load(seed_dir, "deals", TypeAdapter(list[Deal]))
-    users: UsersFile = _load(seed_dir, "users", TypeAdapter(UsersFile))
+    _load(seed_dir, "users", TypeAdapter(UsersFile))
     params: GenerationParams = _load(seed_dir, "params", TypeAdapter(GenerationParams))
     aux: dict[str, Any] = json.loads((seed_dir / "truth" / "aux.json").read_text("utf-8"))
-    news: list[NewsFeedItem] = TypeAdapter(list[NewsFeedItem]).validate_json((seed_dir / "news" / "items.json").read_bytes())
+    news: list[NewsFeedItem] = TypeAdapter(list[NewsFeedItem]).validate_json(
+        (seed_dir / "news" / "items.json").read_bytes()
+    )
     ref = date.fromisoformat(aux["reference_date"])
     if f"reference_date={ref.isoformat()}" not in params.generator_version:
         rep.err("params.generator_version does not state the reference date")
@@ -158,7 +181,9 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     # ---- access: outsider sees no deal chunk, analyst sees only Aurora ----------------------
     outsider = await store.access_for("u_outsider")
     for deal in deals:
-        if await store.candidates(outsider, deal_id=deal.id) != [c for c in await store.candidates(outsider, deal_id=None)]:
+        if await store.candidates(outsider, deal_id=deal.id) != list(
+            await store.candidates(outsider, deal_id=None)
+        ):
             rep.err(f"u_outsider can see chunks of {deal.id}")
     analyst = await store.access_for("u_analyst")
     if analyst.allowed_deal_ids != frozenset({"deal_aurora"}):
@@ -188,18 +213,29 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
             if o["document_id"] != f.document_id:
                 rep.err(f"{f.id}: occurrence in another document")
             for c in chunks_by_doc[o["document_id"]]:
-                if c.page == o["page"] and c.char_start <= o["char_start"] and o["char_end"] <= c.char_end:
+                if (
+                    c.page == o["page"]
+                    and c.char_start <= o["char_start"]
+                    and o["char_end"] <= c.char_end
+                ):
                     support.add(c.id)
                     if o["quote"] not in c.text:
                         rep.err(f"{f.id}: chunk {c.id} does not contain the quote")
         first = occs[0]
-        if (f.page, f.char_start, f.char_end, f.quote) != (first["page"], first["char_start"], first["char_end"], first["quote"]):
+        if (f.page, f.char_start, f.char_end, f.quote) != (
+            first["page"],
+            first["char_start"],
+            first["char_end"],
+            first["quote"],
+        ):
             rep.err(f"{f.id}: primary span differs from the first occurrence")
         text = await page_text(f.document_id, f.page)
         if text[f.char_start : f.char_end] != f.quote:
             rep.err(f"{f.id}: span does not reproduce the quote from stored page text")
         if set(f.support_chunk_ids) != support or not support:
-            rep.err(f"{f.id}: support_chunk_ids {sorted(f.support_chunk_ids)} != re-derived {sorted(support)}")
+            rep.err(
+                f"{f.id}: support_chunk_ids {sorted(f.support_chunk_ids)} != re-derived {sorted(support)}"
+            )
         for cid in f.support_chunk_ids:
             if cid not in all_chunks:
                 rep.err(f"{f.id}: support chunk {cid} not stored")
@@ -224,9 +260,14 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
             rep.err(f"{q.id}: gold fact outside the query scope")
         rel2 = {c for g in gold_f for c in g.support_chunk_ids}
         gold_ids = {g.id for g in gold_f}
-        others = [o for g in gold_f for o in groups.get((g.entity, g.metric, g.period), []) if o.id not in gold_ids]
+        others = [
+            o
+            for g in gold_f
+            for o in groups.get((g.entity, g.metric, g.period), [])
+            if o.id not in gold_ids
+        ]
         rel1 = {c for o in others for c in o.support_chunk_ids} - rel2
-        expected = {c: 2 for c in rel2} | {c: 1 for c in rel1}
+        expected = dict.fromkeys(rel2, 2) | dict.fromkeys(rel1, 1)
         if q.relevance != expected:
             rep.err(f"{q.id}: relevance differs from re-derived judgments")
         for cid in q.relevance:
@@ -254,48 +295,55 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
 
     # ---- contradictions -------------------------------------------------------------------------
     covered: dict[tuple[str, str, str], set[str]] = {}
-    for c in contras:
-        fs = [fact_by_id.get(i) for i in c.fact_ids]
-        if any(x is None for x in fs):
-            rep.err(f"{c.id}: unknown fact")
+    for ct in contras:
+        maybe = [fact_by_id.get(i) for i in ct.fact_ids]
+        if any(x is None for x in maybe):
+            rep.err(f"{ct.id}: unknown fact")
             continue
-        fl = [x for x in fs if x is not None]
-        if [x.document_id for x in fl] != c.document_ids:
-            rep.err(f"{c.id}: document_ids differ from the facts")
-        if len(set(c.document_ids)) != len(c.document_ids):
-            rep.err(f"{c.id}: two facts from the same document")
-        if any((x.entity, x.metric, x.period) != (c.entity, c.metric, c.period) for x in fl):
-            rep.err(f"{c.id}: facts do not share the key")
+        fl = [x for x in maybe if x is not None]
+        if [x.document_id for x in fl] != ct.document_ids:
+            rep.err(f"{ct.id}: document_ids differ from the facts")
+        if len(set(ct.document_ids)) != len(ct.document_ids):
+            rep.err(f"{ct.id}: two facts from the same document")
+        if any((x.entity, x.metric, x.period) != (ct.entity, ct.metric, ct.period) for x in fl):
+            rep.err(f"{ct.id}: facts do not share the key")
         values = [x.value for x in fl]
         spread = (max(values) - min(values)) / abs(max(values)) if max(values) else 0.0
-        if c.kind == "contradiction":
+        if ct.kind == "contradiction":
             if spread <= TOLERANCE:
-                rep.err(f"{c.id}: contradiction whose values agree")
-            if len({mdoc[d].doc_type for d in c.document_ids}) < 1:
-                rep.err(f"{c.id}: no document type")
-        elif c.kind == "consistent_control":
+                rep.err(f"{ct.id}: contradiction whose values agree")
+            if len({mdoc[d].doc_type for d in ct.document_ids}) < 1:
+                rep.err(f"{ct.id}: no document type")
+        elif ct.kind == "consistent_control":
             if spread > TOLERANCE:
-                rep.err(f"{c.id}: control whose values differ")
+                rep.err(f"{ct.id}: control whose values differ")
         else:
-            wanted = DocStatus.SUPERSEDED if c.kind == "superseded" else DocStatus.WITHDRAWN
-            old, new = c.document_ids
+            wanted = DocStatus.SUPERSEDED if ct.kind == "superseded" else DocStatus.WITHDRAWN
+            old, new = ct.document_ids
             if mdoc[old].status is not wanted or mdoc[old].superseded_by != new:
-                rep.err(f"{c.id}: {c.kind} case does not match the manifest")
+                rep.err(f"{ct.id}: {ct.kind} case does not match the manifest")
             if spread <= TOLERANCE:
-                rep.err(f"{c.id}: {c.kind} case with equal values")
-        if c.kind in ("contradiction", "consistent_control"):
-            covered[(c.entity, c.metric, c.period)] = set(c.fact_ids)
-            if any(not cur[d] for d in c.document_ids):
-                rep.err(f"{c.id}: pair uses a superseded or withdrawn document")
-        if c.query_id is not None and c.query_id not in qids:
-            rep.err(f"{c.id}: unknown query {c.query_id}")
+                rep.err(f"{ct.id}: {ct.kind} case with equal values")
+        if ct.kind in ("contradiction", "consistent_control"):
+            covered[(ct.entity, ct.metric, ct.period)] = set(ct.fact_ids)
+            if any(not cur[d] for d in ct.document_ids):
+                rep.err(f"{ct.id}: pair uses a superseded or withdrawn document")
+        if ct.query_id is not None and ct.query_id not in qids:
+            rep.err(f"{ct.id}: unknown query {ct.query_id}")
     for key, fs in sorted(groups.items()):
         if len({f.document_id for f in fs}) >= 2 and covered.get(key) != {f.id for f in fs}:
-            rep.err(f"key {key} is stated by several documents but is missing from contradictions.json")
+            rep.err(
+                f"key {key} is stated by several documents but is missing from contradictions.json"
+            )
     rep.info(f"contradiction keys verified: {len(contras)}")
 
     # ---- stale ----------------------------------------------------------------------------------
-    window = {DocType.PRESS_ARTICLE: 180, DocType.PRESS_RELEASE: 180, DocType.DEAL_DOCUMENT: 540, DocType.REGULATORY_FILING: 730}
+    window = {
+        DocType.PRESS_ARTICLE: 180,
+        DocType.PRESS_RELEASE: 180,
+        DocType.DEAL_DOCUMENT: 540,
+        DocType.REGULATORY_FILING: 730,
+    }
     if {k.value: v for k, v in FRESHNESS_DAYS.items()} != {k.value: v for k, v in window.items()}:
         rep.err("freshness windows differ from the specification")
     all_by_key: dict[tuple[str, str, str], list[Fact]] = defaultdict(list)
@@ -303,12 +351,12 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
         all_by_key[(f.entity, f.metric, f.period)].append(f)
     qmap = {q.id: q for q in queries}
     for s in stale:
-        f = fact_by_id.get(s.fact_id)
-        q = qmap.get(s.query_id)
-        if f is None or q is None or f.id not in q.gold_fact_ids:
+        sf = fact_by_id.get(s.fact_id)
+        sq = qmap.get(s.query_id)
+        if sf is None or sq is None or sf.id not in sq.gold_fact_ids:
             rep.err(f"{s.id}: fact or query missing, or the query does not target the fact")
             continue
-        for g in all_by_key[(f.entity, f.metric, f.period)]:
+        for g in all_by_key[(sf.entity, sf.metric, sf.period)]:
             e = mdoc[g.document_id]
             win = window.get(e.doc_type)
             if win is None or e.published_on is None or (ref - e.published_on).days <= win:
@@ -323,7 +371,7 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
             continue
         if j.quote is not None and j.quote not in chunk.text:
             rep.err(f"{j.id}: quote is not in the chunk")
-        claim_nums = [n for n in numbers(re.sub(r"FY\d{4}", "", j.claim))]
+        claim_nums = list(numbers(re.sub(r"FY\d{4}", "", j.claim)))
         missing = [n for n in claim_nums if not has_value(chunk.text, n)]
         if j.label == "supported" and missing:
             rep.err(f"{j.id}: supported claim has numbers absent from the chunk: {missing}")
@@ -335,7 +383,9 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     rep.info(f"judge labels verified: {len(judge)}")
 
     # ---- KPI truth against the financial model text -------------------------------------------------
-    model_pages = [await page_text("doc_model", p) for p in range(1, 4)] if "doc_model" in mdoc else []
+    model_pages = (
+        [await page_text("doc_model", p) for p in range(1, 4)] if "doc_model" in mdoc else []
+    )
     rows: dict[str, list[str]] = {}
     for text in model_pages:
         for line in text.split("\n"):
@@ -345,15 +395,21 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     table = {(k.kpi_id, k.period): k for k in kpis}
     for kpi_id, unit, kind in KPI_IDS:
         for year in YEARS:
-            k = table.get((kpi_id, year))
-            if k is None:
+            row = table.get((kpi_id, year))
+            if row is None:
                 rep.err(f"kpi_truth missing {kpi_id} {year}")
                 continue
-            if (k.unit, k.kind, k.deal_id) != (unit, kind, "deal_aurora"):
+            if (row.unit, row.kind, row.deal_id) != (unit, kind, "deal_aurora"):
                 rep.err(f"kpi_truth {kpi_id} {year}: unit or kind mismatch")
             label = MODEL_ROWS.get(kpi_id)
-            if label is not None and label in rows and f"{k.value:.1f}" != rows[label][YEARS.index(year)]:
-                rep.err(f"kpi_truth {kpi_id} {year}: {k.value} differs from the model cell {rows[label][YEARS.index(year)]}")
+            if (
+                label is not None
+                and label in rows
+                and f"{row.value:.1f}" != rows[label][YEARS.index(year)]
+            ):
+                rep.err(
+                    f"kpi_truth {kpi_id} {year}: {row.value} differs from the model cell {rows[label][YEARS.index(year)]}"
+                )
     if len(kpis) != 20 * len(YEARS):
         rep.err(f"kpi_truth has {len(kpis)} rows, expected {20 * len(YEARS)}")
 
@@ -384,8 +440,13 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     n_ctrl = sum(1 for c in contras if c.kind == "consistent_control")
     n_sw = sum(1 for c in contras if c.kind in ("superseded", "withdrawn"))
     sizes = {
-        "answerable": len(queries), "unanswerable": len(unans), "contradictions": n_contra,
-        "controls": n_ctrl, "stale": len(stale), "superseded_withdrawn": n_sw, "judge": len(judge),
+        "answerable": len(queries),
+        "unanswerable": len(unans),
+        "contradictions": n_contra,
+        "controls": n_ctrl,
+        "stale": len(stale),
+        "superseded_withdrawn": n_sw,
+        "judge": len(judge),
     }
     for name, minimum in MIN_SIZES.items():
         if sizes[name] < minimum:
@@ -404,27 +465,57 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     aurora_docs = [e for e in manifest if e.deal_id == "deal_aurora"]
     if not 12 <= len(aurora_docs) <= 14:
         rep.err(f"Aurora has {len(aurora_docs)} documents, expected 12 to 14")
-    if "doc_cim" in mdoc and not 20 <= len(model_pages) * 0 + (await _n_pages(store, lead, "doc_cim")) <= 25:
+    if (
+        "doc_cim" in mdoc
+        and not 20 <= len(model_pages) * 0 + (await _n_pages(store, lead, "doc_cim")) <= 25
+    ):
         rep.err("CIM must have 20 to 25 pages")
-    cim_rev = [f for f in facts if f.document_id == "doc_cim" and f.metric == "revenue" and f.period == "FY2024"]
-    press_rev = [f for f in facts if f.document_id == "doc_news_17" and f.metric == "revenue" and f.period == "FY2024"]
-    if not cim_rev or not press_rev or abs(cim_rev[0].value - press_rev[0].value) / cim_rev[0].value <= TOLERANCE:
+    cim_rev = [
+        f
+        for f in facts
+        if f.document_id == "doc_cim" and f.metric == "revenue" and f.period == "FY2024"
+    ]
+    press_rev = [
+        f
+        for f in facts
+        if f.document_id == "doc_news_17" and f.metric == "revenue" and f.period == "FY2024"
+    ]
+    if (
+        not cim_rev
+        or not press_rev
+        or abs(cim_rev[0].value - press_rev[0].value) / cim_rev[0].value <= TOLERANCE
+    ):
         rep.err("Aurora FY2024 revenue contradiction (CIM vs trade press) is missing")
-    elif not any(c.kind == "contradiction" and {cim_rev[0].id, press_rev[0].id} <= set(c.fact_ids) for c in contras):
+    elif not any(
+        c.kind == "contradiction" and {cim_rev[0].id, press_rev[0].id} <= set(c.fact_ids)
+        for c in contras
+    ):
         rep.err("Aurora FY2024 revenue is not listed as a contradiction")
     if params.seed == 1234:
-        if cim_rev and cim_rev[0].quote != "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million).":
+        if (
+            cim_rev
+            and cim_rev[0].quote
+            != "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+        ):
             rep.err("seed 1234: CIM anchor sentence differs from the specification")
-        if press_rev and press_rev[0].quote != "Aurora booked roughly EUR 179 million of revenue in 2024.":
+        if (
+            press_rev
+            and press_rev[0].quote != "Aurora booked roughly EUR 179 million of revenue in 2024."
+        ):
             rep.err("seed 1234: trade press anchor sentence differs from the specification")
-    if not any(u.deal_id == "deal_aurora" and "CEO" in u.text and "compensation" in u.text for u in unans):
+    if not any(
+        u.deal_id == "deal_aurora" and "CEO" in u.text and "compensation" in u.text for u in unans
+    ):
         rep.err("CEO compensation question for deal_aurora is missing")
     statuses = defaultdict(set)
     for t in btruth:
         statuses[t.criterion_key].add(t.status.value)
     if "unknown" not in {s for v in statuses.values() for s in v}:
         rep.err("no buyer has an unknown criterion")
-    if not any(t.criterion_key in ("ticket_fit", "ev_ratio") and t.status.value == "not_met" for t in btruth):
+    if not any(
+        t.criterion_key in ("ticket_fit", "ev_ratio") and t.status.value == "not_met"
+        for t in btruth
+    ):
         rep.err("no buyer has a dealbreaker")
     if not any(t.criterion_key == "fund_lifecycle" and t.status.value == "unknown" for t in btruth):
         rep.err("no unlisted fund without a stated investment period end")
@@ -447,11 +538,16 @@ async def _verify_buyers(
     aux: dict[str, Any],
     ref: date,
 ) -> None:
+    def months(d: date) -> float:
+        return (ref - d).days / 30.4375
+
     ev = float(aux["aurora"]["ev_eur_m"])
     equity = float(aux["aurora"]["equity_eur_m"])
     sector = aux["aurora"]["sector"]
     region = aux["aurora"]["region"]
-    got: dict[tuple[str, str], str] = {(t.buyer_id, t.criterion_key): t.status.value for t in btruth}
+    got: dict[tuple[str, str], str] = {
+        (t.buyer_id, t.criterion_key): t.status.value for t in btruth
+    }
     from ainma.synth.world import SECTORS
 
     label_to_key = {v.label: k for k, v in SECTORS.items()}
@@ -478,7 +574,11 @@ async def _verify_buyers(
         # acquisitions evidenced in press releases and news items
         acqs: list[tuple[date, str]] = []
         for e in mdoc.values():
-            if e.entity_id == b.id and e.title.endswith("announces an acquisition") and e.published_on:
+            if (
+                e.entity_id == b.id
+                and e.title.endswith("announces an acquisition")
+                and e.published_on
+            ):
                 body = " ".join(c.text for c in chunks.values() if c.document_id == e.id)
                 m = re.search(r"acquisition of .*?, a (.+?) company", body)
                 if m and m.group(1) in label_to_key:
@@ -488,7 +588,6 @@ async def _verify_buyers(
                 m = re.search(r"The target is a (.+?) company", item.text)
                 if m and m.group(1) in label_to_key:
                     acqs.append((item.published_on, label_to_key[m.group(1)]))
-        months = lambda d: (ref - d).days / 30.4375  # noqa: E731
         if not acqs:
             expected["recent_activity"] = "unknown"
         else:
@@ -497,7 +596,7 @@ async def _verify_buyers(
         if b.buyer_type is BuyerType.FINANCIAL:
             share = equity / b.size_eur_m
             expected["ticket_fit"] = "met" if 0.05 <= share <= 0.40 else "not_met"
-            end = [f for f in fact_by_entity[(b.name, "investment_period_end_year")]]
+            end = list(fact_by_entity[(b.name, "investment_period_end_year")])
             if b.listed:
                 expected["fund_lifecycle"] = "met"
             elif end:
@@ -510,7 +609,9 @@ async def _verify_buyers(
             if not acqs:
                 expected["integration_bandwidth"] = "unknown"
             else:
-                expected["integration_bandwidth"] = "met" if sum(1 for a in acqs if months(a[0]) <= 24) <= 2 else "not_met"
+                expected["integration_bandwidth"] = (
+                    "met" if sum(1 for a in acqs if months(a[0]) <= 24) <= 2 else "not_met"
+                )
             share_facts = fact_by_entity[(b.name, "market_share")]
             if share_facts:
                 expected["antitrust"] = "not_met" if share_facts[0].value >= 35.0 else "met"
@@ -518,7 +619,9 @@ async def _verify_buyers(
                 expected["antitrust"] = "unknown"
         for key, status in expected.items():
             if got.get((b.id, key)) != status:
-                rep.err(f"buyer truth {b.id} {key}: stored {got.get((b.id, key))}, re-derived {status}")
+                rep.err(
+                    f"buyer truth {b.id} {key}: stored {got.get((b.id, key))}, re-derived {status}"
+                )
         extra = {k for (bid, k) in got if bid == b.id} - set(expected)
         if extra:
             rep.err(f"buyer truth {b.id}: unexpected criteria {sorted(extra)}")

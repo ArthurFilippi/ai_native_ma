@@ -1,4 +1,4 @@
-"""Generate one seed: documents, manifest, news items and ground truth, written deterministically."""
+"""Generate one seed: documents, manifest, news items and ground truth, deterministically."""
 
 from __future__ import annotations
 
@@ -51,12 +51,20 @@ def write_truth(truth: Truth, seed_dir: Path) -> None:
         (out / f"{name}.json").write_text(_dump(payload), encoding="utf-8")
 
 
-def generate(seed: int, out_root: Path, *, paraphrase_rate: float | None = None, hard_negative_rate: float | None = None) -> Path:
+def generate(
+    seed: int,
+    out_root: Path,
+    *,
+    paraphrase_rate: float | None = None,
+    hard_negative_rate: float | None = None,
+) -> Path:
     base = Params(seed=seed)
     params = Params(
         seed=seed,
         paraphrase_rate=base.paraphrase_rate if paraphrase_rate is None else paraphrase_rate,
-        hard_negative_rate=base.hard_negative_rate if hard_negative_rate is None else hard_negative_rate,
+        hard_negative_rate=base.hard_negative_rate
+        if hard_negative_rate is None
+        else hard_negative_rate,
     )
     seed_dir = Path(out_root) / str(seed)
     reset_dir(seed_dir)
@@ -67,5 +75,11 @@ def generate(seed: int, out_root: Path, *, paraphrase_rate: float | None = None,
     (seed_dir / "news" / "items.json").write_text(_dump(corpus.news), encoding="utf-8")
     truth = build_truth(corpus)
     write_truth(truth, seed_dir)
-    log.info("seed %s: %d documents, %d facts, %d queries", seed, len(corpus.specs), len(truth.facts), len(truth.queries))
+    log.info(
+        "seed %s: %d documents, %d facts, %d queries",
+        seed,
+        len(corpus.specs),
+        len(truth.facts),
+        len(truth.queries),
+    )
     return seed_dir

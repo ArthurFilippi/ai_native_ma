@@ -36,7 +36,7 @@ class Params:
 
 
 def rng_for(seed: int, *parts: object) -> Random:
-    """Independent deterministic stream per (seed, purpose). String seeding is stable across runs."""
+    """Independent deterministic stream per (seed, purpose); string seeding is stable."""
     digest = hashlib.sha256(":".join([str(seed), *map(str, parts)]).encode()).hexdigest()
     return Random(digest)
 

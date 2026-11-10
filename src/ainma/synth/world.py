@@ -9,12 +9,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, timedelta
 from random import Random
-from typing import Literal
+from typing import Literal, cast
 
 from ainma.contracts import BuyerProfile, BuyerType
 from ainma.synth.common import DEMO_SEED, REFERENCE_DATE, Params, rng_for
 from ainma.synth.finance import Financials, generate_financials
 from ainma.synth.lang import CITIES, NamePool
+
 
 @dataclass(frozen=True)
 class Sector:
@@ -43,7 +44,12 @@ _SECTOR_DATA: dict[str, dict[str, object]] = {
     "logistics": {
         "label": "logistics",
         "activity": "operator of contract logistics and freight networks",
-        "products": ["pallet distribution", "cold chain handling", "cross dock services", "last mile delivery"],
+        "products": [
+            "pallet distribution",
+            "cold chain handling",
+            "cross dock services",
+            "last mile delivery",
+        ],
         "customers": ["retail chains", "food producers", "online sellers"],
         "site": "logistics hub",
     },
@@ -57,7 +63,12 @@ _SECTOR_DATA: dict[str, dict[str, object]] = {
     "medical_devices": {
         "label": "medical devices",
         "activity": "maker of non-invasive medical devices",
-        "products": ["monitoring units", "diagnostic sensors", "sterile disposables", "imaging accessories"],
+        "products": [
+            "monitoring units",
+            "diagnostic sensors",
+            "sterile disposables",
+            "imaging accessories",
+        ],
         "customers": ["hospital groups", "clinic networks", "distributors"],
         "site": "assembly facility",
     },
@@ -85,14 +96,21 @@ _SECTOR_DATA: dict[str, dict[str, object]] = {
 }
 SECTORS: dict[str, Sector] = {
     k: Sector(
-        str(v["label"]), str(v["activity"]), list(v["products"]),  # type: ignore[call-overload]
-        list(v["customers"]), str(v["site"]),  # type: ignore[call-overload]
+        str(v["label"]),
+        str(v["activity"]),
+        list(cast(list[str], v["products"])),
+        list(cast(list[str], v["customers"])),
+        str(v["site"]),
     )
     for k, v in _SECTOR_DATA.items()
 }
 SECTOR_KEYS = list(SECTORS)
 GEOGRAPHIES = [
-    "Central Europe", "Nordics", "UK and Ireland", "Southern Europe", "North America",
+    "Central Europe",
+    "Nordics",
+    "UK and Ireland",
+    "Southern Europe",
+    "North America",
     "Asia Pacific",
 ]
 AURORA_SECTOR = "industrial_components"
@@ -223,7 +241,13 @@ def _round_to(value: float, step: float) -> float:
 
 
 def _make_company(
-    params: Params, names: NamePool, index: int, deal_id: str, project: str, sector: str, suffix: str
+    params: Params,
+    names: NamePool,
+    index: int,
+    deal_id: str,
+    project: str,
+    sector: str,
+    suffix: str,
 ) -> Company:
     rng = rng_for(params.seed, "company", deal_id)
     sec = SECTORS[sector]
@@ -261,18 +285,38 @@ def _make_company(
         else round(fin.revenue[3] / 10 * 0.988, 1)
     )
     return Company(
-        deal_id=deal_id, project=project, key=stem.lower(), name=name, legal=f"{name} GmbH",
-        sector=sector, hq=CITIES[index % len(CITIES)], ceo=names.person(), cfo=names.person(),
-        founded=rng.randrange(1950, 2005), fin=fin, headcount=headcount,
-        plants=rng.randrange(3, 9), backlog=round(revenue * rng.uniform(0.25, 0.6), 1),
-        top_customer=top, top10=round(min(95.0, top + rng.uniform(22.0, 35.0)), 1),
-        export_share_old=round(rng.uniform(35.0, 72.0), 1), plants_old=rng.randrange(2, 8),
-        distractor=distractor, distractor_revenue=round(revenue * rng.uniform(0.93, 1.07), 1),
-        ev=ev, equity=equity, draft_ev=round(ev * rng.uniform(0.94, 0.97), 1),
-        press_revenue=press_revenue, press_ebitda=press_ebitda, press_headcount=hc_press,
+        deal_id=deal_id,
+        project=project,
+        key=stem.lower(),
+        name=name,
+        legal=f"{name} GmbH",
+        sector=sector,
+        hq=CITIES[index % len(CITIES)],
+        ceo=names.person(),
+        cfo=names.person(),
+        founded=rng.randrange(1950, 2005),
+        fin=fin,
+        headcount=headcount,
+        plants=rng.randrange(3, 9),
+        backlog=round(revenue * rng.uniform(0.25, 0.6), 1),
+        top_customer=top,
+        top10=round(min(95.0, top + rng.uniform(22.0, 35.0)), 1),
+        export_share_old=round(rng.uniform(35.0, 72.0), 1),
+        plants_old=rng.randrange(2, 8),
+        distractor=distractor,
+        distractor_revenue=round(revenue * rng.uniform(0.93, 1.07), 1),
+        ev=ev,
+        equity=equity,
+        draft_ev=round(ev * rng.uniform(0.94, 0.97), 1),
+        press_revenue=press_revenue,
+        press_ebitda=press_ebitda,
+        press_headcount=hc_press,
         orig_pr_ebitda=round(ebitda * rng.uniform(1.08, 1.16), 1),
-        restated_prior_revenue=restated, products=list(sec.products),
-        customers=list(sec.customers), sector_label=sec.label, site=sec.site,
+        restated_prior_revenue=restated,
+        products=list(sec.products),
+        customers=list(sec.customers),
+        sector_label=sec.label,
+        site=sec.site,
     )
 
 
@@ -285,10 +329,36 @@ def _make_buyers(params: Params, names: NamePool, aurora: Company) -> list[Buyer
     buyers: list[Buyer] = []
     ev, equity = aurora.ev, aurora.equity
     # planned groups, spread over the 20 buyers of each type
-    ratio_plan = [0.72, 0.66, 0.68, 0.48, 0.45, 0.52] + [0.1, 0.14, 0.18, 0.22, 0.26, 0.3, 0.12,
-                                                         0.16, 0.2, 0.24, 0.28, 0.32, 0.08, 0.34]
+    ratio_plan = [0.72, 0.66, 0.68, 0.48, 0.45, 0.52] + [
+        0.1,
+        0.14,
+        0.18,
+        0.22,
+        0.26,
+        0.3,
+        0.12,
+        0.16,
+        0.2,
+        0.24,
+        0.28,
+        0.32,
+        0.08,
+        0.34,
+    ]
     share_plan = [0.015, 0.02, 0.03, 0.035, 0.012, 0.55, 0.65, 0.8] + [
-        0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21, 0.23, 0.26, 0.29, 0.32]
+        0.07,
+        0.09,
+        0.11,
+        0.13,
+        0.15,
+        0.17,
+        0.19,
+        0.21,
+        0.23,
+        0.26,
+        0.29,
+        0.32,
+    ]
     rng.shuffle(ratio_plan)
     rng.shuffle(share_plan)
     sector_pool = SECTOR_KEYS
@@ -299,7 +369,9 @@ def _make_buyers(params: Params, names: NamePool, aurora: Company) -> list[Buyer
         if strategic:
             name = f"{stem} {rng.choice(['Industries', 'Group', 'Holdings', 'Systems'])}"
         else:
-            name = f"{stem} {rng.choice(['Capital Partners', 'Equity', 'Investments', 'Growth Fund'])}"
+            name = (
+                f"{stem} {rng.choice(['Capital Partners', 'Equity', 'Investments', 'Growth Fund'])}"
+            )
         sectors = rng.sample(sector_pool, rng.choice([1, 2, 2, 3]))
         if rng.random() < 0.5 and AURORA_SECTOR not in sectors:
             sectors[0] = AURORA_SECTOR
@@ -321,20 +393,37 @@ def _make_buyers(params: Params, names: NamePool, aurora: Company) -> list[Buyer
         market_share = round(rng.uniform(8.0, 52.0), 1) if strategic else None
         reg = rng.random()
         reg_state: RegState = (
-            "sovereign" if reg < 0.2 else "defense" if reg < 0.28 else "private" if reg < 0.68
+            "sovereign"
+            if reg < 0.2
+            else "defense"
+            if reg < 0.28
+            else "private"
+            if reg < 0.68
             else "unspecified"
         )
         acqs: list[Acquisition] = []
         for _ in range(rng.choice([0, 1, 1, 2, 2, 3]) if strategic else rng.choice([0, 1, 1, 2])):
             sector = AURORA_SECTOR if rng.random() < 0.3 else rng.choice(sector_pool)
             when = _date_between(rng, date(2022, 1, 15), date(2025, 6, 15))
-            acqs.append(Acquisition(when, sector, f"{names.stem()} {rng.choice(['Works', 'Tech', 'Systems', 'Partners'])}"))
+            acqs.append(
+                Acquisition(
+                    when,
+                    sector,
+                    f"{names.stem()} {rng.choice(['Works', 'Tech', 'Systems', 'Partners'])}",
+                )
+            )
         acqs.sort(key=lambda a: a.when, reverse=True)
         profile = BuyerProfile(
-            id=f"buyer_{n:02d}", name=name,
+            id=f"buyer_{n:02d}",
+            name=name,
             buyer_type=BuyerType.STRATEGIC if strategic else BuyerType.FINANCIAL,
-            sectors=sectors, geographies=geos, size_eur_m=size, ticket_min_eur_m=ticket_min,
-            ticket_max_eur_m=ticket_max, fund_vintage_year=vintage, listed=listed,
+            sectors=sectors,
+            geographies=geos,
+            size_eur_m=size,
+            ticket_min_eur_m=ticket_min,
+            ticket_max_eur_m=ticket_max,
+            fund_vintage_year=vintage,
+            listed=listed,
         )
         conflict = n % 3 != 0 and n <= 28  # 14 conflicting buyers among the first 28
         article_conflict = (
@@ -342,15 +431,24 @@ def _make_buyers(params: Params, names: NamePool, aurora: Company) -> list[Buyer
         )
         buyers.append(
             Buyer(
-                profile=profile, investment_end=investment_end, end_stated=end_stated,
-                market_share=market_share, share_stated=share_stated, reg_state=reg_state,
-                acquisitions=acqs, revenue=round(size * rng.uniform(0.2, 0.9), 1),
-                employees=int(rng.uniform(800, 25000) // 10 * 10), portfolio=rng.randrange(6, 24),
-                article_conflict=article_conflict, old_pr=((not strategic and n <= 24) or n in (33, 35)) and n not in (7, 22),
-                old_filing=strategic and n in (1, 5, 9, 13, 17), withdrawn_pr=n in (7, 22),
+                profile=profile,
+                investment_end=investment_end,
+                end_stated=end_stated,
+                market_share=market_share,
+                share_stated=share_stated,
+                reg_state=reg_state,
+                acquisitions=acqs,
+                revenue=round(size * rng.uniform(0.2, 0.9), 1),
+                employees=int(rng.uniform(800, 25000) // 10 * 10),
+                portfolio=rng.randrange(6, 24),
+                article_conflict=article_conflict,
+                old_pr=((not strategic and n <= 24) or n in (33, 35)) and n not in (7, 22),
+                old_filing=strategic and n in (1, 5, 9, 13, 17),
+                withdrawn_pr=n in (7, 22),
                 aum_old=float(_round_to(size * rng.uniform(0.7, 0.9), 10)),
                 employees_old=int(rng.uniform(700, 20000) // 10 * 10),
-                extra_article=rng.random() < 0.5, reg_in_profile=rng.random() < 0.5,
+                extra_article=rng.random() < 0.5,
+                reg_in_profile=rng.random() < 0.5,
             )
         )
     return buyers
@@ -386,7 +484,10 @@ def buyer_criteria(buyer: Buyer, aurora: Company) -> dict[str, str]:
     low, high = aurora.ev, aurora.ev * 60
     out["size_range"] = "met" if low <= p.size_eur_m <= high else "not_met"
     out["regulatory_fdi"] = {
-        "sovereign": "not_met", "defense": "not_met", "private": "met", "unspecified": "unknown",
+        "sovereign": "not_met",
+        "defense": "not_met",
+        "private": "met",
+        "unspecified": "unknown",
     }[buyer.reg_state]
     acqs = buyer.acquisitions
     if not acqs:
@@ -401,7 +502,9 @@ def buyer_criteria(buyer: Buyer, aurora: Company) -> dict[str, str]:
         if p.listed:
             out["fund_lifecycle"] = "met"
         elif buyer.end_stated and buyer.investment_end is not None:
-            out["fund_lifecycle"] = "met" if buyer.investment_end - REFERENCE_DATE.year >= 2 else "not_met"
+            out["fund_lifecycle"] = (
+                "met" if buyer.investment_end - REFERENCE_DATE.year >= 2 else "not_met"
+            )
         else:
             out["fund_lifecycle"] = "unknown"
         out["antitrust"] = "unknown"

@@ -40,7 +40,6 @@ from ainma.synth.world import (
     OLD_DECK_DEALS,
     SPA_DEALS,
     WITHDRAWN_PR_DEALS,
-    Company,
     World,
     build_world,
 )
@@ -94,16 +93,36 @@ def _deal_specs(world: World, book: FactBook) -> list[DocSpec]:
         specs.append(build_mgmt(ctx, f"doc_{k}_mgmt", days(cim_d, 14)))
         specs.append(build_article(ctx, f"doc_{k}_news", art_d, aurora=False))
         if comp.deal_id in WITHDRAWN_PR_DEALS:
-            orig, corr = build_pr_pair(ctx, f"doc_{k}_pr_orig", f"doc_{k}_pr_corr", days(cim_d, 10), days(cim_d, 14))
+            orig, corr = build_pr_pair(
+                ctx, f"doc_{k}_pr_orig", f"doc_{k}_pr_corr", days(cim_d, 10), days(cim_d, 14)
+            )
             specs.extend([orig, corr])
         else:
             specs.append(build_pr(ctx, f"doc_{k}_pr", days(cim_d, 20)))
         if comp.deal_id in SPA_DEALS:
-            specs.append(build_spa(ctx, f"doc_{k}_spa_draft", days(cim_d, 30), draft=True, superseded_by=f"doc_{k}_spa_exec"))
+            specs.append(
+                build_spa(
+                    ctx,
+                    f"doc_{k}_spa_draft",
+                    days(cim_d, 30),
+                    draft=True,
+                    superseded_by=f"doc_{k}_spa_exec",
+                )
+            )
             specs.append(build_spa(ctx, f"doc_{k}_spa_exec", days(cim_d, 60), draft=False))
-        specs.append(build_old_article(ctx, f"doc_{k}_news_old", _pick(rng.random(), date(2024, 2, 1), date(2024, 11, 30))))
+        specs.append(
+            build_old_article(
+                ctx, f"doc_{k}_news_old", _pick(rng.random(), date(2024, 2, 1), date(2024, 11, 30))
+            )
+        )
         if comp.deal_id in OLD_DECK_DEALS:
-            specs.append(build_old_deck(ctx, f"doc_{k}_deck_old", _pick(rng.random(), date(2023, 2, 1), date(2023, 6, 30))))
+            specs.append(
+                build_old_deck(
+                    ctx,
+                    f"doc_{k}_deck_old",
+                    _pick(rng.random(), date(2023, 2, 1), date(2023, 6, 30)),
+                )
+            )
     return specs
 
 
@@ -113,13 +132,17 @@ def _aurora_specs(ctx: Ctx) -> list[DocSpec]:
         build_mgmt(ctx, "doc_mgmt_pres", date(2025, 3, 28)),
         build_model(ctx, "doc_model", date(2025, 3, 20)),
         build_nda(ctx, "doc_nda", date(2025, 1, 20)),
-        build_spa(ctx, "doc_spa_draft", date(2025, 4, 10), draft=True, superseded_by="doc_spa_exec"),
+        build_spa(
+            ctx, "doc_spa_draft", date(2025, 4, 10), draft=True, superseded_by="doc_spa_exec"
+        ),
         build_spa(ctx, "doc_spa_exec", date(2025, 5, 20), draft=False),
         build_board(ctx, "doc_board_minutes", date(2025, 2, 18)),
         build_qoe(ctx, "doc_qoe", date(2025, 3, 5)),
         build_concentration(ctx, "doc_concentration", date(2025, 3, 10)),
     ]
-    orig, corr = build_pr_pair(ctx, "doc_pr_orig", "doc_pr_corr", date(2025, 2, 10), date(2025, 2, 14))
+    orig, corr = build_pr_pair(
+        ctx, "doc_pr_orig", "doc_pr_corr", date(2025, 2, 10), date(2025, 2, 14)
+    )
     specs.extend([orig, corr])
     specs.append(build_article(ctx, "doc_news_17", date(2025, 2, 2), aurora=True))
     specs.append(build_article2(ctx, "doc_news_22", date(2025, 4, 22)))
@@ -164,9 +187,15 @@ def materialize(corpus: Corpus, out_dir: Path) -> None:
         path.write_bytes(data)
         parsed = parse_file(path)
         meta = DocumentMeta(
-            id=spec.id, deal_id=spec.deal_id, entity_id=spec.entity_id, title=spec.title,
-            doc_type=spec.doc_type, published_on=spec.published_on, status=spec.status,
-            superseded_by=spec.superseded_by, n_pages=len(parsed.pages),
+            id=spec.id,
+            deal_id=spec.deal_id,
+            entity_id=spec.entity_id,
+            title=spec.title,
+            doc_type=spec.doc_type,
+            published_on=spec.published_on,
+            status=spec.status,
+            superseded_by=spec.superseded_by,
+            n_pages=len(parsed.pages),
             sha256=hashlib.sha256(data).hexdigest(),
         )
         chunks = chunk_document(meta, parsed)
@@ -210,10 +239,20 @@ def materialize(corpus: Corpus, out_dir: Path) -> None:
         support = list(dict.fromkeys(support))
         corpus.facts.append(
             Fact(
-                id=draft.id, deal_id=draft.deal_id, entity=draft.entity, metric=draft.metric,
-                period=draft.period, value=draft.value, unit=draft.unit, document_id=draft.doc_id,
-                page=primary.page, char_start=primary.char_start, char_end=primary.char_end,
-                quote=primary.quote, support_chunk_ids=support, keywords=draft.keywords,
+                id=draft.id,
+                deal_id=draft.deal_id,
+                entity=draft.entity,
+                metric=draft.metric,
+                period=draft.period,
+                value=draft.value,
+                unit=draft.unit,
+                document_id=draft.doc_id,
+                page=primary.page,
+                char_start=primary.char_start,
+                char_end=primary.char_end,
+                quote=primary.quote,
+                support_chunk_ids=support,
+                keywords=draft.keywords,
             )
         )
 
@@ -221,8 +260,15 @@ def materialize(corpus: Corpus, out_dir: Path) -> None:
 def manifest_entries(corpus: Corpus) -> list[ManifestEntry]:
     return [
         ManifestEntry(
-            id=s.id, path=s.path, format=s.fmt, deal_id=s.deal_id, entity_id=s.entity_id,
-            title=s.title, doc_type=s.doc_type, published_on=s.published_on, status=s.status,
+            id=s.id,
+            path=s.path,
+            format=s.fmt,
+            deal_id=s.deal_id,
+            entity_id=s.entity_id,
+            title=s.title,
+            doc_type=s.doc_type,
+            published_on=s.published_on,
+            status=s.status,
             superseded_by=s.superseded_by,
         )
         for s in corpus.specs

@@ -9,7 +9,7 @@ from __future__ import annotations
 import io
 from pathlib import Path
 
-from openpyxl import load_workbook
+from openpyxl import load_workbook  # type: ignore[import-untyped,unused-ignore]
 
 from ainma.ingest.base import BlockKind, ParsedDocument, build_page, fmt_cell, row_text
 

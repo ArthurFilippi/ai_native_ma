@@ -20,10 +20,7 @@ _W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
 
 def _has_page_break(paragraph: Paragraph) -> bool:
-    for br in paragraph._p.iter(f"{_W}br"):
-        if br.get(f"{_W}type") == "page":
-            return True
-    return False
+    return any(br.get(f"{_W}type") == "page" for br in paragraph._p.iter(f"{_W}br"))
 
 
 def parse_docx(source: Path | bytes) -> ParsedDocument:
@@ -32,7 +29,7 @@ def parse_docx(source: Path | bytes) -> ParsedDocument:
     items: list[tuple[BlockKind, str] | None] = []
     for child in document.element.body.iterchildren():
         if child.tag == f"{_W}p":
-            paragraph = Paragraph(child, document)  # type: ignore[arg-type]
+            paragraph = Paragraph(child, document)
             style = paragraph.style.name if paragraph.style is not None else ""
             text = paragraph.text.strip()
             if text:
@@ -43,7 +40,7 @@ def parse_docx(source: Path | bytes) -> ParsedDocument:
             if _has_page_break(paragraph):
                 items.append(None)
         elif child.tag == f"{_W}tbl":
-            table = Table(child, document)  # type: ignore[arg-type]
+            table = Table(child, document)
             rows = [row_text([cell.text.strip() for cell in row.cells]) for row in table.rows]
             rows = [r for r in rows if r]
             if rows:
