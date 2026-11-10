@@ -15,7 +15,12 @@ from typing import Any
 import numpy as np
 
 from ainma.evaluation.harness import RETRIEVAL_METRICS, SYSTEMS, SeedResult
-from ainma.evaluation.metrics.abstention import NO_EVIDENCE, rates_at_tau, threshold_curve
+from ainma.evaluation.metrics.abstention import (
+    NO_EVIDENCE,
+    choose_tau,
+    rates_at_tau,
+    threshold_curve,
+)
 from ainma.evaluation.metrics.agreement import (
     JUDGE_LABELS,
     IntArray,
@@ -335,6 +340,8 @@ def _abstention(results: Sequence[SeedResult], pool: Pooler) -> Summary:
     hard_flags: list[bool] = []
     pooled_ans: list[float | None] = []
     pooled_unans: list[float | None] = []
+    pooled_dev: list[float | None] = []
+    target = 0.0
     e2e_ans = [f for r in results if r.abstention for f in r.abstention.e2e_answerable]
     e2e_unans = [f for r in results if r.abstention for f in r.abstention.e2e_unanswerable]
     for r in results:
@@ -348,8 +355,11 @@ def _abstention(results: Sequence[SeedResult], pool: Pooler) -> Summary:
         hard_flags += a.test_unanswerable_hard
         pooled_ans += a.test_answerable
         pooled_unans += a.test_unanswerable
+        pooled_dev += a.dev_answerable
+        target = a.target
         per_seed[r.label] = {
             "tau": a.tau,
+            "dev_tau": a.dev_tau,
             "target_false_abstention": a.target,
             "dev_false_abstention": dev.false_abstention_rate,
             "n_dev_answerable": len(a.dev_answerable),
@@ -365,7 +375,18 @@ def _abstention(results: Sequence[SeedResult], pool: Pooler) -> Summary:
     w_ans = pool.weights(len(score_ans), 8)
     hard = _by_hardness(score_unans, hard_flags, True)
     easy = _by_hardness(score_unans, hard_flags, False)
+    applied = {row["tau"] for row in per_seed.values()}
     out: Summary = {
+        # abstentions of the full pipeline that were on unanswerable questions
+        "end_to_end_precision": (
+            sum(e2e_unans) / (sum(e2e_unans) + sum(e2e_ans))
+            if sum(e2e_unans) + sum(e2e_ans)
+            else None
+        ),
+        # the threshold the test split was evaluated at (one value when it is frozen), and the
+        # one a recalibration on the pooled dev queries of this run would give: drift is visible
+        "frozen_tau": applied.pop() if len(applied) == 1 else None,
+        "pooled_dev_tau": choose_tau(pooled_dev, target) if pooled_dev and target else None,
         "per_seed": per_seed,
         "across_seeds": {
             key: across([row.get(key) for row in per_seed.values()])

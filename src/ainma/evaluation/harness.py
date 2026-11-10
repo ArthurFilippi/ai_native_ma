@@ -60,8 +60,9 @@ class CitationUnits:
 
 @dataclass
 class AbstentionUnits:
-    tau: float
+    tau: float  # the threshold applied to the test split: the frozen one when there is one
     target: float
+    dev_tau: float = NO_EVIDENCE  # calibrated on the dev queries of this seed alone (extra table)
     dev_answerable: list[float | None] = field(default_factory=list)
     dev_unanswerable: list[float | None] = field(default_factory=list)
     test_answerable: list[float | None] = field(default_factory=list)
@@ -296,6 +297,7 @@ async def _abstention(
     test_queries: list[Query],
     a5_test: list[list[RankedChunk]],
     split: EvalSplit,
+    frozen_tau: float | None,
 ) -> AbstentionUnits:
     access = truth.access()
     dev_queries = [q for q in truth.queries if split_of(q.id) == "dev"]
@@ -306,7 +308,7 @@ async def _abstention(
             await adapter.search(text, access=access, deal_id=deal_id, system="A5", top_k=TOP_K)
         )
 
-    units_scores.dev_answerable = [await score(q.text, q.deal_id) for q in dev_queries]
+    units_scores.dev_answerable = await dev_support_scores(adapter, truth)
     units_scores.test_answerable = [top_score(r) for r in a5_test]
     for item in truth.unanswerable:
         value = await score(item.text, item.deal_id)
@@ -316,9 +318,24 @@ async def _abstention(
             units_scores.test_unanswerable.append(value)
             units_scores.test_unanswerable_hard.append(item.hard)
     if units_scores.dev_answerable:
-        units_scores.tau = choose_tau(units_scores.dev_answerable, TARGET_FALSE_ABSTENTION)
+        units_scores.dev_tau = choose_tau(units_scores.dev_answerable, TARGET_FALSE_ABSTENTION)
+    # one frozen threshold for every seed, the one the API and the demo use; the per seed
+    # calibration is kept as a table so drift is visible
+    units_scores.tau = units_scores.dev_tau if frozen_tau is None else frozen_tau
     result.counts["dev_answerable"] = len(dev_queries)
     return units_scores
+
+
+async def dev_support_scores(adapter: Adapter, truth: TruthBundle) -> list[float | None]:
+    """Best support score of every dev answerable query of a seed (what `tau` is chosen on)."""
+    access = truth.access()
+    return [
+        top_score(
+            await adapter.search(q.text, access=access, deal_id=q.deal_id, system="A5", top_k=TOP_K)
+        )
+        for q in truth.queries
+        if split_of(q.id) == "dev"
+    ]
 
 
 async def _e2e_abstention(
@@ -486,18 +503,23 @@ async def evaluate_seed(
     adapter: Adapter,
     run_sweeps: bool = True,
     split: EvalSplit = "test",
+    frozen_tau: float | None = None,
 ) -> SeedResult:
     """All measurements for one seed. `store` holds the loaded corpus of that seed.
 
-    `split` selects the units that are measured. `tau` is always chosen on the dev queries, so on
-    `dev` and `both` it is applied to queries it was chosen on (in sample, for development only).
+    `split` selects the units that are measured. The abstention threshold is `frozen_tau` (the
+    pipeline's `DEFAULT_TAU`, chosen once on the pooled dev queries of all seeds); without one
+    (stubs, smoke) it is calibrated on the dev queries of the seed. On `dev` and `both` it is
+    applied to queries it was chosen on (in sample, for development only).
     """
     params: dict[str, object] = truth.params.model_dump() if truth.params is not None else {}
     result = SeedResult(label=label, params=params, missing_truth_files=truth.missing_files)
     test_queries = [q for q in truth.queries if in_split(split, q.id)]
     sweeps = adapter.sweeps() if run_sweeps else []
     rankings = await _retrieval(result, adapter, truth, test_queries, sweeps)
-    abstention = await _abstention(result, adapter, truth, test_queries, rankings["A5"], split)
+    abstention = await _abstention(
+        result, adapter, truth, test_queries, rankings["A5"], split, frozen_tau
+    )
     asker = Asker(adapter, truth, abstention.tau)
     texts: dict[str, str] = {}
     await _citations(result, asker, store, truth, test_queries, texts)

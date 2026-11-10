@@ -126,3 +126,23 @@ def test_config_hash_is_stable_and_sensitive() -> None:
     assert config_hash(base) == config_hash(dict(reversed(list(base.items()))))
     assert config_hash(base) != config_hash({**base, "n_resamples": 1000})
     assert re.fullmatch(r"[0-9a-f]{16}", config_hash(base))
+
+
+def test_header_prints_difficulty_and_tau_and_the_basis_is_described(smoke_out: Path) -> None:
+    report = (smoke_out / "RESULTS.md").read_text(encoding="utf-8")
+    assert "- Difficulty, seed smoke: paraphrase_rate=" in report
+    assert "hard_negative_rate=" in report
+    assert "Pooled dev tau recomputed in this run:" in report
+    assert "Abstention score: `" in report
+    assert "(m+1)th smallest" in report
+    assert "largest threshold whose false abstention" not in report
+    assert "best final passage score" not in report
+
+
+def test_principle_table_has_abstention_precision_and_latency_rows_are_marked(
+    smoke_out: Path,
+) -> None:
+    report = (smoke_out / "RESULTS.md").read_text(encoding="utf-8")
+    section0 = report.split("## 1.")[0]
+    assert "Abstention precision" in section0 and "False abstention, end to end" in section0
+    assert "p50 (ms, wall clock, differs on every run)" in report

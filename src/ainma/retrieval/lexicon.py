@@ -194,6 +194,7 @@ METRICS: tuple[MetricDef, ...] = (
             "biggest client",
             "single client",
             "customer concentration",
+            "customer base",
         ),
     ),
     MetricDef(

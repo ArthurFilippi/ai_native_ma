@@ -9,10 +9,14 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from ainma.retrieval.config import RetrievalConfig
 
-DEFAULT_TAU = 0.25
-"""Provisional abstention threshold on the relevance score (0 to 1). Hand set on the tiny
-fixture corpus only; to be recalibrated on the DEV split of the generated corpus with
-`ainma.pipeline.abstain.calibrate_tau`. See docs/DECISIONS.md D24."""
+DEFAULT_TAU = 0.595212
+"""Abstention threshold on the retrieval relevance of the best passage (0 to 1), frozen. It is the
+pooled DEV threshold of the five seeds, chosen so that at most 10 percent of the dev answerable
+queries fall below it. Recompute it with `python -m ainma.evaluation.run --calibrate-tau --seeds 5`
+(it prints the pooled value and the per seed values) and copy the pooled value here whenever the
+retrieval or the reranker changes; the evaluation report prints this value next to the recomputed
+one so that drift is visible. The API, the CLI, the demo and the test split all use it. See
+docs/DECISIONS.md D24 and D82."""
 
 DEFAULT_ANSWERS_LOG = Path("data/cache/answers.jsonl")
 
