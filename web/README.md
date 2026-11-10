@@ -17,7 +17,7 @@ npm run dev        # http://localhost:3000
 NEXT_PUBLIC_API_URL=http://localhost:8000 npm run dev
 ```
 
-The client sends the selected demo user in `X-User-Id` (DEMO_AUTH, not production authentication) and shows the `X-Ainma-Backend` header (`real` or `stub`) in the header badge. The API must allow the origin of the web client (`ALLOWED_ORIGINS`).
+The client sends the selected demo user in `X-User-Id` (DEMO_AUTH, not production authentication) and the header badge reads `real` (served by the API) or `mock data` (mock mode). The API must allow the origin of the web client (`ALLOWED_ORIGINS`).
 
 ## Checks
 
