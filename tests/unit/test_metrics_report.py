@@ -146,3 +146,30 @@ def test_principle_table_has_abstention_precision_and_latency_rows_are_marked(
     section0 = report.split("## 1.")[0]
     assert "Abstention precision" in section0 and "False abstention, end to end" in section0
     assert "p50 (ms, wall clock, differs on every run)" in report
+
+
+def test_report_names_writer_and_judge_and_says_live_was_not_run(smoke_out: Path) -> None:
+    text = (smoke_out / "RESULTS.md").read_text("utf-8")
+    assert "- Writer: provider mock, model mock-extractive-v1" in text
+    assert "- Judge: mock mock-extractive-v1 (same as the writer)" in text
+    assert "## 9. Live run (reported separately from the mock)" in text
+    assert "live run not executed" in text
+
+
+def test_a_live_payload_is_summarised_in_its_own_section(smoke_out: Path, tmp_path: Path) -> None:
+    payload = json.loads((smoke_out / "latest.json").read_text("utf-8"))
+    payload["meta"].update(
+        provider="gemini",
+        model="gemini-2.5-flash",
+        judge_provider="gemini",
+        judge_model="gemini-2.5-pro",
+        git_commit="abc1234",
+    )
+    (tmp_path / "latest_live.json").write_text(json.dumps(payload), "utf-8")
+    args = ["--provider", "mock", "--seeds", "1", "--smoke", "--out", str(tmp_path)]
+    assert main([*args, "--resamples", "200"]) == 0
+    text = (tmp_path / "RESULTS.md").read_text("utf-8")
+    live = text.split("## 9. Live run", 1)[1]
+    assert "Writer gemini gemini-2.5-flash, judge gemini gemini-2.5-pro" in live
+    assert "Citation precision (verifier on)" in live
+    assert "live run not executed" not in live

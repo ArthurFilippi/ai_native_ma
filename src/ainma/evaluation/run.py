@@ -39,6 +39,7 @@ from ainma.evaluation.regression import RegressionOutcome, load_cases, replay
 from ainma.evaluation.report import RunMeta, render_report
 from ainma.evaluation.stats import DEFAULT_RESAMPLES
 from ainma.llm import LLM, build_llm, build_mock_llm
+from ainma.llm.factory import build_judge_llm
 from ainma.settings import Settings
 from ainma.store import Store
 
@@ -101,9 +102,16 @@ def sweep_notes(adapter: Adapter) -> dict[str, str]:
 
 
 async def _evaluate(
-    label: str, store: Store, truth: TruthBundle, llm: LLM, *, use_real: bool, split: EvalSplit
+    label: str,
+    store: Store,
+    truth: TruthBundle,
+    llm: LLM,
+    *,
+    use_real: bool,
+    split: EvalSplit,
+    judge: LLM | None = None,
 ) -> tuple[SeedResult, Adapter]:
-    adapter = Adapter(store=store, llm=llm, buyers=truth.buyers, use_real=use_real)
+    adapter = Adapter(store=store, llm=llm, buyers=truth.buyers, use_real=use_real, judge_llm=judge)
     result = await evaluate_seed(
         label,
         store=store,
@@ -128,7 +136,9 @@ async def run_evaluation(
     n_resamples: int,
     split: EvalSplit = "test",
 ) -> Path:
-    llm = build_mock_llm() if provider == "mock" else build_llm(Settings(llm_provider=provider))
+    settings = Settings(llm_provider=provider) if provider != "mock" else None
+    llm = build_mock_llm() if settings is None else build_llm(settings)
+    judge = None if settings is None else build_judge_llm(settings)
     use_real = not (smoke_run or force_stubs)
     results: list[SeedResult] = []
     first_adapter: Adapter | None = None
@@ -142,7 +152,7 @@ async def run_evaluation(
             store, truth = await open_seed(data_dir / label)
         try:
             result, adapter = await _evaluate(
-                label, store, truth, llm, use_real=use_real, split=split
+                label, store, truth, llm, use_real=use_real, split=split, judge=judge
             )
             if first_adapter is None:
                 first_adapter = adapter
@@ -163,6 +173,8 @@ async def run_evaluation(
     configuration = {
         "provider": provider,
         "model": llm.model,
+        "judge_provider": judge.provider if judge else "",
+        "judge_model": judge.model if judge else "",
         "seeds": sources,
         "modes": first_adapter.modes,
         "systems": list(SYSTEMS),
@@ -191,6 +203,8 @@ async def run_evaluation(
         n_resamples=n_resamples,
         split=split,
         abstain_basis=first_adapter.abstain_basis,
+        judge_provider=judge.provider if judge else "",
+        judge_model=judge.model if judge else "",
         date=datetime.now(UTC).strftime("%Y-%m-%d"),
         commit=git_commit(),
         machine=machine_description(),
@@ -201,8 +215,15 @@ async def run_evaluation(
         },
     )
     out_dir.mkdir(parents=True, exist_ok=True)
-    report_path = out_dir / "RESULTS.md"
-    report_path.write_text(render_report(summary, meta), encoding="utf-8")
+    # mock and live never share a file: a live run writes RESULTS_LIVE.md and latest_live.json,
+    # and the mock report summarises the latest live run in its own section (D90)
+    live_run = provider != "mock"
+    report_path = out_dir / ("RESULTS_LIVE.md" if live_run else "RESULTS.md")
+    latest_path = out_dir / ("latest_live.json" if live_run else "latest.json")
+    live_payload = None
+    if not live_run and (out_dir / "latest_live.json").exists():
+        live_payload = json.loads((out_dir / "latest_live.json").read_text(encoding="utf-8"))
+    report_path.write_text(render_report(summary, meta, live_payload), encoding="utf-8")
     payload = {
         "meta": {
             **configuration,
@@ -215,7 +236,7 @@ async def run_evaluation(
         },
         "summary": summary,
     }
-    (out_dir / "latest.json").write_text(
+    latest_path.write_text(
         json.dumps(sanitize(payload), indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     return report_path
@@ -307,7 +328,8 @@ def main(argv: list[str] | None = None) -> int:
     except CorpusUnavailableError as error:
         sys.stderr.write(f"cannot run the evaluation: {error}\n")
         return 2
-    sys.stdout.write(f"wrote {path} and {path.with_name('latest.json')}\n")
+    latest = "latest.json" if path.name == "RESULTS.md" else "latest_live.json"
+    sys.stdout.write(f"wrote {path} and {path.with_name(latest)}\n")
     return 0
 
 

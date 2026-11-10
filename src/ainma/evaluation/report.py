@@ -70,6 +70,14 @@ class RunMeta:
     backends: Mapping[str, str] = field(default_factory=dict)
     split: str = "test"
     abstain_basis: str = "relevance"
+    judge_provider: str = ""  # empty: the writer judged its own claims
+    judge_model: str = ""
+
+    @property
+    def judge_label(self) -> str:
+        if not self.judge_provider and not self.judge_model:
+            return f"{self.provider} {self.model} (same as the writer)"
+        return f"{self.judge_provider or self.provider} {self.judge_model or 'default model'}"
 
     @property
     def stub_components(self) -> list[str]:
@@ -511,9 +519,10 @@ def _judge(meta: RunMeta, s: Mapping[str, Any]) -> str:
         "Kappa per seed:",
         table(["Seed", "Kappa"], seed_rows),
         hand_text,
-        "Self-preference control: with the mock provider the same deterministic routine writes "
-        "and judges; this is stated, not controlled. For a live run, name the writer and the "
-        "judge model separately.",
+        f"Self-preference control: writer {meta.provider} {meta.model}, judge "
+        f"{meta.judge_label}. With the mock provider the same deterministic routine writes and "
+        "judges; this is stated, not controlled. A live run sets `JUDGE_PROVIDER` and "
+        "`JUDGE_MODEL` to judge with another model.",
     ]
     return section("7. Judge calibration", body)
 
@@ -636,7 +645,48 @@ def _tau_lines(s: Mapping[str, Any], meta: RunMeta) -> list[str]:
     return lines
 
 
-def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
+LIVE_NOT_EXECUTED = (
+    "live run not executed: no live provider key was available for this report, so every number "
+    "of this file comes from the offline mock. `make eval PROVIDER=gemini` with `GEMINI_API_KEY` "
+    "set writes `RESULTS_LIVE.md`, and the next mock report summarises it here."
+)
+
+
+def _live(live: Mapping[str, Any] | None) -> str:
+    """Section 9: the latest live run, apart from the mock tables, or the statement that there
+    is none. Mock and live numbers are never mixed in one table."""
+    if not live:
+        return section("9. Live run (reported separately from the mock)", [LIVE_NOT_EXECUTED])
+    m, s = live["meta"], live["summary"]
+    meta = RunMeta(
+        provider=str(m.get("provider")),
+        model=str(m.get("model")),
+        seeds=[str(x) for x in m.get("seeds", [])],
+        config_hash=str(m.get("config_hash", "")),
+        modes=m.get("modes", {}),
+        dataset="",
+        smoke=bool(m.get("smoke", False)),
+        n_resamples=int(m.get("n_resamples", 0)),
+        date=str(m.get("date", "")),
+        commit=str(m.get("git_commit", "")),
+        machine="",
+        judge_provider=str(m.get("judge_provider", "")),
+        judge_model=str(m.get("judge_model", "")),
+    )
+    body = [
+        f"Writer {meta.provider} {meta.model}, judge {meta.judge_label}; run of {meta.date} at "
+        f"commit {meta.commit}, seeds {', '.join(meta.seeds)}, configuration hash "
+        f"{meta.config_hash}. Full tables: `RESULTS_LIVE.md`.",
+        _principle(meta, s).split("\n", 2)[-1],
+    ]
+    return section("9. Live run (reported separately from the mock)", body)
+
+
+def render_report(
+    summary: Mapping[str, Any], meta: RunMeta, live: Mapping[str, Any] | None = None
+) -> str:
+    """The report of one run. A mock report also carries section 9, the summary of the latest
+    live run (`live`, the `latest_live.json` payload) or the statement that none was executed."""
     banners: list[str] = []
     if meta.provider == "mock":
         banners.append(f"**{MOCK_LABEL}.**")
@@ -672,7 +722,8 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
             ),
             "\n".join(
                 [
-                    f"- Provider: {meta.provider}, model: {meta.model}",
+                    f"- Writer: provider {meta.provider}, model {meta.model}",
+                    f"- Judge: {meta.judge_label}",
                     f"- Seeds: {', '.join(meta.seeds)}",
                     f"- Split: {meta.split}",
                     f"- Configuration hash: {meta.config_hash}",
@@ -698,6 +749,7 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
         _judge(meta, summary),
         _performance(meta, summary),
         _regression(meta),
+        *([_live(live)] if meta.provider == "mock" else []),
     ]
     return header + "\n\n" + "\n\n".join(sections) + "\n"
 

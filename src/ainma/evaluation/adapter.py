@@ -161,10 +161,13 @@ class Adapter:
         buyers: Sequence[BuyerProfile] = (),
         use_real: bool = True,
         answers_log: Path | None = None,
+        judge_llm: LLM | None = None,
     ) -> None:
-        """`answers_log` is where the real pipeline appends every answer (`None`: no log)."""
+        """`answers_log` is where the real pipeline appends every answer (`None`: no log).
+        `judge_llm` judges claims when given (a model distinct from the writer, D88)."""
         self._store = store
         self._llm = llm
+        self._judge_llm = judge_llm
         self._buyers = list(buyers)
         self._answers_log = answers_log
         found = {name: (_find(name) if use_real else None) for name in TARGETS}
@@ -356,6 +359,7 @@ class Adapter:
             llm=self._llm,
             config=self._pipeline_config(**fields),
             **_engine_kwargs(self._ask, self._engine),
+            **({"judge_llm": self._judge_llm} if self._judge_llm is not None else {}),
         )
         return cast(Answer, answer)
 
@@ -395,7 +399,7 @@ class Adapter:
             label = stubs.stub_judge_label(claim, passage)
         else:
             request = self._judge_request(claim=claim, quotes=[evidence], context=passage)
-            result, _ = await self._llm.complete_json(
+            result, _ = await (self._judge_llm or self._llm).complete_json(
                 task=TASK_JUDGE,
                 system=self._judge_prompt,
                 user=request.model_dump_json(),
