@@ -77,13 +77,22 @@ def _value_text(record: StructuredFact, value: float) -> str:
     if record.metric.endswith("_year"):
         return str(int(value))
     number = f"{value:,.0f}" if float(value).is_integer() else f"{value:,.1f}"
-    return f"{number} {unit}".strip()
+    return number if unit in ("count", "") else f"{number} {unit}"
+
+
+def metric_label(metric: str) -> str:
+    """The question vocabulary's label of a fact base metric (`aum` reads `assets under
+    management`, `plants` reads `production sites`)."""
+    known = METRIC_BY_KEY.get(metric)
+    if known is None:
+        key = next((k for k in METRIC_BY_KEY if canonical_metric(k) == metric), None)
+        known = METRIC_BY_KEY.get(key) if key else None
+    return known.label if known else metric.replace("_", " ")
 
 
 def claim_text(record: StructuredFact, value: float) -> str:
     """The claim states the value only; its source is the citation (title, tier, date)."""
-    known = METRIC_BY_KEY.get(record.metric) or METRIC_BY_KEY.get(canonical_metric(record.metric))
-    label = known.label if known else record.metric.replace("_", " ")
+    label = metric_label(record.metric)
     period = "" if record.period == "static" else f" for {record.period}"
     return f"{record.entity} {label}{period} was {_value_text(record, value)}."
 
@@ -95,11 +104,13 @@ async def routed_claims(
     chunks and documents the verifier and the flags need. None when a provenance is no longer
     visible (the store is the authority on access)."""
     out = Routed(record=record, claims=[])
-    entries: list[tuple[float, Provenance]] = [
-        (record.value, record.provenance),
-        *((o.value, o.provenance) for o in record.disagreements),
+    agreeing = [o.provenance for o in record.others if o not in record.disagreements]
+    entries: list[tuple[float, list[Provenance]]] = [
+        (record.value, [record.provenance, *agreeing]),  # the record, corroborated
+        *((o.value, [o.provenance]) for o in record.disagreements),
     ]
-    for offset, (value, provenance) in enumerate(entries):
+    for offset, (value, provenances) in enumerate(entries):
+        provenance = provenances[0]
         chunk = await store.get_chunk(provenance.chunk_id, access)
         document = await store.get_document(provenance.document_id, access)
         if chunk is None or document is None:
@@ -108,12 +119,21 @@ async def routed_claims(
             continue
         out.chunks[chunk.id] = chunk
         out.documents[document.id] = document
+        citations = [provenance.citation()]
+        for extra in provenances[1:]:
+            more = await store.get_chunk(extra.chunk_id, access)
+            more_doc = await store.get_document(extra.document_id, access)
+            if more is None or more_doc is None or extra.citation() in citations:
+                continue
+            out.chunks[more.id] = more
+            out.documents[more_doc.id] = more_doc
+            citations.append(extra.citation())
         out.claims.append(
             Claim(
                 id=f"s{start + offset}",
                 text=claim_text(record, value),
                 status=ClaimStatus.SOURCED,
-                citations=[provenance.citation()],
+                citations=citations,
                 origin="structured",
             )
         )
