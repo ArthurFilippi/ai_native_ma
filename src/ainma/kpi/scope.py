@@ -26,7 +26,9 @@ from ainma.store import Store
 
 
 class ScopedStore:
-    """Implements `Store`; `candidates` and `list_documents` keep only the scope's own items."""
+    """Implements `Store`; `candidates` and `list_documents` keep only the scope's own items.
+
+    A deal scope keeps documents about the deal itself: no entity, or the deal as the entity."""
 
     def __init__(self, inner: Store, *, entity_id: str | None = None, deal_id: str | None = None):
         if (entity_id is None) == (deal_id is None):
@@ -38,7 +40,8 @@ class ScopedStore:
     def _in_scope(self, item: Chunk | DocumentMeta) -> bool:
         if self.entity_id is not None:
             return item.entity_id == self.entity_id
-        return item.deal_id == self.deal_id
+        # the deal's own documents: not those of a buyer that a connector filed in the deal space
+        return item.deal_id == self.deal_id and item.entity_id in (None, self.deal_id)
 
     async def candidates(
         self,

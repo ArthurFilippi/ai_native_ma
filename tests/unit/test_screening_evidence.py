@@ -130,6 +130,33 @@ async def test_a_deal_scope_leaves_out_the_general_layer_and_keeps_the_access_fi
     assert await scoped.candidates(outsider, deal_id=DEAL_ID) == []
 
 
+async def test_a_deal_scope_leaves_out_buyer_news_filed_in_the_deal_space(
+    store: SqliteStore,
+) -> None:
+    await _put(
+        store,
+        "doc_news_buyer",
+        ["Acme Capital reports revenue of EUR 900 million for FY2024."],
+        entity_id="b_x",
+        deal_id=DEAL_ID,
+        doc_type=DocType.PRESS_ARTICLE,
+    )
+    await _put(
+        store,
+        "doc_news_deal",
+        ["Aurora posts a record year."],
+        entity_id=DEAL_ID,
+        deal_id=DEAL_ID,
+        doc_type=DocType.PRESS_ARTICLE,
+    )
+    scoped = ScopedStore(store, deal_id=DEAL_ID)
+    ids = {
+        c.document_id
+        for c in await scoped.candidates(await store.access_for("u_lead"), deal_id=DEAL_ID)
+    }
+    assert "doc_news_buyer" not in ids and "doc_news_deal" in ids and "doc_model" in ids
+
+
 async def test_other_buyers_cannot_crowd_the_buyer_out_of_a_short_result_list(
     store: SqliteStore,
 ) -> None:
