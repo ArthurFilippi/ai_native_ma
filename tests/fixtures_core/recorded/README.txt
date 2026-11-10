@@ -1,0 +1,1 @@
+Response bodies in the documented shape of each provider API, written by hand for offline tests (not captured from a live call, no key was used). The API key shown in openai_unauthorized.json is a placeholder.

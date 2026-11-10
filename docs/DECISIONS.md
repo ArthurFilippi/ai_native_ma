@@ -60,3 +60,45 @@ One short entry each: context, choice, alternative, cost.
 
 ## D16. Seed 1234 anchors
 - Choice: for seed 1234 only, Aurora keeps the specification numbers (FY2024 revenue 182.4, FY2023 168.0, gross margin 38.5 percent, largest customer 17 percent, trade press 179). Other seeds draw all numbers from the seed. The structure (which documents state which facts, which keys conflict) is identical for all seeds.
+
+## D20. Retrieval engine object and index cache
+- Context: BM25 and LSA are fitted on the candidate set, a run of hundreds of queries must not refit.
+- Choice: `RetrievalEngine` caches fitted indexes by a fingerprint of the candidate chunks and the index settings (LRU of 8). `search`, `search_detailed` and `ask` take an optional `engine=` keyword (an addition to INTERFACES); without it a throwaway engine is built. The eval adapter should create one engine per run and pass it.
+- Alternative: a module level cache (forbidden global state). Cost: callers must pass the engine to benefit.
+
+## D21. Score scale of the five systems
+- Choice: `final_score` is in [0, 1] for every system. A1 is `bm25 / (bm25 + 10)`, A2 the cosine clipped at 1, A3 the RRF score divided by its ceiling `sum(w) / (k + 1)`, A4 and A5 use `relevance = 0.8 * rerank + 0.2 * rrf_norm`, and A5 multiplies by tier, recency and status and adds the corroboration bonus (spec section 7). All constants live in `RetrievalConfig`. Components also carry `relevance` and `status`.
+- Reranker features: coverage, phrase, numbers, metric, period and `fact` (the passage states the asked metric as a number for the asked period, so "17 percent of FY2024 revenue" no longer beats "revenue of EUR 182.4 million"). Without the fact feature the tiny corpus ranked the wrong chunk first under every system.
+- Alternative: raw BM25 scores. Rejected: a single `tau` could not mean the same thing across systems.
+
+## D22. Reference date for recency and staleness
+- Choice: `as_of` is the newest publication date among the candidates (or `RetrievalConfig.as_of`), never today's date, so results are reproducible and independent of when the corpus is queried. Undated sources get recency 0.5.
+- Cost: on a corpus whose newest document is old, nothing looks stale relative to the real calendar.
+
+## D23. Withdrawn, superseded and stale handling
+- Choice: under A5 withdrawn hits are removed from `hits` and listed in `SearchResult.withdrawn`; the pipeline drops withdrawn passages for every system, so the writer never sees one. `Flag.WITHDRAWN` on a claim means a withdrawn document spoke to the same (metric, period) and was excluded; it is never a citation. If a topic has only withdrawn evidence the answer says `withdrawn_only`. A claim whose citations are all superseded gets `Flag.SUPERSEDED`, and superseded or withdrawn documents never form a contradiction. Stale claims are kept and flagged, so `MissingInfo.reason = "stale_only"` is never produced.
+- Cost: a claim with both a current and a superseded source is not flagged.
+
+## D24. Abstention gate and provisional tau
+- Choice: abstain when no usable passage reaches `tau` or no verified claim remains. The gate compares `tau` with the retrieval relevance (`abstain_score="relevance"`), not the final score, because tier and recency weights express trust, and an old source must produce a flagged claim, not an abstention (spec section 7: never hide a stale claim). `abstain_score="final"` is available for the ablation.
+- `PipelineConfig.tau` is a plain field, provisional default 0.25, hand set on the tiny corpus only. At merge time the orchestrator calibrates it on the DEV split: collect the best support score per dev query (`ainma.pipeline.abstain.support_score` over the retrieved hits, 0 when nothing is retrieved), call `calibrate_tau(answerable, unanswerable, max_false_abstention=0.10)`, freeze the returned `tau` and report its `false_abstention` and `correct_abstention`.
+- Cost: until then the false and correct abstention rates are not measured.
+
+## D25. Writer, citations and verifier
+- Choice: the model returns passage numbers and quotes, code builds `Citation` (page based offsets, D04). A quote is located exactly, or up to whitespace, in which case the real chunk slice becomes the quote; anything else rejects the evidence, quotes under 10 characters too. The summary is built by code from the verified claims. The verifier runs verbatim and offsets, then `numeric_match`, then the judge, and stops at the first failure; `partial` fails the judge check. Years count as numbers, so an altered period is caught by the judge's metric and period binding when the quote holds several periods.
+- Cost: a claim whose quote omits the period is dropped when the claim names it.
+
+## D26. Contradictions
+- Choice: facts keyed `(entity, metric, period, unit)` with entity `chunk.entity_id or deal_id`, extracted from the cited quotes through the `extract_facts` task. Values within 0.5 percent form one side, so agreeing documents share a side; sides are ordered strongest first (tier weight times recency). A document that is not independent of every document of the other side (same sha256, `superseded_by` link) does not create a conflict.
+- Cost: two different companies mentioned inside one deal share an entity key, a possible false positive on hard negatives.
+
+## D27. Mock tasks are rules, not a model
+- Choice: understand (clause split, prior period for growth questions), extractive writer (sentence with the asked metric as a number and the asked period, plus one INFERRED growth claim), judge (number match, metric and period binding, proper noun check, word coverage), extract_facts (rule extractor). `kpi_parse` stays unregistered (D05). Money is reported in millions, bare numbers as written.
+- Cost: table chunks are not parsed by the rules (only prose sentences), and paraphrases that avoid the metric vocabulary are missed by design; this is the offline baseline, not an LLM result.
+
+## D28. Live providers
+- Choice: `httpx` clients for Gemini (`generateContent`, JSON mime type) and OpenAI (chat completions, JSON mode); the JSON schema is embedded in the system prompt; retries on 429 and 5xx; no key in URLs or errors. Prices live in `llm/providers/prices.json` and are all null with null `as_of`, so `cost_usd` stays null until the owner fills them. Defaults `gemini-2.5-flash` and `gpt-4o-mini`, overridden by `LLM_MODEL`. The response fixtures under `tests/fixtures_core/recorded/` were written by hand in each API's documented shape, not captured from live calls. `build_live_llm(settings)` is ready; `factory.build_llm` still has to call it.
+- Cost: real response quirks are untested until a key is used.
+
+## D29. Answer log and trace conventions
+- Choice: `data/cache/answers.jsonl` lines hold `id`, `logged_at`, `question`, `config_hash`, `dropped` (claims rejected by the writer or the verifier, for verifier ablations) and the full `answer`. Answer ids are a hash of user, deal, question and config. `stage_latency_ms` has no total key (sum the stages). When the mock replaced a failed live call, `Trace.provider` says so. mypy ignores for scikit-learn and fastembed imports are local (BLOCKERS.md).

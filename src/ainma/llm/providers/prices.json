@@ -1,0 +1,9 @@
+{
+  "currency": "USD",
+  "as_of": null,
+  "source": "Prices are per million tokens and are deliberately null until the owner copies them from the provider pricing page and sets `as_of`. A null price makes `cost_usd` null in the trace: a cost is never estimated.",
+  "models": {
+    "gemini-2.5-flash": {"input_per_mtok": null, "output_per_mtok": null},
+    "gpt-4o-mini": {"input_per_mtok": null, "output_per_mtok": null}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "chatcmpl-recorded-1",
+  "object": "chat.completion",
+  "model": "gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"label\": \"supported\", \"rationale\": \"the quote states EUR 182.4 million\"}"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 790,
+    "completion_tokens": 21,
+    "total_tokens": 811
+  }
+}
