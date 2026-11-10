@@ -165,7 +165,11 @@ class OracleAdapter(Adapter):
 async def test_oracle_scores_perfectly(smoke_store: Store) -> None:
     truth = smoke_truth()
     result = await evaluate_seed(
-        "oracle", store=smoke_store, truth=truth, adapter=OracleAdapter(smoke_store, truth)
+        "oracle",
+        store=smoke_store,
+        truth=truth,
+        adapter=OracleAdapter(smoke_store, truth),
+        split="both",  # the three planted cases of the fixture fall in different splits
     )
     summary = summarise(
         [result], provider="mock", sweep_notes={}, hand_labels=None, n_resamples=200
@@ -213,7 +217,11 @@ async def test_stub_run_has_the_expected_units(smoke_store: Store) -> None:
     assert len(result.kpi) == 4 and all(c.outcome.value is None for c in result.kpi)
     assert {p for _, p in result.screening} == {"unknown"}
     assert result.contradiction.planted == [False]  # a stub never reports a contradiction
-    assert result.contradiction.controls == [False]
+    assert result.contradiction.controls == []  # its only control is in the dev split
+    everything = await evaluate_seed(
+        "smoke", store=smoke_store, truth=truth, adapter=adapter, split="both"
+    )
+    assert everything.contradiction.controls == [False]
 
 
 async def test_tau_does_not_depend_on_test_queries(smoke_store: Store) -> None:

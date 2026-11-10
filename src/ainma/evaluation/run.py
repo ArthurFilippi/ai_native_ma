@@ -29,6 +29,7 @@ from ainma.evaluation.harness import (
     SYSTEMS,
     TARGET_FALSE_ABSTENTION,
     TOP_K,
+    EvalSplit,
     SeedResult,
     evaluate_seed,
 )
@@ -98,10 +99,11 @@ def sweep_notes(adapter: Adapter) -> dict[str, str]:
 
 
 async def _evaluate(
-    label: str, store: Store, truth: TruthBundle, llm: LLM, *, use_real: bool
+    label: str, store: Store, truth: TruthBundle, llm: LLM, *, use_real: bool, split: EvalSplit
 ) -> tuple[SeedResult, Adapter]:
     adapter = Adapter(store=store, llm=llm, buyers=truth.buyers, use_real=use_real)
-    return await evaluate_seed(label, store=store, truth=truth, adapter=adapter), adapter
+    result = await evaluate_seed(label, store=store, truth=truth, adapter=adapter, split=split)
+    return result, adapter
 
 
 async def run_evaluation(
@@ -115,6 +117,7 @@ async def run_evaluation(
     regression_dir: Path,
     labels_dir: Path,
     n_resamples: int,
+    split: EvalSplit = "test",
 ) -> Path:
     llm = build_mock_llm() if provider == "mock" else build_llm(Settings(llm_provider=provider))
     use_real = not (smoke_run or force_stubs)
@@ -129,7 +132,9 @@ async def run_evaluation(
         else:
             store, truth = await open_seed(data_dir / label)
         try:
-            result, adapter = await _evaluate(label, store, truth, llm, use_real=use_real)
+            result, adapter = await _evaluate(
+                label, store, truth, llm, use_real=use_real, split=split
+            )
             if first_adapter is None:
                 first_adapter = adapter
                 regression = await replay(load_cases(regression_dir), adapter=adapter, store=store)
@@ -161,6 +166,7 @@ async def run_evaluation(
         "adapter_config": first_adapter.config_snapshot(),
         "generation_params": {r.label: r.params for r in results},
         "smoke": smoke_run,
+        **({"split": split} if split != "test" else {}),
     }
     meta = RunMeta(
         provider=provider,
@@ -174,6 +180,7 @@ async def run_evaluation(
         else f"generated corpora under {data_dir.as_posix()}/<seed>/",
         smoke=smoke_run,
         n_resamples=n_resamples,
+        split=split,
         date=datetime.now(UTC).strftime("%Y-%m-%d"),
         commit=git_commit(),
         machine=machine_description(),
@@ -215,6 +222,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--data", type=Path, default=Path("data/synthetic"))
     parser.add_argument("--regression", type=Path, default=Path("eval/regression"))
     parser.add_argument("--labels", type=Path, default=Path("eval/labels"))
+    parser.add_argument(
+        "--split",
+        choices=["dev", "test", "both"],
+        default="test",
+        help="units to measure; the default is the test split, dev is for development only",
+    )
     parser.add_argument("--resamples", type=int, default=DEFAULT_RESAMPLES)
     return parser
 
@@ -234,6 +247,7 @@ def main(argv: list[str] | None = None) -> int:
                 regression_dir=args.regression,
                 labels_dir=args.labels,
                 n_resamples=args.resamples,
+                split=args.split,
             )
         )
     except CorpusUnavailableError as error:
