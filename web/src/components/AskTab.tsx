@@ -3,6 +3,7 @@ import type { Api } from "@/lib/api";
 import { VALUE_CONTRACT } from "@/lib/constants";
 import type { Answer, Citation } from "@/lib/contracts";
 import { AnswerView } from "./AnswerView";
+import { Loading } from "./Loading";
 
 const SUGGESTIONS = [
   "What was Aurora's FY2024 revenue and how did it grow?",
@@ -48,14 +49,17 @@ export function AskTab({
   return (
     <div className="ask">
       <form
-        className="ask-form"
+        className="plate ask-form"
         onSubmit={(event) => {
           event.preventDefault();
           void submit(question);
         }}
       >
-        <label htmlFor="question">Question about this deal</label>
-        <div className="ask-row">
+        <div className="plate-b">
+        <label htmlFor="question" className="lab">
+          Question about this deal
+        </label>
+        <div className="lg-ask mt">
           <input
             id="question"
             value={question}
@@ -63,16 +67,17 @@ export function AskTab({
             placeholder="Ask about the data room"
             autoComplete="off"
           />
-          <button type="submit" className="primary" disabled={state.status === "loading"}>
+          <button type="submit" className="btn solid" disabled={state.status === "loading"}>
             Ask
           </button>
         </div>
-        <div className="suggestions">
+        </div>
+        <div className="plate-b tint chips suggestions">
           {SUGGESTIONS.map((text) => (
             <button
               key={text}
               type="button"
-              className="link"
+              className="opt"
               onClick={() => {
                 setQuestion(text);
                 void submit(text);
@@ -84,9 +89,9 @@ export function AskTab({
         </div>
       </form>
 
-      {state.status === "loading" && <p className="muted">Reading the sources for: {state.question}</p>}
+      {state.status === "loading" && <Loading inline />}
       {state.status === "error" && (
-        <p className="note" role="alert">
+        <p className="note bad mt" role="alert">
           The question could not be answered: {state.message}
         </p>
       )}
@@ -98,7 +103,7 @@ export function AskTab({
         />
       )}
 
-      <footer className="value-contract">{VALUE_CONTRACT}</footer>
+      <footer className="value-contract sub">{VALUE_CONTRACT}</footer>
     </div>
   );
 }

@@ -33,7 +33,7 @@ function ClaimRow({ claim, onOpen, activeChunk }: OpenProps & { claim: Claim }) 
         {date && <span className="claim-date">{date}</span>}
         {claim.origin === "structured" && (
           <span
-            className="chip chip-structured"
+            className="st sky chip-structured"
             title="Value from the structured fact base; the citation is its document of record"
           >
             Structured record
@@ -74,22 +74,25 @@ function ContradictionCards({
   activeChunk,
 }: OpenProps & { contradiction: Contradiction }) {
   return (
-    <section className="contradiction" aria-label={`Contradiction: ${contradiction.subject}`}>
-      <h3>{contradiction.subject}</h3>
+    <section className="plate contradiction" aria-label={`Contradiction: ${contradiction.subject}`}>
+      <div className="plate-h">
+        <h2>{contradiction.subject}</h2>
+        <span className="st bad">Sources disagree</span>
+      </div>
       <div className="sides">
         {contradiction.sides.map((side, index) => {
           const first = side.citations[0];
           return (
             <article key={side.claim_id} className="side">
-              <p className="side-value">{side.label}</p>
+              <p className="side-value big">{side.label}</p>
               {first && (
                 <p className="side-source">
                   <TierChip tier={first.tier} /> {first.doc_title}
                   <br />
-                  <span className="muted">{dateOrUnknown(first.published_on)}</span>
+                  <span className="sub mono">{dateOrUnknown(first.published_on)}</span>
                 </p>
               )}
-              <p className="muted">
+              <p className="sub">
                 Strength {formatNumber(side.strength)} (tier weight x recency)
                 {contradiction.stronger_side === index ? ", higher of the two (informative only)" : ""}
               </p>
@@ -107,7 +110,7 @@ function ContradictionCards({
           );
         })}
       </div>
-      <p className="note">{contradiction.note}</p>
+      <p className="plate-b tint">{contradiction.note}</p>
     </section>
   );
 }
@@ -115,8 +118,11 @@ function ContradictionCards({
 function TraceDrawer({ answer }: { answer: Answer }) {
   const { trace } = answer;
   return (
-    <details className="trace">
-      <summary>Trace (for engineers)</summary>
+    <details className="plate fold trace">
+      <summary>
+        <span className="fold-t">Trace (for engineers)</span>
+        <span className="fold-h">writer, judge, latency, retrieved passages</span>
+      </summary>
       <p>
         Writer {trace.provider} {trace.model}; judge{" "}
         {trace.judge_model
@@ -146,7 +152,7 @@ function TraceDrawer({ answer }: { answer: Answer }) {
       {trace.retrieved.length === 0 ? (
         <p>None.</p>
       ) : (
-        <table>
+        <table className="tbl tight">
           <thead>
             <tr>
               <th>Rank</th>
@@ -178,28 +184,38 @@ function TraceDrawer({ answer }: { answer: Answer }) {
 export function AnswerView({ answer, onOpen, activeChunk }: OpenProps & { answer: Answer }) {
   return (
     <div className="answer" data-testid="answer">
-      <p className="question-echo">
-        <span className="muted">Question</span> {answer.question}
-      </p>
-      <p className="summary">{answer.summary}</p>
+      <section className="plate answer-head">
+        <div className="plate-b">
+          <p className="lab">Question</p>
+          <p className="question-echo">{answer.question}</p>
+          <p className="summary big">{answer.summary}</p>
+        </div>
+      </section>
 
       {answer.degraded && (
-        <section className="degraded" role="alert" aria-label="Degraded answer">
-          <h3>Degraded answer</h3>
+        <section className="note warn mt degraded" role="alert" aria-label="Degraded answer">
+          <h3 className="lab">Degraded answer</h3>
           <p>{answer.degraded_reason ?? "A live model call failed; rules answered instead."}</p>
         </section>
       )}
 
       {answer.abstained && (
-        <section className="abstention" aria-label="Abstention">
-          <h3>No answer given</h3>
-          <p>{answer.abstention_reason ?? "The sources do not support an answer."}</p>
+        <section className="plate abstention" aria-label="Abstention">
+          <div className="plate-h">
+            <h2>No answer given</h2>
+            <span className="st">Abstained</span>
+          </div>
+          <div className="plate-b">
+            <p>{answer.abstention_reason ?? "The sources do not support an answer."}</p>
+          </div>
         </section>
       )}
 
       {!answer.abstained && answer.claims.length > 0 && (
-        <section aria-label="Claims">
-          <h3>Claims</h3>
+        <section className="plate" aria-label="Claims">
+          <div className="plate-h">
+            <h2>Claims</h2>
+          </div>
           <ul className="claims">
             {answer.claims.map((claim) => (
               <ClaimRow key={claim.id} claim={claim} onOpen={onOpen} activeChunk={activeChunk} />
@@ -218,9 +234,11 @@ export function AnswerView({ answer, onOpen, activeChunk }: OpenProps & { answer
       ))}
 
       {answer.missing.length > 0 && (
-        <section aria-label="Missing information">
-          <h3>Missing</h3>
-          <ul className="missing">
+        <section className="plate" aria-label="Missing information">
+          <div className="plate-h">
+            <h2>Missing</h2>
+          </div>
+          <ul className="plate-b missing issues">
             {answer.missing.map((item) => (
               <li key={item.topic}>
                 <span className="hollow" aria-hidden="true" /> <strong>{item.topic}</strong>:{" "}

@@ -5,6 +5,7 @@ import type { Citation, KpiValue } from "@/lib/contracts";
 import { formatNumber } from "@/lib/format";
 import { useAsync } from "@/lib/useAsync";
 import { CitationButton } from "./CitationButton";
+import { Loading } from "./Loading";
 
 const MARKER = {
   sourced: { glyph: "●", label: "Sourced" },
@@ -26,29 +27,36 @@ function Detail({
   activeChunk: string | null;
 }) {
   return (
-    <section className="kpi-detail" aria-label="KPI detail">
-      <h3>
-        {kpiLabel(value.kpi_id)}, {value.period}
-      </h3>
-      <p>
+    <section className="plate kpi-detail" aria-label="KPI detail">
+      <div className="plate-h">
+        <h2>
+          {kpiLabel(value.kpi_id)}, {value.period}
+        </h2>
+        <span className={`st ${value.status === "missing" ? "" : value.status === "computed" ? "sky" : "ok"}`}>
+          {MARKER[value.status].label}
+        </span>
+      </div>
+      <div className="plate-b">
+      <p className="big">
         {MARKER[value.status].label}
         {value.value !== null ? `: ${formatNumber(value.value)} ${value.unit}` : ": not established by the sources"}
       </p>
       {value.status === "computed" && (
         <>
-          <p className="muted">Computed from these inputs, not read from a document.</p>
-          <table className="data" aria-label="Formula inputs">
+          <p className="sub mt">Computed from these inputs, not read from a document.</p>
+          <table className="tbl tight" aria-label="Formula inputs">
             <tbody>
               {Object.entries(value.formula_inputs).map(([name, input]) => (
                 <tr key={name}>
-                  <th scope="row">{name}</th>
-                  <td>{formatNumber(input)}</td>
+                  <th scope="row" className="mono">{name}</th>
+                  <td className="num mono">{formatNumber(input)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </>
       )}
+      <div className="citations">
       {value.citations.map((citation) => (
         <CitationButton
           key={citation.chunk_id}
@@ -57,6 +65,8 @@ function Detail({
           active={activeChunk === citation.chunk_id}
         />
       ))}
+      </div>
+      </div>
     </section>
   );
 }
@@ -85,8 +95,14 @@ export function KpiTab({
   const state = useAsync(load);
   const [selected, setSelected] = useState<string | null>(null);
 
-  if (state.status === "loading") return <p className="muted">Loading KPIs.</p>;
-  if (state.status === "error") return <p className="note" role="alert">{state.error.message}</p>;
+  if (state.status === "loading") return <Loading />;
+  if (state.status === "error") {
+    return (
+      <p className="note bad mt" role="alert">
+        {state.error.message}
+      </p>
+    );
+  }
 
   const values = state.data;
   const kpiIds = [...new Set(values.map((v) => v.kpi_id))];
@@ -96,7 +112,10 @@ export function KpiTab({
 
   return (
     <div>
-      <table className="data kpis" aria-label="KPIs by period">
+      <section className="plate">
+      <div className="plate-b flush">
+      <div className="fill fill-list">
+      <table className="tbl kpis" aria-label="KPIs by period">
         <thead>
           <tr>
             <th>KPI</th>
@@ -111,12 +130,12 @@ export function KpiTab({
               <th scope="row">{kpiLabel(id)}</th>
               {periods.map((period) => {
                 const value = byCell.get(`${id}:${period}`);
-                if (!value) return <td key={period} className="muted">not extracted</td>;
+                if (!value) return <td key={period} className="sub">not extracted</td>;
                 return (
                   <td key={period}>
                     <button
                       type="button"
-                      className={`cell${selected === cellKey(value) ? " cell-active" : ""}`}
+                      className={`kpi-cell${selected === cellKey(value) ? " on" : ""}`}
                       onClick={() => setSelected(cellKey(value))}
                       aria-label={`${kpiLabel(id)} ${period}, ${MARKER[value.status].label}`}
                     >
@@ -132,10 +151,13 @@ export function KpiTab({
           ))}
         </tbody>
       </table>
-      <p className="muted">
+      </div>
+      <p className="pager sub">
         {MARKER.sourced.glyph} sourced from a document, {MARKER.computed.glyph} computed from other
         KPIs, {MARKER.missing.glyph} missing. Click a value to see its source or its inputs.
       </p>
+      </div>
+      </section>
       {chosen && <Detail value={chosen} onOpen={onOpen} activeChunk={activeChunk} />}
     </div>
   );

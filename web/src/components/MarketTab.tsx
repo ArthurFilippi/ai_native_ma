@@ -42,22 +42,39 @@ export function MarketTab({
 
   return (
     <div>
-      <p>
-        The connector is simulated: it serves dated, generated items and never reaches a real data
-        provider. Items become press documents of this deal and are ranked like any other source.
-      </p>
-      <p>
-        <button type="button" className="primary" onClick={() => void run()} disabled={running}>
-          Run simulated connector
-        </button>{" "}
-        {message && <span role="status">{message}</span>}
-      </p>
-      {state.status === "error" && <p className="note" role="alert">{state.error.message}</p>}
-      <h3>Ingested items</h3>
+      <section className="plate">
+        <div className="plate-b row-between">
+          <p className="sub">
+            The connector is simulated: it serves dated, generated items and never reaches a real
+            data provider. Items become press documents of this deal and are ranked like any other
+            source.
+          </p>
+          <button type="button" className="go" onClick={() => void run()} disabled={running}>
+            <span>Run simulated connector</span>
+            <i aria-hidden="true">→</i>
+          </button>
+        </div>
+        {message && (
+          <p className="plate-b tint" role="status">
+            {message}
+          </p>
+        )}
+      </section>
+      {state.status === "error" && (
+        <p className="note bad mt" role="alert">
+          {state.error.message}
+        </p>
+      )}
+      <section className="plate">
+      <div className="plate-h">
+        <h2>Ingested items</h2>
+      </div>
       {items.length === 0 ? (
-        <p className="muted">No simulated item has been ingested for this deal.</p>
+        <p className="plate-b sub">No simulated item has been ingested for this deal.</p>
       ) : (
-        <table className="data" aria-label="Ingested market items">
+        <div className="plate-b flush">
+        <div className="fill fill-list">
+        <table className="tbl" aria-label="Ingested market items">
           <thead>
             <tr>
               <th>Title</th>
@@ -75,15 +92,18 @@ export function MarketTab({
                 <td>
                   <TierChip tier={doc.tier} />
                 </td>
-                <td>{dateOrUnknown(doc.published_on)}</td>
+                <td className="mono nowrap">{dateOrUnknown(doc.published_on)}</td>
                 <td>
-                  <span className="chip chip-simulated">simulated</span>
+                  <span className="st">simulated</span>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
+        </div>
       )}
+      </section>
     </div>
   );
 }

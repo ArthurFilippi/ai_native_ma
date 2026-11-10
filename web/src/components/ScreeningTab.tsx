@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Api } from "@/lib/api";
 import type {
   BuyerCard,
@@ -13,11 +13,14 @@ import { formatNumber, percent } from "@/lib/format";
 import { scoreCards } from "@/lib/scoring";
 import { useAsync } from "@/lib/useAsync";
 import { CitationButton } from "./CitationButton";
+import { Loading } from "./Loading";
 
-const GLYPH: Record<CriterionStatus, { glyph: string; label: string }> = {
-  met: { glyph: "✓", label: "met" },
-  not_met: { glyph: "✕", label: "not met" },
-  unknown: { glyph: "?", label: "unknown" },
+// A criterion is a state cell of the design (`.cell`): mint met, rose not met, dashed unknown.
+// Colour is never alone: each cell carries a glyph and an accessible label.
+const GLYPH: Record<CriterionStatus, { glyph: string; label: string; cell: string }> = {
+  met: { glyph: "✓", label: "met", cell: "v" },
+  not_met: { glyph: "✕", label: "not met", cell: "q" },
+  unknown: { glyph: "?", label: "unknown", cell: "m" },
 };
 
 const BUYER_TYPES: BuyerType[] = ["strategic", "financial"];
@@ -56,7 +59,7 @@ function toRequest(dealId: string, draft: FilterDraft): ScreeningRequest {
 function Glyph({ status, label }: { status: CriterionStatus; label: string }) {
   return (
     <span
-      className={`glyph glyph-${status}`}
+      className={`cell ${GLYPH[status].cell} glyph glyph-${status}`}
       title={`${label}: ${GLYPH[status].label}`}
       aria-label={`${label}: ${GLYPH[status].label}`}
       role="img"
@@ -82,11 +85,15 @@ function WeightControls({
   onReset: () => void;
 }) {
   return (
-    <fieldset className="weights">
-      <legend>Criterion weights (the ranking is recomputed here when you change them)</legend>
+    <details className="plate fold weights">
+      <summary>
+        <span className="fold-t">Criterion weights</span>
+        <span className="fold-h">the ranking is recomputed here when you change them</span>
+      </summary>
+      <div className="weight-grid">
       {criteria.map((c) => (
         <div key={c.key} className="weight-row">
-          <label htmlFor={`w-${c.key}`} title={c.description}>
+          <label htmlFor={`w-${c.key}`} title={c.description} className="lab">
             {c.label}
             {c.dealbreaker ? " (dealbreaker)" : ""}
           </label>
@@ -109,10 +116,11 @@ function WeightControls({
           />
         </div>
       ))}
-      <button type="button" onClick={onReset}>
+      </div>
+      <button type="button" className="btn sm mt" onClick={onReset}>
         Reset weights
       </button>
-    </fieldset>
+    </details>
   );
 }
 
@@ -121,54 +129,85 @@ function BuyerCardView({
   criteria,
   onOpen,
   activeChunk,
+  onClose,
 }: {
   card: BuyerCard;
   criteria: readonly Criterion[];
   onOpen: (citation: Citation) => void;
   activeChunk: string | null;
+  onClose: () => void;
 }) {
   const { buyer } = card;
+  const closeRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    // the window locks the page scroll, takes the focus, and Escape closes it (design rule 6)
+    closeRef.current?.focus();
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", escape);
+    };
+  }, [onClose]);
   return (
-    <section className="buyer-card" aria-label={`Buyer card: ${buyer.name}`}>
-      <h3>{buyer.name}</h3>
-      <p className="muted">
-        {buyer.buyer_type}, {buyer.sectors.join(", ")}; {buyer.geographies.join(", ")}; size EUR{" "}
-        {formatNumber(buyer.size_eur_m)}m. Stage 1 {card.stage1_passed ? "passed" : "not passed"}.{" "}
-        {buyer.synthetic ? "Synthetic buyer." : ""}
-      </p>
-      {card.dealbreakers.length > 0 && (
-        <p className="note">
-          Dealbreaker not met:{" "}
-          {card.dealbreakers
-            .map((key) => criteria.find((c) => c.key === key)?.label ?? key)
-            .join(", ")}
-          . The buyer stays visible, ranked after buyers without a dealbreaker.
-        </p>
-      )}
-      <table className="data" aria-label="Criteria">
-        <thead>
-          <tr>
-            <th>Criterion</th>
-            <th>Status</th>
-            <th>Contribution</th>
-            <th>Rationale and evidence</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="pw-overlay">
+      <div className="pw-back" onClick={onClose} />
+      <section
+        className="pw buyer-card"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Buyer card: ${buyer.name}`}
+      >
+        <div className="pw-head">
+          <div className="pw-title">
+            <h2>{buyer.name}</h2>
+            <span className="mono">
+              rank {card.rank ?? "n/a"}, score {percent(card.score)}, range{" "}
+              {card.score_low == null || card.score_high == null
+                ? "n/a"
+                : `${percent(card.score_low)} to ${percent(card.score_high)}`}
+              , coverage {percent(card.coverage)}
+            </span>
+          </div>
+          <button ref={closeRef} type="button" className="pw-x" aria-label="Close" onClick={onClose}>
+            <span>×</span>
+          </button>
+        </div>
+        <div className="pw-blocks">
+          <p className="sub">
+            {buyer.buyer_type}, {buyer.sectors.join(", ")}; {buyer.geographies.join(", ")}; size EUR{" "}
+            {formatNumber(buyer.size_eur_m)}m. Stage 1 {card.stage1_passed ? "passed" : "not passed"}.{" "}
+            {buyer.synthetic ? "Synthetic buyer." : ""}
+          </p>
+          {card.dealbreakers.length > 0 && (
+            <p className="note bad mt">
+              Dealbreaker not met:{" "}
+              {card.dealbreakers
+                .map((key) => criteria.find((c) => c.key === key)?.label ?? key)
+                .join(", ")}
+              . The buyer stays visible, ranked after buyers without a dealbreaker.
+            </p>
+          )}
           {criteria.map((criterion) => {
             const result = card.results.find((r) => r.criterion_key === criterion.key);
             const status = result?.status ?? "unknown";
             return (
-              <tr key={criterion.key}>
-                <td>{criterion.label}</td>
-                <td>
-                  <Glyph status={status} label={criterion.label} /> {GLYPH[status].label}
-                </td>
-                <td>{formatNumber(card.contributions[criterion.key] ?? 0)}</td>
-                <td>
+              <div key={criterion.key} className="pw-block-row">
+                <div>
+                  <div className="pw-name">{criterion.label}</div>
+                  <div className="pw-count mono">
+                    <Glyph status={status} label={criterion.label} /> {GLYPH[status].label}, +
+                    {formatNumber(card.contributions[criterion.key] ?? 0)}
+                  </div>
+                </div>
+                <div className="pw-body">
                   <p>{result?.rationale ?? "No result for this criterion."}</p>
                   {result?.conflicting_evidence && (
-                    <span className="chip chip-flag chip-contradicted">Sources disagree</span>
+                    <span className="st bad">Sources disagree</span>
                   )}
                   <div className="citations">
                     {(result?.citations ?? []).map((citation) => (
@@ -180,13 +219,26 @@ function BuyerCardView({
                       />
                     ))}
                   </div>
-                </td>
-              </tr>
+                </div>
+              </div>
             );
           })}
-        </tbody>
-      </table>
-    </section>
+        </div>
+        <div className="pw-foot">
+          <span className="ov-legend tight">
+            <span>
+              <i className="cell v" /> Met
+            </span>
+            <span>
+              <i className="cell q" /> Not met
+            </span>
+            <span>
+              <i className="cell m" /> Unknown, never guessed
+            </span>
+          </span>
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -208,6 +260,7 @@ function Results({
     [result, weights],
   );
   const chosen = ranked.find((c) => c.buyer.id === selected);
+  const closeCard = useCallback(() => setSelected(null), []);
 
   return (
     <div>
@@ -217,8 +270,10 @@ function Results({
         onChange={(key, weight) => setWeights((w) => ({ ...w, [key]: weight }))}
         onReset={() => setWeights(Object.fromEntries(result.criteria.map((c) => [c.key, c.weight])))}
       />
-      <div className="table-scroll">
-      <table className="data results" aria-label="Screening results">
+      <section className="plate">
+      <div className="plate-b flush">
+      <div className="fill fill-list">
+      <table className="tbl results" aria-label="Screening results">
         <thead>
           <tr>
             <th>Rank</th>
@@ -240,7 +295,7 @@ function Results({
           {ranked.map((card) => (
             <tr
               key={card.buyer.id}
-              className={card.buyer.id === selected ? "row-active" : undefined}
+              className={`click${card.buyer.id === selected ? " sel" : ""}`}
               onClick={() => setSelected(card.buyer.id)}
             >
               <td>{card.rank}</td>
@@ -257,7 +312,7 @@ function Results({
                   {card.buyer.name}
                 </button>
                 {card.dealbreakers.length > 0 && (
-                  <span className="chip chip-flag chip-contradicted">Dealbreaker</span>
+                  <span className="st bad">Dealbreaker</span>
                 )}
               </td>
               <td>{card.buyer.buyer_type}</td>
@@ -278,17 +333,24 @@ function Results({
         </tbody>
       </table>
       </div>
-      <p className="muted">
+      <p className="pager sub">
         {GLYPH.met.glyph} met, {GLYPH.not_met.glyph} not met, {GLYPH.unknown.glyph} unknown (no
         evidence found, never guessed). Score is the weight of met criteria over the weight of known
-        criteria. Coverage is the share of total weight with evidence.
+        criteria. Coverage is the share of total weight with evidence. The range shows the
+        score once the unknowns are known; the rank uses its floor.
       </p>
+      </div>
+      </section>
       {chosen && (
         <BuyerCardView
           card={chosen}
           criteria={result.criteria}
-          onOpen={onOpen}
+          onOpen={(citation) => {
+            setSelected(null);
+            onOpen(citation);
+          }}
           activeChunk={activeChunk}
+          onClose={closeCard}
         />
       )}
     </div>
@@ -323,67 +385,101 @@ export function ScreeningTab({
   return (
     <div>
       <form
-        className="filters"
+        className="plate filters"
         onSubmit={(event) => {
           event.preventDefault();
           setRequest(toRequest(dealId, draft));
         }}
       >
-        <fieldset>
-          <legend>Buyer type</legend>
-          {BUYER_TYPES.map((type) => (
-            <label key={type}>
+        <div className="plate-b">
+          <div className="row">
+            <div className="field" style={{ flex: "0 1 auto" }}>
+              <span className="lab">Buyer type</span>
+              <span className="chips">
+                {BUYER_TYPES.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    className={`opt${draft.types.includes(type) ? " on" : ""}`}
+                    aria-pressed={draft.types.includes(type)}
+                    onClick={() =>
+                      setDraft((d) => ({
+                        ...d,
+                        types: d.types.includes(type)
+                          ? d.types.filter((t) => t !== type)
+                          : [...d.types, type],
+                      }))
+                    }
+                  >
+                    {type}
+                  </button>
+                ))}
+              </span>
+            </div>
+            <div className="field">
+              <label className="lab" htmlFor="f-sector">
+                Sector
+              </label>
               <input
-                type="checkbox"
-                checked={draft.types.includes(type)}
-                onChange={(event) =>
-                  setDraft((d) => ({
-                    ...d,
-                    types: event.target.checked ? [...d.types, type] : d.types.filter((t) => t !== type),
-                  }))
-                }
-              />{" "}
-              {type}
-            </label>
-          ))}
-        </fieldset>
-        <label>
-          Sector
-          <input value={draft.sector} onChange={(e) => setDraft((d) => ({ ...d, sector: e.target.value }))} />
-        </label>
-        <label>
-          Geography
-          <input
-            value={draft.geography}
-            onChange={(e) => setDraft((d) => ({ ...d, geography: e.target.value }))}
-          />
-        </label>
-        <label>
-          Min size (EUR m)
-          <input
-            type="number"
-            value={draft.minSize}
-            onChange={(e) => setDraft((d) => ({ ...d, minSize: e.target.value }))}
-          />
-        </label>
-        <label>
-          Max size (EUR m)
-          <input
-            type="number"
-            value={draft.maxSize}
-            onChange={(e) => setDraft((d) => ({ ...d, maxSize: e.target.value }))}
-          />
-        </label>
-        <button type="submit" className="primary">
-          Run screening
-        </button>
+                id="f-sector"
+                type="text"
+                placeholder="from the deal"
+                value={draft.sector}
+                onChange={(e) => setDraft((d) => ({ ...d, sector: e.target.value }))}
+              />
+            </div>
+            <div className="field">
+              <label className="lab" htmlFor="f-geo">
+                Geography
+              </label>
+              <input
+                id="f-geo"
+                type="text"
+                placeholder="from the deal"
+                value={draft.geography}
+                onChange={(e) => setDraft((d) => ({ ...d, geography: e.target.value }))}
+              />
+            </div>
+            <div className="field">
+              <label className="lab" htmlFor="f-min">
+                Min size (EUR m)
+              </label>
+              <input
+                id="f-min"
+                type="number"
+                value={draft.minSize}
+                onChange={(e) => setDraft((d) => ({ ...d, minSize: e.target.value }))}
+              />
+            </div>
+            <div className="field">
+              <label className="lab" htmlFor="f-max">
+                Max size (EUR m)
+              </label>
+              <input
+                id="f-max"
+                type="number"
+                value={draft.maxSize}
+                onChange={(e) => setDraft((d) => ({ ...d, maxSize: e.target.value }))}
+              />
+            </div>
+            <button type="submit" className="go">
+              <span>Run screening</span>
+              <i aria-hidden="true">→</i>
+            </button>
+          </div>
+          <p className="sub mt">Empty filters are taken from the deal record (region, value).</p>
+        </div>
       </form>
 
-      {state.status === "loading" && <p className="muted">Screening buyers.</p>}
-      {state.status === "error" && <p className="note" role="alert">{state.error.message}</p>}
+      {state.status === "loading" && <Loading />}
+      {state.status === "error" && (
+        <p className="note bad mt" role="alert">
+          {state.error.message}
+        </p>
+      )}
       {state.status === "ready" &&
         (state.data.cards.length === 0 ? (
-          <p className="muted">No buyer matches these filters.</p>
+          <p className="note mt">No buyer matches these filters.</p>
         ) : (
           <Results key={state.data.cards.map((c) => c.buyer.id).join()} result={state.data} onOpen={onOpen} activeChunk={activeChunk} />
         ))}

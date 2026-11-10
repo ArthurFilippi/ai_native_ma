@@ -106,7 +106,8 @@ describe("answer and evidence screen", () => {
   it("hides the deal from a user without membership", async () => {
     setup();
     const user = userEvent.setup();
-    await user.selectOptions(await screen.findByLabelText(/Demo user/), "u_outsider");
+    await user.click(await screen.findByRole("button", { name: /Demo user/ }));
+    await user.click(await screen.findByRole("option", { name: /Omar Outsider/ }));
     expect(visible(await screen.findByText(/No deal is visible to this user/))).toBe(true);
   });
 });

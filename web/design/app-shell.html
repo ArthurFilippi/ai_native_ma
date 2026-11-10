@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARPA Data Hub app shell</title>
+<!--
+  APP SHELL: the layout and the behaviour of the whole application, with fake data and no framework (vanilla JS, one hash router).
+  Read it for the PATTERNS, not for the content:
+    1. Layout: sticky top bar (brand | nav | account), optional pink simulation bar, then <main> inside .frame (max 1360 px).
+    2. Router: one page = one function render(root, ctx). The old page stays on screen until the new one is built (no flash).
+    3. A table that fits the screen: fitFill() gives its box the height that is left, so IT scrolls, not the page.
+    4. LIVE DATA WITHOUT JUMPS (the important one): a page may set ctx.refresh. When data arrives the app calls it INSTEAD of rebuilding
+       the page. The page repaints where it stands: scroll kept, open window / record / entry kept, filters and page kept.
+       Ledger: when the reader is not at the top of the first page, rows are NOT moved, a button says "N new entries, show".
+    5. Click a cell -> a record opens; click a patient -> a window opens; Escape closes; the URL hash says what is open.
+  Press Play in the pink bar to see new files arrive while you scroll the Ledger or keep a patient window open.
+-->
+<link rel="stylesheet" href="ui.css">
+</head>
+<body>
+
+<div class="chrome" id="chrome"><div class="chrome-in">
+  <header class="cells top">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2.5" fill="#b9ecd0" stroke="#0a0a0a"/><rect x="13" y="1" width="10" height="10" rx="2.5" fill="#bcd6ff" stroke="#0a0a0a"/><rect x="1" y="13" width="10" height="10" rx="2.5" fill="#f6e58d" stroke="#0a0a0a"/><rect x="13" y="13" width="10" height="10" rx="2.5" fill="#0a0a0a"/></svg>
+      <b>ARPA</b><span class="mono dim">Data Hub</span>
+    </div>
+    <nav id="nav" aria-label="Main navigation"></nav>
+    <div class="who"><span class="who-id">demo</span><button class="who-out" type="button">Sign out<i>↗</i></button></div>
+  </header>
+</div></div>
+<div class="frame">
+  <div class="cells sim" id="sim"></div>
+  <main id="view" aria-live="polite"></main>
+</div>
+<div id="overlay"></div>
+
+<script type="module">
+// ------------------------------------------------------------------ tiny DOM helper: h('div', {class:'x', onclick}, ...children)
+const h = (tag, attrs = {}, ...kids) => {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  el.append(...kids.flat().filter((x) => x != null && x !== false));
+  return el;
+};
+const mount = (el, ...kids) => { el.replaceChildren(...kids.flat().filter((x) => x != null)); return el; };
+const chip = (cls, text) => h('span', { class: `st ${cls}` }, text);
+
+// ------------------------------------------------------------------ fitFill: the box gets the height left under it, so it scrolls inside
+function fitFill(el, { bottom = 20, min = 240 } = {}) {
+  const apply = () => {
+    if (!el.isConnected) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    el.style.maxHeight = `${Math.max(min, Math.floor(innerHeight - top - bottom))}px`;
+  };
+  new ResizeObserver(apply).observe(document.body);
+  requestAnimationFrame(function wait() { el.isConnected ? apply() : requestAnimationFrame(wait); });   // the page is mounted after render()
+}
+
+// ------------------------------------------------------------------ fake store (stands for the API)
+const MODS = [{ code: 'cytof', name: 'CyTOF', days: ['D-7', 'D0', 'D+7'] }, { code: 'eeg', name: 'Sleep EEG', days: Array.from({ length: 43 }, (_, i) => `D${i - 14 < 0 ? i - 14 : i - 14 === 0 ? '0' : '+' + (i - 14)}`) }];
+const PATIENTS = Array.from({ length: 18 }, (_, i) => `ARPA_${String(i + 1).padStart(3, '0')}`);
+const store = { cells: {}, ledger: [], seq: 0, queue: [] };       // cells[pid|mod|day] = 'v' | 'y'
+for (const p of PATIENTS) for (const m of MODS) m.days.forEach((_, d) => store.queue.push([p, m, d]));
+store.queue.sort((a, b) => a[2] - b[2] || a[0].localeCompare(b[0]));
+const stamp = () => new Date().toISOString().slice(0, 19).replace('T', ' ');
+function ingest() {                                               // one file arrives
+  const [p, m, d] = store.queue.shift() || [];
+  if (!p) return false;
+  const bad = Math.random() < 0.2;
+  store.cells[`${p}|${m.code}|${d}`] = bad ? 'y' : 'v';
+  store.ledger.unshift({ seq: ++store.seq, time: stamp(), p, m: m.name, day: m.days[d], flags: bad ? [{ code: 'missing columns', message: `the contract of ${m.code} needs the column population` }] : [] });
+  return true;
+}
+for (let i = 0; i < 60; i++) ingest();
+const cellOf = (p, m, d) => store.cells[`${p}|${m.code}|${d}`] || 'm';
+const pctOf = (p) => { const all = MODS.flatMap((m) => m.days.map((_, d) => cellOf(p, m, d))); return Math.round(100 * all.filter((x) => x === 'v').length / all.length); };
+
+// ------------------------------------------------------------------ router. ctx.refresh is reset on every route and set again by a page that can update in place.
+const ctx = { refresh: null };
+const PAGES = [['overview', 'Overview'], ['ledger', 'Ledger']];
+const view = document.getElementById('view');
+let shown = null, token = 0;
+const route = () => (location.hash.slice(2) || 'overview').split('?')[0];
+async function go() {
+  const id = PAGES.some(([p]) => p === route()) ? route() : 'overview';
+  mount(document.getElementById('nav'), PAGES.map(([p, label]) => h('a', { class: `na${p === id ? ' on' : ''}`, href: `#/${p}` }, label)));
+  const same = id === shown, y = scrollY, mine = ++token;
+  ctx.refresh = null;
+  const root = h('section');
+  await (id === 'overview' ? overview : ledger)(root);
+  if (mine !== token) return;
+  mount(view, root); shown = id;
+  window.scrollTo(0, same ? y : 0);                               // same page: keep the scroll; new page: top
+}
+addEventListener('hashchange', go);
+
+// ------------------------------------------------------------------ page head: same 60 px title everywhere, optional block on the right
+const pageHead = (title, aside) => h('div', { class: `head${aside ? '' : ' solo'}` }, h('div', {}, h('h1', { class: 't1' }, title)), aside);
+const LEGEND = [['v', 'Validated'], ['y', 'Failed or incomplete'], ['m', 'Missing']];
+const legend = (cls = '') => h('div', { class: `ov-legend ${cls}` }, LEGEND.map(([k, t]) => h('span', {}, h('i', { class: `ov-sw k-${k}` }), t)));
+
+// ================================================================== OVERVIEW
+const memo = { top: 0 };                                          // scroll of the matrix, kept across a redraw
+async function overview(root) {
+  const CELL = 22, GAP = 4, PAD = 14;
+  const kind = (m) => (m.days.length > 6 ? 'strip' : 'few');
+  const widths = MODS.map((m) => (kind(m) === 'few' ? `${m.days.length * CELL + (m.days.length - 1) * GAP + PAD + 14}px` : 'minmax(300px,1fr)'));
+  const cols = `104px ${widths.join(' ')}`, minW = `${MODS.reduce((t, m) => t + (kind(m) === 'few' ? m.days.length * CELL + (m.days.length - 1) * GAP + PAD + 14 : 300), 148)}px`;
+
+  const head = h('div', { class: 'ov-head', style: { gridTemplateColumns: cols, minWidth: minW } });
+  const paintHead = () => mount(head,
+    h('div', { class: 'ov-hcell first' }, h('div', { class: 'ov-hline' }, h('span', { class: 'ov-hname' }, 'Patient')), h('div', { class: 'ov-hbar spacer' })),
+    MODS.map((m) => {
+      const ok = PATIENTS.reduce((t, p) => t + m.days.filter((_, d) => cellOf(p, m, d) === 'v').length, 0), pct = Math.round(100 * ok / (PATIENTS.length * m.days.length));
+      return h('div', { class: 'ov-hcell' }, h('div', { class: 'ov-hline' }, h('span', { class: 'ov-hname' }, m.name), h('span', { class: 'ov-hpct mono' }, `${pct}%`)),
+        h('div', { class: 'ov-hbar' }, h('div', { class: 'ov-track' }, h('i', { style: { width: `${pct}%` } }))));
+    }));
+  const row = (p) => h('button', { class: 'ov-row', type: 'button', style: { gridTemplateColumns: cols, minWidth: minW }, onclick: () => openPatient(p) },
+    h('div', { class: 'ov-pid mono' }, p),
+    MODS.map((m) => h('div', { class: 'ov-col' }, h('div', { class: `ov-cells ${kind(m)}` },
+      m.days.map((day, d) => h('i', { class: `ov-c k-${cellOf(p, m, d)}`, title: day, style: kind(m) === 'few' ? { width: `${CELL}px` } : null }))))));
+  const list = h('div', { class: 'ov-list' });
+  const fill = h('div', { class: 'ov-fill fill', onscroll: () => { memo.top = fill.scrollTop; } }, head, list);
+  const draw = () => mount(list, PATIENTS.map(row));
+  paintHead(); draw();
+  root.append(pageHead('Overview', legend()), h('section', { class: 'ov-sec' }, h('div', { class: 'ov-card flush' }, fill)));
+  fitFill(fill);
+  requestAnimationFrame(() => { fill.scrollTop = memo.top; });
+
+  // ---- patient window (a child of <body>, so it survives nothing: it is removed when the page goes)
+  const host = document.getElementById('overlay');
+  let win = null;                                                  // what a refresh repaints: { p, blocksEl, metaEl, recordHost, rec }
+  const closePatient = () => { win = null; mount(host); document.body.style.overflow = ''; };
+  const onKey = (e) => { if (e.key === 'Escape' && win) closePatient(); };
+  document.addEventListener('keydown', onKey);
+  new MutationObserver((_, o) => { if (!root.isConnected && shown !== null) { document.removeEventListener('keydown', onKey); closePatient(); o.disconnect(); } }).observe(view, { childList: true });
+
+  const blocks = (p) => MODS.map((m) => {
+    const ks = m.days.map((_, d) => cellOf(p, m, d));
+    const btn = (k, d, cls) => h('button', { class: `${cls} k-${k}`, type: 'button', title: `${m.days[d]}`, disabled: k === 'm', onclick: () => showRecord(p, m, d) });
+    const cells = kind(m) === 'few' ? h('div', { class: 'pw-cells' }, ks.map((k, d) => btn(k, d, 'pw-c'))) : h('div', { class: 'pw-strip' }, ks.map((k, d) => btn(k, d, 'pw-s')));
+    return h('div', { class: 'pw-block-row' },
+      h('div', {}, h('div', { class: 'pw-name' }, m.name), h('div', { class: 'pw-count mono' }, `${ks.filter((k) => k === 'v').length} / ${ks.length} timepoints`)),
+      h('div', { class: 'pw-body' }, h('div', {}, cells)));                      // NO flag detail here: a yellow cell is enough, the record explains it
+  });
+  function openPatient(p) {
+    document.body.style.overflow = 'hidden';
+    const metaEl = h('span', { class: 'mono' }, `${pctOf(p)}% done`), blocksEl = h('div', { class: 'pw-blocks' }, blocks(p)), recordHost = h('div', { class: 'pw-record' });
+    win = { p, metaEl, blocksEl, recordHost, rec: null };
+    mount(host, h('div', { class: 'pw-overlay' }, h('div', { class: 'pw-back', onclick: closePatient }),
+      h('div', { class: 'pw', role: 'dialog', 'aria-modal': 'true' },
+        h('div', { class: 'pw-head' }, h('div', { class: 'pw-title' }, h('h2', {}, p), metaEl), h('button', { class: 'pw-x', type: 'button', 'aria-label': 'Close', onclick: closePatient }, h('span', {}, '×'))),
+        blocksEl, recordHost,
+        h('div', { class: 'pw-foot' }, legend('tight'), h('a', { class: 'pw-ledger', href: '#/ledger', onclick: closePatient }, 'Open in the ledger')))));
+  }
+  const recordEl = (p, m, d) => {
+    const fl = store.ledger.find((e) => e.p === p && e.m === m.name && e.day === m.days[d]);
+    const bad = cellOf(p, m, d) === 'y';
+    return h('section', { class: 'plate record pw-sheet' },
+      h('div', { class: 'plate-h' }, h('h2', {}, 'Acquisition record'), h('button', { class: 'plate-x', type: 'button', 'aria-label': 'Close the record', onclick: () => { win.rec = null; mount(win.recordHost); } }, h('span', {}, '×'))),
+      h('div', { class: 'plate-b sechead' }, h('div', {}, h('div', { class: 'big-name mono' }, `${p} · ${m.name} · ${m.days[d]}`)), chip(bad ? 'bad' : 'ok', bad ? 'QC failed' : 'Validated')),
+      h('div', { class: 'plate-b rec-grid' }, [['Stored file', `${p}_${m.code}.csv`], ['File check', 'intact, 97.4 kB'], ['Submission', `SUB-${String(fl?.seq || 1).padStart(4, '0')}`], ['Uploader', 'uploader-demo'], ['Date UTC', fl?.time || '']]
+        .map(([k, v]) => h('div', { class: 'rec-i' }, h('span', { class: 'rec-l' }, k), h('span', { class: 'rec-v mono' }, v)))),
+      bad && fl?.flags.length ? h('div', { class: 'plate-b rec-flags' }, h('span', { class: 'rec-l' }, `Flags (${fl.flags.length})`),
+        h('ul', { class: 'flaglist' }, fl.flags.map((f) => h('li', {}, chip('bad', f.code), h('span', {}, f.message))))) : null);
+  };
+  function showRecord(p, m, d) { win.rec = { p, m, d }; mount(win.recordHost, recordEl(p, m, d)); win.recordHost.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+
+  // ---- the refresh contract: repaint where you stand, close nothing, move nothing
+  ctx.refresh = () => {
+    const top = fill.scrollTop, left = fill.scrollLeft;
+    paintHead(); draw();
+    fill.scrollTop = top; fill.scrollLeft = left;
+    if (win) {
+      const ov = win.blocksEl.closest('.pw-overlay'), y = ov ? ov.scrollTop : 0;
+      mount(win.blocksEl, blocks(win.p)); win.metaEl.textContent = `${pctOf(win.p)}% done`;
+      if (win.rec) mount(win.recordHost, recordEl(win.rec.p, win.rec.m, win.rec.d));          // the open record is repainted too (a real app skips it when unchanged)
+      if (ov) ov.scrollTop = y;
+    }
+  };
+}
+
+// ================================================================== LEDGER
+const PAGE = 15;
+async function ledger(root) {
+  const state = { offset: 0, seq: null, total: store.ledger.length, fresh: 0 };
+  const table = h('div', { class: 'fill', id: 'lg-fill' }), pager = h('div'), detail = h('div');
+  const news = h('button', { class: 'btn sm solid lg-fresh', type: 'button', hidden: true, onclick: () => { state.offset = 0; load(false); } });
+
+  function load(keep = true) {                                      // keep: the scroll of the table survives a repaint
+    const top = keep ? table.scrollTop : 0;
+    const rows = store.ledger.slice(state.offset, state.offset + PAGE);
+    state.total = store.ledger.length; state.fresh = 0;
+    mount(table, h('table', { class: 'tbl' },
+      h('thead', {}, h('tr', {}, ['Time (UTC)', 'Patient', 'Modality', 'TP', 'Note'].map((c) => h('th', {}, c)))),
+      h('tbody', {}, rows.map((e) => h('tr', { class: `click${e.seq === state.seq ? ' sel' : ''}`, onclick: () => open(e.seq) },
+        h('td', { class: 'mono nowrap' }, e.time), h('td', { class: 'mono' }, e.p), h('td', {}, e.m), h('td', { class: 'mono' }, e.day),
+        h('td', {}, e.flags.length ? chip('bad', `${e.flags.length} flag`) : null))))));
+    mount(pager, h('div', { class: 'pager' }, h('span', { class: 'sub' }, `${state.offset + 1}-${Math.min(state.offset + PAGE, state.total)} of ${state.total}`), news,
+      h('button', { class: 'btn sm', type: 'button', disabled: state.offset === 0, onclick: () => { state.offset = Math.max(0, state.offset - PAGE); load(false); } }, 'Newer'),
+      h('button', { class: 'btn sm', type: 'button', disabled: state.offset + PAGE >= state.total, onclick: () => { state.offset += PAGE; load(false); } }, 'Older')));
+    news.hidden = true;
+    table.scrollTop = top;
+  }
+  function open(seq) {
+    state.seq = seq;
+    const e = store.ledger.find((x) => x.seq === seq);
+    mount(detail, h('section', { class: 'plate' },
+      h('div', { class: 'plate-h' }, h('h2', {}, h('em', {}, `#${e.seq}`), 'Entry'), h('button', { class: 'plate-x', type: 'button', 'aria-label': 'Close', onclick: close }, h('span', {}, '×'))),
+      h('div', { class: 'plate-b' }, [['Patient', e.p], ['Modality', e.m], ['Timepoint', e.day], ['Time', e.time]].map(([k, v]) => h('div', { class: 'dr' }, h('div', { class: 'dk' }, k), h('div', { class: 'dv mono' }, v))),
+        e.flags.length ? h('div', { class: 'dr' }, h('div', { class: 'dk' }, 'Flags'), h('div', { class: 'dv' }, h('ul', { class: 'flaglist' }, e.flags.map((f) => h('li', {}, chip('bad', f.code), h('span', {}, f.message)))))) : null)));
+    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    load();                                                         // repaints the selected row, the table stays where it is
+  }
+  const close = () => { state.seq = null; mount(detail); load(); };
+
+  root.append(pageHead('Ledger'), h('section', { class: 'plate' }, h('div', { class: 'plate-b flush' }, table, pager)), detail);
+  load();
+  fitFill(table, { bottom: 24, min: 240 });      // called before the page is mounted: fitFill must wait for it (that was a real bug: the table did not scroll)
+
+  // ---- the refresh contract. At the very top of page 1 with no entry open: repaint live. Anywhere else: touch nothing, offer a button.
+  ctx.refresh = () => {
+    const idle = state.offset === 0 && table.scrollTop < 4 && state.seq == null;
+    if (idle) { load(); return; }
+    state.fresh = store.ledger.length - state.total;
+    news.hidden = !state.fresh;
+    news.textContent = `${state.fresh} new entr${state.fresh > 1 ? 'ies' : 'y'}, show`;
+  };
+}
+
+// ================================================================== simulation bar (pink) + fake feed
+let playing = false, timer = null;
+function drawSim() {
+  const total = PATIENTS.length * MODS.reduce((t, m) => t + m.days.length, 0), stored = Object.keys(store.cells).length, pct = Math.round(100 * stored / total);
+  const cell = (cls, flex, ...kids) => h('span', { class: cls, style: { flex } }, ...kids);
+  mount(document.getElementById('sim'),
+    cell('sim-lab', '0 0 auto', h('span', {}, 'Simulation')),
+    cell('sim-play', '0 0 auto', playBtn()),
+    cell('sim-track', '3 1 160px', h('span', { class: 'simtrack' }, h('i', { style: { width: `${pct}%` } }))),
+    cell('sim-count', '0 0 auto', `${stored} / ${total} files`));
+}
+function playBtn() {
+  const b = h('button', { class: 'play', type: 'button', onclick: toggle });
+  b.innerHTML = `<svg viewBox="0 0 30 30" aria-hidden="true">${playing ? '<path d="M10 9h4v12h-4zM16 9h4v12h-4z" fill="#0a0a0a"/>' : '<path d="M11 8.5v13l10-6.5z" fill="#0a0a0a"/>'}</svg>${playing ? 'Pause' : 'Play'}`;
+  return b;
+}
+function toggle() {
+  playing = !playing;
+  clearInterval(timer);
+  if (playing) timer = setInterval(() => { for (let i = 0; i < 3; i++) if (!ingest()) { playing = false; clearInterval(timer); break; } drawSim(); ctx.refresh?.(); }, 900);   // app: on every progress tick
+  drawSim();
+}
+drawSim();
+go();
+</script>
+</body>
+</html>

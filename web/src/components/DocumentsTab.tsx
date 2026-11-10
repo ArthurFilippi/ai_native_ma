@@ -3,17 +3,27 @@ import type { Api } from "@/lib/api";
 import { DOC_TYPE_LABEL } from "@/lib/constants";
 import { dateOrUnknown } from "@/lib/format";
 import { useAsync } from "@/lib/useAsync";
-import { TierChip } from "./Chips";
+import { StatusChip, TierChip } from "./Chips";
+import { Loading } from "./Loading";
 
 export function DocumentsTab({ api, dealId }: { api: Api; dealId: string }) {
   const load = useCallback(() => api.documents(dealId), [api, dealId]);
   const state = useAsync(load);
 
-  if (state.status === "loading") return <p className="muted">Loading documents.</p>;
-  if (state.status === "error") return <p className="note" role="alert">{state.error.message}</p>;
+  if (state.status === "loading") return <Loading />;
+  if (state.status === "error") {
+    return (
+      <p className="note bad mt" role="alert">
+        {state.error.message}
+      </p>
+    );
+  }
 
   return (
-    <table className="data" aria-label="Documents">
+    <section className="plate">
+    <div className="plate-b flush">
+    <div className="fill fill-list">
+    <table className="tbl" aria-label="Documents">
       <thead>
         <tr>
           <th>Title</th>
@@ -22,7 +32,7 @@ export function DocumentsTab({ api, dealId }: { api: Api; dealId: string }) {
           <th>Date</th>
           <th>Status</th>
           <th>Data</th>
-          <th>Pages</th>
+          <th className="num">Pages</th>
         </tr>
       </thead>
       <tbody>
@@ -30,21 +40,27 @@ export function DocumentsTab({ api, dealId }: { api: Api; dealId: string }) {
           <tr key={doc.id}>
             <td>
               {doc.title}
-              {doc.deal_id === null && <span className="muted"> (general layer)</span>}
+              {doc.deal_id === null && <span className="sub"> (general layer)</span>}
             </td>
             <td>{DOC_TYPE_LABEL[doc.doc_type] ?? doc.doc_type}</td>
             <td>
               <TierChip tier={doc.tier} />
             </td>
-            <td>{dateOrUnknown(doc.published_on)}</td>
+            <td className="mono nowrap">{dateOrUnknown(doc.published_on)}</td>
             <td>
-              <span className={`chip chip-status chip-${doc.status}`}>{doc.status}</span>
+              <StatusChip status={doc.status} />
             </td>
             <td>{doc.synthetic ? "synthetic" : "public"}</td>
-            <td>{doc.n_pages}</td>
+            <td className="num mono">{doc.n_pages}</td>
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
+    <div className="pager">
+      <span className="sub">{state.data.length} documents</span>
+    </div>
+    </div>
+    </section>
   );
 }

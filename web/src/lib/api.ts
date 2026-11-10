@@ -3,6 +3,7 @@ import type {
   Deal,
   DocumentMeta,
   KpiValue,
+  MarketEvent,
   Passage,
   ScreeningRequest,
   ScreeningResult,
@@ -30,6 +31,7 @@ export interface Api {
   screening(request: ScreeningRequest): Promise<Served<ScreeningResult>>;
   kpis(dealId: string): Promise<Served<KpiValue[]>>;
   runMarketIntel(dealId: string): Promise<Served<MarketRun>>;
+  events(dealId: string): Promise<MarketEvent[]>;
 }
 
 export class ApiError extends Error {
@@ -85,5 +87,6 @@ export function createHttpApi(baseUrl: string, userId: string): Api {
     kpis: (dealId) => call<KpiValue[]>(`/deals/${encodeURIComponent(dealId)}/kpis`),
     runMarketIntel: (dealId) =>
       call<MarketRun>(`/deals/${encodeURIComponent(dealId)}/market-intel/run`, { method: "POST" }),
+    events: (dealId) => value<MarketEvent[]>(`/deals/${encodeURIComponent(dealId)}/events`),
   };
 }

@@ -258,3 +258,18 @@ export interface Passage {
   highlight_start: number;
   highlight_end: number;
 }
+
+// Market events read from the news (D94): duplicates merged, denials and corrections applied.
+export interface MarketEvent {
+  id: string;
+  kind: "acquisition" | "leadership_change" | "rumour" | "price";
+  actor: string;
+  buyer_id: string | null;
+  counterparty: string;
+  event_date: string | null;
+  status: "confirmed" | "unconfirmed" | "denied" | "corrected";
+  value_eur_m: number | null;
+  citations: Citation[];
+  superseded_citations: Citation[];
+  n_reports: number;
+}

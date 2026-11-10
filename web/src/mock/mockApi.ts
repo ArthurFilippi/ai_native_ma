@@ -7,6 +7,7 @@ import type {
   Deal,
   DocumentMeta,
   KpiValue,
+  MarketEvent,
   Passage,
   ScreeningRequest,
   ScreeningResult,
@@ -37,6 +38,75 @@ const DEAL: Deal = {
 };
 
 const MEMBERS = new Set(["u_lead", "u_analyst"]);
+
+// Market events of the simulated feed (mock): one acquisition reported twice, a denied rumour,
+// a corrected price. Shown once the simulated connector has run, as in the API.
+function newsCitation(chunk: string, title: string, date: string, quote: string): Citation {
+  return {
+    chunk_id: chunk,
+    document_id: chunk.replace(/^ch_/, "doc_").replace(/_p\d+_\d+$/, ""),
+    doc_title: title,
+    doc_type: "press_article",
+    tier: 4,
+    published_on: date,
+    page: 1,
+    char_start: 0,
+    char_end: quote.length,
+    quote,
+  };
+}
+
+const EVENTS: MarketEvent[] = [
+  {
+    id: "ev_mock_1",
+    kind: "acquisition",
+    actor: "Orvane Capital",
+    buyer_id: "buyer_01",
+    counterparty: "Tessil Works",
+    event_date: "2025-01-02",
+    status: "confirmed",
+    value_eur_m: null,
+    citations: [
+      newsCitation("ch_news_m1_p1_01", "Orvane Capital completes acquisition of Tessil Works", "2025-01-02", "Orvane Capital completes acquisition of Tessil Works"),
+      newsCitation("ch_news_m2_p1_01", "Trade wire: Orvane Capital buys Tessil Works", "2025-01-04", "Trade wire: Orvane Capital buys Tessil Works"),
+    ],
+    superseded_citations: [],
+    n_reports: 2,
+  },
+  {
+    id: "ev_mock_2",
+    kind: "price",
+    actor: "Orvane Capital",
+    buyer_id: "buyer_01",
+    counterparty: "Tessil Works",
+    event_date: "2025-01-08",
+    status: "corrected",
+    value_eur_m: 102,
+    citations: [
+      newsCitation("ch_news_m4_p1_01", "Correction: price for Orvane Capital and Tessil Works", "2025-01-12", "Correction: price for Orvane Capital and Tessil Works was EUR 102 million"),
+    ],
+    superseded_citations: [
+      newsCitation("ch_news_m3_p1_01", "Price for Orvane Capital and Tessil Works put at EUR 120 million", "2025-01-08", "Price for Orvane Capital and Tessil Works put at EUR 120 million"),
+    ],
+    n_reports: 2,
+  },
+  {
+    id: "ev_mock_3",
+    kind: "rumour",
+    actor: "Brennan Industries",
+    buyer_id: "buyer_02",
+    counterparty: "Aurora Components",
+    event_date: "2025-02-14",
+    status: "denied",
+    value_eur_m: null,
+    citations: [
+      newsCitation("ch_news_m5_p1_01", "Brennan Industries is said to weigh an offer for Aurora Components", "2025-02-14", "Brennan Industries is said to weigh an offer for Aurora Components"),
+      newsCitation("ch_news_m6_p1_01", "Brennan Industries denies interest in Aurora Components", "2025-02-20", "Brennan Industries denies interest in Aurora Components"),
+    ],
+    superseded_citations: [],
+    n_reports: 2,
+  },
+];
 
 function documentMeta(
   id: string,
@@ -128,6 +198,7 @@ function allCitations(): Citation[] {
     for (const r of card.results) visit(r.citations);
   }
   for (const k of kpis as unknown as KpiValue[]) visit(k.citations);
+  for (const e of EVENTS) visit([...e.citations, ...e.superseded_citations]);
   return out;
 }
 
@@ -197,6 +268,10 @@ export class MockBackend {
         this.marketRun = true;
         const run: MarketRun = { deal_id: dealId, ingested: SIMULATED_DOCUMENTS.length };
         return served(run);
+      },
+      events: async (dealId) => {
+        requireDeal(dealId);
+        return this.marketRun ? EVENTS : [];
       },
     };
   }

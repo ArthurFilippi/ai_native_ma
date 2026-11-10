@@ -1,0 +1,89 @@
+/* app.css: compositions this project needs on top of the design system (public/ui.css, unchanged).
+   Rules of design/DESIGN.md: tokens only (no new colour, radius, font or shadow), black hairlines,
+   mono uppercase labels, colour only for states. */
+
+[hidden] { display: none !important; }
+
+/* page head: the deal picker sits in the right block */
+.deal-pick { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; min-width: 260px; }
+.deal-pick .dd { width: 100%; }
+
+/* the demo user picker lives in the account cell of the top bar */
+.who-id { width: auto; min-width: 200px; padding: 6px 10px; }
+.who-id .dd { width: 100%; }
+.dd-anchor { position: relative; }
+.dd-float { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 50; min-width: 220px; }
+
+/* workspace: the answer on the left, the evidence on the right */
+.workspace { margin-top: 10px; }
+.workspace.two-zones { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
+.zone-right { position: sticky; top: 96px; }
+.zone-right > .plate { margin-top: 14px; }
+@media (max-width: 1000px) { .workspace.two-zones { grid-template-columns: minmax(0, 1fr); } .zone-right { position: static; } }
+
+/* a list that scrolls inside its box (fitFill without script: what is left of the viewport) */
+.fill-list { max-height: calc(100vh - 300px); min-height: 240px; }
+
+/* ask */
+.ask-form .plate-b.tint { display: flex; flex-wrap: wrap; gap: 8px; }
+.answer-head .question-echo { margin-top: 6px; color: var(--muted); }
+.answer-head .summary { margin-top: 10px; }
+.value-contract { margin-top: 22px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+/* claims: one row each, the status in mono uppercase, citations as small hairline buttons */
+.claims > li { padding: 16px 20px; border-top: 1px solid var(--line); }
+.claims > li:first-child { border-top: 0; }
+.claims > li:focus { outline: 2px solid var(--ink); outline-offset: -2px; }
+.claim-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.status-label { font: 500 10.5px/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--ink); display: inline-flex; align-items: center; gap: 6px; }
+.claim-inferred .status-label, .claim-missing .status-label { color: var(--muted); }
+.hollow { display: inline-block; width: 9px; height: 9px; border: 1px solid var(--ink); border-radius: 50%; }
+.claim-date { font: 400 11px var(--mono); color: var(--muted); }
+.claim-text { margin-top: 8px; font-size: 15px; }
+.derived { margin-top: 6px; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.flags { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+
+.citations { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.citation { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; min-height: 34px; padding: 4px 10px 4px 4px; border: 1px solid var(--ink); border-radius: var(--rs); background: #fff; color: var(--ink); text-align: left; font-size: 13px; }
+.citation:hover { background: var(--tint); }
+.citation.citation-active { background: var(--lime); }
+.citation-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 320px; }
+.citation-meta { font: 400 11px var(--mono); color: var(--muted); white-space: nowrap; }
+.chip-tier { font-size: 10.5px; }
+
+/* contradiction: both sides side by side, no winner */
+.sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--ink); border-bottom: 1px solid var(--ink); }
+.side { background: var(--bg); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.side-source { font-size: 13.5px; }
+
+/* evidence panel */
+.meta { margin: 12px 0 0; }
+.meta dt, .meta dd { margin: 0; }
+.page-text { margin-top: 10px; max-height: 340px; overflow: auto; white-space: pre-wrap; font-size: 14px; line-height: 1.6; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--rs); background: #fff; }
+.page-text mark { background: var(--lime); color: var(--ink); outline: 1px solid var(--ink); border-radius: 3px; padding: 0 2px; }
+.tier-legend caption { text-align: left; padding: 0 0 8px; }
+.tier-legend th, .tier-legend td { padding: 6px 10px; }
+
+/* KPI matrix: the value is a button, the open one is lime */
+.kpi-cell { border: 1px solid transparent; background: transparent; border-radius: var(--rs); padding: 4px 8px; font: 400 13px var(--mono); color: var(--ink); white-space: nowrap; }
+.kpi-cell:hover { border-color: var(--line); background: var(--tint); }
+.kpi-cell.on { background: var(--lime); border-color: var(--ink); }
+.marker { font-size: 11px; }
+.pager.sub { margin: 0; }
+
+/* screening */
+.glyph { width: 22px; height: 22px; font-size: 11px; border-radius: 6px; }
+.plate.weights > summary { padding: 14px 20px; }
+.weights .fold-b, .weight-grid { padding: 0 20px 4px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 28px; }
+.weights > .btn { margin: 4px 20px 18px; }
+.weight-row { display: grid; grid-template-columns: minmax(0, 1fr) 110px 72px; align-items: center; gap: 10px; }
+.weight-row input[type=number] { min-height: 34px; padding: 4px 8px; }
+.weight-row input[type=range] { accent-color: #0a0a0a; }
+.score-range { white-space: nowrap; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+.results td .link { font-weight: 500; }
+.ov-legend .cell { width: 14px; height: 14px; border-radius: 4px; }
+.buyer-card .pw-body p { font-size: 14px; }
+.buyer-card .pw-body .st { align-self: flex-start; }
+.plate.trace > summary { padding: 14px 20px; }
+.plate.trace > :not(summary) { margin-left: 20px; margin-right: 20px; }
+.plate.trace > table { width: calc(100% - 40px); margin-bottom: 16px; }
