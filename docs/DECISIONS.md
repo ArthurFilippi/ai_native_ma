@@ -380,3 +380,15 @@ One short entry each: context, choice, alternative, cost.
 - Choice: `make eval PROVIDER=gemini` writes `RESULTS_LIVE.md` and `latest_live.json`; the mock `RESULTS.md` names writer and judge in its header and ends with section 9, which summarises `latest_live.json` when it exists and otherwise says `live run not executed`. `make live-smoke` runs a few real queries through the pipeline and refuses to run without a key or with the mock fallback on.
 - Alternative: one file with both providers. Rejected: a live run is not byte reproducible and must not change the mock file.
 - Cost: the live section is only as fresh as the last live run; its date and commit are printed.
+
+## D91. A structured fact base built from the planted facts (factbase)
+- Context: brief item C. Everything was text; a keyed value had no record of its own.
+- Choice: `ainma.factbase`, built by the generator from `truth/facts.json` (`structured/factbase.json`). Each record keeps a source of record (current document, best tier, most recent) with a verbatim provenance that is a valid `Citation`, and every other current document stating the key. Read through typed request models only (`lookup`, `comparables`, `buyer_facts`); the access predicate is inside each tool. `synth verify` rebuilds and compares it, and checks every provenance against the stored chunks.
+- Alternative: a SQLite table in `store/`. Not done to stay out of the store, which another workstream changes; the in-memory base applies the same access rule. A Postgres table can replace it behind the same tools.
+- Cost: the base is as good as the planted facts; it adds no fact that no document states. Precedent transactions, broker estimates and news events are not in it yet.
+
+## D92. Keyed sub-questions are routed to the structured base (factbase)
+- Context: brief item C, routing between text search and structured lookup.
+- Choice: a sub-question naming exactly one metric and at most one period, in a question that does not ask for a change over time, is looked up (`route_request`). When exactly one record answers it in the user's scope, the record becomes a SOURCED claim (`origin="structured"`) citing its provenance, and each disagreeing document a second claim; both go through the same verifier and contradiction stages as text claims, so a disagreement is shown with both sides and no winner. Anything ambiguous (several periods or entities) or anything else stays on text search. `PipelineConfig.structured_routing=False` turns it off; the report measures the product against text only (section 2).
+- Alternative: let the LLM choose a tool. Kept for the live path; the rule router is deterministic and testable, and the typed tools are what a model would call.
+- Cost: metrics and periods are read by the lexicon (`target_metrics`, `detect_periods`), so routing inherits its coverage; a growth question is never routed so the writer can derive the change.
