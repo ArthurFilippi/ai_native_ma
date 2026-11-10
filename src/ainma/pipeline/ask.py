@@ -36,6 +36,7 @@ from ainma.pipeline.contradictions import (
 )
 from ainma.pipeline.flags import apply_flags
 from ainma.pipeline.log import append_answer, entry_for
+from ainma.pipeline.rules import subject_of
 from ainma.pipeline.schemas import DroppedClaim
 from ainma.pipeline.summary import build_summary
 from ainma.pipeline.understand import topic_of, understand
@@ -290,7 +291,7 @@ async def ask_detailed(
     )
     fact_index = await collect_claim_facts(claims, chunks=chunks, documents=documents, llm=llm)
     run.usages.extend(fact_index.usages)
-    subject = await _subject_name(store, access, deal_id)
+    subject = await _subject_name(store, access, deal_id, text)
     contradictions = detect_contradictions(
         fact_index,
         ranker=cfg.retrieval.ranker,
@@ -329,9 +330,13 @@ async def ask_detailed(
     return await finish(answer, dropped)
 
 
-async def _subject_name(store: Store, access: AccessContext, deal_id: str | None) -> str:
+async def _subject_name(
+    store: Store, access: AccessContext, deal_id: str | None, question: str
+) -> str:
+    """Who a contradiction is about: the deal inside a deal, else the entity the question names
+    (a buyer), never a placeholder."""
     if deal_id is None:
-        return "General"
+        return subject_of(question) or "General"
     deal = await store.get_deal(deal_id, access)
     return deal.name if deal else deal_id
 

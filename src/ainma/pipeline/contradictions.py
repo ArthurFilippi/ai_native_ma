@@ -190,7 +190,9 @@ def detect_contradictions(
         found.append(
             Contradiction(
                 id=f"k{len(found) + 1}",
-                subject=f"{subject_name} {period} {label}",
+                subject=f"{subject_name} {label}"
+                if period == STATIC_PERIOD
+                else f"{subject_name} {period} {label}",
                 sides=sides,
                 stronger_side=stronger,
             )

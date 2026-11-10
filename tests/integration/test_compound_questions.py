@@ -19,7 +19,7 @@ def seed_dir(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return generate(1234, tmp_path_factory.mktemp("synthetic"))
 
 
-async def _ask(seed_dir: Path, question: str) -> Answer:
+async def _ask(seed_dir: Path, question: str, deal_id: str | None = "deal_aurora") -> Answer:
     store = await SqliteStore.open(":memory:")
     try:
         await load_corpus(store, seed_dir)
@@ -28,7 +28,7 @@ async def _ask(seed_dir: Path, question: str) -> Answer:
             question,
             store=store,
             access=access,
-            deal_id="deal_aurora",
+            deal_id=deal_id,
             llm=build_mock_llm(),
             config=PipelineConfig(answers_log=None),
         )
@@ -58,3 +58,13 @@ async def test_the_unanswerable_half_is_shown_as_missing_not_hidden(seed_dir: Pa
     assert [m.topic for m in answer.missing] == ["CEO's compensation (Aurora)"]
     assert any(c.status is ClaimStatus.MISSING for c in answer.claims)
     assert len(answer.sub_questions) == 2
+
+
+async def test_a_buyer_contradiction_names_the_buyer_not_a_placeholder(seed_dir: Path) -> None:
+    answer = await _ask(
+        seed_dir, "What was Tarnix Systems's market capitalisation at the end of FY2024?", None
+    )
+    assert answer.contradictions
+    subject = answer.contradictions[0].subject
+    assert subject == "Tarnix Systems FY2024 market capitalisation"
+    assert "General" not in answer.summary and "Tarnix Systems" in answer.summary
