@@ -63,7 +63,9 @@ def test_committed_truth_matches_regeneration(seed_dir: Path) -> None:
     committed = REPO / "data" / "synthetic" / "1234" / "truth"
     if not committed.exists():
         pytest.skip("seed 1234 truth is not committed in this checkout")
-    assert digest_tree(committed) == digest_tree(seed_dir / "truth")
+    generated = digest_tree(seed_dir / "truth")
+    # compare the files the generator writes; stray copies made by sync tools are ignored
+    assert {k: v for k, v in digest_tree(committed).items() if k in generated} == generated
 
 
 def test_demo_anchors_and_pieces(seed_dir: Path) -> None:
