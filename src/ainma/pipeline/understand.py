@@ -12,8 +12,9 @@ import re
 from ainma.llm.base import LLM, Usage
 from ainma.llm.tasks import TASK_UNDERSTAND
 from ainma.pipeline import prompts
+from ainma.pipeline.rules import subject_of
 from ainma.pipeline.schemas import UnderstandRequest, UnderstandResult
-from ainma.retrieval.entities import entity_phrases
+from ainma.retrieval.entities import entity_phrases, entity_tokens
 from ainma.retrieval.lexicon import (
     METRIC_BY_KEY,
     detect_metrics,
@@ -28,7 +29,13 @@ _GROWTH = re.compile(
     r"evolution|trend|year[- ]on[- ]year|yoy)\b",
     re.IGNORECASE,
 )
-_SPLIT = re.compile(r"\s*(?:;|,|\band\b|\bas well as\b)\s*", re.IGNORECASE)
+_INTERROGATIVE = r"(?:how|what|whether|which|who|when|where|why)"
+# a second question inside the sentence: always a new sub-question, with or without a metric
+_STRONG = re.compile(
+    rf"\s*(?:;|,\s*(?:and|as well as|then)\b|\band\b(?=\s+{_INTERROGATIVE}\b))\s*", re.IGNORECASE
+)
+# a plain conjunction or comma: a new sub-question only when both sides ask for a metric
+_WEAK = re.compile(r"\s*(?:,|\band\b|\bas well as\b)\s*", re.IGNORECASE)
 _LEADING = re.compile(
     r"^(?:how\s+(?:many|much|long|large|high)|what|who|which|when|where|why|how|is|are|was|were|"
     r"does|did|do|has|have|can|could|tell me|give me|list|show me|show|compare)\b"
@@ -48,13 +55,10 @@ def _entities(question: str) -> list[str]:
     return entity_phrases(question)
 
 
-def _pieces(body: str) -> list[str]:
-    """`body` cut at `and`, commas and semicolons that are not inside a metric name (`earnings
-    before interest, tax, depreciation and amortisation`)."""
-    protected = [(a, b) for _, a, b in find_metrics(body)]
+def _cut(body: str, pattern: re.Pattern[str], protected: list[tuple[int, int]]) -> list[str]:
     pieces: list[str] = []
     cursor = 0
-    for match in _SPLIT.finditer(body):
+    for match in pattern.finditer(body):
         if any(a < match.start() < b for a, b in protected):
             continue
         pieces.append(body[cursor : match.start()])
@@ -64,14 +68,29 @@ def _pieces(body: str) -> list[str]:
 
 
 def _clauses(body: str) -> list[str]:
-    """Compound questions are split where both sides ask for a metric: `revenue change between
-    FY2023 and FY2024` stays one question."""
+    """Split a compound question into the questions it asks.
+
+    Strong joints (`; `, `, and`, `and how / what / whether / which / who ...`) always start a new
+    sub-question, so `gross margin and what is the CEO's compensation` is two questions even
+    though the second names no metric. Plain commas and `and` split only where both sides ask for
+    a metric: `revenue change between FY2023 and FY2024` stays one question, and a metric name
+    (`earnings before interest, tax, depreciation and amortisation`) is never cut.
+    """
+    protected = [(a, b) for _, a, b in find_metrics(body)]
     clauses: list[str] = []
-    for piece in _pieces(body):
-        if clauses and (not detect_metrics(piece) or not detect_metrics(clauses[-1])):
-            clauses[-1] = f"{clauses[-1]} {piece}"
-        else:
-            clauses.append(piece)
+    for strong in _cut(body, _STRONG, protected):
+        if clauses and _GROWTH.search(strong) and not detect_metrics(strong):
+            # `... and how did it grow`: the same metric over time, answered by the prior
+            # period sub-question that `understand_rules` adds, not a topic of its own
+            clauses[-1] = f"{clauses[-1]} and {strong}"
+            continue
+        weak: list[str] = []
+        for piece in _cut(strong, _WEAK, [(a, b) for _, a, b in find_metrics(strong)]):
+            if weak and (not detect_metrics(piece) or not detect_metrics(weak[-1])):
+                weak[-1] = f"{weak[-1]} {piece}"
+            else:
+                weak.append(piece)
+        clauses.extend(weak)
     return clauses
 
 
@@ -81,11 +100,14 @@ def understand_rules(question: str) -> UnderstandResult:
     entities = _entities(text)
     body = text.rstrip("?.! ")
     clauses = _clauses(body)
+    subject = subject_of(text)
     sub_questions: list[str] = []
     if len(clauses) >= 2:
         for clause in clauses:
             extra_periods = [p for p in periods if p not in detect_periods(clause)]
-            names = [] if entity_phrases(clause) else entities
+            named = set(entity_tokens(clause))
+            wanted = set(entity_tokens(subject))
+            names = [f"({subject})"] if subject and not wanted <= named else []
             sub_questions.append(" ".join([clause, *extra_periods, *names]).strip())
     else:
         sub_questions.append(text)

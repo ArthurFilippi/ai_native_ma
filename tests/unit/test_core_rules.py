@@ -152,7 +152,7 @@ def test_decomposition_keeps_metric_names_whole_and_carries_the_entity() -> None
         "What was Aurora Components's gross margin in FY2024, and what share of FY2024 "
         "revenue came from its largest customer?"
     )
-    assert compound.sub_questions[1].endswith("Aurora Components")
+    assert compound.sub_questions[1].endswith("(Aurora Components)")
     assert compound.metrics == ["gross_margin", "top_customer_share"]
     comparison = understand_rules("How did Aurora's revenue change between FY2023 and FY2024?")
     assert len(comparison.sub_questions) == 1 and comparison.periods == ["FY2023", "FY2024"]
@@ -286,3 +286,26 @@ def test_without_a_period_the_latest_stated_period_is_answered() -> None:
         "How many production sites does Aurora operate?", [old], limit=4, entity=entity
     )
     assert only_old is not None and [s.period for s in only_old] == ["FY2022"]
+
+
+@pytest.mark.parametrize(
+    ("question", "expected"),
+    [
+        (
+            "What was Aurora's gross margin and how concentrated is its customer base?",
+            ["What was Aurora's gross margin", "how concentrated is its customer base (Aurora)"],
+        ),
+        (
+            "What was Aurora's gross margin and what is the CEO's compensation?",
+            ["What was Aurora's gross margin", "what is the CEO's compensation (Aurora)"],
+        ),
+        (
+            "Is Aurora profitable, and whether it is growing?",
+            ["Is Aurora profitable", "whether it is growing (Aurora)"],
+        ),
+    ],
+)
+def test_a_second_question_is_its_own_sub_question_even_without_a_metric(
+    question: str, expected: list[str]
+) -> None:
+    assert understand_rules(question).sub_questions == expected
