@@ -60,10 +60,12 @@ The target team's rule is adopted as is: you do not improve what you do not meas
 
 | Principle metric | Value [95% CI] |
 |---|---|
-| Citation precision (verifier on) | 0.909 [0.892, 0.927] |
-| Citation recall (verifier on) | 0.931 [0.917, 0.945] |
-| Correct abstention, end to end | 0.913 [0.867, 0.953] |
-| Contradiction detection recall | 0.954 [0.920, 0.983] |
+| Citation precision (verifier on) | 0.909 [0.892, 0.926] |
+| Citation recall (verifier on) | 0.926 [0.912, 0.940] |
+| Correct abstention, end to end | 0.920 [0.873, 0.960] |
+| False abstention, end to end | 0.082 [0.068, 0.098] |
+| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.585 |
+| Contradiction detection recall | 0.937 [0.897, 0.971] |
 | Clicks to verify a claim | 1 by design; asserted by a jsdom test of the web client (one citation click, one passage request), not measured in the harness |
 
 Retrieval ablation (nDCG@10, 1188 test queries pooled over the seeds):
@@ -73,15 +75,14 @@ Retrieval ablation (nDCG@10, 1188 test queries pooled over the seeds):
 | A1 BM25 | 0.744 [0.727, 0.759] | 0.882 [0.866, 0.897] | 0.665 [0.644, 0.685] |
 | A2 Dense (LSA) | 0.699 [0.681, 0.716] | 0.867 [0.851, 0.884] | 0.615 [0.594, 0.636] |
 | A3 Hybrid RRF | 0.720 [0.703, 0.735] | 0.887 [0.871, 0.902] | 0.632 [0.611, 0.652] |
-| A4 plus reranker | 0.927 [0.921, 0.933] | 1.000 [0.999, 1.000] | 0.836 [0.822, 0.849] |
-| A5 plus source ranker | 0.960 [0.955, 0.965] | 1.000 [0.999, 1.000] | 0.919 [0.908, 0.930] |
+| A4 plus reranker | 0.927 [0.921, 0.933] | 1.000 [0.999, 1.000] | 0.836 [0.822, 0.850] |
+| A5 plus source ranker | 0.960 [0.954, 0.965] | 1.000 [0.999, 1.000] | 0.919 [0.908, 0.929] |
 
 Other measured quantities, same run:
 
 | Quantity | Value |
 |---|---|
-| False abstention, end to end (answerable queries) | 0.078 [0.063, 0.094] |
-| Correct abstention on hard unanswerable queries (they share vocabulary with the corpus) | 78.5 percent (n=65); easy ones 100.0 percent (n=85) |
+| Correct abstention on hard unanswerable queries (they share vocabulary with the corpus) | 80.0 percent (n=65); easy ones 100.0 percent (n=85) |
 | Contradiction false positive rate (consistent controls, n=472) | 0.000 [0.000, 0.000] |
 | Superseded and withdrawn cases (n=42): flagged / cited without the flag / not surfaced | 34 / 4 / 4 |
 | Stale-only cases (n=125) flagged as stale or missing | 89.6 percent |
@@ -93,7 +94,7 @@ Other measured quantities, same run:
 | Screening agreement with the buyer truth (n=1600 cells) | 0.702 [0.679, 0.724] |
 | Screening unknown rate | 47.2 percent |
 | Screening, predicted met although not met | 0.002 [0.000, 0.005] |
-| Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 42.30 ms / 225.23 ms |
+| Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 42.64 ms / 227.96 ms |
 
 ### How to read these numbers
 
@@ -101,7 +102,7 @@ Other measured quantities, same run:
 - **The verifier removed nothing in this run.** With the mock writer, which builds claims from verbatim quotes, citation precision, recall and the unsupported-claim rate are identical with the verifier on and off, and it dropped 0 claims. The ablation is wired and reported, but the mock cannot show what the verifier is worth. A live model is needed for that.
 - **Citation precision is below one by design choice.** The system surfaces a second, flagged source (a superseded draft, a press figure), and those claims are not gold facts, so they count against precision.
 - **Screening agreement is conditional and capped.** The harness screens the way the demo does: the deal's region and size range as filters, every buyer that passes stage 1 reaches stage 2, and the simulated news feed is filed in the deal space first (decision D80). Two limits remain and were not tuned away: the buyer truth for antitrust assumes a target market share that no document states, so a system that does not guess leaves it `unknown`; and the deep truth also covers buyers that fail the sector prefilter, which the product does not deep-screen. This is why the unknown rate is high while accuracy where a status was given is 99.8 percent.
-- **Known weak spots.** A chunk-local judge cannot see a wrong company when the chunk names none (tables, "the company"), hence the altered-entity recall above; the pipeline avoids that case upstream with an entity gate. Hard unanswerable questions are abstained correctly less often than easy ones. The threshold curve in `RESULTS.md` shows the tradeoff.
+- **Known weak spots.** A chunk-local judge cannot see a wrong company when the chunk names none (tables, "the company"), hence the altered-entity recall above; the pipeline avoids that case upstream with an entity gate. Hard unanswerable questions are abstained correctly less often than easy ones, and abstention precision is 0.585 at the frozen threshold: about four abstentions in ten are on answerable questions. The threshold curve in `RESULTS.md` shows the tradeoff, and the dev false abstention at the frozen `tau` ranges from 5.1 to 14.1 percent across seeds. `tau` must be recomputed by hand whenever retrieval changes.
 - **What was tuned on what.** Thresholds and retrieval constants were tuned on the dev split and on seeds 1 and 2; the reported numbers are on the test split of all five seeds. One bug (a stemmed company descriptor in the brand logic) was found after reading the failure categories of one seed on the test split, fixed generally with a regression test, and disclosed in `docs/DECISIONS.md` (D61). The metric glossary was written after reading the generator's phrasings, so the mock numbers are optimistic.
 - **Not evaluated.** Live LLM providers, neural embedders and cross-encoders, real documents, production traffic, any user study. The hand-labelled sample that validates the constructed judge labels is generated by `make label-sample` and is not labelled yet, so the report says `not labelled yet` there.
 
@@ -190,7 +191,7 @@ The generator is seeded and byte deterministic (tested by hashing every output t
 
 **Retrieval (`retrieval/`).** An in-house BM25, an LSA dense embedder (an optional `fastembed` backend exists behind a setting and was not evaluated here), reciprocal rank fusion, a feature based reranker with an entity gate (a question about one company does not retrieve another company's figures), and the source ranker (tier prior, recency half-life, status, corroboration). Systems A1 to A5 are selectable by configuration.
 
-**Pipeline (`pipeline/`).** `ask(question, store, access, deal_id, llm, config)` returns a validated `Answer`. `verify.py` holds the pure checks (`verbatim_span`, `numeric_match`). Abstention compares the best passage score with `tau`, which the harness calibrates on the dev split. Answers are appended to a log that `make inspect` and `make judge-daily` read.
+**Pipeline (`pipeline/`).** `ask(question, store, access, deal_id, llm, config)` returns a validated `Answer`. `verify.py` holds the pure checks (`verbatim_span`, `numeric_match`). A compound question is split into sub-questions: each is answered with citations or listed as missing, so an answerable half is never hidden by an unanswerable one. Abstention compares the best passage score with one frozen `tau` (`DEFAULT_TAU`, chosen once on the pooled dev queries of the five seeds, used by the API, the demo and the test split; `python -m ainma.evaluation.run --calibrate-tau --seeds 5` recomputes it, and the report header shows any drift). Answers are appended to a log that `make inspect` and `make judge-daily` read.
 
 **LLM layer (`llm/`).** A provider interface with `mock` (deterministic, offline), `gemini` and `openai` (HTTP, tested on recorded fixtures only, never against a live service in the tests), a disk cache, and a fallback that is never silent (the usage record says which provider failed). Structured outputs are validated with one retry. Citations are built by code from verbatim quotes, so a model cannot fabricate a quote. To use Gemini, set `LLM_PROVIDER=gemini`, `LLM_MODEL` and `GEMINI_API_KEY` in `.env` (never commit that file).
 

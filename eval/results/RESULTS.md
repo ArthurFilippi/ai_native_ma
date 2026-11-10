@@ -4,17 +4,25 @@
 
 <!-- RUN-METADATA-BEGIN: differs between runs -->
 - Date: 2026-11-10
-- Git commit: da5d470
+- Git commit: 4fa990f
 - Machine: Darwin 27.0.0 arm64, Python 3.12.2, 8 CPUs
 <!-- RUN-METADATA-END -->
 
 - Provider: mock, model: mock-extractive-v1
 - Seeds: 1234, 1, 2, 3, 4
 - Split: test
-- Configuration hash: c628b9eda400fe54
+- Configuration hash: 18e12c05ddf1f6e8
 - Components: ask=real, checks=real, judge=real, kpi=real, screening=real, search=real
 - Backends: dense=lsa, reranker=features
 - Dataset: generated corpora under data/synthetic/<seed>/
+- Difficulty, seed 1234: paraphrase_rate=0.35, hard_negative_rate=0.3
+- Difficulty, seed 1: paraphrase_rate=0.35, hard_negative_rate=0.3
+- Difficulty, seed 2: paraphrase_rate=0.35, hard_negative_rate=0.3
+- Difficulty, seed 3: paraphrase_rate=0.35, hard_negative_rate=0.3
+- Difficulty, seed 4: paraphrase_rate=0.35, hard_negative_rate=0.3
+- Abstention score: `relevance` of the best passage
+- Frozen tau (`DEFAULT_TAU`, used by the API and the test split): 0.5952
+- Pooled dev tau recomputed in this run: 0.5952 (difference to the frozen value +0.0000)
 - Bootstrap: 2000 resamples, 95 percent percentile intervals
 
 ## 0. Principle metrics
@@ -25,10 +33,12 @@ Value contract: I summarise the evidence clearly and show you the sources, so th
 
 | Principle metric | Value [95% CI] |
 |---|---|
-| Citation precision (verifier on) | 0.909 [0.892, 0.927] |
-| Citation recall (verifier on) | 0.931 [0.917, 0.945] |
-| Correct abstention, end to end | 0.913 [0.867, 0.953] |
-| Contradiction detection recall | 0.954 [0.920, 0.983] |
+| Citation precision (verifier on) | 0.909 [0.892, 0.926] |
+| Citation recall (verifier on) | 0.926 [0.912, 0.940] |
+| Correct abstention, end to end | 0.920 [0.873, 0.960] |
+| False abstention, end to end | 0.082 [0.068, 0.098] |
+| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.585 |
+| Contradiction detection recall | 0.937 [0.897, 0.971] |
 | Clicks to verify a claim | 1 by design; asserted by the end to end test of the app, not measured here |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
@@ -44,8 +54,8 @@ Test split of the answerable queries, 1188 queries pooled over the seeds, access
 | A1 BM25 | 0.744 [0.727, 0.759] | 0.816 [0.797, 0.835] | 0.882 [0.866, 0.897] | 0.956 [0.947, 0.965] | 0.665 [0.644, 0.685] |
 | A2 Dense (offline LSA unless stated) | 0.699 [0.681, 0.716] | 0.781 [0.760, 0.801] | 0.867 [0.851, 0.884] | 0.936 [0.924, 0.947] | 0.615 [0.594, 0.636] |
 | A3 Hybrid, RRF fusion (k = 60) | 0.720 [0.703, 0.735] | 0.805 [0.785, 0.823] | 0.887 [0.871, 0.902] | 0.948 [0.937, 0.958] | 0.632 [0.611, 0.652] |
-| A4 A3 plus reranker | 0.927 [0.921, 0.933] | 0.998 [0.997, 0.999] | 1.000 [0.999, 1.000] | 1.000 [0.999, 1.000] | 0.836 [0.822, 0.849] |
-| A5 A4 plus source ranker (tier, recency, status, corroboration) | 0.960 [0.955, 0.965] | 0.999 [0.998, 1.000] | 1.000 [0.999, 1.000] | 1.000 [0.999, 1.000] | 0.919 [0.908, 0.930] |
+| A4 A3 plus reranker | 0.927 [0.921, 0.933] | 0.998 [0.997, 0.999] | 1.000 [0.999, 1.000] | 1.000 [0.999, 1.000] | 0.836 [0.822, 0.850] |
+| A5 A4 plus source ranker (tier, recency, status, corroboration) | 0.960 [0.954, 0.965] | 0.999 [0.998, 1.000] | 1.000 [0.999, 1.000] | 1.000 [0.999, 1.000] | 0.919 [0.908, 0.929] |
 
 Mean and standard deviation across seeds:
 
@@ -54,8 +64,8 @@ Mean and standard deviation across seeds:
 | A1 | 0.744 +/- 0.011 | 0.816 +/- 0.018 | 0.882 +/- 0.010 | 0.956 +/- 0.011 | 0.665 +/- 0.012 |
 | A2 | 0.699 +/- 0.019 | 0.781 +/- 0.017 | 0.868 +/- 0.014 | 0.936 +/- 0.011 | 0.615 +/- 0.022 |
 | A3 | 0.720 +/- 0.014 | 0.805 +/- 0.020 | 0.887 +/- 0.009 | 0.948 +/- 0.014 | 0.632 +/- 0.018 |
-| A4 | 0.927 +/- 0.005 | 0.998 +/- 0.001 | 1.000 +/- 0.001 | 1.000 +/- 0.001 | 0.836 +/- 0.012 |
-| A5 | 0.960 +/- 0.003 | 0.999 +/- 0.002 | 1.000 +/- 0.001 | 1.000 +/- 0.001 | 0.919 +/- 0.004 |
+| A4 | 0.927 +/- 0.005 | 0.998 +/- 0.001 | 1.000 +/- 0.001 | 1.000 +/- 0.001 | 0.836 +/- 0.013 |
+| A5 | 0.960 +/- 0.003 | 0.999 +/- 0.002 | 1.000 +/- 0.001 | 1.000 +/- 0.001 | 0.919 +/- 0.003 |
 
 nDCG@10 per seed:
 
@@ -63,8 +73,8 @@ nDCG@10 per seed:
 |---|---|---|---|---|---|---|
 | 1234 | 238 | 0.743 | 0.688 | 0.705 | 0.925 | 0.960 |
 | 1 | 235 | 0.740 | 0.682 | 0.712 | 0.936 | 0.955 |
-| 2 | 241 | 0.731 | 0.689 | 0.714 | 0.927 | 0.961 |
-| 3 | 238 | 0.759 | 0.730 | 0.737 | 0.923 | 0.962 |
+| 2 | 241 | 0.731 | 0.689 | 0.714 | 0.928 | 0.961 |
+| 3 | 238 | 0.759 | 0.730 | 0.737 | 0.922 | 0.960 |
 | 4 | 236 | 0.748 | 0.705 | 0.731 | 0.925 | 0.961 |
 
 Pairwise differences are later minus earlier system, on the same resamples for both. `share>0` is the share of resamples with a positive difference; `p (Holm)` is a bootstrap two sided p value adjusted over the ten pairs of the metric; the last column is the cluster bootstrap by source document (sensitivity check). The plain intervals are not corrected for multiplicity.
@@ -78,13 +88,13 @@ Pairwise differences in nDCG@10:
 | A2 - A1 | -0.045 [-0.056, -0.034] | 0.000 | 0.0050 | -0.045 [-0.058, -0.031] |
 | A3 - A1 | -0.024 [-0.030, -0.018] | 0.000 | 0.0050 | -0.024 [-0.031, -0.017] |
 | A4 - A1 | 0.183 [0.167, 0.200] | 1.000 | 0.0050 | 0.183 [0.161, 0.204] |
-| A5 - A1 | 0.216 [0.200, 0.233] | 1.000 | 0.0050 | 0.216 [0.196, 0.235] |
+| A5 - A1 | 0.215 [0.200, 0.232] | 1.000 | 0.0050 | 0.215 [0.196, 0.234] |
 | A3 - A2 | 0.021 [0.014, 0.027] | 1.000 | 0.0050 | 0.021 [0.012, 0.029] |
 | A4 - A2 | 0.228 [0.211, 0.247] | 1.000 | 0.0050 | 0.228 [0.198, 0.257] |
-| A5 - A2 | 0.261 [0.243, 0.279] | 1.000 | 0.0050 | 0.261 [0.232, 0.286] |
-| A4 - A3 | 0.208 [0.191, 0.224] | 1.000 | 0.0050 | 0.208 [0.182, 0.231] |
-| A5 - A3 | 0.240 [0.224, 0.257] | 1.000 | 0.0050 | 0.240 [0.218, 0.261] |
-| A5 - A4 | 0.033 [0.026, 0.039] | 1.000 | 0.0050 | 0.033 [0.025, 0.040] |
+| A5 - A2 | 0.261 [0.243, 0.278] | 1.000 | 0.0050 | 0.261 [0.232, 0.286] |
+| A4 - A3 | 0.207 [0.191, 0.224] | 1.000 | 0.0050 | 0.207 [0.182, 0.231] |
+| A5 - A3 | 0.240 [0.224, 0.256] | 1.000 | 0.0050 | 0.240 [0.217, 0.260] |
+| A5 - A4 | 0.032 [0.026, 0.039] | 1.000 | 0.0050 | 0.032 [0.025, 0.040] |
 
 Pairwise differences in Recall@10:
 
@@ -107,14 +117,14 @@ Pairwise differences in MRR:
 |---|---|---|---|---|
 | A2 - A1 | -0.050 [-0.063, -0.037] | 0.000 | 0.0050 | -0.050 [-0.063, -0.035] |
 | A3 - A1 | -0.033 [-0.042, -0.025] | 0.000 | 0.0050 | -0.033 [-0.041, -0.024] |
-| A4 - A1 | 0.171 [0.153, 0.191] | 1.000 | 0.0050 | 0.171 [0.145, 0.195] |
-| A5 - A1 | 0.254 [0.234, 0.274] | 1.000 | 0.0050 | 0.254 [0.231, 0.275] |
+| A4 - A1 | 0.171 [0.153, 0.191] | 1.000 | 0.0050 | 0.171 [0.146, 0.195] |
+| A5 - A1 | 0.254 [0.234, 0.273] | 1.000 | 0.0050 | 0.254 [0.231, 0.274] |
 | A3 - A2 | 0.017 [0.008, 0.026] | 1.000 | 0.0050 | 0.017 [0.006, 0.027] |
-| A4 - A2 | 0.221 [0.201, 0.243] | 1.000 | 0.0050 | 0.221 [0.188, 0.252] |
+| A4 - A2 | 0.221 [0.201, 0.243] | 1.000 | 0.0050 | 0.221 [0.189, 0.252] |
 | A5 - A2 | 0.304 [0.282, 0.325] | 1.000 | 0.0050 | 0.304 [0.275, 0.330] |
-| A4 - A3 | 0.204 [0.185, 0.223] | 1.000 | 0.0050 | 0.204 [0.178, 0.229] |
-| A5 - A3 | 0.287 [0.266, 0.307] | 1.000 | 0.0050 | 0.287 [0.262, 0.308] |
-| A5 - A4 | 0.083 [0.070, 0.095] | 1.000 | 0.0050 | 0.083 [0.066, 0.099] |
+| A4 - A3 | 0.204 [0.185, 0.223] | 1.000 | 0.0050 | 0.204 [0.178, 0.228] |
+| A5 - A3 | 0.286 [0.266, 0.307] | 1.000 | 0.0050 | 0.286 [0.262, 0.308] |
+| A5 - A4 | 0.082 [0.070, 0.095] | 1.000 | 0.0050 | 0.082 [0.065, 0.099] |
 
 Sensitivity sweeps of A5 against its default configuration (paired, same queries):
 
@@ -128,15 +138,15 @@ RRF weights:
 
 | Variant | nDCG@10 | diff vs default | Recall@10 | diff vs default | MRR | diff vs default |
 |---|---|---|---|---|---|---|
-| first x2 | 0.960 [0.955, 0.965] | 0.000 [-0.000, 0.001] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.919 [0.908, 0.930] | 0.000 [0.000, 0.001] |
-| second x2 | 0.960 [0.955, 0.965] | 0.000 [-0.001, 0.001] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.919 [0.908, 0.929] | -0.000 [-0.002, 0.002] |
+| first x2 | 0.960 [0.954, 0.965] | 0.000 [-0.000, 0.001] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.919 [0.908, 0.929] | 0.000 [0.000, 0.001] |
+| second x2 | 0.960 [0.955, 0.965] | 0.000 [-0.000, 0.001] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.919 [0.908, 0.929] | 0.000 [-0.002, 0.003] |
 
 recency half-life:
 
 | Variant | nDCG@10 | diff vs default | Recall@10 | diff vs default | MRR | diff vs default |
 |---|---|---|---|---|---|---|
-| x0.5 | 0.944 [0.937, 0.951] | -0.016 [-0.021, -0.011] | 0.999 [0.997, 1.000] | -0.001 [-0.003, 0.000] | 0.899 [0.886, 0.911] | -0.020 [-0.027, -0.014] |
-| x2 | 0.963 [0.958, 0.968] | 0.004 [0.002, 0.006] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.924 [0.913, 0.934] | 0.005 [0.002, 0.008] |
+| x0.5 | 0.944 [0.937, 0.951] | -0.016 [-0.021, -0.011] | 0.999 [0.997, 1.000] | -0.001 [-0.003, 0.000] | 0.898 [0.886, 0.911] | -0.020 [-0.027, -0.014] |
+| x2 | 0.963 [0.958, 0.968] | 0.004 [0.002, 0.006] | 1.000 [0.999, 1.000] | 0.000 [0.000, 0.000] | 0.924 [0.913, 0.934] | 0.005 [0.003, 0.008] |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -148,28 +158,28 @@ Pipeline A5 on the test split of the answerable queries (1188 queries pooled), w
 
 | Metric | Verifier on [95% CI] | Verifier off [95% CI] | Difference [95% CI] | share>0 |
 |---|---|---|---|---|
-| Citation precision | 0.909 [0.892, 0.927] | 0.909 [0.892, 0.927] | 0.000 [0.000, 0.000] | 0.000 |
-| Citation recall | 0.931 [0.917, 0.945] | 0.931 [0.917, 0.945] | 0.000 [0.000, 0.000] | 0.000 |
+| Citation precision | 0.909 [0.892, 0.926] | 0.909 [0.892, 0.926] | 0.000 [0.000, 0.000] | 0.000 |
+| Citation recall | 0.926 [0.912, 0.940] | 0.926 [0.912, 0.940] | 0.000 [0.000, 0.000] | 0.000 |
 | Unsupported-claim rate | 0.005 [0.001, 0.008] | 0.005 [0.001, 0.008] | 0.000 [0.000, 0.000] | 0.000 |
 
-Sourced claims kept with the verifier: 1489; without: 1489; dropped by the verifier: 0.
+Sourced claims kept with the verifier: 1482; without: 1482; dropped by the verifier: 0.
 
 Mean and standard deviation across seeds:
 
 | Metric | Verifier on | Verifier off |
 |---|---|---|
 | Citation precision | 0.909 +/- 0.012 | 0.909 +/- 0.012 |
-| Citation recall | 0.931 +/- 0.009 | 0.931 +/- 0.009 |
+| Citation recall | 0.926 +/- 0.011 | 0.926 +/- 0.011 |
 | Unsupported-claim rate | 0.005 +/- 0.003 | 0.005 +/- 0.003 |
 
 Per seed:
 
 | Seed | Precision on | Precision off | Recall on | Recall off | Unsupported on | Unsupported off |
 |---|---|---|---|---|---|---|
-| 1234 | 0.916 | 0.916 | 0.920 | 0.920 | 0.007 | 0.007 |
-| 1 | 0.898 | 0.898 | 0.935 | 0.935 | 0.000 | 0.000 |
-| 2 | 0.910 | 0.910 | 0.940 | 0.940 | 0.003 | 0.003 |
-| 3 | 0.926 | 0.926 | 0.938 | 0.938 | 0.007 | 0.007 |
+| 1234 | 0.917 | 0.917 | 0.923 | 0.923 | 0.007 | 0.007 |
+| 1 | 0.898 | 0.898 | 0.932 | 0.932 | 0.000 | 0.000 |
+| 2 | 0.908 | 0.908 | 0.912 | 0.912 | 0.003 | 0.003 |
+| 3 | 0.926 | 0.926 | 0.941 | 0.941 | 0.007 | 0.007 |
 | 4 | 0.897 | 0.897 | 0.922 | 0.922 | 0.007 | 0.007 |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
@@ -205,47 +215,47 @@ Recall of not fully supported claims by perturbation:
 
 _Basis: OFFLINE MOCK BASELINE, not an LLM result. Components: search=real, ask=real._
 
-`tau` is chosen on the dev queries only (largest threshold whose false abstention rate on dev stays at or below the target), frozen, and reported on the test split. The score is the best final passage score of system A5. `Score rule` abstains when the best score is below `tau`; `end to end` is the abstained flag of the full pipeline at the frozen `tau`.
+One `tau` is frozen for every seed (`DEFAULT_TAU`, the value the API and the demo use). It was chosen once on the pooled dev queries of the five seeds: with `n` dev answerable queries and `m = floor(target * n)`, it is the (m+1)th smallest best passage score, so at most `m` dev queries score below it (the target is a false abstention rate of 10 percent). It is applied unchanged to the test split. The score compared with `tau` is the `relevance` component of the best passage of system A5 (the relevance of the retrieval stage, not the trust weighted final score). `Score rule` abstains when the best score is below `tau`; `end to end` is the abstained flag of the full pipeline at the same `tau`. The per seed dev calibration is kept as an extra column: the distance between it and the applied value shows how much the seeds disagree.
 
-| Seed | tau | Dev false abstention | Correct abstention | False abstention | Precision | End to end correct | End to end false |
-|---|---|---|---|---|---|---|---|
-| 1234 | 0.5968 | 8.2% (target 10.0%, n=98) | 90.0% | 10.9% | 50.9% | 90.0% | 8.8% |
-| 1 | 0.5877 | 9.4% (target 10.0%, n=96) | 90.0% | 8.9% | 56.2% | 90.0% | 7.7% |
-| 2 | 0.5827 | 9.1% (target 10.0%, n=99) | 93.3% | 6.6% | 63.6% | 93.3% | 6.6% |
-| 3 | 0.5991 | 9.2% (target 10.0%, n=98) | 90.0% | 8.8% | 56.2% | 90.0% | 6.7% |
-| 4 | 0.5952 | 9.2% (target 10.0%, n=98) | 90.0% | 10.2% | 52.9% | 93.3% | 9.3% |
+| Seed | tau applied | Dev tau of the seed | Dev false abstention at tau applied | Correct abstention | False abstention | Precision | End to end correct | End to end false |
+|---|---|---|---|---|---|---|---|---|
+| 1234 | 0.5952 | 0.5968 | 7.1% (target 10.0%, n=98) | 90.0% | 10.5% | 51.9% | 90.0% | 8.4% |
+| 1 | 0.5952 | 0.5877 | 11.5% (target 10.0%, n=96) | 93.3% | 9.4% | 56.0% | 93.3% | 8.1% |
+| 2 | 0.5952 | 0.5827 | 14.1% (target 10.0%, n=99) | 93.3% | 9.1% | 56.0% | 93.3% | 9.1% |
+| 3 | 0.5952 | 0.5991 | 5.1% (target 10.0%, n=98) | 90.0% | 8.0% | 58.7% | 90.0% | 6.3% |
+| 4 | 0.5952 | 0.5952 | 9.2% (target 10.0%, n=98) | 90.0% | 10.2% | 52.9% | 93.3% | 9.3% |
 
 Pooled over seeds, test split [95% CI]:
 
 | Metric | Score rule | End to end |
 |---|---|---|
-| Correct abstention rate (unanswerable) | 0.907 [0.860, 0.947] | 0.913 [0.867, 0.953] |
-| False abstention rate (answerable) | 0.091 [0.076, 0.109] | 0.078 [0.063, 0.094] |
+| Correct abstention rate (unanswerable) | 0.913 [0.867, 0.953] | 0.920 [0.873, 0.960] |
+| False abstention rate (answerable) | 0.094 [0.078, 0.113] | 0.082 [0.068, 0.098] |
 
 Mean and standard deviation across seeds (score rule):
 
 | Metric | Mean +/- sd |
 |---|---|
-| correct abstention | 0.907 +/- 0.015 |
-| false abstention | 0.091 +/- 0.016 |
-| precision | 0.560 +/- 0.048 |
+| correct abstention | 0.913 +/- 0.018 |
+| false abstention | 0.094 +/- 0.010 |
+| precision | 0.551 +/- 0.027 |
 
-Hard unanswerable queries (they share vocabulary with the corpus) against easy ones, score rule: hard 78.5% (n=65), easy 100.0% (n=85).
+Hard unanswerable queries (they share vocabulary with the corpus) against easy ones, score rule: hard 80.0% (n=65), easy 100.0% (n=85).
 
 Threshold curve on the pooled test scores (abstain below tau):
 
 | tau | Abstention recall | False abstention | Precision |
 |---|---|---|---|
 | 0.1952 | 0.0% | 0.0% | n/a |
-| 0.5317 | 81.3% | 1.0% | 91.0% |
-| 0.5827 | 90.7% | 7.2% | 61.3% |
-| 0.6099 | 92.0% | 13.6% | 46.0% |
-| 0.6514 | 100.0% | 15.7% | 44.5% |
-| 0.6763 | 100.0% | 30.6% | 29.2% |
-| 0.7270 | 100.0% | 35.2% | 26.4% |
-| 0.7481 | 100.0% | 50.6% | 20.0% |
-| 0.7800 | 100.0% | 61.4% | 17.1% |
-| 0.8122 | 100.0% | 66.5% | 16.0% |
+| 0.5317 | 81.3% | 0.6% | 94.6% |
+| 0.5733 | 88.0% | 6.9% | 61.7% |
+| 0.6000 | 91.3% | 11.0% | 51.1% |
+| 0.6431 | 100.0% | 15.3% | 45.2% |
+| 0.6659 | 100.0% | 20.8% | 37.8% |
+| 0.7200 | 100.0% | 34.4% | 26.8% |
+| 0.7428 | 100.0% | 48.8% | 20.5% |
+| 0.7791 | 100.0% | 61.8% | 17.0% |
+| 0.8138 | 100.0% | 66.8% | 15.9% |
 | 0.9789 | 100.0% | 76.9% | 14.1% |
 | above every score | 100.0% | 100.0% | 11.2% |
 
@@ -259,12 +269,12 @@ A planted pair is detected when the answer to its question contains a contradict
 
 | Metric | Value [95% CI] |
 |---|---|
-| Detection recall (planted pairs, n=174) | 0.954 [0.920, 0.983] |
+| Detection recall (planted pairs, n=174) | 0.937 [0.897, 0.971] |
 | False positive rate (consistent controls, n=472) | 0.000 [0.000, 0.000] |
 | Precision | 1.000 [1.000, 1.000] |
-| F1 | 0.976 [0.959, 0.991] |
+| F1 | 0.967 [0.946, 0.984] |
 
-Completeness: both sides cited in 100.0% of 166 detected pairs. Agreement of `stronger_side` with the truth (informative only, the system is not asked to decide): 100.0% of 166.
+Completeness: both sides cited in 100.0% of 163 detected pairs. Agreement of `stronger_side` with the truth (informative only, the system is not asked to decide): 100.0% of 163.
 
 Superseded and withdrawn cases (n=42), scored separately, the expected behaviour is a flag and not a contradiction: flagged 34, reported as contradiction 0, cited without the flag 4, not surfaced 4.
 
@@ -276,7 +286,7 @@ Per seed:
 |---|---|---|---|
 | 1234 | 93.9% | 0.0% | 0.969 |
 | 1 | 97.3% | 0.0% | 0.986 |
-| 2 | 94.3% | 0.0% | 0.971 |
+| 2 | 85.7% | 0.0% | 0.923 |
 | 3 | 94.4% | 0.0% | 0.971 |
 | 4 | 97.0% | 0.0% | 0.985 |
 
@@ -393,19 +403,19 @@ Latency in milliseconds, test queries, warm in memory store, machine as in the h
 
 <!-- TIMING-BEGIN: wall clock, differs between runs -->
 
-| Measure | n | p50 (ms) | p95 (ms) |
+| Measure | n | p50 (ms, wall clock, differs on every run) | p95 (ms, wall clock, differs on every run) |
 |---|---|---|---|
-| search A1 | 1188 | 3.52 | 159.76 |
-| search A2 | 1188 | 3.64 | 158.22 |
-| search A3 | 1188 | 3.67 | 158.48 |
-| search A4 | 1188 | 35.21 | 196.73 |
-| search A5 | 1188 | 38.71 | 212.84 |
-| stage: contradictions | 1095 | 0.28 | 0.50 |
-| stage: retrieve | 1188 | 38.60 | 221.36 |
-| stage: understand | 1188 | 0.16 | 0.24 |
-| stage: verify | 1095 | 1.47 | 3.71 |
-| stage: write | 1095 | 1.49 | 4.52 |
-| ask, total wall clock | 1188 | 42.30 | 225.23 |
+| search A1 | 1188 | 3.44 | 159.04 |
+| search A2 | 1188 | 3.60 | 158.80 |
+| search A3 | 1188 | 3.58 | 158.91 |
+| search A4 | 1188 | 35.20 | 197.91 |
+| search A5 | 1188 | 39.03 | 213.64 |
+| stage: contradictions | 1090 | 0.27 | 0.49 |
+| stage: retrieve | 1188 | 38.85 | 223.07 |
+| stage: understand | 1188 | 0.23 | 0.36 |
+| stage: verify | 1090 | 1.47 | 3.67 |
+| stage: write | 1090 | 1.49 | 4.80 |
+| ask, total wall clock | 1188 | 42.64 | 227.96 |
 
 <!-- TIMING-END -->
 
