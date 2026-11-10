@@ -9,6 +9,7 @@ from typing import Any
 
 from pydantic import BaseModel
 
+from ainma.factbase import FACTBASE_PATH, build_factbase
 from ainma.synth.common import Params
 from ainma.synth.corpus import build_specs, manifest_entries, materialize, reset_dir
 from ainma.synth.truthgen import Truth, build_truth
@@ -75,6 +76,11 @@ def generate(
     (seed_dir / "news" / "items.json").write_text(_dump(corpus.news), encoding="utf-8")
     truth = build_truth(corpus)
     write_truth(truth, seed_dir)
+    factbase = build_factbase(truth.facts, manifest_entries(corpus), truth.deals, truth.buyers)
+    (seed_dir / FACTBASE_PATH).parent.mkdir(parents=True, exist_ok=True)
+    (seed_dir / FACTBASE_PATH).write_text(
+        factbase.model_dump_json(indent=1) + "\n", encoding="utf-8"
+    )
     log.info(
         "seed %s: %d documents, %d facts, %d queries",
         seed,

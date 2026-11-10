@@ -27,6 +27,7 @@ from ainma.contracts import (
     DocStatus,
     DocType,
 )
+from ainma.factbase import FACTBASE_PATH, FactBaseFile, build_factbase
 from ainma.ingest.loader import load_corpus, read_manifest
 from ainma.store import SqliteStore
 from ainma.synth.absent import BUYER_TOPICS, DEAL_TOPICS, GENERAL_TOPICS
@@ -39,6 +40,7 @@ from ainma.truth import (
     GenerationParams,
     JudgeLabel,
     KpiTruth,
+    ManifestEntry,
     NewsFeedItem,
     Query,
     StaleCase,
@@ -434,6 +436,7 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
 
     # ---- buyer truth --------------------------------------------------------------------------------
     await _verify_buyers(rep, buyers, btruth, facts, all_chunks, mdoc, news, aux, ref)
+    await _verify_factbase(seed_dir, store, rep, facts, manifest, deals, buyers)
 
     # ---- sizes and demo pieces -------------------------------------------------------------------------
     n_contra = sum(1 for c in contras if c.kind == "contradiction")
@@ -520,6 +523,46 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     if not any(t.criterion_key == "fund_lifecycle" and t.status.value == "unknown" for t in btruth):
         rep.err("no unlisted fund without a stated investment period end")
     rep.info("sizes: " + ", ".join(f"{k}={v}" for k, v in sizes.items()))
+
+
+async def _verify_factbase(
+    seed_dir: Path,
+    store: SqliteStore,
+    rep: Report,
+    facts: list[Fact],
+    manifest: list[ManifestEntry],
+    deals: list[Deal],
+    buyers: list[BuyerProfile],
+) -> None:
+    """The structured fact base is the deterministic build of the verified facts, and every
+    provenance (source of record and others) points at a verbatim span of a stored chunk."""
+    path = seed_dir / FACTBASE_PATH
+    if not path.exists():
+        rep.err(f"{FACTBASE_PATH} is missing")
+        return
+    stored = FactBaseFile.model_validate_json(path.read_bytes())
+    if stored != build_factbase(facts, manifest, deals, buyers):
+        rep.err(f"{FACTBASE_PATH} differs from the build of truth/facts.json")
+    access = AccessContext(
+        user_id="verify",
+        allowed_deal_ids=frozenset(d.id for d in deals),
+        include_general_layer=True,
+    )
+    checked = 0
+    for record in stored.facts:
+        for prov in [record.provenance, *(o.provenance for o in record.others)]:
+            chunk = await store.get_chunk(prov.chunk_id, access)
+            page = await store.get_page(prov.document_id, prov.page, access)
+            if chunk is None or prov.quote not in chunk.text:
+                rep.err(f"{record.id}: quote not in chunk {prov.chunk_id}")
+            elif page is None or page[prov.char_start : prov.char_end] != prov.quote:
+                rep.err(f"{record.id}: offsets do not point at the quote in {prov.document_id}")
+            checked += 1
+    n_dis = sum(bool(r.disagreements) for r in stored.facts)
+    rep.info(
+        f"factbase verified: {len(stored.facts)} records, {checked} provenances, "
+        f"{n_dis} records with a disagreeing document, {len(stored.companies)} companies"
+    )
 
 
 async def _n_pages(store: SqliteStore, access: AccessContext, doc_id: str) -> int:
