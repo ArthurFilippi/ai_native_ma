@@ -21,6 +21,13 @@ from pydantic import BaseModel
 
 from ainma.llm.mock import MockHandler
 from ainma.llm.tasks import TASK_EXTRACT_FACTS, TASK_JUDGE, TASK_UNDERSTAND, TASK_WRITE
+from ainma.pipeline.rules import (
+    claim_text,
+    evidence_facts,
+    select_facts,
+    subject_of,
+    verified_share,
+)
 from ainma.pipeline.schemas import (
     DraftClaim,
     DraftEvidence,
@@ -38,6 +45,7 @@ from ainma.pipeline.schemas import (
 )
 from ainma.pipeline.understand import _GROWTH, understand_rules
 from ainma.pipeline.verify import numeric_match
+from ainma.retrieval.entities import conflicting_entity, entity_tokens
 from ainma.retrieval.lexicon import METRIC_BY_KEY, METRICS, detect_periods, previous_period
 from ainma.retrieval.quantities import (
     ExtractedFact,
@@ -58,6 +66,7 @@ def _understand(system: str, user: str, schema: type[BaseModel]) -> BaseModel:
 # ---- write --------------------------------------------------------------------------------------
 
 _COVERAGE_MIN = 0.6
+_MAX_EVIDENCE = 3  # passages cited by one claim
 
 
 def _period_ok(wanted: list[str], sentence_periods: set[str], passage_periods: set[str]) -> bool:
@@ -107,62 +116,86 @@ def _select_sentences(
 
 
 def _growth_claim(
-    claims: list[DraftClaim], facts_by_claim: dict[str, list[ExtractedFact]], next_id: int
+    claims: list[DraftClaim],
+    facts_by_claim: dict[str, list[ExtractedFact]],
+    source_of: dict[str, str],
+    next_id: int,
 ) -> DraftClaim | None:
+    """The change between two consecutive periods of one metric, computed from two claims. Two
+    figures of the same source are preferred, so the change is not computed across a
+    disagreement between sources."""
     entries = [(cid, f) for cid, fs in facts_by_claim.items() for f in fs if f.period]
     for metric in dict.fromkeys(f.metric for _, f in entries):
-        by_period: dict[str, tuple[str, ExtractedFact]] = {}
+        by_period: dict[str, list[tuple[str, ExtractedFact]]] = {}
         for cid, fact in entries:
             if fact.metric == metric and fact.period:
-                by_period.setdefault(fact.period, (cid, fact))
+                by_period.setdefault(fact.period, []).append((cid, fact))
         for period in sorted(by_period, reverse=True):
             prior = previous_period(period)
-            if (
-                prior
-                and prior in by_period
-                and by_period[prior][1].unit == by_period[period][1].unit
-            ):
-                (c1, new), (c0, old) = by_period[period], by_period[prior]
-                if old.value == 0:
-                    continue
-                change = (new.value / old.value - 1.0) * 100.0
-                verb = "grew" if change >= 0 else "fell"
-                label = METRIC_BY_KEY[metric].label
-                text = (
-                    f"Using the quoted figures, {label} {verb} about {abs(change):.1f}% from "
-                    f"{prior} to {period} ({new.value:g} / {old.value:g} - 1)."
-                )
-                derived = list(dict.fromkeys([c1, c0]))
-                return DraftClaim(
-                    id=f"d{next_id}", text=text, status="inferred", derived_from=derived
-                )
+            if not prior or prior not in by_period:
+                continue
+            pairs = [
+                (new, old)
+                for new in by_period[period]
+                for old in by_period[prior]
+                if new[1].unit == old[1].unit and old[1].value != 0
+            ]
+            if not pairs:
+                continue
+            same = [p for p in pairs if source_of.get(p[0][0]) == source_of.get(p[1][0])]
+            (c1, new_fact), (c0, old_fact) = (same or pairs)[0]
+            change = (new_fact.value / old_fact.value - 1.0) * 100.0
+            verb = "grew" if change >= 0 else "fell"
+            label = METRIC_BY_KEY[metric].label
+            text = (
+                f"Using the quoted figures, {label} {verb} about {abs(change):.1f}% from "
+                f"{prior} to {period} ({new_fact.value:g} / {old_fact.value:g} - 1)."
+            )
+            derived = list(dict.fromkeys([c1, c0]))
+            return DraftClaim(id=f"d{next_id}", text=text, status="inferred", derived_from=derived)
     return None
 
 
 def _write(system: str, user: str, schema: type[BaseModel]) -> BaseModel:
     request = WriteRequest.model_validate_json(user)
     claims: list[DraftClaim] = []
-    by_key: dict[tuple[int, str], str] = {}
+    by_text: dict[str, list[DraftEvidence]] = {}
     missing: list[str] = []
+    default_subject = subject_of(request.question)
     for sub_question in request.sub_questions or [request.question]:
-        picked = _select_sentences(sub_question, request.passages, request.max_claims)
-        if not picked:
+        subject = subject_of(sub_question) or default_subject
+        entity = entity_tokens(sub_question) or entity_tokens(request.question)
+        selected = select_facts(
+            sub_question, request.passages, limit=request.max_claims, entity=entity
+        )
+        drafts: list[tuple[NumberedPassage, str, str]] = []  # passage, claim text, quote
+        if selected is None:
+            drafts = [
+                (passage, sentence, sentence)
+                for passage, sentence in _select_sentences(
+                    sub_question, request.passages, request.max_claims
+                )
+            ]
+        else:
+            drafts = [
+                (s.passage, claim_text(subject, s.fact, s.period), s.fact.sentence)
+                for s in selected
+            ]
+        if not drafts:
             missing.append(sub_question)
-        for passage, sentence in picked:
-            key = (passage.n, sentence)
-            if key in by_key:
-                continue
-            claim = DraftClaim(
-                id=f"d{len(claims) + 1}",
-                text=sentence,
-                status="sourced",
-                evidence=[DraftEvidence(passage=passage.n, quote=sentence)],
-            )
-            by_key[key] = claim.id
-            claims.append(claim)
+        for passage, text, quote in drafts:
+            evidence = by_text.get(text)
+            if evidence is None:  # a claim stated by several passages cites all of them
+                claims.append(DraftClaim(id=f"d{len(claims) + 1}", text=text, status="sourced"))
+                evidence = by_text[text] = claims[-1].evidence
+            item = DraftEvidence(passage=passage.n, quote=quote)
+            if item not in evidence and len(evidence) < _MAX_EVIDENCE:
+                evidence.append(item)
     if _GROWTH.search(request.question):
         facts = {c.id: extract_facts_rules(c.text) for c in claims}
-        inferred = _growth_claim(claims, facts, len(claims) + 1)
+        titles = {p.n: p.doc_title for p in request.passages}
+        source_of = {c.id: titles.get(c.evidence[0].passage, "") for c in claims if c.evidence}
+        inferred = _growth_claim(claims, facts, source_of, len(claims) + 1)
         if inferred is not None:
             claims.append(inferred)
     return WriteResult(claims=claims, missing=missing)
@@ -229,7 +262,8 @@ def _facts_agree(a: ExtractedFact, b: ExtractedFact) -> bool:
     return period_ok and a.unit == b.unit and close
 
 
-def judge_support(claim: str, quotes: list[str], context: str = "") -> JudgeResult:
+def _judge_overlap(claim: str, quotes: list[str], context: str = "") -> JudgeResult:
+    """Fallback for a claim that states no keyed fact: numbers, proper nouns, word coverage."""
     quote = " ".join(quotes)
     claim_numbers = [q for q in parse_quantities(claim) if q.kind != "year"]
     quote_numbers = parse_quantities(quote)
@@ -275,6 +309,33 @@ def judge_support(claim: str, quotes: list[str], context: str = "") -> JudgeResu
     if coverage >= 0.35:
         return JudgeResult(label="partial", rationale=f"word coverage {coverage:.2f}")
     return JudgeResult(label="unsupported", rationale=f"word coverage {coverage:.2f}")
+
+
+def judge_support(claim: str, quotes: list[str], context: str = "") -> JudgeResult:
+    """Label a claim against the quotes it cites (`context` is the source chunk and its title).
+
+    A claim that states keyed facts is judged fact by fact: every `(metric, period, value)` of the
+    claim must be stated by the quote (or by a table row the quote contains, with its header);
+    none verified is unsupported, some is partial. Verified facts about a company the sources do
+    not name are unsupported. Other claims fall back to number, name and word overlap.
+    """
+    claim_facts = extract_facts_rules(claim)
+    if not claim_facts:
+        return _judge_overlap(claim, quotes, context)
+    quote = " ".join(quotes)
+    verified = verified_share(claim_facts, evidence_facts(quote, context))
+    if verified == 0:
+        return JudgeResult(label="unsupported", rationale="no fact of the claim is in the quote")
+    if verified < len(claim_facts):
+        return JudgeResult(
+            label="partial", rationale=f"{verified} of {len(claim_facts)} facts are in the quote"
+        )
+    other = conflicting_entity(claim, f"{quote} {context}")
+    if other is not None:
+        return JudgeResult(
+            label="unsupported", rationale=f"the sources name another company than {other}"
+        )
+    return JudgeResult(label="supported", rationale="every fact of the claim is in the quote")
 
 
 def judge_relevance(question: str, answer: str) -> RelevanceResult:

@@ -80,7 +80,12 @@ async def test_outsider_gets_no_chunks_and_an_abstention(tiny_store: SqliteStore
 async def test_borealis_never_leaks_to_the_aurora_analyst(tiny_store: SqliteStore) -> None:
     answer = await _ask(tiny_store, "What was Borealis net revenue for FY2024?")
     assert all(c.document_id != "doc_other_cim" for claim in answer.claims for c in claim.citations)
-    assert all("Borealis" not in claim.text for claim in answer.claims)
+    assert all(
+        "Borealis" not in claim.text
+        for claim in answer.claims
+        if claim.status is ClaimStatus.SOURCED
+    )
+    assert answer.abstained  # the deal never mentions the company that was asked about
 
 
 async def test_withdrawn_document_never_supports_a_claim(tiny_store: SqliteStore) -> None:
