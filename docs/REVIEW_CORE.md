@@ -85,3 +85,64 @@ A (LLM layer: structured output, `Retry-After`, concurrency, separate judge mode
 fallback), the screening ranking and prefill (findings 12, 13), the verifier binding check
 (finding 11), the shared engine (finding 5), then the evaluation report (mock and live sections,
 writer and judge named). The outcome of each item is recorded at the end of this file.
+
+## Outcome of this branch
+
+All numbers below come from `eval/results/RESULTS.md` (mock provider, five seeds, test split),
+regenerated on this branch. "Before" is the committed report of `c55a6bd`.
+
+### Fixed
+
+| Finding | Fix | Evidence |
+|---|---|---|
+| 5 refit per question | `Runtime.engine`, one `RetrievalEngine` per process | `tests/integration/test_api_llm.py`: two questions, one fit |
+| 6 silent mock answer | `LLMError` gives 503; mock only with `LLM_ALLOW_MOCK_FALLBACK`, answer `degraded` and shown | `test_llm_live_layer.py`, `test_pipeline_judge_degraded.py`, `web/tests/degraded.test.tsx` |
+| 7 schema in the prompt | `responseSchema` (OpenAPI subset) | `test_gemini_sends_response_schema_not_a_schema_in_the_prompt` |
+| 8 retries | `Retry-After` honoured and capped, concurrency gate per provider | `test_retry_after_*`, `test_concurrency_is_limited_per_provider` |
+| 9 judge is the writer | `JUDGE_PROVIDER`, `JUDGE_MODEL`; trace and report name both | `test_judge_calls_go_to_the_judge_model_and_the_trace_names_both`, report header |
+| 11 number binding | `binding` check (role, column, sentence period) | `tests/unit/test_verify_binding.py` (both observed errors) |
+| 12 ranking | rank by `score_low`, range shown on the card | `test_thin_perfect_score_does_not_outrank_broad_good_score`, shared vectors |
+| 13 stage 1 unknown | prefill from `Deal.geographies`, `ev_eur_m`, `buyer_types` | `test_stage_one_is_prefilled_from_the_deal_when_no_filter_is_typed` |
+
+Every bug test was written and seen failing before its fix.
+
+### Before and after, mock
+
+| Measure | Before | After |
+|---|---|---|
+| Citation precision / recall (verifier on) | 0.909 / 0.926 | 0.909 / 0.926 |
+| Claims dropped by the verifier | 0 | 0 |
+| Correct / false abstention, end to end | 0.920 / 0.082 | 0.920 / 0.082 |
+| Screening agreement, unknown rate, false met | 0.702, 47.2%, 0.002 | 0.702, 47.2%, 0.002 |
+| Buyer ranking, Spearman vs truth score | 0.528 +/- 0.160 (previous rule, same run) | 0.545 +/- 0.173 |
+| Ask latency p50 / p95, harness (shared engine there already) | 42.64 / 227.96 ms | 41.79 / 278.36 ms (other machine) |
+
+Read honestly: on the mock nothing measured improves beyond noise. The binding check removes no
+mock claim (the mock writer quotes the right sentence), so its value rests on unit tests until a
+live writer is measured. The ranking fix removes a visible inversion but its Spearman gain (0.017)
+is far inside the spread across 5 deal runs. Screening agreement is unchanged because the prefill
+reproduces the filters the harness used to inject (D80, D87). `tau` was not recalibrated:
+retrieval did not change.
+
+### Out of distribution and live
+
+- Out of distribution test set: not built on this branch. The gap between synthetic and out of
+  distribution retrieval is **not measured**.
+- Live: no `GEMINI_API_KEY` in the environment. `make live-smoke` and section 9 of `RESULTS.md`
+  say `live run not executed`. No live number exists.
+
+### What remains (by priority)
+
+1. A live run (`make eval PROVIDER=gemini JUDGE_MODEL=...`, then `make live-smoke`): the only way
+   to measure the verifier and the binding check, and the judge against the writer.
+2. Hand labels of the 40 pair sample (`make label-sample`, then `--score`): the report already
+   reads them; they are not filled, by rule.
+3. Brief item B: LLM query understanding (the `understand` task goes to the live model already,
+   the prompt is not evaluated), neural dense and cross encoder (code exists; the model host was
+   blocked by the network of this run, so nothing was measured; the cross encoder also bypasses
+   the entity gate, finding 2), and a committed out of distribution set of 30 to 50 questions.
+4. Brief item C: structured fact base with provenance and typed tools. Not started.
+5. Brief item D3: LLM assisted stage 2 with verified citations, deterministic rules as baseline.
+   Not started; the deep stage is still rules only (finding 14).
+6. Brief item E: an adversarial set measured with a live model, verifier on and off.
+7. The buyer universe is still global (finding 15); antitrust stays `unknown` by construction.

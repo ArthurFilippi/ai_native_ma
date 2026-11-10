@@ -4,14 +4,15 @@
 
 <!-- RUN-METADATA-BEGIN: differs between runs -->
 - Date: 2026-11-10
-- Git commit: 4fa990f
-- Machine: Darwin 27.0.0 arm64, Python 3.12.2, 8 CPUs
+- Git commit: dd2a61f
+- Machine: Linux 6.18.44-fc-v338 x86_64, Python 3.13.18, 4 CPUs
 <!-- RUN-METADATA-END -->
 
-- Provider: mock, model: mock-extractive-v1
+- Writer: provider mock, model mock-extractive-v1
+- Judge: mock mock-extractive-v1 (same as the writer)
 - Seeds: 1234, 1, 2, 3, 4
 - Split: test
-- Configuration hash: 18e12c05ddf1f6e8
+- Configuration hash: a07de3d3832ab242
 - Components: ask=real, checks=real, judge=real, kpi=real, screening=real, search=real
 - Backends: dense=lsa, reranker=features
 - Dataset: generated corpora under data/synthetic/<seed>/
@@ -355,6 +356,8 @@ Buyer screening criteria against the buyer truth table (a criterion the system d
 | Predicted met although not met | 0.002 [0.000, 0.005] |
 | Unknown rate | 47.2% |
 | Accuracy where a status was given | 99.8% |
+| Buyer ranking, Spearman vs truth score (floor of the range, D86), mean over 5 deal runs | 0.545 +/- 0.173 |
+| Buyer ranking, Spearman vs truth score (previous rule: score, then coverage), mean over 5 deal runs | 0.528 +/- 0.160 |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -389,7 +392,7 @@ Kappa per seed:
 
 Hand labels: not labelled yet.
 
-Self-preference control: with the mock provider the same deterministic routine writes and judges; this is stated, not controlled. For a live run, name the writer and the judge model separately.
+Self-preference control: writer mock mock-extractive-v1, judge mock mock-extractive-v1 (same as the writer). With the mock provider the same deterministic routine writes and judges; this is stated, not controlled. A live run sets `JUDGE_PROVIDER` and `JUDGE_MODEL` to judge with another model.
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -405,17 +408,17 @@ Latency in milliseconds, test queries, warm in memory store, machine as in the h
 
 | Measure | n | p50 (ms, wall clock, differs on every run) | p95 (ms, wall clock, differs on every run) |
 |---|---|---|---|
-| search A1 | 1188 | 3.44 | 159.04 |
-| search A2 | 1188 | 3.60 | 158.80 |
-| search A3 | 1188 | 3.58 | 158.91 |
-| search A4 | 1188 | 35.20 | 197.91 |
-| search A5 | 1188 | 39.03 | 213.64 |
-| stage: contradictions | 1090 | 0.27 | 0.49 |
-| stage: retrieve | 1188 | 38.85 | 223.07 |
-| stage: understand | 1188 | 0.23 | 0.36 |
-| stage: verify | 1090 | 1.47 | 3.67 |
-| stage: write | 1090 | 1.49 | 4.80 |
-| ask, total wall clock | 1188 | 42.64 | 227.96 |
+| search A1 | 1188 | 6.62 | 210.89 |
+| search A2 | 1188 | 5.99 | 215.66 |
+| search A3 | 1188 | 6.39 | 212.34 |
+| search A4 | 1188 | 34.46 | 258.54 |
+| search A5 | 1188 | 37.68 | 279.19 |
+| stage: contradictions | 1090 | 0.47 | 0.87 |
+| stage: retrieve | 1188 | 37.36 | 270.34 |
+| stage: understand | 1188 | 0.29 | 0.45 |
+| stage: verify | 1090 | 1.58 | 3.87 |
+| stage: write | 1090 | 1.58 | 4.62 |
+| ask, total wall clock | 1188 | 41.79 | 278.36 |
 
 <!-- TIMING-END -->
 
@@ -430,5 +433,11 @@ Regression cases replayed: 0 cases (the `eval/regression/` directory is empty).
 | Cases | Passed | Failed |
 |---|---|---|
 | 0 | 0 | 0 |
+
+> Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
+
+## 9. Live run (reported separately from the mock)
+
+live run not executed: no live provider key was available for this report, so every number of this file comes from the offline mock. `make eval PROVIDER=gemini` with `GEMINI_API_KEY` set writes `RESULTS_LIVE.md`, and the next mock report summarises it here.
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
