@@ -5,11 +5,11 @@
   "text": "How much did Aurora Components invest in property, plant and equipment in the year ended 31 December 2020?",
   "kind": "paraphrased",
   "gold_fact_ids": [
-   "fact_00058"
+   "fact_00079"
   ],
   "relevance": {
-   "ch_cim_p15_02": 2,
-   "ch_model_p3_01": 1
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
   },
   "paraphrased": true
  },
@@ -19,11 +19,11 @@
   "text": "What was Aurora Components's capital expenditure in FY2021?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00059"
+   "fact_00080"
   ],
   "relevance": {
-   "ch_cim_p15_02": 2,
-   "ch_model_p3_01": 1
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
   },
   "paraphrased": false
  },
@@ -33,11 +33,11 @@
   "text": "How much did Aurora Components invest in property, plant and equipment in the year ended 31 December 2022?",
   "kind": "paraphrased",
   "gold_fact_ids": [
-   "fact_00060"
+   "fact_00081"
   ],
   "relevance": {
-   "ch_cim_p15_02": 2,
-   "ch_model_p3_01": 1
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
   },
   "paraphrased": true
  },
@@ -47,11 +47,11 @@
   "text": "What was Aurora Components's capital expenditure in FY2023?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00061"
+   "fact_00082"
   ],
   "relevance": {
-   "ch_cim_p15_02": 2,
-   "ch_model_p3_01": 1
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
   },
   "paraphrased": false
  },
@@ -77,11 +77,11 @@
   "text": "How much EBITDA did Aurora Components report for FY2020?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00053"
+   "fact_00074"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": false
  },
@@ -91,11 +91,11 @@
   "text": "What were Aurora Components's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2021?",
   "kind": "paraphrased",
   "gold_fact_ids": [
-   "fact_00054"
+   "fact_00075"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": true
  },
@@ -105,11 +105,11 @@
   "text": "What was Aurora Components's EBITDA in FY2022?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00055"
+   "fact_00076"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": false
  },
@@ -119,12 +119,12 @@
   "text": "What was Aurora Components's EBITDA in FY2023?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00047"
+   "fact_00077"
   ],
   "relevance": {
-   "ch_cim_p12_01": 2,
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p12_01": 1,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": false
  },
@@ -244,11 +244,11 @@
   "text": "How much revenue did Aurora Components report for FY2020?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00050"
+   "fact_00069"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": false
  },
@@ -258,11 +258,11 @@
   "text": "What was Aurora Components's revenue in FY2021?",
   "kind": "single_fact",
   "gold_fact_ids": [
-   "fact_00051"
+   "fact_00070"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": false
  },
@@ -272,11 +272,11 @@
   "text": "How large was Aurora Components's turnover in the year ended 31 December 2022?",
   "kind": "paraphrased",
   "gold_fact_ids": [
-   "fact_00052"
+   "fact_00071"
   ],
   "relevance": {
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": true
  },
@@ -286,12 +286,12 @@
   "text": "What were Aurora Components's total sales for the year ended 31 December 2023?",
   "kind": "paraphrased",
   "gold_fact_ids": [
-   "fact_00045"
+   "fact_00072"
   ],
   "relevance": {
-   "ch_cim_p12_01": 2,
-   "ch_cim_p13_01": 2,
-   "ch_model_p1_01": 1
+   "ch_model_p1_01": 2,
+   "ch_cim_p12_01": 1,
+   "ch_cim_p13_01": 1
   },
   "paraphrased": true
  },

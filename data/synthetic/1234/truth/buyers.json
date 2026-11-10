@@ -11,7 +11,7 @@
    "Central Europe",
    "Nordics"
   ],
-  "size_eur_m": 2900.0,
+  "size_eur_m": 2800.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -29,9 +29,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 1150.0,
+  "size_eur_m": 1050.0,
   "ticket_min_eur_m": 40.0,
-  "ticket_max_eur_m": 165.0,
+  "ticket_max_eur_m": 150.0,
   "fund_vintage_year": 2019,
   "listed": false,
   "synthetic": true
@@ -47,7 +47,7 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 1050.0,
+  "size_eur_m": 1000.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -65,9 +65,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 11950.0,
-  "ticket_min_eur_m": 595.0,
-  "ticket_max_eur_m": 1355.0,
+  "size_eur_m": 10800.0,
+  "ticket_min_eur_m": 535.0,
+  "ticket_max_eur_m": 1220.0,
   "fund_vintage_year": 2018,
   "listed": false,
   "synthetic": true
@@ -102,9 +102,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 850.0,
-  "ticket_min_eur_m": 30.0,
-  "ticket_max_eur_m": 160.0,
+  "size_eur_m": 750.0,
+  "ticket_min_eur_m": 25.0,
+  "ticket_max_eur_m": 140.0,
   "fund_vintage_year": 2019,
   "listed": false,
   "synthetic": true
@@ -139,9 +139,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 8000.0,
-  "ticket_min_eur_m": 305.0,
-  "ticket_max_eur_m": 1540.0,
+  "size_eur_m": 7200.0,
+  "ticket_min_eur_m": 275.0,
+  "ticket_max_eur_m": 1390.0,
   "fund_vintage_year": 2017,
   "listed": false,
   "synthetic": true
@@ -177,9 +177,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 1400.0,
-  "ticket_min_eur_m": 45.0,
-  "ticket_max_eur_m": 145.0,
+  "size_eur_m": 1250.0,
+  "ticket_min_eur_m": 40.0,
+  "ticket_max_eur_m": 130.0,
   "fund_vintage_year": 2017,
   "listed": false,
   "synthetic": true
@@ -196,7 +196,7 @@
    "Central Europe",
    "Asia Pacific"
   ],
-  "size_eur_m": 1800.0,
+  "size_eur_m": 1750.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -215,9 +215,9 @@
    "Southern Europe",
    "North America"
   ],
-  "size_eur_m": 6850.0,
-  "ticket_min_eur_m": 210.0,
-  "ticket_max_eur_m": 745.0,
+  "size_eur_m": 6150.0,
+  "ticket_min_eur_m": 190.0,
+  "ticket_max_eur_m": 670.0,
   "fund_vintage_year": null,
   "listed": true,
   "synthetic": true
@@ -234,7 +234,7 @@
    "Central Europe",
    "North America"
   ],
-  "size_eur_m": 1450.0,
+  "size_eur_m": 1400.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -252,9 +252,9 @@
   "geographies": [
    "Nordics"
   ],
-  "size_eur_m": 2650.0,
-  "ticket_min_eur_m": 150.0,
-  "ticket_max_eur_m": 460.0,
+  "size_eur_m": 2400.0,
+  "ticket_min_eur_m": 135.0,
+  "ticket_max_eur_m": 415.0,
   "fund_vintage_year": 2022,
   "listed": false,
   "synthetic": true
@@ -311,7 +311,7 @@
    "Central Europe",
    "Asia Pacific"
   ],
-  "size_eur_m": 1600.0,
+  "size_eur_m": 1550.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -331,9 +331,9 @@
    "UK and Ireland",
    "Asia Pacific"
   ],
-  "size_eur_m": 750.0,
-  "ticket_min_eur_m": 45.0,
-  "ticket_max_eur_m": 150.0,
+  "size_eur_m": 650.0,
+  "ticket_min_eur_m": 40.0,
+  "ticket_max_eur_m": 130.0,
   "fund_vintage_year": 2021,
   "listed": false,
   "synthetic": true
@@ -370,9 +370,9 @@
   "geographies": [
    "Central Europe"
   ],
-  "size_eur_m": 300.0,
-  "ticket_min_eur_m": 15.0,
-  "ticket_max_eur_m": 50.0,
+  "size_eur_m": 250.0,
+  "ticket_min_eur_m": 10.0,
+  "ticket_max_eur_m": 40.0,
   "fund_vintage_year": 2016,
   "listed": false,
   "synthetic": true
@@ -410,9 +410,9 @@
    "Asia Pacific",
    "Central Europe"
   ],
-  "size_eur_m": 3400.0,
-  "ticket_min_eur_m": 175.0,
-  "ticket_max_eur_m": 600.0,
+  "size_eur_m": 3100.0,
+  "ticket_min_eur_m": 160.0,
+  "ticket_max_eur_m": 550.0,
   "fund_vintage_year": 2016,
   "listed": false,
   "synthetic": true
@@ -448,9 +448,9 @@
    "Central Europe",
    "Southern Europe"
   ],
-  "size_eur_m": 1600.0,
-  "ticket_min_eur_m": 75.0,
-  "ticket_max_eur_m": 285.0,
+  "size_eur_m": 1450.0,
+  "ticket_min_eur_m": 70.0,
+  "ticket_max_eur_m": 260.0,
   "fund_vintage_year": 2017,
   "listed": false,
   "synthetic": true
@@ -484,9 +484,9 @@
    "Central Europe",
    "North America"
   ],
-  "size_eur_m": 450.0,
+  "size_eur_m": 400.0,
   "ticket_min_eur_m": 15.0,
-  "ticket_max_eur_m": 55.0,
+  "ticket_max_eur_m": 50.0,
   "fund_vintage_year": 2019,
   "listed": false,
   "synthetic": true
@@ -503,7 +503,7 @@
    "Central Europe",
    "Southern Europe"
   ],
-  "size_eur_m": 2050.0,
+  "size_eur_m": 2000.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -522,9 +522,9 @@
    "Nordics",
    "Central Europe"
   ],
-  "size_eur_m": 2200.0,
-  "ticket_min_eur_m": 130.0,
-  "ticket_max_eur_m": 315.0,
+  "size_eur_m": 1950.0,
+  "ticket_min_eur_m": 115.0,
+  "ticket_max_eur_m": 280.0,
   "fund_vintage_year": 2016,
   "listed": false,
   "synthetic": true
@@ -539,7 +539,7 @@
   "geographies": [
    "Asia Pacific"
   ],
-  "size_eur_m": 1200.0,
+  "size_eur_m": 1150.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -559,9 +559,9 @@
    "North America",
    "Central Europe"
   ],
-  "size_eur_m": 15950.0,
-  "ticket_min_eur_m": 890.0,
-  "ticket_max_eur_m": 2815.0,
+  "size_eur_m": 14350.0,
+  "ticket_min_eur_m": 800.0,
+  "ticket_max_eur_m": 2535.0,
   "fund_vintage_year": 2020,
   "listed": false,
   "synthetic": true
@@ -595,9 +595,9 @@
   "geographies": [
    "Asia Pacific"
   ],
-  "size_eur_m": 1850.0,
-  "ticket_min_eur_m": 85.0,
-  "ticket_max_eur_m": 260.0,
+  "size_eur_m": 1650.0,
+  "ticket_min_eur_m": 75.0,
+  "ticket_max_eur_m": 230.0,
   "fund_vintage_year": 2017,
   "listed": false,
   "synthetic": true
@@ -614,7 +614,7 @@
    "UK and Ireland",
    "Central Europe"
   ],
-  "size_eur_m": 2400.0,
+  "size_eur_m": 2350.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -633,9 +633,9 @@
    "Central Europe",
    "Southern Europe"
   ],
-  "size_eur_m": 900.0,
-  "ticket_min_eur_m": 50.0,
-  "ticket_max_eur_m": 130.0,
+  "size_eur_m": 850.0,
+  "ticket_min_eur_m": 45.0,
+  "ticket_max_eur_m": 125.0,
   "fund_vintage_year": 2020,
   "listed": false,
   "synthetic": true
@@ -653,7 +653,7 @@
    "Central Europe",
    "UK and Ireland"
   ],
-  "size_eur_m": 3600.0,
+  "size_eur_m": 3500.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -673,9 +673,9 @@
    "Central Europe",
    "UK and Ireland"
   ],
-  "size_eur_m": 1050.0,
-  "ticket_min_eur_m": 60.0,
-  "ticket_max_eur_m": 195.0,
+  "size_eur_m": 950.0,
+  "ticket_min_eur_m": 55.0,
+  "ticket_max_eur_m": 175.0,
   "fund_vintage_year": null,
   "listed": true,
   "synthetic": true
@@ -713,9 +713,9 @@
    "UK and Ireland",
    "Central Europe"
   ],
-  "size_eur_m": 19950.0,
-  "ticket_min_eur_m": 1130.0,
-  "ticket_max_eur_m": 3165.0,
+  "size_eur_m": 17950.0,
+  "ticket_min_eur_m": 1020.0,
+  "ticket_max_eur_m": 2845.0,
   "fund_vintage_year": 2021,
   "listed": false,
   "synthetic": true
@@ -732,7 +732,7 @@
    "North America",
    "Asia Pacific"
   ],
-  "size_eur_m": 450.0,
+  "size_eur_m": 400.0,
   "ticket_min_eur_m": null,
   "ticket_max_eur_m": null,
   "fund_vintage_year": null,
@@ -750,9 +750,9 @@
    "Central Europe",
    "Nordics"
   ],
-  "size_eur_m": 1250.0,
-  "ticket_min_eur_m": 40.0,
-  "ticket_max_eur_m": 165.0,
+  "size_eur_m": 1150.0,
+  "ticket_min_eur_m": 35.0,
+  "ticket_max_eur_m": 150.0,
   "fund_vintage_year": null,
   "listed": true,
   "synthetic": true

@@ -330,7 +330,7 @@ class Builder:
         aux: dict[str, dict[str, Any]] = {}
 
         def add(deal_id: str | None, topic: Topic, entity: str) -> None:
-            uid = f"u_{len(out) + 1:04d}"
+            uid = f"un_{len(out) + 1:04d}"
             out.append(
                 Unanswerable(
                     id=uid,

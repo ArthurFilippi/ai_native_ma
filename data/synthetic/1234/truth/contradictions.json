@@ -201,7 +201,7 @@
    "doc_pr_corr",
    "doc_news_17"
   ],
-  "stronger_document_id": "doc_model",
+  "stronger_document_id": "doc_cim",
   "expected": "contradiction",
   "query_id": "q_0010"
  },
@@ -429,7 +429,7 @@
    "doc_model",
    "doc_news_17"
   ],
-  "stronger_document_id": "doc_model",
+  "stronger_document_id": "doc_cim",
   "expected": "contradiction",
   "query_id": "q_0021"
  },

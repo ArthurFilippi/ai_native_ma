@@ -1,48 +1,48 @@
 [
  {
   "id": "jl_0001",
-  "claim": "Estell Automotive EBITDA for FY2023 was EUR 20.6 million.",
+  "claim": "Estell Automotive EBITDA for FY2023 was EUR 21.2 million.",
   "chunk_id": "ch_estell_cim_p6_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+  "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
  },
  {
   "id": "jl_0002",
-  "claim": "Estell Automotive EBITDA for FY2023 was EUR 14.4 million.",
+  "claim": "Estell Automotive EBITDA for FY2023 was EUR 14.8 million.",
   "chunk_id": "ch_estell_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+  "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
  },
  {
   "id": "jl_0003",
-  "claim": "Estell Automotive EBITDA for FY2022 was EUR 20.6 million.",
+  "claim": "Estell Automotive EBITDA for FY2022 was EUR 21.2 million.",
   "chunk_id": "ch_estell_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+  "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
  },
  {
   "id": "jl_0004",
-  "claim": "Ithis Systems EBITDA for FY2023 was EUR 20.6 million.",
+  "claim": "Ithis Systems EBITDA for FY2023 was EUR 21.2 million.",
   "chunk_id": "ch_estell_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+  "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
  },
  {
   "id": "jl_0005",
-  "claim": "Estell Automotive EBITDA for FY2023 was EUR 20.6 million and estell Automotive net debt at the end of FY2024 was EUR 161.5 million.",
+  "claim": "Estell Automotive EBITDA for FY2023 was EUR 21.2 million and estell Automotive net debt at the end of FY2024 was EUR 161.5 million.",
   "chunk_id": "ch_estell_cim_p6_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+  "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
  },
  {
   "id": "jl_0006",
@@ -55,48 +55,48 @@
  },
  {
   "id": "jl_0007",
-  "claim": "Estell Automotive gross margin for FY2024 was 37.9 percent.",
+  "claim": "Estell Automotive gross margin for FY2024 was 38.7 percent.",
   "chunk_id": "ch_estell_mgmt_p4_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+  "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
  },
  {
   "id": "jl_0008",
-  "claim": "Estell Automotive gross margin for FY2024 was 45.5 percent.",
+  "claim": "Estell Automotive gross margin for FY2024 was 46.4 percent.",
   "chunk_id": "ch_estell_mgmt_p4_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+  "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
  },
  {
   "id": "jl_0009",
-  "claim": "Estell Automotive gross margin for FY2023 was 37.9 percent.",
+  "claim": "Estell Automotive gross margin for FY2023 was 38.7 percent.",
   "chunk_id": "ch_estell_mgmt_p4_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "dev",
-  "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+  "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
  },
  {
   "id": "jl_0010",
-  "claim": "Trauro Holdings gross margin for FY2024 was 37.9 percent.",
+  "claim": "Trauro Holdings gross margin for FY2024 was 38.7 percent.",
   "chunk_id": "ch_estell_mgmt_p4_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+  "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
  },
  {
   "id": "jl_0011",
-  "claim": "Estell Automotive gross margin for FY2024 was 37.9 percent and estell Automotive capital expenditure in FY2024 was EUR 282.5 million.",
+  "claim": "Estell Automotive gross margin for FY2024 was 38.7 percent and estell Automotive capital expenditure in FY2024 was EUR 282.5 million.",
   "chunk_id": "ch_estell_mgmt_p4_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+  "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
  },
  {
   "id": "jl_0012",
@@ -154,7 +154,7 @@
  },
  {
   "id": "jl_0018",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 8,000.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 7,200.0 million.",
   "chunk_id": "ch_buyer_19_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -262,7 +262,7 @@
  },
  {
   "id": "jl_0030",
-  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 15,950.0 million.",
+  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 14,350.0 million.",
   "chunk_id": "ch_falik_cim_p2_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -334,7 +334,7 @@
  },
  {
   "id": "jl_0038",
-  "claim": "Zanent Capital Partners had 10 portfolio companies as of FY2024.",
+  "claim": "Zanent Capital Partners had 6 portfolio companies as of FY2024.",
   "chunk_id": "ch_buyer_20_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -352,7 +352,7 @@
  },
  {
   "id": "jl_0040",
-  "claim": "Tarnora Industries had 8 portfolio companies as of FY2024.",
+  "claim": "Narar Investments had 8 portfolio companies as of FY2024.",
   "chunk_id": "ch_buyer_20_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -361,7 +361,7 @@
  },
  {
   "id": "jl_0041",
-  "claim": "Zanent Capital Partners had 8 portfolio companies as of FY2024 and zanent Capital Partners EBITDA for FY2024 was EUR 80.9 million.",
+  "claim": "Zanent Capital Partners had 8 portfolio companies as of FY2024 and zanent Capital Partners EBITDA for FY2024 was EUR 234.9 million.",
   "chunk_id": "ch_buyer_20_report_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -370,7 +370,7 @@
  },
  {
   "id": "jl_0042",
-  "claim": "The enterprise value of Kesent Analytics is EUR 481.7 million.",
+  "claim": "Kesent Analytics headcount at the end of FY2024 was 1,930.",
   "chunk_id": "ch_buyer_20_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -388,7 +388,7 @@
  },
  {
   "id": "jl_0044",
-  "claim": "Vexeth Logistics revenue for FY2024 was EUR 368.5 million.",
+  "claim": "Vexeth Logistics revenue for FY2024 was EUR 230.3 million.",
   "chunk_id": "ch_vexeth_news_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -406,7 +406,7 @@
  },
  {
   "id": "jl_0046",
-  "claim": "Ulent Containers revenue for FY2024 was EUR 329.0 million.",
+  "claim": "Caris Equity revenue for FY2024 was EUR 329.0 million.",
   "chunk_id": "ch_vexeth_news_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -415,7 +415,7 @@
  },
  {
   "id": "jl_0047",
-  "claim": "Vexeth Logistics revenue for FY2024 was EUR 329.0 million and vexeth Logistics headcount at the end of FY2024 was 2,156.",
+  "claim": "Vexeth Logistics revenue for FY2024 was EUR 329.0 million and vexeth Logistics headcount at the end of FY2024 was 1,304.",
   "chunk_id": "ch_vexeth_news_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -424,7 +424,7 @@
  },
  {
   "id": "jl_0048",
-  "claim": "Aurora Components net debt at the end of FY2024 was EUR 50.6 million.",
+  "claim": "Tarnane Investments assets under management at the end of FY2022 were EUR 1,870.0 million.",
   "chunk_id": "ch_vexeth_news_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -433,48 +433,48 @@
  },
  {
   "id": "jl_0049",
-  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 890.0 million.",
+  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 800.0 million.",
   "chunk_id": "ch_buyer_30_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
  },
  {
   "id": "jl_0050",
-  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 1,201.5 million.",
+  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 960.0 million.",
   "chunk_id": "ch_buyer_30_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
  },
  {
   "id": "jl_0051",
-  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 1,068.0 million.",
+  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 896.0 million.",
   "chunk_id": "ch_buyer_30_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
  },
  {
   "id": "jl_0052",
-  "claim": "The minimum equity ticket of Ithis Systems is EUR 890.0 million.",
+  "claim": "The minimum equity ticket of Caris Equity is EUR 800.0 million.",
   "chunk_id": "ch_buyer_30_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
  },
  {
   "id": "jl_0053",
-  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 890.0 million and corani Growth Fund capital expenditure in FY2024 was EUR 57.0 million.",
+  "claim": "The minimum equity ticket of Corani Growth Fund is EUR 800.0 million and corani Growth Fund capital expenditure in FY2024 was EUR 57.0 million.",
   "chunk_id": "ch_buyer_30_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
  },
  {
   "id": "jl_0054",
@@ -595,52 +595,52 @@
  },
  {
   "id": "jl_0067",
-  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 220.0 million.",
+  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 190.0 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+  "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
  },
  {
   "id": "jl_0068",
-  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 193.6 million.",
+  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 167.2 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+  "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
  },
  {
   "id": "jl_0069",
-  "claim": "Zanent Capital Partners assets under management at the end of FY2021 were EUR 220.0 million.",
+  "claim": "Zanent Capital Partners assets under management at the end of FY2021 were EUR 190.0 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+  "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
  },
  {
   "id": "jl_0070",
-  "claim": "Carane Foods assets under management at the end of FY2022 were EUR 220.0 million.",
+  "claim": "Carane Foods assets under management at the end of FY2022 were EUR 190.0 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+  "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
  },
  {
   "id": "jl_0071",
-  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 220.0 million and zanent Capital Partners net debt at the end of FY2024 was EUR 232.9 million.",
+  "claim": "Zanent Capital Partners assets under management at the end of FY2022 were EUR 190.0 million and zanent Capital Partners net debt at the end of FY2024 was EUR 232.9 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+  "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
  },
  {
   "id": "jl_0072",
-  "claim": "The minimum equity ticket of Peling Capital Partners is EUR 45.0 million.",
+  "claim": "The minimum equity ticket of Peling Capital Partners is EUR 40.0 million.",
   "chunk_id": "ch_buyer_20_pr_old_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -649,52 +649,52 @@
  },
  {
   "id": "jl_0073",
-  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,800.0 million.",
+  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,750.0 million.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+  "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
  },
  {
   "id": "jl_0074",
-  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,440.0 million.",
+  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,400.0 million.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "dev",
-  "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+  "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
  },
  {
   "id": "jl_0075",
-  "claim": "Tarnix Systems market capitalisation at the end of FY2023 was EUR 1,800.0 million.",
+  "claim": "Tarnix Systems market capitalisation at the end of FY2023 was EUR 1,750.0 million.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+  "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
  },
  {
   "id": "jl_0076",
-  "claim": "Quinane Group market capitalisation at the end of FY2024 was EUR 1,800.0 million.",
+  "claim": "Quinane Group market capitalisation at the end of FY2024 was EUR 1,750.0 million.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+  "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
  },
  {
   "id": "jl_0077",
-  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,800.0 million and tarnix Systems headcount at the end of FY2024 was 1,005.",
+  "claim": "Tarnix Systems market capitalisation at the end of FY2024 was EUR 1,750.0 million and tarnix Systems headcount at the end of FY2024 was 1,005.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+  "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
  },
  {
   "id": "jl_0078",
-  "claim": "The minimum equity ticket of Junium Growth Fund is EUR 45.0 million.",
+  "claim": "The minimum equity ticket of Junium Growth Fund is EUR 40.0 million.",
   "chunk_id": "ch_buyer_11_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -703,48 +703,48 @@
  },
  {
   "id": "jl_0079",
-  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 750.0 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 650.0 million.",
   "chunk_id": "ch_buyer_18_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+  "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
  },
  {
   "id": "jl_0080",
-  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 1,012.5 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 877.5 million.",
   "chunk_id": "ch_buyer_18_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+  "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
  },
  {
   "id": "jl_0081",
-  "claim": "Junium Growth Fund assets under management at the end of FY2023 were EUR 750.0 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2023 were EUR 650.0 million.",
   "chunk_id": "ch_buyer_18_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "dev",
-  "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+  "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
  },
  {
   "id": "jl_0082",
-  "claim": "Ithar Industries assets under management at the end of FY2024 were EUR 750.0 million.",
+  "claim": "Ithar Industries assets under management at the end of FY2024 were EUR 650.0 million.",
   "chunk_id": "ch_buyer_18_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+  "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
  },
  {
   "id": "jl_0083",
-  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 750.0 million and junium Growth Fund capital expenditure in FY2024 was EUR 28.2 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 650.0 million and junium Growth Fund capital expenditure in FY2024 was EUR 28.2 million.",
   "chunk_id": "ch_buyer_18_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+  "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
  },
  {
   "id": "jl_0084",
@@ -802,7 +802,7 @@
  },
  {
   "id": "jl_0090",
-  "claim": "Merium Water Systems gross margin for FY2024 was 31.6 percent.",
+  "claim": "Merium Water Systems gross margin for FY2024 was 32.8 percent.",
   "chunk_id": "ch_buyer_09_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -865,48 +865,48 @@
  },
  {
   "id": "jl_0097",
-  "claim": "Aurora Components EBITDA for FY2022 was EUR 33.1 million.",
+  "claim": "Aurora Components EBITDA for FY2022 was EUR 29.4 million.",
   "chunk_id": "ch_model_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+  "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
  },
  {
   "id": "jl_0098",
-  "claim": "Aurora Components EBITDA for FY2022 was EUR 23.2 million.",
+  "claim": "Aurora Components EBITDA for FY2022 was EUR 20.6 million.",
   "chunk_id": "ch_model_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+  "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
  },
  {
   "id": "jl_0099",
-  "claim": "Aurora Components EBITDA for FY2021 was EUR 33.1 million.",
+  "claim": "Aurora Components EBITDA for FY2021 was EUR 29.4 million.",
   "chunk_id": "ch_model_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+  "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
  },
  {
   "id": "jl_0100",
-  "claim": "Lanova Equity EBITDA for FY2022 was EUR 33.1 million.",
+  "claim": "Lanova Equity EBITDA for FY2022 was EUR 29.4 million.",
   "chunk_id": "ch_model_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+  "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
  },
  {
   "id": "jl_0101",
-  "claim": "Aurora Components EBITDA for FY2022 was EUR 33.1 million and aurora Components headcount at the end of FY2024 was 2,037.",
+  "claim": "Aurora Components EBITDA for FY2022 was EUR 29.4 million and aurora Components headcount at the end of FY2024 was 2,037.",
   "chunk_id": "ch_model_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+  "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
  },
  {
   "id": "jl_0102",
@@ -964,7 +964,7 @@
  },
  {
   "id": "jl_0108",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 8,000.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 7,200.0 million.",
   "chunk_id": "ch_model_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -1081,52 +1081,52 @@
  },
  {
   "id": "jl_0121",
-  "claim": "Carane Foods EBITDA for FY2024 was EUR 36.5 million.",
+  "claim": "Carane Foods EBITDA for FY2024 was EUR 35.6 million.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+  "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
  },
  {
   "id": "jl_0122",
-  "claim": "Carane Foods EBITDA for FY2024 was EUR 32.1 million.",
+  "claim": "Carane Foods EBITDA for FY2024 was EUR 28.5 million.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+  "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
  },
  {
   "id": "jl_0123",
-  "claim": "Carane Foods EBITDA for FY2023 was EUR 36.5 million.",
+  "claim": "Carane Foods EBITDA for FY2023 was EUR 35.6 million.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+  "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
  },
  {
   "id": "jl_0124",
-  "claim": "Narar Investments EBITDA for FY2024 was EUR 36.5 million.",
+  "claim": "Tarnar Industries EBITDA for FY2024 was EUR 35.6 million.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+  "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
  },
  {
   "id": "jl_0125",
-  "claim": "Carane Foods EBITDA for FY2024 was EUR 36.5 million and carane Foods net debt at the end of FY2024 was EUR 121.0 million.",
+  "claim": "Carane Foods EBITDA for FY2024 was EUR 35.6 million and carane Foods net debt at the end of FY2024 was EUR 273.6 million.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+  "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
  },
  {
   "id": "jl_0126",
-  "claim": "Ulent Containers operated 6 production sites as of FY2022.",
+  "claim": "Tarnar Industries headcount at the end of FY2024 was 11,350.",
   "chunk_id": "ch_carane_cim_p6_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -1140,7 +1140,7 @@
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
  },
  {
   "id": "jl_0128",
@@ -1149,25 +1149,25 @@
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
  },
  {
   "id": "jl_0129",
-  "claim": "The minimum equity ticket of Goron Capital Partners is EUR 44.8 million.",
+  "claim": "The minimum equity ticket of Goron Capital Partners is EUR 28.0 million.",
   "chunk_id": "ch_buyer_02_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
  },
  {
   "id": "jl_0130",
-  "claim": "The minimum equity ticket of Carane Foods is EUR 40.0 million.",
+  "claim": "The minimum equity ticket of Lanova Equity is EUR 40.0 million.",
   "chunk_id": "ch_buyer_02_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
  },
  {
   "id": "jl_0131",
@@ -1176,11 +1176,11 @@
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
  },
  {
   "id": "jl_0132",
-  "claim": "Carane Foods EBITDA for FY2020 was EUR 29.6 million.",
+  "claim": "Carane Foods EBITDA for FY2020 was EUR 27.1 million.",
   "chunk_id": "ch_buyer_02_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -1243,52 +1243,52 @@
  },
  {
   "id": "jl_0139",
-  "claim": "The minimum equity ticket of Junova Equity is EUR 50.0 million.",
+  "claim": "The minimum equity ticket of Junova Equity is EUR 45.0 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
  },
  {
   "id": "jl_0140",
-  "claim": "The minimum equity ticket of Junova Equity is EUR 56.0 million.",
+  "claim": "The minimum equity ticket of Junova Equity is EUR 50.4 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
  },
  {
   "id": "jl_0141",
-  "claim": "The minimum equity ticket of Junova Equity is EUR 40.0 million.",
+  "claim": "The minimum equity ticket of Junova Equity is EUR 36.0 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
  },
  {
   "id": "jl_0142",
-  "claim": "The minimum equity ticket of Junium Growth Fund is EUR 50.0 million.",
+  "claim": "The minimum equity ticket of Junium Growth Fund is EUR 45.0 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
  },
  {
   "id": "jl_0143",
-  "claim": "The minimum equity ticket of Junova Equity is EUR 50.0 million and junova Equity net debt at the end of FY2024 was EUR 33.0 million.",
+  "claim": "The minimum equity ticket of Junova Equity is EUR 45.0 million and junova Equity net debt at the end of FY2024 was EUR 33.0 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
  },
  {
   "id": "jl_0144",
-  "claim": "Trauro Holdings market capitalisation at the end of FY2024 was EUR 2,400.0 million.",
+  "claim": "Trauro Holdings market capitalisation at the end of FY2024 was EUR 2,350.0 million.",
   "chunk_id": "ch_buyer_34_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -1567,48 +1567,48 @@
  },
  {
   "id": "jl_0175",
-  "claim": "Aurora Components export share in FY2023 was 35.3 percent.",
+  "claim": "Aurora Components export share in FY2023 was 68.0 percent.",
   "chunk_id": "ch_news_old_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+  "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
  },
  {
   "id": "jl_0176",
-  "claim": "Aurora Components export share in FY2023 was 47.7 percent.",
+  "claim": "Aurora Components export share in FY2023 was 91.8 percent.",
   "chunk_id": "ch_news_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+  "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
  },
  {
   "id": "jl_0177",
-  "claim": "Aurora Components export share in FY2022 was 35.3 percent.",
+  "claim": "Aurora Components export share in FY2022 was 68.0 percent.",
   "chunk_id": "ch_news_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+  "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
  },
  {
   "id": "jl_0178",
-  "claim": "Caris Equity export share in FY2023 was 35.3 percent.",
+  "claim": "Caris Equity export share in FY2023 was 68.0 percent.",
   "chunk_id": "ch_news_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+  "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
  },
  {
   "id": "jl_0179",
-  "claim": "Aurora Components export share in FY2023 was 35.3 percent and aurora Components headcount at the end of FY2024 was 2,299.",
+  "claim": "Aurora Components export share in FY2023 was 68.0 percent and aurora Components headcount at the end of FY2024 was 2,299.",
   "chunk_id": "ch_news_old_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+  "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
  },
  {
   "id": "jl_0180",
@@ -1729,48 +1729,48 @@
  },
  {
   "id": "jl_0193",
-  "claim": "The minimum equity ticket of Pelix Equity is EUR 175.0 million.",
+  "claim": "The minimum equity ticket of Pelix Equity is EUR 160.0 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
  },
  {
   "id": "jl_0194",
-  "claim": "The minimum equity ticket of Pelix Equity is EUR 196.0 million.",
+  "claim": "The minimum equity ticket of Pelix Equity is EUR 179.2 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
  },
  {
   "id": "jl_0195",
-  "claim": "The minimum equity ticket of Pelix Equity is EUR 140.0 million.",
+  "claim": "The minimum equity ticket of Pelix Equity is EUR 128.0 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
  },
  {
   "id": "jl_0196",
-  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 175.0 million.",
+  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 160.0 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
  },
  {
   "id": "jl_0197",
-  "claim": "The minimum equity ticket of Pelix Equity is EUR 175.0 million and pelix Equity capital expenditure in FY2024 was EUR 137.3 million.",
+  "claim": "The minimum equity ticket of Pelix Equity is EUR 160.0 million and pelix Equity capital expenditure in FY2024 was EUR 137.3 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+  "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
  },
  {
   "id": "jl_0198",
@@ -1837,48 +1837,48 @@
  },
  {
   "id": "jl_0205",
-  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 130.0 million.",
+  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 115.0 million.",
   "chunk_id": "ch_buyer_28_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
  },
  {
   "id": "jl_0206",
-  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 145.6 million.",
+  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 128.8 million.",
   "chunk_id": "ch_buyer_28_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
  },
  {
   "id": "jl_0207",
-  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 175.5 million.",
+  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 155.2 million.",
   "chunk_id": "ch_buyer_28_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "dev",
-  "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
  },
  {
   "id": "jl_0208",
-  "claim": "The minimum equity ticket of Estund Systems is EUR 130.0 million.",
+  "claim": "The minimum equity ticket of Estund Systems is EUR 115.0 million.",
   "chunk_id": "ch_buyer_28_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
  },
  {
   "id": "jl_0209",
-  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 130.0 million and zanik Capital Partners net debt at the end of FY2024 was EUR 147.8 million.",
+  "claim": "The minimum equity ticket of Zanik Capital Partners is EUR 115.0 million and zanik Capital Partners net debt at the end of FY2024 was EUR 147.8 million.",
   "chunk_id": "ch_buyer_28_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+  "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
  },
  {
   "id": "jl_0210",
@@ -1936,7 +1936,7 @@
  },
  {
   "id": "jl_0216",
-  "claim": "Ulent Containers EBITDA for FY2024 was EUR 23.5 million.",
+  "claim": "Ulent Containers EBITDA for FY2024 was EUR 21.4 million.",
   "chunk_id": "ch_buyer_02_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -1999,52 +1999,52 @@
  },
  {
   "id": "jl_0223",
-  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 15,950.0 million.",
+  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 14,350.0 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+  "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
  },
  {
   "id": "jl_0224",
-  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 21,532.5 million.",
+  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 19,372.5 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+  "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
  },
  {
   "id": "jl_0225",
-  "claim": "Corani Growth Fund assets under management at the end of FY2023 were EUR 15,950.0 million.",
+  "claim": "Corani Growth Fund assets under management at the end of FY2023 were EUR 14,350.0 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+  "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
  },
  {
   "id": "jl_0226",
-  "claim": "Vexeth Logistics assets under management at the end of FY2024 were EUR 15,950.0 million.",
+  "claim": "Vexeth Logistics assets under management at the end of FY2024 were EUR 14,350.0 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+  "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
  },
  {
   "id": "jl_0227",
-  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 15,950.0 million and corani Growth Fund capital expenditure in FY2024 was EUR 248.5 million.",
+  "claim": "Corani Growth Fund assets under management at the end of FY2024 were EUR 14,350.0 million and corani Growth Fund capital expenditure in FY2024 was EUR 248.5 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+  "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
  },
  {
   "id": "jl_0228",
-  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 595.0 million.",
+  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 535.0 million.",
   "chunk_id": "ch_buyer_30_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2206,7 +2206,7 @@
  },
  {
   "id": "jl_0246",
-  "claim": "Aurora Components EBITDA for FY2020 was EUR 26.3 million.",
+  "claim": "Aurora Components EBITDA for FY2020 was EUR 26.7 million.",
   "chunk_id": "ch_buyer_17_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2260,7 +2260,7 @@
  },
  {
   "id": "jl_0252",
-  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 595.0 million.",
+  "claim": "The minimum equity ticket of Draay Capital Partners is EUR 535.0 million.",
   "chunk_id": "ch_vexeth_cim_p6_03",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2314,7 +2314,7 @@
  },
  {
   "id": "jl_0258",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 8,000.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 7,200.0 million.",
   "chunk_id": "ch_ulent_mgmt_p2_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2368,7 +2368,7 @@
  },
  {
   "id": "jl_0264",
-  "claim": "Valuro Capital Partners assets under management at the end of FY2024 were EUR 1,050.0 million.",
+  "claim": "Valuro Capital Partners assets under management at the end of FY2024 were EUR 950.0 million.",
   "chunk_id": "ch_buyer_26_report_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2422,7 +2422,7 @@
  },
  {
   "id": "jl_0270",
-  "claim": "Aurora Components adjusted EBITDA for FY2024 was EUR 30.5 million.",
+  "claim": "Aurora Components adjusted EBITDA for FY2024 was EUR 32.8 million.",
   "chunk_id": "ch_ulent_cim_p4_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2647,52 +2647,52 @@
  },
  {
   "id": "jl_0295",
-  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 47.7 million.",
+  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 44.6 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+  "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
  },
  {
   "id": "jl_0296",
-  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 33.4 million.",
+  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 31.2 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "dev",
-  "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+  "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
  },
  {
   "id": "jl_0297",
-  "claim": "Vexeth Logistics EBITDA for FY2022 was EUR 47.7 million.",
+  "claim": "Vexeth Logistics EBITDA for FY2022 was EUR 44.6 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "dev",
-  "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+  "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
  },
  {
   "id": "jl_0298",
-  "claim": "Falik Medical EBITDA for FY2023 was EUR 47.7 million.",
+  "claim": "Falik Medical EBITDA for FY2023 was EUR 44.6 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+  "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
  },
  {
   "id": "jl_0299",
-  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 47.7 million and vexeth Logistics capital expenditure in FY2024 was EUR 241.3 million.",
+  "claim": "Vexeth Logistics EBITDA for FY2023 was EUR 44.6 million and vexeth Logistics capital expenditure in FY2024 was EUR 241.3 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+  "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
  },
  {
   "id": "jl_0300",
-  "claim": "The minimum equity ticket of Peling Capital Partners is EUR 45.0 million.",
+  "claim": "The minimum equity ticket of Peling Capital Partners is EUR 40.0 million.",
   "chunk_id": "ch_vexeth_cim_p6_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2737,7 +2737,7 @@
  },
  {
   "id": "jl_0305",
-  "claim": "Ostent Packaging revenue for FY2021 was EUR 186.4 million and ostent Packaging capital expenditure in FY2024 was EUR 285.9 million.",
+  "claim": "Ostent Packaging revenue for FY2021 was EUR 186.4 million and ostent Packaging capital expenditure in FY2024 was EUR 70.8 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "partial",
   "perturbation": "half_true",
@@ -2746,7 +2746,7 @@
  },
  {
   "id": "jl_0306",
-  "claim": "Gweneth Systems market capitalisation at the end of FY2024 was EUR 1,100.0 million.",
+  "claim": "Valuro Capital Partners had 9 portfolio companies as of FY2024.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2755,52 +2755,52 @@
  },
  {
   "id": "jl_0307",
-  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 22.4 million.",
+  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 20.6 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+  "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
  },
  {
   "id": "jl_0308",
-  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 19.7 million.",
+  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 23.1 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+  "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
  },
  {
   "id": "jl_0309",
-  "claim": "Ostent Packaging EBITDA for FY2019 was EUR 22.4 million.",
+  "claim": "Ostent Packaging EBITDA for FY2019 was EUR 20.6 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+  "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
  },
  {
   "id": "jl_0310",
-  "claim": "Estund Systems EBITDA for FY2020 was EUR 22.4 million.",
+  "claim": "Peling Capital Partners EBITDA for FY2020 was EUR 20.6 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+  "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
  },
  {
   "id": "jl_0311",
-  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 22.4 million and ostent Packaging headcount at the end of FY2024 was 1,576.",
+  "claim": "Ostent Packaging EBITDA for FY2020 was EUR 20.6 million and ostent Packaging capital expenditure in FY2024 was EUR 264.2 million.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "partial",
   "perturbation": "half_true",
   "split": "dev",
-  "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+  "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
  },
  {
   "id": "jl_0312",
-  "claim": "The minimum equity ticket of Narar Investments is EUR 305.0 million.",
+  "claim": "Falik Medical operated 3 production sites as of FY2024.",
   "chunk_id": "ch_ostent_cim_p6_03",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2809,52 +2809,52 @@
  },
  {
   "id": "jl_0313",
-  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 2,240.0 million.",
+  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 2,030.0 million.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+  "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
  },
  {
   "id": "jl_0314",
-  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 1,792.0 million.",
+  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 1,786.4 million.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "dev",
-  "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+  "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
  },
  {
   "id": "jl_0315",
-  "claim": "Tarnane Investments assets under management at the end of FY2023 were EUR 2,240.0 million.",
+  "claim": "Tarnane Investments assets under management at the end of FY2023 were EUR 2,030.0 million.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "dev",
-  "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+  "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
  },
  {
   "id": "jl_0316",
-  "claim": "Ostent Packaging assets under management at the end of FY2024 were EUR 2,240.0 million.",
+  "claim": "Lumell Systems assets under management at the end of FY2024 were EUR 2,030.0 million.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+  "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
  },
  {
   "id": "jl_0317",
-  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 2,240.0 million and tarnane Investments net debt at the end of FY2024 was EUR 240.5 million.",
+  "claim": "Tarnane Investments assets under management at the end of FY2024 were EUR 2,030.0 million and tarnane Investments EBITDA for FY2024 was EUR 215.1 million.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+  "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
  },
  {
   "id": "jl_0318",
-  "claim": "Novent Holdings market capitalisation at the end of FY2024 was EUR 2,050.0 million.",
+  "claim": "Carent Industries market share in FY2024 was 46.8 percent.",
   "chunk_id": "ch_buyer_14_article_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2872,7 +2872,7 @@
  },
  {
   "id": "jl_0320",
-  "claim": "Vexeth Logistics operated 1 production sites as of FY2022.",
+  "claim": "Vexeth Logistics operated 3 production sites as of FY2022.",
   "chunk_id": "ch_vexeth_deck_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -2890,7 +2890,7 @@
  },
  {
   "id": "jl_0322",
-  "claim": "Ulik Growth Fund operated 2 production sites as of FY2022.",
+  "claim": "Novent Holdings operated 2 production sites as of FY2022.",
   "chunk_id": "ch_vexeth_deck_old_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -2899,7 +2899,7 @@
  },
  {
   "id": "jl_0323",
-  "claim": "Vexeth Logistics operated 2 production sites as of FY2022 and vexeth Logistics headcount at the end of FY2024 was 515.",
+  "claim": "Vexeth Logistics operated 2 production sites as of FY2022 and vexeth Logistics capital expenditure in FY2024 was EUR 28.9 million.",
   "chunk_id": "ch_vexeth_deck_old_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -2908,7 +2908,7 @@
  },
  {
   "id": "jl_0324",
-  "claim": "Zanik Capital Partners assets under management at the end of FY2024 were EUR 2,200.0 million.",
+  "claim": "Ostent Packaging revenue for FY2023 was EUR 208.3 million.",
   "chunk_id": "ch_vexeth_deck_old_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2926,7 +2926,7 @@
  },
  {
   "id": "jl_0326",
-  "claim": "The current fund of Pelix Equity has a vintage year of 2014.",
+  "claim": "The current fund of Pelix Equity has a vintage year of 2013.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -2935,7 +2935,7 @@
  },
  {
   "id": "jl_0327",
-  "claim": "The current fund of Pelix Equity has a vintage year of 2014.",
+  "claim": "The current fund of Pelix Equity has a vintage year of 2019.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -2944,7 +2944,7 @@
  },
  {
   "id": "jl_0328",
-  "claim": "The current fund of Corani Growth Fund has a vintage year of 2016.",
+  "claim": "The current fund of Quinis Growth Fund has a vintage year of 2016.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -2953,7 +2953,7 @@
  },
  {
   "id": "jl_0329",
-  "claim": "The current fund of Pelix Equity has a vintage year of 2016 and pelix Equity headcount at the end of FY2024 was 2,339.",
+  "claim": "The current fund of Pelix Equity has a vintage year of 2016 and pelix Equity headcount at the end of FY2024 was 1,897.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -2962,7 +2962,7 @@
  },
  {
   "id": "jl_0330",
-  "claim": "Ostis Industries market capitalisation at the end of FY2024 was EUR 650.0 million.",
+  "claim": "Carane Foods revenue for FY2021 was EUR 141.3 million.",
   "chunk_id": "ch_buyer_22_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -2971,52 +2971,52 @@
  },
  {
   "id": "jl_0331",
-  "claim": "The enterprise value of Estell Automotive is EUR 199.3 million.",
+  "claim": "The enterprise value of Estell Automotive is EUR 205.8 million.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+  "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
  },
  {
   "id": "jl_0332",
-  "claim": "The enterprise value of Estell Automotive is EUR 175.4 million.",
+  "claim": "The enterprise value of Estell Automotive is EUR 277.8 million.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+  "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
  },
  {
   "id": "jl_0333",
-  "claim": "The enterprise value of Estell Automotive is EUR 223.2 million.",
+  "claim": "The enterprise value of Estell Automotive is EUR 164.6 million.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+  "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
  },
  {
   "id": "jl_0334",
-  "claim": "The enterprise value of Vexeth Logistics is EUR 199.3 million.",
+  "claim": "The enterprise value of Novent Holdings is EUR 205.8 million.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+  "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
  },
  {
   "id": "jl_0335",
-  "claim": "The enterprise value of Estell Automotive is EUR 199.3 million and estell Automotive EBITDA for FY2024 was EUR 53.1 million.",
+  "claim": "The enterprise value of Estell Automotive is EUR 205.8 million and estell Automotive net debt at the end of FY2024 was EUR 127.2 million.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+  "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
  },
  {
   "id": "jl_0336",
-  "claim": "Tarnane Investments assets under management at the end of FY2022 were EUR 2,070.0 million.",
+  "claim": "The EV to EBITDA multiple of the median medical devices precedent was 10.3x.",
   "chunk_id": "ch_estell_spa_exec_p1_02",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3025,52 +3025,52 @@
  },
  {
   "id": "jl_0337",
-  "claim": "Ulent Containers EBITDA for FY2024 was EUR 26.0 million.",
+  "claim": "Ulent Containers EBITDA for FY2024 was EUR 24.0 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+  "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
  },
  {
   "id": "jl_0338",
-  "claim": "Ulent Containers EBITDA for FY2024 was EUR 31.2 million.",
+  "claim": "Ulent Containers EBITDA for FY2024 was EUR 19.2 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+  "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
  },
  {
   "id": "jl_0339",
-  "claim": "Ulent Containers EBITDA for FY2023 was EUR 26.0 million.",
+  "claim": "Ulent Containers EBITDA for FY2023 was EUR 24.0 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+  "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
  },
  {
   "id": "jl_0340",
-  "claim": "Narar Investments EBITDA for FY2024 was EUR 26.0 million.",
+  "claim": "Merium Water Systems EBITDA for FY2024 was EUR 24.0 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+  "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
  },
  {
   "id": "jl_0341",
-  "claim": "Ulent Containers EBITDA for FY2024 was EUR 26.0 million and ulent Containers headcount at the end of FY2024 was 1,587.",
+  "claim": "Ulent Containers EBITDA for FY2024 was EUR 24.0 million and ulent Containers net debt at the end of FY2024 was EUR 259.6 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+  "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
  },
  {
   "id": "jl_0342",
-  "claim": "Ithis Systems market capitalisation at the end of FY2024 was EUR 1,600.0 million.",
+  "claim": "Estell Automotive order backlog at the end of FY2024 was EUR 49.0 million.",
   "chunk_id": "ch_ulent_news_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3088,7 +3088,7 @@
  },
  {
   "id": "jl_0344",
-  "claim": "Ostent Packaging revenue for FY2023 was EUR 250.0 million.",
+  "claim": "Ostent Packaging revenue for FY2023 was EUR 145.8 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3106,7 +3106,7 @@
  },
  {
   "id": "jl_0346",
-  "claim": "Carane Foods revenue for FY2023 was EUR 208.3 million.",
+  "claim": "Carent Industries revenue for FY2023 was EUR 208.3 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3115,7 +3115,7 @@
  },
  {
   "id": "jl_0347",
-  "claim": "Ostent Packaging revenue for FY2023 was EUR 208.3 million and ostent Packaging headcount at the end of FY2024 was 992.",
+  "claim": "Ostent Packaging revenue for FY2023 was EUR 208.3 million and ostent Packaging net debt at the end of FY2024 was EUR 248.2 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -3124,7 +3124,7 @@
  },
  {
   "id": "jl_0348",
-  "claim": "Kesent Analytics headcount at the end of FY2024 was 1,930.",
+  "claim": "Lanova Equity assets under management at the end of FY2024 were EUR 17,950.0 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3142,7 +3142,7 @@
  },
  {
   "id": "jl_0350",
-  "claim": "Falik Medical revenue for FY2020 was EUR 152.8 million.",
+  "claim": "Falik Medical revenue for FY2020 was EUR 229.2 million.",
   "chunk_id": "ch_falik_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3160,7 +3160,7 @@
  },
  {
   "id": "jl_0352",
-  "claim": "Gweneth Systems revenue for FY2020 was EUR 191.0 million.",
+  "claim": "Carane Foods revenue for FY2020 was EUR 191.0 million.",
   "chunk_id": "ch_falik_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3169,7 +3169,7 @@
  },
  {
   "id": "jl_0353",
-  "claim": "Falik Medical revenue for FY2020 was EUR 191.0 million and falik Medical capital expenditure in FY2024 was EUR 290.8 million.",
+  "claim": "Falik Medical revenue for FY2020 was EUR 191.0 million and falik Medical headcount at the end of FY2024 was 992.",
   "chunk_id": "ch_falik_cim_p6_03",
   "label": "partial",
   "perturbation": "half_true",
@@ -3178,7 +3178,7 @@
  },
  {
   "id": "jl_0354",
-  "claim": "Caruro Investments had 23 portfolio companies as of FY2024.",
+  "claim": "Kesent Analytics headcount at the end of FY2024 was 1,930.",
   "chunk_id": "ch_falik_cim_p6_03",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3196,7 +3196,7 @@
  },
  {
   "id": "jl_0356",
-  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 8.4x.",
+  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 9.6x.",
   "chunk_id": "ch_kb_precedent_05_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3205,7 +3205,7 @@
  },
  {
   "id": "jl_0357",
-  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 14.4x.",
+  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 13.4x.",
   "chunk_id": "ch_kb_precedent_05_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3214,7 +3214,7 @@
  },
  {
   "id": "jl_0358",
-  "claim": "The EV to EBITDA multiple of Lumell Systems was 12.0x.",
+  "claim": "The EV to EBITDA multiple of Lanova Equity was 12.0x.",
   "chunk_id": "ch_kb_precedent_05_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3223,7 +3223,7 @@
  },
  {
   "id": "jl_0359",
-  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 12.0x and precedent transaction Dorent capital expenditure in FY2024 was EUR 7.8 million.",
+  "claim": "The EV to EBITDA multiple of Precedent transaction Dorent was 12.0x and precedent transaction Dorent capital expenditure in FY2024 was EUR 251.1 million.",
   "chunk_id": "ch_kb_precedent_05_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -3232,7 +3232,7 @@
  },
  {
   "id": "jl_0360",
-  "claim": "Kesent Analytics EBITDA for FY2021 was EUR 47.4 million.",
+  "claim": "Merium Water Systems revenue for FY2024 was EUR 332.7 million.",
   "chunk_id": "ch_kb_precedent_05_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3250,7 +3250,7 @@
  },
  {
   "id": "jl_0362",
-  "claim": "The largest customer of Ulent Containers represented 8.2 percent of FY2024 revenue.",
+  "claim": "The largest customer of Ulent Containers represented 13.8 percent of FY2024 revenue.",
   "chunk_id": "ch_ulent_cim_p4_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3268,7 +3268,7 @@
  },
  {
   "id": "jl_0364",
-  "claim": "The largest customer of Peling Capital Partners represented 10.2 percent of FY2024 revenue.",
+  "claim": "The largest customer of Aurora Components represented 10.2 percent of FY2024 revenue.",
   "chunk_id": "ch_ulent_cim_p4_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3277,7 +3277,7 @@
  },
  {
   "id": "jl_0365",
-  "claim": "The largest customer of Ulent Containers represented 10.2 percent of FY2024 revenue and ulent Containers headcount at the end of FY2024 was 3,324.",
+  "claim": "The largest customer of Ulent Containers represented 10.2 percent of FY2024 revenue and ulent Containers capital expenditure in FY2024 was EUR 199.9 million.",
   "chunk_id": "ch_ulent_cim_p4_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -3286,7 +3286,7 @@
  },
  {
   "id": "jl_0366",
-  "claim": "Aurora Components capital expenditure in FY2022 was EUR 6.7 million.",
+  "claim": "Carane Foods operated 8 production sites as of FY2024.",
   "chunk_id": "ch_ulent_cim_p4_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3295,52 +3295,52 @@
  },
  {
   "id": "jl_0367",
-  "claim": "Aurora Components net debt at the end of FY2024 was EUR 50.6 million.",
+  "claim": "Aurora Components net debt at the end of FY2024 was EUR 66.0 million.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+  "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
  },
  {
   "id": "jl_0368",
-  "claim": "Aurora Components net debt at the end of FY2024 was EUR 44.5 million.",
+  "claim": "Aurora Components net debt at the end of FY2024 was EUR 58.1 million.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "dev",
-  "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+  "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
  },
  {
   "id": "jl_0369",
-  "claim": "Aurora Components net debt at the end of FY2023 was EUR 50.6 million.",
+  "claim": "Aurora Components net debt at the end of FY2023 was EUR 66.0 million.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "dev",
-  "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+  "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
  },
  {
   "id": "jl_0370",
-  "claim": "Valuro Capital Partners net debt at the end of FY2024 was EUR 50.6 million.",
+  "claim": "Traeth Group net debt at the end of FY2024 was EUR 66.0 million.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+  "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
  },
  {
   "id": "jl_0371",
-  "claim": "Aurora Components net debt at the end of FY2024 was EUR 50.6 million and aurora Components EBITDA for FY2024 was EUR 25.7 million.",
+  "claim": "Aurora Components net debt at the end of FY2024 was EUR 66.0 million and aurora Components headcount at the end of FY2024 was 1,127.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+  "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
  },
  {
   "id": "jl_0372",
-  "claim": "Trauro Holdings market capitalisation at the end of FY2022 was EUR 1,910.0 million.",
+  "claim": "Ulent Containers EBITDA for FY2024 was EUR 21.4 million.",
   "chunk_id": "ch_news_22_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3358,7 +3358,7 @@
  },
  {
   "id": "jl_0374",
-  "claim": "The current fund of Lanova Equity has a vintage year of 2023.",
+  "claim": "The current fund of Lanova Equity has a vintage year of 2019.",
   "chunk_id": "ch_buyer_38_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3367,7 +3367,7 @@
  },
  {
   "id": "jl_0375",
-  "claim": "The current fund of Lanova Equity has a vintage year of 2019.",
+  "claim": "The current fund of Lanova Equity has a vintage year of 2018.",
   "chunk_id": "ch_buyer_38_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3376,7 +3376,7 @@
  },
  {
   "id": "jl_0376",
-  "claim": "The current fund of Falik Medical has a vintage year of 2021.",
+  "claim": "The current fund of Draium Capital Partners has a vintage year of 2021.",
   "chunk_id": "ch_buyer_38_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3385,7 +3385,7 @@
  },
  {
   "id": "jl_0377",
-  "claim": "The current fund of Lanova Equity has a vintage year of 2021 and lanova Equity capital expenditure in FY2024 was EUR 156.6 million.",
+  "claim": "The current fund of Lanova Equity has a vintage year of 2021 and lanova Equity net debt at the end of FY2024 was EUR 151.0 million.",
   "chunk_id": "ch_buyer_38_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -3394,7 +3394,7 @@
  },
  {
   "id": "jl_0378",
-  "claim": "Merium Water Systems order backlog at the end of FY2024 was EUR 125.1 million.",
+  "claim": "Aurora Components revenue for FY2020 was EUR 140.1 million.",
   "chunk_id": "ch_buyer_38_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3403,52 +3403,52 @@
  },
  {
   "id": "jl_0379",
-  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 24.8 million.",
+  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 25.7 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+  "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
  },
  {
   "id": "jl_0380",
-  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 19.8 million.",
+  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 28.8 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+  "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
  },
  {
   "id": "jl_0381",
-  "claim": "Ostent Packaging EBITDA for FY2022 was EUR 24.8 million.",
+  "claim": "Ostent Packaging EBITDA for FY2022 was EUR 25.7 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+  "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
  },
  {
   "id": "jl_0382",
-  "claim": "Carent Industries EBITDA for FY2023 was EUR 24.8 million.",
+  "claim": "Quinane Group EBITDA for FY2023 was EUR 25.7 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+  "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
  },
  {
   "id": "jl_0383",
-  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 24.8 million and ostent Packaging net debt at the end of FY2024 was EUR 280.4 million.",
+  "claim": "Ostent Packaging EBITDA for FY2023 was EUR 25.7 million and ostent Packaging capital expenditure in FY2024 was EUR 259.1 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+  "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
  },
  {
   "id": "jl_0384",
-  "claim": "Ithis Systems revenue for FY2024 was EUR 566.5 million.",
+  "claim": "Carane Foods revenue for FY2022 was EUR 146.9 million.",
   "chunk_id": "ch_ostent_cim_p6_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3457,52 +3457,52 @@
  },
  {
   "id": "jl_0385",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 6,690.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 6,020.0 million.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "dev",
-  "quote": "Narar is reported to manage roughly EUR 6,690 million."
+  "quote": "Narar is reported to manage roughly EUR 6,020 million."
  },
  {
   "id": "jl_0386",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 8,028.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 4,816.0 million.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Narar is reported to manage roughly EUR 6,690 million."
+  "quote": "Narar is reported to manage roughly EUR 6,020 million."
  },
  {
   "id": "jl_0387",
-  "claim": "Narar Investments assets under management at the end of FY2023 were EUR 6,690.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2023 were EUR 6,020.0 million.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Narar is reported to manage roughly EUR 6,690 million."
+  "quote": "Narar is reported to manage roughly EUR 6,020 million."
  },
  {
   "id": "jl_0388",
-  "claim": "Falex Systems assets under management at the end of FY2024 were EUR 6,690.0 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 6,020.0 million.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "test",
-  "quote": "Narar is reported to manage roughly EUR 6,690 million."
+  "quote": "Narar is reported to manage roughly EUR 6,020 million."
  },
  {
   "id": "jl_0389",
-  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 6,690.0 million and narar Investments capital expenditure in FY2024 was EUR 137.0 million.",
+  "claim": "Narar Investments assets under management at the end of FY2024 were EUR 6,020.0 million and narar Investments net debt at the end of FY2024 was EUR 289.8 million.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Narar is reported to manage roughly EUR 6,690 million."
+  "quote": "Narar is reported to manage roughly EUR 6,020 million."
  },
  {
   "id": "jl_0390",
-  "claim": "Ulent Containers headcount at the end of FY2024 was 860.",
+  "claim": "Ostent Packaging headcount at the end of FY2024 was 1,060.",
   "chunk_id": "ch_buyer_08_article_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3511,52 +3511,52 @@
  },
  {
   "id": "jl_0391",
-  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 11,950.0 million.",
+  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 10,800.0 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "supported",
   "perturbation": "none",
   "split": "test",
-  "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+  "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
  },
  {
   "id": "jl_0392",
-  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 13,384.0 million.",
+  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 14,580.0 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
   "split": "test",
-  "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+  "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
  },
  {
   "id": "jl_0393",
-  "claim": "Draay Capital Partners assets under management at the end of FY2023 were EUR 11,950.0 million.",
+  "claim": "Draay Capital Partners assets under management at the end of FY2023 were EUR 10,800.0 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_period",
   "split": "test",
-  "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+  "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
  },
  {
   "id": "jl_0394",
-  "claim": "Ulik Growth Fund assets under management at the end of FY2024 were EUR 11,950.0 million.",
+  "claim": "Junium Growth Fund assets under management at the end of FY2024 were EUR 10,800.0 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
   "split": "dev",
-  "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+  "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
  },
  {
   "id": "jl_0395",
-  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 11,950.0 million and draay Capital Partners capital expenditure in FY2024 was EUR 41.7 million.",
+  "claim": "Draay Capital Partners assets under management at the end of FY2024 were EUR 10,800.0 million and draay Capital Partners capital expenditure in FY2024 was EUR 165.5 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
   "split": "test",
-  "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+  "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
  },
  {
   "id": "jl_0396",
-  "claim": "Carent Industries market share in FY2024 was 46.8 percent.",
+  "claim": "Trauro Holdings market capitalisation at the end of FY2024 was EUR 2,350.0 million.",
   "chunk_id": "ch_buyer_04_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3574,7 +3574,7 @@
  },
  {
   "id": "jl_0398",
-  "claim": "Vexeth Logistics revenue for FY2021 was EUR 334.7 million.",
+  "claim": "Vexeth Logistics revenue for FY2021 was EUR 245.4 million.",
   "chunk_id": "ch_vexeth_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3592,7 +3592,7 @@
  },
  {
   "id": "jl_0400",
-  "claim": "Estund Systems revenue for FY2021 was EUR 278.9 million.",
+  "claim": "Lanik Group revenue for FY2021 was EUR 278.9 million.",
   "chunk_id": "ch_vexeth_cim_p6_03",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3601,7 +3601,7 @@
  },
  {
   "id": "jl_0401",
-  "claim": "Vexeth Logistics revenue for FY2021 was EUR 278.9 million and vexeth Logistics headcount at the end of FY2024 was 2,523.",
+  "claim": "Vexeth Logistics revenue for FY2021 was EUR 278.9 million and vexeth Logistics net debt at the end of FY2024 was EUR 41.7 million.",
   "chunk_id": "ch_vexeth_cim_p6_03",
   "label": "partial",
   "perturbation": "half_true",
@@ -3610,7 +3610,7 @@
  },
  {
   "id": "jl_0402",
-  "claim": "Merium Water Systems EBITDA for FY2021 was EUR 25.3 million.",
+  "claim": "Carane Foods EBITDA for FY2022 was EUR 28.5 million.",
   "chunk_id": "ch_vexeth_cim_p6_03",
   "label": "unsupported",
   "perturbation": "unrelated",
@@ -3628,7 +3628,7 @@
  },
  {
   "id": "jl_0404",
-  "claim": "Gweneth Systems market capitalisation at the end of FY2024 was EUR 880.0 million.",
+  "claim": "Gweneth Systems market capitalisation at the end of FY2024 was EUR 1,320.0 million.",
   "chunk_id": "ch_buyer_23_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_number",
@@ -3646,7 +3646,7 @@
  },
  {
   "id": "jl_0406",
-  "claim": "Trauro Holdings market capitalisation at the end of FY2024 was EUR 1,100.0 million.",
+  "claim": "Estund Systems market capitalisation at the end of FY2024 was EUR 1,100.0 million.",
   "chunk_id": "ch_buyer_23_profile_p1_01",
   "label": "unsupported",
   "perturbation": "altered_entity",
@@ -3655,7 +3655,7 @@
  },
  {
   "id": "jl_0407",
-  "claim": "Gweneth Systems market capitalisation at the end of FY2024 was EUR 1,100.0 million and gweneth Systems headcount at the end of FY2024 was 1,663.",
+  "claim": "Gweneth Systems market capitalisation at the end of FY2024 was EUR 1,100.0 million and gweneth Systems EBITDA for FY2024 was EUR 77.9 million.",
   "chunk_id": "ch_buyer_23_profile_p1_01",
   "label": "partial",
   "perturbation": "half_true",
@@ -3664,7 +3664,7 @@
  },
  {
   "id": "jl_0408",
-  "claim": "The enterprise value of Carane Foods is EUR 324.6 million.",
+  "claim": "Carane Foods EBITDA for FY2023 was EUR 31.3 million.",
   "chunk_id": "ch_buyer_23_profile_p1_01",
   "label": "unsupported",
   "perturbation": "unrelated",

@@ -362,24 +362,24 @@
     "document_id": "doc_cim",
     "page": 4,
     "char_start": 22,
-    "char_end": 75,
-    "quote": "The company employed 920 people at the end of FY2024."
+    "char_end": 77,
+    "quote": "The company employed 1,070 people at the end of FY2024."
    }
   ],
   "fact_00041": [
    {
     "document_id": "doc_cim",
     "page": 4,
-    "char_start": 76,
-    "char_end": 152,
-    "quote": "Manufacturing is spread over 4 plants as of the year ended 31 December 2024."
+    "char_start": 78,
+    "char_end": 154,
+    "quote": "Manufacturing is spread over 7 plants as of the year ended 31 December 2024."
    },
    {
     "document_id": "doc_cim",
     "page": 16,
     "char_start": 75,
     "char_end": 131,
-    "quote": "Manufacturing is spread over 4 plants as of fiscal 2024."
+    "quote": "Manufacturing is spread over 7 plants as of fiscal 2024."
    }
   ],
   "fact_00042": [
@@ -397,7 +397,7 @@
     "page": 11,
     "char_start": 132,
     "char_end": 217,
-    "quote": "Together, the leading ten clients accounted for 50.6 percent of sales in fiscal 2024."
+    "quote": "Together, the leading ten clients accounted for 39.0 percent of sales in fiscal 2024."
    }
   ],
   "fact_00044": [
@@ -445,14 +445,14 @@
     "page": 12,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 29.6 million (FY2023: EUR 36.4 million)."
+    "quote": "EBITDA for FY2024 was EUR 31.8 million (FY2023: EUR 31.0 million)."
    },
    {
     "document_id": "doc_cim",
     "page": 13,
     "char_start": 169,
     "char_end": 210,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00047": [
@@ -461,14 +461,14 @@
     "page": 12,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 29.6 million (FY2023: EUR 36.4 million)."
+    "quote": "EBITDA for FY2024 was EUR 31.8 million (FY2023: EUR 31.0 million)."
    },
    {
     "document_id": "doc_cim",
     "page": 13,
     "char_start": 169,
     "char_end": 210,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00048": [
@@ -486,7 +486,7 @@
     "page": 12,
     "char_start": 210,
     "char_end": 318,
-    "quote": "Operating earnings before depreciation represented 16.2 percent of sales in the year ended 31 December 2024."
+    "quote": "Operating earnings before depreciation represented 17.4 percent of sales in the year ended 31 December 2024."
    }
   ],
   "fact_00050": [
@@ -522,7 +522,7 @@
     "page": 13,
     "char_start": 169,
     "char_end": 210,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00054": [
@@ -531,7 +531,7 @@
     "page": 13,
     "char_start": 169,
     "char_end": 210,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00055": [
@@ -540,7 +540,7 @@
     "page": 13,
     "char_start": 169,
     "char_end": 210,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00056": [
@@ -549,7 +549,7 @@
     "page": 14,
     "char_start": 19,
     "char_end": 107,
-    "quote": "Borrowings less cash stood at EUR 50.6m at the close of the year ended 31 December 2024."
+    "quote": "Borrowings less cash stood at EUR 66.0m at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00057": [
@@ -558,14 +558,14 @@
     "page": 15,
     "char_start": 15,
     "char_end": 65,
-    "quote": "Capital expenditure was EUR 7.5 million in FY2024."
+    "quote": "Capital expenditure was EUR 7.9 million in FY2024."
    },
    {
     "document_id": "doc_cim",
     "page": 15,
     "char_start": 173,
     "char_end": 222,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00058": [
@@ -574,7 +574,7 @@
     "page": 15,
     "char_start": 173,
     "char_end": 222,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00059": [
@@ -583,7 +583,7 @@
     "page": 15,
     "char_start": 173,
     "char_end": 222,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00060": [
@@ -592,7 +592,7 @@
     "page": 15,
     "char_start": 173,
     "char_end": 222,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00061": [
@@ -601,7 +601,7 @@
     "page": 15,
     "char_start": 173,
     "char_end": 222,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00062": [
@@ -610,7 +610,7 @@
     "page": 16,
     "char_start": 16,
     "char_end": 74,
-    "quote": "The order backlog stood at EUR 45.7m at the end of FY2024."
+    "quote": "The order backlog stood at EUR 78.5m at the end of FY2024."
    }
   ],
   "fact_00063": [
@@ -619,7 +619,7 @@
     "page": 22,
     "char_start": 26,
     "char_end": 79,
-    "quote": "The indicative enterprise value is EUR 289.9 million."
+    "quote": "The indicative enterprise value is EUR 281.6 million."
    }
   ],
   "fact_00064": [
@@ -628,7 +628,7 @@
     "page": 22,
     "char_start": 80,
     "char_end": 149,
-    "quote": "After net debt, the equity value of the company is EUR 239.3 million."
+    "quote": "After net debt, the equity value of the company is EUR 215.6 million."
    }
   ],
   "fact_00065": [
@@ -636,17 +636,17 @@
     "document_id": "doc_mgmt_pres",
     "page": 2,
     "char_start": 18,
-    "char_end": 117,
-    "quote": "Aurora Components had a workforce of 920 employees at the close of the year ended 31 December 2024."
+    "char_end": 119,
+    "quote": "Aurora Components had a workforce of 1,070 employees at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00066": [
    {
     "document_id": "doc_mgmt_pres",
     "page": 2,
-    "char_start": 119,
-    "char_end": 174,
-    "quote": "Aurora Components runs 4 production sites as of FY2024."
+    "char_start": 121,
+    "char_end": 176,
+    "quote": "Aurora Components runs 7 production sites as of FY2024."
    }
   ],
   "fact_00067": [
@@ -716,45 +716,45 @@
    {
     "document_id": "doc_model",
     "page": 1,
-    "char_start": 260,
-    "char_end": 301,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "char_start": 261,
+    "char_end": 302,
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00075": [
    {
     "document_id": "doc_model",
     "page": 1,
-    "char_start": 260,
-    "char_end": 301,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "char_start": 261,
+    "char_end": 302,
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00076": [
    {
     "document_id": "doc_model",
     "page": 1,
-    "char_start": 260,
-    "char_end": 301,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "char_start": 261,
+    "char_end": 302,
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00077": [
    {
     "document_id": "doc_model",
     "page": 1,
-    "char_start": 260,
-    "char_end": 301,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "char_start": 261,
+    "char_end": 302,
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00078": [
    {
     "document_id": "doc_model",
     "page": 1,
-    "char_start": 260,
-    "char_end": 301,
-    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+    "char_start": 261,
+    "char_end": 302,
+    "quote": "EBITDA | 26.7 | 27.7 | 29.4 | 31.0 | 31.8"
    }
   ],
   "fact_00079": [
@@ -763,7 +763,7 @@
     "page": 3,
     "char_start": 281,
     "char_end": 330,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00080": [
@@ -772,7 +772,7 @@
     "page": 3,
     "char_start": 281,
     "char_end": 330,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00081": [
@@ -781,7 +781,7 @@
     "page": 3,
     "char_start": 281,
     "char_end": 330,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00082": [
@@ -790,7 +790,7 @@
     "page": 3,
     "char_start": 281,
     "char_end": 330,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00083": [
@@ -799,7 +799,7 @@
     "page": 3,
     "char_start": 281,
     "char_end": 330,
-    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+    "quote": "Capital expenditure | 5.6 | 6.0 | 6.2 | 6.9 | 7.9"
    }
   ],
   "fact_00084": [
@@ -817,7 +817,7 @@
     "page": 1,
     "char_start": 200,
     "char_end": 272,
-    "quote": "The transaction values the company at an enterprise value of EUR 280.5m."
+    "quote": "The transaction values the company at an enterprise value of EUR 265.5m."
    }
   ],
   "fact_00086": [
@@ -826,7 +826,7 @@
     "page": 1,
     "char_start": 196,
     "char_end": 268,
-    "quote": "The transaction values the company at an enterprise value of EUR 289.9m."
+    "quote": "The transaction values the company at an enterprise value of EUR 281.6m."
    }
   ],
   "fact_00087": [
@@ -835,7 +835,7 @@
     "page": 1,
     "char_start": 140,
     "char_end": 183,
-    "quote": "Capital expenditure was EUR 7.5m in FY2024."
+    "quote": "Capital expenditure was EUR 7.9m in FY2024."
    }
   ],
   "fact_00088": [
@@ -844,7 +844,7 @@
     "page": 1,
     "char_start": 185,
     "char_end": 226,
-    "quote": "EBITDA margin was 16.2 percent in FY2024."
+    "quote": "EBITDA margin was 17.4 percent in FY2024."
    }
   ],
   "fact_00089": [
@@ -853,7 +853,7 @@
     "page": 1,
     "char_start": 82,
     "char_end": 155,
-    "quote": "Adjusted EBITDA for FY2024 was EUR 30.5m after normalisation adjustments."
+    "quote": "Adjusted EBITDA for FY2024 was EUR 32.8m after normalisation adjustments."
    }
   ],
   "fact_00090": [
@@ -871,7 +871,7 @@
     "page": 1,
     "char_start": 201,
     "char_end": 296,
-    "quote": "Borrowings less cash stood at EUR 50.6 million at the close of the year ended 31 December 2024."
+    "quote": "Borrowings less cash stood at EUR 66.0 million at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00092": [
@@ -889,7 +889,7 @@
     "page": 1,
     "char_start": 150,
     "char_end": 219,
-    "quote": "The ten largest customers represented 50.6 percent of FY2024 revenue."
+    "quote": "The ten largest customers represented 39.0 percent of FY2024 revenue."
    }
   ],
   "fact_00094": [
@@ -898,7 +898,7 @@
     "page": 1,
     "char_start": 74,
     "char_end": 138,
-    "quote": "Aurora Components reported EBITDA of EUR 32.1 million in FY2024."
+    "quote": "Aurora Components reported EBITDA of EUR 36.7 million in FY2024."
    }
   ],
   "fact_00095": [
@@ -907,7 +907,7 @@
     "page": 1,
     "char_start": 153,
     "char_end": 217,
-    "quote": "Aurora Components reported EBITDA of EUR 29.6 million in FY2024."
+    "quote": "Aurora Components reported EBITDA of EUR 31.8 million in FY2024."
    }
   ],
   "fact_00096": [
@@ -925,7 +925,7 @@
     "page": 1,
     "char_start": 261,
     "char_end": 332,
-    "quote": "Aurora is said to have earned roughly EUR 33 million of EBITDA in 2024."
+    "quote": "Aurora is said to have earned roughly EUR 35 million of EBITDA in 2024."
    }
   ],
   "fact_00098": [
@@ -933,17 +933,17 @@
     "document_id": "doc_news_17",
     "page": 1,
     "char_start": 334,
-    "char_end": 381,
-    "quote": "Aurora is believed to employ around 850 people."
+    "char_end": 383,
+    "quote": "Aurora is believed to employ around 1,000 people."
    }
   ],
   "fact_00099": [
    {
     "document_id": "doc_news_17",
     "page": 1,
-    "char_start": 446,
-    "char_end": 513,
-    "quote": "Aurore Components generated revenue of EUR 172.2 million in FY2024."
+    "char_start": 448,
+    "char_end": 515,
+    "quote": "Aurore Components generated revenue of EUR 173.6 million in FY2024."
    }
   ],
   "fact_00100": [
@@ -952,7 +952,7 @@
     "page": 1,
     "char_start": 70,
     "char_end": 147,
-    "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+    "quote": "Aurora Components reported net debt of EUR 66.0 million at the end of FY2024."
    }
   ],
   "fact_00101": [
@@ -961,7 +961,7 @@
     "page": 1,
     "char_start": 63,
     "char_end": 134,
-    "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+    "quote": "Aurora Components generated 68.0 percent of its sales abroad in FY2023."
    }
   ],
   "fact_00102": [
@@ -1061,14 +1061,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 54.5 million (FY2023: EUR 59.5 million)."
+    "quote": "EBITDA for FY2024 was EUR 56.6 million (FY2023: EUR 54.4 million)."
    },
    {
     "document_id": "doc_kesent_cim",
     "page": 6,
     "char_start": 1463,
     "char_end": 1504,
-    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+    "quote": "EBITDA | 42.3 | 46.7 | 51.2 | 54.4 | 56.6"
    }
   ],
   "fact_00110": [
@@ -1077,14 +1077,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 54.5 million (FY2023: EUR 59.5 million)."
+    "quote": "EBITDA for FY2024 was EUR 56.6 million (FY2023: EUR 54.4 million)."
    },
    {
     "document_id": "doc_kesent_cim",
     "page": 6,
     "char_start": 1463,
     "char_end": 1504,
-    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+    "quote": "EBITDA | 42.3 | 46.7 | 51.2 | 54.4 | 56.6"
    }
   ],
   "fact_00111": [
@@ -1093,7 +1093,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 209,
-    "quote": "Gross margin was 37.9 percent in FY2024."
+    "quote": "Gross margin was 38.3 percent in FY2024."
    }
   ],
   "fact_00112": [
@@ -1102,7 +1102,7 @@
     "page": 6,
     "char_start": 210,
     "char_end": 251,
-    "quote": "EBITDA margin was 19.1 percent in FY2024."
+    "quote": "EBITDA margin was 19.9 percent in FY2024."
    }
   ],
   "fact_00113": [
@@ -1138,7 +1138,7 @@
     "page": 6,
     "char_start": 1463,
     "char_end": 1504,
-    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+    "quote": "EBITDA | 42.3 | 46.7 | 51.2 | 54.4 | 56.6"
    }
   ],
   "fact_00117": [
@@ -1147,7 +1147,7 @@
     "page": 6,
     "char_start": 1463,
     "char_end": 1504,
-    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+    "quote": "EBITDA | 42.3 | 46.7 | 51.2 | 54.4 | 56.6"
    }
   ],
   "fact_00118": [
@@ -1156,7 +1156,7 @@
     "page": 6,
     "char_start": 1463,
     "char_end": 1504,
-    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+    "quote": "EBITDA | 42.3 | 46.7 | 51.2 | 54.4 | 56.6"
    }
   ],
   "fact_00119": [
@@ -1165,7 +1165,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 78,
-    "quote": "The indicative enterprise value is EUR 481.7 million."
+    "quote": "The indicative enterprise value is EUR 500.2 million."
    }
   ],
   "fact_00120": [
@@ -1174,7 +1174,7 @@
     "page": 7,
     "char_start": 79,
     "char_end": 148,
-    "quote": "After net debt, the equity value of the company is EUR 409.0 million."
+    "quote": "After net debt, the equity value of the company is EUR 424.2 million."
    }
   ],
   "fact_00121": [
@@ -1210,7 +1210,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 82,
-    "quote": "Kesent Analytics achieved a gross margin of 37.9% in FY2024."
+    "quote": "Kesent Analytics achieved a gross margin of 38.3% in FY2024."
    }
   ],
   "fact_00125": [
@@ -1228,7 +1228,7 @@
     "page": 1,
     "char_start": 258,
     "char_end": 329,
-    "quote": "Kesent is said to have earned roughly EUR 60 million of EBITDA in 2024."
+    "quote": "Kesent is said to have earned roughly EUR 62 million of EBITDA in 2024."
    }
   ],
   "fact_00127": [
@@ -1255,7 +1255,7 @@
     "page": 1,
     "char_start": 201,
     "char_end": 280,
-    "quote": "The transaction values the company at an enterprise value of EUR 455.4 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 472.8 million."
    }
   ],
   "fact_00130": [
@@ -1264,7 +1264,7 @@
     "page": 1,
     "char_start": 197,
     "char_end": 276,
-    "quote": "The transaction values the company at an enterprise value of EUR 481.7 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 500.2 million."
    }
   ],
   "fact_00131": [
@@ -1382,14 +1382,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+    "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
    },
    {
     "document_id": "doc_vexeth_cim",
     "page": 6,
     "char_start": 1487,
     "char_end": 1528,
-    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+    "quote": "EBITDA | 38.3 | 40.9 | 43.9 | 44.6 | 48.4"
    }
   ],
   "fact_00141": [
@@ -1398,14 +1398,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+    "quote": "EBITDA for FY2024 was EUR 48.4 million (FY2023: EUR 44.6 million)."
    },
    {
     "document_id": "doc_vexeth_cim",
     "page": 6,
     "char_start": 1487,
     "char_end": 1528,
-    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+    "quote": "EBITDA | 38.3 | 40.9 | 43.9 | 44.6 | 48.4"
    }
   ],
   "fact_00142": [
@@ -1414,7 +1414,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 202,
-    "quote": "Gross margin was 35.5% in FY2024."
+    "quote": "Gross margin was 35.0% in FY2024."
    }
   ],
   "fact_00143": [
@@ -1459,7 +1459,7 @@
     "page": 6,
     "char_start": 1487,
     "char_end": 1528,
-    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+    "quote": "EBITDA | 38.3 | 40.9 | 43.9 | 44.6 | 48.4"
    }
   ],
   "fact_00148": [
@@ -1468,7 +1468,7 @@
     "page": 6,
     "char_start": 1487,
     "char_end": 1528,
-    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+    "quote": "EBITDA | 38.3 | 40.9 | 43.9 | 44.6 | 48.4"
    }
   ],
   "fact_00149": [
@@ -1477,7 +1477,7 @@
     "page": 6,
     "char_start": 1487,
     "char_end": 1528,
-    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+    "quote": "EBITDA | 38.3 | 40.9 | 43.9 | 44.6 | 48.4"
    }
   ],
   "fact_00150": [
@@ -1486,7 +1486,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 97,
-    "quote": "On a cash-free and debt-free basis the business is priced at EUR 476.9m."
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 478.8m."
    }
   ],
   "fact_00151": [
@@ -1495,7 +1495,7 @@
     "page": 7,
     "char_start": 98,
     "char_end": 147,
-    "quote": "The indicative equity value is EUR 402.8 million."
+    "quote": "The indicative equity value is EUR 404.3 million."
    }
   ],
   "fact_00152": [
@@ -1531,7 +1531,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 72,
-    "quote": "The gross margin for FY2024 stood at 35.5 percent."
+    "quote": "The gross margin for FY2024 stood at 35.0 percent."
    }
   ],
   "fact_00156": [
@@ -1567,7 +1567,7 @@
     "page": 1,
     "char_start": 73,
     "char_end": 136,
-    "quote": "Vexeth Logistics reported EBITDA of EUR 53.0 million in FY2024."
+    "quote": "Vexeth Logistics reported EBITDA of EUR 53.2 million in FY2024."
    }
   ],
   "fact_00160": [
@@ -1576,7 +1576,7 @@
     "page": 1,
     "char_start": 152,
     "char_end": 215,
-    "quote": "Vexeth Logistics reported EBITDA of EUR 48.2 million in FY2024."
+    "quote": "Vexeth Logistics reported EBITDA of EUR 48.4 million in FY2024."
    }
   ],
   "fact_00161": [
@@ -1694,14 +1694,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+    "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
    },
    {
     "document_id": "doc_ostent_cim",
     "page": 6,
     "char_start": 1464,
     "char_end": 1505,
-    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+    "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
    }
   ],
   "fact_00171": [
@@ -1710,14 +1710,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+    "quote": "EBITDA for FY2024 was EUR 30.6 million (FY2023: EUR 25.7 million)."
    },
    {
     "document_id": "doc_ostent_cim",
     "page": 6,
     "char_start": 1464,
     "char_end": 1505,
-    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+    "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
    }
   ],
   "fact_00172": [
@@ -1726,7 +1726,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 209,
-    "quote": "Gross margin was 31.0 percent in FY2024."
+    "quote": "Gross margin was 32.6 percent in FY2024."
    }
   ],
   "fact_00173": [
@@ -1735,7 +1735,7 @@
     "page": 6,
     "char_start": 210,
     "char_end": 251,
-    "quote": "EBITDA margin was 12.3 percent in FY2024."
+    "quote": "EBITDA margin was 13.4 percent in FY2024."
    }
   ],
   "fact_00174": [
@@ -1771,7 +1771,7 @@
     "page": 6,
     "char_start": 1464,
     "char_end": 1505,
-    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+    "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
    }
   ],
   "fact_00178": [
@@ -1780,7 +1780,7 @@
     "page": 6,
     "char_start": 1464,
     "char_end": 1505,
-    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+    "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
    }
   ],
   "fact_00179": [
@@ -1789,7 +1789,7 @@
     "page": 6,
     "char_start": 1464,
     "char_end": 1505,
-    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+    "quote": "EBITDA | 20.6 | 21.8 | 21.8 | 25.7 | 30.6"
    }
   ],
   "fact_00180": [
@@ -1798,7 +1798,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 104,
-    "quote": "The transaction values the company at an enterprise value of EUR 263.1 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 287.6 million."
    }
   ],
   "fact_00181": [
@@ -1807,7 +1807,7 @@
     "page": 7,
     "char_start": 105,
     "char_end": 154,
-    "quote": "The indicative equity value is EUR 237.0 million."
+    "quote": "The indicative equity value is EUR 257.6 million."
    }
   ],
   "fact_00182": [
@@ -1843,7 +1843,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 122,
-    "quote": "After direct production costs, 31.0% of sales remained as profit in the year ended 31 December 2024."
+    "quote": "After direct production costs, 32.6% of sales remained as profit in the year ended 31 December 2024."
    }
   ],
   "fact_00186": [
@@ -1861,7 +1861,7 @@
     "page": 1,
     "char_start": 247,
     "char_end": 313,
-    "quote": "Analysts estimate Ostent EBITDA for 2024 at around EUR 30 million."
+    "quote": "Analysts estimate Ostent EBITDA for 2024 at around EUR 32 million."
    }
   ],
   "fact_00188": [
@@ -1888,7 +1888,7 @@
     "page": 1,
     "char_start": 198,
     "char_end": 277,
-    "quote": "The transaction values the company at an enterprise value of EUR 254.5 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 278.2 million."
    }
   ],
   "fact_00191": [
@@ -1897,7 +1897,7 @@
     "page": 1,
     "char_start": 194,
     "char_end": 273,
-    "quote": "The transaction values the company at an enterprise value of EUR 263.1 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 287.6 million."
    }
   ],
   "fact_00192": [
@@ -2006,14 +2006,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 38.4 million (FY2023: EUR 40.3 million)."
+    "quote": "EBITDA for FY2024 was EUR 39.0 million (FY2023: EUR 39.5 million)."
    },
    {
     "document_id": "doc_falik_cim",
     "page": 6,
     "char_start": 1414,
     "char_end": 1455,
-    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+    "quote": "EBITDA | 31.6 | 34.8 | 37.0 | 39.5 | 39.0"
    }
   ],
   "fact_00201": [
@@ -2022,14 +2022,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 38.4 million (FY2023: EUR 40.3 million)."
+    "quote": "EBITDA for FY2024 was EUR 39.0 million (FY2023: EUR 39.5 million)."
    },
    {
     "document_id": "doc_falik_cim",
     "page": 6,
     "char_start": 1414,
     "char_end": 1455,
-    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+    "quote": "EBITDA | 31.6 | 34.8 | 37.0 | 39.5 | 39.0"
    }
   ],
   "fact_00202": [
@@ -2038,7 +2038,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 209,
-    "quote": "Gross margin was 39.0 percent in FY2024."
+    "quote": "Gross margin was 38.8 percent in FY2024."
    }
   ],
   "fact_00203": [
@@ -2047,7 +2047,7 @@
     "page": 6,
     "char_start": 210,
     "char_end": 298,
-    "quote": "Operating earnings before depreciation represented 16.7 percent of sales in fiscal 2024."
+    "quote": "Operating earnings before depreciation represented 17.0 percent of sales in fiscal 2024."
    }
   ],
   "fact_00204": [
@@ -2083,7 +2083,7 @@
     "page": 6,
     "char_start": 1414,
     "char_end": 1455,
-    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+    "quote": "EBITDA | 31.6 | 34.8 | 37.0 | 39.5 | 39.0"
    }
   ],
   "fact_00208": [
@@ -2092,7 +2092,7 @@
     "page": 6,
     "char_start": 1414,
     "char_end": 1455,
-    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+    "quote": "EBITDA | 31.6 | 34.8 | 37.0 | 39.5 | 39.0"
    }
   ],
   "fact_00209": [
@@ -2101,7 +2101,7 @@
     "page": 6,
     "char_start": 1414,
     "char_end": 1455,
-    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+    "quote": "EBITDA | 31.6 | 34.8 | 37.0 | 39.5 | 39.0"
    }
   ],
   "fact_00210": [
@@ -2110,7 +2110,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 104,
-    "quote": "On a cash-free and debt-free basis the business is priced at EUR 358.6 million."
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 364.2 million."
    }
   ],
   "fact_00211": [
@@ -2119,7 +2119,7 @@
     "page": 7,
     "char_start": 105,
     "char_end": 147,
-    "quote": "The indicative equity value is EUR 282.9m."
+    "quote": "The indicative equity value is EUR 287.1m."
    }
   ],
   "fact_00212": [
@@ -2155,7 +2155,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 72,
-    "quote": "The gross margin for FY2024 stood at 39.0 percent."
+    "quote": "The gross margin for FY2024 stood at 38.8 percent."
    }
   ],
   "fact_00216": [
@@ -2200,7 +2200,7 @@
     "page": 1,
     "char_start": 70,
     "char_end": 130,
-    "quote": "Falik Medical reported EBITDA of EUR 44.3 million in FY2024."
+    "quote": "Falik Medical reported EBITDA of EUR 45.0 million in FY2024."
    }
   ],
   "fact_00221": [
@@ -2209,7 +2209,7 @@
     "page": 1,
     "char_start": 149,
     "char_end": 209,
-    "quote": "Falik Medical reported EBITDA of EUR 38.4 million in FY2024."
+    "quote": "Falik Medical reported EBITDA of EUR 39.0 million in FY2024."
    }
   ],
   "fact_00222": [
@@ -2327,14 +2327,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+    "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
    },
    {
     "document_id": "doc_carane_cim",
     "page": 6,
     "char_start": 1435,
     "char_end": 1476,
-    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+    "quote": "EBITDA | 27.1 | 27.4 | 28.5 | 31.3 | 35.6"
    }
   ],
   "fact_00232": [
@@ -2343,14 +2343,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+    "quote": "EBITDA for FY2024 was EUR 35.6 million (FY2023: EUR 31.3 million)."
    },
    {
     "document_id": "doc_carane_cim",
     "page": 6,
     "char_start": 1435,
     "char_end": 1476,
-    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+    "quote": "EBITDA | 27.1 | 27.4 | 28.5 | 31.3 | 35.6"
    }
   ],
   "fact_00233": [
@@ -2368,7 +2368,7 @@
     "page": 6,
     "char_start": 244,
     "char_end": 278,
-    "quote": "EBITDA margin was 22.0% in FY2024."
+    "quote": "EBITDA margin was 21.4% in FY2024."
    }
   ],
   "fact_00235": [
@@ -2404,7 +2404,7 @@
     "page": 6,
     "char_start": 1435,
     "char_end": 1476,
-    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+    "quote": "EBITDA | 27.1 | 27.4 | 28.5 | 31.3 | 35.6"
    }
   ],
   "fact_00239": [
@@ -2413,7 +2413,7 @@
     "page": 6,
     "char_start": 1435,
     "char_end": 1476,
-    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+    "quote": "EBITDA | 27.1 | 27.4 | 28.5 | 31.3 | 35.6"
    }
   ],
   "fact_00240": [
@@ -2422,7 +2422,7 @@
     "page": 6,
     "char_start": 1435,
     "char_end": 1476,
-    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+    "quote": "EBITDA | 27.1 | 27.4 | 28.5 | 31.3 | 35.6"
    }
   ],
   "fact_00241": [
@@ -2431,7 +2431,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 104,
-    "quote": "The transaction values the company at an enterprise value of EUR 324.6 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 316.6 million."
    }
   ],
   "fact_00242": [
@@ -2440,7 +2440,7 @@
     "page": 7,
     "char_start": 105,
     "char_end": 147,
-    "quote": "The indicative equity value is EUR 241.3m."
+    "quote": "The indicative equity value is EUR 235.5m."
    }
   ],
   "fact_00243": [
@@ -2494,7 +2494,7 @@
     "page": 1,
     "char_start": 265,
     "char_end": 331,
-    "quote": "Analysts estimate Carane EBITDA for 2024 at around EUR 40 million."
+    "quote": "Analysts estimate Carane EBITDA for 2024 at around EUR 39 million."
    }
   ],
   "fact_00249": [
@@ -2521,7 +2521,7 @@
     "page": 1,
     "char_start": 195,
     "char_end": 274,
-    "quote": "The transaction values the company at an enterprise value of EUR 308.5 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 300.9 million."
    }
   ],
   "fact_00252": [
@@ -2530,7 +2530,7 @@
     "page": 1,
     "char_start": 191,
     "char_end": 270,
-    "quote": "The transaction values the company at an enterprise value of EUR 324.6 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 316.6 million."
    }
   ],
   "fact_00253": [
@@ -2644,8 +2644,8 @@
    {
     "document_id": "doc_merium_cim",
     "page": 6,
-    "char_start": 1337,
-    "char_end": 1378,
+    "char_start": 1338,
+    "char_end": 1379,
     "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
    }
   ],
@@ -2660,8 +2660,8 @@
    {
     "document_id": "doc_merium_cim",
     "page": 6,
-    "char_start": 1337,
-    "char_end": 1378,
+    "char_start": 1338,
+    "char_end": 1379,
     "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
    }
   ],
@@ -2671,7 +2671,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 212,
-    "quote": "The gross margin for FY2024 stood at 31.6%."
+    "quote": "The gross margin for FY2024 stood at 32.8%."
    }
   ],
   "fact_00264": [
@@ -2714,8 +2714,8 @@
    {
     "document_id": "doc_merium_cim",
     "page": 6,
-    "char_start": 1337,
-    "char_end": 1378,
+    "char_start": 1338,
+    "char_end": 1379,
     "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
    }
   ],
@@ -2723,8 +2723,8 @@
    {
     "document_id": "doc_merium_cim",
     "page": 6,
-    "char_start": 1337,
-    "char_end": 1378,
+    "char_start": 1338,
+    "char_end": 1379,
     "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
    }
   ],
@@ -2732,8 +2732,8 @@
    {
     "document_id": "doc_merium_cim",
     "page": 6,
-    "char_start": 1337,
-    "char_end": 1378,
+    "char_start": 1338,
+    "char_end": 1379,
     "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
    }
   ],
@@ -2788,7 +2788,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 62,
-    "quote": "Gross margin was 31.6 percent in FY2024."
+    "quote": "Gross margin was 32.8 percent in FY2024."
    }
   ],
   "fact_00277": [
@@ -2942,14 +2942,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+    "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
    },
    {
     "document_id": "doc_estell_cim",
     "page": 6,
     "char_start": 1375,
     "char_end": 1416,
-    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+    "quote": "EBITDA | 16.6 | 16.5 | 18.8 | 21.2 | 22.2"
    }
   ],
   "fact_00291": [
@@ -2958,14 +2958,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+    "quote": "EBITDA for FY2024 was EUR 22.2 million (FY2023: EUR 21.2 million)."
    },
    {
     "document_id": "doc_estell_cim",
     "page": 6,
     "char_start": 1375,
     "char_end": 1416,
-    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+    "quote": "EBITDA | 16.6 | 16.5 | 18.8 | 21.2 | 22.2"
    }
   ],
   "fact_00292": [
@@ -2974,7 +2974,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 270,
-    "quote": "Profit after cost of goods sold represented 37.9 percent of sales in the year ended 31 December 2024."
+    "quote": "Profit after cost of goods sold represented 38.7 percent of sales in the year ended 31 December 2024."
    }
   ],
   "fact_00293": [
@@ -2983,7 +2983,7 @@
     "page": 6,
     "char_start": 271,
     "char_end": 305,
-    "quote": "EBITDA margin was 19.8% in FY2024."
+    "quote": "EBITDA margin was 20.5% in FY2024."
    }
   ],
   "fact_00294": [
@@ -3019,7 +3019,7 @@
     "page": 6,
     "char_start": 1375,
     "char_end": 1416,
-    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+    "quote": "EBITDA | 16.6 | 16.5 | 18.8 | 21.2 | 22.2"
    }
   ],
   "fact_00298": [
@@ -3028,7 +3028,7 @@
     "page": 6,
     "char_start": 1375,
     "char_end": 1416,
-    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+    "quote": "EBITDA | 16.6 | 16.5 | 18.8 | 21.2 | 22.2"
    }
   ],
   "fact_00299": [
@@ -3037,7 +3037,7 @@
     "page": 6,
     "char_start": 1375,
     "char_end": 1416,
-    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+    "quote": "EBITDA | 16.6 | 16.5 | 18.8 | 21.2 | 22.2"
    }
   ],
   "fact_00300": [
@@ -3046,7 +3046,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 104,
-    "quote": "On a cash-free and debt-free basis the business is priced at EUR 199.3 million."
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 205.8 million."
    }
   ],
   "fact_00301": [
@@ -3055,7 +3055,7 @@
     "page": 7,
     "char_start": 105,
     "char_end": 184,
-    "quote": "Shareholders would receive EUR 173.5m for their shares after settling net debt."
+    "quote": "Shareholders would receive EUR 179.0m for their shares after settling net debt."
    }
   ],
   "fact_00302": [
@@ -3091,7 +3091,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 116,
-    "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+    "quote": "Profit after cost of goods sold represented 38.7% of sales in the year ended 31 December 2024."
    }
   ],
   "fact_00306": [
@@ -3109,7 +3109,7 @@
     "page": 1,
     "char_start": 255,
     "char_end": 326,
-    "quote": "Estell is said to have earned roughly EUR 24 million of EBITDA in 2024."
+    "quote": "Estell is said to have earned roughly EUR 25 million of EBITDA in 2024."
    }
   ],
   "fact_00308": [
@@ -3136,7 +3136,7 @@
     "page": 1,
     "char_start": 199,
     "char_end": 278,
-    "quote": "The transaction values the company at an enterprise value of EUR 193.1 million."
+    "quote": "The transaction values the company at an enterprise value of EUR 199.4 million."
    }
   ],
   "fact_00311": [
@@ -3145,7 +3145,7 @@
     "page": 1,
     "char_start": 195,
     "char_end": 267,
-    "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+    "quote": "The transaction values the company at an enterprise value of EUR 205.8m."
    }
   ],
   "fact_00312": [
@@ -3263,14 +3263,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 23.5 million (FY2023: EUR 21.3 million)."
+    "quote": "EBITDA for FY2024 was EUR 21.4 million (FY2023: EUR 22.2 million)."
    },
    {
     "document_id": "doc_ulent_cim",
     "page": 6,
     "char_start": 1450,
     "char_end": 1491,
-    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+    "quote": "EBITDA | 17.9 | 18.4 | 19.6 | 22.2 | 21.4"
    }
   ],
   "fact_00322": [
@@ -3279,14 +3279,14 @@
     "page": 6,
     "char_start": 101,
     "char_end": 167,
-    "quote": "EBITDA for FY2024 was EUR 23.5 million (FY2023: EUR 21.3 million)."
+    "quote": "EBITDA for FY2024 was EUR 21.4 million (FY2023: EUR 22.2 million)."
    },
    {
     "document_id": "doc_ulent_cim",
     "page": 6,
     "char_start": 1450,
     "char_end": 1491,
-    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+    "quote": "EBITDA | 17.9 | 18.4 | 19.6 | 22.2 | 21.4"
    }
   ],
   "fact_00323": [
@@ -3295,7 +3295,7 @@
     "page": 6,
     "char_start": 169,
     "char_end": 219,
-    "quote": "The gross margin for FY2024 stood at 39.2 percent."
+    "quote": "The gross margin for FY2024 stood at 37.7 percent."
    }
   ],
   "fact_00324": [
@@ -3304,7 +3304,7 @@
     "page": 6,
     "char_start": 220,
     "char_end": 261,
-    "quote": "EBITDA margin was 16.7 percent in FY2024."
+    "quote": "EBITDA margin was 15.2 percent in FY2024."
    }
   ],
   "fact_00325": [
@@ -3340,7 +3340,7 @@
     "page": 6,
     "char_start": 1450,
     "char_end": 1491,
-    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+    "quote": "EBITDA | 17.9 | 18.4 | 19.6 | 22.2 | 21.4"
    }
   ],
   "fact_00329": [
@@ -3349,7 +3349,7 @@
     "page": 6,
     "char_start": 1450,
     "char_end": 1491,
-    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+    "quote": "EBITDA | 17.9 | 18.4 | 19.6 | 22.2 | 21.4"
    }
   ],
   "fact_00330": [
@@ -3358,7 +3358,7 @@
     "page": 6,
     "char_start": 1450,
     "char_end": 1491,
-    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+    "quote": "EBITDA | 17.9 | 18.4 | 19.6 | 22.2 | 21.4"
    }
   ],
   "fact_00331": [
@@ -3367,7 +3367,7 @@
     "page": 7,
     "char_start": 25,
     "char_end": 97,
-    "quote": "On a cash-free and debt-free basis the business is priced at EUR 242.3m."
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 220.7m."
    }
   ],
   "fact_00332": [
@@ -3376,7 +3376,7 @@
     "page": 7,
     "char_start": 98,
     "char_end": 167,
-    "quote": "After net debt, the equity value of the company is EUR 197.1 million."
+    "quote": "After net debt, the equity value of the company is EUR 180.7 million."
    }
   ],
   "fact_00333": [
@@ -3412,7 +3412,7 @@
     "page": 4,
     "char_start": 22,
     "char_end": 129,
-    "quote": "After direct production costs, 39.2 percent of sales remained as profit in the year ended 31 December 2024."
+    "quote": "After direct production costs, 37.7 percent of sales remained as profit in the year ended 31 December 2024."
    }
   ],
   "fact_00337": [
@@ -3430,7 +3430,7 @@
     "page": 1,
     "char_start": 244,
     "char_end": 314,
-    "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+    "quote": "Ulent is said to have earned roughly EUR 24 million of EBITDA in 2024."
    }
   ],
   "fact_00339": [
@@ -3448,7 +3448,7 @@
     "page": 1,
     "char_start": 73,
     "char_end": 136,
-    "quote": "Ulent Containers reported EBITDA of EUR 27.0 million in FY2024."
+    "quote": "Ulent Containers reported EBITDA of EUR 24.6 million in FY2024."
    }
   ],
   "fact_00341": [
@@ -3457,7 +3457,7 @@
     "page": 1,
     "char_start": 152,
     "char_end": 215,
-    "quote": "Ulent Containers reported EBITDA of EUR 23.5 million in FY2024."
+    "quote": "Ulent Containers reported EBITDA of EUR 21.4 million in FY2024."
    }
   ],
   "fact_00342": [
@@ -3484,7 +3484,7 @@
     "page": 1,
     "char_start": 253,
     "char_end": 379,
-    "quote": "The equity of Carent Industries was valued at EUR 2.9 billion on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Carent Industries was valued at EUR 2.8 billion on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00345": [
@@ -3493,7 +3493,7 @@
     "page": 1,
     "char_start": 110,
     "char_end": 170,
-    "quote": "Market capitalisation was EUR 2,900.0m at the end of FY2024."
+    "quote": "Market capitalisation was EUR 2,800.0m at the end of FY2024."
    }
   ],
   "fact_00346": [
@@ -3502,7 +3502,7 @@
     "page": 1,
     "char_start": 172,
     "char_end": 234,
-    "quote": "Carent Industries generated revenue of EUR 1,508.7m in FY2024."
+    "quote": "Carent Industries generated revenue of EUR 1,456.7m in FY2024."
    }
   ],
   "fact_00347": [
@@ -3529,7 +3529,7 @@
     "page": 1,
     "char_start": 35,
     "char_end": 104,
-    "quote": "Carent was valued at roughly EUR 2,620 million by the market in 2024."
+    "quote": "Carent was valued at roughly EUR 2,530 million by the market in 2024."
    }
   ],
   "fact_00350": [
@@ -3547,7 +3547,7 @@
     "page": 1,
     "char_start": 249,
     "char_end": 359,
-    "quote": "The platform administers EUR 1,150.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 1,050.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00352": [
@@ -3556,7 +3556,7 @@
     "page": 1,
     "char_start": 361,
     "char_end": 444,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 150.0 million."
    }
   ],
   "fact_00353": [
@@ -3565,7 +3565,7 @@
     "page": 1,
     "char_start": 361,
     "char_end": 444,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 150.0 million."
    }
   ],
   "fact_00354": [
@@ -3583,7 +3583,7 @@
     "page": 1,
     "char_start": 111,
     "char_end": 198,
-    "quote": "Goron Capital Partners had assets under management of EUR 1,150.0 million as of FY2024."
+    "quote": "Goron Capital Partners had assets under management of EUR 1,050.0 million as of FY2024."
    }
   ],
   "fact_00356": [
@@ -3592,7 +3592,7 @@
     "page": 1,
     "char_start": 200,
     "char_end": 289,
-    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
    }
   ],
   "fact_00357": [
@@ -3601,7 +3601,7 @@
     "page": 1,
     "char_start": 200,
     "char_end": 289,
-    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 150.0 million per transaction."
    }
   ],
   "fact_00358": [
@@ -3636,8 +3636,8 @@
     "document_id": "doc_buyer_02_article",
     "page": 1,
     "char_start": 40,
-    "char_end": 94,
-    "quote": "Goron is reported to manage roughly EUR 1,000 million."
+    "char_end": 92,
+    "quote": "Goron is reported to manage roughly EUR 910 million."
    }
   ],
   "fact_00362": [
@@ -3646,7 +3646,7 @@
     "page": 1,
     "char_start": 49,
     "char_end": 134,
-    "quote": "Goron Capital Partners had assets under management of EUR 840.0 million as of FY2022."
+    "quote": "Goron Capital Partners had assets under management of EUR 760.0 million as of FY2022."
    }
   ],
   "fact_00363": [
@@ -3654,8 +3654,8 @@
     "document_id": "doc_buyer_03_profile",
     "page": 1,
     "char_start": 227,
-    "char_end": 291,
-    "quote": "Market capitalisation was EUR 1.05 billion at the end of FY2024."
+    "char_end": 288,
+    "quote": "Market capitalisation was EUR 1 billion at the end of FY2024."
    }
   ],
   "fact_00364": [
@@ -3663,25 +3663,25 @@
     "document_id": "doc_buyer_03_report",
     "page": 1,
     "char_start": 102,
-    "char_end": 166,
-    "quote": "Market capitalisation was EUR 1.05 billion at the end of FY2024."
+    "char_end": 163,
+    "quote": "Market capitalisation was EUR 1 billion at the end of FY2024."
    }
   ],
   "fact_00365": [
    {
     "document_id": "doc_buyer_03_report",
     "page": 1,
-    "char_start": 168,
-    "char_end": 231,
-    "quote": "Falex Systems generated revenue of EUR 226.3 million in FY2024."
+    "char_start": 165,
+    "char_end": 228,
+    "quote": "Falex Systems generated revenue of EUR 215.5 million in FY2024."
    }
   ],
   "fact_00366": [
    {
     "document_id": "doc_buyer_03_report",
     "page": 1,
-    "char_start": 233,
-    "char_end": 277,
+    "char_start": 230,
+    "char_end": 274,
     "quote": "Headcount stood at 9,380 at year end FY2024."
    }
   ],
@@ -3689,8 +3689,8 @@
    {
     "document_id": "doc_buyer_03_report",
     "page": 1,
-    "char_start": 279,
-    "char_end": 343,
+    "char_start": 276,
+    "char_end": 340,
     "quote": "The market share of Falex Systems in Europe was 39.2% in FY2024."
    }
   ],
@@ -3699,34 +3699,34 @@
     "document_id": "doc_buyer_04_profile",
     "page": 1,
     "char_start": 260,
-    "char_end": 328,
-    "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+    "char_end": 327,
+    "quote": "Assets under management were EUR 10.8 billion at the end of FY2024."
    }
   ],
   "fact_00369": [
    {
     "document_id": "doc_buyer_04_profile",
     "page": 1,
-    "char_start": 330,
-    "char_end": 422,
-    "quote": "The fund targets equity tickets of EUR 595.0 million to EUR 1,355.0 million per transaction."
+    "char_start": 329,
+    "char_end": 421,
+    "quote": "The fund targets equity tickets of EUR 535.0 million to EUR 1,220.0 million per transaction."
    }
   ],
   "fact_00370": [
    {
     "document_id": "doc_buyer_04_profile",
     "page": 1,
-    "char_start": 330,
-    "char_end": 422,
-    "quote": "The fund targets equity tickets of EUR 595.0 million to EUR 1,355.0 million per transaction."
+    "char_start": 329,
+    "char_end": 421,
+    "quote": "The fund targets equity tickets of EUR 535.0 million to EUR 1,220.0 million per transaction."
    }
   ],
   "fact_00371": [
    {
     "document_id": "doc_buyer_04_profile",
     "page": 1,
-    "char_start": 424,
-    "char_end": 499,
+    "char_start": 423,
+    "char_end": 498,
     "quote": "Draay Capital Partners closed its current fund with a vintage year of 2018."
    }
   ],
@@ -3736,7 +3736,7 @@
     "page": 1,
     "char_start": 111,
     "char_end": 222,
-    "quote": "The platform administers EUR 11,950.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 10,800.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00373": [
@@ -3745,7 +3745,7 @@
     "page": 1,
     "char_start": 224,
     "char_end": 310,
-    "quote": "Each deal receives an equity cheque between EUR 595.0 million and EUR 1,355.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 535.0 million and EUR 1,220.0 million."
    }
   ],
   "fact_00374": [
@@ -3754,7 +3754,7 @@
     "page": 1,
     "char_start": 224,
     "char_end": 310,
-    "quote": "Each deal receives an equity cheque between EUR 595.0 million and EUR 1,355.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 535.0 million and EUR 1,220.0 million."
    }
   ],
   "fact_00375": [
@@ -3780,8 +3780,8 @@
     "document_id": "doc_buyer_04_article",
     "page": 1,
     "char_start": 40,
-    "char_end": 95,
-    "quote": "Draay is reported to manage roughly EUR 10,800 million."
+    "char_end": 94,
+    "quote": "Draay is reported to manage roughly EUR 9,760 million."
    }
   ],
   "fact_00378": [
@@ -3790,7 +3790,7 @@
     "page": 1,
     "char_start": 49,
     "char_end": 129,
-    "quote": "Draay Capital Partners had assets under management of EUR 8,370.0m as of FY2022."
+    "quote": "Draay Capital Partners had assets under management of EUR 7,560.0m as of FY2022."
    }
   ],
   "fact_00379": [
@@ -3862,7 +3862,7 @@
     "page": 1,
     "char_start": 277,
     "char_end": 385,
-    "quote": "The platform administers EUR 850.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 750.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00387": [
@@ -3871,7 +3871,7 @@
     "page": 1,
     "char_start": 387,
     "char_end": 470,
-    "quote": "Each deal receives an equity cheque between EUR 30.0 million and EUR 160.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 25.0 million and EUR 140.0 million."
    }
   ],
   "fact_00388": [
@@ -3880,7 +3880,7 @@
     "page": 1,
     "char_start": 387,
     "char_end": 470,
-    "quote": "Each deal receives an equity cheque between EUR 30.0 million and EUR 160.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 25.0 million and EUR 140.0 million."
    }
   ],
   "fact_00389": [
@@ -3898,7 +3898,7 @@
     "page": 1,
     "char_start": 113,
     "char_end": 201,
-    "quote": "The platform administers EUR 850.0 million on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00391": [
@@ -3907,7 +3907,7 @@
     "page": 1,
     "char_start": 203,
     "char_end": 292,
-    "quote": "The fund targets equity tickets of EUR 30.0 million to EUR 160.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 25.0 million to EUR 140.0 million per transaction."
    }
   ],
   "fact_00392": [
@@ -3916,7 +3916,7 @@
     "page": 1,
     "char_start": 203,
     "char_end": 292,
-    "quote": "The fund targets equity tickets of EUR 30.0 million to EUR 160.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 25.0 million to EUR 140.0 million per transaction."
    }
   ],
   "fact_00393": [
@@ -3943,7 +3943,7 @@
     "page": 1,
     "char_start": 50,
     "char_end": 129,
-    "quote": "Elnell Capital Partners had assets under management of EUR 630.0m as of FY2022."
+    "quote": "Elnell Capital Partners had assets under management of EUR 550.0m as of FY2022."
    }
   ],
   "fact_00396": [
@@ -4024,7 +4024,7 @@
     "page": 1,
     "char_start": 258,
     "char_end": 341,
-    "quote": "The platform administers EUR 8,000.0m on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 7,200.0m on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00405": [
@@ -4033,7 +4033,7 @@
     "page": 1,
     "char_start": 343,
     "char_end": 435,
-    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 275.0 million to EUR 1,390.0 million per transaction."
    }
   ],
   "fact_00406": [
@@ -4042,7 +4042,7 @@
     "page": 1,
     "char_start": 343,
     "char_end": 435,
-    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 275.0 million to EUR 1,390.0 million per transaction."
    }
   ],
   "fact_00407": [
@@ -4060,7 +4060,7 @@
     "page": 1,
     "char_start": 101,
     "char_end": 184,
-    "quote": "The platform administers EUR 8,000.0m on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 7,200.0m on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00409": [
@@ -4069,7 +4069,7 @@
     "page": 1,
     "char_start": 186,
     "char_end": 278,
-    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 275.0 million to EUR 1,390.0 million per transaction."
    }
   ],
   "fact_00410": [
@@ -4078,7 +4078,7 @@
     "page": 1,
     "char_start": 186,
     "char_end": 278,
-    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 275.0 million to EUR 1,390.0 million per transaction."
    }
   ],
   "fact_00411": [
@@ -4114,7 +4114,7 @@
     "page": 1,
     "char_start": 35,
     "char_end": 89,
-    "quote": "Narar is reported to manage roughly EUR 6,690 million."
+    "quote": "Narar is reported to manage roughly EUR 6,020 million."
    }
   ],
   "fact_00415": [
@@ -4123,7 +4123,7 @@
     "page": 1,
     "char_start": 44,
     "char_end": 119,
-    "quote": "Narar Investments had assets under management of EUR 7,190.0m as of FY2022."
+    "quote": "Narar Investments had assets under management of EUR 6,470.0m as of FY2022."
    }
   ],
   "fact_00416": [
@@ -4186,7 +4186,7 @@
     "page": 1,
     "char_start": 286,
     "char_end": 349,
-    "quote": "Assets under management were EUR 1,400.0m at the end of FY2024."
+    "quote": "Assets under management were EUR 1,250.0m at the end of FY2024."
    }
   ],
   "fact_00423": [
@@ -4195,7 +4195,7 @@
     "page": 1,
     "char_start": 351,
     "char_end": 440,
-    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 130.0 million per transaction."
    }
   ],
   "fact_00424": [
@@ -4204,7 +4204,7 @@
     "page": 1,
     "char_start": 351,
     "char_end": 440,
-    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 130.0 million per transaction."
    }
   ],
   "fact_00425": [
@@ -4221,34 +4221,34 @@
     "document_id": "doc_buyer_10_report",
     "page": 1,
     "char_start": 113,
-    "char_end": 179,
-    "quote": "Assets under management were EUR 1.4 billion at the end of FY2024."
+    "char_end": 180,
+    "quote": "Assets under management were EUR 1.25 billion at the end of FY2024."
    }
   ],
   "fact_00427": [
    {
     "document_id": "doc_buyer_10_report",
     "page": 1,
-    "char_start": 181,
-    "char_end": 270,
-    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+    "char_start": 182,
+    "char_end": 271,
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 130.0 million per transaction."
    }
   ],
   "fact_00428": [
    {
     "document_id": "doc_buyer_10_report",
     "page": 1,
-    "char_start": 181,
-    "char_end": 270,
-    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+    "char_start": 182,
+    "char_end": 271,
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 130.0 million per transaction."
    }
   ],
   "fact_00429": [
    {
     "document_id": "doc_buyer_10_report",
     "page": 1,
-    "char_start": 272,
-    "char_end": 363,
+    "char_start": 273,
+    "char_end": 364,
     "quote": "Peling Capital Partners backs 8 operating businesses as of the year ended 31 December 2024."
    }
   ],
@@ -4256,8 +4256,8 @@
    {
     "document_id": "doc_buyer_10_report",
     "page": 1,
-    "char_start": 365,
-    "char_end": 420,
+    "char_start": 366,
+    "char_end": 421,
     "quote": "The vehicle began its life as an investor pool in 2017."
    }
   ],
@@ -4267,7 +4267,7 @@
     "page": 1,
     "char_start": 41,
     "char_end": 96,
-    "quote": "Peling is reported to manage roughly EUR 1,260 million."
+    "quote": "Peling is reported to manage roughly EUR 1,120 million."
    }
   ],
   "fact_00432": [
@@ -4275,8 +4275,8 @@
     "document_id": "doc_buyer_10_pr_old",
     "page": 1,
     "char_start": 50,
-    "char_end": 131,
-    "quote": "Peling Capital Partners had assets under management of EUR 1,040.0m as of FY2022."
+    "char_end": 129,
+    "quote": "Peling Capital Partners had assets under management of EUR 920.0m as of FY2022."
    }
   ],
   "fact_00433": [
@@ -4285,7 +4285,7 @@
     "page": 1,
     "char_start": 242,
     "char_end": 309,
-    "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+    "quote": "Market capitalisation was EUR 1,750.0 million at the end of FY2024."
    }
   ],
   "fact_00434": [
@@ -4294,7 +4294,7 @@
     "page": 1,
     "char_start": 104,
     "char_end": 211,
-    "quote": "The equity of Tarnix Systems was valued at EUR 1,800.0 million on the exchange at the close of fiscal 2024."
+    "quote": "The equity of Tarnix Systems was valued at EUR 1,750.0 million on the exchange at the close of fiscal 2024."
    }
   ],
   "fact_00435": [
@@ -4303,7 +4303,7 @@
     "page": 1,
     "char_start": 213,
     "char_end": 270,
-    "quote": "Tarnix Systems generated revenue of EUR 416.7m in FY2024."
+    "quote": "Tarnix Systems generated revenue of EUR 405.1m in FY2024."
    }
   ],
   "fact_00436": [
@@ -4321,7 +4321,7 @@
     "page": 1,
     "char_start": 32,
     "char_end": 118,
-    "quote": "The stock market capitalisation of Tarnix was reported near EUR 1,510 million in 2024."
+    "quote": "The stock market capitalisation of Tarnix was reported near EUR 1,460 million in 2024."
    }
   ],
   "fact_00438": [
@@ -4330,7 +4330,7 @@
     "page": 1,
     "char_start": 262,
     "char_end": 332,
-    "quote": "Assets under management were EUR 6,850.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 6,150.0 million at the end of FY2024."
    }
   ],
   "fact_00439": [
@@ -4339,7 +4339,7 @@
     "page": 1,
     "char_start": 334,
     "char_end": 424,
-    "quote": "The fund targets equity tickets of EUR 210.0 million to EUR 745.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 190.0 million to EUR 670.0 million per transaction."
    }
   ],
   "fact_00440": [
@@ -4348,7 +4348,7 @@
     "page": 1,
     "char_start": 334,
     "char_end": 424,
-    "quote": "The fund targets equity tickets of EUR 210.0 million to EUR 745.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 190.0 million to EUR 670.0 million per transaction."
    }
   ],
   "fact_00441": [
@@ -4357,7 +4357,7 @@
     "page": 1,
     "char_start": 99,
     "char_end": 209,
-    "quote": "The platform administers EUR 6,850.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 6,150.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00442": [
@@ -4366,7 +4366,7 @@
     "page": 1,
     "char_start": 211,
     "char_end": 295,
-    "quote": "Each deal receives an equity cheque between EUR 210.0 million and EUR 745.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 190.0 million and EUR 670.0 million."
    }
   ],
   "fact_00443": [
@@ -4375,7 +4375,7 @@
     "page": 1,
     "char_start": 211,
     "char_end": 295,
-    "quote": "Each deal receives an equity cheque between EUR 210.0 million and EUR 745.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 190.0 million and EUR 670.0 million."
    }
   ],
   "fact_00444": [
@@ -4393,7 +4393,7 @@
     "page": 1,
     "char_start": 43,
     "char_end": 124,
-    "quote": "Ulik Growth Fund had assets under management of EUR 6,110.0 million as of FY2022."
+    "quote": "Ulik Growth Fund had assets under management of EUR 5,490.0 million as of FY2022."
    }
   ],
   "fact_00446": [
@@ -4401,8 +4401,8 @@
     "document_id": "doc_buyer_13_profile",
     "page": 1,
     "char_start": 249,
-    "char_end": 334,
-    "quote": "Junuro Holdings had a market capitalisation of EUR 1.45 billion at the end of FY2024."
+    "char_end": 333,
+    "quote": "Junuro Holdings had a market capitalisation of EUR 1.4 billion at the end of FY2024."
    }
   ],
   "fact_00447": [
@@ -4411,7 +4411,7 @@
     "page": 1,
     "char_start": 106,
     "char_end": 187,
-    "quote": "Junuro Holdings had a market capitalisation of EUR 1,450.0m at the end of FY2024."
+    "quote": "Junuro Holdings had a market capitalisation of EUR 1,400.0m at the end of FY2024."
    }
   ],
   "fact_00448": [
@@ -4419,16 +4419,16 @@
     "document_id": "doc_buyer_13_report",
     "page": 1,
     "char_start": 189,
-    "char_end": 268,
-    "quote": "The top line came in at EUR 1,014.7 million in the year ended 31 December 2024."
+    "char_end": 266,
+    "quote": "The top line came in at EUR 979.8 million in the year ended 31 December 2024."
    }
   ],
   "fact_00449": [
    {
     "document_id": "doc_buyer_13_report",
     "page": 1,
-    "char_start": 270,
-    "char_end": 370,
+    "char_start": 268,
+    "char_end": 368,
     "quote": "Junuro Holdings had a workforce of 11,350 employees at the close of the year ended 31 December 2024."
    }
   ],
@@ -4436,8 +4436,8 @@
    {
     "document_id": "doc_buyer_13_report",
     "page": 1,
-    "char_start": 372,
-    "char_end": 454,
+    "char_start": 370,
+    "char_end": 452,
     "quote": "Junuro Holdings holds a market share of 33.6 percent in its core European segment."
    }
   ],
@@ -4447,7 +4447,7 @@
     "page": 1,
     "char_start": 33,
     "char_end": 119,
-    "quote": "The stock market capitalisation of Junuro was reported near EUR 1,280 million in 2024."
+    "quote": "The stock market capitalisation of Junuro was reported near EUR 1,240 million in 2024."
    }
   ],
   "fact_00452": [
@@ -4465,7 +4465,7 @@
     "page": 1,
     "char_start": 248,
     "char_end": 332,
-    "quote": "Tarnane Investments had assets under management of EUR 2,650.0 million as of FY2024."
+    "quote": "Tarnane Investments had assets under management of EUR 2,400.0 million as of FY2024."
    }
   ],
   "fact_00454": [
@@ -4474,7 +4474,7 @@
     "page": 1,
     "char_start": 334,
     "char_end": 424,
-    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 135.0 million to EUR 415.0 million per transaction."
    }
   ],
   "fact_00455": [
@@ -4483,7 +4483,7 @@
     "page": 1,
     "char_start": 334,
     "char_end": 424,
-    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 135.0 million to EUR 415.0 million per transaction."
    }
   ],
   "fact_00456": [
@@ -4501,7 +4501,7 @@
     "page": 1,
     "char_start": 105,
     "char_end": 189,
-    "quote": "Tarnane Investments had assets under management of EUR 2,650.0 million as of FY2024."
+    "quote": "Tarnane Investments had assets under management of EUR 2,400.0 million as of FY2024."
    }
   ],
   "fact_00458": [
@@ -4510,7 +4510,7 @@
     "page": 1,
     "char_start": 191,
     "char_end": 281,
-    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 135.0 million to EUR 415.0 million per transaction."
    }
   ],
   "fact_00459": [
@@ -4519,7 +4519,7 @@
     "page": 1,
     "char_start": 191,
     "char_end": 281,
-    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 135.0 million to EUR 415.0 million per transaction."
    }
   ],
   "fact_00460": [
@@ -4546,7 +4546,7 @@
     "page": 1,
     "char_start": 37,
     "char_end": 93,
-    "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+    "quote": "Tarnane is reported to manage roughly EUR 2,030 million."
    }
   ],
   "fact_00463": [
@@ -4555,7 +4555,7 @@
     "page": 1,
     "char_start": 46,
     "char_end": 130,
-    "quote": "Tarnane Investments had assets under management of EUR 2,070.0 million as of FY2022."
+    "quote": "Tarnane Investments had assets under management of EUR 1,870.0 million as of FY2022."
    }
   ],
   "fact_00464": [
@@ -4717,7 +4717,7 @@
     "page": 1,
     "char_start": 247,
     "char_end": 333,
-    "quote": "Ithis Systems had a market capitalisation of EUR 1,600.0 million at the end of FY2024."
+    "quote": "Ithis Systems had a market capitalisation of EUR 1,550.0 million at the end of FY2024."
    }
   ],
   "fact_00482": [
@@ -4726,7 +4726,7 @@
     "page": 1,
     "char_start": 102,
     "char_end": 169,
-    "quote": "Market capitalisation was EUR 1,600.0 million at the end of FY2024."
+    "quote": "Market capitalisation was EUR 1,550.0 million at the end of FY2024."
    }
   ],
   "fact_00483": [
@@ -4735,7 +4735,7 @@
     "page": 1,
     "char_start": 171,
     "char_end": 219,
-    "quote": "Revenue amounted to EUR 566.5 million in FY2024."
+    "quote": "Revenue amounted to EUR 548.8 million in FY2024."
    }
   ],
   "fact_00484": [
@@ -4753,7 +4753,7 @@
     "page": 1,
     "char_start": 31,
     "char_end": 116,
-    "quote": "The stock market capitalisation of Ithis was reported near EUR 1,410 million in 2024."
+    "quote": "The stock market capitalisation of Ithis was reported near EUR 1,370 million in 2024."
    }
   ],
   "fact_00486": [
@@ -4771,7 +4771,7 @@
     "page": 1,
     "char_start": 279,
     "char_end": 367,
-    "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 650.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00488": [
@@ -4780,7 +4780,7 @@
     "page": 1,
     "char_start": 369,
     "char_end": 452,
-    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 130.0 million."
    }
   ],
   "fact_00489": [
@@ -4789,7 +4789,7 @@
     "page": 1,
     "char_start": 369,
     "char_end": 452,
-    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 130.0 million."
    }
   ],
   "fact_00490": [
@@ -4807,7 +4807,7 @@
     "page": 1,
     "char_start": 103,
     "char_end": 171,
-    "quote": "Assets under management were EUR 750.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 650.0 million at the end of FY2024."
    }
   ],
   "fact_00492": [
@@ -4816,7 +4816,7 @@
     "page": 1,
     "char_start": 173,
     "char_end": 256,
-    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 130.0 million."
    }
   ],
   "fact_00493": [
@@ -4825,7 +4825,7 @@
     "page": 1,
     "char_start": 173,
     "char_end": 256,
-    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 130.0 million."
    }
   ],
   "fact_00494": [
@@ -4861,7 +4861,7 @@
     "page": 1,
     "char_start": 45,
     "char_end": 119,
-    "quote": "Junium Growth Fund had assets under management of EUR 550.0m as of FY2022."
+    "quote": "Junium Growth Fund had assets under management of EUR 480.0m as of FY2022."
    }
   ],
   "fact_00498": [
@@ -4924,7 +4924,7 @@
     "page": 1,
     "char_start": 265,
     "char_end": 353,
-    "quote": "The platform administers EUR 300.0 million on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 250.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00505": [
@@ -4933,7 +4933,7 @@
     "page": 1,
     "char_start": 355,
     "char_end": 443,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 10.0 million to EUR 40.0 million per transaction."
    }
   ],
   "fact_00506": [
@@ -4942,7 +4942,7 @@
     "page": 1,
     "char_start": 355,
     "char_end": 443,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 10.0 million to EUR 40.0 million per transaction."
    }
   ],
   "fact_00507": [
@@ -4960,7 +4960,7 @@
     "page": 1,
     "char_start": 113,
     "char_end": 199,
-    "quote": "Zanent Capital Partners had assets under management of EUR 300.0 million as of FY2024."
+    "quote": "Zanent Capital Partners had assets under management of EUR 250.0 million as of FY2024."
    }
   ],
   "fact_00509": [
@@ -4969,7 +4969,7 @@
     "page": 1,
     "char_start": 201,
     "char_end": 289,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 10.0 million to EUR 40.0 million per transaction."
    }
   ],
   "fact_00510": [
@@ -4978,7 +4978,7 @@
     "page": 1,
     "char_start": 201,
     "char_end": 289,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 10.0 million to EUR 40.0 million per transaction."
    }
   ],
   "fact_00511": [
@@ -5014,7 +5014,7 @@
     "page": 1,
     "char_start": 41,
     "char_end": 118,
-    "quote": "Industry estimates put the assets of Zanent at about EUR 260 million in 2024."
+    "quote": "Industry estimates put the assets of Zanent at about EUR 220 million in 2024."
    }
   ],
   "fact_00515": [
@@ -5023,7 +5023,7 @@
     "page": 1,
     "char_start": 50,
     "char_end": 129,
-    "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+    "quote": "Zanent Capital Partners had assets under management of EUR 190.0m as of FY2022."
    }
   ],
   "fact_00516": [
@@ -5077,7 +5077,7 @@
     "page": 1,
     "char_start": 258,
     "char_end": 328,
-    "quote": "Assets under management were EUR 3,400.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 3,100.0 million at the end of FY2024."
    }
   ],
   "fact_00522": [
@@ -5086,7 +5086,7 @@
     "page": 1,
     "char_start": 330,
     "char_end": 420,
-    "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
    }
   ],
   "fact_00523": [
@@ -5095,7 +5095,7 @@
     "page": 1,
     "char_start": 330,
     "char_end": 420,
-    "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 160.0 million to EUR 550.0 million per transaction."
    }
   ],
   "fact_00524": [
@@ -5113,7 +5113,7 @@
     "page": 1,
     "char_start": 91,
     "char_end": 181,
-    "quote": "The platform administers EUR 3,400.0 million on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 3,100.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00526": [
@@ -5122,7 +5122,7 @@
     "page": 1,
     "char_start": 183,
     "char_end": 267,
-    "quote": "Each deal receives an equity cheque between EUR 175.0 million and EUR 600.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 160.0 million and EUR 550.0 million."
    }
   ],
   "fact_00527": [
@@ -5131,7 +5131,7 @@
     "page": 1,
     "char_start": 183,
     "char_end": 267,
-    "quote": "Each deal receives an equity cheque between EUR 175.0 million and EUR 600.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 160.0 million and EUR 550.0 million."
    }
   ],
   "fact_00528": [
@@ -5167,7 +5167,7 @@
     "page": 1,
     "char_start": 30,
     "char_end": 84,
-    "quote": "Pelix is reported to manage roughly EUR 3,040 million."
+    "quote": "Pelix is reported to manage roughly EUR 2,770 million."
    }
   ],
   "fact_00532": [
@@ -5176,7 +5176,7 @@
     "page": 1,
     "char_start": 37,
     "char_end": 107,
-    "quote": "Assets under management were EUR 3,810.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 3,470.0 million at the end of FY2024."
    }
   ],
   "fact_00533": [
@@ -5185,7 +5185,7 @@
     "page": 1,
     "char_start": 116,
     "char_end": 186,
-    "quote": "Assets under management were EUR 3,400.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 3,100.0 million at the end of FY2024."
    }
   ],
   "fact_00534": [
@@ -5239,7 +5239,7 @@
     "page": 1,
     "char_start": 277,
     "char_end": 347,
-    "quote": "Assets under management were EUR 1,600.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 1,450.0 million at the end of FY2024."
    }
   ],
   "fact_00540": [
@@ -5248,7 +5248,7 @@
     "page": 1,
     "char_start": 349,
     "char_end": 438,
-    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 285.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 70.0 million to EUR 260.0 million per transaction."
    }
   ],
   "fact_00541": [
@@ -5257,7 +5257,7 @@
     "page": 1,
     "char_start": 349,
     "char_end": 438,
-    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 285.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 70.0 million to EUR 260.0 million per transaction."
    }
   ],
   "fact_00542": [
@@ -5275,7 +5275,7 @@
     "page": 1,
     "char_start": 113,
     "char_end": 183,
-    "quote": "Assets under management were EUR 1,600.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 1,450.0 million at the end of FY2024."
    }
   ],
   "fact_00544": [
@@ -5284,7 +5284,7 @@
     "page": 1,
     "char_start": 185,
     "char_end": 268,
-    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 285.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 70.0 million and EUR 260.0 million."
    }
   ],
   "fact_00545": [
@@ -5293,7 +5293,7 @@
     "page": 1,
     "char_start": 185,
     "char_end": 268,
-    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 285.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 70.0 million and EUR 260.0 million."
    }
   ],
   "fact_00546": [
@@ -5329,7 +5329,7 @@
     "page": 1,
     "char_start": 50,
     "char_end": 138,
-    "quote": "Draium Capital Partners had assets under management of EUR 1,190.0 million as of FY2022."
+    "quote": "Draium Capital Partners had assets under management of EUR 1,080.0 million as of FY2022."
    }
   ],
   "fact_00550": [
@@ -5392,7 +5392,7 @@
     "page": 1,
     "char_start": 260,
     "char_end": 328,
-    "quote": "Assets under management were EUR 450.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 400.0 million at the end of FY2024."
    }
   ],
   "fact_00557": [
@@ -5401,7 +5401,7 @@
     "page": 1,
     "char_start": 330,
     "char_end": 418,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 55.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
    }
   ],
   "fact_00558": [
@@ -5410,7 +5410,7 @@
     "page": 1,
     "char_start": 330,
     "char_end": 418,
-    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 55.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
    }
   ],
   "fact_00559": [
@@ -5428,7 +5428,7 @@
     "page": 1,
     "char_start": 103,
     "char_end": 211,
-    "quote": "The platform administers EUR 450.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 400.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00561": [
@@ -5437,7 +5437,7 @@
     "page": 1,
     "char_start": 213,
     "char_end": 295,
-    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 55.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 50.0 million."
    }
   ],
   "fact_00562": [
@@ -5446,7 +5446,7 @@
     "page": 1,
     "char_start": 213,
     "char_end": 295,
-    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 55.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 50.0 million."
    }
   ],
   "fact_00563": [
@@ -5482,7 +5482,7 @@
     "page": 1,
     "char_start": 36,
     "char_end": 89,
-    "quote": "Caruro is reported to manage roughly EUR 390 million."
+    "quote": "Caruro is reported to manage roughly EUR 350 million."
    }
   ],
   "fact_00567": [
@@ -5491,7 +5491,7 @@
     "page": 1,
     "char_start": 249,
     "char_end": 377,
-    "quote": "The equity of Novent Holdings was valued at EUR 2,050.0 million on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Novent Holdings was valued at EUR 2,000.0 million on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00568": [
@@ -5500,7 +5500,7 @@
     "page": 1,
     "char_start": 106,
     "char_end": 207,
-    "quote": "The equity of Novent Holdings was valued at EUR 2,050.0m on the exchange at the close of fiscal 2024."
+    "quote": "The equity of Novent Holdings was valued at EUR 2,000.0m on the exchange at the close of fiscal 2024."
    }
   ],
   "fact_00569": [
@@ -5509,7 +5509,7 @@
     "page": 1,
     "char_start": 209,
     "char_end": 279,
-    "quote": "Turnover climbed to EUR 1,079.8m over the year ended 31 December 2024."
+    "quote": "Turnover climbed to EUR 1,053.5m over the year ended 31 December 2024."
    }
   ],
   "fact_00570": [
@@ -5536,7 +5536,7 @@
     "page": 1,
     "char_start": 261,
     "char_end": 351,
-    "quote": "The platform administers EUR 2,200.0 million on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 1,950.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00573": [
@@ -5545,7 +5545,7 @@
     "page": 1,
     "char_start": 353,
     "char_end": 437,
-    "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
    }
   ],
   "fact_00574": [
@@ -5554,7 +5554,7 @@
     "page": 1,
     "char_start": 353,
     "char_end": 437,
-    "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 115.0 million and EUR 280.0 million."
    }
   ],
   "fact_00575": [
@@ -5572,7 +5572,7 @@
     "page": 1,
     "char_start": 111,
     "char_end": 181,
-    "quote": "Assets under management were EUR 2,200.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 1,950.0 million at the end of FY2024."
    }
   ],
   "fact_00577": [
@@ -5581,7 +5581,7 @@
     "page": 1,
     "char_start": 183,
     "char_end": 273,
-    "quote": "The fund targets equity tickets of EUR 130.0 million to EUR 315.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 115.0 million to EUR 280.0 million per transaction."
    }
   ],
   "fact_00578": [
@@ -5590,7 +5590,7 @@
     "page": 1,
     "char_start": 183,
     "char_end": 273,
-    "quote": "The fund targets equity tickets of EUR 130.0 million to EUR 315.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 115.0 million to EUR 280.0 million per transaction."
    }
   ],
   "fact_00579": [
@@ -5617,7 +5617,7 @@
     "page": 1,
     "char_start": 40,
     "char_end": 118,
-    "quote": "Industry estimates put the assets of Zanik at about EUR 1,950 million in 2024."
+    "quote": "Industry estimates put the assets of Zanik at about EUR 1,730 million in 2024."
    }
   ],
   "fact_00582": [
@@ -5626,7 +5626,7 @@
     "page": 1,
     "char_start": 221,
     "char_end": 350,
-    "quote": "The equity of Ithar Industries was valued at EUR 1,200.0 million on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Ithar Industries was valued at EUR 1,150.0 million on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00583": [
@@ -5635,7 +5635,7 @@
     "page": 1,
     "char_start": 108,
     "char_end": 230,
-    "quote": "The equity of Ithar Industries was valued at EUR 1,200.0m on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Ithar Industries was valued at EUR 1,150.0m on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00584": [
@@ -5644,7 +5644,7 @@
     "page": 1,
     "char_start": 232,
     "char_end": 302,
-    "quote": "The top line came in at EUR 302.5m in the year ended 31 December 2024."
+    "quote": "The top line came in at EUR 289.9m in the year ended 31 December 2024."
    }
   ],
   "fact_00585": [
@@ -5662,7 +5662,7 @@
     "page": 1,
     "char_start": 286,
     "char_end": 357,
-    "quote": "Assets under management were EUR 15,950.0 million at the end of FY2024."
+    "quote": "Assets under management were EUR 14,350.0 million at the end of FY2024."
    }
   ],
   "fact_00587": [
@@ -5671,7 +5671,7 @@
     "page": 1,
     "char_start": 359,
     "char_end": 445,
-    "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
    }
   ],
   "fact_00588": [
@@ -5680,7 +5680,7 @@
     "page": 1,
     "char_start": 359,
     "char_end": 445,
-    "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 800.0 million and EUR 2,535.0 million."
    }
   ],
   "fact_00589": [
@@ -5698,7 +5698,7 @@
     "page": 1,
     "char_start": 103,
     "char_end": 184,
-    "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+    "quote": "Corani Growth Fund had assets under management of EUR 14.35 billion as of FY2024."
    }
   ],
   "fact_00591": [
@@ -5707,7 +5707,7 @@
     "page": 1,
     "char_start": 186,
     "char_end": 278,
-    "quote": "The fund targets equity tickets of EUR 890.0 million to EUR 2,815.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 800.0 million to EUR 2,535.0 million per transaction."
    }
   ],
   "fact_00592": [
@@ -5716,7 +5716,7 @@
     "page": 1,
     "char_start": 186,
     "char_end": 278,
-    "quote": "The fund targets equity tickets of EUR 890.0 million to EUR 2,815.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 800.0 million to EUR 2,535.0 million per transaction."
    }
   ],
   "fact_00593": [
@@ -5788,7 +5788,7 @@
     "page": 1,
     "char_start": 250,
     "char_end": 337,
-    "quote": "The platform administers EUR 1.85 billion on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 1.65 billion on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00601": [
@@ -5797,7 +5797,7 @@
     "page": 1,
     "char_start": 339,
     "char_end": 428,
-    "quote": "The fund targets equity tickets of EUR 85.0 million to EUR 260.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 230.0 million per transaction."
    }
   ],
   "fact_00602": [
@@ -5806,7 +5806,7 @@
     "page": 1,
     "char_start": 339,
     "char_end": 428,
-    "quote": "The fund targets equity tickets of EUR 85.0 million to EUR 260.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 230.0 million per transaction."
    }
   ],
   "fact_00603": [
@@ -5824,7 +5824,7 @@
     "page": 1,
     "char_start": 103,
     "char_end": 213,
-    "quote": "The platform administers EUR 1,850.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 1,650.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00605": [
@@ -5833,7 +5833,7 @@
     "page": 1,
     "char_start": 215,
     "char_end": 298,
-    "quote": "Each deal receives an equity cheque between EUR 85.0 million and EUR 260.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 230.0 million."
    }
   ],
   "fact_00606": [
@@ -5842,7 +5842,7 @@
     "page": 1,
     "char_start": 215,
     "char_end": 298,
-    "quote": "Each deal receives an equity cheque between EUR 85.0 million and EUR 260.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 230.0 million."
    }
   ],
   "fact_00607": [
@@ -5878,7 +5878,7 @@
     "page": 1,
     "char_start": 243,
     "char_end": 371,
-    "quote": "The equity of Trauro Holdings was valued at EUR 2,400.0 million on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Trauro Holdings was valued at EUR 2,350.0 million on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00611": [
@@ -5886,25 +5886,25 @@
     "document_id": "doc_buyer_33_report",
     "page": 1,
     "char_start": 106,
-    "char_end": 169,
-    "quote": "Market capitalisation was EUR 2.4 billion at the end of FY2024."
+    "char_end": 170,
+    "quote": "Market capitalisation was EUR 2.35 billion at the end of FY2024."
    }
   ],
   "fact_00612": [
    {
     "document_id": "doc_buyer_33_report",
     "page": 1,
-    "char_start": 171,
-    "char_end": 236,
-    "quote": "Trauro Holdings generated revenue of EUR 503.0 million in FY2024."
+    "char_start": 172,
+    "char_end": 237,
+    "quote": "Trauro Holdings generated revenue of EUR 492.5 million in FY2024."
    }
   ],
   "fact_00613": [
    {
     "document_id": "doc_buyer_33_report",
     "page": 1,
-    "char_start": 238,
-    "char_end": 338,
+    "char_start": 239,
+    "char_end": 339,
     "quote": "Trauro Holdings had a workforce of 17,110 employees at the close of the year ended 31 December 2024."
    }
   ],
@@ -5912,8 +5912,8 @@
    {
     "document_id": "doc_buyer_33_report",
     "page": 1,
-    "char_start": 340,
-    "char_end": 422,
+    "char_start": 341,
+    "char_end": 423,
     "quote": "Trauro Holdings holds a market share of 41.0 percent in its core European segment."
    }
   ],
@@ -5923,7 +5923,7 @@
     "page": 1,
     "char_start": 42,
     "char_end": 123,
-    "quote": "Trauro Holdings had a market capitalisation of EUR 1,910.0m at the end of FY2022."
+    "quote": "Trauro Holdings had a market capitalisation of EUR 1,870.0m at the end of FY2022."
    }
   ],
   "fact_00616": [
@@ -5932,7 +5932,7 @@
     "page": 1,
     "char_start": 253,
     "char_end": 329,
-    "quote": "Junova Equity had assets under management of EUR 900.0 million as of FY2024."
+    "quote": "Junova Equity had assets under management of EUR 850.0 million as of FY2024."
    }
   ],
   "fact_00617": [
@@ -5941,7 +5941,7 @@
     "page": 1,
     "char_start": 331,
     "char_end": 414,
-    "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
    }
   ],
   "fact_00618": [
@@ -5950,7 +5950,7 @@
     "page": 1,
     "char_start": 331,
     "char_end": 414,
-    "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 125.0 million."
    }
   ],
   "fact_00619": [
@@ -5968,7 +5968,7 @@
     "page": 1,
     "char_start": 93,
     "char_end": 201,
-    "quote": "The platform administers EUR 900.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "quote": "The platform administers EUR 850.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00621": [
@@ -5977,7 +5977,7 @@
     "page": 1,
     "char_start": 203,
     "char_end": 292,
-    "quote": "The fund targets equity tickets of EUR 50.0 million to EUR 130.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 125.0 million per transaction."
    }
   ],
   "fact_00622": [
@@ -5986,7 +5986,7 @@
     "page": 1,
     "char_start": 203,
     "char_end": 292,
-    "quote": "The fund targets equity tickets of EUR 50.0 million to EUR 130.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 125.0 million per transaction."
    }
   ],
   "fact_00623": [
@@ -6022,7 +6022,7 @@
     "page": 1,
     "char_start": 248,
     "char_end": 368,
-    "quote": "The equity of Estund Systems was valued at EUR 3,600.0m on the exchange at the close of the year ended 31 December 2024."
+    "quote": "The equity of Estund Systems was valued at EUR 3,500.0m on the exchange at the close of the year ended 31 December 2024."
    }
   ],
   "fact_00627": [
@@ -6031,7 +6031,7 @@
     "page": 1,
     "char_start": 104,
     "char_end": 187,
-    "quote": "Estund Systems had a market capitalisation of EUR 3.6 billion at the end of FY2024."
+    "quote": "Estund Systems had a market capitalisation of EUR 3.5 billion at the end of FY2024."
    }
   ],
   "fact_00628": [
@@ -6040,7 +6040,7 @@
     "page": 1,
     "char_start": 189,
     "char_end": 266,
-    "quote": "Turnover climbed to EUR 2,156.9 million over the year ended 31 December 2024."
+    "quote": "Turnover climbed to EUR 2,097.0 million over the year ended 31 December 2024."
    }
   ],
   "fact_00629": [
@@ -6066,8 +6066,8 @@
     "document_id": "doc_buyer_35_pr_old",
     "page": 1,
     "char_start": 41,
-    "char_end": 121,
-    "quote": "Estund Systems had a market capitalisation of EUR 2,880.0m at the end of FY2022."
+    "char_end": 124,
+    "quote": "Estund Systems had a market capitalisation of EUR 2.8 billion at the end of FY2022."
    }
   ],
   "fact_00632": [
@@ -6075,26 +6075,26 @@
     "document_id": "doc_buyer_36_profile",
     "page": 1,
     "char_start": 300,
-    "char_end": 410,
-    "quote": "The platform administers EUR 1,050.0 million on behalf of its investors as of the year ended 31 December 2024."
+    "char_end": 408,
+    "quote": "The platform administers EUR 950.0 million on behalf of its investors as of the year ended 31 December 2024."
    }
   ],
   "fact_00633": [
    {
     "document_id": "doc_buyer_36_profile",
     "page": 1,
-    "char_start": 412,
-    "char_end": 501,
-    "quote": "The fund targets equity tickets of EUR 60.0 million to EUR 195.0 million per transaction."
+    "char_start": 410,
+    "char_end": 499,
+    "quote": "The fund targets equity tickets of EUR 55.0 million to EUR 175.0 million per transaction."
    }
   ],
   "fact_00634": [
    {
     "document_id": "doc_buyer_36_profile",
     "page": 1,
-    "char_start": 412,
-    "char_end": 501,
-    "quote": "The fund targets equity tickets of EUR 60.0 million to EUR 195.0 million per transaction."
+    "char_start": 410,
+    "char_end": 499,
+    "quote": "The fund targets equity tickets of EUR 55.0 million to EUR 175.0 million per transaction."
    }
   ],
   "fact_00635": [
@@ -6102,34 +6102,34 @@
     "document_id": "doc_buyer_36_report",
     "page": 1,
     "char_start": 113,
-    "char_end": 200,
-    "quote": "The platform administers EUR 1.05 billion on behalf of its investors as of fiscal 2024."
+    "char_end": 201,
+    "quote": "The platform administers EUR 950.0 million on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00636": [
    {
     "document_id": "doc_buyer_36_report",
     "page": 1,
-    "char_start": 202,
-    "char_end": 285,
-    "quote": "Each deal receives an equity cheque between EUR 60.0 million and EUR 195.0 million."
+    "char_start": 203,
+    "char_end": 286,
+    "quote": "Each deal receives an equity cheque between EUR 55.0 million and EUR 175.0 million."
    }
   ],
   "fact_00637": [
    {
     "document_id": "doc_buyer_36_report",
     "page": 1,
-    "char_start": 202,
-    "char_end": 285,
-    "quote": "Each deal receives an equity cheque between EUR 60.0 million and EUR 195.0 million."
+    "char_start": 203,
+    "char_end": 286,
+    "quote": "Each deal receives an equity cheque between EUR 55.0 million and EUR 175.0 million."
    }
   ],
   "fact_00638": [
    {
     "document_id": "doc_buyer_36_report",
     "page": 1,
-    "char_start": 287,
-    "char_end": 352,
+    "char_start": 288,
+    "char_end": 353,
     "quote": "Valuro Capital Partners owned 9 portfolio companies as of FY2024."
    }
   ],
@@ -6184,7 +6184,7 @@
     "page": 1,
     "char_start": 258,
     "char_end": 337,
-    "quote": "Lanova Equity had assets under management of EUR 19,950.0 million as of FY2024."
+    "quote": "Lanova Equity had assets under management of EUR 17,950.0 million as of FY2024."
    }
   ],
   "fact_00645": [
@@ -6193,7 +6193,7 @@
     "page": 1,
     "char_start": 339,
     "char_end": 433,
-    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 1,020.0 million to EUR 2,845.0 million per transaction."
    }
   ],
   "fact_00646": [
@@ -6202,7 +6202,7 @@
     "page": 1,
     "char_start": 339,
     "char_end": 433,
-    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 1,020.0 million to EUR 2,845.0 million per transaction."
    }
   ],
   "fact_00647": [
@@ -6220,7 +6220,7 @@
     "page": 1,
     "char_start": 93,
     "char_end": 172,
-    "quote": "Lanova Equity had assets under management of EUR 19,950.0 million as of FY2024."
+    "quote": "Lanova Equity had assets under management of EUR 17,950.0 million as of FY2024."
    }
   ],
   "fact_00649": [
@@ -6229,7 +6229,7 @@
     "page": 1,
     "char_start": 174,
     "char_end": 268,
-    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 1,020.0 million to EUR 2,845.0 million per transaction."
    }
   ],
   "fact_00650": [
@@ -6238,7 +6238,7 @@
     "page": 1,
     "char_start": 174,
     "char_end": 268,
-    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+    "quote": "The fund targets equity tickets of EUR 1,020.0 million to EUR 2,845.0 million per transaction."
    }
   ],
   "fact_00651": [
@@ -6265,7 +6265,7 @@
     "page": 1,
     "char_start": 238,
     "char_end": 296,
-    "quote": "Market capitalisation was EUR 450.0m at the end of FY2024."
+    "quote": "Market capitalisation was EUR 400.0m at the end of FY2024."
    }
   ],
   "fact_00654": [
@@ -6274,7 +6274,7 @@
     "page": 1,
     "char_start": 98,
     "char_end": 173,
-    "quote": "Lanik Group had a market capitalisation of EUR 450.0m at the end of FY2024."
+    "quote": "Lanik Group had a market capitalisation of EUR 400.0m at the end of FY2024."
    }
   ],
   "fact_00655": [
@@ -6283,7 +6283,7 @@
     "page": 1,
     "char_start": 175,
     "char_end": 223,
-    "quote": "Revenue amounted to EUR 236.1 million in FY2024."
+    "quote": "Revenue amounted to EUR 209.8 million in FY2024."
    }
   ],
   "fact_00656": [
@@ -6301,7 +6301,7 @@
     "page": 1,
     "char_start": 225,
     "char_end": 302,
-    "quote": "Caris Equity had assets under management of EUR 1,250.0 million as of FY2024."
+    "quote": "Caris Equity had assets under management of EUR 1,150.0 million as of FY2024."
    }
   ],
   "fact_00658": [
@@ -6310,7 +6310,7 @@
     "page": 1,
     "char_start": 304,
     "char_end": 387,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 35.0 million and EUR 150.0 million."
    }
   ],
   "fact_00659": [
@@ -6319,7 +6319,7 @@
     "page": 1,
     "char_start": 304,
     "char_end": 387,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 35.0 million and EUR 150.0 million."
    }
   ],
   "fact_00660": [
@@ -6328,7 +6328,7 @@
     "page": 1,
     "char_start": 91,
     "char_end": 174,
-    "quote": "The platform administers EUR 1,250.0m on behalf of its investors as of fiscal 2024."
+    "quote": "The platform administers EUR 1,150.0m on behalf of its investors as of fiscal 2024."
    }
   ],
   "fact_00661": [
@@ -6337,7 +6337,7 @@
     "page": 1,
     "char_start": 176,
     "char_end": 259,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 35.0 million and EUR 150.0 million."
    }
   ],
   "fact_00662": [
@@ -6346,7 +6346,7 @@
     "page": 1,
     "char_start": 176,
     "char_end": 259,
-    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+    "quote": "Each deal receives an equity cheque between EUR 35.0 million and EUR 150.0 million."
    }
   ],
   "fact_00663": [
@@ -6360,7 +6360,7 @@
   ]
  },
  "absent_terms": {
-  "u_0001": {
+  "un_0001": {
    "topic": "ceo_compensation",
    "terms": [
     "compensation",
@@ -6371,7 +6371,7 @@
     "pay package"
    ]
   },
-  "u_0002": {
+  "un_0002": {
    "topic": "revenue_guidance_fy2026",
    "terms": [
     "guidance",
@@ -6379,7 +6379,7 @@
     "fiscal 2026"
    ]
   },
-  "u_0003": {
+  "un_0003": {
    "topic": "ebitda_forecast_fy2027",
    "terms": [
     "forecast",
@@ -6387,7 +6387,7 @@
     "fiscal 2027"
    ]
   },
-  "u_0004": {
+  "un_0004": {
    "topic": "pending_litigation",
    "terms": [
     "lawsuit",
@@ -6396,19 +6396,19 @@
     "pending claim"
    ]
   },
-  "u_0005": {
+  "un_0005": {
    "topic": "pension_deficit",
    "terms": [
     "pension"
    ]
   },
-  "u_0006": {
+  "un_0006": {
    "topic": "patent_portfolio",
    "terms": [
     "patent"
    ]
   },
-  "u_0007": {
+  "un_0007": {
    "topic": "employee_attrition",
    "terms": [
     "attrition",
@@ -6417,7 +6417,7 @@
     "resignation"
    ]
   },
-  "u_0008": {
+  "un_0008": {
    "topic": "environmental",
    "terms": [
     "environmental",
@@ -6425,33 +6425,33 @@
     "carbon"
    ]
   },
-  "u_0009": {
+  "un_0009": {
    "topic": "credit_rating",
    "terms": [
     "credit rating",
     "rating agency"
    ]
   },
-  "u_0010": {
+  "un_0010": {
    "topic": "insurance",
    "terms": [
     "insurance",
     "insured"
    ]
   },
-  "u_0011": {
+  "un_0011": {
    "topic": "customer_churn",
    "terms": [
     "churn"
    ]
   },
-  "u_0012": {
+  "un_0012": {
    "topic": "dividend_policy",
    "terms": [
     "dividend"
    ]
   },
-  "u_0013": {
+  "un_0013": {
    "topic": "ceo_compensation",
    "terms": [
     "compensation",
@@ -6462,7 +6462,7 @@
     "pay package"
    ]
   },
-  "u_0014": {
+  "un_0014": {
    "topic": "revenue_guidance_fy2026",
    "terms": [
     "guidance",
@@ -6470,7 +6470,7 @@
     "fiscal 2026"
    ]
   },
-  "u_0015": {
+  "un_0015": {
    "topic": "ebitda_forecast_fy2027",
    "terms": [
     "forecast",
@@ -6478,7 +6478,7 @@
     "fiscal 2027"
    ]
   },
-  "u_0016": {
+  "un_0016": {
    "topic": "pending_litigation",
    "terms": [
     "lawsuit",
@@ -6487,19 +6487,19 @@
     "pending claim"
    ]
   },
-  "u_0017": {
+  "un_0017": {
    "topic": "pension_deficit",
    "terms": [
     "pension"
    ]
   },
-  "u_0018": {
+  "un_0018": {
    "topic": "patent_portfolio",
    "terms": [
     "patent"
    ]
   },
-  "u_0019": {
+  "un_0019": {
    "topic": "employee_attrition",
    "terms": [
     "attrition",
@@ -6508,7 +6508,7 @@
     "resignation"
    ]
   },
-  "u_0020": {
+  "un_0020": {
    "topic": "environmental",
    "terms": [
     "environmental",
@@ -6516,33 +6516,33 @@
     "carbon"
    ]
   },
-  "u_0021": {
+  "un_0021": {
    "topic": "credit_rating",
    "terms": [
     "credit rating",
     "rating agency"
    ]
   },
-  "u_0022": {
+  "un_0022": {
    "topic": "insurance",
    "terms": [
     "insurance",
     "insured"
    ]
   },
-  "u_0023": {
+  "un_0023": {
    "topic": "customer_churn",
    "terms": [
     "churn"
    ]
   },
-  "u_0024": {
+  "un_0024": {
    "topic": "dividend_policy",
    "terms": [
     "dividend"
    ]
   },
-  "u_0025": {
+  "un_0025": {
    "topic": "ceo_compensation",
    "terms": [
     "compensation",
@@ -6553,7 +6553,7 @@
     "pay package"
    ]
   },
-  "u_0026": {
+  "un_0026": {
    "topic": "revenue_guidance_fy2026",
    "terms": [
     "guidance",
@@ -6561,7 +6561,7 @@
     "fiscal 2026"
    ]
   },
-  "u_0027": {
+  "un_0027": {
    "topic": "ebitda_forecast_fy2027",
    "terms": [
     "forecast",
@@ -6569,7 +6569,7 @@
     "fiscal 2027"
    ]
   },
-  "u_0028": {
+  "un_0028": {
    "topic": "pending_litigation",
    "terms": [
     "lawsuit",
@@ -6578,19 +6578,19 @@
     "pending claim"
    ]
   },
-  "u_0029": {
+  "un_0029": {
    "topic": "pension_deficit",
    "terms": [
     "pension"
    ]
   },
-  "u_0030": {
+  "un_0030": {
    "topic": "patent_portfolio",
    "terms": [
     "patent"
    ]
   },
-  "u_0031": {
+  "un_0031": {
    "topic": "employee_attrition",
    "terms": [
     "attrition",
@@ -6599,7 +6599,7 @@
     "resignation"
    ]
   },
-  "u_0032": {
+  "un_0032": {
    "topic": "environmental",
    "terms": [
     "environmental",
@@ -6607,33 +6607,33 @@
     "carbon"
    ]
   },
-  "u_0033": {
+  "un_0033": {
    "topic": "credit_rating",
    "terms": [
     "credit rating",
     "rating agency"
    ]
   },
-  "u_0034": {
+  "un_0034": {
    "topic": "insurance",
    "terms": [
     "insurance",
     "insured"
    ]
   },
-  "u_0035": {
+  "un_0035": {
    "topic": "customer_churn",
    "terms": [
     "churn"
    ]
   },
-  "u_0036": {
+  "un_0036": {
    "topic": "dividend_policy",
    "terms": [
     "dividend"
    ]
   },
-  "u_0037": {
+  "un_0037": {
    "topic": "fee_schedule",
    "terms": [
     "retainer",
@@ -6642,85 +6642,85 @@
     "mandate fee"
    ]
   },
-  "u_0038": {
+  "un_0038": {
    "topic": "league_table",
    "terms": [
     "league table",
     "ranking"
    ]
   },
-  "u_0039": {
+  "un_0039": {
    "topic": "law_firm",
    "terms": [
     "law firm",
     "legal counsel"
    ]
   },
-  "u_0040": {
+  "un_0040": {
    "topic": "fairness_fee",
    "terms": [
     "fairness opinion"
    ]
   },
-  "u_0041": {
+  "un_0041": {
    "topic": "parental_leave",
    "terms": [
     "parental leave"
    ]
   },
-  "u_0042": {
+  "un_0042": {
    "topic": "conflict_check",
    "terms": [
     "conflict check"
    ]
   },
-  "u_0043": {
+  "un_0043": {
    "topic": "carried_interest",
    "terms": [
     "carried interest",
     "hurdle rate"
    ]
   },
-  "u_0044": {
+  "un_0044": {
    "topic": "cio",
    "terms": [
     "chief investment officer"
    ]
   },
-  "u_0045": {
+  "un_0045": {
    "topic": "buyer_credit_rating",
    "terms": [
     "credit rating",
     "rating agency"
    ]
   },
-  "u_0046": {
+  "un_0046": {
    "topic": "esg_rating",
    "terms": [
     "esg"
    ]
   },
-  "u_0047": {
+  "un_0047": {
    "topic": "investor_base",
    "terms": [
     "limited partner",
     "largest investor"
    ]
   },
-  "u_0048": {
+  "un_0048": {
    "topic": "dividend_yield",
    "terms": [
     "dividend"
    ]
   },
-  "u_0049": {
+  "un_0049": {
    "topic": "carried_interest",
    "terms": [
     "carried interest",
     "hurdle rate"
    ]
   },
-  "u_0050": {
+  "un_0050": {
    "topic": "cio",
    "terms": [
     "chief investment officer"
@@ -6729,33 +6729,33 @@
  },
  "deal_economics": {
   "deal_aurora": {
-   "enterprise_value_eur_m": 289.9,
-   "equity_value_eur_m": 239.3,
+   "enterprise_value_eur_m": 281.6,
+   "equity_value_eur_m": 215.6,
    "sector": "industrial_components"
   },
   "deal_borealis": {
-   "enterprise_value_eur_m": 481.7,
-   "equity_value_eur_m": 409.0,
+   "enterprise_value_eur_m": 500.2,
+   "equity_value_eur_m": 424.2,
    "sector": "software"
   },
   "deal_cygnus": {
-   "enterprise_value_eur_m": 476.9,
-   "equity_value_eur_m": 402.8,
+   "enterprise_value_eur_m": 478.8,
+   "equity_value_eur_m": 404.3,
    "sector": "logistics"
   },
   "deal_draco": {
-   "enterprise_value_eur_m": 263.1,
-   "equity_value_eur_m": 237.0,
+   "enterprise_value_eur_m": 287.6,
+   "equity_value_eur_m": 257.6,
    "sector": "packaging"
   },
   "deal_eridanus": {
-   "enterprise_value_eur_m": 358.6,
-   "equity_value_eur_m": 282.9,
+   "enterprise_value_eur_m": 364.2,
+   "equity_value_eur_m": 287.1,
    "sector": "medical_devices"
   },
   "deal_fornax": {
-   "enterprise_value_eur_m": 324.6,
-   "equity_value_eur_m": 241.3,
+   "enterprise_value_eur_m": 316.6,
+   "equity_value_eur_m": 235.5,
    "sector": "food"
   },
   "deal_gemini": {
@@ -6764,21 +6764,21 @@
    "sector": "water_systems"
   },
   "deal_hydra": {
-   "enterprise_value_eur_m": 199.3,
-   "equity_value_eur_m": 173.5,
+   "enterprise_value_eur_m": 205.8,
+   "equity_value_eur_m": 179.0,
    "sector": "automotive_parts"
   },
   "deal_lyra": {
-   "enterprise_value_eur_m": 242.3,
-   "equity_value_eur_m": 197.1,
+   "enterprise_value_eur_m": 220.7,
+   "equity_value_eur_m": 180.7,
    "sector": "packaging"
   }
  },
  "aurora": {
   "sector": "industrial_components",
   "region": "Central Europe",
-  "ev_eur_m": 289.9,
-  "equity_eur_m": 239.3
+  "ev_eur_m": 281.6,
+  "equity_eur_m": 215.6
  },
  "tier_note": "stronger_document_id: lowest tier number, ties broken by the later date (T1 strongest)"
 }

@@ -130,7 +130,7 @@ def _aurora_specs(ctx: Ctx) -> list[DocSpec]:
     specs = [
         build_cim(ctx, "doc_cim", date(2025, 3, 14), big=True),
         build_mgmt(ctx, "doc_mgmt_pres", date(2025, 3, 28)),
-        build_model(ctx, "doc_model", date(2025, 3, 20)),
+        build_model(ctx, "doc_model", date(2025, 3, 10)),
         build_nda(ctx, "doc_nda", date(2025, 1, 20)),
         build_spa(
             ctx, "doc_spa_draft", date(2025, 4, 10), draft=True, superseded_by="doc_spa_exec"

@@ -11,7 +11,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cogs",
   "period": "FY2020",
-  "value": 81.1,
+  "value": 83.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -19,7 +19,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_profit",
   "period": "FY2020",
-  "value": 59.0,
+  "value": 56.7,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -27,7 +27,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_margin",
   "period": "FY2020",
-  "value": 42.1128,
+  "value": 40.4711,
   "unit": "%",
   "kind": "compute"
  },
@@ -35,7 +35,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda",
   "period": "FY2020",
-  "value": 26.3,
+  "value": 26.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -43,7 +43,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda_margin",
   "period": "FY2020",
-  "value": 18.7723,
+  "value": 19.0578,
   "unit": "%",
   "kind": "compute"
  },
@@ -51,7 +51,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebit",
   "period": "FY2020",
-  "value": 21.2,
+  "value": 22.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -59,7 +59,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_income",
   "period": "FY2020",
-  "value": 13.4,
+  "value": 15.1,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -67,7 +67,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_margin",
   "period": "FY2020",
-  "value": 9.5646,
+  "value": 10.778,
   "unit": "%",
   "kind": "compute"
  },
@@ -75,7 +75,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "operating_cash_flow",
   "period": "FY2020",
-  "value": 18.8,
+  "value": 17.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -83,7 +83,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "capex",
   "period": "FY2020",
-  "value": 5.5,
+  "value": 5.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -91,7 +91,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "free_cash_flow",
   "period": "FY2020",
-  "value": 13.3,
+  "value": 12.1,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -99,7 +99,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cash",
   "period": "FY2020",
-  "value": 7.5,
+  "value": 11.3,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -107,7 +107,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_debt",
   "period": "FY2020",
-  "value": 56.7,
+  "value": 39.1,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -115,7 +115,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_debt",
   "period": "FY2020",
-  "value": 49.2,
+  "value": 27.8,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -123,7 +123,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "leverage",
   "period": "FY2020",
-  "value": 1.8707,
+  "value": 1.0412,
   "unit": "x",
   "kind": "compute"
  },
@@ -131,7 +131,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_assets",
   "period": "FY2020",
-  "value": 132.1,
+  "value": 120.2,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -139,7 +139,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_equity",
   "period": "FY2020",
-  "value": 56.5,
+  "value": 63.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -147,7 +147,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_expense",
   "period": "FY2020",
-  "value": 2.9,
+  "value": 1.9,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -155,7 +155,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_coverage",
   "period": "FY2020",
-  "value": 7.3103,
+  "value": 11.8947,
   "unit": "x",
   "kind": "compute"
  },
@@ -171,7 +171,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cogs",
   "period": "FY2021",
-  "value": 88.1,
+  "value": 92.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -179,7 +179,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_profit",
   "period": "FY2021",
-  "value": 64.5,
+  "value": 60.2,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -187,7 +187,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_margin",
   "period": "FY2021",
-  "value": 42.2674,
+  "value": 39.4495,
   "unit": "%",
   "kind": "compute"
  },
@@ -195,7 +195,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda",
   "period": "FY2021",
-  "value": 28.7,
+  "value": 27.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -203,7 +203,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda_margin",
   "period": "FY2021",
-  "value": 18.8073,
+  "value": 18.152,
   "unit": "%",
   "kind": "compute"
  },
@@ -211,7 +211,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebit",
   "period": "FY2021",
-  "value": 22.6,
+  "value": 22.2,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -219,7 +219,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_income",
   "period": "FY2021",
-  "value": 15.2,
+  "value": 14.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -227,7 +227,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_margin",
   "period": "FY2021",
-  "value": 9.9607,
+  "value": 9.1743,
   "unit": "%",
   "kind": "compute"
  },
@@ -235,7 +235,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "operating_cash_flow",
   "period": "FY2021",
-  "value": 21.2,
+  "value": 19.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -243,7 +243,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "capex",
   "period": "FY2021",
-  "value": 5.8,
+  "value": 6.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -251,7 +251,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "free_cash_flow",
   "period": "FY2021",
-  "value": 15.4,
+  "value": 13.8,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -259,7 +259,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cash",
   "period": "FY2021",
-  "value": 9.7,
+  "value": 8.2,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -267,7 +267,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_debt",
   "period": "FY2021",
-  "value": 42.4,
+  "value": 59.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -275,7 +275,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_debt",
   "period": "FY2021",
-  "value": 32.7,
+  "value": 51.5,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -283,7 +283,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "leverage",
   "period": "FY2021",
-  "value": 1.1394,
+  "value": 1.8592,
   "unit": "x",
   "kind": "compute"
  },
@@ -291,7 +291,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_assets",
   "period": "FY2021",
-  "value": 127.8,
+  "value": 143.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -299,7 +299,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_equity",
   "period": "FY2021",
-  "value": 66.1,
+  "value": 63.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -307,7 +307,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_expense",
   "period": "FY2021",
-  "value": 1.8,
+  "value": 3.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -315,7 +315,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_coverage",
   "period": "FY2021",
-  "value": 12.5556,
+  "value": 7.4,
   "unit": "x",
   "kind": "compute"
  },
@@ -331,7 +331,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cogs",
   "period": "FY2022",
-  "value": 93.7,
+  "value": 99.1,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -339,7 +339,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_profit",
   "period": "FY2022",
-  "value": 69.7,
+  "value": 64.3,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -347,7 +347,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_margin",
   "period": "FY2022",
-  "value": 42.6561,
+  "value": 39.3513,
   "unit": "%",
   "kind": "compute"
  },
@@ -355,7 +355,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda",
   "period": "FY2022",
-  "value": 33.1,
+  "value": 29.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -363,7 +363,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda_margin",
   "period": "FY2022",
-  "value": 20.257,
+  "value": 17.9927,
   "unit": "%",
   "kind": "compute"
  },
@@ -371,7 +371,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebit",
   "period": "FY2022",
-  "value": 27.6,
+  "value": 22.9,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -379,7 +379,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_income",
   "period": "FY2022",
-  "value": 18.5,
+  "value": 15.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -387,7 +387,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_margin",
   "period": "FY2022",
-  "value": 11.3219,
+  "value": 9.4247,
   "unit": "%",
   "kind": "compute"
  },
@@ -395,7 +395,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "operating_cash_flow",
   "period": "FY2022",
-  "value": 23.9,
+  "value": 21.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -403,7 +403,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "capex",
   "period": "FY2022",
-  "value": 6.7,
+  "value": 6.2,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -411,7 +411,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "free_cash_flow",
   "period": "FY2022",
-  "value": 17.2,
+  "value": 15.6,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -419,7 +419,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cash",
   "period": "FY2022",
-  "value": 11.1,
+  "value": 10.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -427,7 +427,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_debt",
   "period": "FY2022",
-  "value": 48.4,
+  "value": 43.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -435,7 +435,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_debt",
   "period": "FY2022",
-  "value": 37.3,
+  "value": 33.0,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -443,7 +443,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "leverage",
   "period": "FY2022",
-  "value": 1.1269,
+  "value": 1.1224,
   "unit": "x",
   "kind": "compute"
  },
@@ -451,7 +451,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_assets",
   "period": "FY2022",
-  "value": 162.3,
+  "value": 136.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -459,7 +459,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_equity",
   "period": "FY2022",
-  "value": 89.6,
+  "value": 72.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -467,7 +467,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_expense",
   "period": "FY2022",
-  "value": 2.3,
+  "value": 1.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -475,7 +475,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_coverage",
   "period": "FY2022",
-  "value": 12.0,
+  "value": 12.7222,
   "unit": "x",
   "kind": "compute"
  },
@@ -491,7 +491,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cogs",
   "period": "FY2023",
-  "value": 93.4,
+  "value": 101.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -499,7 +499,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_profit",
   "period": "FY2023",
-  "value": 74.6,
+  "value": 66.2,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -507,7 +507,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "gross_margin",
   "period": "FY2023",
-  "value": 44.4048,
+  "value": 39.4048,
   "unit": "%",
   "kind": "compute"
  },
@@ -515,7 +515,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda",
   "period": "FY2023",
-  "value": 36.4,
+  "value": 31.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -523,7 +523,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda_margin",
   "period": "FY2023",
-  "value": 21.6667,
+  "value": 18.4524,
   "unit": "%",
   "kind": "compute"
  },
@@ -531,7 +531,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebit",
   "period": "FY2023",
-  "value": 30.1,
+  "value": 25.3,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -539,7 +539,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_income",
   "period": "FY2023",
-  "value": 19.0,
+  "value": 16.9,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -547,7 +547,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_margin",
   "period": "FY2023",
-  "value": 11.3095,
+  "value": 10.0595,
   "unit": "%",
   "kind": "compute"
  },
@@ -555,7 +555,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "operating_cash_flow",
   "period": "FY2023",
-  "value": 25.6,
+  "value": 22.5,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -563,7 +563,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "capex",
   "period": "FY2023",
-  "value": 7.2,
+  "value": 6.9,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -571,7 +571,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "free_cash_flow",
   "period": "FY2023",
-  "value": 18.4,
+  "value": 15.6,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -579,7 +579,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cash",
   "period": "FY2023",
-  "value": 11.1,
+  "value": 11.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -587,7 +587,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_debt",
   "period": "FY2023",
-  "value": 89.3,
+  "value": 45.3,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -595,7 +595,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_debt",
   "period": "FY2023",
-  "value": 78.2,
+  "value": 33.9,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -603,7 +603,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "leverage",
   "period": "FY2023",
-  "value": 2.1484,
+  "value": 1.0935,
   "unit": "x",
   "kind": "compute"
  },
@@ -611,7 +611,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_assets",
   "period": "FY2023",
-  "value": 163.6,
+  "value": 166.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -619,7 +619,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_equity",
   "period": "FY2023",
-  "value": 55.6,
+  "value": 96.3,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -627,7 +627,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_expense",
   "period": "FY2023",
-  "value": 4.1,
+  "value": 2.1,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -635,7 +635,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_coverage",
   "period": "FY2023",
-  "value": 7.3415,
+  "value": 12.0476,
   "unit": "x",
   "kind": "compute"
  },
@@ -675,7 +675,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda",
   "period": "FY2024",
-  "value": 29.6,
+  "value": 31.8,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -683,7 +683,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebitda_margin",
   "period": "FY2024",
-  "value": 16.2281,
+  "value": 17.4342,
   "unit": "%",
   "kind": "compute"
  },
@@ -691,7 +691,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "ebit",
   "period": "FY2024",
-  "value": 23.9,
+  "value": 25.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -699,7 +699,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_income",
   "period": "FY2024",
-  "value": 15.1,
+  "value": 15.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -707,7 +707,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_margin",
   "period": "FY2024",
-  "value": 8.2785,
+  "value": 8.5526,
   "unit": "%",
   "kind": "compute"
  },
@@ -715,7 +715,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "operating_cash_flow",
   "period": "FY2024",
-  "value": 19.9,
+  "value": 22.7,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -723,7 +723,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "capex",
   "period": "FY2024",
-  "value": 7.5,
+  "value": 7.9,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -731,7 +731,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "free_cash_flow",
   "period": "FY2024",
-  "value": 12.4,
+  "value": 14.8,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -739,7 +739,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "cash",
   "period": "FY2024",
-  "value": 11.2,
+  "value": 12.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -747,7 +747,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_debt",
   "period": "FY2024",
-  "value": 61.8,
+  "value": 78.0,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -755,7 +755,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "net_debt",
   "period": "FY2024",
-  "value": 50.6,
+  "value": 66.0,
   "unit": "EUR m",
   "kind": "compute"
  },
@@ -763,7 +763,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "leverage",
   "period": "FY2024",
-  "value": 1.7095,
+  "value": 2.0755,
   "unit": "x",
   "kind": "compute"
  },
@@ -771,7 +771,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_assets",
   "period": "FY2024",
-  "value": 156.0,
+  "value": 177.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -779,7 +779,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "total_equity",
   "period": "FY2024",
-  "value": 69.1,
+  "value": 79.4,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -787,7 +787,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_expense",
   "period": "FY2024",
-  "value": 3.2,
+  "value": 3.6,
   "unit": "EUR m",
   "kind": "extract"
  },
@@ -795,7 +795,7 @@
   "deal_id": "deal_aurora",
   "kpi_id": "interest_coverage",
   "period": "FY2024",
-  "value": 7.4687,
+  "value": 6.9444,
   "unit": "x",
   "kind": "compute"
  }

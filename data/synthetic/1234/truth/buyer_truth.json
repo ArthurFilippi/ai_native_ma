@@ -927,7 +927,7 @@
   "deal_id": "deal_aurora",
   "buyer_id": "buyer_20",
   "criterion_key": "size_range",
-  "status": "met"
+  "status": "not_met"
  },
  {
   "deal_id": "deal_aurora",

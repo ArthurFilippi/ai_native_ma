@@ -99,15 +99,14 @@ def generate_financials(
         rev[3] = round(rev[4] / (1 + growth[3]))
     for i in (2, 1, 0):
         rev[i] = round(rev[i + 1] / (1 + growth[i]))
-    gm = [_u(rng, 0.29, 0.44)]
-    for _ in range(4):
-        gm.append(min(0.46, max(0.27, gm[-1] + _u(rng, -0.015, 0.02))))
-    if gross_margin_last is not None:
-        gm[4] = gross_margin_last
+    gm = [0.0] * 5
+    gm[4] = gross_margin_last if gross_margin_last is not None else _u(rng, 0.30, 0.43)
+    for i in (3, 2, 1, 0):
+        gm[i] = min(0.46, max(0.27, gm[i + 1] + _u(rng, -0.012, 0.012)))
     sga_ratio = _u(rng, 0.17, 0.25)
     gp = [round(r * g) for r, g in zip(rev, gm, strict=True)]
     cogs = [r - g for r, g in zip(rev, gp, strict=True)]
-    sga = [round(r * (sga_ratio + _u(rng, -0.01, 0.01))) for r in rev]
+    sga = [round(r * (sga_ratio + _u(rng, -0.004, 0.004))) for r in rev]
     ebitda = [g - s for g, s in zip(gp, sga, strict=True)]
     for i in range(5):  # keep EBITDA margin in a plausible band
         if ebitda[i] < rev[i] * 0.08:
