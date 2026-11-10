@@ -446,13 +446,20 @@ async def integration_bandwidth(ctx: DeepContext) -> CriterionResult:
         and _months_between(e.chunk.published_on, ctx.as_of) <= params.integration_window_months
     ]
     met = len(recent) <= params.max_recent_acquisitions
+    shown = recent[:3]
+    if not shown:
+        # No verdict without evidence: cite the newest acquisition report, which lies outside
+        # the window, so the reader can check the date that places it there.
+        newest = max(acquisitions, key=lambda e: e.chunk.published_on or date.min)
+        shown = [newest]
     return _result(
         key,
         CriterionStatus.MET if met else CriterionStatus.NOT_MET,
         f"{len(recent)} acquisition report(s) in dated sources within the last "
         f"{params.integration_window_months} months (counted per document, so a lower bound); "
-        f"the limit is {params.max_recent_acquisitions} (parameter).",
-        [await ctx.finder.cite(e) for e in recent[:3]],
+        f"the limit is {params.max_recent_acquisitions} (parameter)."
+        + ("" if recent else " The cited report is the newest one found, outside the window."),
+        [await ctx.finder.cite(e) for e in shown],
     )
 
 

@@ -358,6 +358,12 @@ async def test_an_acquisition_outside_the_window_does_not_count_as_recent(
     )
     results = await _screen(store, _buyer(BuyerType.STRATEGIC))
     assert results["recent_activity"].status is CriterionStatus.NOT_MET
+    # A `met` verdict of the bandwidth rule rests on zero recent reports: it still cites the
+    # newest report found, outside the window, so that no verdict stands without evidence.
+    bandwidth = results["integration_bandwidth"]
+    assert bandwidth.status is CriterionStatus.MET
+    assert len(bandwidth.citations) == 1
+    assert "outside the window" in bandwidth.rationale
 
 
 # ---------------------------------------------------------------- deal value
