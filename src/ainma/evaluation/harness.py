@@ -28,6 +28,7 @@ from ainma.evaluation.metrics.retrieval import (
     recall_at_k,
     reciprocal_rank,
 )
+from ainma.evaluation.metrics.screening import ranking_agreement, true_scores
 from ainma.store import Store
 from ainma.truth import Fact, Query, split_of
 
@@ -123,6 +124,9 @@ class SeedResult:
     verifier: VerifierUnits = field(default_factory=VerifierUnits)
     kpi: list[KpiCell] = field(default_factory=list)
     screening: list[tuple[str, str]] = field(default_factory=list)
+    # per deal: Spearman of the system order against the truth score, with the rank rule of the
+    # product (floor of the score range, D86) and with the previous rule (score, then coverage)
+    screening_rank: list[tuple[float | None, float | None]] = field(default_factory=list)
     timing: TimingUnits = field(default_factory=TimingUnits)
     counts: dict[str, int] = field(default_factory=dict)
 
@@ -481,10 +485,31 @@ async def _screening(result: SeedResult, adapter: Adapter, truth: TruthBundle) -
             for card in screened.cards
             for r in card.results
         }
+        truth_statuses: dict[str, dict[str, str]] = {}
         for row in truth.buyer_truth:
             if row.deal_id == deal_id:
                 predicted = statuses.get((row.buyer_id, row.criterion_key), "unknown")
                 result.screening.append((row.status.value, predicted))
+                truth_statuses.setdefault(row.buyer_id, {})[row.criterion_key] = row.status.value
+        weights = {c.key: c.weight for c in screened.criteria}
+        target = true_scores(truth_statuses, weights)
+        ranked = [c for c in screened.cards if c.rank is not None]
+        legacy = sorted(
+            ranked,
+            key=lambda c: (
+                bool(c.dealbreakers),
+                c.score is None,
+                -(c.score or 0.0),
+                -c.coverage,
+                c.buyer.id,
+            ),
+        )
+        result.screening_rank.append(
+            (
+                ranking_agreement([c.buyer.id for c in ranked], target),
+                ranking_agreement([c.buyer.id for c in legacy], target),
+            )
+        )
 
 
 async def evaluate_seed(

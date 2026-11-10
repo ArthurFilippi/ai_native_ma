@@ -463,6 +463,7 @@ def _extraction(meta: RunMeta, s: Mapping[str, Any]) -> str:
         ["Predicted met although not met", interval(sc["false_met_rate"])],
         ["Unknown rate", pct(sc["point"]["unknown_rate"])],
         ["Accuracy where a status was given", pct(sc["point"]["accuracy_known"])],
+        *_ranking_rows(sc.get("ranking")),
     ]
     body = [
         basis(meta, ["kpi", "screening"]),
@@ -481,6 +482,25 @@ def _extraction(meta: RunMeta, s: Mapping[str, Any]) -> str:
         table(["Metric", "Value"], screening_rows),
     ]
     return section("6. Extraction and screening", body)
+
+
+def _ranking_rows(ranking: Mapping[str, Any] | None) -> list[list[str]]:
+    """Spearman of the buyer order against the truth score (D86): product rule and previous rule
+    on the same cards."""
+    if not ranking:
+        return []
+    rows: list[list[str]] = []
+    for key, label in (
+        ("floor", "Buyer ranking, Spearman vs truth score (floor of the range, D86)"),
+        ("legacy", "Buyer ranking, Spearman vs truth score (previous rule: score, then coverage)"),
+    ):
+        r = ranking.get(key) or {}
+        if r.get("mean") is None:
+            rows.append([label, "n/a"])
+            continue
+        sd = f" +/- {r['sd']:.3f}" if r.get("sd") is not None else ""
+        rows.append([f"{label}, mean over {r['n']} deal runs", f"{r['mean']:.3f}{sd}"])
+    return rows
 
 
 def _judge(meta: RunMeta, s: Mapping[str, Any]) -> str:

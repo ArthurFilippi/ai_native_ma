@@ -554,7 +554,27 @@ def _screening(results: Sequence[SeedResult], pool: Pooler) -> Summary:
             "unknown_rate": scores.unknown_rate,
             "accuracy_known": scores.accuracy_known,
         },
+        "ranking": _ranking(results),
     }
+
+
+def _ranking(results: Sequence[SeedResult]) -> Summary:
+    """Spearman of the buyer order against the truth score, one value per (seed, deal): mean,
+    standard deviation and per seed, for the product rule and the previous rule."""
+    out: Summary = {"per_seed": {}}
+    for name, index in (("floor", 0), ("legacy", 1)):
+        values = [
+            pair[index] for r in results for pair in r.screening_rank if pair[index] is not None
+        ]
+        clean = [float(v) for v in values if v is not None]
+        out[name] = {
+            "n": len(clean),
+            "mean": float(np.mean(clean)) if clean else None,
+            "sd": float(np.std(clean, ddof=1)) if len(clean) > 1 else None,
+        }
+    for r in results:
+        out["per_seed"][r.label] = [list(pair) for pair in r.screening_rank]
+    return out
 
 
 # ---------------------------------------------------------------------------- performance
