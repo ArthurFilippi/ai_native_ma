@@ -68,10 +68,7 @@ async def test_gemini_parses_json_mode_response_and_usage() -> None:
     request = replay.requests[0]
     body = json.loads(request.content)
     assert body["generationConfig"]["responseMimeType"] == "application/json"
-    assert (
-        "JudgeResult" in json.dumps(body)
-        or "label" in body["systemInstruction"]["parts"][0]["text"]
-    )
+    assert "label" in body["generationConfig"]["responseSchema"]["properties"]
     assert request.headers["x-goog-api-key"] == "key-123"
     assert "key-123" not in str(request.url)
     assert request.url.path.endswith(f"/models/{DEFAULT_GEMINI_MODEL}:generateContent")
@@ -157,7 +154,11 @@ def test_price_table_has_null_prices_and_provenance_fields() -> None:
 
 async def test_live_factory_falls_back_to_the_mock_visibly_and_caches(tmp_path: Path) -> None:
     settings = Settings(
-        llm_provider="gemini", gemini_api_key="k", llm_cache_dir=tmp_path, _env_file=None
+        llm_provider="gemini",
+        gemini_api_key="k",
+        llm_cache_dir=tmp_path,
+        llm_allow_mock_fallback=True,  # opt in only (D88)
+        _env_file=None,
     )
     failing = Replay((500, "openai_rate_limited.json"))
     llm = build_live_llm(settings, transport=failing.transport())

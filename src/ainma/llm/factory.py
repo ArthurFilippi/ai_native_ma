@@ -17,3 +17,14 @@ def build_llm(settings: Settings) -> LLM:
     if settings.llm_provider == "mock":
         return build_mock_llm()
     return build_live_llm(settings)
+
+
+def build_judge_llm(settings: Settings) -> LLM | None:
+    """The judge model when `JUDGE_PROVIDER` or `JUDGE_MODEL` is set, else None (the writer
+    judges its own claims, and the trace says so)."""
+    if not settings.judge_provider and not settings.judge_model:
+        return None
+    provider = settings.judge_provider or settings.llm_provider
+    if provider == "mock":
+        return build_mock_llm()
+    return build_live_llm(settings, provider_name=provider, model=settings.judge_model)

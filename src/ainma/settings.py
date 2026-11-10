@@ -20,6 +20,14 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     openai_api_key: str = ""
     llm_cache_dir: Path = Path("data/cache/llm")
+    llm_max_concurrency: int = 4  # calls in flight per provider object
+    llm_timeout_s: float = 60.0
+    # a failed live call raises (the API answers 503) unless this is set: then the mock answers
+    # and the answer is marked `degraded` (D88). Never on by default.
+    llm_allow_mock_fallback: bool = False
+    # the judge model, distinct from the writer to avoid self preference; empty: same as writer
+    judge_provider: Literal["", "mock", "gemini", "openai"] = ""
+    judge_model: str = ""
 
     embeddings_backend: Literal["lsa", "fastembed"] = "lsa"
     embeddings_model: str = "BAAI/bge-small-en-v1.5"

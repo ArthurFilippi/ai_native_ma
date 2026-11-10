@@ -5,6 +5,9 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+from collections.abc import Awaitable, Callable
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +40,24 @@ def cost_usd(
     )
 
 
+def retry_after_seconds(value: str | None, *, now: datetime | None = None) -> float | None:
+    """Seconds to wait from a `Retry-After` header (delta seconds or an HTTP date), or None."""
+    if not value:
+        return None
+    text = value.strip()
+    try:
+        return max(0.0, float(text))
+    except ValueError:
+        pass
+    try:
+        when = parsedate_to_datetime(text)
+    except (TypeError, ValueError):
+        return None
+    if when.tzinfo is None:
+        when = when.replace(tzinfo=UTC)
+    return max(0.0, (when - (now or datetime.now(UTC))).total_seconds())
+
+
 def with_schema(system: str, json_schema: dict[str, Any]) -> str:
     return f"{system}\n\nThe JSON must validate against this schema:\n{json.dumps(json_schema)}"
 
@@ -55,6 +76,9 @@ class HttpJsonLLM(RawJsonLLM):
         max_retries: int = 2,
         backoff_s: float = 0.5,
         prices: dict[str, Any] | None = None,
+        max_concurrency: int = 4,
+        max_retry_after_s: float = 60.0,
+        sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
     ) -> None:
         if not api_key:
             raise LLMError(f"{self.provider}: no API key configured")
@@ -66,14 +90,23 @@ class HttpJsonLLM(RawJsonLLM):
         self._max_retries = max_retries
         self._backoff_s = backoff_s
         self._prices = prices if prices is not None else load_prices()
+        # one gate per provider object: the runtime builds one object per process, so this caps
+        # the calls in flight against the provider's rate limit
+        self._gate = asyncio.Semaphore(max(1, max_concurrency))
+        self.max_retry_after_s = max_retry_after_s
+        self._sleep = sleep
 
     async def _post(
         self, path: str, headers: dict[str, str], body: dict[str, Any]
     ) -> dict[str, Any]:
         url = f"{self._base_url}{path}"
         last = "no attempt"
-        async with httpx.AsyncClient(transport=self._transport, timeout=self._timeout_s) as client:
+        async with (
+            self._gate,
+            httpx.AsyncClient(transport=self._transport, timeout=self._timeout_s) as client,
+        ):
             for attempt in range(self._max_retries + 1):
+                wait = self._backoff_s * (2**attempt)
                 try:
                     response = await client.post(url, headers=headers, json=body)
                 except httpx.HTTPError as error:
@@ -90,8 +123,14 @@ class HttpJsonLLM(RawJsonLLM):
                     last = f"HTTP {response.status_code}: {response.text[:200]}"
                     if response.status_code not in RETRY_STATUSES:
                         break
+                    asked = retry_after_seconds(response.headers.get("retry-after"))
+                    if asked is not None:
+                        wait = min(asked, self.max_retry_after_s)
                 if attempt < self._max_retries:
-                    await asyncio.sleep(self._backoff_s * (2**attempt))
+                    logger.info(
+                        "%s: retry %d in %.1f s (%s)", self.provider, attempt + 1, wait, last
+                    )
+                    await self._sleep(wait)
         raise LLMError(f"{self.provider}: request failed ({last})")
 
     def _usage(self, input_tokens: int, output_tokens: int, latency_ms: float) -> Usage:
