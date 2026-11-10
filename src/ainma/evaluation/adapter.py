@@ -213,6 +213,16 @@ class Adapter:
                 return str(field.default)
         return "final"
 
+    @property
+    def default_tau(self) -> float | None:
+        """The frozen threshold of the pipeline (`DEFAULT_TAU`), None for the stub pipeline."""
+        if self._ask is None or self._pipeline_config is None:
+            return None
+        field = self._pipeline_config.model_fields.get("tau")
+        if field is not None and isinstance(field.default, float):
+            return float(field.default)
+        return None
+
     def config_snapshot(self) -> dict[str, Any]:
         """Default retrieval and pipeline configuration, for the configuration hash."""
         if self._search is None or self._ask is None:

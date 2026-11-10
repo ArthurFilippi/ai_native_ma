@@ -244,3 +244,18 @@ async def test_all_queries_use_test_split_only(smoke_store: Store) -> None:
     adapter = Adapter(store=smoke_store, llm=build_mock_llm(), buyers=truth.buyers, use_real=False)
     result = await evaluate_seed("smoke", store=smoke_store, truth=truth, adapter=adapter)
     assert all(split_of(qid) == "test" for qid in result.query_ids)
+
+
+async def test_the_frozen_tau_is_applied_to_every_seed_and_the_dev_value_is_kept(
+    smoke_store: Store,
+) -> None:
+    truth = smoke_truth()
+    adapter = Adapter(store=smoke_store, llm=build_mock_llm(), buyers=truth.buyers, use_real=False)
+    free = await evaluate_seed("a", store=smoke_store, truth=truth, adapter=adapter)
+    frozen = await evaluate_seed(
+        "b", store=smoke_store, truth=truth, adapter=adapter, frozen_tau=0.4321
+    )
+    assert free.abstention is not None and frozen.abstention is not None
+    assert free.abstention.tau == free.abstention.dev_tau
+    assert frozen.abstention.tau == 0.4321
+    assert frozen.abstention.dev_tau == free.abstention.dev_tau

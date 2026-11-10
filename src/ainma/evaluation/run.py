@@ -31,8 +31,10 @@ from ainma.evaluation.harness import (
     TOP_K,
     EvalSplit,
     SeedResult,
+    dev_support_scores,
     evaluate_seed,
 )
+from ainma.evaluation.metrics.abstention import choose_tau
 from ainma.evaluation.regression import RegressionOutcome, load_cases, replay
 from ainma.evaluation.report import RunMeta, render_report
 from ainma.evaluation.stats import DEFAULT_RESAMPLES
@@ -102,7 +104,14 @@ async def _evaluate(
     label: str, store: Store, truth: TruthBundle, llm: LLM, *, use_real: bool, split: EvalSplit
 ) -> tuple[SeedResult, Adapter]:
     adapter = Adapter(store=store, llm=llm, buyers=truth.buyers, use_real=use_real)
-    result = await evaluate_seed(label, store=store, truth=truth, adapter=adapter, split=split)
+    result = await evaluate_seed(
+        label,
+        store=store,
+        truth=truth,
+        adapter=adapter,
+        split=split,
+        frozen_tau=adapter.default_tau,
+    )
     return result, adapter
 
 
@@ -181,6 +190,7 @@ async def run_evaluation(
         smoke=smoke_run,
         n_resamples=n_resamples,
         split=split,
+        abstain_basis=first_adapter.abstain_basis,
         date=datetime.now(UTC).strftime("%Y-%m-%d"),
         commit=git_commit(),
         machine=machine_description(),
@@ -211,6 +221,35 @@ async def run_evaluation(
     return report_path
 
 
+async def calibrate_tau(seeds: list[int], data_dir: Path, llm: LLM) -> str:
+    """Pooled dev threshold of the given seeds, and the per seed values, as text.
+
+    This is the command behind `pipeline.config.DEFAULT_TAU`: rerun it whenever the retrieval or
+    the reranker changes, and copy the pooled value into `DEFAULT_TAU`.
+    """
+    pooled: list[float | None] = []
+    lines: list[str] = []
+    for seed in seeds:
+        store, truth = await open_seed(data_dir / str(seed))
+        try:
+            adapter = Adapter(store=store, llm=llm, buyers=truth.buyers)
+            scores = await dev_support_scores(adapter, truth)
+        finally:
+            await store.close()
+        pooled += scores
+        lines.append(
+            f"seed {seed}: tau {choose_tau(scores, TARGET_FALSE_ABSTENTION):.6f} "
+            f"(n={len(scores)} dev answerable queries)"
+        )
+    frozen = Adapter(store=store, llm=llm).default_tau
+    lines.append(
+        f"pooled dev tau: {choose_tau(pooled, TARGET_FALSE_ABSTENTION):.6f} "
+        f"(n={len(pooled)}, target false abstention {TARGET_FALSE_ABSTENTION:.0%})"
+    )
+    lines.append(f"DEFAULT_TAU in pipeline/config.py: {frozen}")
+    return "\n".join(lines)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m ainma.evaluation.run", description=__doc__)
     parser.add_argument("--provider", choices=["mock", "gemini", "openai"], default="mock")
@@ -228,6 +267,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="test",
         help="units to measure; the default is the test split, dev is for development only",
     )
+    parser.add_argument(
+        "--calibrate-tau",
+        action="store_true",
+        help="print the pooled dev threshold and the per seed values, then exit",
+    )
     parser.add_argument("--resamples", type=int, default=DEFAULT_RESAMPLES)
     return parser
 
@@ -235,6 +279,16 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     logging.basicConfig(level=logging.WARNING)
+    if args.calibrate_tau:
+        seeds = parse_seeds(args.seeds, args.seed_list)
+        llm = build_mock_llm()
+        try:
+            text = asyncio.run(calibrate_tau(seeds, args.data, llm))
+        except CorpusUnavailableError as error:
+            sys.stderr.write(f"cannot calibrate: {error}\n")
+            return 2
+        sys.stdout.write(text + "\n")
+        return 0
     try:
         path = asyncio.run(
             run_evaluation(

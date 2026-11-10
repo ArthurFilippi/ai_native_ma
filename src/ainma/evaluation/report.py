@@ -69,6 +69,7 @@ class RunMeta:
     regression: Mapping[str, Any] = field(default_factory=dict)
     backends: Mapping[str, str] = field(default_factory=dict)
     split: str = "test"
+    abstain_basis: str = "relevance"
 
     @property
     def stub_components(self) -> list[str]:
@@ -311,6 +312,7 @@ def _abstention(meta: RunMeta, s: Mapping[str, Any]) -> str:
         [
             label,
             num(row["tau"], 4),
+            num(row["dev_tau"], 4),
             f"{pct(row['dev_false_abstention'])} (target {pct(row['target_false_abstention'])}, "
             f"n={row['n_dev_answerable']})",
             pct(row["correct_abstention"]),
@@ -348,15 +350,22 @@ def _abstention(meta: RunMeta, s: Mapping[str, Any]) -> str:
     ]
     body = [
         basis(meta, ["search", "ask"]),
-        "`tau` is chosen on the dev queries only (largest threshold whose false abstention rate on "
-        "dev stays at or below the target), frozen, and reported on the test split. The score is "
-        "the best final passage score of system A5. `Score rule` abstains when the best score is "
-        "below `tau`; `end to end` is the abstained flag of the full pipeline at the frozen `tau`.",
+        f"One `tau` is frozen for every seed (`DEFAULT_TAU`, the value the API and the demo use). "
+        "It was chosen once on the pooled dev queries of the five seeds: with `n` dev answerable "
+        "queries and `m = floor(target * n)`, it is the (m+1)th smallest best passage score, so "
+        "at most `m` dev queries score below it (the target is a false abstention rate of 10 "
+        "percent). It is applied unchanged to the test split. The score compared with `tau` is the "
+        f"`{meta.abstain_basis}` component of the best passage of system A5 (the relevance of the "
+        "retrieval stage, not the trust weighted final score). `Score rule` abstains when the "
+        "best score is below `tau`; `end to end` is the abstained flag of the full pipeline at "
+        "the same `tau`. The per seed dev calibration is kept as an extra column: the distance "
+        "between it and the applied value shows how much the seeds disagree.",
         table(
             [
                 "Seed",
-                "tau",
-                "Dev false abstention",
+                "tau applied",
+                "Dev tau of the seed",
+                "Dev false abstention at tau applied",
                 "Correct abstention",
                 "False abstention",
                 "Precision",
@@ -531,7 +540,15 @@ def _performance(meta: RunMeta, s: Mapping[str, Any]) -> str:
         "Latency in milliseconds, test queries, warm in memory store, machine as in the header "
         "(the timing block differs between runs):",
         TIMING_BEGIN,
-        table(["Measure", "n", "p50 (ms)", "p95 (ms)"], rows),
+        table(
+            [
+                "Measure",
+                "n",
+                "p50 (ms, wall clock, differs on every run)",
+                "p95 (ms, wall clock, differs on every run)",
+            ],
+            rows,
+        ),
         TIMING_END,
     ]
     return section("8. Latency and cost", body)
@@ -558,12 +575,22 @@ def _regression(meta: RunMeta) -> str:
     return section("9. Regression replay", body)
 
 
+def _abstention_precision(s: Mapping[str, Any]) -> str:
+    """Share of the abstentions of the full pipeline that were on unanswerable questions."""
+    return num(s["abstention"].get("end_to_end_precision"))
+
+
 def _principle(meta: RunMeta, s: Mapping[str, Any]) -> str:
     c, a, k = s["citation"]["metrics"], s["abstention"]["end_to_end"], s["contradiction"]
     rows = [
         ["Citation precision (verifier on)", interval(c["citation_precision"]["verifier_on"])],
         ["Citation recall (verifier on)", interval(c["citation_recall"]["verifier_on"])],
         ["Correct abstention, end to end", interval(a["correct_abstention"])],
+        ["False abstention, end to end", interval(a["false_abstention"])],
+        [
+            "Abstention precision (abstentions on unanswerable questions / all abstentions)",
+            _abstention_precision(s),
+        ],
         ["Contradiction detection recall", interval(k["recall"])],
         [
             "Clicks to verify a claim",
@@ -579,6 +606,34 @@ def _principle(meta: RunMeta, s: Mapping[str, Any]) -> str:
 
 
 # ---------------------------------------------------------------------------- document
+
+
+def _difficulty_lines(s: Mapping[str, Any]) -> list[str]:
+    """The difficulty knobs of each seed: a reported parameter, not a hidden one."""
+    params = s.get("generation_params") or {}
+    return [
+        f"- Difficulty, seed {label}: paraphrase_rate={p.get('paraphrase_rate', 'n/a')}, "
+        f"hard_negative_rate={p.get('hard_negative_rate', 'n/a')}"
+        for label, p in params.items()
+    ]
+
+
+def _tau_lines(s: Mapping[str, Any], meta: RunMeta) -> list[str]:
+    a = s.get("abstention", {})
+    frozen, pooled = a.get("frozen_tau"), a.get("pooled_dev_tau")
+    if frozen is None and pooled is None:
+        return []
+    lines = [f"- Abstention score: `{meta.abstain_basis}` of the best passage"]
+    if frozen is not None:
+        lines.append(
+            f"- Frozen tau (`DEFAULT_TAU`, used by the API and the test split): {frozen:.4f}"
+        )
+    if pooled is not None:
+        drift = (
+            "" if frozen is None else f" (difference to the frozen value {pooled - frozen:+.4f})"
+        )
+        lines.append(f"- Pooled dev tau recomputed in this run: {pooled:.4f}{drift}")
+    return lines
 
 
 def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
@@ -625,6 +680,8 @@ def render_report(summary: Mapping[str, Any], meta: RunMeta) -> str:
                     "- Backends: "
                     + ", ".join(f"{k}={v}" for k, v in sorted(meta.backends.items())),
                     f"- Dataset: {meta.dataset}",
+                    *_difficulty_lines(summary),
+                    *_tau_lines(summary, meta),
                     f"- Bootstrap: {meta.n_resamples} resamples, 95 percent percentile intervals",
                 ]
             ),
