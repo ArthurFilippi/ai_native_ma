@@ -1,6 +1,6 @@
 # Web client
 
-Next.js (App Router), TypeScript strict, plain CSS, no UI library. Structured answer on the left, evidence panel on the right, tabs Ask, Documents, Screening, KPIs and Market.
+Next.js (App Router), TypeScript strict, plain CSS, no UI library. Four pages: Deal (data room and key figures), Ask (a chat where each answer shows the answer, a confidence level and numbered sources; one click opens the passage), Buyers (pre-selection form, refine in words, results with fit, confidence, sources and risk flags) and Market (news events). The look comes from `public/ui.css` (the design system, unchanged, see `design/DESIGN.md`) and `src/app/app.css`.
 
 ## Mock mode (default)
 

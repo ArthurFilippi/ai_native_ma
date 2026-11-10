@@ -3,21 +3,20 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Api } from "@/lib/api";
 import { createHttpApi } from "@/lib/api";
-import type { Answer, Citation, Deal, User } from "@/lib/contracts";
+import type { Citation, Deal, User } from "@/lib/contracts";
 import { useAsync } from "@/lib/useAsync";
 import { MockBackend } from "@/mock/mockApi";
-import { AskTab } from "./AskTab";
-import { DocumentsTab } from "./DocumentsTab";
+import { AskPage } from "./AskPage";
+import { BuyersPage } from "./BuyersPage";
+import { DealPage } from "./DealPage";
+import { Drawer } from "./Drawer";
 import { Dropdown } from "./Dropdown";
-import { EventsTab } from "./EventsTab";
-import { type EvidenceTarget, EvidencePanel } from "./EvidencePanel";
-import { KpiTab } from "./KpiTab";
+import { EvidencePanel } from "./EvidencePanel";
 import { Loading } from "./Loading";
-import { MarketTab } from "./MarketTab";
-import { ScreeningTab } from "./ScreeningTab";
+import { MarketPage } from "./MarketPage";
 
-const TABS = ["Ask", "Documents", "Screening", "KPIs", "Events", "Market"] as const;
-type Tab = (typeof TABS)[number];
+const PAGES = ["Deal", "Ask", "Buyers", "Market"] as const;
+type Page = (typeof PAGES)[number];
 
 export type MakeApi = (userId: string) => Api;
 
@@ -37,48 +36,31 @@ function useApiFactory(baseUrl: string, makeApi: MakeApi | undefined): MakeApi {
   }, [baseUrl, makeApi, backend]);
 }
 
-// One route per place (design rule 5): the tab lives in the URL hash, `#/screening`.
-function tabFromHash(): Tab {
+// One route per place: the page lives in the URL hash (`#/buyers`), so a reload keeps it.
+function pageFromHash(): Page {
   if (typeof window === "undefined") return "Ask";
   const slug = window.location.hash.replace(/^#\/?/, "").split("?")[0]?.toLowerCase();
-  return TABS.find((t) => t.toLowerCase() === slug) ?? "Ask";
-}
-
-function Brand() {
-  return (
-    <div className="brand">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="1" y="1" width="10" height="10" rx="2.5" fill="#b9ecd0" stroke="#0a0a0a" />
-        <rect x="13" y="1" width="10" height="10" rx="2.5" fill="#bcd6ff" stroke="#0a0a0a" />
-        <rect x="1" y="13" width="10" height="10" rx="2.5" fill="#f6e58d" stroke="#0a0a0a" />
-        <rect x="13" y="13" width="10" height="10" rx="2.5" fill="#0a0a0a" />
-      </svg>
-      <b>AI-native M&amp;A</b>
-      <span className="mono dim">Deal room</span>
-    </div>
-  );
+  return PAGES.find((p) => p.toLowerCase() === slug) ?? "Ask";
 }
 
 export function App({ baseUrl, makeApi }: AppProps) {
   const factory = useApiFactory(baseUrl, makeApi);
   const [userId, setUserId] = useState("u_analyst");
   const api = useMemo(() => factory(userId), [factory, userId]);
-
   const loadUsers = useCallback(() => factory(userId).users(), [factory, userId]);
   const users = useAsync<User[]>(loadUsers);
   const loadDeals = useCallback(() => api.deals(), [api]);
   const deals = useAsync<Deal[]>(loadDeals);
 
   const [dealChoice, setDealChoice] = useState<string | null>(null);
-  const [tab, setTab] = useState<Tab>("Ask");
-  const [visited, setVisited] = useState<ReadonlySet<Tab>>(new Set<Tab>(["Ask"]));
-  const [evidence, setEvidence] = useState<EvidenceTarget | null>(null);
-  const [backend, setBackend] = useState<string | null>(null);
+  const [page, setPage] = useState<Page>("Ask");
+  const [visited, setVisited] = useState<ReadonlySet<Page>>(new Set<Page>(["Ask"]));
+  const [source, setSource] = useState<Citation | null>(null);
 
   useEffect(() => {
     const sync = () => {
-      const next = tabFromHash();
-      setTab(next);
+      const next = pageFromHash();
+      setPage(next);
       setVisited((v) => new Set([...v, next]));
     };
     sync();
@@ -88,64 +70,60 @@ export function App({ baseUrl, makeApi }: AppProps) {
 
   const dealList = deals.status === "ready" ? deals.data : [];
   const deal = dealList.find((d) => d.id === dealChoice) ?? dealList[0] ?? null;
+  const openSource = useCallback((citation: Citation) => setSource(citation), []);
+  const closeSource = useCallback(() => setSource(null), []);
 
-  const openEvidence = useCallback((citation: Citation, answer?: Answer) => {
-    setEvidence({
-      citation,
-      ranking: answer?.trace.retrieved.find((r) => r.chunk_id === citation.chunk_id) ?? null,
-    });
-  }, []);
-  const closeEvidence = useCallback(() => setEvidence(null), []);
-  const activeChunk = evidence?.citation.chunk_id ?? null;
-
-  function selectTab(next: Tab) {
-    setTab(next);
-    setEvidence(null);
+  function go(next: Page) {
+    setPage(next);
     setVisited((v) => new Set([...v, next]));
     window.history.replaceState(null, "", `#/${next.toLowerCase()}`);
   }
 
-  function selectUser(next: string) {
-    setUserId(next);
-    setEvidence(null);
-    setBackend(null);
-    setVisited(new Set<Tab>([tab]));
-  }
-
-  const showEvidenceZone = tab === "Ask" || evidence !== null;
-  const scope = `${userId}:${deal?.id ?? "none"}`;
   const userOptions = (users.status === "ready" ? users.data : [{ id: userId, name: userId }]).map(
-    (u) => ({ value: u.id, label: u.name, sub: u.id }),
+    (u) => ({ value: u.id, label: u.name }),
   );
-  const source = api.mode === "mock" ? "mock data" : backend ? `backend: ${backend}` : "API";
 
   return (
     <>
       <div className="chrome">
         <div className="chrome-in">
           <header className="cells top">
-            <Brand />
-            <nav id="nav" role="tablist" aria-label="Sections">
-              {TABS.map((name) => (
+            <div className="brand">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="1" y="1" width="10" height="10" rx="2.5" fill="#b9ecd0" stroke="#0a0a0a" />
+                <rect x="13" y="1" width="10" height="10" rx="2.5" fill="#bcd6ff" stroke="#0a0a0a" />
+                <rect x="1" y="13" width="10" height="10" rx="2.5" fill="#f6e58d" stroke="#0a0a0a" />
+                <rect x="13" y="13" width="10" height="10" rx="2.5" fill="#0a0a0a" />
+              </svg>
+              <b>M&amp;A desk</b>
+              <span className="synthetic" title="Every company, figure and document is fictional">
+                synthetic data
+              </span>
+            </div>
+            <nav id="nav" aria-label="Sections">
+              {PAGES.map((name) => (
                 <button
                   key={name}
                   type="button"
-                  role="tab"
-                  aria-selected={tab === name}
-                  className={`na${tab === name ? " on" : ""}`}
-                  onClick={() => selectTab(name)}
+                  aria-current={page === name ? "page" : undefined}
+                  className={`na${page === name ? " on" : ""}`}
+                  onClick={() => go(name)}
                 >
                   {name}
                 </button>
               ))}
             </nav>
             <div className="who">
-              <span className="who-id" title="Demo user (DEMO_AUTH, not real authentication)">
+              <span className="who-id">
                 <Dropdown
-                  label="Demo user (DEMO_AUTH, not real authentication)"
+                  label="Demo user (not real authentication)"
                   value={userId}
                   options={userOptions}
-                  onChange={selectUser}
+                  onChange={(next) => {
+                    setUserId(next);
+                    setSource(null);
+                    setVisited(new Set<Page>([page]));
+                  }}
                   small
                 />
               </span>
@@ -155,41 +133,24 @@ export function App({ baseUrl, makeApi }: AppProps) {
       </div>
 
       <div className="frame">
-        {/* Simulated data is always visibly pink (design rule 10): every document here is synthetic. */}
-        <div className="cells sim" aria-label="Synthetic data">
-          <span className="sim-lab" style={{ flex: "0 0 auto" }}>
-            Synthetic data
-          </span>
-          <span className="sim-count" style={{ flex: "1 1 auto" }}>
-            Every company, figure and document is fictional
-          </span>
-          <span className="sim-word" style={{ flex: "0 0 auto" }} title="Where the data on screen comes from">
-            {source}
-          </span>
-        </div>
-
         <main>
           <div className="head">
             <div>
-              <h1 className="t1">{tab}</h1>
+              <h1 className="t1">{page === "Deal" && deal ? deal.name : page}</h1>
             </div>
             <div className="head-aside">
-              {deal && (
+              {deal && dealList.length > 1 && (
                 <div className="deal-pick">
-                  {dealList.length > 1 ? (
-                    <Dropdown
-                      label="Deal"
-                      value={deal.id}
-                      options={dealList.map((d) => ({ value: d.id, label: d.name, sub: d.sector }))}
-                      onChange={setDealChoice}
-                    />
-                  ) : (
-                    <span className="big">{deal.name}</span>
-                  )}
-                  <span className="sub">
-                    {deal.sector}, {deal.status}
-                  </span>
+                  <Dropdown
+                    label="Deal"
+                    value={deal.id}
+                    options={dealList.map((d) => ({ value: d.id, label: d.name, sub: d.sector }))}
+                    onChange={setDealChoice}
+                  />
                 </div>
+              )}
+              {deal && dealList.length <= 1 && page !== "Deal" && (
+                <span className="sub">{deal.name}</span>
               )}
             </div>
           </div>
@@ -208,85 +169,37 @@ export function App({ baseUrl, makeApi }: AppProps) {
           )}
 
           {deal && (
-            <div className={showEvidenceZone ? "workspace two-zones" : "workspace"} key={scope}>
-              <div className="zone-left">
-                {visited.has("Ask") && (
-                  <div hidden={tab !== "Ask"}>
-                    <AskTab
-                      api={api}
-                      dealId={deal.id}
-                      onOpen={openEvidence}
-                      activeChunk={activeChunk}
-                      onBackend={setBackend}
-                    />
-                  </div>
-                )}
-                {visited.has("Documents") && (
-                  <div hidden={tab !== "Documents"}>
-                    <DocumentsTab api={api} dealId={deal.id} />
-                  </div>
-                )}
-                {visited.has("Screening") && (
-                  <div hidden={tab !== "Screening"}>
-                    <ScreeningTab
-                      api={api}
-                      dealId={deal.id}
-                      onOpen={openEvidence}
-                      activeChunk={activeChunk}
-                      onBackend={setBackend}
-                    />
-                  </div>
-                )}
-                {visited.has("KPIs") && (
-                  <div hidden={tab !== "KPIs"}>
-                    <KpiTab
-                      api={api}
-                      dealId={deal.id}
-                      onOpen={openEvidence}
-                      activeChunk={activeChunk}
-                      onBackend={setBackend}
-                    />
-                  </div>
-                )}
-                {visited.has("Events") && (
-                  <div hidden={tab !== "Events"}>
-                    <EventsTab
-                      api={api}
-                      dealId={deal.id}
-                      onOpen={openEvidence}
-                      activeChunk={activeChunk}
-                    />
-                  </div>
-                )}
-                {visited.has("Market") && (
-                  <div hidden={tab !== "Market"}>
-                    <MarketTab api={api} dealId={deal.id} onBackend={setBackend} />
-                  </div>
-                )}
-              </div>
-              {showEvidenceZone && (
-                <div className="zone-right">
-                  {evidence ? (
-                    <EvidencePanel api={api} target={evidence} onClose={closeEvidence} />
-                  ) : (
-                    <aside className="plate evidence empty" aria-label="Evidence panel">
-                      <div className="plate-h">
-                        <h2>Evidence</h2>
-                      </div>
-                      <div className="plate-b">
-                        <p className="sub">
-                          Click a citation to read the source passage here, with the cited text
-                          highlighted.
-                        </p>
-                      </div>
-                    </aside>
-                  )}
+            <div key={`${userId}:${deal.id}`}>
+              {visited.has("Deal") && (
+                <div hidden={page !== "Deal"}>
+                  <DealPage api={api} deal={deal} onOpen={openSource} />
+                </div>
+              )}
+              {visited.has("Ask") && (
+                <div hidden={page !== "Ask"}>
+                  <AskPage api={api} dealId={deal.id} onOpen={openSource} activeChunk={source?.chunk_id ?? null} />
+                </div>
+              )}
+              {visited.has("Buyers") && (
+                <div hidden={page !== "Buyers"}>
+                  <BuyersPage api={api} dealId={deal.id} onOpen={openSource} />
+                </div>
+              )}
+              {visited.has("Market") && (
+                <div hidden={page !== "Market"}>
+                  <MarketPage api={api} dealId={deal.id} onOpen={openSource} />
                 </div>
               )}
             </div>
           )}
         </main>
       </div>
+
+      {source && (
+        <Drawer onClose={closeSource} label="Source">
+          <EvidencePanel api={api} citation={source} onClose={closeSource} />
+        </Drawer>
+      )}
     </>
   );
 }

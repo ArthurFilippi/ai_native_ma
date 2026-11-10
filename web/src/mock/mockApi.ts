@@ -1,4 +1,4 @@
-import type { Api, MarketRun, Served } from "../lib/api";
+import type { Api, MarketRun, RefineOutcome, Served } from "../lib/api";
 import { ApiError } from "../lib/api";
 import type {
   Answer,
@@ -241,7 +241,16 @@ export class MockBackend {
       ask: async (dealId, question) => {
         requireDeal(dealId);
         const source = /revenue/i.test(question) ? contradiction : abstention;
-        const answer = { ...(source as unknown as Answer), question, user_id: userId, deal_id: dealId };
+        const base = source as unknown as Answer;
+        const answer: Answer = {
+          ...base,
+          question,
+          user_id: userId,
+          deal_id: dealId,
+          // the API computes it (D97); the example payloads predate the field
+          confidence: base.abstained ? null : "medium",
+          confidence_reason: base.abstained ? null : "Medium: sources disagree.",
+        };
         return served(answer);
       },
       passage: async (chunkId) => {
@@ -269,10 +278,45 @@ export class MockBackend {
         const run: MarketRun = { deal_id: dealId, ingested: SIMULATED_DOCUMENTS.length };
         return served(run);
       },
+      refine: async (text, current) => {
+        requireDeal(current.deal_id);
+        return mockRefine(text, current);
+      },
       events: async (dealId) => {
         requireDeal(dealId);
         return this.marketRun ? EVENTS : [];
       },
     };
   }
+}
+
+// A few wordings, as the mock provider of the API reads them (D98).
+function mockRefine(text: string, current: ScreeningRequest): RefineOutcome {
+  const filters = { ...current.filters };
+  const understood: string[] = [];
+  if (/\b(financial|sponsors?|private equity|funds?)\b/i.test(text)) {
+    filters.buyer_types = ["financial"];
+    understood.push("type: financial");
+  } else if (/\b(strategic|corporates?|industrials?)\b/i.test(text)) {
+    filters.buyer_types = ["strategic"];
+    understood.push("type: strategic");
+  }
+  for (const region of ["DACH", "France", "Nordics", "Benelux", "Central Europe"]) {
+    if (new RegExp(`\\b${region}\\b`, "i").test(text)) {
+      filters.geographies = [...new Set([...filters.geographies, region])];
+      understood.push(`region: ${region}`);
+    }
+  }
+  const above = /\b(?:above|over|more than|at least)\s+(?:eur|€)?\s*([\d.,]+)\s*(bn|billion|m|million)?/i.exec(text);
+  if (above?.[1]) {
+    const scale = above[2] && /^b/i.test(above[2]) ? 1000 : 1;
+    filters.min_size_eur_m = Number(above[1].replace(",", "")) * scale;
+    understood.push(`size from EUR ${filters.min_size_eur_m}m`);
+  }
+  const weights = { ...current.weights };
+  if (/recent (acquisitions|acquirers|deals)|acquisitive/i.test(text)) {
+    weights.recent_activity = 4;
+    understood.push("prefer recent acquirers");
+  }
+  return { request: { ...current, filters, weights }, understood };
 }

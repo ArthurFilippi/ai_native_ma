@@ -164,6 +164,9 @@ export interface Answer {
   // a live call failed and the offline mock answered instead (D88)
   degraded?: boolean;
   degraded_reason?: string | null;
+  // one-glance level computed by code from the evidence (D97)
+  confidence?: "high" | "medium" | "low" | null;
+  confidence_reason?: string | null;
   trace: Trace;
   value_contract: string;
 }

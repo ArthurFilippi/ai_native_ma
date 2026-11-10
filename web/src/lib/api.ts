@@ -32,6 +32,12 @@ export interface Api {
   kpis(dealId: string): Promise<Served<KpiValue[]>>;
   runMarketIntel(dealId: string): Promise<Served<MarketRun>>;
   events(dealId: string): Promise<MarketEvent[]>;
+  refine(text: string, current: ScreeningRequest): Promise<RefineOutcome>;
+}
+
+export interface RefineOutcome {
+  request: ScreeningRequest;
+  understood: string[];
 }
 
 export class ApiError extends Error {
@@ -88,5 +94,12 @@ export function createHttpApi(baseUrl: string, userId: string): Api {
     runMarketIntel: (dealId) =>
       call<MarketRun>(`/deals/${encodeURIComponent(dealId)}/market-intel/run`, { method: "POST" }),
     events: (dealId) => value<MarketEvent[]>(`/deals/${encodeURIComponent(dealId)}/events`),
+    refine: async (text, current) =>
+      (
+        await call<RefineOutcome>(`/deals/${encodeURIComponent(current.deal_id)}/screening/refine`, {
+          method: "POST",
+          body: { text, current },
+        })
+      ).value,
   };
 }

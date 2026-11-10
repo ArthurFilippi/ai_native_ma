@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { Api } from "@/lib/api";
 import { ApiError } from "@/lib/api";
 import { DOC_TYPE_LABEL } from "@/lib/constants";
-import type { Citation, Passage, RankedPassage } from "@/lib/contracts";
+import type { Citation, Passage } from "@/lib/contracts";
 import { dateOrUnknown } from "@/lib/format";
 import { locateSpan, segmentPage } from "@/lib/highlight";
 import { useAsync } from "@/lib/useAsync";
@@ -10,20 +10,6 @@ import { StatusChip, TierChip, TierLegend } from "./Chips";
 import { Loading } from "./Loading";
 
 const CONTEXT_CHARS = 280;
-
-export interface EvidenceTarget {
-  citation: Citation;
-  ranking: RankedPassage | null;
-}
-
-function Meta({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="dr">
-      <dt className="dk">{label}</dt>
-      <dd className="dv">{children}</dd>
-    </div>
-  );
-}
 
 function PageText({ passage, citation }: { passage: Passage; citation: Citation }) {
   const [fullPage, setFullPage] = useState(false);
@@ -67,77 +53,79 @@ function PageText({ passage, citation }: { passage: Passage; citation: Citation 
   );
 }
 
-function Loaded({
-  passage,
-  target,
+function Head({
+  title,
+  docType,
+  tier,
+  published,
+  page,
+  status,
 }: {
-  passage: Passage;
-  target: EvidenceTarget;
+  title: string;
+  docType: string;
+  tier: Citation["tier"];
+  published: string | null;
+  page: string;
+  status?: Passage["document"]["status"];
 }) {
+  return (
+    <div className="plate-b">
+      <h3 className="big-name">{title}</h3>
+      <div className="source-line">
+        <TierChip tier={tier} />
+        <span>{DOC_TYPE_LABEL[docType] ?? docType}</span>
+        <span className="mono">{dateOrUnknown(published)}</span>
+        <span className="mono">{page}</span>
+        {status && status !== "current" && <StatusChip status={status} />}
+      </div>
+    </div>
+  );
+}
+
+function Loaded({ passage, citation }: { passage: Passage; citation: Citation }) {
   const { document: doc } = passage;
   return (
     <>
+      <Head
+        title={doc.title}
+        docType={doc.doc_type}
+        tier={doc.tier}
+        published={doc.published_on}
+        page={`p. ${passage.chunk.page} of ${doc.n_pages}`}
+        status={doc.status}
+      />
       <div className="plate-b">
-      <h3 className="big-name">{doc.title}</h3>
-      <dl className="meta">
-        <Meta label="Document type">{DOC_TYPE_LABEL[doc.doc_type] ?? doc.doc_type}</Meta>
-        <Meta label="Source tier">
-          <TierChip tier={doc.tier} />
-        </Meta>
-        <Meta label="Published">{dateOrUnknown(doc.published_on)}</Meta>
-        <Meta label="Status">
-          <StatusChip status={doc.status} />
-        </Meta>
-        <Meta label="Page">
-          {passage.chunk.page} of {doc.n_pages}
-        </Meta>
-        {doc.synthetic && <Meta label="Data">synthetic</Meta>}
-      </dl>
+        <PageText passage={passage} citation={citation} />
       </div>
-      <div className="plate-b">
-      <p className="lab">Passage</p>
-      <PageText passage={passage} citation={target.citation} />
-      </div>
-      <div className="plate-b">
-      <p className="lab">Why this passage ranks here</p>
-      <p className="sub mt">
-        {target.ranking
-          ? `Rank ${target.ranking.rank}, score ${target.ranking.final_score}. ${target.ranking.explanation}`
-          : "No ranking explanation: this passage was not produced by an answer."}
-      </p>
-      </div>
-      <div className="plate-b tint">
-      <TierLegend current={doc.tier} />
-      </div>
+      <details className="plate-b fold tier-fold">
+        <summary>
+          <span className="fold-t">What the tiers mean</span>
+        </summary>
+        <TierLegend current={doc.tier} />
+      </details>
     </>
   );
 }
 
-function Unavailable({ target, error }: { target: EvidenceTarget; error: Error }) {
-  const { citation } = target;
+function Unavailable({ citation, error }: { citation: Citation; error: Error }) {
   const status = error instanceof ApiError ? error.status : null;
   return (
     <>
+      <Head
+        title={citation.doc_title}
+        docType={citation.doc_type}
+        tier={citation.tier}
+        published={citation.published_on}
+        page={`p. ${citation.page}`}
+      />
       <div className="plate-b">
-      <h3 className="big-name">{citation.doc_title}</h3>
-      <dl className="meta">
-        <Meta label="Document type">{DOC_TYPE_LABEL[citation.doc_type] ?? citation.doc_type}</Meta>
-        <Meta label="Source tier">
-          <TierChip tier={citation.tier} />
-        </Meta>
-        <Meta label="Published">{dateOrUnknown(citation.published_on)}</Meta>
-        <Meta label="Page">{citation.page}</Meta>
-      </dl>
-      <p className="note bad mt" role="alert">
-        The page text could not be loaded{status ? ` (${status})` : ""}. Showing the cited quote
-        only.
-      </p>
-      <div className="page-text mt">
-        <mark data-testid="evidence-highlight">{citation.quote}</mark>
-      </div>
-      </div>
-      <div className="plate-b tint">
-      <TierLegend current={citation.tier} />
+        <p className="note bad" role="alert">
+          The page text could not be loaded{status ? ` (${status})` : ""}. Showing the cited quote
+          only.
+        </p>
+        <div className="page-text mt">
+          <mark data-testid="evidence-highlight">{citation.quote}</mark>
+        </div>
       </div>
     </>
   );
@@ -145,30 +133,28 @@ function Unavailable({ target, error }: { target: EvidenceTarget; error: Error }
 
 export function EvidencePanel({
   api,
-  target,
+  citation,
   onClose,
 }: {
   api: Api;
-  target: EvidenceTarget;
+  citation: Citation;
   onClose: () => void;
 }) {
-  const chunkId = target.citation.chunk_id;
+  const chunkId = citation.chunk_id;
   const load = useCallback(() => api.passage(chunkId), [api, chunkId]);
   const state = useAsync(load);
 
   return (
     <aside className="plate evidence" aria-label="Evidence panel">
       <div className="plate-h">
-        <h2>Evidence</h2>
-        <button type="button" className="plate-x" aria-label="Close the evidence" onClick={onClose}>
+        <h2>Source</h2>
+        <button type="button" className="plate-x" aria-label="Close the source" onClick={onClose}>
           <span>×</span>
         </button>
       </div>
       {state.status === "loading" && <Loading inline />}
-      {state.status === "error" && <Unavailable target={target} error={state.error} />}
-      {state.status === "ready" && (
-        <Loaded key={chunkId} passage={state.data} target={target} />
-      )}
+      {state.status === "error" && <Unavailable citation={citation} error={state.error} />}
+      {state.status === "ready" && <Loaded key={chunkId} passage={state.data} citation={citation} />}
     </aside>
   );
 }
