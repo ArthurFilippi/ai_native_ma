@@ -158,3 +158,19 @@ predicate (the user's deals, or the general layer) is applied inside each tool b
 
 Not yet in the base: precedent transactions with acquirer and date, broker estimates, earnings
 call statements, and news events. They come with the next corpus extension.
+
+## News event layer (`truth/news_events.json`)
+
+The feed (`news/items.json`) holds the 60 base items, unchanged, plus the items of an event layer
+drawn from its own random stream (`ainma.synth.news_events`). Seed 1234: 104 items, 42 events.
+
+| Kind | What is planted | Truth status |
+|---|---|---|
+| `acquisition` | every acquisition headline of the base feed; one in two is repeated by another outlet (`Trade wire: X buys Y`) | `confirmed`; a repeat is the same event |
+| `leadership_change` | about one buyer in three appoints a chief executive | `confirmed` |
+| `rumour` | for each deal company, a buyer "is said to weigh an offer"; two in three are denied later | `denied` or `unconfirmed` |
+| `price` | one acquisition in three gets a reported price; one in two is corrected later | `confirmed` or `corrected` (value is the corrected figure) |
+
+Each event lists every item title that reports it. `verify` checks that each title is in the
+feed, that the base feed still has 60 items, and that denials and corrections have their item.
+Event wordings avoid the acquisition verbs of the screening rules, so the buyer truth is unchanged.

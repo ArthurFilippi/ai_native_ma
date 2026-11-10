@@ -22,10 +22,12 @@ from ainma.contracts import (
     ScreeningRequest,
     ScreeningResult,
 )
+from ainma.factbase import FactBase
 from ainma.kpi import extract_kpis
 from ainma.kpi.definitions import DEFAULT_PERIODS
 from ainma.kpi.sources import resolve_search
 from ainma.llm import LLM
+from ainma.screening.assist import assess_unknown
 from ainma.screening.criteria import (
     PREFILTER_KEYS,
     ScreeningParams,
@@ -143,11 +145,13 @@ async def run_screening(
     buyers: Sequence[BuyerProfile] | None = None,
     params: ScreeningParams | None = None,
     search: SearchFn | None = None,
+    factbase: FactBase | None = None,
 ) -> ScreeningResult:
     """Screen the buyer universe for one deal.
 
     `buyers` defaults to the store's `list_buyers` when it has one (see `universe`). `params`
     carries the documented assumptions. `search` defaults to `ainma.retrieval.search`.
+    `factbase` feeds the buyer's structured facts to the model when `request.llm_assist` is set.
     Raises `LookupError` when the deal does not exist or is not visible to `access`, and
     `ValueError` for a weight on an unknown criterion or a negative weight.
     """
@@ -201,7 +205,17 @@ async def run_screening(
         )
         for criterion in _applicable_deep(card.buyer, criteria):
             if card.buyer.id in top:
-                results.append(await RULES[criterion.key](ctx))
+                result = await RULES[criterion.key](ctx)
+                if request.llm_assist:
+                    result = await assess_unknown(
+                        result,
+                        ctx,
+                        label=criterion.label,
+                        description=criterion.description,
+                        llm=llm,
+                        factbase=factbase,
+                    )
+                results.append(result)
             else:
                 results.append(
                     CriterionResult(

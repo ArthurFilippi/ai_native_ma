@@ -27,6 +27,7 @@ from ainma.contracts import (
     Deal,
     DocumentMeta,
     KpiValue,
+    MarketEvent,
     Role,
     ScreeningRequest,
     ScreeningResult,
@@ -174,6 +175,12 @@ def build_router(runtime: Runtime) -> APIRouter:
     @router.get("/deals/{deal_id}/kpis", response_model=list[KpiValue], tags=["kpis"])
     async def kpis(deal: DealOf, access: Access) -> list[KpiValue]:
         return await services.kpis(runtime, access, deal.id)
+
+    @router.get("/deals/{deal_id}/events", response_model=list[MarketEvent], tags=["market"])
+    async def events(deal: DealOf, access: Access) -> list[MarketEvent]:
+        """Market events read from the deal's news: duplicates merged, denials and corrections
+        applied, every report cited verbatim. A denied rumour is never a fact."""
+        return await services.events(runtime, access, deal.id)
 
     @router.post(
         "/deals/{deal_id}/market-intel/run", response_model=MarketIntelRun, tags=["market"]

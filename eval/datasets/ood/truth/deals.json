@@ -1,0 +1,4 @@
+[
+  {"id": "deal_ood_halvorsen", "name": "Project Halvorsen", "sector": "industrial pumps", "description": "Hand written out of distribution deal.", "status": "marketing", "synthetic": true},
+  {"id": "deal_ood_corvina", "name": "Project Corvina", "sector": "pharmaceutical logistics", "description": "Hand written out of distribution deal.", "status": "marketing", "synthetic": true}
+]

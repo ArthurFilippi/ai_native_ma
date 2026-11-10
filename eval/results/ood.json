@@ -1,0 +1,500 @@
+{
+  "summary": {
+    "n_answerable": 30,
+    "n_unanswerable": 6,
+    "provider": "mock mock-extractive-v1",
+    "recall_at_10": {
+      "A1": 1.0,
+      "A2": 1.0,
+      "A3": 1.0,
+      "A4": 1.0,
+      "A5": 1.0
+    },
+    "mrr": {
+      "A1": 0.9027777777777778,
+      "A2": 0.8027777777777777,
+      "A3": 0.8844444444444445,
+      "A4": 0.961111111111111,
+      "A5": 0.961111111111111
+    },
+    "answer_accuracy": 0.5666666666666667,
+    "false_abstention": 0.4,
+    "correct_abstention": 1.0
+  },
+  "rows": [
+    {
+      "id": "ood01",
+      "note": "revenue asked, net sales and turnover stated",
+      "answerable": true,
+      "A1": 1,
+      "A2": 2,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen revenue for FY2024 was EUR 211.6 million."
+      ]
+    },
+    {
+      "id": "ood02",
+      "note": "calendar year against FY23",
+      "answerable": true,
+      "A1": 1,
+      "A2": 2,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen revenue for FY2023 was EUR 196.3 million."
+      ]
+    },
+    {
+      "id": "ood03",
+      "note": "table column",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen revenue for FY2022 was EUR 181.0 million."
+      ]
+    },
+    {
+      "id": "ood04",
+      "note": "reported against adjusted",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen EBITDA for FY2024 was EUR 38.9 million."
+      ]
+    },
+    {
+      "id": "ood05",
+      "note": "abbreviation adj.",
+      "answerable": true,
+      "A1": 3,
+      "A2": 3,
+      "A3": 3,
+      "A4": 3,
+      "A5": 3,
+      "abstained": false,
+      "correct": false,
+      "claims": [
+        "Halvorsen adjusted EBITDA for FY2024 was EUR 1.2 million."
+      ]
+    },
+    {
+      "id": "ood06",
+      "note": "first column",
+      "answerable": true,
+      "A1": 4,
+      "A2": 4,
+      "A3": 5,
+      "A4": 2,
+      "A5": 2,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood07",
+      "note": "GM%",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen gross margin for FY2024 was 41.7 percent."
+      ]
+    },
+    {
+      "id": "ood08",
+      "note": "FTEs",
+      "answerable": true,
+      "A1": 1,
+      "A2": 2,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood09",
+      "note": "largest against top ten",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen largest customer share for FY2024 was 9.8 percent."
+      ]
+    },
+    {
+      "id": "ood10",
+      "note": "top ten",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen top ten customers share for FY2024 was 37.5 percent."
+      ]
+    },
+    {
+      "id": "ood11",
+      "note": "order book, dd/mm/yyyy",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen order backlog for FY2024 was EUR 92.3 million."
+      ]
+    },
+    {
+      "id": "ood12",
+      "note": "middle column",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen capital expenditure for FY2023 was EUR 8.6 million."
+      ]
+    },
+    {
+      "id": "ood13",
+      "note": "capex abbreviation",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen capital expenditure for FY2024 was EUR 9.4 million."
+      ]
+    },
+    {
+      "id": "ood14",
+      "note": "net financial debt",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen net debt for FY2024 was EUR 44.2 million."
+      ]
+    },
+    {
+      "id": "ood15",
+      "note": "first column",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Halvorsen net debt for FY2022 was EUR 54.0 million."
+      ]
+    },
+    {
+      "id": "ood16",
+      "note": "number in words",
+      "answerable": true,
+      "A1": 1,
+      "A2": 2,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood17",
+      "note": "footnote",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood18",
+      "note": "non numeric",
+      "answerable": true,
+      "A1": 1,
+      "A2": 2,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood19",
+      "note": "twelve months to December 2024",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Corvina revenue for FY2024 was EUR 74.8 million."
+      ]
+    },
+    {
+      "id": "ood20",
+      "note": "a year earlier",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood21",
+      "note": "turnover asked, sales stated",
+      "answerable": true,
+      "A1": 2,
+      "A2": 3,
+      "A3": 3,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood22",
+      "note": "plain year columns",
+      "answerable": true,
+      "A1": 2,
+      "A2": 3,
+      "A3": 3,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood23",
+      "note": "middle column",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood24",
+      "note": "margin",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Corvina EBITDA margin for FY2024 was 17.2 percent."
+      ]
+    },
+    {
+      "id": "ood25",
+      "note": "people",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Corvina headcount for FY2024 was 612."
+      ]
+    },
+    {
+      "id": "ood26",
+      "note": "headcount asked, FTE stated",
+      "answerable": true,
+      "A1": 2,
+      "A2": 3,
+      "A3": 3,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood27",
+      "note": "sites called warehouses",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood28",
+      "note": "capex",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Corvina capital expenditure for FY2024 was EUR 6.3 million."
+      ]
+    },
+    {
+      "id": "ood29",
+      "note": "five biggest clients",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": true,
+      "correct": false,
+      "claims": []
+    },
+    {
+      "id": "ood30",
+      "note": "large number",
+      "answerable": true,
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "abstained": false,
+      "correct": true,
+      "claims": [
+        "Corvina employed 612 people at year-end 2024 and operates 9 warehouses with 182,000 pallet positions."
+      ]
+    },
+    {
+      "id": "ood31",
+      "note": "unanswerable",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    },
+    {
+      "id": "ood32",
+      "note": "unanswerable, hard",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    },
+    {
+      "id": "ood33",
+      "note": "unanswerable",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    },
+    {
+      "id": "ood34",
+      "note": "unanswerable, hard",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    },
+    {
+      "id": "ood35",
+      "note": "unanswerable",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    },
+    {
+      "id": "ood36",
+      "note": "unanswerable",
+      "answerable": false,
+      "abstained": true,
+      "correct": true,
+      "claims": []
+    }
+  ]
+}

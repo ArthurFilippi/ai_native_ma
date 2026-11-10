@@ -76,6 +76,9 @@ def generate(
     (seed_dir / "news" / "items.json").write_text(_dump(corpus.news), encoding="utf-8")
     truth = build_truth(corpus)
     write_truth(truth, seed_dir)
+    (seed_dir / "truth" / "news_events.json").write_text(
+        _dump(corpus.news_events), encoding="utf-8"
+    )
     factbase = build_factbase(truth.facts, manifest_entries(corpus), truth.deals, truth.buyers)
     (seed_dir / FACTBASE_PATH).parent.mkdir(parents=True, exist_ok=True)
     (seed_dir / FACTBASE_PATH).write_text(

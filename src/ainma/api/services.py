@@ -5,8 +5,16 @@ from __future__ import annotations
 from pathlib import Path
 
 from ainma.connectors.run import run_market_intel
-from ainma.contracts import AccessContext, Answer, KpiValue, ScreeningRequest, ScreeningResult
+from ainma.contracts import (
+    AccessContext,
+    Answer,
+    KpiValue,
+    MarketEvent,
+    ScreeningRequest,
+    ScreeningResult,
+)
 from ainma.kpi import extract_kpis
+from ainma.news import market_events
 from ainma.pipeline import ask as pipeline_ask
 from ainma.runtime import Runtime
 from ainma.screening import run_screening
@@ -34,7 +42,9 @@ async def ask(runtime: Runtime, access: AccessContext, deal_id: str, question: s
 async def screening(
     runtime: Runtime, access: AccessContext, request: ScreeningRequest
 ) -> ScreeningResult:
-    return await run_screening(request, store=runtime.store, access=access, llm=runtime.llm)
+    return await run_screening(
+        request, store=runtime.store, access=access, llm=runtime.llm, factbase=runtime.factbase
+    )
 
 
 async def kpis(runtime: Runtime, access: AccessContext, deal_id: str) -> list[KpiValue]:
@@ -45,3 +55,7 @@ async def market_intel(runtime: Runtime, access: AccessContext, deal_id: str) ->
     return await run_market_intel(
         deal_id, store=runtime.store, access=access, seed_dir=seed_dir(runtime)
     )
+
+
+async def events(runtime: Runtime, access: AccessContext, deal_id: str) -> list[MarketEvent]:
+    return await market_events(deal_id, store=runtime.store, access=access, llm=runtime.llm)

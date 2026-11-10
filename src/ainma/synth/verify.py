@@ -41,6 +41,7 @@ from ainma.truth import (
     JudgeLabel,
     KpiTruth,
     ManifestEntry,
+    NewsEventTruth,
     NewsFeedItem,
     Query,
     StaleCase,
@@ -460,8 +461,7 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
         n_docs = sum(1 for e in manifest if e.entity_id == b.id)
         if not 3 <= n_docs <= 5:
             rep.err(f"{b.id}: {n_docs} documents, expected 3 to 5")
-    if len(news) != 60:
-        rep.err(f"expected 60 news items, found {len(news)}")
+    _verify_news_events(seed_dir, news, buyers, rep)
     kb_docs = [e for e in manifest if e.deal_id is None and e.entity_id is None]
     if not 28 <= len(kb_docs) <= 32:
         rep.err(f"general layer has {len(kb_docs)} documents, expected about 30")
@@ -523,6 +523,45 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     if not any(t.criterion_key == "fund_lifecycle" and t.status.value == "unknown" for t in btruth):
         rep.err("no unlisted fund without a stated investment period end")
     rep.info("sizes: " + ", ".join(f"{k}={v}" for k, v in sizes.items()))
+
+
+def _verify_news_events(
+    seed_dir: Path, news: list[NewsFeedItem], buyers: list[BuyerProfile], rep: Report
+) -> None:
+    """The feed is the 60 base items plus the items of the event layer (D93); every event is
+    reported by items of the feed, and every event item belongs to one event."""
+    path = seed_dir / "truth" / "news_events.json"
+    if not path.exists():
+        rep.err("truth/news_events.json is missing")
+        return
+    events = TypeAdapter(list[NewsEventTruth]).validate_json(path.read_bytes())
+    titles = [n.title for n in news]
+    by_title = {n.title: n for n in news}
+    buyer_ids = {b.id for b in buyers}
+    claimed: dict[str, str] = {}
+    for event in events:
+        if event.entity not in buyer_ids:
+            rep.err(f"{event.id}: unknown buyer {event.entity}")
+        for title in event.item_titles:
+            if title not in by_title:
+                rep.err(f"{event.id}: item {title!r} is not in the feed")
+            elif event.kind != "acquisition" or title != event.item_titles[0]:
+                claimed[title] = event.id
+        if event.kind == "price" and event.value is None:
+            rep.err(f"{event.id}: a price event needs a value")
+        if event.status == "denied" and len(event.item_titles) < 2:
+            rep.err(f"{event.id}: a denied rumour needs its denial item")
+    base = len(titles) - len(claimed)
+    if base != 60:
+        rep.err(f"expected 60 base news items, found {base} (feed {len(titles)})")
+    kinds: dict[str, int] = defaultdict(int)
+    for event in events:
+        kinds[f"{event.kind}/{event.status}"] += 1
+    rep.info(
+        f"news events verified: {len(events)} events over {len(titles)} items ("
+        + ", ".join(f"{k}={v}" for k, v in sorted(kinds.items()))
+        + ")"
+    )
 
 
 async def _verify_factbase(

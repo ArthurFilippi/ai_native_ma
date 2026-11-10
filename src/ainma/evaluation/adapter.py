@@ -19,6 +19,7 @@ from ainma.contracts import (
     Answer,
     BuyerProfile,
     KpiValue,
+    MarketEvent,
     ScreeningRequest,
     ScreeningResult,
 )
@@ -372,8 +373,16 @@ class Adapter:
     async def screen(self, request: ScreeningRequest, *, access: AccessContext) -> ScreeningResult:
         if self._screening is None:
             return await stubs.stub_screen(request, self._buyers, STUB_SCREENING_CRITERIA)
-        result = await self._screening(request, store=self._store, access=access, llm=self._llm)
+        extra = {"factbase": self._factbase} if self._factbase is not None else {}
+        result = await self._screening(
+            request, store=self._store, access=access, llm=self._llm, **extra
+        )
         return cast(ScreeningResult, result)
+
+    @property
+    def live(self) -> bool:
+        """True when the writer is a live model (the assisted screening is measured then)."""
+        return str(getattr(self._llm, "provider", "mock")) != "mock"
 
     async def ingest_news(self, deal_id: str, *, access: AccessContext, seed_dir: Path) -> int:
         """File the simulated news feed in the deal space, as the demo does. 0 when unavailable."""
@@ -383,6 +392,12 @@ class Adapter:
             deal_id, store=self._store, access=access, seed_dir=seed_dir
         )
         return int(written)
+
+    async def events(self, deal_id: str, *, access: AccessContext) -> list[MarketEvent]:
+        """Market events of the deal space (D94)."""
+        from ainma.news import market_events
+
+        return await market_events(deal_id, store=self._store, access=access, llm=self._llm)
 
     async def kpis(
         self, deal_id: str, *, access: AccessContext, periods: Sequence[str] | None = None

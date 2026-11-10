@@ -19,6 +19,7 @@ from ainma.truth import (
     GenerationParams,
     JudgeLabel,
     KpiTruth,
+    NewsEventTruth,
     Query,
     StaleCase,
     Unanswerable,
@@ -44,6 +45,7 @@ class TruthBundle:
     buyer_truth: list[BuyerTruth] = field(default_factory=list)
     judge_labels: list[JudgeLabel] = field(default_factory=list)
     params: GenerationParams | None = None
+    news_events: list[NewsEventTruth] = field(default_factory=list)
     missing_files: list[str] = field(default_factory=list)
     seed_dir: Path | None = None
     aux: dict[str, Any] = field(default_factory=dict)
@@ -112,6 +114,7 @@ def load_truth(seed_dir: Path) -> TruthBundle:
         kpi_truth=lst("kpi_truth", KpiTruth),
         buyer_truth=lst("buyer_truth", BuyerTruth),
         judge_labels=lst("judge_labels", JudgeLabel),
+        news_events=_read(truth / "news_events.json", NewsEventTruth) or [],
         params=params,
         missing_files=missing,
         seed_dir=seed_dir,

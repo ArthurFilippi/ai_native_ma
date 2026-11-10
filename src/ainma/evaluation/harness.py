@@ -23,6 +23,7 @@ from ainma.evaluation.metrics.citation import (
     claim_is_unsupported,
 )
 from ainma.evaluation.metrics.kpi import KpiOutcome, quote_contains_value
+from ainma.evaluation.metrics.news import event_counts
 from ainma.evaluation.metrics.retrieval import (
     ndcg_at_k,
     recall_at_k,
@@ -127,6 +128,9 @@ class SeedResult:
     # per deal: Spearman of the system order against the truth score, with the rank rule of the
     # product (floor of the score range, D86) and with the previous rule (score, then coverage)
     screening_rank: list[tuple[float | None, float | None]] = field(default_factory=list)
+    events: dict[str, int] = field(default_factory=dict)  # EventCounts of the news layer (D94)
+    # (truth, predicted) with the model assisted stage 2 (D95); live runs only
+    screening_assisted: list[tuple[str, str]] = field(default_factory=list)
     timing: TimingUnits = field(default_factory=TimingUnits)
     counts: dict[str, int] = field(default_factory=dict)
 
@@ -500,7 +504,24 @@ async def _screening(result: SeedResult, adapter: Adapter, truth: TruthBundle) -
             for card in screened.cards
             for r in card.results
         }
+        if adapter.live:
+            assisted = await adapter.screen(
+                request.model_copy(update={"llm_assist": True}), access=access
+            )
+            got = {
+                (card.buyer.id, r.criterion_key): r.status.value
+                for card in assisted.cards
+                for r in card.results
+            }
+            result.screening_assisted.extend(
+                (row.status.value, got.get((row.buyer_id, row.criterion_key), "unknown"))
+                for row in truth.buyer_truth
+                if row.deal_id == deal_id
+            )
         truth_statuses: dict[str, dict[str, str]] = {}
+        if truth.news_events and not result.events:
+            extracted = await adapter.events(deal_id, access=access)
+            result.events = event_counts(extracted, truth.news_events).as_dict()
         for row in truth.buyer_truth:
             if row.deal_id == deal_id:
                 predicted = statuses.get((row.buyer_id, row.criterion_key), "unknown")

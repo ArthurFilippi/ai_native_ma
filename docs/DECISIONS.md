@@ -392,3 +392,27 @@ One short entry each: context, choice, alternative, cost.
 - Choice: a sub-question naming exactly one metric and at most one period, in a question that does not ask for a change over time, is looked up (`route_request`). When exactly one record answers it in the user's scope, the record becomes a SOURCED claim (`origin="structured"`) citing its provenance, and each disagreeing document a second claim; both go through the same verifier and contradiction stages as text claims, so a disagreement is shown with both sides and no winner. Anything ambiguous (several periods or entities) or anything else stays on text search. `PipelineConfig.structured_routing=False` turns it off; the report measures the product against text only (section 2).
 - Alternative: let the LLM choose a tool. Kept for the live path; the rule router is deterministic and testable, and the typed tools are what a model would call.
 - Cost: metrics and periods are read by the lexicon (`target_metrics`, `detect_periods`), so routing inherits its coverage; a growth question is never routed so the writer can derive the change.
+
+## D93. A news event layer with its own truth (news)
+- Context: the core is to be driven by news; the feed had 60 items, acquisitions and filler, and no truth about events.
+- Choice: `synth/news_events.py` appends items from a separate random stream (the base 60 and every earlier truth file are unchanged): duplicated acquisition reports, leadership changes, rumours and their denials, prices and their corrections, with `truth/news_events.json`.
+- Alternative: rewrite the feed. Rejected: every earlier number would move for reasons unrelated to the change.
+- Cost: wordings are templated; the rule extractor reads them, a live model must generalise. Event wordings avoid the screening's acquisition verbs, so the screening still counts acquisition reports per document and does not deduplicate across outlets; moving screening onto the event layer is the next step.
+
+## D94. Market events are consolidated from cited reports (news)
+- Context: a news-driven analyst needs events, not articles: one acquisition reported twice, a rumour later denied, a price later corrected.
+- Choice: `ainma.news.market_events` runs the `extract_events` task on each news passage of the deal (mock: headline rules; live: the same request), keeps a draft only when its quote is a verbatim span (citation built by code), then groups reports by (kind, actor, counterparty): duplicates add citations, a denial makes a rumour `denied`, a correction replaces the price and keeps the first figure as `superseded_citations`. `GET /deals/{id}/events` serves them; the harness scores them against the truth (recall, precision, status, corrected value, denied rumours reported otherwise, duplicates merged).
+- Alternative: let the writer read raw articles. It cannot tell a denied rumour from a fact.
+- Cost: grouping is on exact normalised names; a model that spells a name two ways splits one event in two.
+
+## D95. Model assisted stage 2, rules first, evidence verified by code (screening)
+- Context: brief item D3. Stage 2 was rules only; nothing intelligent read the buyer's evidence.
+- Choice: with `ScreeningRequest.llm_assist`, a deep criterion that the rules leave `unknown` goes to the `assess_criterion` task with numbered evidence: the buyer's structured facts (provenance quote) and up to six retrieved passages of its documents, plus the deal facts and the documented parameters marked as parameters. The model returns a verdict and, per item it relies on, a verbatim quote; code keeps a citation only when the quote is a span of that item, and a verdict without one verified citation stays `unknown` with a note. A rules verdict is never overridden. The offline mock answers `unknown`, so mock runs are the rules baseline; the report prints `live run not executed` for the assisted mode until a live run measures it next to the rules.
+- Alternative: let the model judge every criterion. Rejected: the rules are measured (99.8 percent accuracy where they give a status) and the model is not.
+- Cost: one model call per unknown criterion and buyer (up to a few hundred per screening); the model can still be wrong with a true quote that does not decide the criterion, which only a live measurement against the buyer truth can show.
+
+## D96. A committed out of distribution set, read but never tuned on (evaluation)
+- Context: the synthetic test split is written by the same author as the system, so A4 and A5 saturate; the brief asks for a set in another vocabulary.
+- Choice: `eval/datasets/ood/`: 5 hand written documents of 2 fictional deals (net sales, turnover, FY24, EUR 0.21bn, GM%, FTEs, order book, 31/12/2024, tables with FY22 columns or plain years), 36 questions (30 answerable with value and gold strings, 6 unanswerable). `make eval-ood` writes `eval/results/OOD.md`. Rule: nothing is tuned on it; every look at it is disclosed here.
+- First run (mock): Recall@10 1.000 for A1 to A5, MRR 0.961 for A5, answer accuracy 0.567, false abstention 0.400, correct abstention 1.000. Retrieval finds the passages; the frozen `tau`, calibrated on synthetic relevance scores, abstains on 12 of 30 answerable questions. This is a measured negative result, published as is, and no threshold was changed after reading it.
+- Cost: 36 questions give wide uncertainty; the documents are short, which favours retrieval. It does not replace real documents.

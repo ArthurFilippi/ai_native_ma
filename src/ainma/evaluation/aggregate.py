@@ -568,6 +568,47 @@ def _screening(results: Sequence[SeedResult], pool: Pooler) -> Summary:
             "accuracy_known": scores.accuracy_known,
         },
         "ranking": _ranking(results),
+        "events": _events(results),
+        "assisted": _assisted(results),
+    }
+
+
+def _assisted(results: Sequence[SeedResult]) -> Summary:
+    """Model assisted stage 2 (D95), point estimates; empty when no live run measured it."""
+    pairs = [p for r in results for p in r.screening_assisted]
+    if not pairs:
+        return {}
+    scores = screening_scores(pairs)
+    return {
+        "n_cells": len(pairs),
+        "agreement": scores.agreement,
+        "unknown_rate": scores.unknown_rate,
+        "false_met_rate": scores.false_met_rate,
+        "accuracy_known": scores.accuracy_known,
+    }
+
+
+def _events(results: Sequence[SeedResult]) -> Summary:
+    """News events pooled over the seeds (counts and ratios), and per seed."""
+    pooled: dict[str, int] = {}
+    for r in results:
+        for key, value in r.events.items():
+            pooled[key] = pooled.get(key, 0) + int(value)
+    if not pooled:
+        return {}
+
+    def ratio(num: str, den: str) -> float | None:
+        return pooled[num] / pooled[den] if pooled.get(den) else None
+
+    return {
+        "counts": pooled,
+        "recall": ratio("n_matched", "n_truth"),
+        "precision": ratio("n_matched", "n_extracted"),
+        "status_accuracy": ratio("n_status_correct", "n_matched"),
+        "price_accuracy": ratio("n_price_value_correct", "n_price"),
+        "denied_as_fact": ratio("n_denied_as_fact", "n_denied"),
+        "duplicates_merged": ratio("n_duplicates_merged", "n_duplicated"),
+        "per_seed": {r.label: dict(r.events) for r in results},
     }
 
 

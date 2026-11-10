@@ -6,6 +6,7 @@ seed (`data/synthetic/<seed>/`):
     manifest.json              list[ManifestEntry], every document file with its metadata
     <kb|deal_aurora|buyers|news>/...   document files (pdf, docx, xlsx, txt)
     news/items.json            list[NewsFeedItem], served by the simulated connector
+    truth/news_events.json     list[NewsEventTruth]       (events of the feed, duplicates grouped)
     truth/deals.json           list[Deal]
     truth/users.json           UsersFile
     truth/buyers.json          list[BuyerProfile]
@@ -79,6 +80,23 @@ class UsersFile(Strict):
 
 class NewsFeedItem(ConnectorItem):
     entity: str  # entity id or deal id the item is about
+
+
+class NewsEventTruth(Strict):
+    """One market event of the news feed and every item that reports it (D93).
+
+    `status`: `confirmed`, `unconfirmed` (a rumour nobody confirmed or denied), `denied` (a rumour
+    denied later: never a fact), `corrected` (a figure replaced by a later correction; `value`
+    is the corrected figure)."""
+
+    id: str
+    kind: Literal["acquisition", "leadership_change", "rumour", "price"]
+    entity: str  # buyer id
+    counterparty: str  # target company, appointed person
+    event_date: date
+    status: Literal["confirmed", "unconfirmed", "denied", "corrected"]
+    value: float | None = None  # EUR m, for `price`
+    item_titles: list[str] = Field(min_length=1)
 
 
 class Fact(Strict):

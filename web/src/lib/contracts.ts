@@ -230,6 +230,7 @@ export interface ScreeningRequest {
   filters: ScreeningFilters;
   weights: Record<string, number>;
   stage2_top_n: number;
+  llm_assist?: boolean; // D95
 }
 
 export interface ScreeningResult {

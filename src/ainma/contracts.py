@@ -374,6 +374,9 @@ class ScreeningRequest(Strict):
     filters: ScreeningFilters = Field(default_factory=ScreeningFilters)
     weights: dict[str, float] = Field(default_factory=dict)  # criterion key -> weight override
     stage2_top_n: int = Field(default=10, ge=1, le=50)
+    # True: a deep criterion the rules leave unknown is assessed by the model, kept only with a
+    # citation verified by code (D95)
+    llm_assist: bool = False
 
 
 class ScreeningResult(Strict):
@@ -433,3 +436,29 @@ class ConnectorItem(Strict):
     doc_type: DocType = DocType.PRESS_ARTICLE
     text: str
     simulated: bool = True
+
+
+# --------------------------------------------------------------------------
+# Market events read from the news (D94)
+# --------------------------------------------------------------------------
+
+
+class MarketEvent(Strict):
+    """One event consolidated from every news report about it.
+
+    `status`: `confirmed`; `unconfirmed` (a rumour nobody confirmed or denied); `denied` (a rumour
+    denied later, never a fact); `corrected` (`value` is the corrected figure, the first figure
+    is in `superseded_citations`). Every report is cited verbatim; duplicates add citations, not
+    events."""
+
+    id: str
+    kind: Literal["acquisition", "leadership_change", "rumour", "price"]
+    actor: str  # the buyer or company that acts
+    buyer_id: str | None = None
+    counterparty: str  # target company, appointed person
+    event_date: date | None = None  # date of the first report
+    status: Literal["confirmed", "unconfirmed", "denied", "corrected"]
+    value_eur_m: float | None = None
+    citations: list[Citation] = Field(min_length=1)
+    superseded_citations: list[Citation] = Field(default_factory=list)
+    n_reports: int = Field(ge=1)

@@ -35,6 +35,7 @@ from ainma.synth.docs_company import (
 from ainma.synth.docs_kb import build_kb
 from ainma.synth.docspec import DocSpec
 from ainma.synth.lang import NamePool
+from ainma.synth.news_events import build_news_events
 from ainma.synth.truthio import Fact, ManifestEntry, NewsItem
 from ainma.synth.world import (
     OLD_DECK_DEALS,
@@ -44,6 +45,7 @@ from ainma.synth.world import (
     build_world,
 )
 from ainma.synth.writers import render
+from ainma.truth import NewsEventTruth
 
 
 @dataclass(frozen=True)
@@ -68,6 +70,7 @@ class Corpus:
     pages: dict[str, list[str]] = field(default_factory=dict)
     metas: dict[str, DocumentMeta] = field(default_factory=dict)
     published_acquisitions: set[tuple[str, str]] = field(default_factory=set)
+    news_events: list[NewsEventTruth] = field(default_factory=list)
 
     def spec(self, doc_id: str) -> DocSpec:
         return next(s for s in self.specs if s.id == doc_id)
@@ -164,7 +167,16 @@ def build_specs(params: Params) -> Corpus:
         specs.extend(bd.docs)
         published |= bd.published_acquisitions
     news = build_news(world, published)
-    return Corpus(params, world, specs, book, news, published_acquisitions=published)
+    extra, events = build_news_events(world, news)
+    return Corpus(
+        params,
+        world,
+        specs,
+        book,
+        [*news, *extra],
+        published_acquisitions=published,
+        news_events=events,
+    )
 
 
 def _find_all(text: str, quote: str) -> list[int]:

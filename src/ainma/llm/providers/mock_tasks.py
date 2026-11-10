@@ -20,7 +20,14 @@ import re
 from pydantic import BaseModel
 
 from ainma.llm.mock import MockHandler
-from ainma.llm.tasks import TASK_EXTRACT_FACTS, TASK_JUDGE, TASK_UNDERSTAND, TASK_WRITE
+from ainma.llm.tasks import (
+    TASK_ASSESS_CRITERION,
+    TASK_EXTRACT_EVENTS,
+    TASK_EXTRACT_FACTS,
+    TASK_JUDGE,
+    TASK_UNDERSTAND,
+    TASK_WRITE,
+)
 from ainma.pipeline.rules import (
     claim_text,
     evidence_facts,
@@ -368,9 +375,14 @@ def _extract_facts(system: str, user: str, schema: type[BaseModel]) -> BaseModel
 
 
 def default_mock_handlers() -> dict[str, MockHandler]:
+    from ainma.news.rules import mock_extract_events  # lazy: the news layer imports the pipeline
+    from ainma.screening.assist import mock_assess
+
     return {
         TASK_UNDERSTAND: _understand,
         TASK_WRITE: _write,
         TASK_JUDGE: _judge,
         TASK_EXTRACT_FACTS: _extract_facts,
+        TASK_EXTRACT_EVENTS: mock_extract_events,
+        TASK_ASSESS_CRITERION: mock_assess,
     }

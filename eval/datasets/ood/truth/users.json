@@ -1,0 +1,3 @@
+{"users": [{"id": "u_ood", "name": "OOD analyst"}], "memberships": [
+  {"deal_id": "deal_ood_halvorsen", "user_id": "u_ood", "role": "lead"},
+  {"deal_id": "deal_ood_corvina", "user_id": "u_ood", "role": "lead"}]}
