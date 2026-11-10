@@ -1,6 +1,6 @@
 """KPI accuracy against the generated truth table (seed 1234), relative tolerance 0.5 percent.
 
-Skipped until the `data` and `core` agents are merged and `make data` has produced the corpus.
+The corpus is generated into a temporary directory (3 s), so the test needs no `make data`.
 The gates are provisional smoke gates; the numbers that count come from `make eval`.
 """
 
@@ -16,32 +16,26 @@ from ainma.kpi import extract_kpis
 from ainma.kpi.parse import value_in_quote
 from ainma.llm import MockLLM
 from ainma.store import SqliteStore
+from ainma.synth.generate import generate
 from ainma.truth import KpiTruth
 
-SEED_DIR = Path(__file__).parents[2] / "data" / "synthetic" / "1234"
 REL_TOL = 0.005
 
 
-def _require_corpus() -> None:
-    if not (SEED_DIR / "truth" / "kpi_truth.json").exists():
-        pytest.skip("seed 1234 corpus not generated yet (data agent)")
-    for module in ("ainma.ingest.loader", "ainma.retrieval"):
-        try:
-            importlib.import_module(module)
-        except ImportError:
-            pytest.skip(f"{module} not merged yet")
+@pytest.fixture(scope="module")
+def seed_dir(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return generate(1234, tmp_path_factory.mktemp("synthetic"))
 
 
-async def test_kpi_accuracy_on_seed_1234() -> None:
-    _require_corpus()
+async def test_kpi_accuracy_on_seed_1234(seed_dir: Path) -> None:
     loader = importlib.import_module("ainma.ingest.loader")
     truth = [
         KpiTruth.model_validate(t)
-        for t in json.loads((SEED_DIR / "truth" / "kpi_truth.json").read_text("utf-8"))
+        for t in json.loads((seed_dir / "truth" / "kpi_truth.json").read_text("utf-8"))
     ]
     store = await SqliteStore.open(":memory:")
     try:
-        await loader.load_corpus(store, SEED_DIR)
+        await loader.load_corpus(store, seed_dir)
         deal_id = truth[0].deal_id
         access = await store.access_for("u_lead")
         values = await extract_kpis(

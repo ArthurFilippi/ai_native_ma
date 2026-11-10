@@ -5,14 +5,14 @@ from datetime import date
 
 import pytest
 
-from ainma.contracts import Deal, DocType, KpiValue, Membership, Role, User
+from ainma.contracts import AccessContext, Deal, DocType, KpiValue, Membership, Role, User
 from ainma.kpi import extract_kpis
 from ainma.kpi.definitions import DEFAULT_PERIODS, kpi_definitions
 from ainma.llm import MockLLM
-from ainma.store import SqliteStore
+from ainma.store import SqliteStore, Store
 from tests.fixtures.tiny import chunk_document
 from tests.fixtures_biz.data_room import DEAL_ID, PERIODS, ROWS, load_data_room, make_doc
-from tests.fixtures_biz.keyword_search import keyword_search
+from tests.fixtures_biz.keyword_search import KeywordHit, keyword_search
 
 REL_TOL = 0.005  # the acceptance tolerance of the evaluation plan
 
@@ -179,3 +179,53 @@ async def test_a_table_cut_on_row_boundaries_keeps_its_header_for_later_chunks()
     assert [v.value for v in values] == [13.0, 14.9]
     assert {v.citations[0].chunk_id for v in values} == {chunks[1].id}
     await opened.close()
+
+
+async def test_a_buyer_report_in_the_general_layer_is_not_the_deal_revenue(
+    store: SqliteStore,
+) -> None:
+    """Buyer documents carry no deal id and are searchable from every deal; their revenue is
+    their own. They must not crowd out or replace the deal's figure."""
+    report = make_doc(
+        "doc_buyer_x_report",
+        "Vexald Holdings: annual report excerpt",
+        DocType.COMPANY_REPORT,
+        ["Revenue amounted to EUR 225.4 million in FY2024. Revenue FY2024 total revenue."],
+        date(2025, 4, 3),
+        deal_id=None,
+        entity_id="buyer_x",
+    )
+    await store.put_document(report.meta, report.pages)
+    await store.put_chunks(chunk_document(report))
+
+    async def general_layer_first(
+        query: str, *, store: Store, access: AccessContext, deal_id: str | None
+    ) -> list[KeywordHit]:
+        hits = await keyword_search(query, store=store, access=access, deal_id=deal_id)
+        return sorted(hits, key=lambda hit: hit.chunk.deal_id is not None)
+
+    values = await extract_kpis(
+        DEAL_ID,
+        store=store,
+        access=await store.access_for("u_lead"),
+        llm=MockLLM({}),
+        periods=["FY2024"],
+        kpi_ids=["revenue"],
+        search=general_layer_first,
+    )
+    assert values[0].value == 182.4
+    assert values[0].citations[0].document_id != "doc_buyer_x_report"
+
+
+async def test_adjusted_ebitda_does_not_replace_ebitda(store: SqliteStore) -> None:
+    qoe = make_doc(
+        "doc_qoe",
+        "Project Aurora, quality of earnings",
+        DocType.DEAL_DOCUMENT,
+        ["Adjusted EBITDA for FY2024 was EUR 32.8m after normalisation adjustments."],
+        date(2025, 3, 5),
+    )
+    await store.put_document(qoe.meta, qoe.pages)
+    await store.put_chunks(chunk_document(qoe))
+    value = _by_key(await _extract(store))[("ebitda", "FY2024")]
+    assert value.value == 31.5

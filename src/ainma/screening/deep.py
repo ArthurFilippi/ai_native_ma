@@ -15,6 +15,7 @@ from datetime import date
 
 from ainma.contracts import (
     BuyerProfile,
+    Chunk,
     Citation,
     CriterionResult,
     CriterionStatus,
@@ -30,11 +31,24 @@ _SIZE = re.compile(
     r"market capitali[sz]ation|market cap\b",
     _I,
 )
-_INVEST_END = re.compile(
-    r"investment period[^.\n]{0,80}?\b(?:ends?|ending|expires?|expiring|"
-    r"runs?\s+(?:until|through|to)|until|through)\s+(?:in\s+|at\s+the\s+end\s+of\s+)?"
-    rf"(?:(?P<month>{_MONTHS})\s+)?(?P<year>(?:19|20)\d{{2}})",
-    _I,
+_YEAR = r"(?:19|20)\d{2}"
+# Ways a fund document states when new investments stop (a year, with a month sometimes).
+_INVEST_END = (
+    re.compile(
+        r"investment period[^.\n]{0,80}?\b(?:ends?|ending|expires?|expiring|"
+        r"runs?\s+(?:until|through|to)|until|through)\s+(?:in\s+|at\s+the\s+end\s+of\s+)?"
+        rf"(?:(?P<month>{_MONTHS})\s+)?(?P<year>{_YEAR})",
+        _I,
+    ),
+    re.compile(
+        r"new\s+(?:platform\s+)?(?:investments?|deals?|commitments?)[^.\n]{0,60}?"
+        rf"\b(?:until|through|up\s+to)\s+(?:(?P<month>{_MONTHS})\s+)?(?P<year>{_YEAR})",
+        _I,
+    ),
+    re.compile(rf"investment period end[^.\n|:]{{0,12}}[:|]\s*(?P<month>)(?P<year>{_YEAR})", _I),
+)
+_NO_INVEST_END = re.compile(
+    r"permanent capital|(?:without|no)\s+(?:a\s+)?fixed\s+investment\s+period|evergreen", _I
 )
 _INVEST_LENGTH = re.compile(r"(?P<n>\d+(?:\.\d+)?)[- ]year investment period", _I)
 _ACQUISITION = re.compile(
@@ -42,36 +56,84 @@ _ACQUISITION = re.compile(
     r"agreed to acquire|has bought|bought|took over|takes over|add-on acquisition)\b",
     _I,
 )
+_PCT = r"(?:%|percent|per\s+cent)"
 _SHARE = re.compile(
-    r"market share[^.\n]{0,60}?(?P<a>\d+(?:[.,]\d+)?)\s*(?:%|percent|per\s+cent)"
-    r"|(?P<b>\d+(?:[.,]\d+)?)\s*(?:%|percent|per\s+cent)\s+(?:of\s+the\s+[\w\s-]{0,30}?)?"
-    r"market share",
+    rf"market share[^.\n]{{0,60}}?(?P<a>\d+(?:[.,]\d+)?)\s*{_PCT}"
+    rf"|(?P<b>\d+(?:[.,]\d+)?)\s*{_PCT}\s+(?:of\s+the\s+[\w\s-]{{0,30}}?)?market share"
+    rf"|\b(?:controls|holds|commands|accounts\s+for)\s+(?P<c>\d+(?:[.,]\d+)?)\s*{_PCT}\s+of\s+"
+    r"(?:the\s+)?[\w\s-]{0,40}?\b(?:sales|market|segment)\b",
     _I,
 )
 _CONSTRAINT = re.compile(
-    r"state[- ]owned|(?<!no )state ownership|government[- ]owned|(?<!no )government stake|"
-    r"sovereign wealth|"
-    r"sovereign fund|golden share|foreign investment (?:screening|control|review)|\bFDI\b|"
-    r"national security|defen[cs]e (?:contractor|exposure|sector|business|revenue|activities)",
+    r"state[- ]owned|state ownership|government[- ]owned|government (?:stake|ownership)|"
+    r"owned by (?:the|a) (?:state|government)|state shareholders?|"
+    r"sovereign wealth|sovereign fund|golden share|"
+    r"foreign investment (?:screening|control|review)|\bFDI\b|"
+    r"national security|exposure to defen[cs]e|"
+    r"defen[cs]e (?:contractor|contracts?|exposure|sector|business|revenue|activities)",
     _I,
 )
-_CLEAN_OWNERSHIP = re.compile(
-    r"privately[- ](?:held|owned)|private ownership|no state ownership|"
-    r"no government (?:ownership|stake)|family[- ]owned|widely held",
-    _I,
-)
+# Explicit absence of a constraint. `privately held` is not one: it says the shares are not
+# traded, not who owns them (a state owned company can be privately held).
+_CLEAN_OWNERSHIP = re.compile(r"privately[- ]owned|private ownership|family[- ]owned", _I)
+_NEGATION = re.compile(r"\b(?:no|not|without|never|free\s+of)\b[^.\n]{0,30}$", _I)
+_EV_CUE = re.compile(r"enterprise value|cash[- ]free(?:,)? and debt[- ]free", _I)
+_EQUITY_CUE = re.compile(r"equity value|shareholders would receive", _I)
 
 
 @dataclass(frozen=True)
 class DealEconomics:
-    """The indicative size of the transaction, from the deal's own EBITDA and documented
-    parameters. `citations` is the source of the EBITDA figure."""
+    """The indicative size of the transaction. The enterprise value and the equity cheque are
+    the values the deal documents state when they do; otherwise they come from the deal's EBITDA
+    and the documented parameters. `ev_basis` and `cheque_basis` say which, in words, and
+    `citations` are the sources of the sourced numbers."""
 
-    period: str
-    ebitda_eur_m: float
     ev_eur_m: float
     cheque_eur_m: float
+    ev_basis: str
+    cheque_basis: str
     citations: tuple[Citation, ...]
+
+
+async def _stated_amount(
+    finder: EvidenceFinder, chunks: list[Chunk], cue: re.Pattern[str]
+) -> tuple[Evidence, float] | None:
+    """The first amount written after the cue in a sentence of the deal documents, with the
+    sentence as evidence."""
+    for evidence in finder.find(chunks, cue):
+        tail = evidence.quote[evidence.match.start() - _quote_start(evidence) :]
+        amounts = find_money(tail)
+        if amounts:
+            return evidence, amounts[0][2]
+    return None
+
+
+def _quote_start(evidence: Evidence) -> int:
+    return evidence.chunk.text.find(evidence.quote)
+
+
+async def stated_valuation(finder: EvidenceFinder, params: ScreeningParams) -> DealEconomics | None:
+    """The deal's enterprise value and equity value as the deal documents state them (CIM,
+    executed SPA; a superseded draft is not read). Only an enterprise value is required: without
+    a stated equity value the cheque is the documented share of it."""
+    chunks = await finder.deal_chunks(
+        "enterprise value equity value purchase price priced cash-free debt-free "
+        "shareholders would receive for their shares"
+    )
+    ev = await _stated_amount(finder, chunks, _EV_CUE)
+    if ev is None:
+        return None
+    equity = await _stated_amount(finder, chunks, _EQUITY_CUE)
+    citations = [await finder.cite(ev[0])]
+    ev_basis = f"Deal enterprise value EUR {ev[1]:g}m (sourced)"
+    if equity is not None:
+        citations.append(await finder.cite(equity[0]))
+        cheque = equity[1]
+        cheque_basis = f"deal equity value EUR {equity[1]:g}m (sourced) as the equity cheque"
+    else:
+        cheque = ev[1] * params.equity_share_of_ev
+        cheque_basis = f"equity cheque at {params.equity_share_of_ev:.0%} of EV (parameter)"
+    return DealEconomics(ev[1], cheque, ev_basis, cheque_basis, tuple(citations))
 
 
 class DeepContext:
@@ -95,22 +157,36 @@ class DeepContext:
         self.target_name = target_name
         self._acquisitions: list[Evidence] | None = None
 
+    def in_target_sector(self, evidence: Evidence) -> bool:
+        """The acquisition sentence (and the sentence about `the target` after it) names the
+        target's sector. The buyer's own name is removed first: `Draix Industries` is not an
+        industrial company."""
+        quote = evidence.quote.replace(self.buyer.name, " ")
+        return sector_regex(self.target_sectors).search(quote) is not None
+
     async def acquisitions(self) -> list[Evidence]:
-        """Dated passages reporting an acquisition by the buyer, one per document, newest first."""
+        """Dated passages reporting an acquisition by the buyer, one per document, newest first.
+
+        When several passages of a document report it (a news item has its title and its body in
+        separate chunks), the one that places the target in the deal's sector is kept.
+        """
         if self._acquisitions is None:
             chunks = await self.finder.buyer_chunks(
                 self.buyer, "acquisition acquired completed the acquisition of"
             )
-            seen: set[str] = set()
-            found: list[Evidence] = []
-            for evidence in self.finder.find(chunks, _ACQUISITION):
-                chunk = evidence.chunk
-                if chunk.published_on is None or chunk.document_id in seen:
+            by_document: dict[str, list[Evidence]] = {}
+            for found_one in self.finder.find(chunks, _ACQUISITION):
+                chunk = found_one.chunk
+                if chunk.published_on is None:
                     continue
                 if self.as_of is not None and chunk.published_on > self.as_of:
                     continue
-                seen.add(chunk.document_id)
-                found.append(evidence)
+                evidence = self.finder.with_target_sentence(found_one)
+                by_document.setdefault(chunk.document_id, []).append(evidence)
+            found = [
+                next((e for e in group if self.in_target_sector(e)), group[0])
+                for group in by_document.values()
+            ]
             found.sort(key=lambda e: (e.chunk.published_on or date.min, e.chunk.id), reverse=True)
             self._acquisitions = found
         return self._acquisitions
@@ -140,8 +216,8 @@ def _unknown(key: str, rationale: str) -> CriterionResult:
     return _result(key, CriterionStatus.UNKNOWN, rationale)
 
 
-def _months_between(earlier: date, later: date) -> int:
-    return (later.year - earlier.year) * 12 + later.month - earlier.month
+def _months_between(earlier: date, later: date) -> float:
+    return (later - earlier).days / 30.4375
 
 
 async def _size_evidence(
@@ -164,19 +240,13 @@ async def _size_evidence(
     return [await ctx.finder.cite(e) for e in shown], bool(differing)
 
 
-def _economics_text(economics: DealEconomics, params: ScreeningParams) -> str:
-    return (
-        f"Deal EBITDA {economics.period} EUR {economics.ebitda_eur_m:g}m (sourced) x "
-        f"{params.ev_ebitda_multiple:g} EV/EBITDA (parameter) = indicative EV "
-        f"EUR {economics.ev_eur_m:g}m"
-    )
-
-
 async def ticket_fit(ctx: DeepContext) -> CriterionResult:
     key, params, economics = "ticket_fit", ctx.params, ctx.economics
     if economics is None:
         return _unknown(
-            key, "No deal EBITDA was found in the deal sources: no indicative cheque can be sized."
+            key,
+            "No deal value or EBITDA was found in the deal sources: no indicative cheque can "
+            "be sized.",
         )
     share = economics.cheque_eur_m / ctx.buyer.size_eur_m
     if share < params.ticket_not_met_below:
@@ -206,9 +276,8 @@ async def ticket_fit(ctx: DeepContext) -> CriterionResult:
         else "fund size from the structured profile, a cited passage states another amount"
     )
     rationale = (
-        f"{_economics_text(economics, params)}; equity cheque at {params.equity_share_of_ev:.0%} "
-        f"of EV (parameter) = EUR {economics.cheque_eur_m:g}m, which is {share:.1%} of "
-        f"EUR {ctx.buyer.size_eur_m:g}m ({size_note}): {band}."
+        f"{economics.ev_basis}; {economics.cheque_basis} = EUR {economics.cheque_eur_m:g}m, "
+        f"which is {share:.1%} of EUR {ctx.buyer.size_eur_m:g}m ({size_note}): {band}."
     )
     return _result(key, status, rationale, [*economics.citations, *cites], conflicting=conflicting)
 
@@ -217,7 +286,8 @@ async def ev_ratio(ctx: DeepContext) -> CriterionResult:
     key, params, economics = "ev_ratio", ctx.params, ctx.economics
     if economics is None:
         return _unknown(
-            key, "No deal EBITDA was found in the deal sources: no indicative EV can be sized."
+            key,
+            "No deal value or EBITDA was found in the deal sources: no indicative EV can be sized.",
         )
     ratio = economics.ev_eur_m / ctx.buyer.size_eur_m
     if ratio > params.ev_ratio_not_met_above:
@@ -236,7 +306,7 @@ async def ev_ratio(ctx: DeepContext) -> CriterionResult:
         ctx, "market capitalisation market cap", ctx.buyer.size_eur_m
     )
     rationale = (
-        f"{_economics_text(economics, params)} is {ratio:.1%} of the buyer's market "
+        f"{economics.ev_basis} is {ratio:.1%} of the buyer's market "
         f"capitalisation of EUR {ctx.buyer.size_eur_m:g}m (used as a proxy for buyer EV): {band}."
     )
     return _result(key, status, rationale, [*economics.citations, *cites], conflicting=conflicting)
@@ -245,7 +315,7 @@ async def ev_ratio(ctx: DeepContext) -> CriterionResult:
 def _end_of_investment_period(match: re.Match[str]) -> date:
     year = int(match.group("year"))
     month_name = match.group("month")
-    if month_name is None:
+    if not month_name:
         return date(year, 7, 1)  # only the year is stated: mid-year
     month = list(calendar.month_name).index(month_name.capitalize())
     return date(year, month, calendar.monthrange(year, month)[1])
@@ -256,9 +326,20 @@ async def fund_lifecycle(ctx: DeepContext) -> CriterionResult:
     if ctx.as_of is None:
         return _unknown(key, "No reference date is available to measure the remaining period.")
     chunks = await ctx.finder.buyer_chunks(
-        ctx.buyer, "investment period fund vintage final close lifecycle"
+        ctx.buyer,
+        "investment period new platform deals investments until fund vintage permanent capital",
     )
     ends = ctx.finder.find(chunks, _INVEST_END)
+    if not ends:
+        permanent = ctx.finder.find(chunks, _NO_INVEST_END)
+        if permanent:
+            return _result(
+                key,
+                CriterionStatus.MET,
+                "A source describes a permanent capital structure without a fixed investment "
+                "period: there is no date by which new investments must stop.",
+                [await ctx.finder.cite(permanent[0])],
+            )
     end: date | None = None
     chosen: Evidence | None = None
     conflicting = False
@@ -291,9 +372,30 @@ async def fund_lifecycle(ctx: DeepContext) -> CriterionResult:
     )
 
 
-def sector_terms(sectors: list[str]) -> tuple[str, ...]:
-    words = {w[:6] for s in sectors for w in re.findall(r"[a-z]+", s.lower()) if len(w) >= 5}
-    return tuple(sorted(words | {s.lower() for s in sectors}))
+_STOP_WORDS = frozenset({"and", "for", "the", "of"})
+_STEM = 6
+
+
+def sector_regex(sectors: list[str]) -> re.Pattern[str]:
+    """A pattern matching a sector wording: every word of a sector (by its first letters) in
+    order, with up to two words between them, or the two words of a pair in reverse order.
+    `industrial_components` finds `industrial components` but not `Industries` alone."""
+    alternatives: list[str] = []
+    for sector in sectors:
+        stems = [
+            re.escape(w[:_STEM])
+            for w in re.findall(r"[a-z]+", sector.lower())
+            if w not in _STOP_WORDS and len(w) >= 3
+        ]
+        if not stems:
+            continue
+        gap = r"\w*\W+(?:\w+\W+){0,2}?"
+        alternatives.append(rf"\b{gap.join(stems)}\w*")
+        if len(stems) == 2:
+            alternatives.append(rf"\b{gap.join(reversed(stems))}\w*")
+    if not alternatives:
+        return re.compile(r"(?!x)x")
+    return re.compile("|".join(alternatives), _I)
 
 
 async def recent_activity(ctx: DeepContext) -> CriterionResult:
@@ -303,13 +405,12 @@ async def recent_activity(ctx: DeepContext) -> CriterionResult:
         return _unknown(key, "No dated source reports an acquisition by this buyer.")
     if ctx.as_of is None:
         return _unknown(key, "No reference date is available to date the acquisitions.")
-    terms = sector_terms(ctx.target_sectors)
     similar = [
         e
         for e in acquisitions
         if e.chunk.published_on is not None
         and _months_between(e.chunk.published_on, ctx.as_of) <= params.recent_activity_months
-        and any(t in e.chunk.text.lower() for t in terms)
+        and ctx.in_target_sector(e)
     ]
     if similar:
         shown = similar[:3]
@@ -356,11 +457,12 @@ async def integration_bandwidth(ctx: DeepContext) -> CriterionResult:
 
 
 def _shares(evidence: list[Evidence]) -> list[tuple[Evidence, float]]:
-    return [
-        (e, parse_number(e.match.group("a") or e.match.group("b")))
-        for e in evidence
-        if e.match.group("a") or e.match.group("b")
-    ]
+    shares: list[tuple[Evidence, float]] = []
+    for e in evidence:
+        token = e.match.group("a") or e.match.group("b") or e.match.group("c")
+        if token:
+            shares.append((e, parse_number(token)))
+    return shares
 
 
 async def antitrust(ctx: DeepContext) -> CriterionResult:
@@ -405,13 +507,21 @@ async def antitrust(ctx: DeepContext) -> CriterionResult:
     )
 
 
+def _negated(evidence: Evidence) -> bool:
+    return _NEGATION.search(evidence.chunk.text[: evidence.match.start()]) is not None
+
+
 async def regulatory_fdi(ctx: DeepContext) -> CriterionResult:
     key = "regulatory_fdi"
     chunks = await ctx.finder.buyer_chunks(
-        ctx.buyer, "state ownership sovereign defense foreign investment ownership structure"
+        ctx.buyer,
+        "state ownership shareholders sovereign wealth defense defence exposure contracts "
+        "foreign investment privately owned",
     )
-    constraints = ctx.finder.find(chunks, _CONSTRAINT)
-    clean = ctx.finder.find(chunks, _CLEAN_OWNERSHIP)
+    found = ctx.finder.find(chunks, _CONSTRAINT)
+    # a negated constraint ("has no state shareholders") is an explicit clean statement
+    constraints = [e for e in found if not _negated(e)]
+    clean = [e for e in found if _negated(e)] + ctx.finder.find(chunks, _CLEAN_OWNERSHIP)
     if constraints:
         return _result(
             key,
@@ -426,7 +536,8 @@ async def regulatory_fdi(ctx: DeepContext) -> CriterionResult:
         return _result(
             key,
             CriterionStatus.MET,
-            "A source states a private or widely held ownership and no constraint was found.",
+            "A source states a private ownership or the absence of state ownership, and no "
+            "constraint was found.",
             [await ctx.finder.cite(clean[0])],
         )
     return _unknown(key, "No source mentions ownership, sovereignty or defense exposure.")

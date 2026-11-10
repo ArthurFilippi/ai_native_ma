@@ -228,3 +228,40 @@ One short entry each: context, choice, alternative, cost.
 ## D59. UI conventions that carry the principle
 - Status encoding without colour: sourced is a solid left rule with a tier chip, inferred a dashed rule with the label "System deduction" and links to the claims it derives from, missing a hollow marker with "Not established by the sources". Flags are text chips. The value contract is a footer element of the Ask screen, compared in a test with `contracts.py`.
 - Evidence panel failure is explicit: when the passage cannot be loaded (for example a stub answer whose chunk is not in the store) it says so and shows the cited quote only.
+
+## D70. Evidence is retrieved inside a scope, not filtered after the ranking (quality-biz)
+- Context: `search` ranks every chunk the user may see (the deal and the general layer, 200 documents in the generated corpus) and returns ten. A query about one buyer competed with the 39 other buyers, and a question about the deal's revenue competed with the buyers' annual reports. Two measured consequences: the press release or the fund summary of the right buyer was not in the ten (80 percent of deep criteria came back `unknown`), and the revenue of a buyer was returned as the revenue of the deal (a wrong value, on seeds 2, 3 and 4).
+- Choice: `kpi/scope.py` provides `ScopedStore`, a read only view over a `Store` that keeps the chunks and documents of one entity or one deal. The access filter stays in the wrapped store's own query. `search` is called on the view through its public signature. Buyer evidence uses the entity scope (a fallback to the whole scope with the buyer name in the text applies only when the buyer has no document under its id); KPI extraction, deal value and target share use the deal scope, which keeps documents with no entity or with the deal as entity (buyer news that the connector files in the deal space is not about the deal).
+- Alternative: ask retrieval for an entity filter. Rejected: retrieval belongs to another agent and the store view needs no change there.
+- Cost: one index fit per scope on small chunk sets (cheaper than one on the whole corpus); a corpus whose buyer documents carry no entity id falls back to the old behaviour.
+
+## D71. A qualified measure is not the plain KPI (quality-biz)
+- Context: `Adjusted EBITDA for FY2024 was EUR 32.8m` (quality of earnings summary) was an alias of `ebitda` and won over the plain EBITDA of the model (31.8): a wrong value of 3 percent, found by reading raw outputs.
+- Choice: a label preceded by `adjusted`, `normalised`, `underlying`, `pro forma`, `run rate`, `estimated`, `forecast` or `budgeted` is not read as the KPI, in sentences and in table rows. The aliases `adjusted ebitda` and `adjusted ebitda margin` are removed from the definitions.
+- Cost: an adjusted figure is never extracted, even when the data room states nothing else (the KPI stays `missing`, the safe error).
+
+## D72. The stated deal value sizes the cheque, the parameters are a fallback (quality-biz)
+- Context: D43 sized the cheque as EBITDA x 8.0 x 50 percent, which differs from the value the CIM and the executed SPA state (`priced at EUR 197.1 million`, `Shareholders would receive EUR 169.2 million`): one ticket verdict was wrong because of the placeholder multiple.
+- Choice: `stated_valuation` reads the deal documents (current ones only, through the deal scope) for an enterprise value and an equity value. The equity cheque is the stated equity value (the buyer acquires all of it), or the documented share of a stated EV, or, without any stated value, the EBITDA route of D43. The rationale says which basis was used and which numbers are parameters. A sentence with a percentage of the equity value (a break fee) has no amount after the cue and is not read.
+- Cost: a stated value is trusted as the rank order of retrieval gives it; two disagreeing current documents are not flagged.
+
+## D73. Fund and ownership statements (quality-biz)
+- Choice: the end of the investment period is read from `investment period ... ends in YEAR`, from `new platform deals/investments ... until YEAR` and from a table or footnote row `Investment period end: YEAR`; a permanent capital structure without a fixed investment period is `met` (no date by which investments must stop). Ownership: `privately held` is not evidence of the absence of state ownership (it says the shares are not traded), so it no longer gives `met`; `privately owned`, `family owned` and a negated constraint (`has no state shareholders`, `no exposure to defense contracts`) do. Constraint phrases now include `exposure to defense`, `defense contracts` and `state shareholders`; a constraint wins over a clean statement and sets the conflict flag.
+- Cost: the wordings are a closed list; others stay `unknown`.
+
+## D74. What an acquisition is in the target's sector (quality-biz)
+- Context: the sector was looked up in the whole chunk with word stems, so the filler sentence of a press release (`add-on opportunities in industrial components`) or the buyer's name (`Draix Industries`) made a medical devices deal similar. A news item has its title and its body in two chunks, and only the title matched.
+- Choice: the sector must appear in the acquisition sentence, or in the next sentence when it starts with `The target`, with every word of the sector present (`sector_regex`, order free for two words) and the buyer's own name removed. When a document has several passages about the acquisition, the one that places the target in the sector is kept and its quote spans both sentences. Recency uses days over 30.4375 instead of calendar months.
+- Cost: a sector described in a third sentence is not found (`not_met` when other acquisitions are reported, `unknown` otherwise).
+
+## D75. Market share wordings, antitrust stays unknown without the target (quality-biz)
+- Choice: `controls|holds|commands|accounts for N% of ... sales|market|segment` is read as a share besides `market share ... N%`. A buyer share below the 35 percent flag with no target share in the deal documents stays `unknown`: the combined share is not established, and nothing in the generated deal documents states the target's share. The buyer truth table calls these `met`; this is the largest remaining gap by design and is reported, not closed.
+- Alternative: `met` when the buyer alone is below the flag, with the target share noted as unknown. Rejected: it turns a missing number into a verdict, the exact error the criterion exists to avoid.
+
+## D76. Why the harness measures 77 percent unknown, and what is by design (quality-biz)
+- Context: the evaluation harness screens with `ScreeningRequest(deal_id)` only: no filters, `stage2_top_n=10`, and no market intelligence ingestion. The buyer truth is defined for all 40 buyers and for the Aurora region and size.
+- Findings, measured on seeds 1 and 2: with no geography and no size filter 80 of 320 cells are `unknown` by D42; with the default top 10 only the first ten buyers that pass stage 1 reach stage 2; the 18 buyers that fail the sector prefilter never reach it (D40); acquisitions that were not published as a press release exist only in the simulated news feed, which the harness does not ingest, so `recent_activity` and `integration_bandwidth` see a subset (a lower bound, which can turn a `met` into a wrong `met`).
+- Choice: the requests for the harness are in `BLOCKERS.md` (pass the Aurora region and size range as filters, `stage2_top_n=50`, ingest the news feed before screening, as `make demo` does). The module keeps its semantics; agreement over the cells that were evaluated is the measure of reading quality.
+
+## D77. Boundary effects are kept (quality-biz)
+- Choice: the reference date of the recency rules is the latest publication date visible in the deal scope (D44), not the generator's fixed `reference_date`. An acquisition 36.0 to 36.7 months before the generator's date but inside the window of the system's date gives one `met` against a truth `not_met` per corpus (about 0.3 percent of cells). Not tuned away: `ScreeningParams.as_of` exists for a caller that knows its reference date.

@@ -147,8 +147,29 @@ def _compatible(unit: str, number: _Number) -> bool:
     return False
 
 
+# A qualifier turns a KPI into another measure: `Adjusted EBITDA` is not `EBITDA`.
+_QUALIFIERS = (
+    "adjusted",
+    "normalised",
+    "normalized",
+    "underlying",
+    "pro forma",
+    "proforma",
+    "run-rate",
+    "run rate",
+    "estimated",
+    "forecast",
+    "budgeted",
+)
+_NOT_QUALIFIED = "".join(rf"(?<!{q} )" for q in _QUALIFIERS)
+
+
 class LabelIndex:
-    """Recognises KPI wordings in text: whole words, longest wording first, case insensitive."""
+    """Recognises KPI wordings in text: whole words, longest wording first, case insensitive.
+
+    A wording preceded by a qualifier (`adjusted`, `normalised`, `pro forma`, ...) is another
+    measure and is not read as the KPI.
+    """
 
     def __init__(self, labels: Mapping[str, Sequence[str]], units: Mapping[str, str]) -> None:
         self.units = dict(units)
@@ -157,7 +178,9 @@ class LabelIndex:
         }
         ordered = sorted(self._by_alias, key=lambda a: (-len(a), a))
         pattern = "|".join(re.escape(alias) for alias in ordered)
-        self._regex = re.compile(rf"(?<![\w&'])(?:{pattern})(?![\w])", re.IGNORECASE)
+        self._regex = re.compile(
+            rf"(?<![\w&']){_NOT_QUALIFIED}(?:{pattern})(?![\w])", re.IGNORECASE
+        )
 
     def find(self, text: str) -> list[tuple[int, int, str]]:
         return [
