@@ -9,7 +9,6 @@ much of the verdict rests on evidence. The final score and rank come from `score
 
 from __future__ import annotations
 
-import re
 from collections.abc import Sequence
 from datetime import date
 
@@ -33,7 +32,13 @@ from ainma.screening.criteria import (
     applies_to,
     build_criteria,
 )
-from ainma.screening.deep import RULES, DealEconomics, DeepContext, sector_terms
+from ainma.screening.deep import (
+    RULES,
+    DealEconomics,
+    DeepContext,
+    sector_regex,
+    stated_valuation,
+)
 from ainma.screening.evidence import EvidenceFinder, SearchFn
 from ainma.screening.prefilter import prefilter_results
 from ainma.screening.scoring import score_cards
@@ -51,8 +56,14 @@ async def _deal_economics(
     llm: LLM,
     search: SearchFn,
     params: ScreeningParams,
+    finder: EvidenceFinder,
 ) -> DealEconomics | None:
-    """Latest positive EBITDA found in the deal documents, turned into an indicative size."""
+    """The deal's stated enterprise value and equity value when its documents give them,
+    otherwise the latest positive EBITDA found there, turned into an indicative size by the
+    documented parameters."""
+    stated = await stated_valuation(finder, params)
+    if stated is not None:
+        return stated
     for period in reversed(DEFAULT_PERIODS):
         (value,) = await extract_kpis(
             deal_id,
@@ -66,10 +77,14 @@ async def _deal_economics(
         if value.value is not None and value.value > 0:
             ev = value.value * params.ev_ebitda_multiple
             return DealEconomics(
-                period=period,
-                ebitda_eur_m=value.value,
                 ev_eur_m=ev,
                 cheque_eur_m=ev * params.equity_share_of_ev,
+                ev_basis=(
+                    f"Deal EBITDA {period} EUR {value.value:g}m (sourced) x "
+                    f"{params.ev_ebitda_multiple:g} EV/EBITDA (parameter) = indicative EV "
+                    f"EUR {ev:g}m"
+                ),
+                cheque_basis=f"equity cheque at {params.equity_share_of_ev:.0%} of EV (parameter)",
                 citations=tuple(value.citations),
             )
     return None
@@ -94,10 +109,8 @@ async def _confirm_sector(
     """Add a cited sentence to a met `sector_focus` when the buyer's documents state the sector."""
     if result.status is not CriterionStatus.MET:
         return result
-    terms = sector_terms(targets)
-    pattern = re.compile("|".join(re.escape(t) for t in terms), re.IGNORECASE)
     chunks = await finder.buyer_chunks(buyer, "sector focus invests in portfolio")
-    found = finder.find(chunks, pattern)
+    found = finder.find(chunks, sector_regex(targets))
     if not found:
         return result.model_copy(
             update={"rationale": f"{result.rationale} No textual confirmation was retrieved."}
@@ -158,7 +171,7 @@ async def run_screening(
 
     finder = EvidenceFinder(search=search_fn, store=store, access=access, deal_id=deal.id)
     economics = await _deal_economics(
-        deal.id, store=store, access=access, llm=llm, search=search_fn, params=params
+        deal.id, store=store, access=access, llm=llm, search=search_fn, params=params, finder=finder
     )
     as_of = await _reference_date(deal.id, store=store, access=access, params=params)
     target_name = deal.name.split()[-1]

@@ -9,10 +9,11 @@ citation offsets are computed from it by `CitationBuilder`.
 from __future__ import annotations
 
 import re
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 
 from ainma.contracts import AccessContext, BuyerProfile, Chunk, Citation, DocStatus
+from ainma.kpi.scope import ScopedStore
 from ainma.kpi.sources import CitationBuilder, SearchFn, SearchHitLike, resolve_search
 from ainma.store import Store
 
@@ -28,6 +29,9 @@ __all__ = [
 
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s|\n")
 _MAX_QUOTE = 400
+_TARGET_SENTENCE = re.compile(
+    r"[ \t]+(?:The\s+)?(?:target|acquired\s+(?:company|business))\b[^\n]*?[.!?](?=\s|$)"
+)
 
 
 def sentence_around(text: str, start: int, end: int) -> tuple[int, int]:
@@ -71,32 +75,58 @@ class EvidenceFinder:
                 kept.append(chunk)
         return kept
 
-    async def _retrieve(self, query: str) -> list[Chunk]:
+    async def _retrieve(self, query: str, store: Store | None = None) -> list[Chunk]:
         hits = await self._search(
-            query, store=self._store, access=self._access, deal_id=self.deal_id
+            query, store=store or self._store, access=self._access, deal_id=self.deal_id
         )
         return await self._current(hit.chunk for hit in hits)
 
     async def buyer_chunks(self, buyer: BuyerProfile, topic: str) -> list[Chunk]:
-        """Retrieved current passages about `buyer`: by entity id, or by name in the text."""
+        """Retrieved current passages about `buyer`.
+
+        The ranking runs over the documents whose `entity_id` is the buyer (the access filter is
+        applied by the store before that), so another buyer's documents cannot crowd them out.
+        Only when the buyer has no document under its id (entity ids absent from the corpus) the
+        query runs over the whole scope and keeps the passages that name the buyer.
+        """
+        query = f"{buyer.name} {topic}"
+        scoped = await self._retrieve(query, ScopedStore(self._store, entity_id=buyer.id))
+        if scoped:
+            return scoped
         name = buyer.name.lower()
-        chunks = await self._retrieve(f"{buyer.name} {topic}")
-        return [c for c in chunks if c.entity_id == buyer.id or name in c.text.lower()]
+        return [c for c in await self._retrieve(query) if name in c.text.lower()]
 
     async def deal_chunks(self, topic: str) -> list[Chunk]:
-        """Retrieved current passages from the deal's own documents."""
-        chunks = await self._retrieve(topic)
-        return [c for c in chunks if c.deal_id == self.deal_id]
+        """Retrieved current passages from the deal's own documents (buyer documents, which
+        belong to no deal, cannot crowd them out)."""
+        return await self._retrieve(topic, ScopedStore(self._store, deal_id=self.deal_id))
 
     @staticmethod
-    def find(chunks: Iterable[Chunk], pattern: re.Pattern[str]) -> list[Evidence]:
-        """Every match of `pattern`, in passage rank order, one piece of evidence per match."""
+    def find(
+        chunks: Iterable[Chunk], pattern: re.Pattern[str] | Sequence[re.Pattern[str]]
+    ) -> list[Evidence]:
+        """Every match of `pattern` (or of any of several patterns), in passage rank order, one
+        piece of evidence per match."""
+        patterns = [pattern] if isinstance(pattern, re.Pattern) else list(pattern)
         found: list[Evidence] = []
         for chunk in chunks:
-            for match in pattern.finditer(chunk.text):
-                left, right = sentence_around(chunk.text, match.start(), match.end())
-                found.append(Evidence(chunk, chunk.text[left:right], match))
+            for each in patterns:
+                for match in each.finditer(chunk.text):
+                    left, right = sentence_around(chunk.text, match.start(), match.end())
+                    found.append(Evidence(chunk, chunk.text[left:right], match))
         return found
+
+    @staticmethod
+    def with_target_sentence(evidence: Evidence) -> Evidence:
+        """Extend the quote over the next sentence when it describes `the target` (a news item
+        says `X completes acquisition of Y.` and then `The target is a ... company.`). The quote
+        stays one contiguous span of the chunk."""
+        text = evidence.chunk.text
+        start = text.find(evidence.quote)
+        following = _TARGET_SENTENCE.match(text, start + len(evidence.quote))
+        if start < 0 or following is None:
+            return evidence
+        return Evidence(evidence.chunk, text[start : following.end()].rstrip(), evidence.match)
 
     async def cite(self, evidence: Evidence) -> Citation:
         return await self._citations.build(evidence.chunk, evidence.quote)
