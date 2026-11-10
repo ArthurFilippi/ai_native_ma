@@ -172,3 +172,19 @@ def test_rows_without_their_own_header_use_the_columns_of_an_earlier_chunk() -> 
         "FY2023",
     ]
     assert last_header("Revenue | 1.0 | 2.0") == []
+
+
+def test_an_adjusted_measure_is_not_read_as_the_plain_kpi() -> None:
+    text = (
+        "Adjusted EBITDA for FY2024 was EUR 32.8m after normalisation adjustments. "
+        "EBITDA for FY2024 was EUR 31.8 million."
+    )
+    assert _read(text) == {("ebitda", "FY2024"): 31.8}
+    assert _read("Adjusted EBITDA for FY2024 was EUR 32.8m.") == {}
+    assert _read("The pro forma revenue for FY2024 was EUR 190.0 million.") == {}
+    assert _read("Underlying EBITDA margin was 17.9 percent in FY2024.") == {}
+
+
+def test_a_table_row_with_a_qualified_label_is_not_the_kpi() -> None:
+    table = "Line item | FY2023 | FY2024\nAdjusted EBITDA | 31.0 | 32.8\nEBITDA | 30.0 | 31.8"
+    assert _read(table) == {("ebitda", "FY2023"): 30.0, ("ebitda", "FY2024"): 31.8}

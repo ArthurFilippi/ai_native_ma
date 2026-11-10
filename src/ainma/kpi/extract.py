@@ -21,6 +21,7 @@ from ainma.contracts import AccessContext, Chunk, KpiDef, KpiValue
 from ainma.kpi.definitions import DEFAULT_PERIODS, KPI_LABELS, kpi_definitions
 from ainma.kpi.formula import FormulaError, evaluate_formula, topological_order
 from ainma.kpi.parse import Candidate, LabelIndex, last_header, parse_chunk, value_in_quote
+from ainma.kpi.scope import ScopedStore
 from ainma.kpi.sources import CitationBuilder, SearchFn, resolve_search
 from ainma.llm import LLM
 from ainma.store import Store
@@ -49,6 +50,8 @@ class _Extractor:
     ) -> None:
         self._deal_id = deal_id
         self._store = store
+        # the deal's own documents only: the buyers' annual reports state revenues of their own
+        self._deal_scope = ScopedStore(store, deal_id=deal_id)
         self._access = access
         self._search = search
         self._index = LabelIndex(KPI_LABELS, {d.id: d.unit for d in kpi_definitions()})
@@ -78,7 +81,7 @@ class _Extractor:
     async def sourced(self, definition: KpiDef, period: str) -> KpiValue | None:
         query = f"{definition.name} {KPI_LABELS[definition.id][0]} {period}"
         hits = await self._search(
-            query, store=self._store, access=self._access, deal_id=self._deal_id
+            query, store=self._deal_scope, access=self._access, deal_id=self._deal_id
         )
         for hit in hits:
             chunk = hit.chunk
