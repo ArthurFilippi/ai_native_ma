@@ -11,7 +11,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Literal
 
-from ainma.contracts import Answer, ClaimStatus, Flag, ScreeningRequest
+from ainma.contracts import Answer, ClaimStatus, Flag, ScreeningFilters, ScreeningRequest
 from ainma.evaluation.adapter import Adapter, RankedChunk, Sweep
 from ainma.evaluation.groundtruth import TruthBundle
 from ainma.evaluation.metrics.abstention import NO_EVIDENCE, choose_tau
@@ -446,9 +446,27 @@ async def _kpis(result: SeedResult, adapter: Adapter, truth: TruthBundle) -> Non
 
 
 async def _screening(result: SeedResult, adapter: Adapter, truth: TruthBundle) -> None:
+    """Screen each deal the way the demo does: the deal's own region and size range as filters.
+
+    The buyer truth for geography and size is defined against the target's region and its size
+    range (EV to 60 x EV). Without those filters the cells are `unknown` by design, so the
+    harness passes them. Every buyer that passes stage 1 reaches stage 2, and the simulated news
+    feed is filed in the deal space first (60 acquisitions exist only there).
+    """
     access = truth.access()
+    aurora = truth.aux.get("aurora", {})
+    region = aurora.get("region")
+    ev = aurora.get("ev_eur_m")
+    filters = ScreeningFilters()
+    if isinstance(region, str) and isinstance(ev, int | float):
+        filters = ScreeningFilters(
+            geographies=[region], min_size_eur_m=float(ev), max_size_eur_m=60.0 * float(ev)
+        )
     for deal_id in sorted({row.deal_id for row in truth.buyer_truth}):
-        screened = await adapter.screen(ScreeningRequest(deal_id=deal_id), access=access)
+        if truth.seed_dir is not None:
+            await adapter.ingest_news(deal_id, access=access, seed_dir=truth.seed_dir)
+        request = ScreeningRequest(deal_id=deal_id, filters=filters, stage2_top_n=50)
+        screened = await adapter.screen(request, access=access)
         statuses = {
             (card.buyer.id, r.criterion_key): r.status.value
             for card in screened.cards

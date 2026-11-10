@@ -44,6 +44,7 @@ TARGETS: dict[str, tuple[tuple[str, str], ...]] = {
         ("ainma.screening.run", "run_screening"),
     ),
     "kpi": (("ainma.kpi", "extract_kpis"), ("ainma.kpi.extract", "extract_kpis")),
+    "market_intel": (("ainma.connectors.run", "run_market_intel"),),
     "judge_request": (("ainma.pipeline.schemas", "JudgeRequest"),),
     "judge_result": (("ainma.pipeline.schemas", "JudgeResult"),),
     "judge_prompt": (("ainma.pipeline.prompts", "JUDGE"),),
@@ -171,6 +172,7 @@ class Adapter:
         self._ask: Any = found["ask"]
         self._screening: Any = found["screening"]
         self._kpi: Any = found["kpi"]
+        self._market_intel: Any = found["market_intel"]
         self._judge_request: Any = found["judge_request"]
         self._judge_result: Any = found["judge_result"]
         self._judge_prompt: Any = found["judge_prompt"]
@@ -354,6 +356,15 @@ class Adapter:
             return await stubs.stub_screen(request, self._buyers, STUB_SCREENING_CRITERIA)
         result = await self._screening(request, store=self._store, access=access, llm=self._llm)
         return cast(ScreeningResult, result)
+
+    async def ingest_news(self, deal_id: str, *, access: AccessContext, seed_dir: Path) -> int:
+        """File the simulated news feed in the deal space, as the demo does. 0 when unavailable."""
+        if self._market_intel is None:
+            return 0
+        written = await self._market_intel(
+            deal_id, store=self._store, access=access, seed_dir=seed_dir
+        )
+        return int(written)
 
     async def kpis(
         self, deal_id: str, *, access: AccessContext, periods: Sequence[str] | None = None

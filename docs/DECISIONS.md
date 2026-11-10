@@ -312,3 +312,9 @@ One short entry each: context, choice, alternative, cost.
 
 ## D69. Adapter and harness changes made for this work (core)
 - `Adapter.judge` passes the chunk as context to the numeric check when the check accepts one, as the pipeline does; `Adapter.ask` builds its retrieval configuration from the pipeline default (same list length as the API) with system A5; `RunMeta` has a `split`. Generated corpora can contain stray `name 2.ext` copies (a synchronised folder makes them); they are ignored by a local `info/exclude` rule and must never be committed.
+
+## D80. Screening protocol of the evaluation harness (integration)
+- Context: the buyer truth for geography and size is defined against the Aurora region and its size range, and 60 acquisitions exist only in the simulated news feed. A default request (no filters, 10 deep screenings, no news) leaves those cells `unknown` by design, so the measured agreement said little about the screener (0.40 on seed 1, against 0.73 with the demo protocol).
+- Choice: the harness screens the way the demo does: filters from `truth/aux.json` (region, EV to 60 x EV), `stage2_top_n=50`, and the simulated feed filed in the deal space first through the adapter (`Adapter.ingest_news`). The numbers come from the system's own inputs, not from the truth answers: the filter values are the deal's stated facts.
+- Alternative: keep the default request and report a low agreement. Rejected as a measurement of the protocol, not of the system.
+- Cost: the screening agreement is conditional on an analyst who states the deal's region and size. Two limits remain and are reported, not tuned away: antitrust truth cells assume a target share that no document states, and deep truth also covers buyers that fail the sector prefilter.

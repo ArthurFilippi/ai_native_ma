@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 from pydantic import BaseModel
 
@@ -44,6 +45,8 @@ class TruthBundle:
     judge_labels: list[JudgeLabel] = field(default_factory=list)
     params: GenerationParams | None = None
     missing_files: list[str] = field(default_factory=list)
+    seed_dir: Path | None = None
+    aux: dict[str, Any] = field(default_factory=dict)
 
     def access(self) -> AccessContext:
         """The harness reads every deal and the general layer (access control has its own tests)."""
@@ -93,6 +96,10 @@ def load_truth(seed_dir: Path) -> TruthBundle:
     )
     if users is None:
         missing.append("users.json")
+    aux_path = truth / "aux.json"
+    aux: dict[str, Any] = (
+        json.loads(aux_path.read_text(encoding="utf-8")) if aux_path.exists() else {}
+    )
     return TruthBundle(
         deals=lst("deals", Deal),
         users=users,
@@ -107,6 +114,8 @@ def load_truth(seed_dir: Path) -> TruthBundle:
         judge_labels=lst("judge_labels", JudgeLabel),
         params=params,
         missing_files=missing,
+        seed_dir=seed_dir,
+        aux=aux,
     )
 
 
