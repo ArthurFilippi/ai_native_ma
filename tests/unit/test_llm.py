@@ -101,7 +101,7 @@ async def test_fallback_to_mock_is_never_silent() -> None:
     assert usage.fallback_from == "flaky" and usage.provider == "mock"
 
 
-def test_factory_builds_mock_by_default_and_rejects_unwired_providers() -> None:
+def test_factory_builds_mock_by_default_and_live_providers_on_request() -> None:
     assert build_llm(Settings(llm_provider="mock")).provider == "mock"
-    with pytest.raises(LLMError):
-        build_llm(Settings(llm_provider="gemini"))
+    live = build_llm(Settings(llm_provider="gemini", gemini_api_key="not-a-real-key"))
+    assert live.provider == "gemini"

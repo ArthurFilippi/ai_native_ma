@@ -43,4 +43,4 @@ web:
 	cd web && npm run dev
 
 demo:
-	@echo "not implemented yet: phase C (reproducible demo)"; exit 1
+	bash scripts/demo.sh

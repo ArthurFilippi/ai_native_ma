@@ -10,15 +10,13 @@ function stubFetch(response: Response) {
 }
 
 describe("http api client", () => {
-  it("sends the demo user header and reads the backend header", async () => {
+  it("sends the demo user header and labels the source as the real API", async () => {
     const fetchMock = stubFetch(
-      new Response(JSON.stringify({ deal_id: "deal_aurora", ingested: 0 }), {
-        headers: { "X-Ainma-Backend": "stub" },
-      }),
+      new Response(JSON.stringify({ deal_id: "deal_aurora", ingested: 0 })),
     );
     const api = createHttpApi("http://localhost:8000/", "u_analyst");
     const served = await api.runMarketIntel("deal_aurora");
-    expect(served.backend).toBe("stub");
+    expect(served.backend).toBe("real");
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     expect(url).toBe("http://localhost:8000/deals/deal_aurora/market-intel/run");
