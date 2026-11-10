@@ -9,7 +9,7 @@ import type {
   User,
 } from "./contracts";
 
-// `backend` is what the X-Ainma-Backend header said: "real", "stub", or "mock" in mock mode.
+// `backend` is "real" when served by the API, or "mock" in mock mode.
 export interface Served<T> {
   value: T;
   backend: string;
@@ -60,7 +60,7 @@ export function createHttpApi(baseUrl: string, userId: string): Api {
     }
     return {
       value: (await response.json()) as T,
-      backend: response.headers.get("X-Ainma-Backend") ?? "real",
+      backend: "real",
     };
   }
 

@@ -244,7 +244,7 @@ async def test_real_modules_are_called_by_name(fake_modules: dict[str, Any]) -> 
     assert adapter.modes["ask"] == "real"
     assert adapter.modes["judge"] == "real"
     assert adapter.modes["checks"] == "real"
-    assert adapter.modes["screening"] == "stub"
+    assert adapter.modes["screening"] == "real"
     assert adapter.backends() == {"dense": "lsa", "reranker": "features"}
     assert adapter.abstain_basis == "relevance"
     assert adapter.config_snapshot()["retrieval"]["system"] == "A5"

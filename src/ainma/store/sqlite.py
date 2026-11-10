@@ -11,6 +11,7 @@ from typing import TypeVar
 
 from ainma.contracts import (
     AccessContext,
+    BuyerProfile,
     Chunk,
     Deal,
     DocType,
@@ -26,6 +27,7 @@ R = TypeVar("R")
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS deals (id TEXT PRIMARY KEY, body TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS buyers (id TEXT PRIMARY KEY, body TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS memberships (
   deal_id TEXT NOT NULL, user_id TEXT NOT NULL, role TEXT NOT NULL,
   PRIMARY KEY (deal_id, user_id));
@@ -103,6 +105,15 @@ class SqliteStore:
         def op(conn: sqlite3.Connection) -> None:
             conn.execute(
                 "INSERT OR REPLACE INTO deals VALUES (?, ?)", (deal.id, deal.model_dump_json())
+            )
+            conn.commit()
+
+        await self._run(op)
+
+    async def put_buyer(self, buyer: BuyerProfile) -> None:
+        def op(conn: sqlite3.Connection) -> None:
+            conn.execute(
+                "INSERT OR REPLACE INTO buyers VALUES (?, ?)", (buyer.id, buyer.model_dump_json())
             )
             conn.commit()
 
@@ -291,5 +302,12 @@ class SqliteStore:
         def op(conn: sqlite3.Connection) -> list[User]:
             rows = conn.execute("SELECT id, name FROM users ORDER BY id").fetchall()
             return [User(id=r["id"], name=r["name"]) for r in rows]
+
+        return await self._run(op)
+
+    async def list_buyers(self) -> list[BuyerProfile]:
+        def op(conn: sqlite3.Connection) -> list[BuyerProfile]:
+            rows = conn.execute("SELECT body FROM buyers ORDER BY id").fetchall()
+            return [BuyerProfile.model_validate_json(r["body"]) for r in rows]
 
         return await self._run(op)

@@ -6,7 +6,7 @@ import random
 
 import pytest
 
-from ainma.contracts import AccessContext, DocType
+from ainma.contracts import AccessContext, BuyerProfile, BuyerType, DocType
 from ainma.store import SqliteStore, UnknownUserError
 from tests.fixtures.tiny import chunk_document, tiny_documents
 
@@ -84,3 +84,16 @@ async def test_chunks_must_be_exact_page_slices(tiny_store: SqliteStore) -> None
     bad = chunk.model_copy(update={"id": "bad", "text": "not the page text"})
     with pytest.raises(ValueError, match="page slice"):
         await tiny_store.put_chunks([bad])
+
+
+async def test_buyer_universe_roundtrip(tiny_store: SqliteStore) -> None:
+    buyer = BuyerProfile(
+        id="b_x",
+        name="Fictional Partners I",
+        buyer_type=BuyerType.FINANCIAL,
+        sectors=["industrial components"],
+        geographies=["DACH"],
+        size_eur_m=500.0,
+    )
+    await tiny_store.put_buyer(buyer)
+    assert await tiny_store.list_buyers() == [buyer]

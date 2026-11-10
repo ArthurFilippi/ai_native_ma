@@ -20,6 +20,7 @@ from ainma.screening import (
     ScreeningParams,
     run_screening,
 )
+from ainma.screening.universe import resolve_buyers
 from ainma.store import SqliteStore
 from tests.fixtures_biz.data_room import DEAL_ID
 from tests.fixtures_biz.keyword_search import keyword_search
@@ -255,11 +256,19 @@ async def test_a_user_outside_the_deal_gets_a_lookup_error(
 async def test_request_errors_are_loud(store: SqliteStore, buyers: list[BuyerProfile]) -> None:
     with pytest.raises(ValueError, match="unknown criterion keys"):
         await _run(store, buyers, request=ScreeningRequest(deal_id=DEAL_ID, weights={"nope": 1.0}))
+    result = await run_screening(
+        ScreeningRequest(deal_id=DEAL_ID),
+        store=store,
+        access=await store.access_for("u_lead"),
+        llm=MockLLM({}),
+        search=keyword_search,
+    )
+    assert result.cards == [], "an empty store has an empty buyer universe"
+
+
+async def test_a_store_without_buyers_support_is_loud(buyers: list[BuyerProfile]) -> None:
+    class NoBuyers:
+        pass
+
     with pytest.raises(BuyerUniverseUnavailable):
-        await run_screening(
-            ScreeningRequest(deal_id=DEAL_ID),
-            store=store,
-            access=await store.access_for("u_lead"),
-            llm=MockLLM({}),
-            search=keyword_search,
-        )
+        await resolve_buyers(NoBuyers(), None)  # type: ignore[arg-type]

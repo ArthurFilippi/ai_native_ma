@@ -13,7 +13,7 @@ content.
 import logging
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Response, Security
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Security
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
 
@@ -35,17 +35,13 @@ from ainma.store import UnknownUserError
 
 log = logging.getLogger(__name__)
 
-BACKEND_HEADER = "X-Ainma-Backend"
 USER_HEADER = "X-User-Id"
 
 DESCRIPTION = (
     "Deal-centric API for sourced answers, buyer screening and KPI extraction.\n\n"
     "**DEMO_AUTH, not production authentication.** Callers send `X-User-Id` with a registered "
     "user id. A missing header or an unknown user gives 401. A user without membership of a "
-    "deal gets 404, not 403, for the deal and for every passage, document and result of it.\n\n"
-    "The `X-Ainma-Backend` response header says whether a route was answered by the real "
-    "module (`real`) or by the example payload that stands in for a module that is not "
-    "installed (`stub`)."
+    "deal gets 404, not 403, for the deal and for every passage, document and result of it."
 )
 
 _user_header = APIKeyHeader(
@@ -125,10 +121,8 @@ def build_router(runtime: Runtime) -> APIRouter:
         responses=_examples(ANSWER_EXAMPLES),
         tags=["answers"],
     )
-    async def ask(body: AskRequest, deal: DealOf, access: Access, response: Response) -> Answer:
-        served = await services.ask(runtime, access, deal.id, body.question)
-        response.headers[BACKEND_HEADER] = served.backend
-        return served.value
+    async def ask(body: AskRequest, deal: DealOf, access: Access) -> Answer:
+        return await services.ask(runtime, access, deal.id, body.question)
 
     @router.get("/passages/{chunk_id}", response_model=PassageResponse, tags=["answers"])
     async def passage(
@@ -159,29 +153,22 @@ def build_router(runtime: Runtime) -> APIRouter:
         responses=_examples(SCREENING_EXAMPLES),
         tags=["screening"],
     )
-    async def screening(
-        body: ScreeningRequest, deal: DealOf, access: Access, response: Response
-    ) -> ScreeningResult:
+    async def screening(body: ScreeningRequest, deal: DealOf, access: Access) -> ScreeningResult:
         if body.deal_id != deal.id:
             raise HTTPException(422, "deal_id in the body does not match the path")
-        served = await services.screening(runtime, access, body)
-        response.headers[BACKEND_HEADER] = served.backend
-        return served.value
+        return await services.screening(runtime, access, body)
 
     @router.get("/deals/{deal_id}/kpis", response_model=list[KpiValue], tags=["kpis"])
-    async def kpis(deal: DealOf, access: Access, response: Response) -> list[KpiValue]:
-        served = await services.kpis(runtime, access, deal.id)
-        response.headers[BACKEND_HEADER] = served.backend
-        return served.value
+    async def kpis(deal: DealOf, access: Access) -> list[KpiValue]:
+        return await services.kpis(runtime, access, deal.id)
 
     @router.post(
         "/deals/{deal_id}/market-intel/run", response_model=MarketIntelRun, tags=["market"]
     )
-    async def market_intel(deal: DealOf, access: Access, response: Response) -> MarketIntelRun:
+    async def market_intel(deal: DealOf, access: Access) -> MarketIntelRun:
         """Run the simulated market intelligence connector and ingest its items into the deal."""
-        served = await services.market_intel(runtime, access, deal.id)
-        response.headers[BACKEND_HEADER] = served.backend
-        return MarketIntelRun(deal_id=deal.id, ingested=served.value)
+        ingested = await services.market_intel(runtime, access, deal.id)
+        return MarketIntelRun(deal_id=deal.id, ingested=ingested)
 
     return router
 
@@ -194,7 +181,6 @@ def create_app(runtime: Runtime) -> FastAPI:
         allow_origins=origins,
         allow_methods=["GET", "POST", "OPTIONS"],
         allow_headers=["*"],
-        expose_headers=[BACKEND_HEADER],
     )
     app.include_router(build_router(runtime))
     return app

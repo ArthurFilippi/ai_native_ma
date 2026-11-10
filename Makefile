@@ -1,4 +1,4 @@
-.PHONY: install lint typecheck test check data eval demo api web
+.PHONY: install lint typecheck test check data eval demo api web label-sample judge-daily inspect
 
 install:
 	pip install -e ".[dev]"
@@ -15,18 +15,32 @@ test:
 
 check: lint typecheck test
 
-# Targets below are implemented in later phases (see CLAUDE.md).
+SEED ?= 1234
+SEEDS ?= 5
+PROVIDER ?= mock
+
 data:
-	@echo "not implemented yet: phase B, `data` agent (synthetic data generators)"; exit 1
+	python -m ainma.synth generate --seed $(SEED) --out data/synthetic
+	python -m ainma.synth verify data/synthetic/$(SEED)
 
 eval:
-	@echo "not implemented yet: phase B, `eval` agent (evaluation harness)"; exit 1
+	python -m ainma.evaluation.run --provider $(PROVIDER) --seeds $(SEEDS)
+
+label-sample:
+	python -m ainma.evaluation.label_sample --seed $(SEED)
+
+judge-daily:
+	python -m ainma.judge.daily
+
+inspect:
+	@test -n "$(ID)" || (echo "usage: make inspect ID=<answer id>"; exit 1)
+	python -m ainma.pipeline.inspect $(ID)
 
 api:
-	@echo "not implemented yet: phase B, `app` agent (API)"; exit 1
+	python -m ainma.api
 
 web:
-	@echo "not implemented yet: phase B, `app` agent (web client)"; exit 1
+	cd web && npm run dev
 
 demo:
 	@echo "not implemented yet: phase C (reproducible demo)"; exit 1

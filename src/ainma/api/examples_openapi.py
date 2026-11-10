@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Any
 
-from ainma.api.services import EXAMPLES
+EXAMPLES = Path(__file__).parent / "examples"
 
 
 def _load(name: str) -> dict[str, Any]:

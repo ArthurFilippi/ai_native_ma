@@ -7,7 +7,7 @@ import json
 import pytest
 from pydantic import TypeAdapter
 
-from ainma.api.services import EXAMPLES
+from ainma.api.examples_openapi import EXAMPLES
 from ainma.contracts import Answer, BuyerCard, KpiValue, ScreeningResult
 from tests.conftest import FIXTURES
 

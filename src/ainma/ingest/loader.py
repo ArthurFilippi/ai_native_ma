@@ -10,7 +10,7 @@ from pathlib import Path
 
 from pydantic import TypeAdapter
 
-from ainma.contracts import Deal, DocumentMeta
+from ainma.contracts import BuyerProfile, Deal, DocumentMeta
 from ainma.ingest.base import ParsedDocument
 from ainma.ingest.chunker import chunk_document
 from ainma.ingest.parse import parse_file
@@ -19,6 +19,7 @@ from ainma.truth import ManifestEntry, UsersFile
 
 _MANIFEST = TypeAdapter(list[ManifestEntry])
 _DEALS = TypeAdapter(list[Deal])
+_BUYERS = TypeAdapter(list[BuyerProfile])
 
 
 @dataclass(frozen=True)
@@ -66,6 +67,8 @@ async def load_corpus(store: Store, seed_dir: Path) -> LoadReport:
         await store.put_user(user)
     for membership in users.memberships:
         await store.put_membership(membership)
+    for buyer in _BUYERS.validate_json((truth / "buyers.json").read_bytes()):
+        await store.put_buyer(buyer)
     documents = 0
     chunks = 0
     for entry in read_manifest(seed_dir):

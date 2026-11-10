@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import sys
-import types
 from typing import Any
 
 import httpx
@@ -16,9 +14,7 @@ from ainma.contracts import (
     Deal,
     DocumentMeta,
     KpiValue,
-    ScreeningResult,
 )
-from tests.conftest import load_payload
 from tests.integration.conftest import as_user
 
 DEAL_ROUTES: list[tuple[str, str, dict[str, Any] | None]] = [
@@ -175,17 +171,19 @@ async def test_every_ask_response_carries_the_value_contract(client: httpx.Async
         assert answer.question == question
 
 
-async def test_stub_backend_is_declared_and_follows_the_question(client: httpx.AsyncClient) -> None:
+async def test_ask_runs_the_real_pipeline_on_the_visible_deal(client: httpx.AsyncClient) -> None:
     revenue = await client.post(
         "/deals/deal_aurora/ask",
-        json={"question": "Revenue in FY2024?"},
+        json={"question": "What was FY2024 revenue?"},
         headers=as_user("u_analyst"),
     )
-    assert revenue.headers["X-Ainma-Backend"] == "stub"
-    assert revenue.json()["contradictions"]
+    assert revenue.status_code == 200
+    answer = Answer.model_validate(revenue.json())
+    assert answer.user_id == "u_analyst" and answer.deal_id == "deal_aurora"
+    assert answer.contradictions
     absent = await client.post(
         "/deals/deal_aurora/ask",
-        json={"question": "CEO pay?"},
+        json={"question": "What is the CEO compensation package?"},
         headers=as_user("u_analyst"),
     )
     assert absent.json()["abstained"] is True
@@ -198,19 +196,14 @@ async def test_empty_question_is_rejected(client: httpx.AsyncClient) -> None:
     assert response.status_code == 422
 
 
-async def test_stub_screening_kpis_and_market_intel(client: httpx.AsyncClient) -> None:
+async def test_kpis_and_market_intel_run_on_the_tiny_store(client: httpx.AsyncClient) -> None:
     headers = as_user("u_analyst")
-    screening = await client.post(
-        "/deals/deal_aurora/screening", json={"deal_id": "deal_aurora"}, headers=headers
-    )
-    assert screening.status_code == 200
-    assert screening.headers["X-Ainma-Backend"] == "stub"
-    assert ScreeningResult.model_validate(screening.json()).cards
     kpis = await client.get("/deals/deal_aurora/kpis", headers=headers)
+    assert kpis.status_code == 200
     assert [KpiValue.model_validate(k) for k in kpis.json()]
     market = await client.post("/deals/deal_aurora/market-intel/run", headers=headers)
     assert market.status_code == 200
-    assert market.json() == {"deal_id": "deal_aurora", "ingested": 0}
+    assert market.json()["deal_id"] == "deal_aurora"
 
 
 async def test_screening_body_cannot_name_another_deal(client: httpx.AsyncClient) -> None:
@@ -220,24 +213,6 @@ async def test_screening_body_cannot_name_another_deal(client: httpx.AsyncClient
         headers=as_user("u_lead"),
     )
     assert response.status_code == 422
-
-
-async def test_real_modules_are_used_when_present(
-    client: httpx.AsyncClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    real = types.ModuleType("ainma.pipeline")
-
-    async def ask(question: str, **kwargs: Any) -> Answer:
-        answer = Answer.model_validate(load_payload("answer_abstention.json"))
-        return answer.model_copy(update={"summary": f"real: {question}"})
-
-    real.ask = ask  # type: ignore[attr-defined]
-    monkeypatch.setitem(sys.modules, "ainma.pipeline", real)
-    response = await client.post(
-        "/deals/deal_aurora/ask", json={"question": "anything"}, headers=as_user("u_analyst")
-    )
-    assert response.headers["X-Ainma-Backend"] == "real"
-    assert response.json()["summary"] == "real: anything"
 
 
 async def test_openapi_schema_and_examples(app: FastAPI) -> None:
@@ -250,7 +225,6 @@ async def test_openapi_schema_and_examples(app: FastAPI) -> None:
     assert schema["components"]["securitySchemes"]
 
 
-async def test_cors_exposes_the_backend_header(client: httpx.AsyncClient) -> None:
+async def test_cors_allows_the_configured_origin(client: httpx.AsyncClient) -> None:
     response = await client.get("/health", headers={"Origin": "http://localhost:3000"})
     assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
-    assert "X-Ainma-Backend" in response.headers["access-control-expose-headers"]
