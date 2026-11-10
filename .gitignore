@@ -41,3 +41,7 @@ data/synthetic/*
 !data/synthetic/1234/
 data/synthetic/1234/*
 !data/synthetic/1234/truth/
+
+# blind labelling key: never open before labelling the CSV
+eval/labels/label_sample_key.json
+eval/labels/label_scores.json
