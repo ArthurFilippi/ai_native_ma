@@ -36,7 +36,13 @@ METRICS: tuple[MetricDef, ...] = (
     MetricDef(
         "ebitda_margin", "EBITDA margin", "percent", ("adjusted ebitda margin", "ebitda margin")
     ),
-    MetricDef("ebitda", "EBITDA", "money", ("adjusted ebitda", "ebitda")),
+    MetricDef("adjusted_ebitda", "adjusted EBITDA", "money", ("adjusted ebitda",)),
+    MetricDef("ebitda", "EBITDA", "money", ("ebitda",)),
+    MetricDef("order_backlog", "order backlog", "money", ("order backlog",)),
+    MetricDef("export_share", "export share", "percent", ("export share",)),
+    MetricDef("market_cap", "market capitalisation", "money", ("market capitalisation",)),
+    MetricDef("production_sites", "production sites", "count", ("production sites",)),
+    MetricDef("portfolio_companies", "portfolio companies", "count", ("portfolio companies",)),
     MetricDef(
         "operating_income",
         "operating income",
@@ -138,6 +144,9 @@ _FY_RE = re.compile(r"\bFY\s?'?(\d{4}|\d{2})\b(?!\d)", re.IGNORECASE)
 _FISCAL_RE = re.compile(r"\b(?:fiscal|financial)(?:\s+year)?\s+(\d{4})\b", re.IGNORECASE)
 _HALF_RE = re.compile(r"\b(H[12])\s?(?:FY\s?)?(\d{4})\b", re.IGNORECASE)
 _QUARTER_RE = re.compile(r"\b(Q[1-4])\s?(?:FY\s?)?(\d{4})\b", re.IGNORECASE)
+_YEAR_END_RE = re.compile(
+    rf"\byear\s+ended\s+(?:\d{{1,2}}\s+)?{_MONTHS}\.?\s+(\d{{4}})\b", re.IGNORECASE
+)
 _YEAR_RE = re.compile(r"(?<![\w/.-])(?:19|20)\d{2}(?![\w/-]|[.,]\d)")
 
 
@@ -148,8 +157,12 @@ def _full_year(digits: str) -> str:
 def find_periods(text: str) -> list[tuple[str, int, int]]:
     """(normalised period, start, end). `FY2024`, `fiscal 2024`, `in 2024` become `FY2024`;
     half years and quarters become `H1 2024` and `Q3 2024`. Calendar dates are not periods."""
-    taken: list[tuple[int, int]] = [(m.start(), m.end()) for m in _DATE_RE.finditer(text)]
     found: list[tuple[str, int, int]] = []
+    taken: list[tuple[int, int]] = []
+    for m in _YEAR_END_RE.finditer(text):  # "the year ended 31 December 2024" is FY2024
+        taken.append((m.start(), m.end()))
+        found.append((f"FY{m.group(1)}", m.start(), m.end()))
+    taken.extend((m.start(), m.end()) for m in _DATE_RE.finditer(text))
 
     def free(start: int, end: int) -> bool:
         return all(end <= a or start >= b for a, b in taken)

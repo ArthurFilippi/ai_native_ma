@@ -108,3 +108,11 @@ def test_tokenizer_and_sentences() -> None:
         "Second one, 3.5 percent.",
         "Third",
     ]
+
+
+def test_year_ended_phrase_is_a_period_and_adjusted_ebitda_is_its_own_metric() -> None:
+    assert detect_periods("Sales totalled EUR 5 million for the year ended 31 December 2024.") == [
+        "FY2024"
+    ]
+    assert detect_periods("signed on 31 December 2024") == []
+    assert detect_metrics("adjusted EBITDA and EBITDA") == ["adjusted_ebitda", "ebitda"]
