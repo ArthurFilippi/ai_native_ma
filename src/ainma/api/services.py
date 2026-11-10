@@ -20,7 +20,13 @@ def seed_dir(runtime: Runtime) -> Path:
 
 async def ask(runtime: Runtime, access: AccessContext, deal_id: str, question: str) -> Answer:
     return await pipeline_ask(
-        question, store=runtime.store, access=access, deal_id=deal_id, llm=runtime.llm
+        question,
+        store=runtime.store,
+        access=access,
+        deal_id=deal_id,
+        llm=runtime.llm,
+        judge_llm=runtime.judge_llm,
+        engine=runtime.engine,
     )
 
 

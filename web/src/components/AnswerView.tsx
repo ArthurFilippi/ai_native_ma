@@ -110,8 +110,11 @@ function TraceDrawer({ answer }: { answer: Answer }) {
     <details className="trace">
       <summary>Trace (for engineers)</summary>
       <p>
-        Provider {trace.provider}, model {trace.model}, tokens in {trace.input_tokens}, out{" "}
-        {trace.output_tokens}.
+        Writer {trace.provider} {trace.model}; judge{" "}
+        {trace.judge_model
+          ? `${trace.judge_provider ?? trace.provider} ${trace.judge_model}`
+          : "same as writer"}
+        ; tokens in {trace.input_tokens}, out {trace.output_tokens}.
       </p>
       {answer.sub_questions.length > 0 && (
         <>
@@ -171,6 +174,13 @@ export function AnswerView({ answer, onOpen, activeChunk }: OpenProps & { answer
         <span className="muted">Question</span> {answer.question}
       </p>
       <p className="summary">{answer.summary}</p>
+
+      {answer.degraded && (
+        <section className="degraded" role="alert" aria-label="Degraded answer">
+          <h3>Degraded answer</h3>
+          <p>{answer.degraded_reason ?? "A live model call failed; rules answered instead."}</p>
+        </section>
+      )}
 
       {answer.abstained && (
         <section className="abstention" aria-label="Abstention">

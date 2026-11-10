@@ -142,6 +142,9 @@ export interface Trace {
   input_tokens: number;
   output_tokens: number;
   cost_usd: number | null;
+  // the judge model (D88); equal to provider/model when the writer judged
+  judge_provider?: string | null;
+  judge_model?: string | null;
 }
 
 export interface Answer {
@@ -156,6 +159,9 @@ export interface Answer {
   missing: MissingInfo[];
   abstained: boolean;
   abstention_reason: string | null;
+  // a live call failed and the offline mock answered instead (D88)
+  degraded?: boolean;
+  degraded_reason?: string | null;
   trace: Trace;
   value_contract: string;
 }

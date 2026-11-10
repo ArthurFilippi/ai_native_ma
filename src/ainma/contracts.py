@@ -267,6 +267,9 @@ class Trace(Strict):
     input_tokens: int = 0
     output_tokens: int = 0
     cost_usd: float | None = None
+    # the model that judged the claims; equal to provider/model when the writer judged (D88)
+    judge_provider: str | None = None
+    judge_model: str | None = None
 
 
 class Answer(Strict):
@@ -281,6 +284,9 @@ class Answer(Strict):
     missing: list[MissingInfo] = Field(default_factory=list)
     abstained: bool = False
     abstention_reason: str | None = None
+    # a live call failed and the offline mock answered instead (opt in, D88): shown to the user
+    degraded: bool = False
+    degraded_reason: str | None = None
     trace: Trace
     value_contract: str = VALUE_CONTRACT
 

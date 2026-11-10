@@ -537,3 +537,16 @@ mark {
 .table-scroll {
   overflow-x: auto;
 }
+
+.degraded {
+  border: 1px solid #b45309;
+  background: #fff7ed;
+  color: #7c2d12;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+}
+.score-range {
+  white-space: nowrap;
+  color: var(--muted);
+}

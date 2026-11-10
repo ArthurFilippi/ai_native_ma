@@ -13,8 +13,9 @@ content.
 import logging
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Security
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Security
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.security import APIKeyHeader
 
 from ainma.api import services
@@ -31,8 +32,11 @@ from ainma.contracts import (
     ScreeningResult,
     User,
 )
+from ainma.llm import LLMError
 from ainma.runtime import Runtime
 from ainma.store import UnknownUserError
+
+logger = logging.getLogger(__name__)
 
 log = logging.getLogger(__name__)
 
@@ -192,4 +196,17 @@ def create_app(runtime: Runtime) -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(build_router(runtime))
+
+    @app.exception_handler(LLMError)
+    async def llm_failed(request: Request, error: LLMError) -> JSONResponse:
+        # no silent mock answer: the client is told the model failed (D88)
+        logger.warning("LLM failure on %s: %s", request.url.path, error)
+        return JSONResponse(
+            status_code=503,
+            content={
+                "detail": f"The language model failed ({error}); no answer was produced. "
+                "Retry later or check the provider configuration."
+            },
+        )
+
     return app

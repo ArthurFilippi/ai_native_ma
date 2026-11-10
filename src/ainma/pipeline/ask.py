@@ -100,15 +100,29 @@ class _Run:
         self.latency[stage] = round((now - self._started) * 1000.0, 3)
         self._started = now
 
-    def trace(self, llm: LLM, retrieved: list[RankedPassage]) -> Trace:
+    def degraded_reason(self) -> str | None:
+        """Why the answer is degraded: the mock answered for a failed live call (D88)."""
+        failed = sorted({u.fallback_from for u in self.usages if u.fallback_from is not None})
+        if not failed:
+            return None
+        n = sum(u.fallback_from is not None for u in self.usages)
+        return (
+            f"{', '.join(failed)} failed on {n} call(s); the offline mock (rules, not a model) "
+            "answered them. Treat this answer as degraded."
+        )
+
+    def trace(self, llm: LLM, retrieved: list[RankedPassage], judge: LLM | None = None) -> Trace:
         costs = [u.cost_usd for u in self.usages if u.cost_usd is not None]
         fallbacks = sum(u.fallback_from is not None for u in self.usages)
         provider = llm.provider
         if fallbacks:
             provider = f"{llm.provider} (mock fallback on {fallbacks} call(s))"
+        judge = judge or llm
         return Trace(
             provider=provider,
             model=llm.model,
+            judge_provider=judge.provider,
+            judge_model=judge.model,
             stage_latency_ms=self.latency,
             retrieved=retrieved,
             input_tokens=sum(u.input_tokens for u in self.usages),
@@ -136,6 +150,7 @@ async def ask_detailed(
     llm: LLM,
     config: PipelineConfig | None = None,
     engine: RetrievalEngine | None = None,
+    judge_llm: LLM | None = None,
 ) -> AskOutcome:
     cfg = config or PipelineConfig()
     engine = engine or RetrievalEngine()
@@ -162,7 +177,9 @@ async def ask_detailed(
             missing=topics,
             abstained=True,
             abstention_reason=reason,
-            trace=run.trace(llm, retrieved),
+            trace=run.trace(llm, retrieved, judge_llm),
+            degraded=run.degraded_reason() is not None,
+            degraded_reason=run.degraded_reason(),
         )
 
     async def finish(answer: Answer, dropped: list[DroppedClaim]) -> AskOutcome:
@@ -263,7 +280,7 @@ async def ask_detailed(
         verified = await verify_claims(
             claims,
             chunks=chunks,
-            llm=llm,
+            llm=judge_llm or llm,
             drop_unverified=cfg.drop_unverified,
             concurrency=cfg.judge_concurrency,
         )
@@ -325,7 +342,9 @@ async def ask_detailed(
         claims=answer_claims,
         contradictions=contradictions,
         missing=missing,
-        trace=run.trace(llm, retrieved),
+        trace=run.trace(llm, retrieved, judge_llm),
+        degraded=run.degraded_reason() is not None,
+        degraded_reason=run.degraded_reason(),
     )
     return await finish(answer, dropped)
 
@@ -374,10 +393,12 @@ async def ask(
     llm: LLM,
     config: PipelineConfig | None = None,
     engine: RetrievalEngine | None = None,
+    judge_llm: LLM | None = None,
 ) -> Answer:
     """Answer `question` for the user of `access` in `deal_id` (or the general layer).
 
     Pass one `RetrievalEngine` across calls to reuse the fitted indexes (hundreds of queries).
+    `judge_llm` judges the claims when given (a model distinct from the writer, D88).
     """
     outcome = await ask_detailed(
         question,
@@ -387,5 +408,6 @@ async def ask(
         llm=llm,
         config=config,
         engine=engine,
+        judge_llm=judge_llm,
     )
     return outcome.answer
