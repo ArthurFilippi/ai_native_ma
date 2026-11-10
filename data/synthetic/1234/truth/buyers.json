@@ -1,0 +1,760 @@
+[
+ {
+  "id": "buyer_01",
+  "name": "Carent Industries",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Nordics"
+  ],
+  "size_eur_m": 2900.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_02",
+  "name": "Goron Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "water_systems",
+   "logistics"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 1150.0,
+  "ticket_min_eur_m": 40.0,
+  "ticket_max_eur_m": 165.0,
+  "fund_vintage_year": 2019,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_03",
+  "name": "Falex Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "food",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 1050.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_04",
+  "name": "Draay Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "automotive_parts",
+   "food"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 11950.0,
+  "ticket_min_eur_m": 595.0,
+  "ticket_max_eur_m": 1355.0,
+  "fund_vintage_year": 2018,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_05",
+  "name": "Lumell Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "food"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 550.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_06",
+  "name": "Elnell Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "automotive_parts",
+   "industrial_components",
+   "software"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 850.0,
+  "ticket_min_eur_m": 30.0,
+  "ticket_max_eur_m": 160.0,
+  "fund_vintage_year": 2019,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_07",
+  "name": "Traeth Group",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "software"
+  ],
+  "geographies": [
+   "UK and Ireland"
+  ],
+  "size_eur_m": 400.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_08",
+  "name": "Narar Investments",
+  "buyer_type": "financial",
+  "sectors": [
+   "water_systems",
+   "medical_devices",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 8000.0,
+  "ticket_min_eur_m": 305.0,
+  "ticket_max_eur_m": 1540.0,
+  "fund_vintage_year": 2017,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_09",
+  "name": "Tarnora Industries",
+  "buyer_type": "strategic",
+  "sectors": [
+   "automotive_parts",
+   "software"
+  ],
+  "geographies": [
+   "Nordics",
+   "Southern Europe"
+  ],
+  "size_eur_m": 450.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_10",
+  "name": "Peling Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "food",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 1400.0,
+  "ticket_min_eur_m": 45.0,
+  "ticket_max_eur_m": 145.0,
+  "fund_vintage_year": 2017,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_11",
+  "name": "Tarnix Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "logistics"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Asia Pacific"
+  ],
+  "size_eur_m": 1800.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_12",
+  "name": "Ulik Growth Fund",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Southern Europe",
+   "North America"
+  ],
+  "size_eur_m": 6850.0,
+  "ticket_min_eur_m": 210.0,
+  "ticket_max_eur_m": 745.0,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_13",
+  "name": "Junuro Holdings",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components"
+  ],
+  "geographies": [
+   "Asia Pacific",
+   "Central Europe",
+   "North America"
+  ],
+  "size_eur_m": 1450.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_14",
+  "name": "Tarnane Investments",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Nordics"
+  ],
+  "size_eur_m": 2650.0,
+  "ticket_min_eur_m": 150.0,
+  "ticket_max_eur_m": 460.0,
+  "fund_vintage_year": 2022,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_15",
+  "name": "Senon Holdings",
+  "buyer_type": "strategic",
+  "sectors": [
+   "packaging",
+   "industrial_components",
+   "water_systems"
+  ],
+  "geographies": [
+   "UK and Ireland",
+   "North America"
+  ],
+  "size_eur_m": 600.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_16",
+  "name": "Elnik Equity",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "logistics",
+   "software"
+  ],
+  "geographies": [
+   "Central Europe",
+   "North America"
+  ],
+  "size_eur_m": 350.0,
+  "ticket_min_eur_m": 20.0,
+  "ticket_max_eur_m": 55.0,
+  "fund_vintage_year": 2020,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_17",
+  "name": "Ithis Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "food",
+   "industrial_components"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Asia Pacific"
+  ],
+  "size_eur_m": 1600.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_18",
+  "name": "Junium Growth Fund",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "water_systems"
+  ],
+  "geographies": [
+   "Central Europe",
+   "UK and Ireland",
+   "Asia Pacific"
+  ],
+  "size_eur_m": 750.0,
+  "ticket_min_eur_m": 45.0,
+  "ticket_max_eur_m": 150.0,
+  "fund_vintage_year": 2021,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_19",
+  "name": "Tarnar Industries",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "software",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Nordics"
+  ],
+  "size_eur_m": 850.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_20",
+  "name": "Zanent Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "logistics",
+   "medical_devices",
+   "packaging"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 300.0,
+  "ticket_min_eur_m": 15.0,
+  "ticket_max_eur_m": 50.0,
+  "fund_vintage_year": 2016,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_21",
+  "name": "Novex Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "logistics",
+   "packaging",
+   "water_systems"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Nordics"
+  ],
+  "size_eur_m": 1300.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_22",
+  "name": "Pelix Equity",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "packaging"
+  ],
+  "geographies": [
+   "Southern Europe",
+   "Asia Pacific",
+   "Central Europe"
+  ],
+  "size_eur_m": 3400.0,
+  "ticket_min_eur_m": 175.0,
+  "ticket_max_eur_m": 600.0,
+  "fund_vintage_year": 2016,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_23",
+  "name": "Gweneth Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts",
+   "packaging"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 1100.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_24",
+  "name": "Draium Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "packaging"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Southern Europe"
+  ],
+  "size_eur_m": 1600.0,
+  "ticket_min_eur_m": 75.0,
+  "ticket_max_eur_m": 285.0,
+  "fund_vintage_year": 2017,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_25",
+  "name": "Quinane Group",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components"
+  ],
+  "geographies": [
+   "Central Europe"
+  ],
+  "size_eur_m": 900.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_26",
+  "name": "Caruro Investments",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "logistics"
+  ],
+  "geographies": [
+   "Central Europe",
+   "North America"
+  ],
+  "size_eur_m": 450.0,
+  "ticket_min_eur_m": 15.0,
+  "ticket_max_eur_m": 55.0,
+  "fund_vintage_year": 2019,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_27",
+  "name": "Novent Holdings",
+  "buyer_type": "strategic",
+  "sectors": [
+   "automotive_parts",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Southern Europe"
+  ],
+  "size_eur_m": 2050.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_28",
+  "name": "Zanik Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "automotive_parts",
+   "packaging"
+  ],
+  "geographies": [
+   "Nordics",
+   "Central Europe"
+  ],
+  "size_eur_m": 2200.0,
+  "ticket_min_eur_m": 130.0,
+  "ticket_max_eur_m": 315.0,
+  "fund_vintage_year": 2016,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_29",
+  "name": "Ithar Industries",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components"
+  ],
+  "geographies": [
+   "Asia Pacific"
+  ],
+  "size_eur_m": 1200.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_30",
+  "name": "Corani Growth Fund",
+  "buyer_type": "financial",
+  "sectors": [
+   "automotive_parts",
+   "food",
+   "industrial_components"
+  ],
+  "geographies": [
+   "North America",
+   "Central Europe"
+  ],
+  "size_eur_m": 15950.0,
+  "ticket_min_eur_m": 890.0,
+  "ticket_max_eur_m": 2815.0,
+  "fund_vintage_year": 2020,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_31",
+  "name": "Halund Holdings",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Southern Europe"
+  ],
+  "size_eur_m": 950.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_32",
+  "name": "Quinis Growth Fund",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Asia Pacific"
+  ],
+  "size_eur_m": 1850.0,
+  "ticket_min_eur_m": 85.0,
+  "ticket_max_eur_m": 260.0,
+  "fund_vintage_year": 2017,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_33",
+  "name": "Trauro Holdings",
+  "buyer_type": "strategic",
+  "sectors": [
+   "water_systems"
+  ],
+  "geographies": [
+   "North America",
+   "UK and Ireland",
+   "Central Europe"
+  ],
+  "size_eur_m": 2400.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_34",
+  "name": "Junova Equity",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Southern Europe"
+  ],
+  "size_eur_m": 900.0,
+  "ticket_min_eur_m": 50.0,
+  "ticket_max_eur_m": 130.0,
+  "fund_vintage_year": 2020,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_35",
+  "name": "Estund Systems",
+  "buyer_type": "strategic",
+  "sectors": [
+   "packaging",
+   "software"
+  ],
+  "geographies": [
+   "Southern Europe",
+   "Central Europe",
+   "UK and Ireland"
+  ],
+  "size_eur_m": 3600.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_36",
+  "name": "Valuro Capital Partners",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components",
+   "automotive_parts",
+   "medical_devices"
+  ],
+  "geographies": [
+   "Central Europe",
+   "UK and Ireland"
+  ],
+  "size_eur_m": 1050.0,
+  "ticket_min_eur_m": 60.0,
+  "ticket_max_eur_m": 195.0,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_37",
+  "name": "Ostis Industries",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components",
+   "software"
+  ],
+  "geographies": [
+   "UK and Ireland",
+   "Nordics",
+   "Southern Europe"
+  ],
+  "size_eur_m": 650.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_38",
+  "name": "Lanova Equity",
+  "buyer_type": "financial",
+  "sectors": [
+   "food",
+   "automotive_parts"
+  ],
+  "geographies": [
+   "Nordics",
+   "UK and Ireland",
+   "Central Europe"
+  ],
+  "size_eur_m": 19950.0,
+  "ticket_min_eur_m": 1130.0,
+  "ticket_max_eur_m": 3165.0,
+  "fund_vintage_year": 2021,
+  "listed": false,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_39",
+  "name": "Lanik Group",
+  "buyer_type": "strategic",
+  "sectors": [
+   "industrial_components"
+  ],
+  "geographies": [
+   "Southern Europe",
+   "North America",
+   "Asia Pacific"
+  ],
+  "size_eur_m": 450.0,
+  "ticket_min_eur_m": null,
+  "ticket_max_eur_m": null,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ },
+ {
+  "id": "buyer_40",
+  "name": "Caris Equity",
+  "buyer_type": "financial",
+  "sectors": [
+   "industrial_components"
+  ],
+  "geographies": [
+   "Central Europe",
+   "Nordics"
+  ],
+  "size_eur_m": 1250.0,
+  "ticket_min_eur_m": 40.0,
+  "ticket_max_eur_m": 165.0,
+  "fund_vintage_year": null,
+  "listed": true,
+  "synthetic": true
+ }
+]

@@ -1,0 +1,6 @@
+{
+ "seed": 1234,
+ "paraphrase_rate": 0.35,
+ "hard_negative_rate": 0.3,
+ "generator_version": "synth-1.0;reference_date=2025-06-30"
+}

@@ -1,0 +1,3924 @@
+[
+ {
+  "id": "c_0001",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2020 capital expenditure",
+  "entity": "Aurora Components",
+  "metric": "capex",
+  "period": "FY2020",
+  "fact_ids": [
+   "fact_00058",
+   "fact_00079"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0001"
+ },
+ {
+  "id": "c_0002",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2021 capital expenditure",
+  "entity": "Aurora Components",
+  "metric": "capex",
+  "period": "FY2021",
+  "fact_ids": [
+   "fact_00059",
+   "fact_00080"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0002"
+ },
+ {
+  "id": "c_0003",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2022 capital expenditure",
+  "entity": "Aurora Components",
+  "metric": "capex",
+  "period": "FY2022",
+  "fact_ids": [
+   "fact_00060",
+   "fact_00081"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0003"
+ },
+ {
+  "id": "c_0004",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2023 capital expenditure",
+  "entity": "Aurora Components",
+  "metric": "capex",
+  "period": "FY2023",
+  "fact_ids": [
+   "fact_00061",
+   "fact_00082"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0004"
+ },
+ {
+  "id": "c_0005",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 capital expenditure",
+  "entity": "Aurora Components",
+  "metric": "capex",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00057",
+   "fact_00083",
+   "fact_00087"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model",
+   "doc_board_minutes"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0005"
+ },
+ {
+  "id": "c_0006",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2020 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2020",
+  "fact_ids": [
+   "fact_00053",
+   "fact_00074"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0006"
+ },
+ {
+  "id": "c_0007",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2021 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2021",
+  "fact_ids": [
+   "fact_00054",
+   "fact_00075"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0007"
+ },
+ {
+  "id": "c_0008",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2022 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2022",
+  "fact_ids": [
+   "fact_00055",
+   "fact_00076"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0008"
+ },
+ {
+  "id": "c_0009",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2023 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2023",
+  "fact_ids": [
+   "fact_00047",
+   "fact_00077"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0009"
+ },
+ {
+  "id": "c_0010",
+  "kind": "contradiction",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00046",
+   "fact_00078",
+   "fact_00095",
+   "fact_00097"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model",
+   "doc_pr_corr",
+   "doc_news_17"
+  ],
+  "stronger_document_id": "doc_model",
+  "expected": "contradiction",
+  "query_id": "q_0010"
+ },
+ {
+  "id": "c_0011",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 EBITDA margin",
+  "entity": "Aurora Components",
+  "metric": "ebitda_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00049",
+   "fact_00088"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_board_minutes"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0011"
+ },
+ {
+  "id": "c_0012",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components enterprise value",
+  "entity": "Aurora Components",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00063",
+   "fact_00086"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_spa_exec"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0012"
+ },
+ {
+  "id": "c_0013",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 gross margin",
+  "entity": "Aurora Components",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00048",
+   "fact_00068",
+   "fact_00090"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_mgmt_pres",
+   "doc_qoe"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0013"
+ },
+ {
+  "id": "c_0014",
+  "kind": "contradiction",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 headcount",
+  "entity": "Aurora Components",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00040",
+   "fact_00065",
+   "fact_00098"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_mgmt_pres",
+   "doc_news_17"
+  ],
+  "stronger_document_id": "doc_mgmt_pres",
+  "expected": "contradiction",
+  "query_id": "q_0014"
+ },
+ {
+  "id": "c_0015",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 net debt",
+  "entity": "Aurora Components",
+  "metric": "net_debt",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00056",
+   "fact_00091",
+   "fact_00100"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_qoe",
+   "doc_news_22"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0015"
+ },
+ {
+  "id": "c_0016",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 production sites",
+  "entity": "Aurora Components",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00041",
+   "fact_00066"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_mgmt_pres"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0016"
+ },
+ {
+  "id": "c_0017",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2020 revenue",
+  "entity": "Aurora Components",
+  "metric": "revenue",
+  "period": "FY2020",
+  "fact_ids": [
+   "fact_00050",
+   "fact_00069"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0017"
+ },
+ {
+  "id": "c_0018",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2021 revenue",
+  "entity": "Aurora Components",
+  "metric": "revenue",
+  "period": "FY2021",
+  "fact_ids": [
+   "fact_00051",
+   "fact_00070"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0018"
+ },
+ {
+  "id": "c_0019",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2022 revenue",
+  "entity": "Aurora Components",
+  "metric": "revenue",
+  "period": "FY2022",
+  "fact_ids": [
+   "fact_00052",
+   "fact_00071"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0019"
+ },
+ {
+  "id": "c_0020",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2023 revenue",
+  "entity": "Aurora Components",
+  "metric": "revenue",
+  "period": "FY2023",
+  "fact_ids": [
+   "fact_00045",
+   "fact_00072"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0020"
+ },
+ {
+  "id": "c_0021",
+  "kind": "contradiction",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 revenue",
+  "entity": "Aurora Components",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00044",
+   "fact_00073",
+   "fact_00096"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_model",
+   "doc_news_17"
+  ],
+  "stronger_document_id": "doc_model",
+  "expected": "contradiction",
+  "query_id": "q_0021"
+ },
+ {
+  "id": "c_0022",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 top ten customers share",
+  "entity": "Aurora Components",
+  "metric": "top10_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00043",
+   "fact_00093"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_concentration"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0022"
+ },
+ {
+  "id": "c_0023",
+  "kind": "consistent_control",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 largest customer share",
+  "entity": "Aurora Components",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00042",
+   "fact_00067",
+   "fact_00092"
+  ],
+  "document_ids": [
+   "doc_cim",
+   "doc_mgmt_pres",
+   "doc_concentration"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0023"
+ },
+ {
+  "id": "c_0024",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Bank NDA template confidentiality term",
+  "entity": "Bank NDA template",
+  "metric": "nda_term_months",
+  "period": "static",
+  "fact_ids": [
+   "fact_00003",
+   "fact_00007"
+  ],
+  "document_ids": [
+   "doc_kb_nda_handling",
+   "doc_kb_nda_template"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0024"
+ },
+ {
+  "id": "c_0025",
+  "kind": "contradiction",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 EBITDA",
+  "entity": "Carane Foods",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00231",
+   "fact_00248"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_news"
+  ],
+  "stronger_document_id": "doc_carane_cim",
+  "expected": "contradiction",
+  "query_id": "q_0025"
+ },
+ {
+  "id": "c_0026",
+  "kind": "consistent_control",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods enterprise value",
+  "entity": "Carane Foods",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00241",
+   "fact_00252"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_spa_exec"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0026"
+ },
+ {
+  "id": "c_0027",
+  "kind": "consistent_control",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 gross margin",
+  "entity": "Carane Foods",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00233",
+   "fact_00246"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0027"
+ },
+ {
+  "id": "c_0028",
+  "kind": "contradiction",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 headcount",
+  "entity": "Carane Foods",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00224",
+   "fact_00243",
+   "fact_00249"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_mgmt",
+   "doc_carane_news"
+  ],
+  "stronger_document_id": "doc_carane_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0028"
+ },
+ {
+  "id": "c_0029",
+  "kind": "consistent_control",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 order backlog",
+  "entity": "Carane Foods",
+  "metric": "order_backlog",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00228",
+   "fact_00250"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_pr"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0029"
+ },
+ {
+  "id": "c_0030",
+  "kind": "consistent_control",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 production sites",
+  "entity": "Carane Foods",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00225",
+   "fact_00244"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0030"
+ },
+ {
+  "id": "c_0031",
+  "kind": "contradiction",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 revenue",
+  "entity": "Carane Foods",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00229",
+   "fact_00247"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_news"
+  ],
+  "stronger_document_id": "doc_carane_cim",
+  "expected": "contradiction",
+  "query_id": "q_0031"
+ },
+ {
+  "id": "c_0032",
+  "kind": "consistent_control",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods FY2024 largest customer share",
+  "entity": "Carane Foods",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00226",
+   "fact_00245"
+  ],
+  "document_ids": [
+   "doc_carane_cim",
+   "doc_carane_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0032"
+ },
+ {
+  "id": "c_0033",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Carent Industries FY2024 market capitalisation",
+  "entity": "Carent Industries",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00344",
+   "fact_00345",
+   "fact_00349"
+  ],
+  "document_ids": [
+   "doc_buyer_01_profile",
+   "doc_buyer_01_report",
+   "doc_buyer_01_article"
+  ],
+  "stronger_document_id": "doc_buyer_01_report",
+  "expected": "contradiction",
+  "query_id": "q_0033"
+ },
+ {
+  "id": "c_0034",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caris Equity FY2024 assets under management",
+  "entity": "Caris Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00657",
+   "fact_00660"
+  ],
+  "document_ids": [
+   "doc_buyer_40_profile",
+   "doc_buyer_40_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0034"
+ },
+ {
+  "id": "c_0035",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caris Equity maximum ticket",
+  "entity": "Caris Equity",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00659",
+   "fact_00662"
+  ],
+  "document_ids": [
+   "doc_buyer_40_profile",
+   "doc_buyer_40_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0035"
+ },
+ {
+  "id": "c_0036",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caris Equity minimum ticket",
+  "entity": "Caris Equity",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00658",
+   "fact_00661"
+  ],
+  "document_ids": [
+   "doc_buyer_40_profile",
+   "doc_buyer_40_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0036"
+ },
+ {
+  "id": "c_0037",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Caruro Investments FY2024 assets under management",
+  "entity": "Caruro Investments",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00556",
+   "fact_00560",
+   "fact_00566"
+  ],
+  "document_ids": [
+   "doc_buyer_26_profile",
+   "doc_buyer_26_report",
+   "doc_buyer_26_article"
+  ],
+  "stronger_document_id": "doc_buyer_26_report",
+  "expected": "contradiction",
+  "query_id": "q_0037"
+ },
+ {
+  "id": "c_0038",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caruro Investments fund vintage year",
+  "entity": "Caruro Investments",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00559",
+   "fact_00564"
+  ],
+  "document_ids": [
+   "doc_buyer_26_profile",
+   "doc_buyer_26_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0038"
+ },
+ {
+  "id": "c_0039",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caruro Investments maximum ticket",
+  "entity": "Caruro Investments",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00558",
+   "fact_00562"
+  ],
+  "document_ids": [
+   "doc_buyer_26_profile",
+   "doc_buyer_26_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0039"
+ },
+ {
+  "id": "c_0040",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Caruro Investments minimum ticket",
+  "entity": "Caruro Investments",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00557",
+   "fact_00561"
+  ],
+  "document_ids": [
+   "doc_buyer_26_profile",
+   "doc_buyer_26_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0040"
+ },
+ {
+  "id": "c_0041",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Corani Growth Fund FY2024 assets under management",
+  "entity": "Corani Growth Fund",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00586",
+   "fact_00590"
+  ],
+  "document_ids": [
+   "doc_buyer_30_profile",
+   "doc_buyer_30_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0041"
+ },
+ {
+  "id": "c_0042",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Corani Growth Fund fund vintage year",
+  "entity": "Corani Growth Fund",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00589",
+   "fact_00594"
+  ],
+  "document_ids": [
+   "doc_buyer_30_profile",
+   "doc_buyer_30_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0042"
+ },
+ {
+  "id": "c_0043",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Corani Growth Fund maximum ticket",
+  "entity": "Corani Growth Fund",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00588",
+   "fact_00592"
+  ],
+  "document_ids": [
+   "doc_buyer_30_profile",
+   "doc_buyer_30_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0043"
+ },
+ {
+  "id": "c_0044",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Corani Growth Fund minimum ticket",
+  "entity": "Corani Growth Fund",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00587",
+   "fact_00591"
+  ],
+  "document_ids": [
+   "doc_buyer_30_profile",
+   "doc_buyer_30_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0044"
+ },
+ {
+  "id": "c_0045",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Draay Capital Partners FY2024 assets under management",
+  "entity": "Draay Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00368",
+   "fact_00372",
+   "fact_00377"
+  ],
+  "document_ids": [
+   "doc_buyer_04_profile",
+   "doc_buyer_04_report",
+   "doc_buyer_04_article"
+  ],
+  "stronger_document_id": "doc_buyer_04_report",
+  "expected": "contradiction",
+  "query_id": "q_0045"
+ },
+ {
+  "id": "c_0046",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draay Capital Partners fund vintage year",
+  "entity": "Draay Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00371",
+   "fact_00376"
+  ],
+  "document_ids": [
+   "doc_buyer_04_profile",
+   "doc_buyer_04_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0046"
+ },
+ {
+  "id": "c_0047",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draay Capital Partners maximum ticket",
+  "entity": "Draay Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00370",
+   "fact_00374"
+  ],
+  "document_ids": [
+   "doc_buyer_04_profile",
+   "doc_buyer_04_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0047"
+ },
+ {
+  "id": "c_0048",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draay Capital Partners minimum ticket",
+  "entity": "Draay Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00369",
+   "fact_00373"
+  ],
+  "document_ids": [
+   "doc_buyer_04_profile",
+   "doc_buyer_04_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0048"
+ },
+ {
+  "id": "c_0049",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draium Capital Partners FY2024 assets under management",
+  "entity": "Draium Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00539",
+   "fact_00543"
+  ],
+  "document_ids": [
+   "doc_buyer_24_profile",
+   "doc_buyer_24_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0049"
+ },
+ {
+  "id": "c_0050",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draium Capital Partners fund vintage year",
+  "entity": "Draium Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00542",
+   "fact_00547"
+  ],
+  "document_ids": [
+   "doc_buyer_24_profile",
+   "doc_buyer_24_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0050"
+ },
+ {
+  "id": "c_0051",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draium Capital Partners maximum ticket",
+  "entity": "Draium Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00541",
+   "fact_00545"
+  ],
+  "document_ids": [
+   "doc_buyer_24_profile",
+   "doc_buyer_24_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0051"
+ },
+ {
+  "id": "c_0052",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Draium Capital Partners minimum ticket",
+  "entity": "Draium Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00540",
+   "fact_00544"
+  ],
+  "document_ids": [
+   "doc_buyer_24_profile",
+   "doc_buyer_24_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0052"
+ },
+ {
+  "id": "c_0053",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnell Capital Partners FY2024 assets under management",
+  "entity": "Elnell Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00386",
+   "fact_00390"
+  ],
+  "document_ids": [
+   "doc_buyer_06_profile",
+   "doc_buyer_06_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0053"
+ },
+ {
+  "id": "c_0054",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnell Capital Partners fund vintage year",
+  "entity": "Elnell Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00389",
+   "fact_00394"
+  ],
+  "document_ids": [
+   "doc_buyer_06_profile",
+   "doc_buyer_06_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0054"
+ },
+ {
+  "id": "c_0055",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnell Capital Partners maximum ticket",
+  "entity": "Elnell Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00388",
+   "fact_00392"
+  ],
+  "document_ids": [
+   "doc_buyer_06_profile",
+   "doc_buyer_06_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0055"
+ },
+ {
+  "id": "c_0056",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnell Capital Partners minimum ticket",
+  "entity": "Elnell Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00387",
+   "fact_00391"
+  ],
+  "document_ids": [
+   "doc_buyer_06_profile",
+   "doc_buyer_06_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0056"
+ },
+ {
+  "id": "c_0057",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Elnik Equity FY2024 assets under management",
+  "entity": "Elnik Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00469",
+   "fact_00473",
+   "fact_00479"
+  ],
+  "document_ids": [
+   "doc_buyer_16_profile",
+   "doc_buyer_16_report",
+   "doc_buyer_16_article"
+  ],
+  "stronger_document_id": "doc_buyer_16_report",
+  "expected": "contradiction",
+  "query_id": "q_0057"
+ },
+ {
+  "id": "c_0058",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnik Equity fund vintage year",
+  "entity": "Elnik Equity",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00472",
+   "fact_00477"
+  ],
+  "document_ids": [
+   "doc_buyer_16_profile",
+   "doc_buyer_16_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0058"
+ },
+ {
+  "id": "c_0059",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnik Equity maximum ticket",
+  "entity": "Elnik Equity",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00471",
+   "fact_00475"
+  ],
+  "document_ids": [
+   "doc_buyer_16_profile",
+   "doc_buyer_16_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0059"
+ },
+ {
+  "id": "c_0060",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Elnik Equity minimum ticket",
+  "entity": "Elnik Equity",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00470",
+   "fact_00474"
+  ],
+  "document_ids": [
+   "doc_buyer_16_profile",
+   "doc_buyer_16_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0060"
+ },
+ {
+  "id": "c_0061",
+  "kind": "contradiction",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 EBITDA",
+  "entity": "Estell Automotive",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00290",
+   "fact_00307"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_news"
+  ],
+  "stronger_document_id": "doc_estell_cim",
+  "expected": "contradiction",
+  "query_id": "q_0061"
+ },
+ {
+  "id": "c_0062",
+  "kind": "consistent_control",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive enterprise value",
+  "entity": "Estell Automotive",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00300",
+   "fact_00311"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_spa_exec"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0062"
+ },
+ {
+  "id": "c_0063",
+  "kind": "consistent_control",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 gross margin",
+  "entity": "Estell Automotive",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00292",
+   "fact_00305"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0063"
+ },
+ {
+  "id": "c_0064",
+  "kind": "contradiction",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 headcount",
+  "entity": "Estell Automotive",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00283",
+   "fact_00302",
+   "fact_00308"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_mgmt",
+   "doc_estell_news"
+  ],
+  "stronger_document_id": "doc_estell_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0064"
+ },
+ {
+  "id": "c_0065",
+  "kind": "consistent_control",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 order backlog",
+  "entity": "Estell Automotive",
+  "metric": "order_backlog",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00287",
+   "fact_00309"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_pr"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0065"
+ },
+ {
+  "id": "c_0066",
+  "kind": "consistent_control",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 production sites",
+  "entity": "Estell Automotive",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00284",
+   "fact_00303"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0066"
+ },
+ {
+  "id": "c_0067",
+  "kind": "contradiction",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 revenue",
+  "entity": "Estell Automotive",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00288",
+   "fact_00306"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_news"
+  ],
+  "stronger_document_id": "doc_estell_cim",
+  "expected": "contradiction",
+  "query_id": "q_0067"
+ },
+ {
+  "id": "c_0068",
+  "kind": "consistent_control",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive FY2024 largest customer share",
+  "entity": "Estell Automotive",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00285",
+   "fact_00304"
+  ],
+  "document_ids": [
+   "doc_estell_cim",
+   "doc_estell_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0068"
+ },
+ {
+  "id": "c_0069",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Estund Systems FY2024 market capitalisation",
+  "entity": "Estund Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00626",
+   "fact_00627"
+  ],
+  "document_ids": [
+   "doc_buyer_35_profile",
+   "doc_buyer_35_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0069"
+ },
+ {
+  "id": "c_0070",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Falex Systems FY2024 market capitalisation",
+  "entity": "Falex Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00363",
+   "fact_00364"
+  ],
+  "document_ids": [
+   "doc_buyer_03_profile",
+   "doc_buyer_03_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0070"
+ },
+ {
+  "id": "c_0071",
+  "kind": "contradiction",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 EBITDA",
+  "entity": "Falik Medical",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00200",
+   "fact_00218",
+   "fact_00221"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_news",
+   "doc_falik_pr_corr"
+  ],
+  "stronger_document_id": "doc_falik_cim",
+  "expected": "contradiction",
+  "query_id": "q_0071"
+ },
+ {
+  "id": "c_0072",
+  "kind": "consistent_control",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 gross margin",
+  "entity": "Falik Medical",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00202",
+   "fact_00215"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0072"
+ },
+ {
+  "id": "c_0073",
+  "kind": "contradiction",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 headcount",
+  "entity": "Falik Medical",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00193",
+   "fact_00212",
+   "fact_00219"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_mgmt",
+   "doc_falik_news"
+  ],
+  "stronger_document_id": "doc_falik_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0073"
+ },
+ {
+  "id": "c_0074",
+  "kind": "consistent_control",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 production sites",
+  "entity": "Falik Medical",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00194",
+   "fact_00213"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0074"
+ },
+ {
+  "id": "c_0075",
+  "kind": "contradiction",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2023 revenue",
+  "entity": "Falik Medical",
+  "metric": "revenue",
+  "period": "FY2023",
+  "fact_ids": [
+   "fact_00199",
+   "fact_00216"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_mgmt"
+  ],
+  "stronger_document_id": "doc_falik_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0075"
+ },
+ {
+  "id": "c_0076",
+  "kind": "contradiction",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 revenue",
+  "entity": "Falik Medical",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00198",
+   "fact_00217"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_news"
+  ],
+  "stronger_document_id": "doc_falik_cim",
+  "expected": "contradiction",
+  "query_id": "q_0076"
+ },
+ {
+  "id": "c_0077",
+  "kind": "consistent_control",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 largest customer share",
+  "entity": "Falik Medical",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00195",
+   "fact_00214"
+  ],
+  "document_ids": [
+   "doc_falik_cim",
+   "doc_falik_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0077"
+ },
+ {
+  "id": "c_0078",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Goron Capital Partners FY2024 assets under management",
+  "entity": "Goron Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00351",
+   "fact_00355",
+   "fact_00361"
+  ],
+  "document_ids": [
+   "doc_buyer_02_profile",
+   "doc_buyer_02_report",
+   "doc_buyer_02_article"
+  ],
+  "stronger_document_id": "doc_buyer_02_report",
+  "expected": "contradiction",
+  "query_id": "q_0078"
+ },
+ {
+  "id": "c_0079",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Goron Capital Partners fund vintage year",
+  "entity": "Goron Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00354",
+   "fact_00359"
+  ],
+  "document_ids": [
+   "doc_buyer_02_profile",
+   "doc_buyer_02_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0079"
+ },
+ {
+  "id": "c_0080",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Goron Capital Partners maximum ticket",
+  "entity": "Goron Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00353",
+   "fact_00357"
+  ],
+  "document_ids": [
+   "doc_buyer_02_profile",
+   "doc_buyer_02_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0080"
+ },
+ {
+  "id": "c_0081",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Goron Capital Partners minimum ticket",
+  "entity": "Goron Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00352",
+   "fact_00356"
+  ],
+  "document_ids": [
+   "doc_buyer_02_profile",
+   "doc_buyer_02_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0081"
+ },
+ {
+  "id": "c_0082",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Gweneth Systems FY2024 market capitalisation",
+  "entity": "Gweneth Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00534",
+   "fact_00535",
+   "fact_00538"
+  ],
+  "document_ids": [
+   "doc_buyer_23_profile",
+   "doc_buyer_23_report",
+   "doc_buyer_23_article"
+  ],
+  "stronger_document_id": "doc_buyer_23_report",
+  "expected": "contradiction",
+  "query_id": "q_0082"
+ },
+ {
+  "id": "c_0083",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Halund Holdings FY2024 market capitalisation",
+  "entity": "Halund Holdings",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00596",
+   "fact_00597"
+  ],
+  "document_ids": [
+   "doc_buyer_31_profile",
+   "doc_buyer_31_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0083"
+ },
+ {
+  "id": "c_0084",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Ithar Industries FY2024 market capitalisation",
+  "entity": "Ithar Industries",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00582",
+   "fact_00583"
+  ],
+  "document_ids": [
+   "doc_buyer_29_profile",
+   "doc_buyer_29_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0084"
+ },
+ {
+  "id": "c_0085",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Ithis Systems FY2024 market capitalisation",
+  "entity": "Ithis Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00481",
+   "fact_00482",
+   "fact_00485"
+  ],
+  "document_ids": [
+   "doc_buyer_17_profile",
+   "doc_buyer_17_report",
+   "doc_buyer_17_article"
+  ],
+  "stronger_document_id": "doc_buyer_17_report",
+  "expected": "contradiction",
+  "query_id": "q_0085"
+ },
+ {
+  "id": "c_0086",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junium Growth Fund FY2024 assets under management",
+  "entity": "Junium Growth Fund",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00487",
+   "fact_00491"
+  ],
+  "document_ids": [
+   "doc_buyer_18_profile",
+   "doc_buyer_18_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0086"
+ },
+ {
+  "id": "c_0087",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junium Growth Fund fund vintage year",
+  "entity": "Junium Growth Fund",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00490",
+   "fact_00495"
+  ],
+  "document_ids": [
+   "doc_buyer_18_profile",
+   "doc_buyer_18_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0087"
+ },
+ {
+  "id": "c_0088",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junium Growth Fund maximum ticket",
+  "entity": "Junium Growth Fund",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00489",
+   "fact_00493"
+  ],
+  "document_ids": [
+   "doc_buyer_18_profile",
+   "doc_buyer_18_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0088"
+ },
+ {
+  "id": "c_0089",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junium Growth Fund minimum ticket",
+  "entity": "Junium Growth Fund",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00488",
+   "fact_00492"
+  ],
+  "document_ids": [
+   "doc_buyer_18_profile",
+   "doc_buyer_18_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0089"
+ },
+ {
+  "id": "c_0090",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junova Equity FY2024 assets under management",
+  "entity": "Junova Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00616",
+   "fact_00620"
+  ],
+  "document_ids": [
+   "doc_buyer_34_profile",
+   "doc_buyer_34_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0090"
+ },
+ {
+  "id": "c_0091",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junova Equity fund vintage year",
+  "entity": "Junova Equity",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00619",
+   "fact_00624"
+  ],
+  "document_ids": [
+   "doc_buyer_34_profile",
+   "doc_buyer_34_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0091"
+ },
+ {
+  "id": "c_0092",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junova Equity maximum ticket",
+  "entity": "Junova Equity",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00618",
+   "fact_00622"
+  ],
+  "document_ids": [
+   "doc_buyer_34_profile",
+   "doc_buyer_34_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0092"
+ },
+ {
+  "id": "c_0093",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Junova Equity minimum ticket",
+  "entity": "Junova Equity",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00617",
+   "fact_00621"
+  ],
+  "document_ids": [
+   "doc_buyer_34_profile",
+   "doc_buyer_34_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0093"
+ },
+ {
+  "id": "c_0094",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Junuro Holdings FY2024 market capitalisation",
+  "entity": "Junuro Holdings",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00446",
+   "fact_00447",
+   "fact_00451"
+  ],
+  "document_ids": [
+   "doc_buyer_13_profile",
+   "doc_buyer_13_report",
+   "doc_buyer_13_article"
+  ],
+  "stronger_document_id": "doc_buyer_13_report",
+  "expected": "contradiction",
+  "query_id": "q_0094"
+ },
+ {
+  "id": "c_0095",
+  "kind": "contradiction",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 EBITDA",
+  "entity": "Kesent Analytics",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00109",
+   "fact_00126"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_news"
+  ],
+  "stronger_document_id": "doc_kesent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0095"
+ },
+ {
+  "id": "c_0096",
+  "kind": "consistent_control",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics enterprise value",
+  "entity": "Kesent Analytics",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00119",
+   "fact_00130"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_spa_exec"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0096"
+ },
+ {
+  "id": "c_0097",
+  "kind": "consistent_control",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 gross margin",
+  "entity": "Kesent Analytics",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00111",
+   "fact_00124"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0097"
+ },
+ {
+  "id": "c_0098",
+  "kind": "contradiction",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 headcount",
+  "entity": "Kesent Analytics",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00102",
+   "fact_00121",
+   "fact_00127"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_mgmt",
+   "doc_kesent_news"
+  ],
+  "stronger_document_id": "doc_kesent_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0098"
+ },
+ {
+  "id": "c_0099",
+  "kind": "consistent_control",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 order backlog",
+  "entity": "Kesent Analytics",
+  "metric": "order_backlog",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00106",
+   "fact_00128"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_pr"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0099"
+ },
+ {
+  "id": "c_0100",
+  "kind": "consistent_control",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 production sites",
+  "entity": "Kesent Analytics",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00103",
+   "fact_00122"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0100"
+ },
+ {
+  "id": "c_0101",
+  "kind": "contradiction",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 revenue",
+  "entity": "Kesent Analytics",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00107",
+   "fact_00125"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_news"
+  ],
+  "stronger_document_id": "doc_kesent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0101"
+ },
+ {
+  "id": "c_0102",
+  "kind": "consistent_control",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics FY2024 largest customer share",
+  "entity": "Kesent Analytics",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00104",
+   "fact_00123"
+  ],
+  "document_ids": [
+   "doc_kesent_cim",
+   "doc_kesent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0102"
+ },
+ {
+  "id": "c_0103",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Lanik Group FY2024 market capitalisation",
+  "entity": "Lanik Group",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00653",
+   "fact_00654"
+  ],
+  "document_ids": [
+   "doc_buyer_39_profile",
+   "doc_buyer_39_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0103"
+ },
+ {
+  "id": "c_0104",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Lanova Equity FY2024 assets under management",
+  "entity": "Lanova Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00644",
+   "fact_00648"
+  ],
+  "document_ids": [
+   "doc_buyer_38_profile",
+   "doc_buyer_38_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0104"
+ },
+ {
+  "id": "c_0105",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Lanova Equity fund vintage year",
+  "entity": "Lanova Equity",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00647",
+   "fact_00652"
+  ],
+  "document_ids": [
+   "doc_buyer_38_profile",
+   "doc_buyer_38_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0105"
+ },
+ {
+  "id": "c_0106",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Lanova Equity maximum ticket",
+  "entity": "Lanova Equity",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00646",
+   "fact_00650"
+  ],
+  "document_ids": [
+   "doc_buyer_38_profile",
+   "doc_buyer_38_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0106"
+ },
+ {
+  "id": "c_0107",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Lanova Equity minimum ticket",
+  "entity": "Lanova Equity",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00645",
+   "fact_00649"
+  ],
+  "document_ids": [
+   "doc_buyer_38_profile",
+   "doc_buyer_38_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0107"
+ },
+ {
+  "id": "c_0108",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Lumell Systems FY2024 market capitalisation",
+  "entity": "Lumell Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00379",
+   "fact_00380",
+   "fact_00384"
+  ],
+  "document_ids": [
+   "doc_buyer_05_profile",
+   "doc_buyer_05_report",
+   "doc_buyer_05_article"
+  ],
+  "stronger_document_id": "doc_buyer_05_report",
+  "expected": "contradiction",
+  "query_id": "q_0108"
+ },
+ {
+  "id": "c_0109",
+  "kind": "contradiction",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 EBITDA",
+  "entity": "Merium Water Systems",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00261",
+   "fact_00278",
+   "fact_00281"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_news",
+   "doc_merium_pr_corr"
+  ],
+  "stronger_document_id": "doc_merium_cim",
+  "expected": "contradiction",
+  "query_id": "q_0109"
+ },
+ {
+  "id": "c_0110",
+  "kind": "consistent_control",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 gross margin",
+  "entity": "Merium Water Systems",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00263",
+   "fact_00276"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0110"
+ },
+ {
+  "id": "c_0111",
+  "kind": "contradiction",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 headcount",
+  "entity": "Merium Water Systems",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00254",
+   "fact_00273",
+   "fact_00279"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_mgmt",
+   "doc_merium_news"
+  ],
+  "stronger_document_id": "doc_merium_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0111"
+ },
+ {
+  "id": "c_0112",
+  "kind": "consistent_control",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 production sites",
+  "entity": "Merium Water Systems",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00255",
+   "fact_00274"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0112"
+ },
+ {
+  "id": "c_0113",
+  "kind": "contradiction",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 revenue",
+  "entity": "Merium Water Systems",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00259",
+   "fact_00277"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_news"
+  ],
+  "stronger_document_id": "doc_merium_cim",
+  "expected": "contradiction",
+  "query_id": "q_0113"
+ },
+ {
+  "id": "c_0114",
+  "kind": "consistent_control",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 largest customer share",
+  "entity": "Merium Water Systems",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00256",
+   "fact_00275"
+  ],
+  "document_ids": [
+   "doc_merium_cim",
+   "doc_merium_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0114"
+ },
+ {
+  "id": "c_0115",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Narar Investments FY2024 assets under management",
+  "entity": "Narar Investments",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00404",
+   "fact_00408",
+   "fact_00414"
+  ],
+  "document_ids": [
+   "doc_buyer_08_profile",
+   "doc_buyer_08_report",
+   "doc_buyer_08_article"
+  ],
+  "stronger_document_id": "doc_buyer_08_report",
+  "expected": "contradiction",
+  "query_id": "q_0115"
+ },
+ {
+  "id": "c_0116",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Narar Investments fund vintage year",
+  "entity": "Narar Investments",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00407",
+   "fact_00412"
+  ],
+  "document_ids": [
+   "doc_buyer_08_profile",
+   "doc_buyer_08_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0116"
+ },
+ {
+  "id": "c_0117",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Narar Investments maximum ticket",
+  "entity": "Narar Investments",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00406",
+   "fact_00410"
+  ],
+  "document_ids": [
+   "doc_buyer_08_profile",
+   "doc_buyer_08_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0117"
+ },
+ {
+  "id": "c_0118",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Narar Investments minimum ticket",
+  "entity": "Narar Investments",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00405",
+   "fact_00409"
+  ],
+  "document_ids": [
+   "doc_buyer_08_profile",
+   "doc_buyer_08_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0118"
+ },
+ {
+  "id": "c_0119",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Novent Holdings FY2024 market capitalisation",
+  "entity": "Novent Holdings",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00567",
+   "fact_00568"
+  ],
+  "document_ids": [
+   "doc_buyer_27_profile",
+   "doc_buyer_27_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0119"
+ },
+ {
+  "id": "c_0120",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Novex Systems FY2024 market capitalisation",
+  "entity": "Novex Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00516",
+   "fact_00517"
+  ],
+  "document_ids": [
+   "doc_buyer_21_profile",
+   "doc_buyer_21_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0120"
+ },
+ {
+  "id": "c_0121",
+  "kind": "contradiction",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 EBITDA",
+  "entity": "Ostent Packaging",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00170",
+   "fact_00187"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_news"
+  ],
+  "stronger_document_id": "doc_ostent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0121"
+ },
+ {
+  "id": "c_0122",
+  "kind": "consistent_control",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging enterprise value",
+  "entity": "Ostent Packaging",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00180",
+   "fact_00191"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_spa_exec"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0122"
+ },
+ {
+  "id": "c_0123",
+  "kind": "consistent_control",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 gross margin",
+  "entity": "Ostent Packaging",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00172",
+   "fact_00185"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0123"
+ },
+ {
+  "id": "c_0124",
+  "kind": "contradiction",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 headcount",
+  "entity": "Ostent Packaging",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00163",
+   "fact_00182",
+   "fact_00188"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_mgmt",
+   "doc_ostent_news"
+  ],
+  "stronger_document_id": "doc_ostent_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0124"
+ },
+ {
+  "id": "c_0125",
+  "kind": "consistent_control",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 order backlog",
+  "entity": "Ostent Packaging",
+  "metric": "order_backlog",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00167",
+   "fact_00189"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_pr"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0125"
+ },
+ {
+  "id": "c_0126",
+  "kind": "consistent_control",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 production sites",
+  "entity": "Ostent Packaging",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00164",
+   "fact_00183"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0126"
+ },
+ {
+  "id": "c_0127",
+  "kind": "contradiction",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 revenue",
+  "entity": "Ostent Packaging",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00168",
+   "fact_00186"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_news"
+  ],
+  "stronger_document_id": "doc_ostent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0127"
+ },
+ {
+  "id": "c_0128",
+  "kind": "consistent_control",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging FY2024 largest customer share",
+  "entity": "Ostent Packaging",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00165",
+   "fact_00184"
+  ],
+  "document_ids": [
+   "doc_ostent_cim",
+   "doc_ostent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0128"
+ },
+ {
+  "id": "c_0129",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Ostis Industries FY2024 market capitalisation",
+  "entity": "Ostis Industries",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00639",
+   "fact_00640"
+  ],
+  "document_ids": [
+   "doc_buyer_37_profile",
+   "doc_buyer_37_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0129"
+ },
+ {
+  "id": "c_0130",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Peling Capital Partners FY2024 assets under management",
+  "entity": "Peling Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00422",
+   "fact_00426",
+   "fact_00431"
+  ],
+  "document_ids": [
+   "doc_buyer_10_profile",
+   "doc_buyer_10_report",
+   "doc_buyer_10_article"
+  ],
+  "stronger_document_id": "doc_buyer_10_report",
+  "expected": "contradiction",
+  "query_id": "q_0130"
+ },
+ {
+  "id": "c_0131",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Peling Capital Partners fund vintage year",
+  "entity": "Peling Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00425",
+   "fact_00430"
+  ],
+  "document_ids": [
+   "doc_buyer_10_profile",
+   "doc_buyer_10_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0131"
+ },
+ {
+  "id": "c_0132",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Peling Capital Partners maximum ticket",
+  "entity": "Peling Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00424",
+   "fact_00428"
+  ],
+  "document_ids": [
+   "doc_buyer_10_profile",
+   "doc_buyer_10_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0132"
+ },
+ {
+  "id": "c_0133",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Peling Capital Partners minimum ticket",
+  "entity": "Peling Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00423",
+   "fact_00427"
+  ],
+  "document_ids": [
+   "doc_buyer_10_profile",
+   "doc_buyer_10_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0133"
+ },
+ {
+  "id": "c_0134",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Pelix Equity FY2024 assets under management",
+  "entity": "Pelix Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00521",
+   "fact_00525",
+   "fact_00531",
+   "fact_00533"
+  ],
+  "document_ids": [
+   "doc_buyer_22_profile",
+   "doc_buyer_22_report",
+   "doc_buyer_22_article",
+   "doc_buyer_22_pr_corr"
+  ],
+  "stronger_document_id": "doc_buyer_22_report",
+  "expected": "contradiction",
+  "query_id": "q_0134"
+ },
+ {
+  "id": "c_0135",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Pelix Equity fund vintage year",
+  "entity": "Pelix Equity",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00524",
+   "fact_00529"
+  ],
+  "document_ids": [
+   "doc_buyer_22_profile",
+   "doc_buyer_22_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0135"
+ },
+ {
+  "id": "c_0136",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Pelix Equity maximum ticket",
+  "entity": "Pelix Equity",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00523",
+   "fact_00527"
+  ],
+  "document_ids": [
+   "doc_buyer_22_profile",
+   "doc_buyer_22_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0136"
+ },
+ {
+  "id": "c_0137",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Pelix Equity minimum ticket",
+  "entity": "Pelix Equity",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00522",
+   "fact_00526"
+  ],
+  "document_ids": [
+   "doc_buyer_22_profile",
+   "doc_buyer_22_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0137"
+ },
+ {
+  "id": "c_0138",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Quinane Group FY2024 market capitalisation",
+  "entity": "Quinane Group",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00550",
+   "fact_00551",
+   "fact_00555"
+  ],
+  "document_ids": [
+   "doc_buyer_25_profile",
+   "doc_buyer_25_report",
+   "doc_buyer_25_article"
+  ],
+  "stronger_document_id": "doc_buyer_25_report",
+  "expected": "contradiction",
+  "query_id": "q_0138"
+ },
+ {
+  "id": "c_0139",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Quinis Growth Fund FY2024 assets under management",
+  "entity": "Quinis Growth Fund",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00600",
+   "fact_00604"
+  ],
+  "document_ids": [
+   "doc_buyer_32_profile",
+   "doc_buyer_32_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0139"
+ },
+ {
+  "id": "c_0140",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Quinis Growth Fund fund vintage year",
+  "entity": "Quinis Growth Fund",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00603",
+   "fact_00608"
+  ],
+  "document_ids": [
+   "doc_buyer_32_profile",
+   "doc_buyer_32_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0140"
+ },
+ {
+  "id": "c_0141",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Quinis Growth Fund maximum ticket",
+  "entity": "Quinis Growth Fund",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00602",
+   "fact_00606"
+  ],
+  "document_ids": [
+   "doc_buyer_32_profile",
+   "doc_buyer_32_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0141"
+ },
+ {
+  "id": "c_0142",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Quinis Growth Fund minimum ticket",
+  "entity": "Quinis Growth Fund",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00601",
+   "fact_00605"
+  ],
+  "document_ids": [
+   "doc_buyer_32_profile",
+   "doc_buyer_32_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0142"
+ },
+ {
+  "id": "c_0143",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Senon Holdings FY2024 market capitalisation",
+  "entity": "Senon Holdings",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00464",
+   "fact_00465"
+  ],
+  "document_ids": [
+   "doc_buyer_15_profile",
+   "doc_buyer_15_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0143"
+ },
+ {
+  "id": "c_0144",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Standard sell-side process bidding rounds",
+  "entity": "Standard sell-side process",
+  "metric": "bidder_rounds",
+  "period": "static",
+  "fact_ids": [
+   "fact_00002",
+   "fact_00004"
+  ],
+  "document_ids": [
+   "doc_kb_buyside_playbook",
+   "doc_kb_bidder_communication"
+  ],
+  "stronger_document_id": "doc_kb_bidder_communication",
+  "expected": "contradiction",
+  "query_id": "q_0144"
+ },
+ {
+  "id": "c_0145",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Standard sell-side process process duration",
+  "entity": "Standard sell-side process",
+  "metric": "process_weeks",
+  "period": "static",
+  "fact_ids": [
+   "fact_00001",
+   "fact_00005"
+  ],
+  "document_ids": [
+   "doc_kb_buyside_playbook",
+   "doc_kb_process_timetable"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0145"
+ },
+ {
+  "id": "c_0146",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Tarnane Investments FY2024 assets under management",
+  "entity": "Tarnane Investments",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00453",
+   "fact_00457",
+   "fact_00462"
+  ],
+  "document_ids": [
+   "doc_buyer_14_profile",
+   "doc_buyer_14_report",
+   "doc_buyer_14_article"
+  ],
+  "stronger_document_id": "doc_buyer_14_report",
+  "expected": "contradiction",
+  "query_id": "q_0146"
+ },
+ {
+  "id": "c_0147",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Tarnane Investments fund vintage year",
+  "entity": "Tarnane Investments",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00456",
+   "fact_00461"
+  ],
+  "document_ids": [
+   "doc_buyer_14_profile",
+   "doc_buyer_14_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0147"
+ },
+ {
+  "id": "c_0148",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Tarnane Investments maximum ticket",
+  "entity": "Tarnane Investments",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00455",
+   "fact_00459"
+  ],
+  "document_ids": [
+   "doc_buyer_14_profile",
+   "doc_buyer_14_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0148"
+ },
+ {
+  "id": "c_0149",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Tarnane Investments minimum ticket",
+  "entity": "Tarnane Investments",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00454",
+   "fact_00458"
+  ],
+  "document_ids": [
+   "doc_buyer_14_profile",
+   "doc_buyer_14_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0149"
+ },
+ {
+  "id": "c_0150",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Tarnar Industries FY2024 market capitalisation",
+  "entity": "Tarnar Industries",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00498",
+   "fact_00499",
+   "fact_00503"
+  ],
+  "document_ids": [
+   "doc_buyer_19_profile",
+   "doc_buyer_19_report",
+   "doc_buyer_19_article"
+  ],
+  "stronger_document_id": "doc_buyer_19_report",
+  "expected": "contradiction",
+  "query_id": "q_0150"
+ },
+ {
+  "id": "c_0151",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Tarnix Systems FY2024 market capitalisation",
+  "entity": "Tarnix Systems",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00433",
+   "fact_00434",
+   "fact_00437"
+  ],
+  "document_ids": [
+   "doc_buyer_11_profile",
+   "doc_buyer_11_report",
+   "doc_buyer_11_article"
+  ],
+  "stronger_document_id": "doc_buyer_11_report",
+  "expected": "contradiction",
+  "query_id": "q_0151"
+ },
+ {
+  "id": "c_0152",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Tarnora Industries FY2024 market capitalisation",
+  "entity": "Tarnora Industries",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00416",
+   "fact_00417"
+  ],
+  "document_ids": [
+   "doc_buyer_09_profile",
+   "doc_buyer_09_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0152"
+ },
+ {
+  "id": "c_0153",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Traeth Group FY2024 market capitalisation",
+  "entity": "Traeth Group",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00396",
+   "fact_00397",
+   "fact_00401",
+   "fact_00403"
+  ],
+  "document_ids": [
+   "doc_buyer_07_profile",
+   "doc_buyer_07_report",
+   "doc_buyer_07_article",
+   "doc_buyer_07_pr_corr"
+  ],
+  "stronger_document_id": "doc_buyer_07_report",
+  "expected": "contradiction",
+  "query_id": "q_0153"
+ },
+ {
+  "id": "c_0154",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Trauro Holdings FY2024 market capitalisation",
+  "entity": "Trauro Holdings",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00610",
+   "fact_00611"
+  ],
+  "document_ids": [
+   "doc_buyer_33_profile",
+   "doc_buyer_33_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0154"
+ },
+ {
+  "id": "c_0155",
+  "kind": "contradiction",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 EBITDA",
+  "entity": "Ulent Containers",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00321",
+   "fact_00338",
+   "fact_00341"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_news",
+   "doc_ulent_pr_corr"
+  ],
+  "stronger_document_id": "doc_ulent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0155"
+ },
+ {
+  "id": "c_0156",
+  "kind": "consistent_control",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 gross margin",
+  "entity": "Ulent Containers",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00323",
+   "fact_00336"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0156"
+ },
+ {
+  "id": "c_0157",
+  "kind": "contradiction",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 headcount",
+  "entity": "Ulent Containers",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00314",
+   "fact_00333",
+   "fact_00339"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_mgmt",
+   "doc_ulent_news"
+  ],
+  "stronger_document_id": "doc_ulent_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0157"
+ },
+ {
+  "id": "c_0158",
+  "kind": "consistent_control",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 production sites",
+  "entity": "Ulent Containers",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00315",
+   "fact_00334"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0158"
+ },
+ {
+  "id": "c_0159",
+  "kind": "contradiction",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 revenue",
+  "entity": "Ulent Containers",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00319",
+   "fact_00337"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_news"
+  ],
+  "stronger_document_id": "doc_ulent_cim",
+  "expected": "contradiction",
+  "query_id": "q_0159"
+ },
+ {
+  "id": "c_0160",
+  "kind": "consistent_control",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 largest customer share",
+  "entity": "Ulent Containers",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00316",
+   "fact_00335"
+  ],
+  "document_ids": [
+   "doc_ulent_cim",
+   "doc_ulent_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0160"
+ },
+ {
+  "id": "c_0161",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Ulik Growth Fund FY2024 assets under management",
+  "entity": "Ulik Growth Fund",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00438",
+   "fact_00441"
+  ],
+  "document_ids": [
+   "doc_buyer_12_profile",
+   "doc_buyer_12_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0161"
+ },
+ {
+  "id": "c_0162",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Ulik Growth Fund maximum ticket",
+  "entity": "Ulik Growth Fund",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00440",
+   "fact_00443"
+  ],
+  "document_ids": [
+   "doc_buyer_12_profile",
+   "doc_buyer_12_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0162"
+ },
+ {
+  "id": "c_0163",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Ulik Growth Fund minimum ticket",
+  "entity": "Ulik Growth Fund",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00439",
+   "fact_00442"
+  ],
+  "document_ids": [
+   "doc_buyer_12_profile",
+   "doc_buyer_12_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0163"
+ },
+ {
+  "id": "c_0164",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Valuro Capital Partners FY2024 assets under management",
+  "entity": "Valuro Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00632",
+   "fact_00635"
+  ],
+  "document_ids": [
+   "doc_buyer_36_profile",
+   "doc_buyer_36_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0164"
+ },
+ {
+  "id": "c_0165",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Valuro Capital Partners maximum ticket",
+  "entity": "Valuro Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00634",
+   "fact_00637"
+  ],
+  "document_ids": [
+   "doc_buyer_36_profile",
+   "doc_buyer_36_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0165"
+ },
+ {
+  "id": "c_0166",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Valuro Capital Partners minimum ticket",
+  "entity": "Valuro Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00633",
+   "fact_00636"
+  ],
+  "document_ids": [
+   "doc_buyer_36_profile",
+   "doc_buyer_36_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0166"
+ },
+ {
+  "id": "c_0167",
+  "kind": "contradiction",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 EBITDA",
+  "entity": "Vexeth Logistics",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00140",
+   "fact_00157",
+   "fact_00160"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_news",
+   "doc_vexeth_pr_corr"
+  ],
+  "stronger_document_id": "doc_vexeth_cim",
+  "expected": "contradiction",
+  "query_id": "q_0167"
+ },
+ {
+  "id": "c_0168",
+  "kind": "consistent_control",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 gross margin",
+  "entity": "Vexeth Logistics",
+  "metric": "gross_margin",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00142",
+   "fact_00155"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0168"
+ },
+ {
+  "id": "c_0169",
+  "kind": "contradiction",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 headcount",
+  "entity": "Vexeth Logistics",
+  "metric": "headcount",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00133",
+   "fact_00152",
+   "fact_00158"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_mgmt",
+   "doc_vexeth_news"
+  ],
+  "stronger_document_id": "doc_vexeth_mgmt",
+  "expected": "contradiction",
+  "query_id": "q_0169"
+ },
+ {
+  "id": "c_0170",
+  "kind": "consistent_control",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 production sites",
+  "entity": "Vexeth Logistics",
+  "metric": "plants",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00134",
+   "fact_00153"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0170"
+ },
+ {
+  "id": "c_0171",
+  "kind": "contradiction",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 revenue",
+  "entity": "Vexeth Logistics",
+  "metric": "revenue",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00138",
+   "fact_00156"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_news"
+  ],
+  "stronger_document_id": "doc_vexeth_cim",
+  "expected": "contradiction",
+  "query_id": "q_0171"
+ },
+ {
+  "id": "c_0172",
+  "kind": "consistent_control",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 largest customer share",
+  "entity": "Vexeth Logistics",
+  "metric": "top_customer_share",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00135",
+   "fact_00154"
+  ],
+  "document_ids": [
+   "doc_vexeth_cim",
+   "doc_vexeth_mgmt"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0172"
+ },
+ {
+  "id": "c_0173",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Zanent Capital Partners FY2024 assets under management",
+  "entity": "Zanent Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00504",
+   "fact_00508",
+   "fact_00514"
+  ],
+  "document_ids": [
+   "doc_buyer_20_profile",
+   "doc_buyer_20_report",
+   "doc_buyer_20_article"
+  ],
+  "stronger_document_id": "doc_buyer_20_report",
+  "expected": "contradiction",
+  "query_id": "q_0173"
+ },
+ {
+  "id": "c_0174",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanent Capital Partners fund vintage year",
+  "entity": "Zanent Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00507",
+   "fact_00512"
+  ],
+  "document_ids": [
+   "doc_buyer_20_profile",
+   "doc_buyer_20_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0174"
+ },
+ {
+  "id": "c_0175",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanent Capital Partners maximum ticket",
+  "entity": "Zanent Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00506",
+   "fact_00510"
+  ],
+  "document_ids": [
+   "doc_buyer_20_profile",
+   "doc_buyer_20_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0175"
+ },
+ {
+  "id": "c_0176",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanent Capital Partners minimum ticket",
+  "entity": "Zanent Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00505",
+   "fact_00509"
+  ],
+  "document_ids": [
+   "doc_buyer_20_profile",
+   "doc_buyer_20_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0176"
+ },
+ {
+  "id": "c_0177",
+  "kind": "contradiction",
+  "deal_id": null,
+  "subject": "Zanik Capital Partners FY2024 assets under management",
+  "entity": "Zanik Capital Partners",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00572",
+   "fact_00576",
+   "fact_00581"
+  ],
+  "document_ids": [
+   "doc_buyer_28_profile",
+   "doc_buyer_28_report",
+   "doc_buyer_28_article"
+  ],
+  "stronger_document_id": "doc_buyer_28_report",
+  "expected": "contradiction",
+  "query_id": "q_0177"
+ },
+ {
+  "id": "c_0178",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanik Capital Partners fund vintage year",
+  "entity": "Zanik Capital Partners",
+  "metric": "fund_vintage_year",
+  "period": "static",
+  "fact_ids": [
+   "fact_00575",
+   "fact_00580"
+  ],
+  "document_ids": [
+   "doc_buyer_28_profile",
+   "doc_buyer_28_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0178"
+ },
+ {
+  "id": "c_0179",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanik Capital Partners maximum ticket",
+  "entity": "Zanik Capital Partners",
+  "metric": "ticket_max",
+  "period": "static",
+  "fact_ids": [
+   "fact_00574",
+   "fact_00578"
+  ],
+  "document_ids": [
+   "doc_buyer_28_profile",
+   "doc_buyer_28_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0179"
+ },
+ {
+  "id": "c_0180",
+  "kind": "consistent_control",
+  "deal_id": null,
+  "subject": "Zanik Capital Partners minimum ticket",
+  "entity": "Zanik Capital Partners",
+  "metric": "ticket_min",
+  "period": "static",
+  "fact_ids": [
+   "fact_00573",
+   "fact_00577"
+  ],
+  "document_ids": [
+   "doc_buyer_28_profile",
+   "doc_buyer_28_report"
+  ],
+  "stronger_document_id": null,
+  "expected": "no_contradiction",
+  "query_id": "q_0180"
+ },
+ {
+  "id": "c_0181",
+  "kind": "superseded",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components enterprise value",
+  "entity": "Aurora Components",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00085",
+   "fact_00086"
+  ],
+  "document_ids": [
+   "doc_spa_draft",
+   "doc_spa_exec"
+  ],
+  "stronger_document_id": "doc_spa_exec",
+  "expected": "flag_superseded",
+  "query_id": "q_0012"
+ },
+ {
+  "id": "c_0182",
+  "kind": "withdrawn",
+  "deal_id": "deal_aurora",
+  "subject": "Aurora Components FY2024 EBITDA",
+  "entity": "Aurora Components",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00094",
+   "fact_00095"
+  ],
+  "document_ids": [
+   "doc_pr_orig",
+   "doc_pr_corr"
+  ],
+  "stronger_document_id": "doc_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0010"
+ },
+ {
+  "id": "c_0183",
+  "kind": "superseded",
+  "deal_id": "deal_borealis",
+  "subject": "Kesent Analytics enterprise value",
+  "entity": "Kesent Analytics",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00129",
+   "fact_00130"
+  ],
+  "document_ids": [
+   "doc_kesent_spa_draft",
+   "doc_kesent_spa_exec"
+  ],
+  "stronger_document_id": "doc_kesent_spa_exec",
+  "expected": "flag_superseded",
+  "query_id": "q_0096"
+ },
+ {
+  "id": "c_0184",
+  "kind": "withdrawn",
+  "deal_id": "deal_cygnus",
+  "subject": "Vexeth Logistics FY2024 EBITDA",
+  "entity": "Vexeth Logistics",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00159",
+   "fact_00160"
+  ],
+  "document_ids": [
+   "doc_vexeth_pr_orig",
+   "doc_vexeth_pr_corr"
+  ],
+  "stronger_document_id": "doc_vexeth_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0167"
+ },
+ {
+  "id": "c_0185",
+  "kind": "superseded",
+  "deal_id": "deal_draco",
+  "subject": "Ostent Packaging enterprise value",
+  "entity": "Ostent Packaging",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00190",
+   "fact_00191"
+  ],
+  "document_ids": [
+   "doc_ostent_spa_draft",
+   "doc_ostent_spa_exec"
+  ],
+  "stronger_document_id": "doc_ostent_spa_exec",
+  "expected": "flag_superseded",
+  "query_id": "q_0122"
+ },
+ {
+  "id": "c_0186",
+  "kind": "withdrawn",
+  "deal_id": "deal_eridanus",
+  "subject": "Falik Medical FY2024 EBITDA",
+  "entity": "Falik Medical",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00220",
+   "fact_00221"
+  ],
+  "document_ids": [
+   "doc_falik_pr_orig",
+   "doc_falik_pr_corr"
+  ],
+  "stronger_document_id": "doc_falik_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0071"
+ },
+ {
+  "id": "c_0187",
+  "kind": "superseded",
+  "deal_id": "deal_fornax",
+  "subject": "Carane Foods enterprise value",
+  "entity": "Carane Foods",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00251",
+   "fact_00252"
+  ],
+  "document_ids": [
+   "doc_carane_spa_draft",
+   "doc_carane_spa_exec"
+  ],
+  "stronger_document_id": "doc_carane_spa_exec",
+  "expected": "flag_superseded",
+  "query_id": "q_0026"
+ },
+ {
+  "id": "c_0188",
+  "kind": "withdrawn",
+  "deal_id": "deal_gemini",
+  "subject": "Merium Water Systems FY2024 EBITDA",
+  "entity": "Merium Water Systems",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00280",
+   "fact_00281"
+  ],
+  "document_ids": [
+   "doc_merium_pr_orig",
+   "doc_merium_pr_corr"
+  ],
+  "stronger_document_id": "doc_merium_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0109"
+ },
+ {
+  "id": "c_0189",
+  "kind": "superseded",
+  "deal_id": "deal_hydra",
+  "subject": "Estell Automotive enterprise value",
+  "entity": "Estell Automotive",
+  "metric": "enterprise_value",
+  "period": "static",
+  "fact_ids": [
+   "fact_00310",
+   "fact_00311"
+  ],
+  "document_ids": [
+   "doc_estell_spa_draft",
+   "doc_estell_spa_exec"
+  ],
+  "stronger_document_id": "doc_estell_spa_exec",
+  "expected": "flag_superseded",
+  "query_id": "q_0062"
+ },
+ {
+  "id": "c_0190",
+  "kind": "withdrawn",
+  "deal_id": "deal_lyra",
+  "subject": "Ulent Containers FY2024 EBITDA",
+  "entity": "Ulent Containers",
+  "metric": "ebitda",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00340",
+   "fact_00341"
+  ],
+  "document_ids": [
+   "doc_ulent_pr_orig",
+   "doc_ulent_pr_corr"
+  ],
+  "stronger_document_id": "doc_ulent_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0155"
+ },
+ {
+  "id": "c_0191",
+  "kind": "withdrawn",
+  "deal_id": null,
+  "subject": "Traeth Group FY2024 market capitalisation",
+  "entity": "Traeth Group",
+  "metric": "market_cap",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00402",
+   "fact_00403"
+  ],
+  "document_ids": [
+   "doc_buyer_07_pr_orig",
+   "doc_buyer_07_pr_corr"
+  ],
+  "stronger_document_id": "doc_buyer_07_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0153"
+ },
+ {
+  "id": "c_0192",
+  "kind": "withdrawn",
+  "deal_id": null,
+  "subject": "Pelix Equity FY2024 assets under management",
+  "entity": "Pelix Equity",
+  "metric": "aum",
+  "period": "FY2024",
+  "fact_ids": [
+   "fact_00532",
+   "fact_00533"
+  ],
+  "document_ids": [
+   "doc_buyer_22_pr_orig",
+   "doc_buyer_22_pr_corr"
+  ],
+  "stronger_document_id": "doc_buyer_22_pr_corr",
+  "expected": "flag_withdrawn",
+  "query_id": "q_0134"
+ }
+]

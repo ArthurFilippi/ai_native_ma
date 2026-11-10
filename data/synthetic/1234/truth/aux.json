@@ -1,0 +1,6784 @@
+{
+ "reference_date": "2025-06-30",
+ "freshness_days": {
+  "press": 180,
+  "deal_document": 540,
+  "regulatory_filing": 730
+ },
+ "occurrences": {
+  "fact_00001": [
+   {
+    "document_id": "doc_kb_buyside_playbook",
+    "page": 1,
+    "char_start": 102,
+    "char_end": 176,
+    "quote": "Standard sell-side process runs for about 22 weeks from teaser to signing."
+   }
+  ],
+  "fact_00002": [
+   {
+    "document_id": "doc_kb_buyside_playbook",
+    "page": 1,
+    "char_start": 178,
+    "char_end": 231,
+    "quote": "Standard sell-side process foresees 2 bidding rounds."
+   }
+  ],
+  "fact_00003": [
+   {
+    "document_id": "doc_kb_nda_handling",
+    "page": 1,
+    "char_start": 92,
+    "char_end": 160,
+    "quote": "The standard confidentiality term in Bank NDA template is 36 months."
+   }
+  ],
+  "fact_00004": [
+   {
+    "document_id": "doc_kb_bidder_communication",
+    "page": 1,
+    "char_start": 105,
+    "char_end": 158,
+    "quote": "Standard sell-side process foresees 3 bidding rounds."
+   }
+  ],
+  "fact_00005": [
+   {
+    "document_id": "doc_kb_process_timetable",
+    "page": 1,
+    "char_start": 75,
+    "char_end": 149,
+    "quote": "Standard sell-side process runs for about 22 weeks from teaser to signing."
+   }
+  ],
+  "fact_00006": [
+   {
+    "document_id": "doc_kb_spa_template",
+    "page": 1,
+    "char_start": 82,
+    "char_end": 162,
+    "quote": "The usual break fee in the bank SPA template is 3.5 percent of the equity value."
+   }
+  ],
+  "fact_00007": [
+   {
+    "document_id": "doc_kb_nda_template",
+    "page": 1,
+    "char_start": 61,
+    "char_end": 129,
+    "quote": "The standard confidentiality term in Bank NDA template is 36 months."
+   }
+  ],
+  "fact_00008": [
+   {
+    "document_id": "doc_kb_precedent_01",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 180,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Senix was 11.7x."
+   }
+  ],
+  "fact_00009": [
+   {
+    "document_id": "doc_kb_precedent_01",
+    "page": 1,
+    "char_start": 182,
+    "char_end": 254,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Narova was 9.3x."
+   }
+  ],
+  "fact_00010": [
+   {
+    "document_id": "doc_kb_precedent_02",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 178,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Traent was 7.4x."
+   }
+  ],
+  "fact_00011": [
+   {
+    "document_id": "doc_kb_precedent_02",
+    "page": 1,
+    "char_start": 180,
+    "char_end": 252,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Merald was 9.6x."
+   }
+  ],
+  "fact_00012": [
+   {
+    "document_id": "doc_kb_precedent_03",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 178,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Dorund was 7.2x."
+   }
+  ],
+  "fact_00013": [
+   {
+    "document_id": "doc_kb_precedent_03",
+    "page": 1,
+    "char_start": 180,
+    "char_end": 253,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Belium was 10.9x."
+   }
+  ],
+  "fact_00014": [
+   {
+    "document_id": "doc_kb_precedent_04",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 181,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Elnent was 12.9x."
+   }
+  ],
+  "fact_00015": [
+   {
+    "document_id": "doc_kb_precedent_04",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 255,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Vexuro was 9.6x."
+   }
+  ],
+  "fact_00016": [
+   {
+    "document_id": "doc_kb_precedent_05",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 179,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Dorent was 12.0x."
+   }
+  ],
+  "fact_00017": [
+   {
+    "document_id": "doc_kb_precedent_05",
+    "page": 1,
+    "char_start": 181,
+    "char_end": 253,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Junuro was 7.1x."
+   }
+  ],
+  "fact_00018": [
+   {
+    "document_id": "doc_kb_precedent_06",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 177,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Draon was 8.5x."
+   }
+  ],
+  "fact_00019": [
+   {
+    "document_id": "doc_kb_precedent_06",
+    "page": 1,
+    "char_start": 179,
+    "char_end": 251,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Dorora was 7.8x."
+   }
+  ],
+  "fact_00020": [
+   {
+    "document_id": "doc_kb_precedent_07",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 182,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Quining was 12.3x."
+   }
+  ],
+  "fact_00021": [
+   {
+    "document_id": "doc_kb_precedent_07",
+    "page": 1,
+    "char_start": 184,
+    "char_end": 256,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Wynay was 13.4x."
+   }
+  ],
+  "fact_00022": [
+   {
+    "document_id": "doc_kb_precedent_08",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 176,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Ulix was 8.0x."
+   }
+  ],
+  "fact_00023": [
+   {
+    "document_id": "doc_kb_precedent_08",
+    "page": 1,
+    "char_start": 178,
+    "char_end": 250,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Tarnik was 6.6x."
+   }
+  ],
+  "fact_00024": [
+   {
+    "document_id": "doc_kb_precedent_09",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 178,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Zanis was 12.0x."
+   }
+  ],
+  "fact_00025": [
+   {
+    "document_id": "doc_kb_precedent_09",
+    "page": 1,
+    "char_start": 180,
+    "char_end": 253,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Gorell was 10.6x."
+   }
+  ],
+  "fact_00026": [
+   {
+    "document_id": "doc_kb_precedent_10",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 180,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Naring was 6.5x."
+   }
+  ],
+  "fact_00027": [
+   {
+    "document_id": "doc_kb_precedent_10",
+    "page": 1,
+    "char_start": 182,
+    "char_end": 253,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Lumix was 7.1x."
+   }
+  ],
+  "fact_00028": [
+   {
+    "document_id": "doc_kb_precedent_11",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 179,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Lanova was 12.9x."
+   }
+  ],
+  "fact_00029": [
+   {
+    "document_id": "doc_kb_precedent_11",
+    "page": 1,
+    "char_start": 181,
+    "char_end": 254,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Lumald was 10.1x."
+   }
+  ],
+  "fact_00030": [
+   {
+    "document_id": "doc_kb_precedent_12",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 178,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Corane was 9.8x."
+   }
+  ],
+  "fact_00031": [
+   {
+    "document_id": "doc_kb_precedent_12",
+    "page": 1,
+    "char_start": 180,
+    "char_end": 252,
+    "quote": "The EV to EBITDA multiple paid in Precedent transaction Merar was 12.3x."
+   }
+  ],
+  "fact_00032": [
+   {
+    "document_id": "doc_kb_sector_industrial_components",
+    "page": 1,
+    "char_start": 109,
+    "char_end": 196,
+    "quote": "The EV to EBITDA multiple paid in the median industrial components precedent was 10.4x."
+   }
+  ],
+  "fact_00033": [
+   {
+    "document_id": "doc_kb_sector_software",
+    "page": 1,
+    "char_start": 94,
+    "char_end": 168,
+    "quote": "The EV to EBITDA multiple paid in the median software precedent was 10.3x."
+   }
+  ],
+  "fact_00034": [
+   {
+    "document_id": "doc_kb_sector_logistics",
+    "page": 1,
+    "char_start": 95,
+    "char_end": 170,
+    "quote": "The EV to EBITDA multiple paid in the median logistics precedent was 11.4x."
+   }
+  ],
+  "fact_00035": [
+   {
+    "document_id": "doc_kb_sector_packaging",
+    "page": 1,
+    "char_start": 97,
+    "char_end": 172,
+    "quote": "The EV to EBITDA multiple paid in the median packaging precedent was 10.3x."
+   }
+  ],
+  "fact_00036": [
+   {
+    "document_id": "doc_kb_sector_medical_devices",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 184,
+    "quote": "The EV to EBITDA multiple paid in the median medical devices precedent was 10.3x."
+   }
+  ],
+  "fact_00037": [
+   {
+    "document_id": "doc_kb_sector_food",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 185,
+    "quote": "The EV to EBITDA multiple paid in the median food and beverage precedent was 8.4x."
+   }
+  ],
+  "fact_00038": [
+   {
+    "document_id": "doc_kb_sector_water_systems",
+    "page": 1,
+    "char_start": 99,
+    "char_end": 177,
+    "quote": "The EV to EBITDA multiple paid in the median water systems precedent was 8.7x."
+   }
+  ],
+  "fact_00039": [
+   {
+    "document_id": "doc_kb_sector_automotive_parts",
+    "page": 1,
+    "char_start": 104,
+    "char_end": 186,
+    "quote": "The EV to EBITDA multiple paid in the median automotive parts precedent was 10.6x."
+   }
+  ],
+  "fact_00040": [
+   {
+    "document_id": "doc_cim",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 75,
+    "quote": "The company employed 920 people at the end of FY2024."
+   }
+  ],
+  "fact_00041": [
+   {
+    "document_id": "doc_cim",
+    "page": 4,
+    "char_start": 76,
+    "char_end": 152,
+    "quote": "Manufacturing is spread over 4 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 16,
+    "char_start": 75,
+    "char_end": 131,
+    "quote": "Manufacturing is spread over 4 plants as of fiscal 2024."
+   }
+  ],
+  "fact_00042": [
+   {
+    "document_id": "doc_cim",
+    "page": 11,
+    "char_start": 14,
+    "char_end": 131,
+    "quote": "A single client contributed 17.0 percent of sales in the year ended 31 December 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00043": [
+   {
+    "document_id": "doc_cim",
+    "page": 11,
+    "char_start": 132,
+    "char_end": 217,
+    "quote": "Together, the leading ten clients accounted for 50.6 percent of sales in fiscal 2024."
+   }
+  ],
+  "fact_00044": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 320,
+    "char_end": 405,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 182.4 million."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 73,
+    "char_end": 120,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00045": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 182.4 million (FY2023: EUR 168.0 million)."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 73,
+    "char_end": 120,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00046": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 29.6 million (FY2023: EUR 36.4 million)."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 169,
+    "char_end": 210,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00047": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 29.6 million (FY2023: EUR 36.4 million)."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 169,
+    "char_end": 210,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00048": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 169,
+    "char_end": 209,
+    "quote": "Gross margin was 38.5 percent in FY2024."
+   }
+  ],
+  "fact_00049": [
+   {
+    "document_id": "doc_cim",
+    "page": 12,
+    "char_start": 210,
+    "char_end": 318,
+    "quote": "Operating earnings before depreciation represented 16.2 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00050": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 73,
+    "char_end": 120,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00051": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 73,
+    "char_end": 120,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00052": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 73,
+    "char_end": 120,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00053": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 169,
+    "char_end": 210,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00054": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 169,
+    "char_end": 210,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00055": [
+   {
+    "document_id": "doc_cim",
+    "page": 13,
+    "char_start": 169,
+    "char_end": 210,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00056": [
+   {
+    "document_id": "doc_cim",
+    "page": 14,
+    "char_start": 19,
+    "char_end": 107,
+    "quote": "Borrowings less cash stood at EUR 50.6m at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00057": [
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 15,
+    "char_end": 65,
+    "quote": "Capital expenditure was EUR 7.5 million in FY2024."
+   },
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 173,
+    "char_end": 222,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00058": [
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 173,
+    "char_end": 222,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00059": [
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 173,
+    "char_end": 222,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00060": [
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 173,
+    "char_end": 222,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00061": [
+   {
+    "document_id": "doc_cim",
+    "page": 15,
+    "char_start": 173,
+    "char_end": 222,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00062": [
+   {
+    "document_id": "doc_cim",
+    "page": 16,
+    "char_start": 16,
+    "char_end": 74,
+    "quote": "The order backlog stood at EUR 45.7m at the end of FY2024."
+   }
+  ],
+  "fact_00063": [
+   {
+    "document_id": "doc_cim",
+    "page": 22,
+    "char_start": 26,
+    "char_end": 79,
+    "quote": "The indicative enterprise value is EUR 289.9 million."
+   }
+  ],
+  "fact_00064": [
+   {
+    "document_id": "doc_cim",
+    "page": 22,
+    "char_start": 80,
+    "char_end": 149,
+    "quote": "After net debt, the equity value of the company is EUR 239.3 million."
+   }
+  ],
+  "fact_00065": [
+   {
+    "document_id": "doc_mgmt_pres",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 117,
+    "quote": "Aurora Components had a workforce of 920 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00066": [
+   {
+    "document_id": "doc_mgmt_pres",
+    "page": 2,
+    "char_start": 119,
+    "char_end": 174,
+    "quote": "Aurora Components runs 4 production sites as of FY2024."
+   }
+  ],
+  "fact_00067": [
+   {
+    "document_id": "doc_mgmt_pres",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 108,
+    "quote": "A single client contributed 17.0 percent of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00068": [
+   {
+    "document_id": "doc_mgmt_pres",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 103,
+    "quote": "Profit after cost of goods sold represented 38.5 percent of sales in fiscal 2024."
+   }
+  ],
+  "fact_00069": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 69,
+    "char_end": 116,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00070": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 69,
+    "char_end": 116,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00071": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 69,
+    "char_end": 116,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00072": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 69,
+    "char_end": 116,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00073": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 69,
+    "char_end": 116,
+    "quote": "Revenue | 140.1 | 152.6 | 163.4 | 168.0 | 182.4"
+   }
+  ],
+  "fact_00074": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 301,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00075": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 301,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00076": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 301,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00077": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 301,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00078": [
+   {
+    "document_id": "doc_model",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 301,
+    "quote": "EBITDA | 26.3 | 28.7 | 33.1 | 36.4 | 29.6"
+   }
+  ],
+  "fact_00079": [
+   {
+    "document_id": "doc_model",
+    "page": 3,
+    "char_start": 281,
+    "char_end": 330,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00080": [
+   {
+    "document_id": "doc_model",
+    "page": 3,
+    "char_start": 281,
+    "char_end": 330,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00081": [
+   {
+    "document_id": "doc_model",
+    "page": 3,
+    "char_start": 281,
+    "char_end": 330,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00082": [
+   {
+    "document_id": "doc_model",
+    "page": 3,
+    "char_start": 281,
+    "char_end": 330,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00083": [
+   {
+    "document_id": "doc_model",
+    "page": 3,
+    "char_start": 281,
+    "char_end": 330,
+    "quote": "Capital expenditure | 5.5 | 5.8 | 6.7 | 7.2 | 7.5"
+   }
+  ],
+  "fact_00084": [
+   {
+    "document_id": "doc_nda",
+    "page": 1,
+    "char_start": 371,
+    "char_end": 433,
+    "quote": "Project Aurora NDA sets the confidentiality term at 24 months."
+   }
+  ],
+  "fact_00085": [
+   {
+    "document_id": "doc_spa_draft",
+    "page": 1,
+    "char_start": 200,
+    "char_end": 272,
+    "quote": "The transaction values the company at an enterprise value of EUR 280.5m."
+   }
+  ],
+  "fact_00086": [
+   {
+    "document_id": "doc_spa_exec",
+    "page": 1,
+    "char_start": 196,
+    "char_end": 268,
+    "quote": "The transaction values the company at an enterprise value of EUR 289.9m."
+   }
+  ],
+  "fact_00087": [
+   {
+    "document_id": "doc_board_minutes",
+    "page": 1,
+    "char_start": 140,
+    "char_end": 183,
+    "quote": "Capital expenditure was EUR 7.5m in FY2024."
+   }
+  ],
+  "fact_00088": [
+   {
+    "document_id": "doc_board_minutes",
+    "page": 1,
+    "char_start": 185,
+    "char_end": 226,
+    "quote": "EBITDA margin was 16.2 percent in FY2024."
+   }
+  ],
+  "fact_00089": [
+   {
+    "document_id": "doc_qoe",
+    "page": 1,
+    "char_start": 82,
+    "char_end": 155,
+    "quote": "Adjusted EBITDA for FY2024 was EUR 30.5m after normalisation adjustments."
+   }
+  ],
+  "fact_00090": [
+   {
+    "document_id": "doc_qoe",
+    "page": 1,
+    "char_start": 156,
+    "char_end": 199,
+    "quote": "The gross margin for FY2024 stood at 38.5%."
+   }
+  ],
+  "fact_00091": [
+   {
+    "document_id": "doc_qoe",
+    "page": 1,
+    "char_start": 201,
+    "char_end": 296,
+    "quote": "Borrowings less cash stood at EUR 50.6 million at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00092": [
+   {
+    "document_id": "doc_concentration",
+    "page": 1,
+    "char_start": 85,
+    "char_end": 149,
+    "quote": "The largest customer represented 17.0 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00093": [
+   {
+    "document_id": "doc_concentration",
+    "page": 1,
+    "char_start": 150,
+    "char_end": 219,
+    "quote": "The ten largest customers represented 50.6 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00094": [
+   {
+    "document_id": "doc_pr_orig",
+    "page": 1,
+    "char_start": 74,
+    "char_end": 138,
+    "quote": "Aurora Components reported EBITDA of EUR 32.1 million in FY2024."
+   }
+  ],
+  "fact_00095": [
+   {
+    "document_id": "doc_pr_corr",
+    "page": 1,
+    "char_start": 153,
+    "char_end": 217,
+    "quote": "Aurora Components reported EBITDA of EUR 29.6 million in FY2024."
+   }
+  ],
+  "fact_00096": [
+   {
+    "document_id": "doc_news_17",
+    "page": 1,
+    "char_start": 203,
+    "char_end": 260,
+    "quote": "Aurora booked roughly EUR 179 million of revenue in 2024."
+   }
+  ],
+  "fact_00097": [
+   {
+    "document_id": "doc_news_17",
+    "page": 1,
+    "char_start": 261,
+    "char_end": 332,
+    "quote": "Aurora is said to have earned roughly EUR 33 million of EBITDA in 2024."
+   }
+  ],
+  "fact_00098": [
+   {
+    "document_id": "doc_news_17",
+    "page": 1,
+    "char_start": 334,
+    "char_end": 381,
+    "quote": "Aurora is believed to employ around 850 people."
+   }
+  ],
+  "fact_00099": [
+   {
+    "document_id": "doc_news_17",
+    "page": 1,
+    "char_start": 446,
+    "char_end": 513,
+    "quote": "Aurore Components generated revenue of EUR 172.2 million in FY2024."
+   }
+  ],
+  "fact_00100": [
+   {
+    "document_id": "doc_news_22",
+    "page": 1,
+    "char_start": 70,
+    "char_end": 147,
+    "quote": "Aurora Components reported net debt of EUR 50.6 million at the end of FY2024."
+   }
+  ],
+  "fact_00101": [
+   {
+    "document_id": "doc_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 134,
+    "quote": "Aurora Components generated 35.3 percent of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00102": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 122,
+    "quote": "Kesent Analytics had a workforce of 1,930 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00103": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 2,
+    "char_start": 123,
+    "char_end": 199,
+    "quote": "Manufacturing is spread over 7 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 5,
+    "char_start": 127,
+    "char_end": 181,
+    "quote": "As of FY2024, the company operated 7 production sites."
+   }
+  ],
+  "fact_00104": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 78,
+    "quote": "The largest customer represented 24.7 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00105": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 4,
+    "char_start": 79,
+    "char_end": 184,
+    "quote": "Together, the leading ten clients accounted for 58.2 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00106": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 126,
+    "quote": "Contracted orders not yet delivered totalled EUR 124.2 million at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00107": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 285.0 million (FY2023: EUR 275.4 million)."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 253,
+    "char_end": 338,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 285.0 million."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1365,
+    "char_end": 1412,
+    "quote": "Revenue | 222.8 | 230.6 | 252.3 | 275.4 | 285.0"
+   }
+  ],
+  "fact_00108": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 285.0 million (FY2023: EUR 275.4 million)."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1365,
+    "char_end": 1412,
+    "quote": "Revenue | 222.8 | 230.6 | 252.3 | 275.4 | 285.0"
+   }
+  ],
+  "fact_00109": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 54.5 million (FY2023: EUR 59.5 million)."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1463,
+    "char_end": 1504,
+    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+   }
+  ],
+  "fact_00110": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 54.5 million (FY2023: EUR 59.5 million)."
+   },
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1463,
+    "char_end": 1504,
+    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+   }
+  ],
+  "fact_00111": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 209,
+    "quote": "Gross margin was 37.9 percent in FY2024."
+   }
+  ],
+  "fact_00112": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 210,
+    "char_end": 251,
+    "quote": "EBITDA margin was 19.1 percent in FY2024."
+   }
+  ],
+  "fact_00113": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1365,
+    "char_end": 1412,
+    "quote": "Revenue | 222.8 | 230.6 | 252.3 | 275.4 | 285.0"
+   }
+  ],
+  "fact_00114": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1365,
+    "char_end": 1412,
+    "quote": "Revenue | 222.8 | 230.6 | 252.3 | 275.4 | 285.0"
+   }
+  ],
+  "fact_00115": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1365,
+    "char_end": 1412,
+    "quote": "Revenue | 222.8 | 230.6 | 252.3 | 275.4 | 285.0"
+   }
+  ],
+  "fact_00116": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1463,
+    "char_end": 1504,
+    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+   }
+  ],
+  "fact_00117": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1463,
+    "char_end": 1504,
+    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+   }
+  ],
+  "fact_00118": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 6,
+    "char_start": 1463,
+    "char_end": 1504,
+    "quote": "EBITDA | 45.8 | 47.4 | 53.8 | 59.5 | 54.5"
+   }
+  ],
+  "fact_00119": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 78,
+    "quote": "The indicative enterprise value is EUR 481.7 million."
+   }
+  ],
+  "fact_00120": [
+   {
+    "document_id": "doc_kesent_cim",
+    "page": 7,
+    "char_start": 79,
+    "char_end": 148,
+    "quote": "After net debt, the equity value of the company is EUR 409.0 million."
+   }
+  ],
+  "fact_00121": [
+   {
+    "document_id": "doc_kesent_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 62,
+    "quote": "Headcount stood at 1,930 at year end FY2024."
+   }
+  ],
+  "fact_00122": [
+   {
+    "document_id": "doc_kesent_mgmt",
+    "page": 2,
+    "char_start": 64,
+    "char_end": 140,
+    "quote": "Manufacturing is spread over 7 plants as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00123": [
+   {
+    "document_id": "doc_kesent_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 108,
+    "quote": "A single client contributed 24.7 percent of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00124": [
+   {
+    "document_id": "doc_kesent_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 82,
+    "quote": "Kesent Analytics achieved a gross margin of 37.9% in FY2024."
+   }
+  ],
+  "fact_00125": [
+   {
+    "document_id": "doc_kesent_news",
+    "page": 1,
+    "char_start": 190,
+    "char_end": 257,
+    "quote": "Trade sources put Kesent revenue for 2024 at about EUR 274 million."
+   }
+  ],
+  "fact_00126": [
+   {
+    "document_id": "doc_kesent_news",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 329,
+    "quote": "Kesent is said to have earned roughly EUR 60 million of EBITDA in 2024."
+   }
+  ],
+  "fact_00127": [
+   {
+    "document_id": "doc_kesent_news",
+    "page": 1,
+    "char_start": 331,
+    "char_end": 380,
+    "quote": "Kesent is believed to employ around 1,760 people."
+   }
+  ],
+  "fact_00128": [
+   {
+    "document_id": "doc_kesent_pr",
+    "page": 1,
+    "char_start": 79,
+    "char_end": 183,
+    "quote": "Contracted orders not yet delivered totalled EUR 124.2m at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00129": [
+   {
+    "document_id": "doc_kesent_spa_draft",
+    "page": 1,
+    "char_start": 201,
+    "char_end": 280,
+    "quote": "The transaction values the company at an enterprise value of EUR 455.4 million."
+   }
+  ],
+  "fact_00130": [
+   {
+    "document_id": "doc_kesent_spa_exec",
+    "page": 1,
+    "char_start": 197,
+    "char_end": 276,
+    "quote": "The transaction values the company at an enterprise value of EUR 481.7 million."
+   }
+  ],
+  "fact_00131": [
+   {
+    "document_id": "doc_kesent_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 126,
+    "quote": "Kesent Analytics generated 65.9% of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00132": [
+   {
+    "document_id": "doc_kesent_deck_old",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 145,
+    "quote": "Kesent Analytics runs 6 production sites as of FY2022."
+   }
+  ],
+  "fact_00133": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 122,
+    "quote": "Vexeth Logistics had a workforce of 2,450 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00134": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 2,
+    "char_start": 123,
+    "char_end": 179,
+    "quote": "Manufacturing is spread over 3 plants as of fiscal 2024."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 5,
+    "char_start": 82,
+    "char_end": 136,
+    "quote": "As of FY2024, the company operated 3 production sites."
+   }
+  ],
+  "fact_00135": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 78,
+    "quote": "The largest customer represented 26.0 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00136": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 4,
+    "char_start": 79,
+    "char_end": 148,
+    "quote": "The ten largest customers represented 49.0 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00137": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 81,
+    "quote": "The order backlog stood at EUR 194.6 million at the end of FY2024."
+   }
+  ],
+  "fact_00138": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 347.6 million (FY2023: EUR 316.8 million)."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 293,
+    "char_end": 378,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 347.6 million."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1388,
+    "char_end": 1435,
+    "quote": "Revenue | 267.9 | 278.9 | 296.2 | 316.8 | 347.6"
+   }
+  ],
+  "fact_00139": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 347.6 million (FY2023: EUR 316.8 million)."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1388,
+    "char_end": 1435,
+    "quote": "Revenue | 267.9 | 278.9 | 296.2 | 316.8 | 347.6"
+   }
+  ],
+  "fact_00140": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1487,
+    "char_end": 1528,
+    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+   }
+  ],
+  "fact_00141": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 48.2 million (FY2023: EUR 47.7 million)."
+   },
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1487,
+    "char_end": 1528,
+    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+   }
+  ],
+  "fact_00142": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 202,
+    "quote": "Gross margin was 35.5% in FY2024."
+   }
+  ],
+  "fact_00143": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 203,
+    "char_end": 291,
+    "quote": "Operating earnings before depreciation represented 13.9 percent of sales in fiscal 2024."
+   }
+  ],
+  "fact_00144": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1388,
+    "char_end": 1435,
+    "quote": "Revenue | 267.9 | 278.9 | 296.2 | 316.8 | 347.6"
+   }
+  ],
+  "fact_00145": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1388,
+    "char_end": 1435,
+    "quote": "Revenue | 267.9 | 278.9 | 296.2 | 316.8 | 347.6"
+   }
+  ],
+  "fact_00146": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1388,
+    "char_end": 1435,
+    "quote": "Revenue | 267.9 | 278.9 | 296.2 | 316.8 | 347.6"
+   }
+  ],
+  "fact_00147": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1487,
+    "char_end": 1528,
+    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+   }
+  ],
+  "fact_00148": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1487,
+    "char_end": 1528,
+    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+   }
+  ],
+  "fact_00149": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 6,
+    "char_start": 1487,
+    "char_end": 1528,
+    "quote": "EBITDA | 38.9 | 41.3 | 45.1 | 47.7 | 48.2"
+   }
+  ],
+  "fact_00150": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 97,
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 476.9m."
+   }
+  ],
+  "fact_00151": [
+   {
+    "document_id": "doc_vexeth_cim",
+    "page": 7,
+    "char_start": 98,
+    "char_end": 147,
+    "quote": "The indicative equity value is EUR 402.8 million."
+   }
+  ],
+  "fact_00152": [
+   {
+    "document_id": "doc_vexeth_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 62,
+    "quote": "Headcount stood at 2,450 at year end FY2024."
+   }
+  ],
+  "fact_00153": [
+   {
+    "document_id": "doc_vexeth_mgmt",
+    "page": 2,
+    "char_start": 64,
+    "char_end": 140,
+    "quote": "Manufacturing is spread over 3 plants as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00154": [
+   {
+    "document_id": "doc_vexeth_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 108,
+    "quote": "A single client contributed 26.0 percent of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00155": [
+   {
+    "document_id": "doc_vexeth_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 72,
+    "quote": "The gross margin for FY2024 stood at 35.5 percent."
+   }
+  ],
+  "fact_00156": [
+   {
+    "document_id": "doc_vexeth_news",
+    "page": 1,
+    "char_start": 189,
+    "char_end": 256,
+    "quote": "Trade sources put Vexeth revenue for 2024 at about EUR 329 million."
+   }
+  ],
+  "fact_00157": [
+   {
+    "document_id": "doc_vexeth_news",
+    "page": 1,
+    "char_start": 257,
+    "char_end": 328,
+    "quote": "Vexeth is said to have earned roughly EUR 53 million of EBITDA in 2024."
+   }
+  ],
+  "fact_00158": [
+   {
+    "document_id": "doc_vexeth_news",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 379,
+    "quote": "Vexeth is believed to employ around 2,230 people."
+   }
+  ],
+  "fact_00159": [
+   {
+    "document_id": "doc_vexeth_pr_orig",
+    "page": 1,
+    "char_start": 73,
+    "char_end": 136,
+    "quote": "Vexeth Logistics reported EBITDA of EUR 53.0 million in FY2024."
+   }
+  ],
+  "fact_00160": [
+   {
+    "document_id": "doc_vexeth_pr_corr",
+    "page": 1,
+    "char_start": 152,
+    "char_end": 215,
+    "quote": "Vexeth Logistics reported EBITDA of EUR 48.2 million in FY2024."
+   }
+  ],
+  "fact_00161": [
+   {
+    "document_id": "doc_vexeth_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 126,
+    "quote": "Vexeth Logistics generated 53.4% of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00162": [
+   {
+    "document_id": "doc_vexeth_deck_old",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 145,
+    "quote": "Vexeth Logistics runs 2 production sites as of FY2022."
+   }
+  ],
+  "fact_00163": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 102,
+    "quote": "Ostent Packaging had a workforce of 1,060 employees at the close of fiscal 2024."
+   }
+  ],
+  "fact_00164": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 2,
+    "char_start": 103,
+    "char_end": 179,
+    "quote": "Manufacturing is spread over 4 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 5,
+    "char_start": 81,
+    "char_end": 135,
+    "quote": "As of FY2024, the company operated 4 production sites."
+   }
+  ],
+  "fact_00165": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 111,
+    "quote": "A single client contributed 29.1 percent of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00166": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 4,
+    "char_start": 112,
+    "char_end": 217,
+    "quote": "Together, the leading ten clients accounted for 53.4 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00167": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 80,
+    "quote": "The order backlog stood at EUR 90.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00168": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 228.5 million (FY2023: EUR 208.3 million)."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 253,
+    "char_end": 338,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 228.5 million."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1368,
+    "char_end": 1415,
+    "quote": "Revenue | 171.7 | 186.4 | 193.6 | 208.3 | 228.5"
+   }
+  ],
+  "fact_00169": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 228.5 million (FY2023: EUR 208.3 million)."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1368,
+    "char_end": 1415,
+    "quote": "Revenue | 171.7 | 186.4 | 193.6 | 208.3 | 228.5"
+   }
+  ],
+  "fact_00170": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1464,
+    "char_end": 1505,
+    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+   }
+  ],
+  "fact_00171": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 28.0 million (FY2023: EUR 24.8 million)."
+   },
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1464,
+    "char_end": 1505,
+    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+   }
+  ],
+  "fact_00172": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 209,
+    "quote": "Gross margin was 31.0 percent in FY2024."
+   }
+  ],
+  "fact_00173": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 210,
+    "char_end": 251,
+    "quote": "EBITDA margin was 12.3 percent in FY2024."
+   }
+  ],
+  "fact_00174": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1368,
+    "char_end": 1415,
+    "quote": "Revenue | 171.7 | 186.4 | 193.6 | 208.3 | 228.5"
+   }
+  ],
+  "fact_00175": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1368,
+    "char_end": 1415,
+    "quote": "Revenue | 171.7 | 186.4 | 193.6 | 208.3 | 228.5"
+   }
+  ],
+  "fact_00176": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1368,
+    "char_end": 1415,
+    "quote": "Revenue | 171.7 | 186.4 | 193.6 | 208.3 | 228.5"
+   }
+  ],
+  "fact_00177": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1464,
+    "char_end": 1505,
+    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+   }
+  ],
+  "fact_00178": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1464,
+    "char_end": 1505,
+    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+   }
+  ],
+  "fact_00179": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 6,
+    "char_start": 1464,
+    "char_end": 1505,
+    "quote": "EBITDA | 22.4 | 20.7 | 20.3 | 24.8 | 28.0"
+   }
+  ],
+  "fact_00180": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 104,
+    "quote": "The transaction values the company at an enterprise value of EUR 263.1 million."
+   }
+  ],
+  "fact_00181": [
+   {
+    "document_id": "doc_ostent_cim",
+    "page": 7,
+    "char_start": 105,
+    "char_end": 154,
+    "quote": "The indicative equity value is EUR 237.0 million."
+   }
+  ],
+  "fact_00182": [
+   {
+    "document_id": "doc_ostent_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 73,
+    "quote": "The company employed 1,060 people at the end of FY2024."
+   }
+  ],
+  "fact_00183": [
+   {
+    "document_id": "doc_ostent_mgmt",
+    "page": 2,
+    "char_start": 75,
+    "char_end": 151,
+    "quote": "Manufacturing is spread over 4 plants as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00184": [
+   {
+    "document_id": "doc_ostent_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 128,
+    "quote": "A single client contributed 29.1 percent of sales in the year ended 31 December 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00185": [
+   {
+    "document_id": "doc_ostent_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 122,
+    "quote": "After direct production costs, 31.0% of sales remained as profit in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00186": [
+   {
+    "document_id": "doc_ostent_news",
+    "page": 1,
+    "char_start": 189,
+    "char_end": 246,
+    "quote": "Ostent booked roughly EUR 221 million of revenue in 2024."
+   }
+  ],
+  "fact_00187": [
+   {
+    "document_id": "doc_ostent_news",
+    "page": 1,
+    "char_start": 247,
+    "char_end": 313,
+    "quote": "Analysts estimate Ostent EBITDA for 2024 at around EUR 30 million."
+   }
+  ],
+  "fact_00188": [
+   {
+    "document_id": "doc_ostent_news",
+    "page": 1,
+    "char_start": 315,
+    "char_end": 362,
+    "quote": "Ostent is believed to employ around 960 people."
+   }
+  ],
+  "fact_00189": [
+   {
+    "document_id": "doc_ostent_pr",
+    "page": 1,
+    "char_start": 79,
+    "char_end": 151,
+    "quote": "Ostent Packaging had an order backlog of EUR 90.0m at the end of FY2024."
+   }
+  ],
+  "fact_00190": [
+   {
+    "document_id": "doc_ostent_spa_draft",
+    "page": 1,
+    "char_start": 198,
+    "char_end": 277,
+    "quote": "The transaction values the company at an enterprise value of EUR 254.5 million."
+   }
+  ],
+  "fact_00191": [
+   {
+    "document_id": "doc_ostent_spa_exec",
+    "page": 1,
+    "char_start": 194,
+    "char_end": 273,
+    "quote": "The transaction values the company at an enterprise value of EUR 263.1 million."
+   }
+  ],
+  "fact_00192": [
+   {
+    "document_id": "doc_ostent_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 126,
+    "quote": "Ostent Packaging generated 71.9% of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00193": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 66,
+    "quote": "Headcount stood at 1,530 at year end FY2024."
+   }
+  ],
+  "fact_00194": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 2,
+    "char_start": 67,
+    "char_end": 123,
+    "quote": "Manufacturing is spread over 3 plants as of fiscal 2024."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 5,
+    "char_start": 107,
+    "char_end": 183,
+    "quote": "Manufacturing is spread over 3 plants as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00195": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 78,
+    "quote": "The largest customer represented 23.7 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00196": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 4,
+    "char_start": 79,
+    "char_end": 148,
+    "quote": "The ten largest customers represented 49.8 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00197": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 106,
+    "quote": "Contracted orders not yet delivered totalled EUR 133.6 million at the close of fiscal 2024."
+   }
+  ],
+  "fact_00198": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 230.0 million (FY2023: EUR 214.5 million)."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 300,
+    "char_end": 385,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 230.0 million."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1318,
+    "char_end": 1365,
+    "quote": "Revenue | 191.0 | 196.6 | 203.7 | 214.5 | 230.0"
+   }
+  ],
+  "fact_00199": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 230.0 million (FY2023: EUR 214.5 million)."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1318,
+    "char_end": 1365,
+    "quote": "Revenue | 191.0 | 196.6 | 203.7 | 214.5 | 230.0"
+   }
+  ],
+  "fact_00200": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 38.4 million (FY2023: EUR 40.3 million)."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1414,
+    "char_end": 1455,
+    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+   }
+  ],
+  "fact_00201": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 38.4 million (FY2023: EUR 40.3 million)."
+   },
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1414,
+    "char_end": 1455,
+    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+   }
+  ],
+  "fact_00202": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 209,
+    "quote": "Gross margin was 39.0 percent in FY2024."
+   }
+  ],
+  "fact_00203": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 210,
+    "char_end": 298,
+    "quote": "Operating earnings before depreciation represented 16.7 percent of sales in fiscal 2024."
+   }
+  ],
+  "fact_00204": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1318,
+    "char_end": 1365,
+    "quote": "Revenue | 191.0 | 196.6 | 203.7 | 214.5 | 230.0"
+   }
+  ],
+  "fact_00205": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1318,
+    "char_end": 1365,
+    "quote": "Revenue | 191.0 | 196.6 | 203.7 | 214.5 | 230.0"
+   }
+  ],
+  "fact_00206": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1318,
+    "char_end": 1365,
+    "quote": "Revenue | 191.0 | 196.6 | 203.7 | 214.5 | 230.0"
+   }
+  ],
+  "fact_00207": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1414,
+    "char_end": 1455,
+    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+   }
+  ],
+  "fact_00208": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1414,
+    "char_end": 1455,
+    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+   }
+  ],
+  "fact_00209": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 6,
+    "char_start": 1414,
+    "char_end": 1455,
+    "quote": "EBITDA | 34.0 | 39.1 | 39.5 | 40.3 | 38.4"
+   }
+  ],
+  "fact_00210": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 104,
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 358.6 million."
+   }
+  ],
+  "fact_00211": [
+   {
+    "document_id": "doc_falik_cim",
+    "page": 7,
+    "char_start": 105,
+    "char_end": 147,
+    "quote": "The indicative equity value is EUR 282.9m."
+   }
+  ],
+  "fact_00212": [
+   {
+    "document_id": "doc_falik_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 73,
+    "quote": "The company employed 1,530 people at the end of FY2024."
+   }
+  ],
+  "fact_00213": [
+   {
+    "document_id": "doc_falik_mgmt",
+    "page": 2,
+    "char_start": 75,
+    "char_end": 126,
+    "quote": "Falik Medical runs 3 production sites as of FY2024."
+   }
+  ],
+  "fact_00214": [
+   {
+    "document_id": "doc_falik_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 66,
+    "quote": "The top customer accounted for 23.7% of FY2024 revenue."
+   }
+  ],
+  "fact_00215": [
+   {
+    "document_id": "doc_falik_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 72,
+    "quote": "The gross margin for FY2024 stood at 39.0 percent."
+   }
+  ],
+  "fact_00216": [
+   {
+    "document_id": "doc_falik_mgmt",
+    "page": 4,
+    "char_start": 74,
+    "char_end": 139,
+    "quote": "Restated figure: Revenue amounted to EUR 211.9 million in FY2023."
+   }
+  ],
+  "fact_00217": [
+   {
+    "document_id": "doc_falik_news",
+    "page": 1,
+    "char_start": 194,
+    "char_end": 260,
+    "quote": "Trade sources put Falik revenue for 2024 at about EUR 223 million."
+   }
+  ],
+  "fact_00218": [
+   {
+    "document_id": "doc_falik_news",
+    "page": 1,
+    "char_start": 261,
+    "char_end": 326,
+    "quote": "Analysts estimate Falik EBITDA for 2024 at around EUR 42 million."
+   }
+  ],
+  "fact_00219": [
+   {
+    "document_id": "doc_falik_news",
+    "page": 1,
+    "char_start": 328,
+    "char_end": 401,
+    "quote": "The company reportedly had a workforce of about 1,400 at the end of 2024."
+   }
+  ],
+  "fact_00220": [
+   {
+    "document_id": "doc_falik_pr_orig",
+    "page": 1,
+    "char_start": 70,
+    "char_end": 130,
+    "quote": "Falik Medical reported EBITDA of EUR 44.3 million in FY2024."
+   }
+  ],
+  "fact_00221": [
+   {
+    "document_id": "doc_falik_pr_corr",
+    "page": 1,
+    "char_start": 149,
+    "char_end": 209,
+    "quote": "Falik Medical reported EBITDA of EUR 38.4 million in FY2024."
+   }
+  ],
+  "fact_00222": [
+   {
+    "document_id": "doc_falik_news_old",
+    "page": 1,
+    "char_start": 62,
+    "char_end": 129,
+    "quote": "Falik Medical generated 47.9 percent of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00223": [
+   {
+    "document_id": "doc_falik_deck_old",
+    "page": 1,
+    "char_start": 88,
+    "char_end": 139,
+    "quote": "Falik Medical runs 6 production sites as of FY2022."
+   }
+  ],
+  "fact_00224": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 64,
+    "quote": "Headcount stood at 830 at year end FY2024."
+   }
+  ],
+  "fact_00225": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 2,
+    "char_start": 65,
+    "char_end": 141,
+    "quote": "Manufacturing is spread over 8 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 5,
+    "char_start": 81,
+    "char_end": 137,
+    "quote": "Manufacturing is spread over 8 plants as of fiscal 2024."
+   }
+  ],
+  "fact_00226": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 78,
+    "quote": "The largest customer represented 22.6 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00227": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 4,
+    "char_start": 79,
+    "char_end": 164,
+    "quote": "Together, the leading ten clients accounted for 51.2 percent of sales in fiscal 2024."
+   }
+  ],
+  "fact_00228": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 80,
+    "quote": "The order backlog stood at EUR 87.7 million at the end of FY2024."
+   }
+  ],
+  "fact_00229": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 166.2 million (FY2023: EUR 155.4 million)."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 280,
+    "char_end": 365,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 166.2 million."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1339,
+    "char_end": 1386,
+    "quote": "Revenue | 134.0 | 141.3 | 146.9 | 155.4 | 166.2"
+   }
+  ],
+  "fact_00230": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 166.2 million (FY2023: EUR 155.4 million)."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1339,
+    "char_end": 1386,
+    "quote": "Revenue | 134.0 | 141.3 | 146.9 | 155.4 | 166.2"
+   }
+  ],
+  "fact_00231": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1435,
+    "char_end": 1476,
+    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+   }
+  ],
+  "fact_00232": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 36.5 million (FY2023: EUR 30.1 million)."
+   },
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1435,
+    "char_end": 1476,
+    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+   }
+  ],
+  "fact_00233": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 243,
+    "quote": "Profit after cost of goods sold represented 39.5% of sales in fiscal 2024."
+   }
+  ],
+  "fact_00234": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 244,
+    "char_end": 278,
+    "quote": "EBITDA margin was 22.0% in FY2024."
+   }
+  ],
+  "fact_00235": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1339,
+    "char_end": 1386,
+    "quote": "Revenue | 134.0 | 141.3 | 146.9 | 155.4 | 166.2"
+   }
+  ],
+  "fact_00236": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1339,
+    "char_end": 1386,
+    "quote": "Revenue | 134.0 | 141.3 | 146.9 | 155.4 | 166.2"
+   }
+  ],
+  "fact_00237": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1339,
+    "char_end": 1386,
+    "quote": "Revenue | 134.0 | 141.3 | 146.9 | 155.4 | 166.2"
+   }
+  ],
+  "fact_00238": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1435,
+    "char_end": 1476,
+    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+   }
+  ],
+  "fact_00239": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1435,
+    "char_end": 1476,
+    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+   }
+  ],
+  "fact_00240": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 6,
+    "char_start": 1435,
+    "char_end": 1476,
+    "quote": "EBITDA | 29.6 | 28.6 | 28.3 | 30.1 | 36.5"
+   }
+  ],
+  "fact_00241": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 104,
+    "quote": "The transaction values the company at an enterprise value of EUR 324.6 million."
+   }
+  ],
+  "fact_00242": [
+   {
+    "document_id": "doc_carane_cim",
+    "page": 7,
+    "char_start": 105,
+    "char_end": 147,
+    "quote": "The indicative equity value is EUR 241.3m."
+   }
+  ],
+  "fact_00243": [
+   {
+    "document_id": "doc_carane_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 71,
+    "quote": "The company employed 830 people at the end of FY2024."
+   }
+  ],
+  "fact_00244": [
+   {
+    "document_id": "doc_carane_mgmt",
+    "page": 2,
+    "char_start": 73,
+    "char_end": 123,
+    "quote": "Carane Foods runs 8 production sites as of FY2024."
+   }
+  ],
+  "fact_00245": [
+   {
+    "document_id": "doc_carane_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 66,
+    "quote": "The top customer accounted for 22.6% of FY2024 revenue."
+   }
+  ],
+  "fact_00246": [
+   {
+    "document_id": "doc_carane_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 129,
+    "quote": "After direct production costs, 39.5 percent of sales remained as profit in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00247": [
+   {
+    "document_id": "doc_carane_news",
+    "page": 1,
+    "char_start": 197,
+    "char_end": 264,
+    "quote": "Trade sources put Carane revenue for 2024 at about EUR 158 million."
+   }
+  ],
+  "fact_00248": [
+   {
+    "document_id": "doc_carane_news",
+    "page": 1,
+    "char_start": 265,
+    "char_end": 331,
+    "quote": "Analysts estimate Carane EBITDA for 2024 at around EUR 40 million."
+   }
+  ],
+  "fact_00249": [
+   {
+    "document_id": "doc_carane_news",
+    "page": 1,
+    "char_start": 333,
+    "char_end": 404,
+    "quote": "The company reportedly had a workforce of about 760 at the end of 2024."
+   }
+  ],
+  "fact_00250": [
+   {
+    "document_id": "doc_carane_pr",
+    "page": 1,
+    "char_start": 75,
+    "char_end": 150,
+    "quote": "Carane Foods had an order backlog of EUR 87.7 million at the end of FY2024."
+   }
+  ],
+  "fact_00251": [
+   {
+    "document_id": "doc_carane_spa_draft",
+    "page": 1,
+    "char_start": 195,
+    "char_end": 274,
+    "quote": "The transaction values the company at an enterprise value of EUR 308.5 million."
+   }
+  ],
+  "fact_00252": [
+   {
+    "document_id": "doc_carane_spa_exec",
+    "page": 1,
+    "char_start": 191,
+    "char_end": 270,
+    "quote": "The transaction values the company at an enterprise value of EUR 324.6 million."
+   }
+  ],
+  "fact_00253": [
+   {
+    "document_id": "doc_carane_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 122,
+    "quote": "Carane Foods generated 47.5% of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00254": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 106,
+    "quote": "Merium Water Systems had a workforce of 2,050 employees at the close of fiscal 2024."
+   }
+  ],
+  "fact_00255": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 2,
+    "char_start": 107,
+    "char_end": 183,
+    "quote": "Manufacturing is spread over 7 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 5,
+    "char_start": 100,
+    "char_end": 154,
+    "quote": "As of FY2024, the company operated 7 production sites."
+   }
+  ],
+  "fact_00256": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 104,
+    "quote": "A single client contributed 29.9% of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00257": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 4,
+    "char_start": 105,
+    "char_end": 210,
+    "quote": "Together, the leading ten clients accounted for 55.9 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00258": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 99,
+    "quote": "Contracted orders not yet delivered totalled EUR 125.1m at the close of fiscal 2024."
+   }
+  ],
+  "fact_00259": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 332.7 million (FY2023: EUR 325.7 million)."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 248,
+    "char_end": 333,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 332.7 million."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1239,
+    "char_end": 1286,
+    "quote": "Revenue | 268.0 | 280.6 | 308.3 | 325.7 | 332.7"
+   }
+  ],
+  "fact_00260": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 332.7 million (FY2023: EUR 325.7 million)."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1239,
+    "char_end": 1286,
+    "quote": "Revenue | 268.0 | 280.6 | 308.3 | 325.7 | 332.7"
+   }
+  ],
+  "fact_00261": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 29.9 million (FY2023: EUR 29.3 million)."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1337,
+    "char_end": 1378,
+    "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
+   }
+  ],
+  "fact_00262": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 29.9 million (FY2023: EUR 29.3 million)."
+   },
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1337,
+    "char_end": 1378,
+    "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
+   }
+  ],
+  "fact_00263": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 212,
+    "quote": "The gross margin for FY2024 stood at 31.6%."
+   }
+  ],
+  "fact_00264": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 213,
+    "char_end": 246,
+    "quote": "EBITDA margin was 9.0% in FY2024."
+   }
+  ],
+  "fact_00265": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1239,
+    "char_end": 1286,
+    "quote": "Revenue | 268.0 | 280.6 | 308.3 | 325.7 | 332.7"
+   }
+  ],
+  "fact_00266": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1239,
+    "char_end": 1286,
+    "quote": "Revenue | 268.0 | 280.6 | 308.3 | 325.7 | 332.7"
+   }
+  ],
+  "fact_00267": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1239,
+    "char_end": 1286,
+    "quote": "Revenue | 268.0 | 280.6 | 308.3 | 325.7 | 332.7"
+   }
+  ],
+  "fact_00268": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1337,
+    "char_end": 1378,
+    "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
+   }
+  ],
+  "fact_00269": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1337,
+    "char_end": 1378,
+    "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
+   }
+  ],
+  "fact_00270": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 6,
+    "char_start": 1337,
+    "char_end": 1378,
+    "quote": "EBITDA | 24.1 | 25.3 | 27.7 | 29.3 | 29.9"
+   }
+  ],
+  "fact_00271": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 71,
+    "quote": "The indicative enterprise value is EUR 258.1m."
+   }
+  ],
+  "fact_00272": [
+   {
+    "document_id": "doc_merium_cim",
+    "page": 7,
+    "char_start": 72,
+    "char_end": 114,
+    "quote": "The indicative equity value is EUR 202.1m."
+   }
+  ],
+  "fact_00273": [
+   {
+    "document_id": "doc_merium_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 122,
+    "quote": "Merium Water Systems had a workforce of 2,050 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00274": [
+   {
+    "document_id": "doc_merium_mgmt",
+    "page": 2,
+    "char_start": 124,
+    "char_end": 180,
+    "quote": "Manufacturing is spread over 7 plants as of fiscal 2024."
+   }
+  ],
+  "fact_00275": [
+   {
+    "document_id": "doc_merium_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 75,
+    "quote": "The largest customer represented 29.9 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00276": [
+   {
+    "document_id": "doc_merium_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 62,
+    "quote": "Gross margin was 31.6 percent in FY2024."
+   }
+  ],
+  "fact_00277": [
+   {
+    "document_id": "doc_merium_news",
+    "page": 1,
+    "char_start": 197,
+    "char_end": 264,
+    "quote": "Trade sources put Merium revenue for 2024 at about EUR 321 million."
+   }
+  ],
+  "fact_00278": [
+   {
+    "document_id": "doc_merium_news",
+    "page": 1,
+    "char_start": 265,
+    "char_end": 331,
+    "quote": "Analysts estimate Merium EBITDA for 2024 at around EUR 34 million."
+   }
+  ],
+  "fact_00279": [
+   {
+    "document_id": "doc_merium_news",
+    "page": 1,
+    "char_start": 333,
+    "char_end": 382,
+    "quote": "Merium is believed to employ around 1,860 people."
+   }
+  ],
+  "fact_00280": [
+   {
+    "document_id": "doc_merium_pr_orig",
+    "page": 1,
+    "char_start": 77,
+    "char_end": 144,
+    "quote": "Merium Water Systems reported EBITDA of EUR 34.2 million in FY2024."
+   }
+  ],
+  "fact_00281": [
+   {
+    "document_id": "doc_merium_pr_corr",
+    "page": 1,
+    "char_start": 156,
+    "char_end": 223,
+    "quote": "Merium Water Systems reported EBITDA of EUR 29.9 million in FY2024."
+   }
+  ],
+  "fact_00282": [
+   {
+    "document_id": "doc_merium_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 137,
+    "quote": "Merium Water Systems generated 69.7 percent of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00283": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 64,
+    "quote": "Headcount stood at 710 at year end FY2024."
+   }
+  ],
+  "fact_00284": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 2,
+    "char_start": 65,
+    "char_end": 121,
+    "quote": "Manufacturing is spread over 6 plants as of fiscal 2024."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 5,
+    "char_start": 126,
+    "char_end": 180,
+    "quote": "As of FY2024, the company operated 6 production sites."
+   }
+  ],
+  "fact_00285": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 76,
+    "quote": "The top customer accounted for 11.3 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00286": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 4,
+    "char_start": 77,
+    "char_end": 182,
+    "quote": "Together, the leading ten clients accounted for 44.5 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00287": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 125,
+    "quote": "Contracted orders not yet delivered totalled EUR 49.0 million at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00288": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 108.4 million (FY2023: EUR 105.2 million)."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 307,
+    "char_end": 392,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 108.4 million."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1282,
+    "char_end": 1326,
+    "quote": "Revenue | 86.6 | 89.6 | 95.9 | 105.2 | 108.4"
+   }
+  ],
+  "fact_00289": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 108.4 million (FY2023: EUR 105.2 million)."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1282,
+    "char_end": 1326,
+    "quote": "Revenue | 86.6 | 89.6 | 95.9 | 105.2 | 108.4"
+   }
+  ],
+  "fact_00290": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1375,
+    "char_end": 1416,
+    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+   }
+  ],
+  "fact_00291": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 21.5 million (FY2023: EUR 20.6 million)."
+   },
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1375,
+    "char_end": 1416,
+    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+   }
+  ],
+  "fact_00292": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 270,
+    "quote": "Profit after cost of goods sold represented 37.9 percent of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00293": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 271,
+    "char_end": 305,
+    "quote": "EBITDA margin was 19.8% in FY2024."
+   }
+  ],
+  "fact_00294": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1282,
+    "char_end": 1326,
+    "quote": "Revenue | 86.6 | 89.6 | 95.9 | 105.2 | 108.4"
+   }
+  ],
+  "fact_00295": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1282,
+    "char_end": 1326,
+    "quote": "Revenue | 86.6 | 89.6 | 95.9 | 105.2 | 108.4"
+   }
+  ],
+  "fact_00296": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1282,
+    "char_end": 1326,
+    "quote": "Revenue | 86.6 | 89.6 | 95.9 | 105.2 | 108.4"
+   }
+  ],
+  "fact_00297": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1375,
+    "char_end": 1416,
+    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+   }
+  ],
+  "fact_00298": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1375,
+    "char_end": 1416,
+    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+   }
+  ],
+  "fact_00299": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 6,
+    "char_start": 1375,
+    "char_end": 1416,
+    "quote": "EBITDA | 18.4 | 17.8 | 19.2 | 20.6 | 21.5"
+   }
+  ],
+  "fact_00300": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 104,
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 199.3 million."
+   }
+  ],
+  "fact_00301": [
+   {
+    "document_id": "doc_estell_cim",
+    "page": 7,
+    "char_start": 105,
+    "char_end": 184,
+    "quote": "Shareholders would receive EUR 173.5m for their shares after settling net debt."
+   }
+  ],
+  "fact_00302": [
+   {
+    "document_id": "doc_estell_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 71,
+    "quote": "The company employed 710 people at the end of FY2024."
+   }
+  ],
+  "fact_00303": [
+   {
+    "document_id": "doc_estell_mgmt",
+    "page": 2,
+    "char_start": 73,
+    "char_end": 128,
+    "quote": "Estell Automotive runs 6 production sites as of FY2024."
+   }
+  ],
+  "fact_00304": [
+   {
+    "document_id": "doc_estell_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 108,
+    "quote": "A single client contributed 11.3 percent of sales in fiscal 2024, the highest share of any buyer."
+   }
+  ],
+  "fact_00305": [
+   {
+    "document_id": "doc_estell_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 116,
+    "quote": "Profit after cost of goods sold represented 37.9% of sales in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00306": [
+   {
+    "document_id": "doc_estell_news",
+    "page": 1,
+    "char_start": 197,
+    "char_end": 254,
+    "quote": "Estell booked roughly EUR 105 million of revenue in 2024."
+   }
+  ],
+  "fact_00307": [
+   {
+    "document_id": "doc_estell_news",
+    "page": 1,
+    "char_start": 255,
+    "char_end": 326,
+    "quote": "Estell is said to have earned roughly EUR 24 million of EBITDA in 2024."
+   }
+  ],
+  "fact_00308": [
+   {
+    "document_id": "doc_estell_news",
+    "page": 1,
+    "char_start": 328,
+    "char_end": 399,
+    "quote": "The company reportedly had a workforce of about 640 at the end of 2024."
+   }
+  ],
+  "fact_00309": [
+   {
+    "document_id": "doc_estell_pr",
+    "page": 1,
+    "char_start": 80,
+    "char_end": 153,
+    "quote": "Estell Automotive had an order backlog of EUR 49.0m at the end of FY2024."
+   }
+  ],
+  "fact_00310": [
+   {
+    "document_id": "doc_estell_spa_draft",
+    "page": 1,
+    "char_start": 199,
+    "char_end": 278,
+    "quote": "The transaction values the company at an enterprise value of EUR 193.1 million."
+   }
+  ],
+  "fact_00311": [
+   {
+    "document_id": "doc_estell_spa_exec",
+    "page": 1,
+    "char_start": 195,
+    "char_end": 267,
+    "quote": "The transaction values the company at an enterprise value of EUR 199.3m."
+   }
+  ],
+  "fact_00312": [
+   {
+    "document_id": "doc_estell_news_old",
+    "page": 1,
+    "char_start": 63,
+    "char_end": 134,
+    "quote": "Estell Automotive generated 68.0 percent of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00313": [
+   {
+    "document_id": "doc_estell_deck_old",
+    "page": 1,
+    "char_start": 92,
+    "char_end": 147,
+    "quote": "Estell Automotive runs 5 production sites as of FY2022."
+   }
+  ],
+  "fact_00314": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 2,
+    "char_start": 22,
+    "char_end": 64,
+    "quote": "Headcount stood at 950 at year end FY2024."
+   }
+  ],
+  "fact_00315": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 2,
+    "char_start": 65,
+    "char_end": 141,
+    "quote": "Manufacturing is spread over 3 plants as of the year ended 31 December 2024."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 5,
+    "char_start": 119,
+    "char_end": 175,
+    "quote": "Manufacturing is spread over 3 plants as of fiscal 2024."
+   }
+  ],
+  "fact_00316": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 4,
+    "char_start": 14,
+    "char_end": 78,
+    "quote": "The largest customer represented 10.2 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00317": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 4,
+    "char_start": 79,
+    "char_end": 148,
+    "quote": "The ten largest customers represented 34.9 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00318": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 5,
+    "char_start": 15,
+    "char_end": 118,
+    "quote": "Contracted orders not yet delivered totalled EUR 55.6m at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00319": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 140.9 million (FY2023: EUR 137.4 million)."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 263,
+    "char_end": 348,
+    "quote": "Note 1: Revenue for FY2024 is stated net of rebates and discounts: EUR 140.9 million."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1354,
+    "char_end": 1401,
+    "quote": "Revenue | 117.4 | 122.9 | 129.3 | 137.4 | 140.9"
+   }
+  ],
+  "fact_00320": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 23,
+    "char_end": 100,
+    "quote": "Net revenue for FY2024 reached EUR 140.9 million (FY2023: EUR 137.4 million)."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1354,
+    "char_end": 1401,
+    "quote": "Revenue | 117.4 | 122.9 | 129.3 | 137.4 | 140.9"
+   }
+  ],
+  "fact_00321": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 23.5 million (FY2023: EUR 21.3 million)."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1450,
+    "char_end": 1491,
+    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+   }
+  ],
+  "fact_00322": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 101,
+    "char_end": 167,
+    "quote": "EBITDA for FY2024 was EUR 23.5 million (FY2023: EUR 21.3 million)."
+   },
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1450,
+    "char_end": 1491,
+    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+   }
+  ],
+  "fact_00323": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 169,
+    "char_end": 219,
+    "quote": "The gross margin for FY2024 stood at 39.2 percent."
+   }
+  ],
+  "fact_00324": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 220,
+    "char_end": 261,
+    "quote": "EBITDA margin was 16.7 percent in FY2024."
+   }
+  ],
+  "fact_00325": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1354,
+    "char_end": 1401,
+    "quote": "Revenue | 117.4 | 122.9 | 129.3 | 137.4 | 140.9"
+   }
+  ],
+  "fact_00326": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1354,
+    "char_end": 1401,
+    "quote": "Revenue | 117.4 | 122.9 | 129.3 | 137.4 | 140.9"
+   }
+  ],
+  "fact_00327": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1354,
+    "char_end": 1401,
+    "quote": "Revenue | 117.4 | 122.9 | 129.3 | 137.4 | 140.9"
+   }
+  ],
+  "fact_00328": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1450,
+    "char_end": 1491,
+    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+   }
+  ],
+  "fact_00329": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1450,
+    "char_end": 1491,
+    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+   }
+  ],
+  "fact_00330": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 6,
+    "char_start": 1450,
+    "char_end": 1491,
+    "quote": "EBITDA | 17.2 | 21.1 | 20.1 | 21.3 | 23.5"
+   }
+  ],
+  "fact_00331": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 7,
+    "char_start": 25,
+    "char_end": 97,
+    "quote": "On a cash-free and debt-free basis the business is priced at EUR 242.3m."
+   }
+  ],
+  "fact_00332": [
+   {
+    "document_id": "doc_ulent_cim",
+    "page": 7,
+    "char_start": 98,
+    "char_end": 167,
+    "quote": "After net debt, the equity value of the company is EUR 197.1 million."
+   }
+  ],
+  "fact_00333": [
+   {
+    "document_id": "doc_ulent_mgmt",
+    "page": 2,
+    "char_start": 18,
+    "char_end": 71,
+    "quote": "The company employed 950 people at the end of FY2024."
+   }
+  ],
+  "fact_00334": [
+   {
+    "document_id": "doc_ulent_mgmt",
+    "page": 2,
+    "char_start": 73,
+    "char_end": 127,
+    "quote": "As of FY2024, the company operated 3 production sites."
+   }
+  ],
+  "fact_00335": [
+   {
+    "document_id": "doc_ulent_mgmt",
+    "page": 3,
+    "char_start": 11,
+    "char_end": 75,
+    "quote": "The largest customer represented 10.2 percent of FY2024 revenue."
+   }
+  ],
+  "fact_00336": [
+   {
+    "document_id": "doc_ulent_mgmt",
+    "page": 4,
+    "char_start": 22,
+    "char_end": 129,
+    "quote": "After direct production costs, 39.2 percent of sales remained as profit in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00337": [
+   {
+    "document_id": "doc_ulent_news",
+    "page": 1,
+    "char_start": 187,
+    "char_end": 243,
+    "quote": "Ulent booked roughly EUR 133 million of revenue in 2024."
+   }
+  ],
+  "fact_00338": [
+   {
+    "document_id": "doc_ulent_news",
+    "page": 1,
+    "char_start": 244,
+    "char_end": 314,
+    "quote": "Ulent is said to have earned roughly EUR 26 million of EBITDA in 2024."
+   }
+  ],
+  "fact_00339": [
+   {
+    "document_id": "doc_ulent_news",
+    "page": 1,
+    "char_start": 316,
+    "char_end": 362,
+    "quote": "Ulent is believed to employ around 860 people."
+   }
+  ],
+  "fact_00340": [
+   {
+    "document_id": "doc_ulent_pr_orig",
+    "page": 1,
+    "char_start": 73,
+    "char_end": 136,
+    "quote": "Ulent Containers reported EBITDA of EUR 27.0 million in FY2024."
+   }
+  ],
+  "fact_00341": [
+   {
+    "document_id": "doc_ulent_pr_corr",
+    "page": 1,
+    "char_start": 152,
+    "char_end": 215,
+    "quote": "Ulent Containers reported EBITDA of EUR 23.5 million in FY2024."
+   }
+  ],
+  "fact_00342": [
+   {
+    "document_id": "doc_ulent_news_old",
+    "page": 1,
+    "char_start": 62,
+    "char_end": 132,
+    "quote": "Ulent Containers generated 48.2 percent of its sales abroad in FY2023."
+   }
+  ],
+  "fact_00343": [
+   {
+    "document_id": "doc_ulent_deck_old",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 145,
+    "quote": "Ulent Containers runs 6 production sites as of FY2022."
+   }
+  ],
+  "fact_00344": [
+   {
+    "document_id": "doc_buyer_01_profile",
+    "page": 1,
+    "char_start": 253,
+    "char_end": 379,
+    "quote": "The equity of Carent Industries was valued at EUR 2.9 billion on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00345": [
+   {
+    "document_id": "doc_buyer_01_report",
+    "page": 1,
+    "char_start": 110,
+    "char_end": 170,
+    "quote": "Market capitalisation was EUR 2,900.0m at the end of FY2024."
+   }
+  ],
+  "fact_00346": [
+   {
+    "document_id": "doc_buyer_01_report",
+    "page": 1,
+    "char_start": 172,
+    "char_end": 234,
+    "quote": "Carent Industries generated revenue of EUR 1,508.7m in FY2024."
+   }
+  ],
+  "fact_00347": [
+   {
+    "document_id": "doc_buyer_01_report",
+    "page": 1,
+    "char_start": 236,
+    "char_end": 292,
+    "quote": "The company employed 16,620 people at the end of FY2024."
+   }
+  ],
+  "fact_00348": [
+   {
+    "document_id": "doc_buyer_01_report",
+    "page": 1,
+    "char_start": 294,
+    "char_end": 369,
+    "quote": "The market share of Carent Industries in Europe was 46.8 percent in FY2024."
+   }
+  ],
+  "fact_00349": [
+   {
+    "document_id": "doc_buyer_01_article",
+    "page": 1,
+    "char_start": 35,
+    "char_end": 104,
+    "quote": "Carent was valued at roughly EUR 2,620 million by the market in 2024."
+   }
+  ],
+  "fact_00350": [
+   {
+    "document_id": "doc_buyer_01_filing",
+    "page": 1,
+    "char_start": 116,
+    "char_end": 172,
+    "quote": "The company employed 16,020 people at the end of FY2021."
+   }
+  ],
+  "fact_00351": [
+   {
+    "document_id": "doc_buyer_02_profile",
+    "page": 1,
+    "char_start": 249,
+    "char_end": 359,
+    "quote": "The platform administers EUR 1,150.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00352": [
+   {
+    "document_id": "doc_buyer_02_profile",
+    "page": 1,
+    "char_start": 361,
+    "char_end": 444,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00353": [
+   {
+    "document_id": "doc_buyer_02_profile",
+    "page": 1,
+    "char_start": 361,
+    "char_end": 444,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00354": [
+   {
+    "document_id": "doc_buyer_02_profile",
+    "page": 1,
+    "char_start": 446,
+    "char_end": 501,
+    "quote": "The vehicle began its life as an investor pool in 2019."
+   }
+  ],
+  "fact_00355": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 111,
+    "char_end": 198,
+    "quote": "Goron Capital Partners had assets under management of EUR 1,150.0 million as of FY2024."
+   }
+  ],
+  "fact_00356": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 200,
+    "char_end": 289,
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+   }
+  ],
+  "fact_00357": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 200,
+    "char_end": 289,
+    "quote": "The fund targets equity tickets of EUR 40.0 million to EUR 165.0 million per transaction."
+   }
+  ],
+  "fact_00358": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 291,
+    "char_end": 382,
+    "quote": "Goron Capital Partners backs 22 operating businesses as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00359": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 384,
+    "char_end": 459,
+    "quote": "Goron Capital Partners closed its current fund with a vintage year of 2019."
+   }
+  ],
+  "fact_00360": [
+   {
+    "document_id": "doc_buyer_02_report",
+    "page": 1,
+    "char_start": 461,
+    "char_end": 517,
+    "quote": "New platform deals may be signed by the fund until 2025."
+   }
+  ],
+  "fact_00361": [
+   {
+    "document_id": "doc_buyer_02_article",
+    "page": 1,
+    "char_start": 40,
+    "char_end": 94,
+    "quote": "Goron is reported to manage roughly EUR 1,000 million."
+   }
+  ],
+  "fact_00362": [
+   {
+    "document_id": "doc_buyer_02_pr_old",
+    "page": 1,
+    "char_start": 49,
+    "char_end": 134,
+    "quote": "Goron Capital Partners had assets under management of EUR 840.0 million as of FY2022."
+   }
+  ],
+  "fact_00363": [
+   {
+    "document_id": "doc_buyer_03_profile",
+    "page": 1,
+    "char_start": 227,
+    "char_end": 291,
+    "quote": "Market capitalisation was EUR 1.05 billion at the end of FY2024."
+   }
+  ],
+  "fact_00364": [
+   {
+    "document_id": "doc_buyer_03_report",
+    "page": 1,
+    "char_start": 102,
+    "char_end": 166,
+    "quote": "Market capitalisation was EUR 1.05 billion at the end of FY2024."
+   }
+  ],
+  "fact_00365": [
+   {
+    "document_id": "doc_buyer_03_report",
+    "page": 1,
+    "char_start": 168,
+    "char_end": 231,
+    "quote": "Falex Systems generated revenue of EUR 226.3 million in FY2024."
+   }
+  ],
+  "fact_00366": [
+   {
+    "document_id": "doc_buyer_03_report",
+    "page": 1,
+    "char_start": 233,
+    "char_end": 277,
+    "quote": "Headcount stood at 9,380 at year end FY2024."
+   }
+  ],
+  "fact_00367": [
+   {
+    "document_id": "doc_buyer_03_report",
+    "page": 1,
+    "char_start": 279,
+    "char_end": 343,
+    "quote": "The market share of Falex Systems in Europe was 39.2% in FY2024."
+   }
+  ],
+  "fact_00368": [
+   {
+    "document_id": "doc_buyer_04_profile",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 328,
+    "quote": "Assets under management were EUR 11.95 billion at the end of FY2024."
+   }
+  ],
+  "fact_00369": [
+   {
+    "document_id": "doc_buyer_04_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 422,
+    "quote": "The fund targets equity tickets of EUR 595.0 million to EUR 1,355.0 million per transaction."
+   }
+  ],
+  "fact_00370": [
+   {
+    "document_id": "doc_buyer_04_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 422,
+    "quote": "The fund targets equity tickets of EUR 595.0 million to EUR 1,355.0 million per transaction."
+   }
+  ],
+  "fact_00371": [
+   {
+    "document_id": "doc_buyer_04_profile",
+    "page": 1,
+    "char_start": 424,
+    "char_end": 499,
+    "quote": "Draay Capital Partners closed its current fund with a vintage year of 2018."
+   }
+  ],
+  "fact_00372": [
+   {
+    "document_id": "doc_buyer_04_report",
+    "page": 1,
+    "char_start": 111,
+    "char_end": 222,
+    "quote": "The platform administers EUR 11,950.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00373": [
+   {
+    "document_id": "doc_buyer_04_report",
+    "page": 1,
+    "char_start": 224,
+    "char_end": 310,
+    "quote": "Each deal receives an equity cheque between EUR 595.0 million and EUR 1,355.0 million."
+   }
+  ],
+  "fact_00374": [
+   {
+    "document_id": "doc_buyer_04_report",
+    "page": 1,
+    "char_start": 224,
+    "char_end": 310,
+    "quote": "Each deal receives an equity cheque between EUR 595.0 million and EUR 1,355.0 million."
+   }
+  ],
+  "fact_00375": [
+   {
+    "document_id": "doc_buyer_04_report",
+    "page": 1,
+    "char_start": 312,
+    "char_end": 363,
+    "quote": "The fund holds 13 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00376": [
+   {
+    "document_id": "doc_buyer_04_report",
+    "page": 1,
+    "char_start": 365,
+    "char_end": 440,
+    "quote": "Draay Capital Partners closed its current fund with a vintage year of 2018."
+   }
+  ],
+  "fact_00377": [
+   {
+    "document_id": "doc_buyer_04_article",
+    "page": 1,
+    "char_start": 40,
+    "char_end": 95,
+    "quote": "Draay is reported to manage roughly EUR 10,800 million."
+   }
+  ],
+  "fact_00378": [
+   {
+    "document_id": "doc_buyer_04_pr_old",
+    "page": 1,
+    "char_start": 49,
+    "char_end": 129,
+    "quote": "Draay Capital Partners had assets under management of EUR 8,370.0m as of FY2022."
+   }
+  ],
+  "fact_00379": [
+   {
+    "document_id": "doc_buyer_05_profile",
+    "page": 1,
+    "char_start": 236,
+    "char_end": 334,
+    "quote": "The equity of Lumell Systems was valued at EUR 550.0m on the exchange at the close of fiscal 2024."
+   }
+  ],
+  "fact_00380": [
+   {
+    "document_id": "doc_buyer_05_report",
+    "page": 1,
+    "char_start": 104,
+    "char_end": 169,
+    "quote": "Market capitalisation was EUR 550.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00381": [
+   {
+    "document_id": "doc_buyer_05_report",
+    "page": 1,
+    "char_start": 171,
+    "char_end": 219,
+    "quote": "Revenue amounted to EUR 110.8 million in FY2024."
+   }
+  ],
+  "fact_00382": [
+   {
+    "document_id": "doc_buyer_05_report",
+    "page": 1,
+    "char_start": 221,
+    "char_end": 300,
+    "quote": "Lumell Systems had a workforce of 14,800 employees at the close of fiscal 2024."
+   }
+  ],
+  "fact_00383": [
+   {
+    "document_id": "doc_buyer_05_report",
+    "page": 1,
+    "char_start": 302,
+    "char_end": 408,
+    "quote": "Lumell Systems controls 36.8% of European sales in its main segment as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00384": [
+   {
+    "document_id": "doc_buyer_05_article",
+    "page": 1,
+    "char_start": 32,
+    "char_end": 116,
+    "quote": "The stock market capitalisation of Lumell was reported near EUR 480 million in 2024."
+   }
+  ],
+  "fact_00385": [
+   {
+    "document_id": "doc_buyer_05_filing",
+    "page": 1,
+    "char_start": 110,
+    "char_end": 165,
+    "quote": "The company employed 8,750 people at the end of FY2021."
+   }
+  ],
+  "fact_00386": [
+   {
+    "document_id": "doc_buyer_06_profile",
+    "page": 1,
+    "char_start": 277,
+    "char_end": 385,
+    "quote": "The platform administers EUR 850.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00387": [
+   {
+    "document_id": "doc_buyer_06_profile",
+    "page": 1,
+    "char_start": 387,
+    "char_end": 470,
+    "quote": "Each deal receives an equity cheque between EUR 30.0 million and EUR 160.0 million."
+   }
+  ],
+  "fact_00388": [
+   {
+    "document_id": "doc_buyer_06_profile",
+    "page": 1,
+    "char_start": 387,
+    "char_end": 470,
+    "quote": "Each deal receives an equity cheque between EUR 30.0 million and EUR 160.0 million."
+   }
+  ],
+  "fact_00389": [
+   {
+    "document_id": "doc_buyer_06_profile",
+    "page": 1,
+    "char_start": 472,
+    "char_end": 548,
+    "quote": "Elnell Capital Partners closed its current fund with a vintage year of 2019."
+   }
+  ],
+  "fact_00390": [
+   {
+    "document_id": "doc_buyer_06_report",
+    "page": 1,
+    "char_start": 113,
+    "char_end": 201,
+    "quote": "The platform administers EUR 850.0 million on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00391": [
+   {
+    "document_id": "doc_buyer_06_report",
+    "page": 1,
+    "char_start": 203,
+    "char_end": 292,
+    "quote": "The fund targets equity tickets of EUR 30.0 million to EUR 160.0 million per transaction."
+   }
+  ],
+  "fact_00392": [
+   {
+    "document_id": "doc_buyer_06_report",
+    "page": 1,
+    "char_start": 203,
+    "char_end": 292,
+    "quote": "The fund targets equity tickets of EUR 30.0 million to EUR 160.0 million per transaction."
+   }
+  ],
+  "fact_00393": [
+   {
+    "document_id": "doc_buyer_06_report",
+    "page": 1,
+    "char_start": 294,
+    "char_end": 344,
+    "quote": "The fund holds 7 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00394": [
+   {
+    "document_id": "doc_buyer_06_report",
+    "page": 1,
+    "char_start": 346,
+    "char_end": 422,
+    "quote": "Elnell Capital Partners closed its current fund with a vintage year of 2019."
+   }
+  ],
+  "fact_00395": [
+   {
+    "document_id": "doc_buyer_06_pr_old",
+    "page": 1,
+    "char_start": 50,
+    "char_end": 129,
+    "quote": "Elnell Capital Partners had assets under management of EUR 630.0m as of FY2022."
+   }
+  ],
+  "fact_00396": [
+   {
+    "document_id": "doc_buyer_07_profile",
+    "page": 1,
+    "char_start": 221,
+    "char_end": 344,
+    "quote": "The equity of Traeth Group was valued at EUR 400.0 million on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00397": [
+   {
+    "document_id": "doc_buyer_07_report",
+    "page": 1,
+    "char_start": 100,
+    "char_end": 183,
+    "quote": "Traeth Group had a market capitalisation of EUR 400.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00398": [
+   {
+    "document_id": "doc_buyer_07_report",
+    "page": 1,
+    "char_start": 185,
+    "char_end": 233,
+    "quote": "Revenue amounted to EUR 208.4 million in FY2024."
+   }
+  ],
+  "fact_00399": [
+   {
+    "document_id": "doc_buyer_07_report",
+    "page": 1,
+    "char_start": 235,
+    "char_end": 290,
+    "quote": "The company employed 5,200 people at the end of FY2024."
+   }
+  ],
+  "fact_00400": [
+   {
+    "document_id": "doc_buyer_07_report",
+    "page": 1,
+    "char_start": 292,
+    "char_end": 371,
+    "quote": "Traeth Group holds a market share of 50.8 percent in its core European segment."
+   }
+  ],
+  "fact_00401": [
+   {
+    "document_id": "doc_buyer_07_article",
+    "page": 1,
+    "char_start": 30,
+    "char_end": 97,
+    "quote": "Traeth was valued at roughly EUR 350 million by the market in 2024."
+   }
+  ],
+  "fact_00402": [
+   {
+    "document_id": "doc_buyer_07_pr_orig",
+    "page": 1,
+    "char_start": 37,
+    "char_end": 120,
+    "quote": "Traeth Group had a market capitalisation of EUR 450.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00403": [
+   {
+    "document_id": "doc_buyer_07_pr_corr",
+    "page": 1,
+    "char_start": 116,
+    "char_end": 199,
+    "quote": "Traeth Group had a market capitalisation of EUR 400.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00404": [
+   {
+    "document_id": "doc_buyer_08_profile",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 341,
+    "quote": "The platform administers EUR 8,000.0m on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00405": [
+   {
+    "document_id": "doc_buyer_08_profile",
+    "page": 1,
+    "char_start": 343,
+    "char_end": 435,
+    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+   }
+  ],
+  "fact_00406": [
+   {
+    "document_id": "doc_buyer_08_profile",
+    "page": 1,
+    "char_start": 343,
+    "char_end": 435,
+    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+   }
+  ],
+  "fact_00407": [
+   {
+    "document_id": "doc_buyer_08_profile",
+    "page": 1,
+    "char_start": 437,
+    "char_end": 467,
+    "quote": "The fund was launched in 2017."
+   }
+  ],
+  "fact_00408": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 101,
+    "char_end": 184,
+    "quote": "The platform administers EUR 8,000.0m on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00409": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 186,
+    "char_end": 278,
+    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+   }
+  ],
+  "fact_00410": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 186,
+    "char_end": 278,
+    "quote": "The fund targets equity tickets of EUR 305.0 million to EUR 1,540.0 million per transaction."
+   }
+  ],
+  "fact_00411": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 280,
+    "char_end": 340,
+    "quote": "Narar Investments owned 11 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00412": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 342,
+    "char_end": 372,
+    "quote": "The fund was launched in 2017."
+   }
+  ],
+  "fact_00413": [
+   {
+    "document_id": "doc_buyer_08_report",
+    "page": 1,
+    "char_start": 374,
+    "char_end": 421,
+    "quote": "The investment period of the fund ends in 2023."
+   }
+  ],
+  "fact_00414": [
+   {
+    "document_id": "doc_buyer_08_article",
+    "page": 1,
+    "char_start": 35,
+    "char_end": 89,
+    "quote": "Narar is reported to manage roughly EUR 6,690 million."
+   }
+  ],
+  "fact_00415": [
+   {
+    "document_id": "doc_buyer_08_pr_old",
+    "page": 1,
+    "char_start": 44,
+    "char_end": 119,
+    "quote": "Narar Investments had assets under management of EUR 7,190.0m as of FY2022."
+   }
+  ],
+  "fact_00416": [
+   {
+    "document_id": "doc_buyer_09_profile",
+    "page": 1,
+    "char_start": 244,
+    "char_end": 353,
+    "quote": "The equity of Tarnora Industries was valued at EUR 450.0 million on the exchange at the close of fiscal 2024."
+   }
+  ],
+  "fact_00417": [
+   {
+    "document_id": "doc_buyer_09_report",
+    "page": 1,
+    "char_start": 112,
+    "char_end": 177,
+    "quote": "Market capitalisation was EUR 450.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00418": [
+   {
+    "document_id": "doc_buyer_09_report",
+    "page": 1,
+    "char_start": 179,
+    "char_end": 220,
+    "quote": "Revenue amounted to EUR 241.6m in FY2024."
+   }
+  ],
+  "fact_00419": [
+   {
+    "document_id": "doc_buyer_09_report",
+    "page": 1,
+    "char_start": 222,
+    "char_end": 304,
+    "quote": "Tarnora Industries had a workforce of 6,560 employees at the close of fiscal 2024."
+   }
+  ],
+  "fact_00420": [
+   {
+    "document_id": "doc_buyer_09_report",
+    "page": 1,
+    "char_start": 306,
+    "char_end": 423,
+    "quote": "Tarnora Industries controls 17.4 percent of European sales in its main segment as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00421": [
+   {
+    "document_id": "doc_buyer_09_filing",
+    "page": 1,
+    "char_start": 118,
+    "char_end": 174,
+    "quote": "The company employed 11,170 people at the end of FY2021."
+   }
+  ],
+  "fact_00422": [
+   {
+    "document_id": "doc_buyer_10_profile",
+    "page": 1,
+    "char_start": 286,
+    "char_end": 349,
+    "quote": "Assets under management were EUR 1,400.0m at the end of FY2024."
+   }
+  ],
+  "fact_00423": [
+   {
+    "document_id": "doc_buyer_10_profile",
+    "page": 1,
+    "char_start": 351,
+    "char_end": 440,
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+   }
+  ],
+  "fact_00424": [
+   {
+    "document_id": "doc_buyer_10_profile",
+    "page": 1,
+    "char_start": 351,
+    "char_end": 440,
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+   }
+  ],
+  "fact_00425": [
+   {
+    "document_id": "doc_buyer_10_profile",
+    "page": 1,
+    "char_start": 442,
+    "char_end": 497,
+    "quote": "The vehicle began its life as an investor pool in 2017."
+   }
+  ],
+  "fact_00426": [
+   {
+    "document_id": "doc_buyer_10_report",
+    "page": 1,
+    "char_start": 113,
+    "char_end": 179,
+    "quote": "Assets under management were EUR 1.4 billion at the end of FY2024."
+   }
+  ],
+  "fact_00427": [
+   {
+    "document_id": "doc_buyer_10_report",
+    "page": 1,
+    "char_start": 181,
+    "char_end": 270,
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+   }
+  ],
+  "fact_00428": [
+   {
+    "document_id": "doc_buyer_10_report",
+    "page": 1,
+    "char_start": 181,
+    "char_end": 270,
+    "quote": "The fund targets equity tickets of EUR 45.0 million to EUR 145.0 million per transaction."
+   }
+  ],
+  "fact_00429": [
+   {
+    "document_id": "doc_buyer_10_report",
+    "page": 1,
+    "char_start": 272,
+    "char_end": 363,
+    "quote": "Peling Capital Partners backs 8 operating businesses as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00430": [
+   {
+    "document_id": "doc_buyer_10_report",
+    "page": 1,
+    "char_start": 365,
+    "char_end": 420,
+    "quote": "The vehicle began its life as an investor pool in 2017."
+   }
+  ],
+  "fact_00431": [
+   {
+    "document_id": "doc_buyer_10_article",
+    "page": 1,
+    "char_start": 41,
+    "char_end": 96,
+    "quote": "Peling is reported to manage roughly EUR 1,260 million."
+   }
+  ],
+  "fact_00432": [
+   {
+    "document_id": "doc_buyer_10_pr_old",
+    "page": 1,
+    "char_start": 50,
+    "char_end": 131,
+    "quote": "Peling Capital Partners had assets under management of EUR 1,040.0m as of FY2022."
+   }
+  ],
+  "fact_00433": [
+   {
+    "document_id": "doc_buyer_11_profile",
+    "page": 1,
+    "char_start": 242,
+    "char_end": 309,
+    "quote": "Market capitalisation was EUR 1,800.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00434": [
+   {
+    "document_id": "doc_buyer_11_report",
+    "page": 1,
+    "char_start": 104,
+    "char_end": 211,
+    "quote": "The equity of Tarnix Systems was valued at EUR 1,800.0 million on the exchange at the close of fiscal 2024."
+   }
+  ],
+  "fact_00435": [
+   {
+    "document_id": "doc_buyer_11_report",
+    "page": 1,
+    "char_start": 213,
+    "char_end": 270,
+    "quote": "Tarnix Systems generated revenue of EUR 416.7m in FY2024."
+   }
+  ],
+  "fact_00436": [
+   {
+    "document_id": "doc_buyer_11_report",
+    "page": 1,
+    "char_start": 272,
+    "char_end": 327,
+    "quote": "The company employed 6,190 people at the end of FY2024."
+   }
+  ],
+  "fact_00437": [
+   {
+    "document_id": "doc_buyer_11_article",
+    "page": 1,
+    "char_start": 32,
+    "char_end": 118,
+    "quote": "The stock market capitalisation of Tarnix was reported near EUR 1,510 million in 2024."
+   }
+  ],
+  "fact_00438": [
+   {
+    "document_id": "doc_buyer_12_profile",
+    "page": 1,
+    "char_start": 262,
+    "char_end": 332,
+    "quote": "Assets under management were EUR 6,850.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00439": [
+   {
+    "document_id": "doc_buyer_12_profile",
+    "page": 1,
+    "char_start": 334,
+    "char_end": 424,
+    "quote": "The fund targets equity tickets of EUR 210.0 million to EUR 745.0 million per transaction."
+   }
+  ],
+  "fact_00440": [
+   {
+    "document_id": "doc_buyer_12_profile",
+    "page": 1,
+    "char_start": 334,
+    "char_end": 424,
+    "quote": "The fund targets equity tickets of EUR 210.0 million to EUR 745.0 million per transaction."
+   }
+  ],
+  "fact_00441": [
+   {
+    "document_id": "doc_buyer_12_report",
+    "page": 1,
+    "char_start": 99,
+    "char_end": 209,
+    "quote": "The platform administers EUR 6,850.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00442": [
+   {
+    "document_id": "doc_buyer_12_report",
+    "page": 1,
+    "char_start": 211,
+    "char_end": 295,
+    "quote": "Each deal receives an equity cheque between EUR 210.0 million and EUR 745.0 million."
+   }
+  ],
+  "fact_00443": [
+   {
+    "document_id": "doc_buyer_12_report",
+    "page": 1,
+    "char_start": 211,
+    "char_end": 295,
+    "quote": "Each deal receives an equity cheque between EUR 210.0 million and EUR 745.0 million."
+   }
+  ],
+  "fact_00444": [
+   {
+    "document_id": "doc_buyer_12_report",
+    "page": 1,
+    "char_start": 297,
+    "char_end": 348,
+    "quote": "The fund holds 23 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00445": [
+   {
+    "document_id": "doc_buyer_12_pr_old",
+    "page": 1,
+    "char_start": 43,
+    "char_end": 124,
+    "quote": "Ulik Growth Fund had assets under management of EUR 6,110.0 million as of FY2022."
+   }
+  ],
+  "fact_00446": [
+   {
+    "document_id": "doc_buyer_13_profile",
+    "page": 1,
+    "char_start": 249,
+    "char_end": 334,
+    "quote": "Junuro Holdings had a market capitalisation of EUR 1.45 billion at the end of FY2024."
+   }
+  ],
+  "fact_00447": [
+   {
+    "document_id": "doc_buyer_13_report",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 187,
+    "quote": "Junuro Holdings had a market capitalisation of EUR 1,450.0m at the end of FY2024."
+   }
+  ],
+  "fact_00448": [
+   {
+    "document_id": "doc_buyer_13_report",
+    "page": 1,
+    "char_start": 189,
+    "char_end": 268,
+    "quote": "The top line came in at EUR 1,014.7 million in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00449": [
+   {
+    "document_id": "doc_buyer_13_report",
+    "page": 1,
+    "char_start": 270,
+    "char_end": 370,
+    "quote": "Junuro Holdings had a workforce of 11,350 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00450": [
+   {
+    "document_id": "doc_buyer_13_report",
+    "page": 1,
+    "char_start": 372,
+    "char_end": 454,
+    "quote": "Junuro Holdings holds a market share of 33.6 percent in its core European segment."
+   }
+  ],
+  "fact_00451": [
+   {
+    "document_id": "doc_buyer_13_article",
+    "page": 1,
+    "char_start": 33,
+    "char_end": 119,
+    "quote": "The stock market capitalisation of Junuro was reported near EUR 1,280 million in 2024."
+   }
+  ],
+  "fact_00452": [
+   {
+    "document_id": "doc_buyer_13_filing",
+    "page": 1,
+    "char_start": 112,
+    "char_end": 168,
+    "quote": "The company employed 16,430 people at the end of FY2021."
+   }
+  ],
+  "fact_00453": [
+   {
+    "document_id": "doc_buyer_14_profile",
+    "page": 1,
+    "char_start": 248,
+    "char_end": 332,
+    "quote": "Tarnane Investments had assets under management of EUR 2,650.0 million as of FY2024."
+   }
+  ],
+  "fact_00454": [
+   {
+    "document_id": "doc_buyer_14_profile",
+    "page": 1,
+    "char_start": 334,
+    "char_end": 424,
+    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+   }
+  ],
+  "fact_00455": [
+   {
+    "document_id": "doc_buyer_14_profile",
+    "page": 1,
+    "char_start": 334,
+    "char_end": 424,
+    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+   }
+  ],
+  "fact_00456": [
+   {
+    "document_id": "doc_buyer_14_profile",
+    "page": 1,
+    "char_start": 426,
+    "char_end": 481,
+    "quote": "The vehicle began its life as an investor pool in 2022."
+   }
+  ],
+  "fact_00457": [
+   {
+    "document_id": "doc_buyer_14_report",
+    "page": 1,
+    "char_start": 105,
+    "char_end": 189,
+    "quote": "Tarnane Investments had assets under management of EUR 2,650.0 million as of FY2024."
+   }
+  ],
+  "fact_00458": [
+   {
+    "document_id": "doc_buyer_14_report",
+    "page": 1,
+    "char_start": 191,
+    "char_end": 281,
+    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+   }
+  ],
+  "fact_00459": [
+   {
+    "document_id": "doc_buyer_14_report",
+    "page": 1,
+    "char_start": 191,
+    "char_end": 281,
+    "quote": "The fund targets equity tickets of EUR 150.0 million to EUR 460.0 million per transaction."
+   }
+  ],
+  "fact_00460": [
+   {
+    "document_id": "doc_buyer_14_report",
+    "page": 1,
+    "char_start": 283,
+    "char_end": 334,
+    "quote": "The fund holds 13 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00461": [
+   {
+    "document_id": "doc_buyer_14_report",
+    "page": 1,
+    "char_start": 336,
+    "char_end": 366,
+    "quote": "The fund was launched in 2022."
+   }
+  ],
+  "fact_00462": [
+   {
+    "document_id": "doc_buyer_14_article",
+    "page": 1,
+    "char_start": 37,
+    "char_end": 93,
+    "quote": "Tarnane is reported to manage roughly EUR 2,240 million."
+   }
+  ],
+  "fact_00463": [
+   {
+    "document_id": "doc_buyer_14_pr_old",
+    "page": 1,
+    "char_start": 46,
+    "char_end": 130,
+    "quote": "Tarnane Investments had assets under management of EUR 2,070.0 million as of FY2022."
+   }
+  ],
+  "fact_00464": [
+   {
+    "document_id": "doc_buyer_15_profile",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 343,
+    "quote": "Senon Holdings had a market capitalisation of EUR 600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00465": [
+   {
+    "document_id": "doc_buyer_15_report",
+    "page": 1,
+    "char_start": 104,
+    "char_end": 169,
+    "quote": "Market capitalisation was EUR 600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00466": [
+   {
+    "document_id": "doc_buyer_15_report",
+    "page": 1,
+    "char_start": 171,
+    "char_end": 246,
+    "quote": "Turnover climbed to EUR 232.2 million over the year ended 31 December 2024."
+   }
+  ],
+  "fact_00467": [
+   {
+    "document_id": "doc_buyer_15_report",
+    "page": 1,
+    "char_start": 248,
+    "char_end": 304,
+    "quote": "The company employed 23,480 people at the end of FY2024."
+   }
+  ],
+  "fact_00468": [
+   {
+    "document_id": "doc_buyer_15_report",
+    "page": 1,
+    "char_start": 306,
+    "char_end": 387,
+    "quote": "Senon Holdings holds a market share of 45.9 percent in its core European segment."
+   }
+  ],
+  "fact_00469": [
+   {
+    "document_id": "doc_buyer_16_profile",
+    "page": 1,
+    "char_start": 252,
+    "char_end": 353,
+    "quote": "The platform administers EUR 350.0m on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00470": [
+   {
+    "document_id": "doc_buyer_16_profile",
+    "page": 1,
+    "char_start": 355,
+    "char_end": 437,
+    "quote": "Each deal receives an equity cheque between EUR 20.0 million and EUR 55.0 million."
+   }
+  ],
+  "fact_00471": [
+   {
+    "document_id": "doc_buyer_16_profile",
+    "page": 1,
+    "char_start": 355,
+    "char_end": 437,
+    "quote": "Each deal receives an equity cheque between EUR 20.0 million and EUR 55.0 million."
+   }
+  ],
+  "fact_00472": [
+   {
+    "document_id": "doc_buyer_16_profile",
+    "page": 1,
+    "char_start": 439,
+    "char_end": 504,
+    "quote": "Elnik Equity closed its current fund with a vintage year of 2020."
+   }
+  ],
+  "fact_00473": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 166,
+    "quote": "Elnik Equity had assets under management of EUR 350.0 million as of FY2024."
+   }
+  ],
+  "fact_00474": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 168,
+    "char_end": 256,
+    "quote": "The fund targets equity tickets of EUR 20.0 million to EUR 55.0 million per transaction."
+   }
+  ],
+  "fact_00475": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 168,
+    "char_end": 256,
+    "quote": "The fund targets equity tickets of EUR 20.0 million to EUR 55.0 million per transaction."
+   }
+  ],
+  "fact_00476": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 339,
+    "quote": "Elnik Equity backs 17 operating businesses as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00477": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 341,
+    "char_end": 371,
+    "quote": "The fund was launched in 2020."
+   }
+  ],
+  "fact_00478": [
+   {
+    "document_id": "doc_buyer_16_report",
+    "page": 1,
+    "char_start": 373,
+    "char_end": 420,
+    "quote": "The investment period of the fund ends in 2026."
+   }
+  ],
+  "fact_00479": [
+   {
+    "document_id": "doc_buyer_16_article",
+    "page": 1,
+    "char_start": 30,
+    "char_end": 106,
+    "quote": "Industry estimates put the assets of Elnik at about EUR 320 million in 2024."
+   }
+  ],
+  "fact_00480": [
+   {
+    "document_id": "doc_buyer_16_pr_old",
+    "page": 1,
+    "char_start": 39,
+    "char_end": 107,
+    "quote": "Elnik Equity had assets under management of EUR 290.0m as of FY2022."
+   }
+  ],
+  "fact_00481": [
+   {
+    "document_id": "doc_buyer_17_profile",
+    "page": 1,
+    "char_start": 247,
+    "char_end": 333,
+    "quote": "Ithis Systems had a market capitalisation of EUR 1,600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00482": [
+   {
+    "document_id": "doc_buyer_17_report",
+    "page": 1,
+    "char_start": 102,
+    "char_end": 169,
+    "quote": "Market capitalisation was EUR 1,600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00483": [
+   {
+    "document_id": "doc_buyer_17_report",
+    "page": 1,
+    "char_start": 171,
+    "char_end": 219,
+    "quote": "Revenue amounted to EUR 566.5 million in FY2024."
+   }
+  ],
+  "fact_00484": [
+   {
+    "document_id": "doc_buyer_17_report",
+    "page": 1,
+    "char_start": 221,
+    "char_end": 277,
+    "quote": "The company employed 12,600 people at the end of FY2024."
+   }
+  ],
+  "fact_00485": [
+   {
+    "document_id": "doc_buyer_17_article",
+    "page": 1,
+    "char_start": 31,
+    "char_end": 116,
+    "quote": "The stock market capitalisation of Ithis was reported near EUR 1,410 million in 2024."
+   }
+  ],
+  "fact_00486": [
+   {
+    "document_id": "doc_buyer_17_filing",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 163,
+    "quote": "The company employed 2,620 people at the end of FY2021."
+   }
+  ],
+  "fact_00487": [
+   {
+    "document_id": "doc_buyer_18_profile",
+    "page": 1,
+    "char_start": 279,
+    "char_end": 367,
+    "quote": "The platform administers EUR 750.0 million on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00488": [
+   {
+    "document_id": "doc_buyer_18_profile",
+    "page": 1,
+    "char_start": 369,
+    "char_end": 452,
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+   }
+  ],
+  "fact_00489": [
+   {
+    "document_id": "doc_buyer_18_profile",
+    "page": 1,
+    "char_start": 369,
+    "char_end": 452,
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+   }
+  ],
+  "fact_00490": [
+   {
+    "document_id": "doc_buyer_18_profile",
+    "page": 1,
+    "char_start": 454,
+    "char_end": 509,
+    "quote": "The vehicle began its life as an investor pool in 2021."
+   }
+  ],
+  "fact_00491": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 171,
+    "quote": "Assets under management were EUR 750.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00492": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 173,
+    "char_end": 256,
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+   }
+  ],
+  "fact_00493": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 173,
+    "char_end": 256,
+    "quote": "Each deal receives an equity cheque between EUR 45.0 million and EUR 150.0 million."
+   }
+  ],
+  "fact_00494": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 309,
+    "quote": "The fund holds 20 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00495": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 311,
+    "char_end": 366,
+    "quote": "The vehicle began its life as an investor pool in 2021."
+   }
+  ],
+  "fact_00496": [
+   {
+    "document_id": "doc_buyer_18_report",
+    "page": 1,
+    "char_start": 368,
+    "char_end": 424,
+    "quote": "New platform deals may be signed by the fund until 2027."
+   }
+  ],
+  "fact_00497": [
+   {
+    "document_id": "doc_buyer_18_pr_old",
+    "page": 1,
+    "char_start": 45,
+    "char_end": 119,
+    "quote": "Junium Growth Fund had assets under management of EUR 550.0m as of FY2022."
+   }
+  ],
+  "fact_00498": [
+   {
+    "document_id": "doc_buyer_19_profile",
+    "page": 1,
+    "char_start": 262,
+    "char_end": 350,
+    "quote": "Tarnar Industries had a market capitalisation of EUR 850.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00499": [
+   {
+    "document_id": "doc_buyer_19_report",
+    "page": 1,
+    "char_start": 110,
+    "char_end": 191,
+    "quote": "Tarnar Industries had a market capitalisation of EUR 850.0m at the end of FY2024."
+   }
+  ],
+  "fact_00500": [
+   {
+    "document_id": "doc_buyer_19_report",
+    "page": 1,
+    "char_start": 193,
+    "char_end": 253,
+    "quote": "Tarnar Industries generated revenue of EUR 193.4m in FY2024."
+   }
+  ],
+  "fact_00501": [
+   {
+    "document_id": "doc_buyer_19_report",
+    "page": 1,
+    "char_start": 255,
+    "char_end": 357,
+    "quote": "Tarnar Industries had a workforce of 11,350 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00502": [
+   {
+    "document_id": "doc_buyer_19_report",
+    "page": 1,
+    "char_start": 359,
+    "char_end": 434,
+    "quote": "The market share of Tarnar Industries in Europe was 22.5 percent in FY2024."
+   }
+  ],
+  "fact_00503": [
+   {
+    "document_id": "doc_buyer_19_article",
+    "page": 1,
+    "char_start": 35,
+    "char_end": 119,
+    "quote": "The stock market capitalisation of Tarnar was reported near EUR 760 million in 2024."
+   }
+  ],
+  "fact_00504": [
+   {
+    "document_id": "doc_buyer_20_profile",
+    "page": 1,
+    "char_start": 265,
+    "char_end": 353,
+    "quote": "The platform administers EUR 300.0 million on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00505": [
+   {
+    "document_id": "doc_buyer_20_profile",
+    "page": 1,
+    "char_start": 355,
+    "char_end": 443,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+   }
+  ],
+  "fact_00506": [
+   {
+    "document_id": "doc_buyer_20_profile",
+    "page": 1,
+    "char_start": 355,
+    "char_end": 443,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+   }
+  ],
+  "fact_00507": [
+   {
+    "document_id": "doc_buyer_20_profile",
+    "page": 1,
+    "char_start": 445,
+    "char_end": 475,
+    "quote": "The fund was launched in 2016."
+   }
+  ],
+  "fact_00508": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 113,
+    "char_end": 199,
+    "quote": "Zanent Capital Partners had assets under management of EUR 300.0 million as of FY2024."
+   }
+  ],
+  "fact_00509": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 201,
+    "char_end": 289,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+   }
+  ],
+  "fact_00510": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 201,
+    "char_end": 289,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 50.0 million per transaction."
+   }
+  ],
+  "fact_00511": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 291,
+    "char_end": 382,
+    "quote": "Zanent Capital Partners backs 8 operating businesses as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00512": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 384,
+    "char_end": 460,
+    "quote": "Zanent Capital Partners closed its current fund with a vintage year of 2016."
+   }
+  ],
+  "fact_00513": [
+   {
+    "document_id": "doc_buyer_20_report",
+    "page": 1,
+    "char_start": 462,
+    "char_end": 564,
+    "quote": "Zanent Capital Partners can make new platform investments until 2021, when the investment period ends."
+   }
+  ],
+  "fact_00514": [
+   {
+    "document_id": "doc_buyer_20_article",
+    "page": 1,
+    "char_start": 41,
+    "char_end": 118,
+    "quote": "Industry estimates put the assets of Zanent at about EUR 260 million in 2024."
+   }
+  ],
+  "fact_00515": [
+   {
+    "document_id": "doc_buyer_20_pr_old",
+    "page": 1,
+    "char_start": 50,
+    "char_end": 129,
+    "quote": "Zanent Capital Partners had assets under management of EUR 220.0m as of FY2022."
+   }
+  ],
+  "fact_00516": [
+   {
+    "document_id": "doc_buyer_21_profile",
+    "page": 1,
+    "char_start": 237,
+    "char_end": 356,
+    "quote": "The equity of Novex Systems was valued at EUR 1,300.0m on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00517": [
+   {
+    "document_id": "doc_buyer_21_report",
+    "page": 1,
+    "char_start": 102,
+    "char_end": 181,
+    "quote": "Novex Systems had a market capitalisation of EUR 1,300.0m at the end of FY2024."
+   }
+  ],
+  "fact_00518": [
+   {
+    "document_id": "doc_buyer_21_report",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 239,
+    "quote": "Novex Systems generated revenue of EUR 595.8m in FY2024."
+   }
+  ],
+  "fact_00519": [
+   {
+    "document_id": "doc_buyer_21_report",
+    "page": 1,
+    "char_start": 241,
+    "char_end": 297,
+    "quote": "The company employed 20,900 people at the end of FY2024."
+   }
+  ],
+  "fact_00520": [
+   {
+    "document_id": "doc_buyer_21_report",
+    "page": 1,
+    "char_start": 299,
+    "char_end": 363,
+    "quote": "The market share of Novex Systems in Europe was 39.4% in FY2024."
+   }
+  ],
+  "fact_00521": [
+   {
+    "document_id": "doc_buyer_22_profile",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 328,
+    "quote": "Assets under management were EUR 3,400.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00522": [
+   {
+    "document_id": "doc_buyer_22_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 420,
+    "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+   }
+  ],
+  "fact_00523": [
+   {
+    "document_id": "doc_buyer_22_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 420,
+    "quote": "The fund targets equity tickets of EUR 175.0 million to EUR 600.0 million per transaction."
+   }
+  ],
+  "fact_00524": [
+   {
+    "document_id": "doc_buyer_22_profile",
+    "page": 1,
+    "char_start": 422,
+    "char_end": 452,
+    "quote": "The fund was launched in 2016."
+   }
+  ],
+  "fact_00525": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 181,
+    "quote": "The platform administers EUR 3,400.0 million on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00526": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 267,
+    "quote": "Each deal receives an equity cheque between EUR 175.0 million and EUR 600.0 million."
+   }
+  ],
+  "fact_00527": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 267,
+    "quote": "Each deal receives an equity cheque between EUR 175.0 million and EUR 600.0 million."
+   }
+  ],
+  "fact_00528": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 269,
+    "char_end": 324,
+    "quote": "Pelix Equity owned 21 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00529": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 326,
+    "char_end": 391,
+    "quote": "Pelix Equity closed its current fund with a vintage year of 2016."
+   }
+  ],
+  "fact_00530": [
+   {
+    "document_id": "doc_buyer_22_report",
+    "page": 1,
+    "char_start": 393,
+    "char_end": 440,
+    "quote": "The investment period of the fund ends in 2022."
+   }
+  ],
+  "fact_00531": [
+   {
+    "document_id": "doc_buyer_22_article",
+    "page": 1,
+    "char_start": 30,
+    "char_end": 84,
+    "quote": "Pelix is reported to manage roughly EUR 3,040 million."
+   }
+  ],
+  "fact_00532": [
+   {
+    "document_id": "doc_buyer_22_pr_orig",
+    "page": 1,
+    "char_start": 37,
+    "char_end": 107,
+    "quote": "Assets under management were EUR 3,810.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00533": [
+   {
+    "document_id": "doc_buyer_22_pr_corr",
+    "page": 1,
+    "char_start": 116,
+    "char_end": 186,
+    "quote": "Assets under management were EUR 3,400.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00534": [
+   {
+    "document_id": "doc_buyer_23_profile",
+    "page": 1,
+    "char_start": 249,
+    "char_end": 377,
+    "quote": "The equity of Gweneth Systems was valued at EUR 1,100.0 million on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00535": [
+   {
+    "document_id": "doc_buyer_23_report",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 190,
+    "quote": "Gweneth Systems had a market capitalisation of EUR 1.1 billion at the end of FY2024."
+   }
+  ],
+  "fact_00536": [
+   {
+    "document_id": "doc_buyer_23_report",
+    "page": 1,
+    "char_start": 192,
+    "char_end": 269,
+    "quote": "The top line came in at EUR 784.0 million in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00537": [
+   {
+    "document_id": "doc_buyer_23_report",
+    "page": 1,
+    "char_start": 271,
+    "char_end": 327,
+    "quote": "The company employed 16,140 people at the end of FY2024."
+   }
+  ],
+  "fact_00538": [
+   {
+    "document_id": "doc_buyer_23_article",
+    "page": 1,
+    "char_start": 33,
+    "char_end": 120,
+    "quote": "The stock market capitalisation of Gweneth was reported near EUR 1,000 million in 2024."
+   }
+  ],
+  "fact_00539": [
+   {
+    "document_id": "doc_buyer_24_profile",
+    "page": 1,
+    "char_start": 277,
+    "char_end": 347,
+    "quote": "Assets under management were EUR 1,600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00540": [
+   {
+    "document_id": "doc_buyer_24_profile",
+    "page": 1,
+    "char_start": 349,
+    "char_end": 438,
+    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 285.0 million per transaction."
+   }
+  ],
+  "fact_00541": [
+   {
+    "document_id": "doc_buyer_24_profile",
+    "page": 1,
+    "char_start": 349,
+    "char_end": 438,
+    "quote": "The fund targets equity tickets of EUR 75.0 million to EUR 285.0 million per transaction."
+   }
+  ],
+  "fact_00542": [
+   {
+    "document_id": "doc_buyer_24_profile",
+    "page": 1,
+    "char_start": 440,
+    "char_end": 495,
+    "quote": "The vehicle began its life as an investor pool in 2017."
+   }
+  ],
+  "fact_00543": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 113,
+    "char_end": 183,
+    "quote": "Assets under management were EUR 1,600.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00544": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 185,
+    "char_end": 268,
+    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 285.0 million."
+   }
+  ],
+  "fact_00545": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 185,
+    "char_end": 268,
+    "quote": "Each deal receives an equity cheque between EUR 75.0 million and EUR 285.0 million."
+   }
+  ],
+  "fact_00546": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 270,
+    "char_end": 321,
+    "quote": "The fund holds 20 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00547": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 323,
+    "char_end": 353,
+    "quote": "The fund was launched in 2017."
+   }
+  ],
+  "fact_00548": [
+   {
+    "document_id": "doc_buyer_24_report",
+    "page": 1,
+    "char_start": 355,
+    "char_end": 411,
+    "quote": "New platform deals may be signed by the fund until 2022."
+   }
+  ],
+  "fact_00549": [
+   {
+    "document_id": "doc_buyer_24_pr_old",
+    "page": 1,
+    "char_start": 50,
+    "char_end": 138,
+    "quote": "Draium Capital Partners had assets under management of EUR 1,190.0 million as of FY2022."
+   }
+  ],
+  "fact_00550": [
+   {
+    "document_id": "doc_buyer_25_profile",
+    "page": 1,
+    "char_start": 214,
+    "char_end": 298,
+    "quote": "Quinane Group had a market capitalisation of EUR 900.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00551": [
+   {
+    "document_id": "doc_buyer_25_report",
+    "page": 1,
+    "char_start": 102,
+    "char_end": 179,
+    "quote": "Quinane Group had a market capitalisation of EUR 900.0m at the end of FY2024."
+   }
+  ],
+  "fact_00552": [
+   {
+    "document_id": "doc_buyer_25_report",
+    "page": 1,
+    "char_start": 181,
+    "char_end": 250,
+    "quote": "Sales totalled EUR 799.9 million for the year ended 31 December 2024."
+   }
+  ],
+  "fact_00553": [
+   {
+    "document_id": "doc_buyer_25_report",
+    "page": 1,
+    "char_start": 252,
+    "char_end": 350,
+    "quote": "Quinane Group had a workforce of 19,560 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00554": [
+   {
+    "document_id": "doc_buyer_25_report",
+    "page": 1,
+    "char_start": 352,
+    "char_end": 416,
+    "quote": "The market share of Quinane Group in Europe was 44.0% in FY2024."
+   }
+  ],
+  "fact_00555": [
+   {
+    "document_id": "doc_buyer_25_article",
+    "page": 1,
+    "char_start": 31,
+    "char_end": 116,
+    "quote": "The stock market capitalisation of Quinane was reported near EUR 800 million in 2024."
+   }
+  ],
+  "fact_00556": [
+   {
+    "document_id": "doc_buyer_26_profile",
+    "page": 1,
+    "char_start": 260,
+    "char_end": 328,
+    "quote": "Assets under management were EUR 450.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00557": [
+   {
+    "document_id": "doc_buyer_26_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 418,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 55.0 million per transaction."
+   }
+  ],
+  "fact_00558": [
+   {
+    "document_id": "doc_buyer_26_profile",
+    "page": 1,
+    "char_start": 330,
+    "char_end": 418,
+    "quote": "The fund targets equity tickets of EUR 15.0 million to EUR 55.0 million per transaction."
+   }
+  ],
+  "fact_00559": [
+   {
+    "document_id": "doc_buyer_26_profile",
+    "page": 1,
+    "char_start": 420,
+    "char_end": 491,
+    "quote": "Caruro Investments closed its current fund with a vintage year of 2019."
+   }
+  ],
+  "fact_00560": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 211,
+    "quote": "The platform administers EUR 450.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00561": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 213,
+    "char_end": 295,
+    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 55.0 million."
+   }
+  ],
+  "fact_00562": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 213,
+    "char_end": 295,
+    "quote": "Each deal receives an equity cheque between EUR 15.0 million and EUR 55.0 million."
+   }
+  ],
+  "fact_00563": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 297,
+    "char_end": 358,
+    "quote": "Caruro Investments owned 23 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00564": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 360,
+    "char_end": 390,
+    "quote": "The fund was launched in 2019."
+   }
+  ],
+  "fact_00565": [
+   {
+    "document_id": "doc_buyer_26_report",
+    "page": 1,
+    "char_start": 392,
+    "char_end": 489,
+    "quote": "Caruro Investments can make new platform investments until 2025, when the investment period ends."
+   }
+  ],
+  "fact_00566": [
+   {
+    "document_id": "doc_buyer_26_article",
+    "page": 1,
+    "char_start": 36,
+    "char_end": 89,
+    "quote": "Caruro is reported to manage roughly EUR 390 million."
+   }
+  ],
+  "fact_00567": [
+   {
+    "document_id": "doc_buyer_27_profile",
+    "page": 1,
+    "char_start": 249,
+    "char_end": 377,
+    "quote": "The equity of Novent Holdings was valued at EUR 2,050.0 million on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00568": [
+   {
+    "document_id": "doc_buyer_27_report",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 207,
+    "quote": "The equity of Novent Holdings was valued at EUR 2,050.0m on the exchange at the close of fiscal 2024."
+   }
+  ],
+  "fact_00569": [
+   {
+    "document_id": "doc_buyer_27_report",
+    "page": 1,
+    "char_start": 209,
+    "char_end": 279,
+    "quote": "Turnover climbed to EUR 1,079.8m over the year ended 31 December 2024."
+   }
+  ],
+  "fact_00570": [
+   {
+    "document_id": "doc_buyer_27_report",
+    "page": 1,
+    "char_start": 281,
+    "char_end": 336,
+    "quote": "The company employed 2,610 people at the end of FY2024."
+   }
+  ],
+  "fact_00571": [
+   {
+    "document_id": "doc_buyer_27_report",
+    "page": 1,
+    "char_start": 338,
+    "char_end": 445,
+    "quote": "Novent Holdings controls 49.3% of European sales in its main segment as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00572": [
+   {
+    "document_id": "doc_buyer_28_profile",
+    "page": 1,
+    "char_start": 261,
+    "char_end": 351,
+    "quote": "The platform administers EUR 2,200.0 million on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00573": [
+   {
+    "document_id": "doc_buyer_28_profile",
+    "page": 1,
+    "char_start": 353,
+    "char_end": 437,
+    "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+   }
+  ],
+  "fact_00574": [
+   {
+    "document_id": "doc_buyer_28_profile",
+    "page": 1,
+    "char_start": 353,
+    "char_end": 437,
+    "quote": "Each deal receives an equity cheque between EUR 130.0 million and EUR 315.0 million."
+   }
+  ],
+  "fact_00575": [
+   {
+    "document_id": "doc_buyer_28_profile",
+    "page": 1,
+    "char_start": 439,
+    "char_end": 469,
+    "quote": "The fund was launched in 2016."
+   }
+  ],
+  "fact_00576": [
+   {
+    "document_id": "doc_buyer_28_report",
+    "page": 1,
+    "char_start": 111,
+    "char_end": 181,
+    "quote": "Assets under management were EUR 2,200.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00577": [
+   {
+    "document_id": "doc_buyer_28_report",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 273,
+    "quote": "The fund targets equity tickets of EUR 130.0 million to EUR 315.0 million per transaction."
+   }
+  ],
+  "fact_00578": [
+   {
+    "document_id": "doc_buyer_28_report",
+    "page": 1,
+    "char_start": 183,
+    "char_end": 273,
+    "quote": "The fund targets equity tickets of EUR 130.0 million to EUR 315.0 million per transaction."
+   }
+  ],
+  "fact_00579": [
+   {
+    "document_id": "doc_buyer_28_report",
+    "page": 1,
+    "char_start": 275,
+    "char_end": 326,
+    "quote": "The fund holds 16 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00580": [
+   {
+    "document_id": "doc_buyer_28_report",
+    "page": 1,
+    "char_start": 328,
+    "char_end": 383,
+    "quote": "The vehicle began its life as an investor pool in 2016."
+   }
+  ],
+  "fact_00581": [
+   {
+    "document_id": "doc_buyer_28_article",
+    "page": 1,
+    "char_start": 40,
+    "char_end": 118,
+    "quote": "Industry estimates put the assets of Zanik at about EUR 1,950 million in 2024."
+   }
+  ],
+  "fact_00582": [
+   {
+    "document_id": "doc_buyer_29_profile",
+    "page": 1,
+    "char_start": 221,
+    "char_end": 350,
+    "quote": "The equity of Ithar Industries was valued at EUR 1,200.0 million on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00583": [
+   {
+    "document_id": "doc_buyer_29_report",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 230,
+    "quote": "The equity of Ithar Industries was valued at EUR 1,200.0m on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00584": [
+   {
+    "document_id": "doc_buyer_29_report",
+    "page": 1,
+    "char_start": 232,
+    "char_end": 302,
+    "quote": "The top line came in at EUR 302.5m in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00585": [
+   {
+    "document_id": "doc_buyer_29_report",
+    "page": 1,
+    "char_start": 304,
+    "char_end": 348,
+    "quote": "Headcount stood at 6,010 at year end FY2024."
+   }
+  ],
+  "fact_00586": [
+   {
+    "document_id": "doc_buyer_30_profile",
+    "page": 1,
+    "char_start": 286,
+    "char_end": 357,
+    "quote": "Assets under management were EUR 15,950.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00587": [
+   {
+    "document_id": "doc_buyer_30_profile",
+    "page": 1,
+    "char_start": 359,
+    "char_end": 445,
+    "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+   }
+  ],
+  "fact_00588": [
+   {
+    "document_id": "doc_buyer_30_profile",
+    "page": 1,
+    "char_start": 359,
+    "char_end": 445,
+    "quote": "Each deal receives an equity cheque between EUR 890.0 million and EUR 2,815.0 million."
+   }
+  ],
+  "fact_00589": [
+   {
+    "document_id": "doc_buyer_30_profile",
+    "page": 1,
+    "char_start": 447,
+    "char_end": 518,
+    "quote": "Corani Growth Fund closed its current fund with a vintage year of 2020."
+   }
+  ],
+  "fact_00590": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 184,
+    "quote": "Corani Growth Fund had assets under management of EUR 15.95 billion as of FY2024."
+   }
+  ],
+  "fact_00591": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 186,
+    "char_end": 278,
+    "quote": "The fund targets equity tickets of EUR 890.0 million to EUR 2,815.0 million per transaction."
+   }
+  ],
+  "fact_00592": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 186,
+    "char_end": 278,
+    "quote": "The fund targets equity tickets of EUR 890.0 million to EUR 2,815.0 million per transaction."
+   }
+  ],
+  "fact_00593": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 280,
+    "char_end": 341,
+    "quote": "Corani Growth Fund owned 20 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00594": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 343,
+    "char_end": 373,
+    "quote": "The fund was launched in 2020."
+   }
+  ],
+  "fact_00595": [
+   {
+    "document_id": "doc_buyer_30_report",
+    "page": 1,
+    "char_start": 375,
+    "char_end": 431,
+    "quote": "New platform deals may be signed by the fund until 2025."
+   }
+  ],
+  "fact_00596": [
+   {
+    "document_id": "doc_buyer_31_profile",
+    "page": 1,
+    "char_start": 238,
+    "char_end": 324,
+    "quote": "Halund Holdings had a market capitalisation of EUR 950.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00597": [
+   {
+    "document_id": "doc_buyer_31_report",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 171,
+    "quote": "Market capitalisation was EUR 950.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00598": [
+   {
+    "document_id": "doc_buyer_31_report",
+    "page": 1,
+    "char_start": 173,
+    "char_end": 238,
+    "quote": "Halund Holdings generated revenue of EUR 292.5 million in FY2024."
+   }
+  ],
+  "fact_00599": [
+   {
+    "document_id": "doc_buyer_31_report",
+    "page": 1,
+    "char_start": 240,
+    "char_end": 296,
+    "quote": "The company employed 10,400 people at the end of FY2024."
+   }
+  ],
+  "fact_00600": [
+   {
+    "document_id": "doc_buyer_32_profile",
+    "page": 1,
+    "char_start": 250,
+    "char_end": 337,
+    "quote": "The platform administers EUR 1.85 billion on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00601": [
+   {
+    "document_id": "doc_buyer_32_profile",
+    "page": 1,
+    "char_start": 339,
+    "char_end": 428,
+    "quote": "The fund targets equity tickets of EUR 85.0 million to EUR 260.0 million per transaction."
+   }
+  ],
+  "fact_00602": [
+   {
+    "document_id": "doc_buyer_32_profile",
+    "page": 1,
+    "char_start": 339,
+    "char_end": 428,
+    "quote": "The fund targets equity tickets of EUR 85.0 million to EUR 260.0 million per transaction."
+   }
+  ],
+  "fact_00603": [
+   {
+    "document_id": "doc_buyer_32_profile",
+    "page": 1,
+    "char_start": 430,
+    "char_end": 460,
+    "quote": "The fund was launched in 2017."
+   }
+  ],
+  "fact_00604": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 103,
+    "char_end": 213,
+    "quote": "The platform administers EUR 1,850.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00605": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 215,
+    "char_end": 298,
+    "quote": "Each deal receives an equity cheque between EUR 85.0 million and EUR 260.0 million."
+   }
+  ],
+  "fact_00606": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 215,
+    "char_end": 298,
+    "quote": "Each deal receives an equity cheque between EUR 85.0 million and EUR 260.0 million."
+   }
+  ],
+  "fact_00607": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 300,
+    "char_end": 351,
+    "quote": "The fund holds 15 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00608": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 353,
+    "char_end": 424,
+    "quote": "Quinis Growth Fund closed its current fund with a vintage year of 2017."
+   }
+  ],
+  "fact_00609": [
+   {
+    "document_id": "doc_buyer_32_report",
+    "page": 1,
+    "char_start": 426,
+    "char_end": 482,
+    "quote": "New platform deals may be signed by the fund until 2022."
+   }
+  ],
+  "fact_00610": [
+   {
+    "document_id": "doc_buyer_33_profile",
+    "page": 1,
+    "char_start": 243,
+    "char_end": 371,
+    "quote": "The equity of Trauro Holdings was valued at EUR 2,400.0 million on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00611": [
+   {
+    "document_id": "doc_buyer_33_report",
+    "page": 1,
+    "char_start": 106,
+    "char_end": 169,
+    "quote": "Market capitalisation was EUR 2.4 billion at the end of FY2024."
+   }
+  ],
+  "fact_00612": [
+   {
+    "document_id": "doc_buyer_33_report",
+    "page": 1,
+    "char_start": 171,
+    "char_end": 236,
+    "quote": "Trauro Holdings generated revenue of EUR 503.0 million in FY2024."
+   }
+  ],
+  "fact_00613": [
+   {
+    "document_id": "doc_buyer_33_report",
+    "page": 1,
+    "char_start": 238,
+    "char_end": 338,
+    "quote": "Trauro Holdings had a workforce of 17,110 employees at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00614": [
+   {
+    "document_id": "doc_buyer_33_report",
+    "page": 1,
+    "char_start": 340,
+    "char_end": 422,
+    "quote": "Trauro Holdings holds a market share of 41.0 percent in its core European segment."
+   }
+  ],
+  "fact_00615": [
+   {
+    "document_id": "doc_buyer_33_pr_old",
+    "page": 1,
+    "char_start": 42,
+    "char_end": 123,
+    "quote": "Trauro Holdings had a market capitalisation of EUR 1,910.0m at the end of FY2022."
+   }
+  ],
+  "fact_00616": [
+   {
+    "document_id": "doc_buyer_34_profile",
+    "page": 1,
+    "char_start": 253,
+    "char_end": 329,
+    "quote": "Junova Equity had assets under management of EUR 900.0 million as of FY2024."
+   }
+  ],
+  "fact_00617": [
+   {
+    "document_id": "doc_buyer_34_profile",
+    "page": 1,
+    "char_start": 331,
+    "char_end": 414,
+    "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+   }
+  ],
+  "fact_00618": [
+   {
+    "document_id": "doc_buyer_34_profile",
+    "page": 1,
+    "char_start": 331,
+    "char_end": 414,
+    "quote": "Each deal receives an equity cheque between EUR 50.0 million and EUR 130.0 million."
+   }
+  ],
+  "fact_00619": [
+   {
+    "document_id": "doc_buyer_34_profile",
+    "page": 1,
+    "char_start": 416,
+    "char_end": 446,
+    "quote": "The fund was launched in 2020."
+   }
+  ],
+  "fact_00620": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 93,
+    "char_end": 201,
+    "quote": "The platform administers EUR 900.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00621": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 203,
+    "char_end": 292,
+    "quote": "The fund targets equity tickets of EUR 50.0 million to EUR 130.0 million per transaction."
+   }
+  ],
+  "fact_00622": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 203,
+    "char_end": 292,
+    "quote": "The fund targets equity tickets of EUR 50.0 million to EUR 130.0 million per transaction."
+   }
+  ],
+  "fact_00623": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 294,
+    "char_end": 345,
+    "quote": "The fund holds 13 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00624": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 347,
+    "char_end": 402,
+    "quote": "The vehicle began its life as an investor pool in 2020."
+   }
+  ],
+  "fact_00625": [
+   {
+    "document_id": "doc_buyer_34_report",
+    "page": 1,
+    "char_start": 404,
+    "char_end": 460,
+    "quote": "New platform deals may be signed by the fund until 2026."
+   }
+  ],
+  "fact_00626": [
+   {
+    "document_id": "doc_buyer_35_profile",
+    "page": 1,
+    "char_start": 248,
+    "char_end": 368,
+    "quote": "The equity of Estund Systems was valued at EUR 3,600.0m on the exchange at the close of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00627": [
+   {
+    "document_id": "doc_buyer_35_report",
+    "page": 1,
+    "char_start": 104,
+    "char_end": 187,
+    "quote": "Estund Systems had a market capitalisation of EUR 3.6 billion at the end of FY2024."
+   }
+  ],
+  "fact_00628": [
+   {
+    "document_id": "doc_buyer_35_report",
+    "page": 1,
+    "char_start": 189,
+    "char_end": 266,
+    "quote": "Turnover climbed to EUR 2,156.9 million over the year ended 31 December 2024."
+   }
+  ],
+  "fact_00629": [
+   {
+    "document_id": "doc_buyer_35_report",
+    "page": 1,
+    "char_start": 268,
+    "char_end": 312,
+    "quote": "Headcount stood at 1,300 at year end FY2024."
+   }
+  ],
+  "fact_00630": [
+   {
+    "document_id": "doc_buyer_35_report",
+    "page": 1,
+    "char_start": 314,
+    "char_end": 427,
+    "quote": "Estund Systems controls 40.5 percent of European sales in its main segment as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00631": [
+   {
+    "document_id": "doc_buyer_35_pr_old",
+    "page": 1,
+    "char_start": 41,
+    "char_end": 121,
+    "quote": "Estund Systems had a market capitalisation of EUR 2,880.0m at the end of FY2022."
+   }
+  ],
+  "fact_00632": [
+   {
+    "document_id": "doc_buyer_36_profile",
+    "page": 1,
+    "char_start": 300,
+    "char_end": 410,
+    "quote": "The platform administers EUR 1,050.0 million on behalf of its investors as of the year ended 31 December 2024."
+   }
+  ],
+  "fact_00633": [
+   {
+    "document_id": "doc_buyer_36_profile",
+    "page": 1,
+    "char_start": 412,
+    "char_end": 501,
+    "quote": "The fund targets equity tickets of EUR 60.0 million to EUR 195.0 million per transaction."
+   }
+  ],
+  "fact_00634": [
+   {
+    "document_id": "doc_buyer_36_profile",
+    "page": 1,
+    "char_start": 412,
+    "char_end": 501,
+    "quote": "The fund targets equity tickets of EUR 60.0 million to EUR 195.0 million per transaction."
+   }
+  ],
+  "fact_00635": [
+   {
+    "document_id": "doc_buyer_36_report",
+    "page": 1,
+    "char_start": 113,
+    "char_end": 200,
+    "quote": "The platform administers EUR 1.05 billion on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00636": [
+   {
+    "document_id": "doc_buyer_36_report",
+    "page": 1,
+    "char_start": 202,
+    "char_end": 285,
+    "quote": "Each deal receives an equity cheque between EUR 60.0 million and EUR 195.0 million."
+   }
+  ],
+  "fact_00637": [
+   {
+    "document_id": "doc_buyer_36_report",
+    "page": 1,
+    "char_start": 202,
+    "char_end": 285,
+    "quote": "Each deal receives an equity cheque between EUR 60.0 million and EUR 195.0 million."
+   }
+  ],
+  "fact_00638": [
+   {
+    "document_id": "doc_buyer_36_report",
+    "page": 1,
+    "char_start": 287,
+    "char_end": 352,
+    "quote": "Valuro Capital Partners owned 9 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00639": [
+   {
+    "document_id": "doc_buyer_37_profile",
+    "page": 1,
+    "char_start": 259,
+    "char_end": 324,
+    "quote": "Market capitalisation was EUR 650.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00640": [
+   {
+    "document_id": "doc_buyer_37_report",
+    "page": 1,
+    "char_start": 108,
+    "char_end": 173,
+    "quote": "Market capitalisation was EUR 650.0 million at the end of FY2024."
+   }
+  ],
+  "fact_00641": [
+   {
+    "document_id": "doc_buyer_37_report",
+    "page": 1,
+    "char_start": 175,
+    "char_end": 252,
+    "quote": "The top line came in at EUR 571.9 million in the year ended 31 December 2024."
+   }
+  ],
+  "fact_00642": [
+   {
+    "document_id": "doc_buyer_37_report",
+    "page": 1,
+    "char_start": 254,
+    "char_end": 298,
+    "quote": "Headcount stood at 2,720 at year end FY2024."
+   }
+  ],
+  "fact_00643": [
+   {
+    "document_id": "doc_buyer_37_report",
+    "page": 1,
+    "char_start": 300,
+    "char_end": 367,
+    "quote": "The market share of Ostis Industries in Europe was 12.2% in FY2024."
+   }
+  ],
+  "fact_00644": [
+   {
+    "document_id": "doc_buyer_38_profile",
+    "page": 1,
+    "char_start": 258,
+    "char_end": 337,
+    "quote": "Lanova Equity had assets under management of EUR 19,950.0 million as of FY2024."
+   }
+  ],
+  "fact_00645": [
+   {
+    "document_id": "doc_buyer_38_profile",
+    "page": 1,
+    "char_start": 339,
+    "char_end": 433,
+    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+   }
+  ],
+  "fact_00646": [
+   {
+    "document_id": "doc_buyer_38_profile",
+    "page": 1,
+    "char_start": 339,
+    "char_end": 433,
+    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+   }
+  ],
+  "fact_00647": [
+   {
+    "document_id": "doc_buyer_38_profile",
+    "page": 1,
+    "char_start": 435,
+    "char_end": 465,
+    "quote": "The fund was launched in 2021."
+   }
+  ],
+  "fact_00648": [
+   {
+    "document_id": "doc_buyer_38_report",
+    "page": 1,
+    "char_start": 93,
+    "char_end": 172,
+    "quote": "Lanova Equity had assets under management of EUR 19,950.0 million as of FY2024."
+   }
+  ],
+  "fact_00649": [
+   {
+    "document_id": "doc_buyer_38_report",
+    "page": 1,
+    "char_start": 174,
+    "char_end": 268,
+    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+   }
+  ],
+  "fact_00650": [
+   {
+    "document_id": "doc_buyer_38_report",
+    "page": 1,
+    "char_start": 174,
+    "char_end": 268,
+    "quote": "The fund targets equity tickets of EUR 1,130.0 million to EUR 3,165.0 million per transaction."
+   }
+  ],
+  "fact_00651": [
+   {
+    "document_id": "doc_buyer_38_report",
+    "page": 1,
+    "char_start": 270,
+    "char_end": 321,
+    "quote": "The fund holds 12 portfolio companies as of FY2024."
+   }
+  ],
+  "fact_00652": [
+   {
+    "document_id": "doc_buyer_38_report",
+    "page": 1,
+    "char_start": 323,
+    "char_end": 378,
+    "quote": "The vehicle began its life as an investor pool in 2021."
+   }
+  ],
+  "fact_00653": [
+   {
+    "document_id": "doc_buyer_39_profile",
+    "page": 1,
+    "char_start": 238,
+    "char_end": 296,
+    "quote": "Market capitalisation was EUR 450.0m at the end of FY2024."
+   }
+  ],
+  "fact_00654": [
+   {
+    "document_id": "doc_buyer_39_report",
+    "page": 1,
+    "char_start": 98,
+    "char_end": 173,
+    "quote": "Lanik Group had a market capitalisation of EUR 450.0m at the end of FY2024."
+   }
+  ],
+  "fact_00655": [
+   {
+    "document_id": "doc_buyer_39_report",
+    "page": 1,
+    "char_start": 175,
+    "char_end": 223,
+    "quote": "Revenue amounted to EUR 236.1 million in FY2024."
+   }
+  ],
+  "fact_00656": [
+   {
+    "document_id": "doc_buyer_39_report",
+    "page": 1,
+    "char_start": 225,
+    "char_end": 280,
+    "quote": "The company employed 1,590 people at the end of FY2024."
+   }
+  ],
+  "fact_00657": [
+   {
+    "document_id": "doc_buyer_40_profile",
+    "page": 1,
+    "char_start": 225,
+    "char_end": 302,
+    "quote": "Caris Equity had assets under management of EUR 1,250.0 million as of FY2024."
+   }
+  ],
+  "fact_00658": [
+   {
+    "document_id": "doc_buyer_40_profile",
+    "page": 1,
+    "char_start": 304,
+    "char_end": 387,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00659": [
+   {
+    "document_id": "doc_buyer_40_profile",
+    "page": 1,
+    "char_start": 304,
+    "char_end": 387,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00660": [
+   {
+    "document_id": "doc_buyer_40_report",
+    "page": 1,
+    "char_start": 91,
+    "char_end": 174,
+    "quote": "The platform administers EUR 1,250.0m on behalf of its investors as of fiscal 2024."
+   }
+  ],
+  "fact_00661": [
+   {
+    "document_id": "doc_buyer_40_report",
+    "page": 1,
+    "char_start": 176,
+    "char_end": 259,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00662": [
+   {
+    "document_id": "doc_buyer_40_report",
+    "page": 1,
+    "char_start": 176,
+    "char_end": 259,
+    "quote": "Each deal receives an equity cheque between EUR 40.0 million and EUR 165.0 million."
+   }
+  ],
+  "fact_00663": [
+   {
+    "document_id": "doc_buyer_40_report",
+    "page": 1,
+    "char_start": 261,
+    "char_end": 316,
+    "quote": "Caris Equity owned 23 portfolio companies as of FY2024."
+   }
+  ]
+ },
+ "absent_terms": {
+  "u_0001": {
+   "topic": "ceo_compensation",
+   "terms": [
+    "compensation",
+    "salary",
+    "remuneration",
+    "bonus",
+    "stock option",
+    "pay package"
+   ]
+  },
+  "u_0002": {
+   "topic": "revenue_guidance_fy2026",
+   "terms": [
+    "guidance",
+    "fy2026",
+    "fiscal 2026"
+   ]
+  },
+  "u_0003": {
+   "topic": "ebitda_forecast_fy2027",
+   "terms": [
+    "forecast",
+    "fy2027",
+    "fiscal 2027"
+   ]
+  },
+  "u_0004": {
+   "topic": "pending_litigation",
+   "terms": [
+    "lawsuit",
+    "litigation",
+    "legal dispute",
+    "pending claim"
+   ]
+  },
+  "u_0005": {
+   "topic": "pension_deficit",
+   "terms": [
+    "pension"
+   ]
+  },
+  "u_0006": {
+   "topic": "patent_portfolio",
+   "terms": [
+    "patent"
+   ]
+  },
+  "u_0007": {
+   "topic": "employee_attrition",
+   "terms": [
+    "attrition",
+    "staff turnover",
+    "employee turnover",
+    "resignation"
+   ]
+  },
+  "u_0008": {
+   "topic": "environmental",
+   "terms": [
+    "environmental",
+    "emissions",
+    "carbon"
+   ]
+  },
+  "u_0009": {
+   "topic": "credit_rating",
+   "terms": [
+    "credit rating",
+    "rating agency"
+   ]
+  },
+  "u_0010": {
+   "topic": "insurance",
+   "terms": [
+    "insurance",
+    "insured"
+   ]
+  },
+  "u_0011": {
+   "topic": "customer_churn",
+   "terms": [
+    "churn"
+   ]
+  },
+  "u_0012": {
+   "topic": "dividend_policy",
+   "terms": [
+    "dividend"
+   ]
+  },
+  "u_0013": {
+   "topic": "ceo_compensation",
+   "terms": [
+    "compensation",
+    "salary",
+    "remuneration",
+    "bonus",
+    "stock option",
+    "pay package"
+   ]
+  },
+  "u_0014": {
+   "topic": "revenue_guidance_fy2026",
+   "terms": [
+    "guidance",
+    "fy2026",
+    "fiscal 2026"
+   ]
+  },
+  "u_0015": {
+   "topic": "ebitda_forecast_fy2027",
+   "terms": [
+    "forecast",
+    "fy2027",
+    "fiscal 2027"
+   ]
+  },
+  "u_0016": {
+   "topic": "pending_litigation",
+   "terms": [
+    "lawsuit",
+    "litigation",
+    "legal dispute",
+    "pending claim"
+   ]
+  },
+  "u_0017": {
+   "topic": "pension_deficit",
+   "terms": [
+    "pension"
+   ]
+  },
+  "u_0018": {
+   "topic": "patent_portfolio",
+   "terms": [
+    "patent"
+   ]
+  },
+  "u_0019": {
+   "topic": "employee_attrition",
+   "terms": [
+    "attrition",
+    "staff turnover",
+    "employee turnover",
+    "resignation"
+   ]
+  },
+  "u_0020": {
+   "topic": "environmental",
+   "terms": [
+    "environmental",
+    "emissions",
+    "carbon"
+   ]
+  },
+  "u_0021": {
+   "topic": "credit_rating",
+   "terms": [
+    "credit rating",
+    "rating agency"
+   ]
+  },
+  "u_0022": {
+   "topic": "insurance",
+   "terms": [
+    "insurance",
+    "insured"
+   ]
+  },
+  "u_0023": {
+   "topic": "customer_churn",
+   "terms": [
+    "churn"
+   ]
+  },
+  "u_0024": {
+   "topic": "dividend_policy",
+   "terms": [
+    "dividend"
+   ]
+  },
+  "u_0025": {
+   "topic": "ceo_compensation",
+   "terms": [
+    "compensation",
+    "salary",
+    "remuneration",
+    "bonus",
+    "stock option",
+    "pay package"
+   ]
+  },
+  "u_0026": {
+   "topic": "revenue_guidance_fy2026",
+   "terms": [
+    "guidance",
+    "fy2026",
+    "fiscal 2026"
+   ]
+  },
+  "u_0027": {
+   "topic": "ebitda_forecast_fy2027",
+   "terms": [
+    "forecast",
+    "fy2027",
+    "fiscal 2027"
+   ]
+  },
+  "u_0028": {
+   "topic": "pending_litigation",
+   "terms": [
+    "lawsuit",
+    "litigation",
+    "legal dispute",
+    "pending claim"
+   ]
+  },
+  "u_0029": {
+   "topic": "pension_deficit",
+   "terms": [
+    "pension"
+   ]
+  },
+  "u_0030": {
+   "topic": "patent_portfolio",
+   "terms": [
+    "patent"
+   ]
+  },
+  "u_0031": {
+   "topic": "employee_attrition",
+   "terms": [
+    "attrition",
+    "staff turnover",
+    "employee turnover",
+    "resignation"
+   ]
+  },
+  "u_0032": {
+   "topic": "environmental",
+   "terms": [
+    "environmental",
+    "emissions",
+    "carbon"
+   ]
+  },
+  "u_0033": {
+   "topic": "credit_rating",
+   "terms": [
+    "credit rating",
+    "rating agency"
+   ]
+  },
+  "u_0034": {
+   "topic": "insurance",
+   "terms": [
+    "insurance",
+    "insured"
+   ]
+  },
+  "u_0035": {
+   "topic": "customer_churn",
+   "terms": [
+    "churn"
+   ]
+  },
+  "u_0036": {
+   "topic": "dividend_policy",
+   "terms": [
+    "dividend"
+   ]
+  },
+  "u_0037": {
+   "topic": "fee_schedule",
+   "terms": [
+    "retainer",
+    "success fee",
+    "fee schedule",
+    "mandate fee"
+   ]
+  },
+  "u_0038": {
+   "topic": "league_table",
+   "terms": [
+    "league table",
+    "ranking"
+   ]
+  },
+  "u_0039": {
+   "topic": "law_firm",
+   "terms": [
+    "law firm",
+    "legal counsel"
+   ]
+  },
+  "u_0040": {
+   "topic": "fairness_fee",
+   "terms": [
+    "fairness opinion"
+   ]
+  },
+  "u_0041": {
+   "topic": "parental_leave",
+   "terms": [
+    "parental leave"
+   ]
+  },
+  "u_0042": {
+   "topic": "conflict_check",
+   "terms": [
+    "conflict check"
+   ]
+  },
+  "u_0043": {
+   "topic": "carried_interest",
+   "terms": [
+    "carried interest",
+    "hurdle rate"
+   ]
+  },
+  "u_0044": {
+   "topic": "cio",
+   "terms": [
+    "chief investment officer"
+   ]
+  },
+  "u_0045": {
+   "topic": "buyer_credit_rating",
+   "terms": [
+    "credit rating",
+    "rating agency"
+   ]
+  },
+  "u_0046": {
+   "topic": "esg_rating",
+   "terms": [
+    "esg"
+   ]
+  },
+  "u_0047": {
+   "topic": "investor_base",
+   "terms": [
+    "limited partner",
+    "largest investor"
+   ]
+  },
+  "u_0048": {
+   "topic": "dividend_yield",
+   "terms": [
+    "dividend"
+   ]
+  },
+  "u_0049": {
+   "topic": "carried_interest",
+   "terms": [
+    "carried interest",
+    "hurdle rate"
+   ]
+  },
+  "u_0050": {
+   "topic": "cio",
+   "terms": [
+    "chief investment officer"
+   ]
+  }
+ },
+ "deal_economics": {
+  "deal_aurora": {
+   "enterprise_value_eur_m": 289.9,
+   "equity_value_eur_m": 239.3,
+   "sector": "industrial_components"
+  },
+  "deal_borealis": {
+   "enterprise_value_eur_m": 481.7,
+   "equity_value_eur_m": 409.0,
+   "sector": "software"
+  },
+  "deal_cygnus": {
+   "enterprise_value_eur_m": 476.9,
+   "equity_value_eur_m": 402.8,
+   "sector": "logistics"
+  },
+  "deal_draco": {
+   "enterprise_value_eur_m": 263.1,
+   "equity_value_eur_m": 237.0,
+   "sector": "packaging"
+  },
+  "deal_eridanus": {
+   "enterprise_value_eur_m": 358.6,
+   "equity_value_eur_m": 282.9,
+   "sector": "medical_devices"
+  },
+  "deal_fornax": {
+   "enterprise_value_eur_m": 324.6,
+   "equity_value_eur_m": 241.3,
+   "sector": "food"
+  },
+  "deal_gemini": {
+   "enterprise_value_eur_m": 258.1,
+   "equity_value_eur_m": 202.1,
+   "sector": "water_systems"
+  },
+  "deal_hydra": {
+   "enterprise_value_eur_m": 199.3,
+   "equity_value_eur_m": 173.5,
+   "sector": "automotive_parts"
+  },
+  "deal_lyra": {
+   "enterprise_value_eur_m": 242.3,
+   "equity_value_eur_m": 197.1,
+   "sector": "packaging"
+  }
+ },
+ "aurora": {
+  "sector": "industrial_components",
+  "region": "Central Europe",
+  "ev_eur_m": 289.9,
+  "equity_eur_m": 239.3
+ },
+ "tier_note": "stronger_document_id: lowest tier number, ties broken by the later date (T1 strongest)"
+}

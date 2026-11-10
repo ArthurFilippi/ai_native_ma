@@ -1,0 +1,74 @@
+[
+ {
+  "id": "deal_aurora",
+  "name": "Project Aurora",
+  "sector": "industrial components",
+  "description": "Fictional company, synthetic data room.",
+  "status": "bids",
+  "synthetic": true
+ },
+ {
+  "id": "deal_borealis",
+  "name": "Project Borealis",
+  "sector": "software",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_cygnus",
+  "name": "Project Cygnus",
+  "sector": "logistics",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_draco",
+  "name": "Project Draco",
+  "sector": "packaging",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_eridanus",
+  "name": "Project Eridanus",
+  "sector": "medical devices",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_fornax",
+  "name": "Project Fornax",
+  "sector": "food and beverage",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_gemini",
+  "name": "Project Gemini",
+  "sector": "water systems",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_hydra",
+  "name": "Project Hydra",
+  "sector": "automotive parts",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ },
+ {
+  "id": "deal_lyra",
+  "name": "Project Lyra",
+  "sector": "packaging",
+  "description": "Fictional company, synthetic data room.",
+  "status": "marketing",
+  "synthetic": true
+ }
+]
