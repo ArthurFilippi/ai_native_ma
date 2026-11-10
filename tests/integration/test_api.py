@@ -8,6 +8,7 @@ import httpx
 import pytest
 from fastapi import FastAPI
 
+from ainma.api import services
 from ainma.contracts import (
     VALUE_CONTRACT,
     Answer,
@@ -15,6 +16,7 @@ from ainma.contracts import (
     DocumentMeta,
     KpiValue,
 )
+from ainma.synth.generate import generate
 from tests.integration.conftest import as_user
 
 DEAL_ROUTES: list[tuple[str, str, dict[str, Any] | None]] = [
@@ -196,7 +198,15 @@ async def test_empty_question_is_rejected(client: httpx.AsyncClient) -> None:
     assert response.status_code == 422
 
 
-async def test_kpis_and_market_intel_run_on_the_tiny_store(client: httpx.AsyncClient) -> None:
+async def test_kpis_and_market_intel_run_on_the_tiny_store(
+    client: httpx.AsyncClient,
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path_factory: pytest.TempPathFactory,
+) -> None:
+    # Only the ground truth of seed 1234 is committed: generate the news feed into a tmp folder.
+    root = tmp_path_factory.mktemp("synthetic")
+    generate(1234, root)
+    monkeypatch.setattr(services, "SYNTHETIC_ROOT", root)
     headers = as_user("u_analyst")
     kpis = await client.get("/deals/deal_aurora/kpis", headers=headers)
     assert kpis.status_code == 200
