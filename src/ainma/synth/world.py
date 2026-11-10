@@ -251,7 +251,7 @@ def _make_company(
     while abs(press_revenue - revenue) / revenue < 0.012:
         press_factor -= 0.01
         press_revenue = float(round(revenue * press_factor))
-    press_ebitda = round(ebitda * rng.uniform(1.06, 1.14), 1)
+    press_ebitda = float(round(ebitda * rng.uniform(1.06, 1.14)))
     hc_press = int(round(headcount[4] * rng.uniform(0.90, 0.94) / 10) * 10)
     dist_stem = stem[:-1] + ("e" if not stem.endswith("e") else "a")
     distractor = f"{dist_stem} {suffix}"

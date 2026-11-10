@@ -19,6 +19,7 @@ from ainma.synth.common import (
     rng_for,
 )
 from ainma.synth.corpus import Corpus
+from ainma.synth.verify import has_value
 from ainma.synth.finance import KPI_IDS, kpi_truth_values
 from ainma.synth.lang import METRICS, claim_text, fmt_value, question_text
 from ainma.synth.truthio import (
@@ -350,9 +351,7 @@ class Builder:
                     v = float(round(f.value * rng.choice([0.7, 0.8, 1.2, 1.35, 1.5])))
                 else:
                     v = round(f.value * rng.choice([0.7, 0.8, 0.88, 1.12, 1.2, 1.35]), 1)
-                shown = fmt_value(m.vkind, v, None, "mn")
-                digits = "".join(ch for ch in shown if ch.isdigit() or ch == ".").strip(".")
-                if abs(v - f.value) / max(abs(f.value), 1e-9) > 0.05 and digits not in text:
+                if (m.vkind == "year" or abs(v - f.value) / max(abs(f.value), 1e-9) > 0.05) and not has_value(text, v):
                     return v
             raise RuntimeError("could not alter value")
 
@@ -373,8 +372,7 @@ class Builder:
             m2 = METRICS[second]
             for _ in range(40):
                 v2 = float(rng.randrange(500, 5000)) if m2.vkind == "count" else round(rng.uniform(5, 300), 1)
-                shown2 = fmt_value(m2.vkind, v2, None, "mn")
-                if "".join(ch for ch in shown2 if ch.isdigit() or ch == ".").strip(".") not in text:
+                if not has_value(text, v2):
                     break
             period2 = "FY2024" if not m.static else "FY2024"
             half = true_claim.rstrip(".") + " and " + claim_text(m2, f.entity, period2, v2)[0].lower() + claim_text(m2, f.entity, period2, v2)[1:]
@@ -382,8 +380,7 @@ class Builder:
             candidates = [g for g in pool if g.document_id != f.document_id and g.entity != f.entity and g.metric != f.metric]
             unrelated = rng.choice(candidates)
             for _ in range(40):
-                shown_u = fmt_value(METRICS[unrelated.metric].vkind, unrelated.value, None, "mn")
-                if "".join(ch for ch in shown_u if ch.isdigit() or ch == ".").strip(".") not in text:
+                if not has_value(text, unrelated.value):
                     break
                 unrelated = rng.choice(candidates)
             add(claim_text(METRICS[unrelated.metric], unrelated.entity, unrelated.period, unrelated.value), f, "unsupported", "unrelated", None)
