@@ -17,6 +17,7 @@ from ainma.contracts import (
     DocType,
     DocumentMeta,
     Membership,
+    Role,
     User,
 )
 from ainma.store.access import access_clause, scope_clause
@@ -295,6 +296,16 @@ class SqliteStore:
             return AccessContext(
                 user_id=user_id, allowed_deal_ids=frozenset(r["deal_id"] for r in rows)
             )
+
+        return await self._run(op)
+
+    async def role_in(self, deal_id: str, user_id: str) -> Role | None:
+        def op(conn: sqlite3.Connection) -> Role | None:
+            row = conn.execute(
+                "SELECT role FROM memberships WHERE deal_id = ? AND user_id = ?",
+                (deal_id, user_id),
+            ).fetchone()
+            return Role(row["role"]) if row is not None else None
 
         return await self._run(op)
 

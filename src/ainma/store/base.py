@@ -13,6 +13,7 @@ from ainma.contracts import (
     DocType,
     DocumentMeta,
     Membership,
+    Role,
     User,
 )
 
@@ -50,6 +51,10 @@ class Store(Protocol):
     async def get_deal(self, deal_id: str, access: AccessContext) -> Deal | None: ...
     async def list_deals(self, access: AccessContext) -> list[Deal]: ...
     async def access_for(self, user_id: str) -> AccessContext: ...
+    async def role_in(self, deal_id: str, user_id: str) -> Role | None:
+        """The role of the user in the deal, `None` when the user is not a member."""
+        ...
+
     async def list_users(self) -> list[User]: ...
     async def list_buyers(self) -> list[BuyerProfile]:
         """The buyer universe: public, synthetic market data, not scoped to a deal."""

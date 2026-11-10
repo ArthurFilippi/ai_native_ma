@@ -97,6 +97,7 @@ One short entry each: context, choice, alternative, cost.
 - Cost: table chunks are not parsed by the rules (only prose sentences), and paraphrases that avoid the metric vocabulary are missed by design; this is the offline baseline, not an LLM result.
 
 ## D28. Live providers
+- Status: superseded. `factory.build_llm` now calls `build_live_llm` for `gemini` and `openai`; the live providers are still tested on recorded fixtures only.
 - Choice: `httpx` clients for Gemini (`generateContent`, JSON mime type) and OpenAI (chat completions, JSON mode); the JSON schema is embedded in the system prompt; retries on 429 and 5xx; no key in URLs or errors. Prices live in `llm/providers/prices.json` and are all null with null `as_of`, so `cost_usd` stays null until the owner fills them. Defaults `gemini-2.5-flash` and `gpt-4o-mini`, overridden by `LLM_MODEL`. The response fixtures under `tests/fixtures_core/recorded/` were written by hand in each API's documented shape, not captured from live calls. `build_live_llm(settings)` is ready; `factory.build_llm` still has to call it.
 - Cost: real response quirks are untested until a key is used.
 
@@ -156,6 +157,7 @@ One short entry each: context, choice, alternative, cost.
 - Cost: the twin carries three rules the shared vector file does not test.
 
 ## D41. Where the buyer universe comes from (biz)
+- Status: done. The store has a buyers table (`put_buyer`, `list_buyers`), the loader fills it, and callers no longer pass the list.
 - Context: the `Store` interface has no buyer table and `run_screening(request, store=, access=, llm=)` has no buyers argument.
 - Choice: `run_screening` takes an optional `buyers=` list and otherwise calls `store.list_buyers()` when the store has it, and raises `BuyerUniverseUnavailable` when neither exists. `screening.load_buyers(seed_dir)` reads `truth/buyers.json`. Request to the integration owner in `BLOCKERS.md`: add `put_buyer` and `list_buyers` to the store and let `load_corpus` fill it, or pass `buyers=` in the API and the evaluation adapter.
 - Alternative: read `data/synthetic/<seed>` from settings inside `run_screening`. Rejected: hidden global state.
@@ -186,9 +188,11 @@ One short entry each: context, choice, alternative, cost.
 - Cost: the CLI uses the configured store (`SQLITE_PATH`), so `make demo` must run it against the same file as the API.
 
 ## D48. KPI definition port (biz)
+- Status: done. The data merge happened and the definitions are in `kpi/definitions.py`.
 - Choice: 30 definitions kept from the legacy 62 (income statement, cash flow, balance sheet, returns, headcount, customer concentration), same ids, formulas and `depends_on`. Units are `EUR m`, `%`, `x`, `count`; all KPIs are annual with periods `FY2020` to `FY2024` by default. To prune to the 20 KPIs of `kpi_truth.json` after the `data` merge.
 
 ## D50. API wiring through one guarded module
+- Status: superseded. `api/services.py` now calls the real modules directly; there is no stub fallback and no import at call time.
 - Context: core, biz and connector modules are written in parallel and may be absent on a branch.
 - Choice: `ainma/api/services.py` is the only importer. It resolves `ainma.pipeline.ask`, `ainma.screening.run_screening`, `ainma.kpi.extract_kpis` and `ainma.connectors.run.run_market_intel` with `importlib` at call time. A missing module or function means the example payloads of `ainma/api/examples/` answer and `X-Ainma-Backend: stub` says so (`real` otherwise). A module that exists but fails on one of its own imports raises instead of being hidden.
 - Alternative: import at start-up. Rejected: the stub would be silent and the API would not start on a partial branch.
@@ -207,9 +211,11 @@ One short entry each: context, choice, alternative, cost.
 - The `X-User-Id` scheme is declared as an OpenAPI API key so the docs page shows it.
 
 ## D54. Stub answer carries the request
+- Status: superseded. The stub answers were removed with the stub fallback (see D50).
 - Choice: the stub ask fills `user_id`, `deal_id` and also `question` from the request, so the question echo on screen is the one asked. It picks the contradiction example when the question contains "revenue" (case-insensitive) and the abstention example otherwise.
 
 ## D55. Market intel seed directory
+- Status: partly superseded. The seed directory rule stands; there is no stub, and the response header `X-Ainma-Backend` was removed.
 - Choice: `run_market_intel` needs a `seed_dir` and settings have no such field, so the API passes `data/synthetic/<settings.seed>`. The stub ingests nothing and returns 0.
 - Cost: the path is relative to the working directory of the server.
 
@@ -259,6 +265,7 @@ One short entry each: context, choice, alternative, cost.
 - Alternative: `met` when the buyer alone is below the flag, with the target share noted as unknown. Rejected: it turns a missing number into a verdict, the exact error the criterion exists to avoid.
 
 ## D76. Why the harness measures 77 percent unknown, and what is by design (quality-biz)
+- Status: superseded by D80. The harness now passes the filters, `stage2_top_n=50` and the news feed; the 77 percent unknown figure describes the old default request only.
 - Context: the evaluation harness screens with `ScreeningRequest(deal_id)` only: no filters, `stage2_top_n=10`, and no market intelligence ingestion. The buyer truth is defined for all 40 buyers and for the Aurora region and size.
 - Findings, measured on seeds 1 and 2: with no geography and no size filter 80 of 320 cells are `unknown` by D42; with the default top 10 only the first ten buyers that pass stage 1 reach stage 2; the 18 buyers that fail the sector prefilter never reach it (D40); acquisitions that were not published as a press release exist only in the simulated news feed, which the harness does not ingest, so `recent_activity` and `integration_bandwidth` see a subset (a lower bound, which can turn a `met` into a wrong `met`).
 - Choice: the requests for the harness are in `BLOCKERS.md` (pass the Aurora region and size range as filters, `stage2_top_n=50`, ingest the news feed before screening, as `make demo` does). The module keeps its semantics; agreement over the cells that were evaluated is the measure of reading quality.
@@ -318,3 +325,9 @@ One short entry each: context, choice, alternative, cost.
 - Choice: the harness screens the way the demo does: filters from `truth/aux.json` (region, EV to 60 x EV), `stage2_top_n=50`, and the simulated feed filed in the deal space first through the adapter (`Adapter.ingest_news`). The numbers come from the system's own inputs, not from the truth answers: the filter values are the deal's stated facts.
 - Alternative: keep the default request and report a low agreement. Rejected as a measurement of the protocol, not of the system.
 - Cost: the screening agreement is conditional on an analyst who states the deal's region and size. Two limits remain and are reported, not tuned away: antitrust truth cells assume a target share that no document states, and deep truth also covers buyers that fail the sector prefilter.
+
+## D81. Roles are enforced on the two routes that compute or write (integration)
+- Context: the independent review found that `Role` was stored in memberships and never read. Spec section 13: a `viewer` reads answers and documents only.
+- Choice: `Store.role_in(deal_id, user_id)` returns the role; `POST /deals/{id}/screening` and `POST /deals/{id}/market-intel/run` answer 403 to a viewer (the second one writes documents into the deal). Reading, asking and the passage endpoint stay open to every member. A non member still gets 404 on every deal route. Membership management by a `lead` is not implemented (there is no route for it): memberships come from the data loader.
+- Alternative: leave roles unenforced and say so. Rejected: two lines per route and a test are cheaper than a documented gap.
+- Cost: `ask` is allowed for a viewer because the answer is a read; if asking should be restricted later, the same dependency applies.

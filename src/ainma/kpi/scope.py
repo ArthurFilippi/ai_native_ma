@@ -20,6 +20,7 @@ from ainma.contracts import (
     DocType,
     DocumentMeta,
     Membership,
+    Role,
     User,
 )
 from ainma.store import Store
@@ -76,6 +77,9 @@ class ScopedStore:
 
     async def access_for(self, user_id: str) -> AccessContext:
         return await self._inner.access_for(user_id)
+
+    async def role_in(self, deal_id: str, user_id: str) -> Role | None:
+        return await self._inner.role_in(deal_id, user_id)
 
     async def list_users(self) -> list[User]:
         return await self._inner.list_users()

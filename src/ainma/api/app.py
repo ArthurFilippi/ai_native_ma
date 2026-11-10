@@ -26,6 +26,7 @@ from ainma.contracts import (
     Deal,
     DocumentMeta,
     KpiValue,
+    Role,
     ScreeningRequest,
     ScreeningResult,
     User,
@@ -88,6 +89,14 @@ def build_router(runtime: Runtime) -> APIRouter:
         return deal
 
     DealOf = Annotated[Deal, Depends(deal_scope)]  # noqa: N806
+
+    async def writer_scope(deal: DealOf, access: Access) -> Deal:
+        """A `viewer` reads answers and documents only: no screening, no ingestion (403)."""
+        if await store.role_in(deal.id, access.user_id) is Role.VIEWER:
+            raise HTTPException(403, "a viewer cannot run this action")
+        return deal
+
+    WriterOf = Annotated[Deal, Depends(writer_scope)]  # noqa: N806
 
     @router.get("/health", response_model=HealthResponse, tags=["system"])
     async def health() -> HealthResponse:
@@ -153,7 +162,7 @@ def build_router(runtime: Runtime) -> APIRouter:
         responses=_examples(SCREENING_EXAMPLES),
         tags=["screening"],
     )
-    async def screening(body: ScreeningRequest, deal: DealOf, access: Access) -> ScreeningResult:
+    async def screening(body: ScreeningRequest, deal: WriterOf, access: Access) -> ScreeningResult:
         if body.deal_id != deal.id:
             raise HTTPException(422, "deal_id in the body does not match the path")
         return await services.screening(runtime, access, body)
@@ -165,7 +174,7 @@ def build_router(runtime: Runtime) -> APIRouter:
     @router.post(
         "/deals/{deal_id}/market-intel/run", response_model=MarketIntelRun, tags=["market"]
     )
-    async def market_intel(deal: DealOf, access: Access) -> MarketIntelRun:
+    async def market_intel(deal: WriterOf, access: Access) -> MarketIntelRun:
         """Run the simulated market intelligence connector and ingest its items into the deal."""
         ingested = await services.market_intel(runtime, access, deal.id)
         return MarketIntelRun(deal_id=deal.id, ingested=ingested)

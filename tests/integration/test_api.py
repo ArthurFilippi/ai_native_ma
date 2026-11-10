@@ -15,7 +15,11 @@ from ainma.contracts import (
     Deal,
     DocumentMeta,
     KpiValue,
+    Membership,
+    Role,
+    User,
 )
+from ainma.store import SqliteStore
 from ainma.synth.generate import generate
 from tests.integration.conftest import as_user
 
@@ -238,3 +242,35 @@ async def test_openapi_schema_and_examples(app: FastAPI) -> None:
 async def test_cors_allows_the_configured_origin(client: httpx.AsyncClient) -> None:
     response = await client.get("/health", headers={"Origin": "http://localhost:3000"})
     assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
+
+
+async def test_viewer_reads_but_cannot_screen_or_ingest(
+    app: FastAPI, tiny_store: SqliteStore, client: httpx.AsyncClient
+) -> None:
+    await tiny_store.put_user(User(id="u_viewer", name="Viewer"))
+    await tiny_store.put_membership(
+        Membership(deal_id="deal_aurora", user_id="u_viewer", role=Role.VIEWER)
+    )
+    headers = as_user("u_viewer")
+    assert (await client.get("/deals/deal_aurora/documents", headers=headers)).status_code == 200
+    asked = await client.post(
+        "/deals/deal_aurora/ask", json={"question": "What was FY2024 revenue?"}, headers=headers
+    )
+    assert asked.status_code == 200
+    screening = await client.post(
+        "/deals/deal_aurora/screening", json={"deal_id": "deal_aurora"}, headers=headers
+    )
+    assert screening.status_code == 403
+    market = await client.post("/deals/deal_aurora/market-intel/run", headers=headers)
+    assert market.status_code == 403
+    # A member is not restricted, and a non member still gets 404, not 403.
+    member = await client.post(
+        "/deals/deal_aurora/screening",
+        json={"deal_id": "deal_aurora"},
+        headers=as_user("u_analyst"),
+    )
+    assert member.status_code != 403
+    outsider = await client.post(
+        "/deals/deal_aurora/market-intel/run", headers=as_user("u_outsider")
+    )
+    assert outsider.status_code == 404
