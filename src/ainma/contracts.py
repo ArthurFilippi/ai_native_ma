@@ -200,7 +200,7 @@ class Flag(str, Enum):
 
 
 class VerificationCheck(Strict):
-    name: Literal["verbatim_span", "numeric_match", "judge"]
+    name: Literal["verbatim_span", "numeric_match", "binding", "judge"]
     passed: bool
     detail: str = ""
 

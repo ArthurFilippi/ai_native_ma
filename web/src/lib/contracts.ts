@@ -85,7 +85,7 @@ export type Flag =
   | "unverified";
 
 export interface VerificationCheck {
-  name: "verbatim_span" | "numeric_match" | "judge";
+  name: "verbatim_span" | "numeric_match" | "binding" | "judge";
   passed: boolean;
   detail: string;
 }

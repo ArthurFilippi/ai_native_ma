@@ -18,14 +18,15 @@ def _claim(claim_id: str, text: str, quote: str = SENTENCE) -> Claim:
     return Claim(id=claim_id, text=text, status=ClaimStatus.SOURCED, citations=[citation])
 
 
-async def test_honest_claim_passes_all_three_checks() -> None:
+async def test_honest_claim_passes_every_check() -> None:
     verification, usage = await verify_claim(
         _claim("c1", "FY2024 revenue reached EUR 182.4 million."),
         chunks=CHUNKS,
         llm=build_mock_llm(),
     )
     assert verification.supported and verification.judge_label == "supported"
-    assert [c.name for c in verification.checks] == ["verbatim_span", "numeric_match", "judge"]
+    names = [c.name for c in verification.checks]
+    assert names == ["verbatim_span", "numeric_match", "binding", "judge"]
     assert usage is not None
 
 
