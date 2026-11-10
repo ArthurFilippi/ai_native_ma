@@ -1,0 +1,522 @@
+[
+ {
+  "id": "ev_001",
+  "kind": "acquisition",
+  "entity": "buyer_27",
+  "counterparty": "Falent Tech",
+  "event_date": "2022-02-02",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Novent Holdings completes acquisition of Falent Tech"
+  ]
+ },
+ {
+  "id": "ev_002",
+  "kind": "acquisition",
+  "entity": "buyer_07",
+  "counterparty": "Itheth Partners",
+  "event_date": "2022-07-23",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Traeth Group completes acquisition of Itheth Partners"
+  ]
+ },
+ {
+  "id": "ev_003",
+  "kind": "acquisition",
+  "entity": "buyer_12",
+  "counterparty": "Zanay Systems",
+  "event_date": "2022-08-17",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Ulik Growth Fund completes acquisition of Zanay Systems",
+   "Trade wire: Ulik Growth Fund buys Zanay Systems"
+  ]
+ },
+ {
+  "id": "ev_004",
+  "kind": "acquisition",
+  "entity": "buyer_20",
+  "counterparty": "Gorord Systems",
+  "event_date": "2023-01-28",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Zanent Capital Partners completes acquisition of Gorord Systems",
+   "Deal monitor: Zanent Capital Partners buys Gorord Systems"
+  ]
+ },
+ {
+  "id": "ev_005",
+  "kind": "acquisition",
+  "entity": "buyer_22",
+  "counterparty": "Gorent Tech",
+  "event_date": "2023-03-09",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Pelix Equity completes acquisition of Gorent Tech"
+  ]
+ },
+ {
+  "id": "ev_006",
+  "kind": "acquisition",
+  "entity": "buyer_06",
+  "counterparty": "Solix Tech",
+  "event_date": "2023-05-04",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Elnell Capital Partners completes acquisition of Solix Tech",
+   "Deal monitor: Elnell Capital Partners buys Solix Tech"
+  ]
+ },
+ {
+  "id": "ev_007",
+  "kind": "acquisition",
+  "entity": "buyer_22",
+  "counterparty": "Elning Works",
+  "event_date": "2023-06-28",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Pelix Equity completes acquisition of Elning Works",
+   "Deal monitor: Pelix Equity buys Elning Works"
+  ]
+ },
+ {
+  "id": "ev_008",
+  "kind": "acquisition",
+  "entity": "buyer_18",
+  "counterparty": "Belell Tech",
+  "event_date": "2023-07-22",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Junium Growth Fund completes acquisition of Belell Tech"
+  ]
+ },
+ {
+  "id": "ev_009",
+  "kind": "acquisition",
+  "entity": "buyer_19",
+  "counterparty": "Solald Partners",
+  "event_date": "2023-10-15",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Tarnar Industries completes acquisition of Solald Partners",
+   "Market brief: Tarnar Industries buys Solald Partners"
+  ]
+ },
+ {
+  "id": "ev_010",
+  "kind": "acquisition",
+  "entity": "buyer_33",
+  "counterparty": "Tarnund Tech",
+  "event_date": "2024-03-29",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Trauro Holdings completes acquisition of Tarnund Tech"
+  ]
+ },
+ {
+  "id": "ev_011",
+  "kind": "acquisition",
+  "entity": "buyer_07",
+  "counterparty": "Tarnis Systems",
+  "event_date": "2024-08-20",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Traeth Group completes acquisition of Tarnis Systems",
+   "Trade wire: Traeth Group buys Tarnis Systems"
+  ]
+ },
+ {
+  "id": "ev_012",
+  "kind": "acquisition",
+  "entity": "buyer_01",
+  "counterparty": "Gorik Systems",
+  "event_date": "2024-08-30",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Carent Industries completes acquisition of Gorik Systems",
+   "Market brief: Carent Industries buys Gorik Systems"
+  ]
+ },
+ {
+  "id": "ev_013",
+  "kind": "acquisition",
+  "entity": "buyer_01",
+  "counterparty": "Novuro Systems",
+  "event_date": "2024-09-07",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Carent Industries completes acquisition of Novuro Systems"
+  ]
+ },
+ {
+  "id": "ev_014",
+  "kind": "acquisition",
+  "entity": "buyer_07",
+  "counterparty": "Dorell Partners",
+  "event_date": "2025-03-23",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Traeth Group completes acquisition of Dorell Partners",
+   "Trade wire: Traeth Group buys Dorell Partners"
+  ]
+ },
+ {
+  "id": "ev_015",
+  "kind": "leadership_change",
+  "entity": "buyer_03",
+  "counterparty": "Hanna Merent",
+  "event_date": "2025-06-12",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Falex Systems appoints Hanna Merent as chief executive"
+  ]
+ },
+ {
+  "id": "ev_016",
+  "kind": "leadership_change",
+  "entity": "buyer_06",
+  "counterparty": "Greta Zanix",
+  "event_date": "2025-01-10",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Elnell Capital Partners appoints Greta Zanix as chief executive"
+  ]
+ },
+ {
+  "id": "ev_017",
+  "kind": "leadership_change",
+  "entity": "buyer_08",
+  "counterparty": "Jonas Junord",
+  "event_date": "2024-11-28",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Narar Investments appoints Jonas Junord as chief executive"
+  ]
+ },
+ {
+  "id": "ev_018",
+  "kind": "leadership_change",
+  "entity": "buyer_10",
+  "counterparty": "Oskar Kesova",
+  "event_date": "2025-05-13",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Peling Capital Partners appoints Oskar Kesova as chief executive"
+  ]
+ },
+ {
+  "id": "ev_019",
+  "kind": "leadership_change",
+  "entity": "buyer_17",
+  "counterparty": "Alma Valis",
+  "event_date": "2024-07-09",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Ithis Systems appoints Alma Valis as chief executive"
+  ]
+ },
+ {
+  "id": "ev_020",
+  "kind": "leadership_change",
+  "entity": "buyer_19",
+  "counterparty": "Stefan Quinex",
+  "event_date": "2025-03-24",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Tarnar Industries appoints Stefan Quinex as chief executive"
+  ]
+ },
+ {
+  "id": "ev_021",
+  "kind": "leadership_change",
+  "entity": "buyer_22",
+  "counterparty": "Felix Senent",
+  "event_date": "2024-10-28",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Pelix Equity appoints Felix Senent as chief executive"
+  ]
+ },
+ {
+  "id": "ev_022",
+  "kind": "leadership_change",
+  "entity": "buyer_29",
+  "counterparty": "Jonas Vexix",
+  "event_date": "2025-03-06",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Ithar Industries appoints Jonas Vexix as chief executive"
+  ]
+ },
+ {
+  "id": "ev_023",
+  "kind": "leadership_change",
+  "entity": "buyer_30",
+  "counterparty": "Marta Ulex",
+  "event_date": "2025-04-05",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Corani Growth Fund appoints Marta Ulex as chief executive"
+  ]
+ },
+ {
+  "id": "ev_024",
+  "kind": "leadership_change",
+  "entity": "buyer_31",
+  "counterparty": "Greta Goreth",
+  "event_date": "2025-03-02",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Halund Holdings appoints Greta Goreth as chief executive"
+  ]
+ },
+ {
+  "id": "ev_025",
+  "kind": "leadership_change",
+  "entity": "buyer_33",
+  "counterparty": "Pavel Solix",
+  "event_date": "2025-02-28",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Trauro Holdings appoints Pavel Solix as chief executive"
+  ]
+ },
+ {
+  "id": "ev_026",
+  "kind": "leadership_change",
+  "entity": "buyer_37",
+  "counterparty": "Marta Gwenald",
+  "event_date": "2024-09-16",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Ostis Industries appoints Marta Gwenald as chief executive"
+  ]
+ },
+ {
+  "id": "ev_027",
+  "kind": "leadership_change",
+  "entity": "buyer_39",
+  "counterparty": "Viktor Merald",
+  "event_date": "2024-09-04",
+  "status": "confirmed",
+  "value": null,
+  "item_titles": [
+   "Lanik Group appoints Viktor Merald as chief executive"
+  ]
+ },
+ {
+  "id": "ev_028",
+  "kind": "rumour",
+  "entity": "buyer_01",
+  "counterparty": "Aurora Components",
+  "event_date": "2024-07-07",
+  "status": "unconfirmed",
+  "value": null,
+  "item_titles": [
+   "Carent Industries is said to weigh an offer for Aurora Components"
+  ]
+ },
+ {
+  "id": "ev_029",
+  "kind": "rumour",
+  "entity": "buyer_19",
+  "counterparty": "Kesent Analytics",
+  "event_date": "2024-09-13",
+  "status": "denied",
+  "value": null,
+  "item_titles": [
+   "Tarnar Industries is said to weigh an offer for Kesent Analytics",
+   "Tarnar Industries denies interest in Kesent Analytics"
+  ]
+ },
+ {
+  "id": "ev_030",
+  "kind": "rumour",
+  "entity": "buyer_04",
+  "counterparty": "Vexeth Logistics",
+  "event_date": "2024-10-11",
+  "status": "denied",
+  "value": null,
+  "item_titles": [
+   "Draay Capital Partners is said to weigh an offer for Vexeth Logistics",
+   "Draay Capital Partners denies interest in Vexeth Logistics"
+  ]
+ },
+ {
+  "id": "ev_031",
+  "kind": "rumour",
+  "entity": "buyer_17",
+  "counterparty": "Ostent Packaging",
+  "event_date": "2024-09-30",
+  "status": "unconfirmed",
+  "value": null,
+  "item_titles": [
+   "Ithis Systems is said to weigh an offer for Ostent Packaging"
+  ]
+ },
+ {
+  "id": "ev_032",
+  "kind": "rumour",
+  "entity": "buyer_25",
+  "counterparty": "Falik Medical",
+  "event_date": "2025-01-22",
+  "status": "denied",
+  "value": null,
+  "item_titles": [
+   "Quinane Group is said to weigh an offer for Falik Medical",
+   "Quinane Group denies interest in Falik Medical"
+  ]
+ },
+ {
+  "id": "ev_033",
+  "kind": "rumour",
+  "entity": "buyer_30",
+  "counterparty": "Carane Foods",
+  "event_date": "2024-07-22",
+  "status": "unconfirmed",
+  "value": null,
+  "item_titles": [
+   "Corani Growth Fund is said to weigh an offer for Carane Foods"
+  ]
+ },
+ {
+  "id": "ev_034",
+  "kind": "rumour",
+  "entity": "buyer_32",
+  "counterparty": "Merium Water Systems",
+  "event_date": "2024-10-07",
+  "status": "denied",
+  "value": null,
+  "item_titles": [
+   "Quinis Growth Fund is said to weigh an offer for Merium Water Systems",
+   "Quinis Growth Fund denies interest in Merium Water Systems"
+  ]
+ },
+ {
+  "id": "ev_035",
+  "kind": "rumour",
+  "entity": "buyer_13",
+  "counterparty": "Estell Automotive",
+  "event_date": "2024-08-03",
+  "status": "unconfirmed",
+  "value": null,
+  "item_titles": [
+   "Junuro Holdings is said to weigh an offer for Estell Automotive"
+  ]
+ },
+ {
+  "id": "ev_036",
+  "kind": "rumour",
+  "entity": "buyer_12",
+  "counterparty": "Ulent Containers",
+  "event_date": "2024-11-06",
+  "status": "denied",
+  "value": null,
+  "item_titles": [
+   "Ulik Growth Fund is said to weigh an offer for Ulent Containers",
+   "Ulik Growth Fund denies interest in Ulent Containers"
+  ]
+ },
+ {
+  "id": "ev_037",
+  "kind": "price",
+  "entity": "buyer_27",
+  "counterparty": "Falent Tech",
+  "event_date": "2022-02-14",
+  "status": "corrected",
+  "value": 128.0,
+  "item_titles": [
+   "Price for Novent Holdings and Falent Tech put at EUR 111 million",
+   "Correction: price for Novent Holdings and Falent Tech was EUR 128 million"
+  ]
+ },
+ {
+  "id": "ev_038",
+  "kind": "price",
+  "entity": "buyer_12",
+  "counterparty": "Zanay Systems",
+  "event_date": "2022-08-29",
+  "status": "confirmed",
+  "value": 279.0,
+  "item_titles": [
+   "Price for Ulik Growth Fund and Zanay Systems put at EUR 279 million"
+  ]
+ },
+ {
+  "id": "ev_039",
+  "kind": "price",
+  "entity": "buyer_22",
+  "counterparty": "Elning Works",
+  "event_date": "2023-07-08",
+  "status": "corrected",
+  "value": 406.0,
+  "item_titles": [
+   "Price for Pelix Equity and Elning Works put at EUR 369 million",
+   "Correction: price for Pelix Equity and Elning Works was EUR 406 million"
+  ]
+ },
+ {
+  "id": "ev_040",
+  "kind": "price",
+  "entity": "buyer_01",
+  "counterparty": "Gorik Systems",
+  "event_date": "2024-09-14",
+  "status": "corrected",
+  "value": 95.0,
+  "item_titles": [
+   "Price for Carent Industries and Gorik Systems put at EUR 112 million",
+   "Correction: price for Carent Industries and Gorik Systems was EUR 95 million"
+  ]
+ },
+ {
+  "id": "ev_041",
+  "kind": "price",
+  "entity": "buyer_01",
+  "counterparty": "Novuro Systems",
+  "event_date": "2024-09-16",
+  "status": "confirmed",
+  "value": 132.0,
+  "item_titles": [
+   "Price for Carent Industries and Novuro Systems put at EUR 132 million"
+  ]
+ },
+ {
+  "id": "ev_042",
+  "kind": "price",
+  "entity": "buyer_07",
+  "counterparty": "Dorell Partners",
+  "event_date": "2025-04-08",
+  "status": "confirmed",
+  "value": 136.0,
+  "item_titles": [
+   "Price for Traeth Group and Dorell Partners put at EUR 136 million"
+  ]
+ }
+]
