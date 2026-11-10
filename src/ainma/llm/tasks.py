@@ -7,6 +7,7 @@ TASK_EXTRACT_FACTS = "extract_facts"
 TASK_KPI_PARSE = "kpi_parse"
 TASK_EXTRACT_EVENTS = "extract_events"
 TASK_ASSESS_CRITERION = "assess_criterion"
+TASK_REFINE_SCREENING = "refine_screening"
 
 ALL_TASKS = (
     TASK_UNDERSTAND,
@@ -16,4 +17,5 @@ ALL_TASKS = (
     TASK_KPI_PARSE,
     TASK_EXTRACT_EVENTS,
     TASK_ASSESS_CRITERION,
+    TASK_REFINE_SCREENING,
 )

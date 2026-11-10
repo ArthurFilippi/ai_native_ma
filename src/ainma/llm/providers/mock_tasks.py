@@ -25,6 +25,7 @@ from ainma.llm.tasks import (
     TASK_EXTRACT_EVENTS,
     TASK_EXTRACT_FACTS,
     TASK_JUDGE,
+    TASK_REFINE_SCREENING,
     TASK_UNDERSTAND,
     TASK_WRITE,
 )
@@ -377,6 +378,7 @@ def _extract_facts(system: str, user: str, schema: type[BaseModel]) -> BaseModel
 def default_mock_handlers() -> dict[str, MockHandler]:
     from ainma.news.rules import mock_extract_events  # lazy: the news layer imports the pipeline
     from ainma.screening.assist import mock_assess
+    from ainma.screening.refine import mock_refine
 
     return {
         TASK_UNDERSTAND: _understand,
@@ -385,4 +387,5 @@ def default_mock_handlers() -> dict[str, MockHandler]:
         TASK_EXTRACT_FACTS: _extract_facts,
         TASK_EXTRACT_EVENTS: mock_extract_events,
         TASK_ASSESS_CRITERION: mock_assess,
+        TASK_REFINE_SCREENING: mock_refine,
     }

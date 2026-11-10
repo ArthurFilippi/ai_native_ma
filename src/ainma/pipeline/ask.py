@@ -28,6 +28,7 @@ from ainma.contracts import (
 from ainma.factbase import FactBase
 from ainma.llm.base import LLM, Usage
 from ainma.pipeline import abstain
+from ainma.pipeline.confidence import answer_confidence
 from ainma.pipeline.config import PipelineConfig
 from ainma.pipeline.contradictions import (
     FactIndex,
@@ -186,6 +187,8 @@ async def ask_detailed(
         )
 
     async def finish(answer: Answer, dropped: list[DroppedClaim]) -> AskOutcome:
+        level, why = answer_confidence(answer)
+        answer = answer.model_copy(update={"confidence": level, "confidence_reason": why})
         if cfg.answers_log is not None:
             entry = entry_for(answer, dropped=dropped, config_hash=_config_hash(cfg))
             await append_answer(cfg.answers_log, entry)

@@ -289,6 +289,9 @@ class Answer(Strict):
     # a live call failed and the offline mock answered instead (opt in, D88): shown to the user
     degraded: bool = False
     degraded_reason: str | None = None
+    # one-glance level computed by code from the evidence (D97); None when abstained
+    confidence: Literal["high", "medium", "low"] | None = None
+    confidence_reason: str | None = None
     trace: Trace
     value_contract: str = VALUE_CONTRACT
 
