@@ -1,0 +1,4820 @@
+[
+ {
+  "id": "q_0001",
+  "deal_id": "deal_aurora",
+  "text": "How much did Aurora Components invest in property, plant and equipment in the year ended 31 December 2020?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00079"
+  ],
+  "relevance": {
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0002",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's capital expenditure in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00080"
+  ],
+  "relevance": {
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0003",
+  "deal_id": "deal_aurora",
+  "text": "How much did Aurora Components invest in property, plant and equipment in the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00081"
+  ],
+  "relevance": {
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0004",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's capital expenditure in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00082"
+  ],
+  "relevance": {
+   "ch_model_p3_01": 2,
+   "ch_cim_p15_02": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0005",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's capital expenditure in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00087"
+  ],
+  "relevance": {
+   "ch_board_minutes_p1_02": 2,
+   "ch_cim_p15_01": 1,
+   "ch_cim_p15_02": 1,
+   "ch_model_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0006",
+  "deal_id": "deal_aurora",
+  "text": "How much EBITDA did Aurora Components report for FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00074"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0007",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurora Components's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00075"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0008",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's EBITDA in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00076"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0009",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's EBITDA in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00077"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p12_01": 1,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0010",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurora Components's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00046",
+   "fact_00078",
+   "fact_00095",
+   "fact_00097"
+  ],
+  "relevance": {
+   "ch_cim_p12_01": 2,
+   "ch_cim_p13_01": 2,
+   "ch_model_p1_01": 2,
+   "ch_news_17_p1_01": 2,
+   "ch_pr_corr_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0011",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's EBITDA margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00088"
+  ],
+  "relevance": {
+   "ch_board_minutes_p1_02": 2,
+   "ch_cim_p12_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0012",
+  "deal_id": "deal_aurora",
+  "text": "What is the enterprise value of Aurora Components in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00086"
+  ],
+  "relevance": {
+   "ch_spa_exec_p1_02": 2,
+   "ch_cim_p22_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0013",
+  "deal_id": "deal_aurora",
+  "text": "What share of sales did Aurora Components keep after direct production costs in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00090"
+  ],
+  "relevance": {
+   "ch_qoe_p1_01": 2,
+   "ch_cim_p12_01": 1,
+   "ch_mgmt_pres_p4_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0014",
+  "deal_id": "deal_aurora",
+  "text": "How many people did Aurora Components employ at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00040",
+   "fact_00065",
+   "fact_00098"
+  ],
+  "relevance": {
+   "ch_cim_p4_01": 2,
+   "ch_mgmt_pres_p2_01": 2,
+   "ch_news_17_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0015",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurora Components's borrowings less cash at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00091"
+  ],
+  "relevance": {
+   "ch_qoe_p1_01": 2,
+   "ch_cim_p14_01": 1,
+   "ch_news_22_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0016",
+  "deal_id": "deal_aurora",
+  "text": "Over how many plants is Aurora Components's manufacturing spread as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00041"
+  ],
+  "relevance": {
+   "ch_cim_p16_01": 2,
+   "ch_cim_p4_01": 2,
+   "ch_mgmt_pres_p2_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0017",
+  "deal_id": "deal_aurora",
+  "text": "How much revenue did Aurora Components report for FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00069"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0018",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's revenue in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00070"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0019",
+  "deal_id": "deal_aurora",
+  "text": "How large was Aurora Components's turnover in the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00071"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0020",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurora Components's total sales for the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00072"
+  ],
+  "relevance": {
+   "ch_model_p1_01": 2,
+   "ch_cim_p12_01": 1,
+   "ch_cim_p13_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0021",
+  "deal_id": "deal_aurora",
+  "text": "How large was Aurora Components's turnover in the year ended 31 December 2024?",
+  "kind": "hard_negative",
+  "gold_fact_ids": [
+   "fact_00044",
+   "fact_00073",
+   "fact_00096"
+  ],
+  "relevance": {
+   "ch_cim_p12_01": 2,
+   "ch_cim_p13_01": 2,
+   "ch_model_p1_01": 2,
+   "ch_news_17_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0022",
+  "deal_id": "deal_aurora",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Aurora Components?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00093"
+  ],
+  "relevance": {
+   "ch_concentration_p1_01": 2,
+   "ch_cim_p11_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0023",
+  "deal_id": "deal_aurora",
+  "text": "How concentrated is the customer base of Aurora Components in FY2024, measured by the top customer?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00092"
+  ],
+  "relevance": {
+   "ch_concentration_p1_01": 2,
+   "ch_cim_p11_01": 1,
+   "ch_mgmt_pres_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0024",
+  "deal_id": null,
+  "text": "What is the standard confidentiality term in Bank NDA template?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00003"
+  ],
+  "relevance": {
+   "ch_kb_nda_handling_p1_01": 2,
+   "ch_kb_nda_template_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0025",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's EBITDA in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00231",
+   "fact_00248"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_cim_p6_03": 2,
+   "ch_carane_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0026",
+  "deal_id": "deal_fornax",
+  "text": "What is the enterprise value of Carane Foods in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00252"
+  ],
+  "relevance": {
+   "ch_carane_spa_exec_p1_02": 2,
+   "ch_carane_cim_p7_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0027",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's gross margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00233"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0028",
+  "deal_id": "deal_fornax",
+  "text": "How large was the workforce of Carane Foods at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00224",
+   "fact_00243",
+   "fact_00249"
+  ],
+  "relevance": {
+   "ch_carane_cim_p2_01": 2,
+   "ch_carane_mgmt_p2_01": 2,
+   "ch_carane_news_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0029",
+  "deal_id": "deal_fornax",
+  "text": "How much contracted but undelivered business did Carane Foods hold at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00228"
+  ],
+  "relevance": {
+   "ch_carane_cim_p5_01": 2,
+   "ch_carane_pr_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0030",
+  "deal_id": "deal_fornax",
+  "text": "How many production sites did Carane Foods operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00225"
+  ],
+  "relevance": {
+   "ch_carane_cim_p2_01": 2,
+   "ch_carane_cim_p5_01": 2,
+   "ch_carane_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0031",
+  "deal_id": "deal_fornax",
+  "text": "How much revenue did Carane Foods report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00229",
+   "fact_00247"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_cim_p6_03": 2,
+   "ch_carane_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0032",
+  "deal_id": "deal_fornax",
+  "text": "How concentrated is the customer base of Carane Foods in FY2024, measured by the top customer?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00226"
+  ],
+  "relevance": {
+   "ch_carane_cim_p4_01": 2,
+   "ch_carane_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0033",
+  "deal_id": null,
+  "text": "What was Carent Industries's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00344",
+   "fact_00345",
+   "fact_00349"
+  ],
+  "relevance": {
+   "ch_buyer_01_article_p1_01": 2,
+   "ch_buyer_01_profile_p1_01": 2,
+   "ch_buyer_01_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0034",
+  "deal_id": null,
+  "text": "How large is Caris Equity by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00660"
+  ],
+  "relevance": {
+   "ch_buyer_40_report_p1_01": 2,
+   "ch_buyer_40_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0035",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Caris Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00662"
+  ],
+  "relevance": {
+   "ch_buyer_40_report_p1_01": 2,
+   "ch_buyer_40_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0036",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Caris Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00661"
+  ],
+  "relevance": {
+   "ch_buyer_40_report_p1_01": 2,
+   "ch_buyer_40_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0037",
+  "deal_id": null,
+  "text": "How large is Caruro Investments by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00556",
+   "fact_00560",
+   "fact_00566"
+  ],
+  "relevance": {
+   "ch_buyer_26_article_p1_01": 2,
+   "ch_buyer_26_profile_p1_01": 2,
+   "ch_buyer_26_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0038",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Caruro Investments?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00564"
+  ],
+  "relevance": {
+   "ch_buyer_26_report_p1_01": 2,
+   "ch_buyer_26_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0039",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Caruro Investments writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00562"
+  ],
+  "relevance": {
+   "ch_buyer_26_report_p1_01": 2,
+   "ch_buyer_26_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0040",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Caruro Investments?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00561"
+  ],
+  "relevance": {
+   "ch_buyer_26_report_p1_01": 2,
+   "ch_buyer_26_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0041",
+  "deal_id": null,
+  "text": "What were Corani Growth Fund's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00590"
+  ],
+  "relevance": {
+   "ch_buyer_30_report_p1_01": 2,
+   "ch_buyer_30_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0042",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Corani Growth Fund begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00594"
+  ],
+  "relevance": {
+   "ch_buyer_30_report_p1_01": 2,
+   "ch_buyer_30_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0043",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Corani Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00592"
+  ],
+  "relevance": {
+   "ch_buyer_30_report_p1_01": 2,
+   "ch_buyer_30_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0044",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Corani Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00591"
+  ],
+  "relevance": {
+   "ch_buyer_30_report_p1_01": 2,
+   "ch_buyer_30_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0045",
+  "deal_id": null,
+  "text": "How much does Draay Capital Partners administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00368",
+   "fact_00372",
+   "fact_00377"
+  ],
+  "relevance": {
+   "ch_buyer_04_article_p1_01": 2,
+   "ch_buyer_04_profile_p1_01": 2,
+   "ch_buyer_04_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0046",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Draay Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00376"
+  ],
+  "relevance": {
+   "ch_buyer_04_report_p1_01": 2,
+   "ch_buyer_04_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0047",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Draay Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00374"
+  ],
+  "relevance": {
+   "ch_buyer_04_report_p1_01": 2,
+   "ch_buyer_04_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0048",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Draay Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00373"
+  ],
+  "relevance": {
+   "ch_buyer_04_report_p1_01": 2,
+   "ch_buyer_04_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0049",
+  "deal_id": null,
+  "text": "How large is Draium Capital Partners by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00543"
+  ],
+  "relevance": {
+   "ch_buyer_24_report_p1_01": 2,
+   "ch_buyer_24_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0050",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Draium Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00547"
+  ],
+  "relevance": {
+   "ch_buyer_24_report_p1_01": 2,
+   "ch_buyer_24_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0051",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Draium Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00545"
+  ],
+  "relevance": {
+   "ch_buyer_24_report_p1_01": 2,
+   "ch_buyer_24_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0052",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Draium Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00544"
+  ],
+  "relevance": {
+   "ch_buyer_24_report_p1_01": 2,
+   "ch_buyer_24_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0053",
+  "deal_id": null,
+  "text": "How much does Elnell Capital Partners administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00390"
+  ],
+  "relevance": {
+   "ch_buyer_06_report_p1_01": 2,
+   "ch_buyer_06_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0054",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Elnell Capital Partners begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00394"
+  ],
+  "relevance": {
+   "ch_buyer_06_report_p1_01": 2,
+   "ch_buyer_06_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0055",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Elnell Capital Partners writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00392"
+  ],
+  "relevance": {
+   "ch_buyer_06_report_p1_01": 2,
+   "ch_buyer_06_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0056",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Elnell Capital Partners writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00391"
+  ],
+  "relevance": {
+   "ch_buyer_06_report_p1_01": 2,
+   "ch_buyer_06_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0057",
+  "deal_id": null,
+  "text": "How large is Elnik Equity by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00469",
+   "fact_00473",
+   "fact_00479"
+  ],
+  "relevance": {
+   "ch_buyer_16_article_p1_01": 2,
+   "ch_buyer_16_profile_p1_01": 2,
+   "ch_buyer_16_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0058",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Elnik Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00477"
+  ],
+  "relevance": {
+   "ch_buyer_16_report_p1_01": 2,
+   "ch_buyer_16_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0059",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Elnik Equity writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00475"
+  ],
+  "relevance": {
+   "ch_buyer_16_report_p1_01": 2,
+   "ch_buyer_16_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0060",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Elnik Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00474"
+  ],
+  "relevance": {
+   "ch_buyer_16_report_p1_01": 2,
+   "ch_buyer_16_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0061",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's EBITDA in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00290",
+   "fact_00307"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_cim_p6_03": 2,
+   "ch_estell_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0062",
+  "deal_id": "deal_hydra",
+  "text": "What is the enterprise value of Estell Automotive in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00311"
+  ],
+  "relevance": {
+   "ch_estell_spa_exec_p1_02": 2,
+   "ch_estell_cim_p7_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0063",
+  "deal_id": "deal_hydra",
+  "text": "What share of sales did Estell Automotive keep after direct production costs in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00292"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_mgmt_p4_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0064",
+  "deal_id": "deal_hydra",
+  "text": "What was the headcount of Estell Automotive in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00283",
+   "fact_00302",
+   "fact_00308"
+  ],
+  "relevance": {
+   "ch_estell_cim_p2_01": 2,
+   "ch_estell_mgmt_p2_01": 2,
+   "ch_estell_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0065",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00287"
+  ],
+  "relevance": {
+   "ch_estell_cim_p5_01": 2,
+   "ch_estell_pr_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0066",
+  "deal_id": "deal_hydra",
+  "text": "How many production sites did Estell Automotive operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00284"
+  ],
+  "relevance": {
+   "ch_estell_cim_p2_01": 2,
+   "ch_estell_cim_p5_01": 2,
+   "ch_estell_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0067",
+  "deal_id": "deal_hydra",
+  "text": "How much revenue did Estell Automotive report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00288",
+   "fact_00306"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_cim_p6_03": 2,
+   "ch_estell_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0068",
+  "deal_id": "deal_hydra",
+  "text": "How concentrated is the customer base of Estell Automotive in FY2024, measured by the top customer?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00285"
+  ],
+  "relevance": {
+   "ch_estell_cim_p4_01": 2,
+   "ch_estell_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0069",
+  "deal_id": null,
+  "text": "What was Estund Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00627"
+  ],
+  "relevance": {
+   "ch_buyer_35_report_p1_01": 2,
+   "ch_buyer_35_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0070",
+  "deal_id": null,
+  "text": "What was Falex Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00364"
+  ],
+  "relevance": {
+   "ch_buyer_03_report_p1_01": 2,
+   "ch_buyer_03_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0071",
+  "deal_id": "deal_eridanus",
+  "text": "What was Falik Medical's EBITDA in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00200",
+   "fact_00218",
+   "fact_00221"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_cim_p6_03": 2,
+   "ch_falik_news_p1_01": 2,
+   "ch_falik_pr_corr_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0072",
+  "deal_id": "deal_eridanus",
+  "text": "What share of sales did Falik Medical keep after direct production costs in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00202"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_mgmt_p4_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0073",
+  "deal_id": "deal_eridanus",
+  "text": "How large was the workforce of Falik Medical at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00193",
+   "fact_00212",
+   "fact_00219"
+  ],
+  "relevance": {
+   "ch_falik_cim_p2_01": 2,
+   "ch_falik_mgmt_p2_01": 2,
+   "ch_falik_news_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0074",
+  "deal_id": "deal_eridanus",
+  "text": "Over how many plants is Falik Medical's manufacturing spread as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00194"
+  ],
+  "relevance": {
+   "ch_falik_cim_p2_01": 2,
+   "ch_falik_cim_p5_01": 2,
+   "ch_falik_mgmt_p2_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0075",
+  "deal_id": "deal_eridanus",
+  "text": "How much revenue did Falik Medical report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00199",
+   "fact_00216"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_cim_p6_03": 2,
+   "ch_falik_mgmt_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0076",
+  "deal_id": "deal_eridanus",
+  "text": "What was Falik Medical's revenue in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00198",
+   "fact_00217"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_cim_p6_03": 2,
+   "ch_falik_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0077",
+  "deal_id": "deal_eridanus",
+  "text": "What share of FY2024 revenue came from the largest customer of Falik Medical?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00195"
+  ],
+  "relevance": {
+   "ch_falik_cim_p4_01": 2,
+   "ch_falik_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0078",
+  "deal_id": null,
+  "text": "What were Goron Capital Partners's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00351",
+   "fact_00355",
+   "fact_00361"
+  ],
+  "relevance": {
+   "ch_buyer_02_article_p1_01": 2,
+   "ch_buyer_02_profile_p1_01": 2,
+   "ch_buyer_02_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0079",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Goron Capital Partners begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00359"
+  ],
+  "relevance": {
+   "ch_buyer_02_report_p1_01": 2,
+   "ch_buyer_02_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0080",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Goron Capital Partners writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00357"
+  ],
+  "relevance": {
+   "ch_buyer_02_report_p1_01": 2,
+   "ch_buyer_02_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0081",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Goron Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00356"
+  ],
+  "relevance": {
+   "ch_buyer_02_report_p1_01": 2,
+   "ch_buyer_02_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0082",
+  "deal_id": null,
+  "text": "What was Gweneth Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00534",
+   "fact_00535",
+   "fact_00538"
+  ],
+  "relevance": {
+   "ch_buyer_23_article_p1_01": 2,
+   "ch_buyer_23_profile_p1_01": 2,
+   "ch_buyer_23_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0083",
+  "deal_id": null,
+  "text": "What was Halund Holdings's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00597"
+  ],
+  "relevance": {
+   "ch_buyer_31_report_p1_01": 2,
+   "ch_buyer_31_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0084",
+  "deal_id": null,
+  "text": "What was Ithar Industries's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00583"
+  ],
+  "relevance": {
+   "ch_buyer_29_report_p1_01": 2,
+   "ch_buyer_29_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0085",
+  "deal_id": null,
+  "text": "What was Ithis Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00481",
+   "fact_00482",
+   "fact_00485"
+  ],
+  "relevance": {
+   "ch_buyer_17_article_p1_01": 2,
+   "ch_buyer_17_profile_p1_01": 2,
+   "ch_buyer_17_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0086",
+  "deal_id": null,
+  "text": "What were Junium Growth Fund's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00491"
+  ],
+  "relevance": {
+   "ch_buyer_18_report_p1_01": 2,
+   "ch_buyer_18_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0087",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Junium Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00495"
+  ],
+  "relevance": {
+   "ch_buyer_18_report_p1_01": 2,
+   "ch_buyer_18_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0088",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Junium Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00493"
+  ],
+  "relevance": {
+   "ch_buyer_18_report_p1_01": 2,
+   "ch_buyer_18_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0089",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Junium Growth Fund writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00492"
+  ],
+  "relevance": {
+   "ch_buyer_18_report_p1_01": 2,
+   "ch_buyer_18_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0090",
+  "deal_id": null,
+  "text": "How much does Junova Equity administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00620"
+  ],
+  "relevance": {
+   "ch_buyer_34_report_p1_01": 2,
+   "ch_buyer_34_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0091",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Junova Equity begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00624"
+  ],
+  "relevance": {
+   "ch_buyer_34_report_p1_01": 2,
+   "ch_buyer_34_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0092",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Junova Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00622"
+  ],
+  "relevance": {
+   "ch_buyer_34_report_p1_01": 2,
+   "ch_buyer_34_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0093",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Junova Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00621"
+  ],
+  "relevance": {
+   "ch_buyer_34_report_p1_01": 2,
+   "ch_buyer_34_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0094",
+  "deal_id": null,
+  "text": "How was the equity of Junuro Holdings valued on the exchange at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00446",
+   "fact_00447",
+   "fact_00451"
+  ],
+  "relevance": {
+   "ch_buyer_13_article_p1_01": 2,
+   "ch_buyer_13_profile_p1_01": 2,
+   "ch_buyer_13_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0095",
+  "deal_id": "deal_borealis",
+  "text": "How much EBITDA did Kesent Analytics report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00109",
+   "fact_00126"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_cim_p6_03": 2,
+   "ch_kesent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0096",
+  "deal_id": "deal_borealis",
+  "text": "At what cash-free and debt-free price is Kesent Analytics offered?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00130"
+  ],
+  "relevance": {
+   "ch_kesent_spa_exec_p1_02": 2,
+   "ch_kesent_cim_p7_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0097",
+  "deal_id": "deal_borealis",
+  "text": "What was Kesent Analytics's gross margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00111"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0098",
+  "deal_id": "deal_borealis",
+  "text": "How large was the workforce of Kesent Analytics at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00102",
+   "fact_00121",
+   "fact_00127"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p2_01": 2,
+   "ch_kesent_mgmt_p2_01": 2,
+   "ch_kesent_news_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0099",
+  "deal_id": "deal_borealis",
+  "text": "What was Kesent Analytics's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00106"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p5_01": 2,
+   "ch_kesent_pr_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0100",
+  "deal_id": "deal_borealis",
+  "text": "How many production sites did Kesent Analytics operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00103"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p2_01": 2,
+   "ch_kesent_cim_p5_01": 2,
+   "ch_kesent_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0101",
+  "deal_id": "deal_borealis",
+  "text": "What was Kesent Analytics's revenue in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00107",
+   "fact_00125"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_cim_p6_03": 2,
+   "ch_kesent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0102",
+  "deal_id": "deal_borealis",
+  "text": "How much of Kesent Analytics's sales in the year ended 31 December 2024 depended on its biggest client?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00104"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p4_01": 2,
+   "ch_kesent_mgmt_p3_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0103",
+  "deal_id": null,
+  "text": "How was the equity of Lanik Group valued on the exchange at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00654"
+  ],
+  "relevance": {
+   "ch_buyer_39_report_p1_01": 2,
+   "ch_buyer_39_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0104",
+  "deal_id": null,
+  "text": "What were Lanova Equity's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00648"
+  ],
+  "relevance": {
+   "ch_buyer_38_report_p1_01": 2,
+   "ch_buyer_38_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0105",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Lanova Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00652"
+  ],
+  "relevance": {
+   "ch_buyer_38_report_p1_01": 2,
+   "ch_buyer_38_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0106",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Lanova Equity writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00650"
+  ],
+  "relevance": {
+   "ch_buyer_38_report_p1_01": 2,
+   "ch_buyer_38_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0107",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Lanova Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00649"
+  ],
+  "relevance": {
+   "ch_buyer_38_report_p1_01": 2,
+   "ch_buyer_38_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0108",
+  "deal_id": null,
+  "text": "What was Lumell Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00379",
+   "fact_00380",
+   "fact_00384"
+  ],
+  "relevance": {
+   "ch_buyer_05_article_p1_01": 2,
+   "ch_buyer_05_profile_p1_01": 2,
+   "ch_buyer_05_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0109",
+  "deal_id": "deal_gemini",
+  "text": "How much EBITDA did Merium Water Systems report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00261",
+   "fact_00278",
+   "fact_00281"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_01": 2,
+   "ch_merium_cim_p6_03": 2,
+   "ch_merium_news_p1_01": 2,
+   "ch_merium_pr_corr_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0110",
+  "deal_id": "deal_gemini",
+  "text": "What was Merium Water Systems's gross margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00263"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_01": 2,
+   "ch_merium_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0111",
+  "deal_id": "deal_gemini",
+  "text": "How many people did Merium Water Systems employ at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00254",
+   "fact_00273",
+   "fact_00279"
+  ],
+  "relevance": {
+   "ch_merium_cim_p2_01": 2,
+   "ch_merium_mgmt_p2_01": 2,
+   "ch_merium_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0112",
+  "deal_id": "deal_gemini",
+  "text": "How many production sites did Merium Water Systems operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00255"
+  ],
+  "relevance": {
+   "ch_merium_cim_p2_01": 2,
+   "ch_merium_cim_p5_01": 2,
+   "ch_merium_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0113",
+  "deal_id": "deal_gemini",
+  "text": "How much revenue did Merium Water Systems report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00259",
+   "fact_00277"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_01": 2,
+   "ch_merium_cim_p6_03": 2,
+   "ch_merium_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0114",
+  "deal_id": "deal_gemini",
+  "text": "How concentrated is the customer base of Merium Water Systems in FY2024, measured by the top customer?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00256"
+  ],
+  "relevance": {
+   "ch_merium_cim_p4_01": 2,
+   "ch_merium_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0115",
+  "deal_id": null,
+  "text": "What were Narar Investments's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00404",
+   "fact_00408",
+   "fact_00414"
+  ],
+  "relevance": {
+   "ch_buyer_08_article_p1_01": 2,
+   "ch_buyer_08_profile_p1_01": 2,
+   "ch_buyer_08_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0116",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Narar Investments?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00412"
+  ],
+  "relevance": {
+   "ch_buyer_08_report_p1_01": 2,
+   "ch_buyer_08_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0117",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Narar Investments writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00410"
+  ],
+  "relevance": {
+   "ch_buyer_08_report_p1_01": 2,
+   "ch_buyer_08_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0118",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Narar Investments writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00409"
+  ],
+  "relevance": {
+   "ch_buyer_08_report_p1_01": 2,
+   "ch_buyer_08_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0119",
+  "deal_id": null,
+  "text": "What was Novent Holdings's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00568"
+  ],
+  "relevance": {
+   "ch_buyer_27_report_p1_01": 2,
+   "ch_buyer_27_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0120",
+  "deal_id": null,
+  "text": "How was the equity of Novex Systems valued on the exchange at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00517"
+  ],
+  "relevance": {
+   "ch_buyer_21_report_p1_01": 2,
+   "ch_buyer_21_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0121",
+  "deal_id": "deal_draco",
+  "text": "How much EBITDA did Ostent Packaging report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00170",
+   "fact_00187"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_cim_p6_03": 2,
+   "ch_ostent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0122",
+  "deal_id": "deal_draco",
+  "text": "What is the enterprise value of Ostent Packaging in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00191"
+  ],
+  "relevance": {
+   "ch_ostent_spa_exec_p1_02": 2,
+   "ch_ostent_cim_p7_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0123",
+  "deal_id": "deal_draco",
+  "text": "What share of sales did Ostent Packaging keep after direct production costs in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00172"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_mgmt_p4_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0124",
+  "deal_id": "deal_draco",
+  "text": "What was the headcount of Ostent Packaging in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00163",
+   "fact_00182",
+   "fact_00188"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p2_01": 2,
+   "ch_ostent_mgmt_p2_01": 2,
+   "ch_ostent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0125",
+  "deal_id": "deal_draco",
+  "text": "What was Ostent Packaging's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00167"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p5_01": 2,
+   "ch_ostent_pr_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0126",
+  "deal_id": "deal_draco",
+  "text": "How many production sites did Ostent Packaging operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00164"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p2_01": 2,
+   "ch_ostent_cim_p5_01": 2,
+   "ch_ostent_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0127",
+  "deal_id": "deal_draco",
+  "text": "What was Ostent Packaging's revenue in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00168",
+   "fact_00186"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_cim_p6_03": 2,
+   "ch_ostent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0128",
+  "deal_id": "deal_draco",
+  "text": "What share of FY2024 revenue came from the largest customer of Ostent Packaging?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00165"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p4_01": 2,
+   "ch_ostent_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0129",
+  "deal_id": null,
+  "text": "What was Ostis Industries's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00640"
+  ],
+  "relevance": {
+   "ch_buyer_37_report_p1_01": 2,
+   "ch_buyer_37_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0130",
+  "deal_id": null,
+  "text": "What were Peling Capital Partners's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00422",
+   "fact_00426",
+   "fact_00431"
+  ],
+  "relevance": {
+   "ch_buyer_10_article_p1_01": 2,
+   "ch_buyer_10_profile_p1_01": 2,
+   "ch_buyer_10_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0131",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Peling Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00430"
+  ],
+  "relevance": {
+   "ch_buyer_10_report_p1_01": 2,
+   "ch_buyer_10_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0132",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Peling Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00428"
+  ],
+  "relevance": {
+   "ch_buyer_10_report_p1_01": 2,
+   "ch_buyer_10_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0133",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Peling Capital Partners writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00427"
+  ],
+  "relevance": {
+   "ch_buyer_10_report_p1_01": 2,
+   "ch_buyer_10_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0134",
+  "deal_id": null,
+  "text": "How large is Pelix Equity by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00521",
+   "fact_00525",
+   "fact_00531",
+   "fact_00533"
+  ],
+  "relevance": {
+   "ch_buyer_22_article_p1_01": 2,
+   "ch_buyer_22_pr_corr_p1_01": 2,
+   "ch_buyer_22_profile_p1_01": 2,
+   "ch_buyer_22_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0135",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Pelix Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00529"
+  ],
+  "relevance": {
+   "ch_buyer_22_report_p1_01": 2,
+   "ch_buyer_22_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0136",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Pelix Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00527"
+  ],
+  "relevance": {
+   "ch_buyer_22_report_p1_01": 2,
+   "ch_buyer_22_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0137",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Pelix Equity?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00526"
+  ],
+  "relevance": {
+   "ch_buyer_22_report_p1_01": 2,
+   "ch_buyer_22_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0138",
+  "deal_id": null,
+  "text": "What was Quinane Group's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00550",
+   "fact_00551",
+   "fact_00555"
+  ],
+  "relevance": {
+   "ch_buyer_25_article_p1_01": 2,
+   "ch_buyer_25_profile_p1_01": 2,
+   "ch_buyer_25_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0139",
+  "deal_id": null,
+  "text": "How much does Quinis Growth Fund administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00604"
+  ],
+  "relevance": {
+   "ch_buyer_32_report_p1_01": 2,
+   "ch_buyer_32_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0140",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Quinis Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00608"
+  ],
+  "relevance": {
+   "ch_buyer_32_report_p1_01": 2,
+   "ch_buyer_32_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0141",
+  "deal_id": null,
+  "text": "What is the largest equity cheque Quinis Growth Fund writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00606"
+  ],
+  "relevance": {
+   "ch_buyer_32_report_p1_01": 2,
+   "ch_buyer_32_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0142",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Quinis Growth Fund writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00605"
+  ],
+  "relevance": {
+   "ch_buyer_32_report_p1_01": 2,
+   "ch_buyer_32_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0143",
+  "deal_id": null,
+  "text": "What was Senon Holdings's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00465"
+  ],
+  "relevance": {
+   "ch_buyer_15_report_p1_01": 2,
+   "ch_buyer_15_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0144",
+  "deal_id": null,
+  "text": "How many bidding rounds does Standard sell-side process foresee?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00002",
+   "fact_00004"
+  ],
+  "relevance": {
+   "ch_kb_bidder_communication_p1_01": 2,
+   "ch_kb_buyside_playbook_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0145",
+  "deal_id": null,
+  "text": "How long does Standard sell-side process usually last?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00001"
+  ],
+  "relevance": {
+   "ch_kb_buyside_playbook_p1_01": 2,
+   "ch_kb_process_timetable_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0146",
+  "deal_id": null,
+  "text": "How much does Tarnane Investments administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00453",
+   "fact_00457",
+   "fact_00462"
+  ],
+  "relevance": {
+   "ch_buyer_14_article_p1_01": 2,
+   "ch_buyer_14_profile_p1_01": 2,
+   "ch_buyer_14_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0147",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Tarnane Investments begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00461"
+  ],
+  "relevance": {
+   "ch_buyer_14_report_p1_01": 2,
+   "ch_buyer_14_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0148",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Tarnane Investments?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00459"
+  ],
+  "relevance": {
+   "ch_buyer_14_report_p1_01": 2,
+   "ch_buyer_14_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0149",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Tarnane Investments?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00458"
+  ],
+  "relevance": {
+   "ch_buyer_14_report_p1_01": 2,
+   "ch_buyer_14_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0150",
+  "deal_id": null,
+  "text": "What was Tarnar Industries's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00498",
+   "fact_00499",
+   "fact_00503"
+  ],
+  "relevance": {
+   "ch_buyer_19_article_p1_01": 2,
+   "ch_buyer_19_profile_p1_01": 2,
+   "ch_buyer_19_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0151",
+  "deal_id": null,
+  "text": "What was Tarnix Systems's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00433",
+   "fact_00434",
+   "fact_00437"
+  ],
+  "relevance": {
+   "ch_buyer_11_article_p1_01": 2,
+   "ch_buyer_11_profile_p1_01": 2,
+   "ch_buyer_11_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0152",
+  "deal_id": null,
+  "text": "What was Tarnora Industries's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00417"
+  ],
+  "relevance": {
+   "ch_buyer_09_report_p1_01": 2,
+   "ch_buyer_09_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0153",
+  "deal_id": null,
+  "text": "How was the equity of Traeth Group valued on the exchange at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00396",
+   "fact_00397",
+   "fact_00401",
+   "fact_00403"
+  ],
+  "relevance": {
+   "ch_buyer_07_article_p1_01": 2,
+   "ch_buyer_07_pr_corr_p1_01": 2,
+   "ch_buyer_07_profile_p1_01": 2,
+   "ch_buyer_07_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0154",
+  "deal_id": null,
+  "text": "What was Trauro Holdings's market capitalisation at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00611"
+  ],
+  "relevance": {
+   "ch_buyer_33_report_p1_01": 2,
+   "ch_buyer_33_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0155",
+  "deal_id": "deal_lyra",
+  "text": "What were Ulent Containers's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00321",
+   "fact_00338",
+   "fact_00341"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_cim_p6_03": 2,
+   "ch_ulent_news_p1_01": 2,
+   "ch_ulent_pr_corr_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0156",
+  "deal_id": "deal_lyra",
+  "text": "What was Ulent Containers's gross margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00323"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0157",
+  "deal_id": "deal_lyra",
+  "text": "What was the headcount of Ulent Containers in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00314",
+   "fact_00333",
+   "fact_00339"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p2_01": 2,
+   "ch_ulent_mgmt_p2_01": 2,
+   "ch_ulent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0158",
+  "deal_id": "deal_lyra",
+  "text": "Over how many plants is Ulent Containers's manufacturing spread as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00315"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p2_01": 2,
+   "ch_ulent_cim_p5_01": 2,
+   "ch_ulent_mgmt_p2_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0159",
+  "deal_id": "deal_lyra",
+  "text": "How much revenue did Ulent Containers report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00319",
+   "fact_00337"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_cim_p6_03": 2,
+   "ch_ulent_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0160",
+  "deal_id": "deal_lyra",
+  "text": "What share of FY2024 revenue came from the largest customer of Ulent Containers?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00316"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p4_01": 2,
+   "ch_ulent_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0161",
+  "deal_id": null,
+  "text": "How large is Ulik Growth Fund by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00441"
+  ],
+  "relevance": {
+   "ch_buyer_12_report_p1_01": 2,
+   "ch_buyer_12_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0162",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Ulik Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00443"
+  ],
+  "relevance": {
+   "ch_buyer_12_report_p1_01": 2,
+   "ch_buyer_12_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0163",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Ulik Growth Fund?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00442"
+  ],
+  "relevance": {
+   "ch_buyer_12_report_p1_01": 2,
+   "ch_buyer_12_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0164",
+  "deal_id": null,
+  "text": "What were Valuro Capital Partners's assets under management at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00635"
+  ],
+  "relevance": {
+   "ch_buyer_36_report_p1_01": 2,
+   "ch_buyer_36_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0165",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Valuro Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00637"
+  ],
+  "relevance": {
+   "ch_buyer_36_report_p1_01": 2,
+   "ch_buyer_36_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0166",
+  "deal_id": null,
+  "text": "What is the smallest equity cheque Valuro Capital Partners writes?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00636"
+  ],
+  "relevance": {
+   "ch_buyer_36_report_p1_01": 2,
+   "ch_buyer_36_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0167",
+  "deal_id": "deal_cygnus",
+  "text": "How much EBITDA did Vexeth Logistics report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00140",
+   "fact_00157",
+   "fact_00160"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_cim_p6_03": 2,
+   "ch_vexeth_news_p1_01": 2,
+   "ch_vexeth_pr_corr_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0168",
+  "deal_id": "deal_cygnus",
+  "text": "What share of sales did Vexeth Logistics keep after direct production costs in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00142"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_mgmt_p4_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0169",
+  "deal_id": "deal_cygnus",
+  "text": "How large was the workforce of Vexeth Logistics at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00133",
+   "fact_00152",
+   "fact_00158"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p2_01": 2,
+   "ch_vexeth_mgmt_p2_01": 2,
+   "ch_vexeth_news_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0170",
+  "deal_id": "deal_cygnus",
+  "text": "How many production sites did Vexeth Logistics operate as of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00134"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p2_01": 2,
+   "ch_vexeth_cim_p5_01": 2,
+   "ch_vexeth_mgmt_p2_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0171",
+  "deal_id": "deal_cygnus",
+  "text": "How much revenue did Vexeth Logistics report for FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00138",
+   "fact_00156"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_cim_p6_03": 2,
+   "ch_vexeth_news_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0172",
+  "deal_id": "deal_cygnus",
+  "text": "How concentrated is the customer base of Vexeth Logistics in FY2024, measured by the top customer?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00135"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p4_01": 2,
+   "ch_vexeth_mgmt_p3_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0173",
+  "deal_id": null,
+  "text": "How large is Zanent Capital Partners by assets under management in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00504",
+   "fact_00508",
+   "fact_00514"
+  ],
+  "relevance": {
+   "ch_buyer_20_article_p1_01": 2,
+   "ch_buyer_20_profile_p1_01": 2,
+   "ch_buyer_20_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0174",
+  "deal_id": null,
+  "text": "When did the current investment vehicle of Zanent Capital Partners begin?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00512"
+  ],
+  "relevance": {
+   "ch_buyer_20_report_p1_01": 2,
+   "ch_buyer_20_profile_p1_01": 1
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0175",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Zanent Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00510"
+  ],
+  "relevance": {
+   "ch_buyer_20_report_p1_01": 2,
+   "ch_buyer_20_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0176",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Zanent Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00509"
+  ],
+  "relevance": {
+   "ch_buyer_20_report_p1_01": 2,
+   "ch_buyer_20_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0177",
+  "deal_id": null,
+  "text": "How much does Zanik Capital Partners administer for its investors as of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00572",
+   "fact_00576",
+   "fact_00581"
+  ],
+  "relevance": {
+   "ch_buyer_28_article_p1_01": 2,
+   "ch_buyer_28_profile_p1_01": 2,
+   "ch_buyer_28_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0178",
+  "deal_id": null,
+  "text": "What is the vintage year of the current fund of Zanik Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00580"
+  ],
+  "relevance": {
+   "ch_buyer_28_report_p1_01": 2,
+   "ch_buyer_28_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0179",
+  "deal_id": null,
+  "text": "What is the maximum equity ticket of Zanik Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00578"
+  ],
+  "relevance": {
+   "ch_buyer_28_report_p1_01": 2,
+   "ch_buyer_28_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0180",
+  "deal_id": null,
+  "text": "What is the minimum equity ticket of Zanik Capital Partners?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00577"
+  ],
+  "relevance": {
+   "ch_buyer_28_report_p1_01": 2,
+   "ch_buyer_28_profile_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0181",
+  "deal_id": "deal_aurora",
+  "text": "What is the standard confidentiality term in Project Aurora NDA?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00084"
+  ],
+  "relevance": {
+   "ch_nda_p1_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0182",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurore Components's total sales for the year ended 31 December 2024?",
+  "kind": "hard_negative",
+  "gold_fact_ids": [
+   "fact_00099"
+  ],
+  "relevance": {
+   "ch_news_17_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0183",
+  "deal_id": "deal_aurora",
+  "text": "What is the equity value of Aurora Components in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00064"
+  ],
+  "relevance": {
+   "ch_cim_p22_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0184",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00062"
+  ],
+  "relevance": {
+   "ch_cim_p16_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0185",
+  "deal_id": "deal_aurora",
+  "text": "What were Aurora Components's underlying operating earnings after adjustments in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00089"
+  ],
+  "relevance": {
+   "ch_qoe_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0186",
+  "deal_id": "deal_borealis",
+  "text": "How much would shareholders of Kesent Analytics receive after net debt is settled?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00120"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p7_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0187",
+  "deal_id": "deal_borealis",
+  "text": "How much EBITDA did Kesent Analytics report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00110"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0188",
+  "deal_id": "deal_borealis",
+  "text": "What were Kesent Analytics's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2020?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00116"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0189",
+  "deal_id": "deal_borealis",
+  "text": "What was Kesent Analytics's EBITDA in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00117"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0190",
+  "deal_id": "deal_borealis",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Kesent Analytics?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00105"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0191",
+  "deal_id": "deal_borealis",
+  "text": "How much revenue did Kesent Analytics report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00108"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0192",
+  "deal_id": "deal_borealis",
+  "text": "How much EBITDA did Kesent Analytics report for FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00118"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0193",
+  "deal_id": "deal_borealis",
+  "text": "How large was Kesent Analytics's turnover in the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00114"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0194",
+  "deal_id": "deal_cygnus",
+  "text": "What was Vexeth Logistics's revenue in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00146"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0195",
+  "deal_id": "deal_cygnus",
+  "text": "What was Vexeth Logistics's EBITDA margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00143"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0196",
+  "deal_id": "deal_cygnus",
+  "text": "What were Vexeth Logistics's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00141"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0197",
+  "deal_id": "deal_cygnus",
+  "text": "How much revenue did Vexeth Logistics report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00139"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0198",
+  "deal_id": "deal_cygnus",
+  "text": "What was Vexeth Logistics's EBITDA in FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00147"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0199",
+  "deal_id": "deal_cygnus",
+  "text": "At what cash-free and debt-free price is Vexeth Logistics offered?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00150"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p7_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0200",
+  "deal_id": "deal_cygnus",
+  "text": "How much revenue did Vexeth Logistics report for FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00145"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0201",
+  "deal_id": "deal_cygnus",
+  "text": "What was Vexeth Logistics's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00137"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p5_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0202",
+  "deal_id": "deal_draco",
+  "text": "What was Ostent Packaging's EBITDA margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00173"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0203",
+  "deal_id": "deal_draco",
+  "text": "How much EBITDA did Ostent Packaging report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00171"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0204",
+  "deal_id": "deal_draco",
+  "text": "What was Ostent Packaging's EBITDA in FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00177"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0205",
+  "deal_id": "deal_draco",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Ostent Packaging?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00166"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0206",
+  "deal_id": "deal_draco",
+  "text": "What were Ostent Packaging's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00179"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0207",
+  "deal_id": "deal_draco",
+  "text": "How much revenue did Ostent Packaging report for FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00175"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0208",
+  "deal_id": "deal_draco",
+  "text": "What were Ostent Packaging's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00178"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0209",
+  "deal_id": "deal_draco",
+  "text": "What is the equity value of Ostent Packaging in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00181"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p7_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0210",
+  "deal_id": "deal_eridanus",
+  "text": "How much of Falik Medical's sales in the year ended 31 December 2024 came from its leading ten clients?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00196"
+  ],
+  "relevance": {
+   "ch_falik_cim_p4_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0211",
+  "deal_id": "deal_eridanus",
+  "text": "What is the enterprise value of Falik Medical in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00210"
+  ],
+  "relevance": {
+   "ch_falik_cim_p7_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0212",
+  "deal_id": "deal_eridanus",
+  "text": "How much EBITDA did Falik Medical report for FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00208"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0213",
+  "deal_id": "deal_eridanus",
+  "text": "What were Falik Medical's total sales for the year ended 31 December 2020?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00204"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0214",
+  "deal_id": "deal_eridanus",
+  "text": "How much revenue did Falik Medical report for FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00206"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0215",
+  "deal_id": "deal_eridanus",
+  "text": "How much EBITDA did Falik Medical report for FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00201"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0216",
+  "deal_id": "deal_eridanus",
+  "text": "What was Falik Medical's EBITDA in FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00207"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0217",
+  "deal_id": "deal_eridanus",
+  "text": "What was Falik Medical's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00197"
+  ],
+  "relevance": {
+   "ch_falik_cim_p5_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0218",
+  "deal_id": "deal_fornax",
+  "text": "How much revenue did Carane Foods report for FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00235"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0219",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's EBITDA in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00232"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0220",
+  "deal_id": "deal_fornax",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Carane Foods?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00227"
+  ],
+  "relevance": {
+   "ch_carane_cim_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0221",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's EBITDA margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00234"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0222",
+  "deal_id": "deal_fornax",
+  "text": "How much EBITDA did Carane Foods report for FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00240"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0223",
+  "deal_id": "deal_fornax",
+  "text": "What is the equity value of Carane Foods in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00242"
+  ],
+  "relevance": {
+   "ch_carane_cim_p7_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0224",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's revenue in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00236"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0225",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's revenue in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00237"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0226",
+  "deal_id": "deal_gemini",
+  "text": "What was Merium Water Systems's revenue in FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00265"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0227",
+  "deal_id": "deal_gemini",
+  "text": "How much revenue did Merium Water Systems report for FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00266"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0228",
+  "deal_id": "deal_gemini",
+  "text": "What is the enterprise value of Merium Water Systems in the transaction?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00271"
+  ],
+  "relevance": {
+   "ch_merium_cim_p7_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0229",
+  "deal_id": "deal_gemini",
+  "text": "How much contracted but undelivered business did Merium Water Systems hold at the close of the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00258"
+  ],
+  "relevance": {
+   "ch_merium_cim_p5_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0230",
+  "deal_id": "deal_gemini",
+  "text": "How much revenue did Merium Water Systems report for FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00267"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0231",
+  "deal_id": "deal_gemini",
+  "text": "What were Merium Water Systems's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00270"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0232",
+  "deal_id": "deal_gemini",
+  "text": "What share of sales did Merium Water Systems earn as operating profit before depreciation in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00264"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0233",
+  "deal_id": "deal_gemini",
+  "text": "How much would shareholders of Merium Water Systems receive after net debt is settled?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00272"
+  ],
+  "relevance": {
+   "ch_merium_cim_p7_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0234",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's EBITDA margin in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00293"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0235",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's revenue in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00295"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0236",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's EBITDA in FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00298"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0237",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's EBITDA in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00291"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0238",
+  "deal_id": "deal_hydra",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Estell Automotive?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00286"
+  ],
+  "relevance": {
+   "ch_estell_cim_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0239",
+  "deal_id": "deal_hydra",
+  "text": "What were Estell Automotive's total sales for the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00289"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0240",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's revenue in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00296"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0241",
+  "deal_id": "deal_hydra",
+  "text": "What were Estell Automotive's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2020?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00297"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0242",
+  "deal_id": "deal_lyra",
+  "text": "How much EBITDA did Ulent Containers report for FY2020?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00328"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0243",
+  "deal_id": "deal_lyra",
+  "text": "What was Ulent Containers's EBITDA in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00322"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0244",
+  "deal_id": "deal_lyra",
+  "text": "What was Ulent Containers's order backlog at the end of FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00318"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p5_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0245",
+  "deal_id": "deal_lyra",
+  "text": "How much EBITDA did Ulent Containers report for FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00329"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0246",
+  "deal_id": "deal_lyra",
+  "text": "What share of FY2024 revenue came from the ten largest customers of Ulent Containers?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00317"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p4_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0247",
+  "deal_id": "deal_lyra",
+  "text": "How much revenue did Ulent Containers report for FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00327"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_03": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0248",
+  "deal_id": "deal_lyra",
+  "text": "What share of sales did Ulent Containers earn as operating profit before depreciation in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00324"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0249",
+  "deal_id": "deal_lyra",
+  "text": "What were Ulent Containers's earnings before interest, tax, depreciation and amortisation in the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00330"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_03": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0250",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Gorell?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00025"
+  ],
+  "relevance": {
+   "ch_kb_precedent_09_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0251",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Narova?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00009"
+  ],
+  "relevance": {
+   "ch_kb_precedent_01_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0252",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in the median packaging precedent?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00035"
+  ],
+  "relevance": {
+   "ch_kb_sector_packaging_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0253",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Belium?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00013"
+  ],
+  "relevance": {
+   "ch_kb_precedent_03_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0254",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Draon?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00018"
+  ],
+  "relevance": {
+   "ch_kb_precedent_06_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0255",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Dorund?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00012"
+  ],
+  "relevance": {
+   "ch_kb_precedent_03_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0256",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Tarnik?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00023"
+  ],
+  "relevance": {
+   "ch_kb_precedent_08_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0257",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Elnent?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00014"
+  ],
+  "relevance": {
+   "ch_kb_precedent_04_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0258",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in the median software precedent?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00033"
+  ],
+  "relevance": {
+   "ch_kb_sector_software_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0259",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for the median water systems precedent?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00038"
+  ],
+  "relevance": {
+   "ch_kb_sector_water_systems_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0260",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Dorora?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00019"
+  ],
+  "relevance": {
+   "ch_kb_precedent_06_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0261",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Ulix?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00022"
+  ],
+  "relevance": {
+   "ch_kb_precedent_08_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0262",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Traent?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00010"
+  ],
+  "relevance": {
+   "ch_kb_precedent_02_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0263",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Lumald?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00029"
+  ],
+  "relevance": {
+   "ch_kb_precedent_11_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0264",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for the median food and beverage precedent?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00037"
+  ],
+  "relevance": {
+   "ch_kb_sector_food_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0265",
+  "deal_id": null,
+  "text": "What does a seller walking away pay under the bank SPA template?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00006"
+  ],
+  "relevance": {
+   "ch_kb_spa_template_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0266",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for Precedent transaction Naring?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00026"
+  ],
+  "relevance": {
+   "ch_kb_precedent_10_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0267",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Dorent?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00016"
+  ],
+  "relevance": {
+   "ch_kb_precedent_05_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0268",
+  "deal_id": null,
+  "text": "How many times operating earnings before depreciation did buyers pay for the median logistics precedent?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00034"
+  ],
+  "relevance": {
+   "ch_kb_sector_logistics_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0269",
+  "deal_id": null,
+  "text": "What EV to EBITDA multiple was paid in Precedent transaction Merald?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00011"
+  ],
+  "relevance": {
+   "ch_kb_precedent_02_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0270",
+  "deal_id": null,
+  "text": "What market share did Carent Industries hold in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00348"
+  ],
+  "relevance": {
+   "ch_buyer_01_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0271",
+  "deal_id": null,
+  "text": "How much of its main European segment did Lumell Systems control in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00383"
+  ],
+  "relevance": {
+   "ch_buyer_05_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0272",
+  "deal_id": null,
+  "text": "What market share did Tarnora Industries hold in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00420"
+  ],
+  "relevance": {
+   "ch_buyer_09_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0273",
+  "deal_id": null,
+  "text": "What market share did Junuro Holdings hold in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00450"
+  ],
+  "relevance": {
+   "ch_buyer_13_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0274",
+  "deal_id": null,
+  "text": "What market share did Novex Systems hold in FY2024?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00520"
+  ],
+  "relevance": {
+   "ch_buyer_21_report_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0275",
+  "deal_id": null,
+  "text": "How much of its main European segment did Quinane Group control in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00554"
+  ],
+  "relevance": {
+   "ch_buyer_25_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0276",
+  "deal_id": null,
+  "text": "How much of its main European segment did Trauro Holdings control in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00614"
+  ],
+  "relevance": {
+   "ch_buyer_33_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0277",
+  "deal_id": null,
+  "text": "How much of its main European segment did Ostis Industries control in the year ended 31 December 2024?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00643"
+  ],
+  "relevance": {
+   "ch_buyer_37_report_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0278",
+  "deal_id": "deal_aurora",
+  "text": "What share of Aurora Components's sales were exports in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00101"
+  ],
+  "relevance": {
+   "ch_news_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0279",
+  "deal_id": "deal_borealis",
+  "text": "How much of Kesent Analytics's output went to foreign customers in the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00131"
+  ],
+  "relevance": {
+   "ch_kesent_news_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0280",
+  "deal_id": "deal_borealis",
+  "text": "How many production sites did Kesent Analytics operate as of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00132"
+  ],
+  "relevance": {
+   "ch_kesent_deck_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0281",
+  "deal_id": "deal_cygnus",
+  "text": "How much of Vexeth Logistics's output went to foreign customers in the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00161"
+  ],
+  "relevance": {
+   "ch_vexeth_news_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0282",
+  "deal_id": "deal_cygnus",
+  "text": "How many production sites did Vexeth Logistics operate as of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00162"
+  ],
+  "relevance": {
+   "ch_vexeth_deck_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0283",
+  "deal_id": "deal_draco",
+  "text": "What share of Ostent Packaging's sales were exports in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00192"
+  ],
+  "relevance": {
+   "ch_ostent_news_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0284",
+  "deal_id": "deal_eridanus",
+  "text": "What share of Falik Medical's sales were exports in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00222"
+  ],
+  "relevance": {
+   "ch_falik_news_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0285",
+  "deal_id": "deal_eridanus",
+  "text": "Over how many plants is Falik Medical's manufacturing spread as of the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00223"
+  ],
+  "relevance": {
+   "ch_falik_deck_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0286",
+  "deal_id": "deal_fornax",
+  "text": "How much of Carane Foods's output went to foreign customers in the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00253"
+  ],
+  "relevance": {
+   "ch_carane_news_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0287",
+  "deal_id": "deal_gemini",
+  "text": "What share of Merium Water Systems's sales were exports in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00282"
+  ],
+  "relevance": {
+   "ch_merium_news_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0288",
+  "deal_id": "deal_hydra",
+  "text": "What share of Estell Automotive's sales were exports in FY2023?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00312"
+  ],
+  "relevance": {
+   "ch_estell_news_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0289",
+  "deal_id": "deal_hydra",
+  "text": "Over how many plants is Estell Automotive's manufacturing spread as of the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00313"
+  ],
+  "relevance": {
+   "ch_estell_deck_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0290",
+  "deal_id": "deal_lyra",
+  "text": "How much of Ulent Containers's output went to foreign customers in the year ended 31 December 2023?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00342"
+  ],
+  "relevance": {
+   "ch_ulent_news_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0291",
+  "deal_id": "deal_lyra",
+  "text": "How many production sites did Ulent Containers operate as of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00343"
+  ],
+  "relevance": {
+   "ch_ulent_deck_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0292",
+  "deal_id": null,
+  "text": "How large was the workforce of Carent Industries at the close of the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00350"
+  ],
+  "relevance": {
+   "ch_buyer_01_filing_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0293",
+  "deal_id": null,
+  "text": "How large is Goron Capital Partners by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00362"
+  ],
+  "relevance": {
+   "ch_buyer_02_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0294",
+  "deal_id": null,
+  "text": "How large is Draay Capital Partners by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00378"
+  ],
+  "relevance": {
+   "ch_buyer_04_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0295",
+  "deal_id": null,
+  "text": "How large was the workforce of Lumell Systems at the close of the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00385"
+  ],
+  "relevance": {
+   "ch_buyer_05_filing_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0296",
+  "deal_id": null,
+  "text": "How large is Elnell Capital Partners by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00395"
+  ],
+  "relevance": {
+   "ch_buyer_06_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0297",
+  "deal_id": null,
+  "text": "How large is Narar Investments by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00415"
+  ],
+  "relevance": {
+   "ch_buyer_08_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0298",
+  "deal_id": null,
+  "text": "How many people did Tarnora Industries employ at the end of FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00421"
+  ],
+  "relevance": {
+   "ch_buyer_09_filing_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0299",
+  "deal_id": null,
+  "text": "What were Peling Capital Partners's assets under management at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00432"
+  ],
+  "relevance": {
+   "ch_buyer_10_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0300",
+  "deal_id": null,
+  "text": "How large is Ulik Growth Fund by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00445"
+  ],
+  "relevance": {
+   "ch_buyer_12_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0301",
+  "deal_id": null,
+  "text": "How large was the workforce of Junuro Holdings at the close of the year ended 31 December 2021?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00452"
+  ],
+  "relevance": {
+   "ch_buyer_13_filing_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0302",
+  "deal_id": null,
+  "text": "What were Tarnane Investments's assets under management at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00463"
+  ],
+  "relevance": {
+   "ch_buyer_14_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0303",
+  "deal_id": null,
+  "text": "How large is Elnik Equity by assets under management in FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00480"
+  ],
+  "relevance": {
+   "ch_buyer_16_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0304",
+  "deal_id": null,
+  "text": "How many people did Ithis Systems employ at the end of FY2021?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00486"
+  ],
+  "relevance": {
+   "ch_buyer_17_filing_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0305",
+  "deal_id": null,
+  "text": "What were Junium Growth Fund's assets under management at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00497"
+  ],
+  "relevance": {
+   "ch_buyer_18_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0306",
+  "deal_id": null,
+  "text": "How much does Zanent Capital Partners administer for its investors as of the year ended 31 December 2022?",
+  "kind": "paraphrased",
+  "gold_fact_ids": [
+   "fact_00515"
+  ],
+  "relevance": {
+   "ch_buyer_20_pr_old_p1_01": 2
+  },
+  "paraphrased": true
+ },
+ {
+  "id": "q_0307",
+  "deal_id": null,
+  "text": "What were Draium Capital Partners's assets under management at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00549"
+  ],
+  "relevance": {
+   "ch_buyer_24_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0308",
+  "deal_id": null,
+  "text": "What was Trauro Holdings's market capitalisation at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00615"
+  ],
+  "relevance": {
+   "ch_buyer_33_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0309",
+  "deal_id": null,
+  "text": "What was Estund Systems's market capitalisation at the end of FY2022?",
+  "kind": "single_fact",
+  "gold_fact_ids": [
+   "fact_00631"
+  ],
+  "relevance": {
+   "ch_buyer_35_pr_old_p1_01": 2
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0310",
+  "deal_id": "deal_aurora",
+  "text": "What was Aurora Components's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00048",
+   "fact_00042"
+  ],
+  "relevance": {
+   "ch_cim_p11_01": 2,
+   "ch_cim_p12_01": 2,
+   "ch_concentration_p1_01": 1,
+   "ch_mgmt_pres_p3_01": 1,
+   "ch_mgmt_pres_p4_01": 1,
+   "ch_qoe_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0311",
+  "deal_id": "deal_aurora",
+  "text": "How did Aurora Components's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00044",
+   "fact_00045"
+  ],
+  "relevance": {
+   "ch_cim_p12_01": 2,
+   "ch_cim_p13_01": 2,
+   "ch_model_p1_01": 1,
+   "ch_news_17_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0312",
+  "deal_id": "deal_aurora",
+  "text": "How many people does Aurora Components employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00040",
+   "fact_00041"
+  ],
+  "relevance": {
+   "ch_cim_p16_01": 2,
+   "ch_cim_p4_01": 2,
+   "ch_mgmt_pres_p2_01": 1,
+   "ch_news_17_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0313",
+  "deal_id": "deal_borealis",
+  "text": "What was Kesent Analytics's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00111",
+   "fact_00104"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p4_01": 2,
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_mgmt_p3_01": 1,
+   "ch_kesent_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0314",
+  "deal_id": "deal_borealis",
+  "text": "How did Kesent Analytics's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00107",
+   "fact_00108"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p6_01": 2,
+   "ch_kesent_cim_p6_03": 2,
+   "ch_kesent_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0315",
+  "deal_id": "deal_borealis",
+  "text": "How many people does Kesent Analytics employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00102",
+   "fact_00103"
+  ],
+  "relevance": {
+   "ch_kesent_cim_p2_01": 2,
+   "ch_kesent_cim_p5_01": 2,
+   "ch_kesent_mgmt_p2_01": 1,
+   "ch_kesent_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0316",
+  "deal_id": "deal_cygnus",
+  "text": "What was Vexeth Logistics's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00142",
+   "fact_00135"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p4_01": 2,
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_mgmt_p3_01": 1,
+   "ch_vexeth_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0317",
+  "deal_id": "deal_cygnus",
+  "text": "How did Vexeth Logistics's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00138",
+   "fact_00139"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p6_01": 2,
+   "ch_vexeth_cim_p6_03": 2,
+   "ch_vexeth_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0318",
+  "deal_id": "deal_cygnus",
+  "text": "How many people does Vexeth Logistics employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00133",
+   "fact_00134"
+  ],
+  "relevance": {
+   "ch_vexeth_cim_p2_01": 2,
+   "ch_vexeth_cim_p5_01": 2,
+   "ch_vexeth_mgmt_p2_01": 1,
+   "ch_vexeth_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0319",
+  "deal_id": "deal_draco",
+  "text": "What was Ostent Packaging's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00172",
+   "fact_00165"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p4_01": 2,
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_mgmt_p3_01": 1,
+   "ch_ostent_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0320",
+  "deal_id": "deal_draco",
+  "text": "How did Ostent Packaging's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00168",
+   "fact_00169"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p6_01": 2,
+   "ch_ostent_cim_p6_03": 2,
+   "ch_ostent_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0321",
+  "deal_id": "deal_draco",
+  "text": "How many people does Ostent Packaging employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00163",
+   "fact_00164"
+  ],
+  "relevance": {
+   "ch_ostent_cim_p2_01": 2,
+   "ch_ostent_cim_p5_01": 2,
+   "ch_ostent_mgmt_p2_01": 1,
+   "ch_ostent_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0322",
+  "deal_id": "deal_eridanus",
+  "text": "What was Falik Medical's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00202",
+   "fact_00195"
+  ],
+  "relevance": {
+   "ch_falik_cim_p4_01": 2,
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_mgmt_p3_01": 1,
+   "ch_falik_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0323",
+  "deal_id": "deal_eridanus",
+  "text": "How did Falik Medical's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00198",
+   "fact_00199"
+  ],
+  "relevance": {
+   "ch_falik_cim_p6_01": 2,
+   "ch_falik_cim_p6_03": 2,
+   "ch_falik_mgmt_p4_01": 1,
+   "ch_falik_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0324",
+  "deal_id": "deal_eridanus",
+  "text": "How many people does Falik Medical employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00193",
+   "fact_00194"
+  ],
+  "relevance": {
+   "ch_falik_cim_p2_01": 2,
+   "ch_falik_cim_p5_01": 2,
+   "ch_falik_mgmt_p2_01": 1,
+   "ch_falik_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0325",
+  "deal_id": "deal_fornax",
+  "text": "What was Carane Foods's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00233",
+   "fact_00226"
+  ],
+  "relevance": {
+   "ch_carane_cim_p4_01": 2,
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_mgmt_p3_01": 1,
+   "ch_carane_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0326",
+  "deal_id": "deal_fornax",
+  "text": "How did Carane Foods's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00229",
+   "fact_00230"
+  ],
+  "relevance": {
+   "ch_carane_cim_p6_01": 2,
+   "ch_carane_cim_p6_03": 2,
+   "ch_carane_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0327",
+  "deal_id": "deal_fornax",
+  "text": "How many people does Carane Foods employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00224",
+   "fact_00225"
+  ],
+  "relevance": {
+   "ch_carane_cim_p2_01": 2,
+   "ch_carane_cim_p5_01": 2,
+   "ch_carane_mgmt_p2_01": 1,
+   "ch_carane_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0328",
+  "deal_id": "deal_gemini",
+  "text": "What was Merium Water Systems's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00263",
+   "fact_00256"
+  ],
+  "relevance": {
+   "ch_merium_cim_p4_01": 2,
+   "ch_merium_cim_p6_01": 2,
+   "ch_merium_mgmt_p3_01": 1,
+   "ch_merium_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0329",
+  "deal_id": "deal_gemini",
+  "text": "How did Merium Water Systems's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00259",
+   "fact_00260"
+  ],
+  "relevance": {
+   "ch_merium_cim_p6_01": 2,
+   "ch_merium_cim_p6_03": 2,
+   "ch_merium_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0330",
+  "deal_id": "deal_gemini",
+  "text": "How many people does Merium Water Systems employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00254",
+   "fact_00255"
+  ],
+  "relevance": {
+   "ch_merium_cim_p2_01": 2,
+   "ch_merium_cim_p5_01": 2,
+   "ch_merium_mgmt_p2_01": 1,
+   "ch_merium_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0331",
+  "deal_id": "deal_hydra",
+  "text": "What was Estell Automotive's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00292",
+   "fact_00285"
+  ],
+  "relevance": {
+   "ch_estell_cim_p4_01": 2,
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_mgmt_p3_01": 1,
+   "ch_estell_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0332",
+  "deal_id": "deal_hydra",
+  "text": "How did Estell Automotive's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00288",
+   "fact_00289"
+  ],
+  "relevance": {
+   "ch_estell_cim_p6_01": 2,
+   "ch_estell_cim_p6_03": 2,
+   "ch_estell_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0333",
+  "deal_id": "deal_hydra",
+  "text": "How many people does Estell Automotive employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00283",
+   "fact_00284"
+  ],
+  "relevance": {
+   "ch_estell_cim_p2_01": 2,
+   "ch_estell_cim_p5_01": 2,
+   "ch_estell_mgmt_p2_01": 1,
+   "ch_estell_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0334",
+  "deal_id": "deal_lyra",
+  "text": "What was Ulent Containers's gross margin in FY2024, and what share of FY2024 revenue came from its largest customer?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00323",
+   "fact_00316"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p4_01": 2,
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_mgmt_p3_01": 1,
+   "ch_ulent_mgmt_p4_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0335",
+  "deal_id": "deal_lyra",
+  "text": "How did Ulent Containers's revenue change between FY2023 and FY2024?",
+  "kind": "comparison",
+  "gold_fact_ids": [
+   "fact_00319",
+   "fact_00320"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p6_01": 2,
+   "ch_ulent_cim_p6_03": 2,
+   "ch_ulent_news_p1_01": 1
+  },
+  "paraphrased": false
+ },
+ {
+  "id": "q_0336",
+  "deal_id": "deal_lyra",
+  "text": "How many people does Ulent Containers employ and over how many production sites?",
+  "kind": "multi_fact",
+  "gold_fact_ids": [
+   "fact_00314",
+   "fact_00315"
+  ],
+  "relevance": {
+   "ch_ulent_cim_p2_01": 2,
+   "ch_ulent_cim_p5_01": 2,
+   "ch_ulent_mgmt_p2_01": 1,
+   "ch_ulent_news_p1_01": 1
+  },
+  "paraphrased": false
+ }
+]

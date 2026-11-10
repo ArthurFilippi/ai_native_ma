@@ -1,0 +1,1922 @@
+[
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "integration_bandwidth",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_01",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_02",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "recent_activity",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "integration_bandwidth",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_03",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_04",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_05",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_06",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "ev_ratio",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_07",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_08",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "ev_ratio",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_09",
+  "criterion_key": "antitrust",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_10",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_11",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "fund_lifecycle",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_12",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "recent_activity",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "integration_bandwidth",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_13",
+  "criterion_key": "antitrust",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_14",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_15",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "recent_activity",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_16",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "recent_activity",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "integration_bandwidth",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_17",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "fund_lifecycle",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_18",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_19",
+  "criterion_key": "antitrust",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "size_range",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_20",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_21",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_22",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_23",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_24",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_25",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_26",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_27",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "recent_activity",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_28",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_29",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_30",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_31",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_32",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_33",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "fund_lifecycle",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_34",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_35",
+  "criterion_key": "antitrust",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "regulatory_fdi",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "recent_activity",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "fund_lifecycle",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_36",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "ev_ratio",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_37",
+  "criterion_key": "antitrust",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "sector_focus",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "size_range",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "regulatory_fdi",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "ticket_fit",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "fund_lifecycle",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_38",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "geography",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "ev_ratio",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "integration_bandwidth",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_39",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "sector_focus",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "geography",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "size_range",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "regulatory_fdi",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "recent_activity",
+  "status": "not_met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "ticket_fit",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "fund_lifecycle",
+  "status": "met"
+ },
+ {
+  "deal_id": "deal_aurora",
+  "buyer_id": "buyer_40",
+  "criterion_key": "antitrust",
+  "status": "unknown"
+ }
+]

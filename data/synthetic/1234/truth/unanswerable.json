@@ -1,0 +1,352 @@
+[
+ {
+  "id": "un_0001",
+  "deal_id": "deal_aurora",
+  "text": "What is the total annual compensation of the CEO of Aurora Components?",
+  "reason": "Topic 'ceo_compensation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0002",
+  "deal_id": "deal_aurora",
+  "text": "What revenue guidance did Aurora Components give for FY2026?",
+  "reason": "Topic 'revenue_guidance_fy2026' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0003",
+  "deal_id": "deal_aurora",
+  "text": "What EBITDA does Aurora Components forecast for FY2027?",
+  "reason": "Topic 'ebitda_forecast_fy2027' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0004",
+  "deal_id": "deal_aurora",
+  "text": "Is Aurora Components involved in any pending lawsuits?",
+  "reason": "Topic 'pending_litigation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0005",
+  "deal_id": "deal_borealis",
+  "text": "What is the pension deficit of Kesent Analytics?",
+  "reason": "Topic 'pension_deficit' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0006",
+  "deal_id": "deal_borealis",
+  "text": "How many patents does Kesent Analytics hold?",
+  "reason": "Topic 'patent_portfolio' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0007",
+  "deal_id": "deal_borealis",
+  "text": "What was the employee attrition rate at Kesent Analytics in FY2024?",
+  "reason": "Topic 'employee_attrition' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0008",
+  "deal_id": "deal_borealis",
+  "text": "What environmental liabilities does Kesent Analytics carry?",
+  "reason": "Topic 'environmental' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0009",
+  "deal_id": "deal_cygnus",
+  "text": "What credit rating does Vexeth Logistics have?",
+  "reason": "Topic 'credit_rating' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0010",
+  "deal_id": "deal_cygnus",
+  "text": "What insurance coverage does Vexeth Logistics maintain?",
+  "reason": "Topic 'insurance' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0011",
+  "deal_id": "deal_cygnus",
+  "text": "What was the customer churn rate of Vexeth Logistics in FY2024?",
+  "reason": "Topic 'customer_churn' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0012",
+  "deal_id": "deal_cygnus",
+  "text": "What dividend did Vexeth Logistics pay for FY2024?",
+  "reason": "Topic 'dividend_policy' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0013",
+  "deal_id": "deal_draco",
+  "text": "What is the total annual compensation of the CEO of Ostent Packaging?",
+  "reason": "Topic 'ceo_compensation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0014",
+  "deal_id": "deal_draco",
+  "text": "What revenue guidance did Ostent Packaging give for FY2026?",
+  "reason": "Topic 'revenue_guidance_fy2026' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0015",
+  "deal_id": "deal_draco",
+  "text": "What EBITDA does Ostent Packaging forecast for FY2027?",
+  "reason": "Topic 'ebitda_forecast_fy2027' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0016",
+  "deal_id": "deal_draco",
+  "text": "Is Ostent Packaging involved in any pending lawsuits?",
+  "reason": "Topic 'pending_litigation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0017",
+  "deal_id": "deal_eridanus",
+  "text": "What is the pension deficit of Falik Medical?",
+  "reason": "Topic 'pension_deficit' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0018",
+  "deal_id": "deal_eridanus",
+  "text": "How many patents does Falik Medical hold?",
+  "reason": "Topic 'patent_portfolio' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0019",
+  "deal_id": "deal_eridanus",
+  "text": "What was the employee attrition rate at Falik Medical in FY2024?",
+  "reason": "Topic 'employee_attrition' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0020",
+  "deal_id": "deal_eridanus",
+  "text": "What environmental liabilities does Falik Medical carry?",
+  "reason": "Topic 'environmental' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0021",
+  "deal_id": "deal_fornax",
+  "text": "What credit rating does Carane Foods have?",
+  "reason": "Topic 'credit_rating' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0022",
+  "deal_id": "deal_fornax",
+  "text": "What insurance coverage does Carane Foods maintain?",
+  "reason": "Topic 'insurance' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0023",
+  "deal_id": "deal_fornax",
+  "text": "What was the customer churn rate of Carane Foods in FY2024?",
+  "reason": "Topic 'customer_churn' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0024",
+  "deal_id": "deal_fornax",
+  "text": "What dividend did Carane Foods pay for FY2024?",
+  "reason": "Topic 'dividend_policy' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0025",
+  "deal_id": "deal_gemini",
+  "text": "What is the total annual compensation of the CEO of Merium Water Systems?",
+  "reason": "Topic 'ceo_compensation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0026",
+  "deal_id": "deal_gemini",
+  "text": "What revenue guidance did Merium Water Systems give for FY2026?",
+  "reason": "Topic 'revenue_guidance_fy2026' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0027",
+  "deal_id": "deal_gemini",
+  "text": "What EBITDA does Merium Water Systems forecast for FY2027?",
+  "reason": "Topic 'ebitda_forecast_fy2027' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0028",
+  "deal_id": "deal_gemini",
+  "text": "Is Merium Water Systems involved in any pending lawsuits?",
+  "reason": "Topic 'pending_litigation' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0029",
+  "deal_id": "deal_hydra",
+  "text": "What is the pension deficit of Estell Automotive?",
+  "reason": "Topic 'pension_deficit' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0030",
+  "deal_id": "deal_hydra",
+  "text": "How many patents does Estell Automotive hold?",
+  "reason": "Topic 'patent_portfolio' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0031",
+  "deal_id": "deal_hydra",
+  "text": "What was the employee attrition rate at Estell Automotive in FY2024?",
+  "reason": "Topic 'employee_attrition' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0032",
+  "deal_id": "deal_hydra",
+  "text": "What environmental liabilities does Estell Automotive carry?",
+  "reason": "Topic 'environmental' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0033",
+  "deal_id": "deal_lyra",
+  "text": "What credit rating does Ulent Containers have?",
+  "reason": "Topic 'credit_rating' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0034",
+  "deal_id": "deal_lyra",
+  "text": "What insurance coverage does Ulent Containers maintain?",
+  "reason": "Topic 'insurance' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0035",
+  "deal_id": "deal_lyra",
+  "text": "What was the customer churn rate of Ulent Containers in FY2024?",
+  "reason": "Topic 'customer_churn' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0036",
+  "deal_id": "deal_lyra",
+  "text": "What dividend did Ulent Containers pay for FY2024?",
+  "reason": "Topic 'dividend_policy' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0037",
+  "deal_id": null,
+  "text": "What fee does the bank charge for a sell-side mandate?",
+  "reason": "Topic 'fee_schedule' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0038",
+  "deal_id": null,
+  "text": "Where does the bank rank in the 2024 league tables?",
+  "reason": "Topic 'league_table' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0039",
+  "deal_id": null,
+  "text": "Which law firm advised on the most recent precedent transaction?",
+  "reason": "Topic 'law_firm' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0040",
+  "deal_id": null,
+  "text": "What was the fairness opinion fee on the latest precedent transaction?",
+  "reason": "Topic 'fairness_fee' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0041",
+  "deal_id": null,
+  "text": "What is the parental leave policy of the bank?",
+  "reason": "Topic 'parental_leave' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0042",
+  "deal_id": null,
+  "text": "How long does the conflict check take for a new mandate?",
+  "reason": "Topic 'conflict_check' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0043",
+  "deal_id": null,
+  "text": "What is the carried interest of Goron Capital Partners?",
+  "reason": "Topic 'carried_interest' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0044",
+  "deal_id": null,
+  "text": "Who is the chief investment officer of Traeth Group?",
+  "reason": "Topic 'cio' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0045",
+  "deal_id": null,
+  "text": "What credit rating does Tarnix Systems have?",
+  "reason": "Topic 'buyer_credit_rating' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0046",
+  "deal_id": null,
+  "text": "What is the ESG rating of Senon Holdings?",
+  "reason": "Topic 'esg_rating' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0047",
+  "deal_id": null,
+  "text": "Who are the largest investors in Zanent Capital Partners?",
+  "reason": "Topic 'investor_base' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0048",
+  "deal_id": null,
+  "text": "What is the dividend yield of Caruro Investments?",
+  "reason": "Topic 'dividend_yield' is not stated in any document of the corpus.",
+  "hard": true
+ },
+ {
+  "id": "un_0049",
+  "deal_id": null,
+  "text": "What is the carried interest of Halund Holdings?",
+  "reason": "Topic 'carried_interest' is not stated in any document of the corpus.",
+  "hard": false
+ },
+ {
+  "id": "un_0050",
+  "deal_id": null,
+  "text": "Who is the chief investment officer of Lanova Equity?",
+  "reason": "Topic 'cio' is not stated in any document of the corpus.",
+  "hard": false
+ }
+]

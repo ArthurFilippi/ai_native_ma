@@ -1,0 +1,194 @@
+[
+ {
+  "id": "s_0001",
+  "query_id": "q_0278",
+  "fact_id": "fact_00101",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0002",
+  "query_id": "q_0279",
+  "fact_id": "fact_00131",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0003",
+  "query_id": "q_0280",
+  "fact_id": "fact_00132",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0004",
+  "query_id": "q_0281",
+  "fact_id": "fact_00161",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0005",
+  "query_id": "q_0282",
+  "fact_id": "fact_00162",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0006",
+  "query_id": "q_0283",
+  "fact_id": "fact_00192",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0007",
+  "query_id": "q_0284",
+  "fact_id": "fact_00222",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0008",
+  "query_id": "q_0285",
+  "fact_id": "fact_00223",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0009",
+  "query_id": "q_0286",
+  "fact_id": "fact_00253",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0010",
+  "query_id": "q_0287",
+  "fact_id": "fact_00282",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0011",
+  "query_id": "q_0288",
+  "fact_id": "fact_00312",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0012",
+  "query_id": "q_0289",
+  "fact_id": "fact_00313",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0013",
+  "query_id": "q_0290",
+  "fact_id": "fact_00342",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0014",
+  "query_id": "q_0291",
+  "fact_id": "fact_00343",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0015",
+  "query_id": "q_0292",
+  "fact_id": "fact_00350",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0016",
+  "query_id": "q_0293",
+  "fact_id": "fact_00362",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0017",
+  "query_id": "q_0294",
+  "fact_id": "fact_00378",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0018",
+  "query_id": "q_0295",
+  "fact_id": "fact_00385",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0019",
+  "query_id": "q_0296",
+  "fact_id": "fact_00395",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0020",
+  "query_id": "q_0297",
+  "fact_id": "fact_00415",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0021",
+  "query_id": "q_0298",
+  "fact_id": "fact_00421",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0022",
+  "query_id": "q_0299",
+  "fact_id": "fact_00432",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0023",
+  "query_id": "q_0300",
+  "fact_id": "fact_00445",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0024",
+  "query_id": "q_0301",
+  "fact_id": "fact_00452",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0025",
+  "query_id": "q_0302",
+  "fact_id": "fact_00463",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0026",
+  "query_id": "q_0303",
+  "fact_id": "fact_00480",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0027",
+  "query_id": "q_0304",
+  "fact_id": "fact_00486",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0028",
+  "query_id": "q_0305",
+  "fact_id": "fact_00497",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0029",
+  "query_id": "q_0306",
+  "fact_id": "fact_00515",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0030",
+  "query_id": "q_0307",
+  "fact_id": "fact_00549",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0031",
+  "query_id": "q_0308",
+  "fact_id": "fact_00615",
+  "reason": "every supporting source is older than the freshness window"
+ },
+ {
+  "id": "s_0032",
+  "query_id": "q_0309",
+  "fact_id": "fact_00631",
+  "reason": "every supporting source is older than the freshness window"
+ }
+]

@@ -1,0 +1,68 @@
+{
+ "users": [
+  {
+   "id": "u_lead",
+   "name": "Lena Lead"
+  },
+  {
+   "id": "u_analyst",
+   "name": "Alex Analyst"
+  },
+  {
+   "id": "u_outsider",
+   "name": "Omar Outsider"
+  }
+ ],
+ "memberships": [
+  {
+   "deal_id": "deal_aurora",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_borealis",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_cygnus",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_draco",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_eridanus",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_fornax",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_gemini",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_hydra",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_lyra",
+   "user_id": "u_lead",
+   "role": "lead"
+  },
+  {
+   "deal_id": "deal_aurora",
+   "user_id": "u_analyst",
+   "role": "member"
+  }
+ ]
+}
