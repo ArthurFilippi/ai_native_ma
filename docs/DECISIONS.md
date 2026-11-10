@@ -350,3 +350,33 @@ One short entry each: context, choice, alternative, cost.
 
 ## D85. Report fixes from the review (core)
 - M1: the abstention section prints the compared score from `adapter_config` (`relevance`) and describes `choose_tau` as the code does (the (m+1)th smallest dev score). M6: the header prints `paraphrase_rate` and `hard_negative_rate` per seed. L1: the latency columns say "wall clock, differs on every run" (the timing markers stay). N3: section 0 shows the end to end false abstention and the abstention precision (abstentions of the full pipeline that were on unanswerable questions). Tests: `tests/unit/test_metrics_report.py`.
+
+## D86. Buyers rank by the proven floor of their score (core-llm)
+- Context: review finding 12. `score = met / known` ignores the weight without evidence, so a buyer with one met criterion (1.00 at 12 percent coverage) ranked above a buyer with 0.88 at 47 percent.
+- Choice: every card carries `score_low = met weight / applicable weight` (unknown counted as not met) and `score_high = (met + unknown weight) / applicable weight` (unknown counted as met); the rank orders by `score_low`, then score, coverage and id. The card shows the range. Python and TypeScript share the rule through `scoring_vectors.json` (regenerated, the default case now ranks `b_e` before `b_b`).
+- Alternative: a combined `score x coverage`, or a Wilson style lower bound. `score_low` is the same product for a fixed weight set, needs no constant and is readable as "weight already proven met".
+- Cost: a buyer with little evidence ranks low even when everything known about it is good; the range on the card says why.
+
+## D87. Stage 1 is prefilled from the deal record (core-llm)
+- Context: review finding 13. Without typed filters, geography and size were `unknown` although the deal states its region and value; the harness had to inject them (D80).
+- Choice: `Deal` gains optional `geographies`, `ev_eur_m`, `buyer_types`. An empty filter is filled from them (`prefill_from_deal`), size as `ev x min_size_multiple_of_ev` to `ev x max_size_multiple_of_ev` (1 and 60, `ScreeningParams`, parameters not sources), and the rationale says "from the deal record". A typed filter wins. The generator writes the Aurora region and EV; the harness now screens with no typed filter, the product path. Buyer type stays `unknown` when the deal states no preference.
+- Alternative: keep the filters manual. Rejected: the deal already knows the answer.
+- Cost: three optional contract fields; deals other than Aurora state none, so their stage 1 is unchanged.
+
+## D88. Live calls: structured output, no silent mock, a separate judge (core-llm)
+- Context: review findings 6 to 9. A live failure was answered by the mock with only a suffix on `Trace.provider`; Gemini read its schema from the prompt; retries ignored `Retry-After`; the judge was the writer model.
+- Choice: Gemini receives `generationConfig.responseSchema` (the pydantic schema converted to the OpenAPI subset: `$ref` inlined, `anyOf null` as `nullable`). Retries honour `Retry-After` (seconds or HTTP date, capped at 60 s) and fall back to exponential backoff; each provider object caps calls in flight (`LLM_MAX_CONCURRENCY`, 4). A failed call raises `LLMError`; the API answers 503 with the reason. `LLM_ALLOW_MOCK_FALLBACK=true` restores the mock fallback, and the answer then carries `degraded=true` and a reason the web client shows in an alert. `JUDGE_PROVIDER` and `JUDGE_MODEL` select the judge; the trace and the report name both models. The API keeps one `RetrievalEngine` per process (review finding 5).
+- Alternative: `responseJsonSchema` (full JSON Schema) instead of `responseSchema`; the subset is what the brief asked for and is accepted by every Gemini 2.x model.
+- Cost: prices in `prices.json` stay null until the owner copies them from the pricing page, so `cost_usd` is null for live calls; tokens (thinking tokens included) are exact. No live call was made in this work: there was no key in the environment.
+
+## D89. The verifier binds a number to its role, period and column (core-llm)
+- Context: review finding 11. `numeric_match` accepts a number found anywhere in the quote, so "largest customer 41.0 percent" passed on a top five share, and "FY2024 adjusted EBITDA 11.2" passed on the FY2022 column.
+- Choice: a fourth check, `binding`, between `numeric_match` and the judge. Role: a claim about one entity (`largest customer`) fails on a number whose clause gives it to a group (`top five`), and the reverse. Column: in a table row the header year of the number's column must be a claimed year. Sentence: when the sentence names two years or more, the year nearest to the number (parentheses that do not hold it excluded) must be a claimed year. A source that gives no role or period passes. Tests: `tests/unit/test_verify_binding.py` (both observed errors).
+- Alternative: leave binding to the judge. Rejected: the mock judge cannot do it and a live judge was never validated.
+- Cost: rules over English phrasings; a binding stated across sentences is not checked.
+
+## D90. Mock and live results live in separate files (core-llm)
+- Context: the brief asks for two sections, mock and live, with both models named.
+- Choice: `make eval PROVIDER=gemini` writes `RESULTS_LIVE.md` and `latest_live.json`; the mock `RESULTS.md` names writer and judge in its header and ends with section 9, which summarises `latest_live.json` when it exists and otherwise says `live run not executed`. `make live-smoke` runs a few real queries through the pipeline and refuses to run without a key or with the mock fallback on.
+- Alternative: one file with both providers. Rejected: a live run is not byte reproducible and must not change the mock file.
+- Cost: the live section is only as fresh as the last live run; its date and commit are printed.
