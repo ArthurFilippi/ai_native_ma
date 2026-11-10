@@ -30,7 +30,9 @@ from ainma.contracts import (
 from ainma.retrieval.bm25 import BM25Index
 from ainma.retrieval.config import RetrievalConfig
 from ainma.retrieval.embedder import Embedder, FastEmbedEmbedder, LsaEmbedder
+from ainma.retrieval.entities import entity_overlap, entity_tokens
 from ainma.retrieval.fusion import rrf_ceiling, rrf_fuse
+from ainma.retrieval.lexicon import concept_tokens, target_metrics
 from ainma.retrieval.quantities import ExtractedFact, extract_facts_rules
 from ainma.retrieval.ranker import (
     chunk_recency,
@@ -45,6 +47,7 @@ from ainma.store.base import Store
 logger = logging.getLogger(__name__)
 
 _EPS = 1e-12
+_NAMED = 0.5  # share of the question's entity found in a passage for the passage to be "named"
 
 
 class SearchHit(Strict):
@@ -55,12 +58,16 @@ class SearchHit(Strict):
 
 class SearchResult(BaseModel):
     """`hits` is the ranked top-k. Under A5 withdrawn documents never appear in `hits`: they are
-    listed in `withdrawn` (with the score they would have had) so the pipeline can say so."""
+    listed in `withdrawn` (with the score they would have had) so the pipeline can say so. A
+    superseded document ranks low on purpose (status factor 0.2), so one that fell below the
+    top-k is listed in `superseded`: the answer states the current source and flags the old one,
+    it does not silently leave it out."""
 
     model_config = ConfigDict(frozen=True)
 
     hits: list[SearchHit]
     withdrawn: list[SearchHit]
+    superseded: list[SearchHit] = []  # A5: superseded passages below the top-k, to be flagged
     as_of: date | None
     n_candidates: int
 
@@ -82,14 +89,37 @@ def default_reranker(config: RetrievalConfig) -> Reranker:
 
 
 class _FittedIndex:
-    def __init__(self, chunks: list[Chunk], config: RetrievalConfig, embedder: Embedder) -> None:
+    def __init__(
+        self,
+        chunks: list[Chunk],
+        texts: list[str],
+        config: RetrievalConfig,
+        embedder: Embedder,
+        documents: dict[str, DocumentMeta],
+    ) -> None:
         self.chunks = chunks
-        self.bm25 = BM25Index(
-            [tokenize(c.text) for c in chunks], k1=config.bm25_k1, b=config.bm25_b
+        self.texts = texts
+        # what BM25 and the dense index read: the text and one concept token per metric it names
+        enriched = (
+            [
+                f"{t} {concept_tokens(f.metric for f in extract_facts_rules(t))}".strip()
+                for t in texts
+            ]
+            if config.concept_tokens
+            else texts
         )
-        embedder.fit([c.text for c in chunks])
+        self.terms: list[set[str]] = [set(tokenize(t)) for t in texts]
+        # every token of a document (title included): is the passage's document about an entity?
+        self.document_terms: dict[str, set[str]] = {
+            doc_id: set(tokenize(documents[doc_id].title))
+            for doc_id in {c.document_id for c in chunks}
+        }
+        for chunk, terms in zip(chunks, self.terms, strict=True):
+            self.document_terms[chunk.document_id].update(terms)
+        self.bm25 = BM25Index([tokenize(t) for t in enriched], k1=config.bm25_k1, b=config.bm25_b)
+        embedder.fit(enriched)
         self.embedder = embedder
-        self.matrix: NDArray[np.float64] = embedder.embed([c.text for c in chunks])
+        self.matrix: NDArray[np.float64] = embedder.embed(enriched)
         self._facts: dict[int, list[ExtractedFact]] = {}
 
     def facts(self, index: int) -> list[ExtractedFact]:
@@ -98,7 +128,12 @@ class _FittedIndex:
         return self._facts[index]
 
 
-def _fingerprint(chunks: Sequence[Chunk], config: RetrievalConfig) -> str:
+def _fingerprint(
+    chunks: Sequence[Chunk],
+    texts: Sequence[str],
+    config: RetrievalConfig,
+    documents: dict[str, DocumentMeta],
+) -> str:
     digest = hashlib.sha256()
     digest.update(
         repr(
@@ -109,11 +144,12 @@ def _fingerprint(chunks: Sequence[Chunk], config: RetrievalConfig) -> str:
                 config.seed,
                 config.bm25_k1,
                 config.bm25_b,
+                config.concept_tokens,
             )
         ).encode()
     )
-    for chunk in chunks:
-        digest.update(f"\x00{chunk.id}\x00{chunk.text}".encode())
+    for chunk, text in zip(chunks, texts, strict=True):
+        digest.update(f"\x00{chunk.id}\x00{documents[chunk.document_id].title}\x00{text}".encode())
     return digest.hexdigest()
 
 
@@ -138,12 +174,18 @@ class RetrievalEngine:
         self._rerankers: dict[str, Reranker] = {}
         self.fits = 0  # number of index fits, for tests and diagnostics
 
-    def _index(self, chunks: list[Chunk], config: RetrievalConfig) -> _FittedIndex:
-        key = _fingerprint(chunks, config)
+    def _index(
+        self,
+        chunks: list[Chunk],
+        texts: list[str],
+        config: RetrievalConfig,
+        documents: dict[str, DocumentMeta],
+    ) -> _FittedIndex:
+        key = _fingerprint(chunks, texts, config, documents)
         if key in self._indexes:
             self._indexes.move_to_end(key)
             return self._indexes[key]
-        index = _FittedIndex(chunks, config, self._embedder_factory(config))
+        index = _FittedIndex(chunks, texts, config, self._embedder_factory(config), documents)
         self.fits += 1
         self._indexes[key] = index
         while len(self._indexes) > self._max:
@@ -173,8 +215,9 @@ class RetrievalEngine:
         documents = {d.id: d for d in await store.list_documents(access, deal_id)}
         dated = [c.published_on for c in chunks if c.published_on is not None]
         as_of = config.as_of or (max(dated) if dated else None)
-        index = self._index(chunks, config)
-        return self._rank(query, index, documents, config, as_of)
+        texts = [c.text for c in chunks]
+        index = self._index(chunks, texts, config, documents)
+        return self._rank(query, index, documents, config, as_of, deal_id)
 
     def _rank(
         self,
@@ -183,11 +226,14 @@ class RetrievalEngine:
         documents: dict[str, DocumentMeta],
         config: RetrievalConfig,
         as_of: date | None,
+        deal_id: str | None,
     ) -> SearchResult:
         chunks = index.chunks
         ids = [c.id for c in chunks]
-        bm25 = index.bm25.scores(tokenize(query))
-        dense = index.matrix @ index.embedder.embed([query])[0] if len(chunks) else bm25
+        concepts = concept_tokens(target_metrics(query)) if config.concept_tokens else ""
+        retrieval_query = f"{query} {concepts}".strip()
+        bm25 = index.bm25.scores(tokenize(retrieval_query))
+        dense = index.matrix @ index.embedder.embed([retrieval_query])[0] if len(chunks) else bm25
         bm_rank, dn_rank = _ranking(bm25, ids), _ranking(dense, ids)
         bm_pos = {i: r for r, i in enumerate(bm_rank, start=1)}
         dn_pos = {i: r for r, i in enumerate(dn_rank, start=1)}
@@ -207,10 +253,32 @@ class RetrievalEngine:
             relevance = {i: fused[i] / ceiling for i in order}
         else:
             window = fused_order[: config.rerank_top]
-            scores = self._reranker(config).score(query, [chunks[i].text for i in window])
+            if config.entity_expansion and (wanted := entity_tokens(query)):
+                # chunks of documents that name the asked entity join the reranker window, so a
+                # press article that says `Fynex` and nothing else is not crowded out by every
+                # other fund summary that shares `capital partners assets under management`
+                named = [
+                    i
+                    for i in fused_order
+                    if (
+                        entity_overlap(
+                            wanted, index.document_terms[chunks[i].document_id], index.bm25.idf
+                        )
+                        or 0.0
+                    )
+                    >= _NAMED
+                ]
+                extra = [i for i in named if i not in set(window)]
+                window = [*window, *extra[: config.entity_expansion]]
+            scores = self._reranker(config).score(
+                query,
+                [index.texts[i] for i in window],
+                idf=index.bm25.idf,
+                document_terms=[index.document_terms[chunks[i].document_id] for i in window],
+            )
             rerank = dict(zip(window, scores, strict=True))
             w = config.rerank_weight
-            relevance = {i: w * rerank[i] + (1.0 - w) * fused[i] / ceiling for i in window}
+            relevance = {i: w * rerank[i] + (1.0 - w) * fused.get(i, 0.0) / ceiling for i in window}
             order = sorted(window, key=lambda i: (-relevance[i], window.index(i)))
 
         ranker = config.ranker
@@ -220,19 +288,24 @@ class RetrievalEngine:
             else []
         )
         rows: list[tuple[int, dict[str, float], float, DocumentMeta]] = []
+        wanted = entity_tokens(query)
         for i in order:
             chunk = chunks[i]
             document = documents[chunk.document_id]
             tier_weight = ranker.tier_weights[document.tier]
             recency = chunk_recency(chunk, ranker, as_of)
             status = ranker.status_factors[document.status]
+            scope = 1.0
+            about = entity_overlap(wanted, index.document_terms[document.id], index.bm25.idf)
+            if deal_id is not None and document.deal_id is None and (about or 0.0) < _NAMED:
+                scope = ranker.out_of_scope_weight
             bonus = 0.0
             if config.system == "A5":
                 others = [pair for pair in facts_by_doc if pair[0].id != document.id]
                 n_others = corroboration_count(
                     document, index.facts(i), others, ranker.corroboration_tolerance
                 )
-                bonus = corroboration_bonus(n_others, ranker) if status > 0 else 0.0
+                bonus = corroboration_bonus(n_others, ranker) * relevance[i] if status > 0 else 0.0
             components = {
                 "bm25": float(bm25[i]),
                 "dense": float(dense[i]),
@@ -243,6 +316,8 @@ class RetrievalEngine:
                 "corroboration": bonus,
                 "relevance": relevance[i],
                 "status": status,
+                "scope": scope,
+                **({"entity": about} if about is not None else {}),
             }
             final = (
                 final_score(
@@ -251,6 +326,8 @@ class RetrievalEngine:
                     recency=recency,
                     status=status,
                     bonus=bonus,
+                    exponent=ranker.trust_exponent,
+                    scope=scope,
                 )
                 if config.system == "A5"
                 else relevance[i]
@@ -277,7 +354,21 @@ class RetrievalEngine:
 
         hits = [to_hit(rank, row) for rank, row in enumerate(kept[: config.top_k], start=1)]
         withdrawn = [to_hit(rank, row) for rank, row in enumerate(withdrawn_rows, start=1)]
-        return SearchResult(hits=hits, withdrawn=withdrawn, as_of=as_of, n_candidates=len(chunks))
+        shown = {h.chunk.id for h in hits}
+        superseded = [
+            to_hit(rank, row)
+            for rank, row in enumerate(kept, start=1)
+            if config.system == "A5"
+            and row[3].status is DocStatus.SUPERSEDED
+            and chunks[row[0]].id not in shown
+        ]
+        return SearchResult(
+            hits=hits,
+            withdrawn=withdrawn,
+            superseded=superseded[: config.top_k],
+            as_of=as_of,
+            n_candidates=len(chunks),
+        )
 
 
 def _explain(

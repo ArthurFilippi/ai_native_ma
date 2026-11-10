@@ -1,10 +1,13 @@
 """Source ranker of spec section 7.
 
-    final = relevance * tier_weight * recency * status + corroboration_bonus
+    final = relevance * scope * (tier_weight * recency) ** exponent * status + corroboration_bonus
     recency = 0.5 ** (age_days / half_life(doc_type))       age relative to `as_of`
     status  = 1.0 current | 0.2 superseded | 0.0 withdrawn
-    corroboration_bonus = 0.05 * min(n_independent_documents_with_same_fact - 1, 3)
+    corroboration_bonus = 0.05 * min(n_independent_documents_with_same_fact - 1, 3) * relevance
 
+`scope` is 1 for the passages of the deal a question is asked in, and `out_of_scope_weight` for
+general layer passages that the question does not name (a question asked within a deal is first
+about that deal's data room). `exponent` tempers the trust term (1 is the spec formula).
 `relevance` is the score of the retrieval stage in [0, 1]. Two documents are independent when
 they have different ids and different sha256 and neither is `superseded_by` the other.
 """
@@ -71,8 +74,16 @@ def corroboration_bonus(n_others: int, config: RankerConfig) -> float:
 
 
 def final_score(
-    *, relevance: float, tier_weight: float, recency: float, status: float, bonus: float
+    *,
+    relevance: float,
+    tier_weight: float,
+    recency: float,
+    status: float,
+    bonus: float,
+    exponent: float = 1.0,
+    scope: float = 1.0,
 ) -> float:
     if status == 0.0:
         return 0.0
-    return min(1.0, relevance * tier_weight * recency * status + bonus)
+    trust = float((tier_weight * recency) ** exponent)
+    return min(1.0, relevance * scope * trust * status + bonus)

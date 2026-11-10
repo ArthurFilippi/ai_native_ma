@@ -69,9 +69,11 @@ def test_reranker_features_by_hand() -> None:
     assert h["numbers"] is None and h["period"] is None and h["metric"] is None
     scores = reranker.score(query, [good, other_period, unrelated])
     assert scores[0] > scores[1] > scores[2]
-    assert f["phrase"] == pytest.approx(0.6)  # 3 of 5 query pairs are adjacent in the passage
+    # the metric and period words are judged by their own features: the residual query is
+    # "EUR 182.4 million", whose two adjacent pairs are both in the passage
+    assert f["phrase"] == pytest.approx(1.0)
     assert f["fact"] == 1.0  # the passage states revenue for FY2024 as a number
-    assert scores[0] == pytest.approx(0.25 + 0.10 * 0.6 + 0.15 + 0.10 + 0.15 + 0.25)
+    assert scores[0] == pytest.approx(0.25 + 0.10 * 1.0 + 0.15 + 0.10 + 0.15 + 0.25)
     share = reranker.features("FY2024 revenue", "17 percent of FY2024 revenue.")
     assert share["metric"] == 1.0 and share["fact"] == 0.0  # same keywords, not a revenue figure
     # weighted mean of the active features, by hand, for the second passage

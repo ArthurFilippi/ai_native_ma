@@ -21,8 +21,10 @@ from typing import Literal
 
 from ainma.retrieval.lexicon import (
     METRIC_BY_KEY,
+    date_spans,
     find_metrics,
     find_periods,
+    find_range_phrases,
 )
 from ainma.retrieval.text import sentence_spans
 
@@ -129,6 +131,9 @@ def format_number(value: float) -> str:
 
 # ---- rule based facts --------------------------------------------------------------------------
 
+STATIC_PERIOD = "static"
+"""Period of a metric that describes the entity and not a fiscal period (fund vintage year)."""
+
 
 @dataclass(frozen=True)
 class ExtractedFact:
@@ -137,25 +142,35 @@ class ExtractedFact:
     value: float  # money in millions when a scale word is present, else as written
     unit: str  # "EUR m", "%", "count" ...
     label: str  # the quantity as written, e.g. "EUR 182.4 million"
-    sentence: str
+    sentence: str  # the sentence, or the row of a table, that states the fact
     start: int  # offsets of the quantity inside the analysed text
     end: int
     kind: QuantityKind
+    sentence_start: int = 0  # offsets of `sentence` inside the analysed text
+    from_table: bool = False
 
 
 def _compatible(metric_kind: str, quantity: Quantity) -> bool:
+    if metric_kind == "year":
+        return quantity.kind == "year"
     if quantity.kind == "year":
         return False
     if metric_kind == "money":
         return quantity.kind in ("money", "number")
     if metric_kind == "percent":
         return quantity.kind == "percent"
-    return quantity.kind == "number"
+    if metric_kind == "multiple":
+        return quantity.kind == "multiple"
+    return quantity.kind == "number"  # count and duration
 
 
 def _reported(quantity: Quantity) -> tuple[float, str]:
     if quantity.kind == "percent":
         return quantity.raw, "%"
+    if quantity.kind == "multiple":
+        return quantity.raw, "x"
+    if quantity.kind == "year":
+        return quantity.raw, "year"
     if quantity.kind == "money" or quantity.scale != 1.0:
         currency = quantity.currency or "EUR"
         if quantity.scale != 1.0:
@@ -164,41 +179,78 @@ def _reported(quantity: Quantity) -> tuple[float, str]:
     return quantity.raw, "count"
 
 
+def _sentence_fact(
+    metric: str,
+    period: str | None,
+    quantity: Quantity,
+    sentence: str,
+    start: int,
+) -> ExtractedFact:
+    value, unit = _reported(quantity)
+    if METRIC_BY_KEY[metric].static:
+        period = STATIC_PERIOD
+    return ExtractedFact(
+        metric=metric,
+        period=period,
+        value=value,
+        unit=unit,
+        label=quantity.text,
+        sentence=sentence,
+        start=start + quantity.start,
+        end=start + quantity.end,
+        kind=quantity.kind,
+        sentence_start=start,
+    )
+
+
 def extract_facts_rules(text: str) -> list[ExtractedFact]:
-    """Facts `(metric, period, value)` found sentence by sentence.
+    """Facts `(metric, period, value)` found sentence by sentence, plus the cells of tables.
 
     A quantity takes the nearest compatible metric before it (else the nearest after it). Its
     period is the nearest period by distance (ties prefer the one after); a period followed by a
-    colon, as in `(FY2023: EUR 168.0 million)`, only binds to the quantity after it.
+    colon, as in `(FY2023: EUR 168.0 million)`, only binds to the quantity after it. Metrics of a
+    static kind (fund vintage, process length) carry the period `static`. A range phrase (`equity
+    tickets of EUR 40 million to EUR 150 million`) gives a minimum and a maximum. Table rows give
+    one fact per column whose header names a period.
     """
     facts: list[ExtractedFact] = []
     for start, end in sentence_spans(text):
         sentence = text[start:end]
-        metrics = find_metrics(sentence)
-        if not metrics:
+        if "|" in sentence:
+            continue  # table rows are read by `_table_facts`
+        facts.extend(_facts_of_sentence(sentence, start))
+    facts.extend(_table_facts(text))
+    facts.sort(key=lambda f: f.start)
+    return facts
+
+
+def _facts_of_sentence(sentence: str, start: int) -> list[ExtractedFact]:
+    metrics = find_metrics(sentence)
+    periods = find_periods(sentence)
+    dates = date_spans(sentence)
+    quantities = [
+        q
+        for q in parse_quantities(sentence)
+        if not any(a <= q.start and q.end <= b for a, b in dates)
+        or (q.kind == "year" and not any(a <= q.start and q.end <= b for a, b in dates))
+    ]
+    facts: list[ExtractedFact] = []
+    ranges = find_range_phrases(sentence)
+    if ranges:
+        (low_key, high_key), _, _ = ranges[0]
+        money = [q for q in quantities if q.kind == "money"]
+        if len(money) >= 2:
+            facts.append(_sentence_fact(low_key, None, money[0], sentence, start))
+            facts.append(_sentence_fact(high_key, None, money[1], sentence, start))
+            return facts
+    for quantity in quantities:
+        options = [m for m in metrics if _compatible(METRIC_BY_KEY[m[0]].kind, quantity)]
+        if not options:
             continue
-        periods = find_periods(sentence)
-        for quantity in parse_quantities(sentence):
-            options = [m for m in metrics if _compatible(METRIC_BY_KEY[m[0]].kind, quantity)]
-            if not options:
-                continue
-            before = [m for m in options if m[2] <= quantity.start]
-            metric = max(before, key=lambda m: m[2]) if before else min(options, key=lambda m: m[1])
-            period = _nearest_period(sentence, periods, quantity)
-            value, unit = _reported(quantity)
-            facts.append(
-                ExtractedFact(
-                    metric=metric[0],
-                    period=period,
-                    value=value,
-                    unit=unit,
-                    label=quantity.text,
-                    sentence=sentence,
-                    start=start + quantity.start,
-                    end=start + quantity.end,
-                    kind=quantity.kind,
-                )
-            )
+        before = [m for m in options if m[2] <= quantity.start]
+        metric = max(before, key=lambda m: m[2]) if before else min(options, key=lambda m: m[1])
+        period = _nearest_period(sentence, periods, quantity)
+        facts.append(_sentence_fact(metric[0], period, quantity, sentence, start))
     return facts
 
 
@@ -220,3 +272,85 @@ def _nearest_period(
         if best is None or candidate[:2] < best[:2]:
             best = candidate
     return best[2] if best else None
+
+
+# ---- tables ------------------------------------------------------------------------------------
+
+_CELL_NUMBER = re.compile(r"^\(?-?\d[\d,]*(?:\.\d+)?\)?%?$")
+
+
+def _row_cells(line: str) -> list[tuple[str, int, int]]:
+    """(cell text, start, end) of the cells of a row `a | b | c`, offsets inside `line`."""
+    cells: list[tuple[str, int, int]] = []
+    position = 0
+    for raw in line.split("|"):
+        stripped = raw.strip()
+        offset = position + (len(raw) - len(raw.lstrip()))
+        cells.append((stripped, offset, offset + len(stripped)))
+        position += len(raw) + 1
+    return cells
+
+
+def _table_facts(text: str) -> list[ExtractedFact]:
+    """Cells of rows `Label | v1 | v2 ...` under a header row that names periods. The unit is the
+    first header cell (`EUR m`); a row whose label is not a known metric is skipped."""
+    facts: list[ExtractedFact] = []
+    offset = 0
+    header: list[str | None] | None = None
+    currency = "EUR"
+    for line in text.split("\n"):
+        line_start = offset
+        offset += len(line) + 1
+        if line.count("|") < 2:
+            continue
+        cells = _row_cells(line)
+        periods = [_cell_period(c[0]) for c in cells[1:]]
+        if sum(p is not None for p in periods) >= 2:
+            header = periods
+            first = cells[0][0].upper()
+            currency = next((c for c in ("EUR", "USD", "GBP", "CHF") if c in first), "EUR")
+            continue
+        if header is None:
+            continue
+        label_cell = cells[0][0]
+        found = find_metrics(label_cell)
+        if not found or found[0][1] != 0 or found[0][2] != len(label_cell):
+            continue
+        metric = found[0][0]
+        kind = METRIC_BY_KEY[metric].kind
+        if kind in ("year", "multiple", "duration"):
+            continue
+        for index, (cell, c_start, c_end) in enumerate(cells[1:]):
+            period = header[index] if index < len(header) else None
+            if period is None or not _CELL_NUMBER.match(cell):
+                continue
+            raw = float(cell.strip("()%").replace(",", ""))
+            if cell.startswith("(") and cell.endswith(")"):
+                raw = -raw
+            if kind == "percent" or cell.endswith("%"):
+                value, unit, qkind = raw, "%", "percent"
+            elif kind == "money":
+                value, unit, qkind = raw, f"{currency} m", "money"
+            else:
+                value, unit, qkind = raw, "count", "number"
+            facts.append(
+                ExtractedFact(
+                    metric=metric,
+                    period=period,
+                    value=value,
+                    unit=unit,
+                    label=cell,
+                    sentence=line,
+                    start=line_start + c_start,
+                    end=line_start + c_end,
+                    kind=qkind,  # type: ignore[arg-type]
+                    sentence_start=line_start,
+                    from_table=True,
+                )
+            )
+    return facts
+
+
+def _cell_period(cell: str) -> str | None:
+    found = find_periods(cell)
+    return found[0][0] if len(found) == 1 and found[0][1] == 0 else None
