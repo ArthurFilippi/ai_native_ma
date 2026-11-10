@@ -34,6 +34,10 @@ class ScreeningParams:
     integration_window_months: int = 24
     max_recent_acquisitions: int = 2
     antitrust_combined_share_pct: float = 35.0
+    # size range prefilled from the deal value when no size is typed: a buyer between
+    # `min_size_multiple_of_ev` and `max_size_multiple_of_ev` times the EV (D80, D87)
+    min_size_multiple_of_ev: float = 1.0
+    max_size_multiple_of_ev: float = 60.0
     as_of: date | None = None
 
 

@@ -492,6 +492,8 @@ def build_truth(corpus: Corpus) -> Truth:
             sector=SECTORS[s].label,
             description="Fictional company, synthetic data room.",
             status="bids" if d == "deal_aurora" else "marketing",
+            geographies=[AURORA_REGION] if d == "deal_aurora" else [],
+            ev_eur_m=float(aurora.ev) if d == "deal_aurora" else None,
         )
         for d, p, s, _ in DEAL_PLAN
     ]

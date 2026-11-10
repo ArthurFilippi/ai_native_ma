@@ -4,9 +4,14 @@ import type { BuyerCard, Criterion, CriterionStatus } from "./contracts";
 // tests/fixtures/scoring_vectors.json and a test replays every case within 1e-6:
 //   score        = sum(w * met) / sum(w over known criteria), null when no weight is known
 //   coverage     = known weight / total weight
+//   score_low    = sum(w * met) / total weight (unknown counted as not met)
+//   score_high   = (sum(w * met) + unknown weight) / total weight (unknown counted as met)
 //   contribution = w * met / sum(w over known criteria), so contributions sum to the score
 //   dealbreakers = criteria flagged as dealbreaker whose status is not_met
-//   ranking      = cards without a dealbreaker first; score desc (null last), coverage desc, buyer id asc
+//   ranking      = cards without a dealbreaker first; score_low desc, score desc (null last),
+//                  coverage desc, buyer id asc
+const round9 = (x: number): number => Math.round(x * 1e9) / 1e9;
+
 export function scoreCards(
   criteria: readonly Criterion[],
   cards: readonly BuyerCard[],
@@ -36,6 +41,8 @@ export function scoreCards(
       ...card,
       score: known > 0 ? met / known : null,
       coverage: total > 0 ? known / total : 0,
+      score_low: total > 0 ? met / total : null,
+      score_high: total > 0 ? (met + total - known) / total : null,
       contributions,
       dealbreakers: criteria
         .filter((c) => c.dealbreaker && status.get(c.key) === "not_met")
@@ -46,6 +53,8 @@ export function scoreCards(
   const ordered = [...scored].sort((a, b) => {
     const blocked = Number(a.dealbreakers.length > 0) - Number(b.dealbreakers.length > 0);
     if (blocked !== 0) return blocked;
+    const byFloor = round9(b.score_low ?? 0) - round9(a.score_low ?? 0);
+    if (byFloor !== 0) return byFloor;
     const byScore = (b.score ?? -1) - (a.score ?? -1);
     if (byScore !== 0) return byScore;
     const byCoverage = b.coverage - a.coverage;

@@ -463,22 +463,14 @@ async def _kpis(result: SeedResult, adapter: Adapter, truth: TruthBundle) -> Non
 
 
 async def _screening(result: SeedResult, adapter: Adapter, truth: TruthBundle) -> None:
-    """Screen each deal the way the demo does: the deal's own region and size range as filters.
-
-    The buyer truth for geography and size is defined against the target's region and its size
-    range (EV to 60 x EV). Without those filters the cells are `unknown` by design, so the
-    harness passes them. Every buyer that passes stage 1 reaches stage 2, and the simulated news
-    feed is filed in the deal space first (60 acquisitions exist only there).
+    """Screen each deal the way the product does: no typed filter, so stage 1 is prefilled from
+    the deal record (its region and value, D87), every buyer that passes stage 1 reaches stage 2,
+    and the simulated news feed is filed in the deal space first (60 acquisitions exist only
+    there). The buyer truth for geography and size is defined against the same region and the
+    same size range (EV to 60 x EV), see D80.
     """
     access = truth.access()
-    aurora = truth.aux.get("aurora", {})
-    region = aurora.get("region")
-    ev = aurora.get("ev_eur_m")
     filters = ScreeningFilters()
-    if isinstance(region, str) and isinstance(ev, int | float):
-        filters = ScreeningFilters(
-            geographies=[region], min_size_eur_m=float(ev), max_size_eur_m=60.0 * float(ev)
-        )
     for deal_id in sorted({row.deal_id for row in truth.buyer_truth}):
         if truth.seed_dir is not None:
             await adapter.ingest_news(deal_id, access=access, seed_dir=truth.seed_dir)

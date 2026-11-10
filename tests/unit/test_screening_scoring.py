@@ -76,6 +76,13 @@ def test_matches_shared_vectors(case: dict[str, Any]) -> None:
         else:
             assert card.score == pytest.approx(want["score"], abs=TOL)
         assert card.coverage == pytest.approx(want["coverage"], abs=TOL)
+        for bound in ("score_low", "score_high"):
+            got = getattr(card, bound)
+            assert (
+                got == pytest.approx(want[bound], abs=TOL)
+                if want[bound] is not None
+                else got is None
+            )
         assert card.dealbreakers == want["dealbreakers"]
         assert set(card.contributions) == set(want["contributions"])
         for key, value in want["contributions"].items():
@@ -86,7 +93,7 @@ def test_matches_shared_vectors(case: dict[str, Any]) -> None:
 
 def test_weight_override_changes_the_ranking() -> None:
     default = score_cards(_criteria(), _cards(), {})
-    heavy = score_cards(_criteria(), _cards(), {"sector_focus": 6.0})
+    heavy = score_cards(_criteria(), _cards(), {"fund_lifecycle": 6.0})
     assert [c.buyer.id for c in default] != [c.buyer.id for c in heavy]
 
 
@@ -173,3 +180,25 @@ def test_edge_rules_match_the_hand_computed_extra_vectors() -> None:
         assert card.coverage == pytest.approx(want["coverage"], abs=TOL)
         assert card.dealbreakers == want["dealbreakers"]
         assert card.contributions == pytest.approx(want["contributions"], abs=TOL)
+
+
+def test_thin_perfect_score_does_not_outrank_broad_good_score() -> None:
+    """Regression: a buyer with one met criterion (score 1.00, coverage 0.12) used to rank above
+    a buyer with score 0.88 over 0.47 of the weight. The floor of the score range decides."""
+    criteria = [
+        Criterion(key=k, label=k, kind="deep", weight=w)
+        for k, w in [("a", 1.0), ("b", 3.0), ("c", 0.5), ("d", 3.5)]
+    ]
+    thin = _card("b_thin", {"a": "met", "b": "unknown", "c": "unknown", "d": "unknown"})
+    broad = _card("b_broad", {"a": "met", "b": "met", "c": "not_met", "d": "unknown"})
+    scored = score_cards(criteria, [thin, broad], {})
+    by_id = {c.buyer.id: c for c in scored}
+    assert by_id["b_thin"].score == pytest.approx(1.0)
+    assert by_id["b_thin"].coverage == pytest.approx(0.125)
+    assert by_id["b_broad"].score == pytest.approx(4.0 / 4.5)
+    assert [c.buyer.id for c in scored] == ["b_broad", "b_thin"]
+    # the card shows the range the score can still take once the unknowns are known
+    assert by_id["b_thin"].score_low == pytest.approx(0.125)
+    assert by_id["b_thin"].score_high == pytest.approx(1.0)
+    assert by_id["b_broad"].score_low == pytest.approx(0.5)
+    assert by_id["b_broad"].score_high == pytest.approx(7.5 / 8.0)

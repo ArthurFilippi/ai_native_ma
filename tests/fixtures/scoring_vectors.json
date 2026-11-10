@@ -1,5 +1,5 @@
 {
-  "description": "Shared scoring vectors. score = sum(w*met)/sum(w over known); coverage = known weight / total weight; contribution_k = w_k*met_k/sum(w over known) (sums to score); a card with a not_met dealbreaker ranks after every card without one; inside a group: score desc (null last), coverage desc, buyer id asc. Compare numbers with absolute tolerance 1e-6.",
+  "description": "Shared scoring vectors. score = sum(w*met)/sum(w over known); coverage = known weight / total weight; score_low = sum(w*met)/total weight (unknown counted as not met); score_high = (sum(w*met) + unknown weight)/total weight (unknown counted as met); contribution_k = w_k*met_k/sum(w over known) (sums to score); a card with a not_met dealbreaker ranks after every card without one; inside a group: score_low desc, score desc (null last), coverage desc, buyer id asc. Compare numbers with absolute tolerance 1e-6.",
   "criteria": [
     {
       "key": "ticket_fit",
@@ -87,7 +87,9 @@
               "recent_activity": 0.285714286,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.777777778,
+            "score_high": 1.0
           },
           "b_b": {
             "score": 0.666666667,
@@ -99,7 +101,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.444444444,
+            "score_high": 0.777777778
           },
           "b_c": {
             "score": 0.666666667,
@@ -113,7 +117,9 @@
             },
             "dealbreakers": [
               "ticket_fit"
-            ]
+            ],
+            "score_low": 0.666666667,
+            "score_high": 0.666666667
           },
           "b_d": {
             "score": null,
@@ -125,7 +131,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.0,
+            "score_high": 1.0
           },
           "b_e": {
             "score": 0.625,
@@ -137,13 +145,15 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.555555556,
+            "score_high": 0.666666667
           }
         },
         "ranking": [
           "b_a",
-          "b_b",
           "b_e",
+          "b_b",
           "b_d",
           "b_c"
         ]
@@ -173,7 +183,9 @@
               "recent_activity": 0.181818182,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.846153846,
+            "score_high": 1.0
           },
           "b_b": {
             "score": 0.4,
@@ -185,7 +197,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.307692308,
+            "score_high": 0.538461538
           },
           "b_c": {
             "score": 0.769230769,
@@ -199,7 +213,9 @@
             },
             "dealbreakers": [
               "ticket_fit"
-            ]
+            ],
+            "score_low": 0.769230769,
+            "score_high": 0.769230769
           },
           "b_d": {
             "score": null,
@@ -211,7 +227,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.0,
+            "score_high": 1.0
           },
           "b_e": {
             "score": 0.75,
@@ -223,7 +241,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.692307692,
+            "score_high": 0.769230769
           }
         },
         "ranking": [
@@ -259,7 +279,9 @@
               "recent_activity": 0.5,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.666666667,
+            "score_high": 1.0
           },
           "b_b": {
             "score": 0.333333333,
@@ -271,7 +293,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.166666667,
+            "score_high": 0.666666667
           },
           "b_c": {
             "score": 1.0,
@@ -285,7 +309,9 @@
             },
             "dealbreakers": [
               "ticket_fit"
-            ]
+            ],
+            "score_low": 1.0,
+            "score_high": 1.0
           },
           "b_d": {
             "score": null,
@@ -297,7 +323,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.0,
+            "score_high": 1.0
           },
           "b_e": {
             "score": 0.4,
@@ -309,7 +337,9 @@
               "recent_activity": 0.0,
               "antitrust": 0.0
             },
-            "dealbreakers": []
+            "dealbreakers": [],
+            "score_low": 0.333333333,
+            "score_high": 0.5
           }
         },
         "ranking": [

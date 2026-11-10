@@ -160,6 +160,10 @@ class Deal(Strict):
     description: str = ""
     status: Literal["preparation", "marketing", "bids", "closed"] = "marketing"
     synthetic: bool = True
+    # optional deal facts that prefill the stage 1 screening filters when none is typed (D87)
+    geographies: list[str] = Field(default_factory=list)  # target region(s)
+    ev_eur_m: float | None = None  # stated or indicative enterprise value
+    buyer_types: list[BuyerType] = Field(default_factory=list)  # buyer types the seller accepts
 
 
 # --------------------------------------------------------------------------
@@ -340,6 +344,10 @@ class BuyerCard(Strict):
     results: list[CriterionResult]
     score: float | None = None  # sum(w * met) / sum(w over known criteria), 0..1
     coverage: float = Field(default=0.0, ge=0.0, le=1.0)  # share of total weight with evidence
+    # range the score can still take once the unknown criteria are known (D86):
+    # score_low counts every unknown as not met, score_high as met; the rank uses score_low
+    score_low: float | None = None
+    score_high: float | None = None
     contributions: dict[str, float] = Field(default_factory=dict)  # per criterion, sums to score
     dealbreakers: list[str] = Field(default_factory=list)
     rank: int | None = None

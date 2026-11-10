@@ -9,9 +9,10 @@ from ainma.contracts import (
     BuyerProfile,
     CriterionResult,
     CriterionStatus,
+    Deal,
     ScreeningFilters,
 )
-from ainma.screening.criteria import PREFILTER_KEYS
+from ainma.screening.criteria import PREFILTER_KEYS, ScreeningParams
 
 _MIN_STEM = 5
 _STEM_LENGTH = 6
@@ -50,10 +51,41 @@ def _not_requested(key: str, what: str) -> CriterionResult:
     )
 
 
+def prefill_from_deal(
+    filters: ScreeningFilters, deal: Deal, params: ScreeningParams
+) -> tuple[ScreeningFilters, dict[str, str]]:
+    """The typed filters, completed by the deal's own facts where a filter is empty.
+
+    Returns the effective filters and, per prefilter key that was prefilled, the sentence that
+    says where the value comes from. A typed filter always wins over the deal.
+    """
+    update: dict[str, object] = {}
+    origin: dict[str, str] = {}
+    if not filters.buyer_types and deal.buyer_types:
+        update["buyer_types"] = list(deal.buyer_types)
+        origin["buyer_type"] = "Buyer types from the deal record."
+    if not filters.geographies and deal.geographies:
+        update["geographies"] = list(deal.geographies)
+        origin["geography"] = f"Region from the deal record ({', '.join(deal.geographies)})."
+    if filters.min_size_eur_m is None and filters.max_size_eur_m is None and deal.ev_eur_m:
+        update["min_size_eur_m"] = deal.ev_eur_m * params.min_size_multiple_of_ev
+        update["max_size_eur_m"] = deal.ev_eur_m * params.max_size_multiple_of_ev
+        origin["size_range"] = (
+            f"Size range from the deal value EUR {deal.ev_eur_m:g}m x "
+            f"{params.min_size_multiple_of_ev:g} to {params.max_size_multiple_of_ev:g} "
+            "(parameters, not sources)."
+        )
+    return filters.model_copy(update=update), origin
+
+
 def prefilter_results(
-    buyer: BuyerProfile, filters: ScreeningFilters, target_sectors: Sequence[str]
+    buyer: BuyerProfile,
+    filters: ScreeningFilters,
+    target_sectors: Sequence[str],
+    prefilled: dict[str, str] | None = None,
 ) -> list[CriterionResult]:
-    """One result per prefilter criterion, in the order of `PREFILTER_KEYS`."""
+    """One result per prefilter criterion, in the order of `PREFILTER_KEYS`. `prefilled` maps a
+    key to the sentence saying that its filter came from the deal record."""
     results: dict[str, CriterionResult] = {}
 
     if filters.buyer_types:
@@ -111,4 +143,8 @@ def prefilter_results(
             CriterionStatus.MET if inside else CriterionStatus.NOT_MET,
             f"Structured size EUR {buyer.size_eur_m:g}m, requested range {bounds}.",
         )
+    for key, note in (prefilled or {}).items():
+        if key in results:
+            result = results[key]
+            results[key] = result.model_copy(update={"rationale": f"{result.rationale} {note}"})
     return [results[key] for key in PREFILTER_KEYS]

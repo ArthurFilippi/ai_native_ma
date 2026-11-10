@@ -10,8 +10,13 @@ Rules (the vectors file repeats them):
   the contributions add up to the score.
 - `dealbreakers` are the keys of dealbreaker criteria whose result is `not_met`, whatever their
   weight.
-- Rank: cards without a dealbreaker first, then cards with one. Inside a group: score descending
-  (`None` last), coverage descending, buyer id ascending. Scores and coverage are compared after
+- `score_low = sum(w * met) / total` (every unknown counted as not met) and
+  `score_high = (sum(w * met) + unknown weight) / total` (every unknown counted as met): the range
+  the score can still take. `None` when no criterion applies.
+- Rank: cards without a dealbreaker first, then cards with one. Inside a group: `score_low`
+  descending (the weight already proven met, so a perfect score over one criterion does not
+  outrank a good score over half of the weight), then score descending (`None` last), coverage
+  descending, buyer id ascending. Scores and coverage are compared after
   rounding to nine decimals so that float noise never decides an order.
 - A card that failed stage 1 is not scored and not ranked (score `None`, coverage 0, no
   contributions, rank `None`) and is listed after the ranked cards, by buyer id.
@@ -47,6 +52,8 @@ def _score_one(
             update={
                 "score": None,
                 "coverage": 0.0,
+                "score_low": None,
+                "score_high": None,
                 "contributions": {},
                 "dealbreakers": [],
                 "rank": None,
@@ -71,6 +78,8 @@ def _score_one(
         update={
             "score": score,
             "coverage": known / total if total > 0 else 0.0,
+            "score_low": sum(met.values()) / total if total > 0 else None,
+            "score_high": (sum(met.values()) + total - known) / total if total > 0 else None,
             "contributions": contributions,
             "dealbreakers": dealbreakers,
             "rank": None,
@@ -78,10 +87,11 @@ def _score_one(
     )
 
 
-def _order_key(card: BuyerCard) -> tuple[bool, bool, float, float, str]:
+def _order_key(card: BuyerCard) -> tuple[bool, float, bool, float, float, str]:
     score = card.score
     return (
         bool(card.dealbreakers),
+        -round(card.score_low or 0.0, _ROUND),
         score is None,
         -round(score, _ROUND) if score is not None else 0.0,
         -round(card.coverage, _ROUND),

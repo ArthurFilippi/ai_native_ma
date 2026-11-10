@@ -40,7 +40,7 @@ from ainma.screening.deep import (
     stated_valuation,
 )
 from ainma.screening.evidence import EvidenceFinder, SearchFn
-from ainma.screening.prefilter import prefilter_results
+from ainma.screening.prefilter import prefill_from_deal, prefilter_results
 from ainma.screening.scoring import score_cards
 from ainma.screening.universe import resolve_buyers
 from ainma.store import Store
@@ -160,10 +160,11 @@ async def run_screening(
     search_fn = search or resolve_search()
     prefilter_criteria = [c for c in criteria if c.key in PREFILTER_KEYS]
     targets = request.filters.sectors or [deal.sector]
+    filters, prefilled = prefill_from_deal(request.filters, deal, params)
 
     stage1: list[BuyerCard] = []
     for buyer in universe:
-        results = prefilter_results(buyer, request.filters, targets)
+        results = prefilter_results(buyer, filters, targets, prefilled)
         passed = all(r.status is not CriterionStatus.NOT_MET for r in results)
         stage1.append(BuyerCard(buyer=buyer, stage1_passed=passed, results=results))
     ordered = score_cards(prefilter_criteria, stage1, {})

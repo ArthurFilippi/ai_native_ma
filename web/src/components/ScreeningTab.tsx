@@ -224,7 +224,10 @@ function Results({
             <th>Rank</th>
             <th>Buyer</th>
             <th>Type</th>
-            <th>Score</th>
+            <th title="Score over the criteria with evidence">Score</th>
+            <th title="Range the score can still take once unknown criteria are known; the rank uses the floor">
+              Possible range
+            </th>
             <th>Coverage</th>
             {result.criteria.map((c) => (
               <th key={c.key} title={c.description}>
@@ -259,6 +262,11 @@ function Results({
               </td>
               <td>{card.buyer.buyer_type}</td>
               <td>{percent(card.score)}</td>
+              <td className="score-range">
+                {card.score_low == null || card.score_high == null
+                  ? "n/a"
+                  : `${percent(card.score_low)} to ${percent(card.score_high)}`}
+              </td>
               <td>{percent(card.coverage)}</td>
               {result.criteria.map((c) => (
                 <td key={c.key}>

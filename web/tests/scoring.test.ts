@@ -17,6 +17,8 @@ interface Vectors {
         {
           score: number | null;
           coverage: number;
+          score_low: number | null;
+          score_high: number | null;
           contributions: Record<string, number>;
           dealbreakers: string[];
         }
@@ -90,6 +92,12 @@ describe("scoreCards reproduces tests/fixtures/scoring_vectors.json", () => {
         if (expected.score === null) expect(got.score, `${id} score`).toBeNull();
         else expect(Math.abs((got.score ?? NaN) - expected.score), `${id} score`).toBeLessThan(TOLERANCE);
         expect(Math.abs(got.coverage - expected.coverage), `${id} coverage`).toBeLessThan(TOLERANCE);
+        expect(Math.abs((got.score_low ?? NaN) - (expected.score_low ?? NaN)), `${id} low`).toBeLessThan(
+          TOLERANCE,
+        );
+        expect(Math.abs((got.score_high ?? NaN) - (expected.score_high ?? NaN)), `${id} high`).toBeLessThan(
+          TOLERANCE,
+        );
         for (const [key, value] of Object.entries(expected.contributions)) {
           expect(Math.abs((got.contributions[key] ?? NaN) - value), `${id} ${key}`).toBeLessThan(
             TOLERANCE,

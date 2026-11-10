@@ -26,6 +26,10 @@ export interface Deal {
   description: string;
   status: "preparation" | "marketing" | "bids" | "closed";
   synthetic: boolean;
+  // optional deal facts that prefill the stage 1 screening filters (D87)
+  geographies?: string[];
+  ev_eur_m?: number | null;
+  buyer_types?: BuyerType[];
 }
 
 export interface DocumentMeta {
@@ -197,6 +201,9 @@ export interface BuyerCard {
   results: CriterionResult[];
   score: number | null;
   coverage: number;
+  // range the score can still take once the unknown criteria are known (D86)
+  score_low?: number | null;
+  score_high?: number | null;
   contributions: Record<string, number>;
   dealbreakers: string[];
   rank: number | null;

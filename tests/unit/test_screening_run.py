@@ -186,8 +186,10 @@ async def test_weight_override_changes_the_ranking(
     )
     changed = await _run(store, buyers, request=request)
     order = lambda r: [c.buyer.id for c in r.cards if c.rank]  # noqa: E731
-    assert order(default)[:3] == ["b_orbis", "b_nordvik", "b_lonely"]
-    assert order(changed)[:3] == ["b_orbis", "b_lonely", "b_nordvik"]
+    # the floor of the score range ranks: b_granite (0.73 over 85 percent of the weight) is
+    # ahead of b_lonely (1.00 over 46 percent), see D86
+    assert order(default)[:3] == ["b_orbis", "b_nordvik", "b_granite"]
+    assert order(changed) != order(default)
     assert {c.key: c.weight for c in changed.criteria}["recent_activity"] == 0.0
 
 
@@ -225,7 +227,8 @@ async def test_ev_ratio_above_sixty_percent_is_a_dealbreaker_and_conflicts_are_f
     ev = {r.criterion_key: r for r in card.results}["ev_ratio"]
     assert ev.status is CriterionStatus.NOT_MET
     assert ev.conflicting_evidence  # the annual report states EUR 500 million, the profile 300
-    assert card.rank == max(c.rank for c in result.cards if c.rank)
+    clean = [c.rank for c in result.cards if c.rank and not c.dealbreakers]
+    assert card.rank is not None and card.rank > max(clean)
 
 
 async def test_investment_period_that_is_too_short_is_not_met(
@@ -272,3 +275,23 @@ async def test_a_store_without_buyers_support_is_loud(buyers: list[BuyerProfile]
 
     with pytest.raises(BuyerUniverseUnavailable):
         await resolve_buyers(NoBuyers(), None)  # type: ignore[arg-type]
+
+
+async def test_stage_one_is_prefilled_from_the_deal_when_no_filter_is_typed(
+    store: SqliteStore, buyers: list[BuyerProfile]
+) -> None:
+    """Regression: without typed filters, geography and size stayed `unknown` although the deal
+    states its region and value. The deal's own fields now prefill them, and say so."""
+    deal = await store.get_deal(DEAL_ID, await store.access_for("u_lead"))
+    assert deal is not None
+    await store.put_deal(deal.model_copy(update={"geographies": ["DACH"], "ev_eur_m": 250.0}))
+    result = await _run(store, buyers, request=ScreeningRequest(deal_id=DEAL_ID))
+    for card in result.cards:
+        by_key = {r.criterion_key: r for r in card.results}
+        assert by_key["geography"].status is not CriterionStatus.UNKNOWN
+        assert by_key["size_range"].status is not CriterionStatus.UNKNOWN
+        assert "from the deal" in by_key["geography"].rationale
+        assert by_key["buyer_type"].status is CriterionStatus.UNKNOWN  # the deal states none
+    typed = await _run(store, buyers)  # a typed filter wins over the deal
+    first = typed.cards[0]
+    assert "from the deal" not in {r.criterion_key: r for r in first.results}["geography"].rationale

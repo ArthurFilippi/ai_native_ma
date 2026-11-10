@@ -5,7 +5,12 @@
   "sector": "industrial components",
   "description": "Fictional company, synthetic data room.",
   "status": "bids",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [
+   "Central Europe"
+  ],
+  "ev_eur_m": 281.6,
+  "buyer_types": []
  },
  {
   "id": "deal_borealis",
@@ -13,7 +18,10 @@
   "sector": "software",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_cygnus",
@@ -21,7 +29,10 @@
   "sector": "logistics",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_draco",
@@ -29,7 +40,10 @@
   "sector": "packaging",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_eridanus",
@@ -37,7 +51,10 @@
   "sector": "medical devices",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_fornax",
@@ -45,7 +62,10 @@
   "sector": "food and beverage",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_gemini",
@@ -53,7 +73,10 @@
   "sector": "water systems",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_hydra",
@@ -61,7 +84,10 @@
   "sector": "automotive parts",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  },
  {
   "id": "deal_lyra",
@@ -69,6 +95,9 @@
   "sector": "packaging",
   "description": "Fictional company, synthetic data room.",
   "status": "marketing",
-  "synthetic": true
+  "synthetic": true,
+  "geographies": [],
+  "ev_eur_m": null,
+  "buyer_types": []
  }
 ]
