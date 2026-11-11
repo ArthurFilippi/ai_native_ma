@@ -25,7 +25,9 @@ def test_no_key_means_not_executed() -> None:
     assert live_ready(Settings(llm_provider="gemini", gemini_api_key="k", _env_file=None)) is None
 
 
-@pytest.mark.skipif(not (SEED_DIR / "truth").is_dir(), reason="run `make data` first")
+@pytest.mark.skipif(
+    not (SEED_DIR / "manifest.json").is_file(), reason="run `make data` first"
+)
 async def test_smoke_names_writer_and_judge() -> None:
     writer, judge = Recording("w", "writer-1"), Recording("j", "judge-1")
     result = await run_smoke(SEED_DIR, llm=writer, judge=judge, n=2, n_unanswerable=1)
