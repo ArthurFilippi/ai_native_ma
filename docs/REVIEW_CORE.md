@@ -166,8 +166,8 @@ branch. "Before" is `c55a6bd`.
 
 Read honestly: the gain comes from routing keyed questions to a fact base built from the same
 planted facts as the truth, so it is close to an oracle on synthetic data; the out of distribution
-set, written by hand in another vocabulary, shows that the abstention threshold is the weak point
-on unfamiliar documents. The news layer scores 100 percent because rules read templated headlines;
+set, written by hand in another vocabulary, shows that the rule writer of the mock is the weak point
+on unfamiliar wording (8 of 12 failures), before the threshold (3 of 12), see D96. The news layer scores 100 percent because rules read templated headlines;
 it says nothing about real news. Stream weights were measured and kept off (D100).
 
 Defects found and fixed on this branch, each with a regression test: routed claims citing a single
