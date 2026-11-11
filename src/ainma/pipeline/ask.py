@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import logging
 import time
+from collections.abc import Sequence
 from dataclasses import dataclass
 
 from ainma.contracts import (
@@ -21,6 +22,7 @@ from ainma.contracts import (
     DocStatus,
     DocumentMeta,
     Flag,
+    MarketEvent,
     MissingInfo,
     RankedPassage,
     Trace,
@@ -36,6 +38,7 @@ from ainma.pipeline.contradictions import (
     detect_contradictions,
     extract_facts,
 )
+from ainma.pipeline.events_route import event_claims, route_market
 from ainma.pipeline.flags import apply_flags
 from ainma.pipeline.log import append_answer, entry_for
 from ainma.pipeline.rules import subject_of
@@ -155,6 +158,7 @@ async def ask_detailed(
     engine: RetrievalEngine | None = None,
     judge_llm: LLM | None = None,
     factbase: FactBase | None = None,
+    events: Sequence[MarketEvent] | None = None,
 ) -> AskOutcome:
     cfg = config or PipelineConfig()
     engine = engine or RetrievalEngine()
@@ -215,6 +219,15 @@ async def ask_detailed(
             claims_of = await routed_claims(record, store=store, access=access, start=100 * (i + 1))
             if claims_of is not None:
                 routed[i] = claims_of
+    if events and cfg.event_routing and not routed:
+        matched = route_market(text, events)
+        if matched:
+            event_routed = await event_claims(matched, store=store, access=access, start=900)
+            if event_routed is not None:
+                # the whole question is about the events: every sub-question is answered by them
+                routed = {
+                    i: (event_routed if i == 0 else Routed(None, [])) for i in range(len(subs))
+                }
 
     # 2. retrieve, per sub-question, through the access filter
     results = [
@@ -425,6 +438,7 @@ async def ask(
     engine: RetrievalEngine | None = None,
     judge_llm: LLM | None = None,
     factbase: FactBase | None = None,
+    events: Sequence[MarketEvent] | None = None,
 ) -> Answer:
     """Answer `question` for the user of `access` in `deal_id` (or the general layer).
 
@@ -442,5 +456,6 @@ async def ask(
         engine=engine,
         judge_llm=judge_llm,
         factbase=factbase,
+        events=events,
     )
     return outcome.answer

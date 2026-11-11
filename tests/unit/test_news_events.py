@@ -99,3 +99,42 @@ async def test_reports_are_consolidated_and_cited() -> None:
     else:
         raise AssertionError("a non member must not read the deal's events")
     await store.close()
+
+
+async def test_a_market_question_is_answered_from_the_events() -> None:
+    """D102: the denied rumour is stated as denied, cited to its reports, and verified."""
+    from ainma.pipeline import PipelineConfig, ask
+    from ainma.pipeline.events_route import route_market
+
+    store = await SqliteStore.open(":memory:")
+    await store.put_deal(Deal(id=DEAL, name="Project X", sector="industrial"))
+    await store.put_user(User(id="u", name="Lead"))
+    await store.put_membership(Membership(deal_id=DEAL, user_id="u", role=Role.LEAD))
+    await ingest_from(_Feed(), ["buyer_1"], DEAL, store, date.min)  # type: ignore[arg-type]
+    access = await store.access_for("u")
+    events = await market_events(DEAL, store=store, access=access, llm=build_mock_llm())
+    question = "Is Orvane Capital reported to bid for Brisk Valves?"
+    assert [e.kind for e in route_market(question, events)] == ["rumour"]
+    answer = await ask(
+        question,
+        store=store,
+        access=access,
+        deal_id=DEAL,
+        llm=build_mock_llm(),
+        config=PipelineConfig(answers_log=None),
+        events=events,
+    )
+    (claim,) = [c for c in answer.claims if c.origin == "event"]
+    assert "denied" in claim.text and len(claim.citations) == 2
+    assert claim.verification is not None and claim.verification.supported
+    off = await ask(
+        "What is the revenue of Orvane Capital?",
+        store=store,
+        access=access,
+        deal_id=DEAL,
+        llm=build_mock_llm(),
+        config=PipelineConfig(answers_log=None),
+        events=events,
+    )
+    assert all(c.origin != "event" for c in off.claims)  # not a market question
+    await store.close()

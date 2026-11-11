@@ -17,6 +17,7 @@ from ainma.contracts import (
 )
 from ainma.kpi import extract_kpis
 from ainma.news import market_events
+from ainma.news.events import NEWS_TYPES
 from ainma.pipeline import ask as pipeline_ask
 from ainma.runtime import Runtime
 from ainma.screening import run_screening
@@ -39,7 +40,26 @@ async def ask(runtime: Runtime, access: AccessContext, deal_id: str, question: s
         judge_llm=runtime.judge_llm,
         engine=runtime.engine,
         factbase=runtime.factbase,
+        events=await deal_events(runtime, access, deal_id),
     )
+
+
+async def deal_events(runtime: Runtime, access: AccessContext, deal_id: str) -> list[MarketEvent]:
+    """The deal's consolidated news events, recomputed only when its news documents change."""
+    news = tuple(
+        sorted(
+            d.id
+            for d in await runtime.store.list_documents(access, deal_id)
+            if d.deal_id == deal_id and d.doc_type in NEWS_TYPES
+        )
+    )
+    if not news:
+        return []
+    cached = runtime.events_cache.get(deal_id)
+    if cached is None or cached[0] != news:
+        found = await market_events(deal_id, store=runtime.store, access=access, llm=runtime.llm)
+        runtime.events_cache[deal_id] = (news, found)
+    return runtime.events_cache[deal_id][1]
 
 
 async def screening(
@@ -70,7 +90,7 @@ async def live_search(
 
 
 async def events(runtime: Runtime, access: AccessContext, deal_id: str) -> list[MarketEvent]:
-    return await market_events(deal_id, store=runtime.store, access=access, llm=runtime.llm)
+    return await deal_events(runtime, access, deal_id)
 
 
 async def refine(

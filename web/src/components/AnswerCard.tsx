@@ -36,6 +36,7 @@ function ClaimLine({ claim, sources, onOpen }: { claim: Claim; sources: Citation
       <span className="status-label">{label}</span>
       <span className="claim-text">{claim.text}</span>
       {claim.origin === "structured" && <span className="st sky">Structured record</span>}
+      {claim.origin === "event" && <span className="st sky">News event</span>}
       {claim.flags.map((flag) => (
         <span key={flag} className="st warn">
           {flagText(flag, date)}

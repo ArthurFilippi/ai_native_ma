@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from ainma.contracts import MarketEvent
 from ainma.factbase import FactBase
 from ainma.llm import LLM, build_llm
 from ainma.llm.factory import build_judge_llm
@@ -27,6 +28,8 @@ class Runtime:
     judge_llm: LLM | None = None
     engine: RetrievalEngine = field(default_factory=RetrievalEngine)
     factbase: FactBase | None = None  # structured fact base of the loaded corpus (D92)
+    # consolidated news events per deal, keyed by the news documents they were read from (D102)
+    events_cache: dict[str, tuple[tuple[str, ...], list[MarketEvent]]] = field(default_factory=dict)
 
     async def close(self) -> None:
         await self.store.close()

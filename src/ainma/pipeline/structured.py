@@ -28,7 +28,7 @@ _GROWTH = re.compile(
 
 @dataclass
 class Routed:
-    record: StructuredFact
+    record: StructuredFact | None  # None for routed news events (D102)
     claims: list[Claim]
     chunks: dict[str, Chunk] = field(default_factory=dict)
     documents: dict[str, DocumentMeta] = field(default_factory=dict)

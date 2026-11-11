@@ -42,4 +42,6 @@ class PipelineConfig(BaseModel):
     # a sub-question asking for one keyed value is answered from the structured fact base when
     # one is passed to `ask` (D92); False: text search only, for the ablation
     structured_routing: bool = True
+    # a market question is answered from the consolidated news events when they are passed (D102)
+    event_routing: bool = True
     answers_log: Path | None = DEFAULT_ANSWERS_LOG  # None disables the log (tests)

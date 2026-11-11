@@ -220,7 +220,8 @@ class Claim(Strict):
     verification: Verification | None = None
     flags: list[Flag] = Field(default_factory=list)
     # "structured": the value comes from the structured fact base and cites its provenance (D92)
-    origin: Literal["text", "structured"] = "text"
+    # "event": a consolidated news event, cited to every report of it (D102)
+    origin: Literal["text", "structured", "event"] = "text"
 
     @model_validator(mode="after")
     def _status_is_consistent(self) -> Claim:

@@ -105,7 +105,7 @@ export interface Claim {
   verification: Verification | null;
   flags: Flag[];
   // "structured": value from the structured fact base, cited to its document of record (D92)
-  origin?: "text" | "structured";
+  origin?: "text" | "structured" | "event";
 }
 
 export interface ContradictionSide {

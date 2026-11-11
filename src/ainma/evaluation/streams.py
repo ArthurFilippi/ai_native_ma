@@ -24,9 +24,13 @@ from pathlib import Path
 from typing import Any
 
 from ainma.connectors.run import document_id_for, run_market_intel
+from ainma.contracts import MarketEvent
 from ainma.evaluation.groundtruth import open_seed
 from ainma.evaluation.metrics.retrieval import ndcg_at_k, recall_at_k
 from ainma.evaluation.stats import bootstrap_weights, mean_sample, paired_bootstrap
+from ainma.llm import build_mock_llm
+from ainma.news import market_events
+from ainma.pipeline import PipelineConfig, ask
 from ainma.retrieval import RetrievalConfig, RetrievalEngine
 from ainma.retrieval.config import RankerConfig
 from ainma.store import Store
@@ -115,9 +119,41 @@ async def run_seed(seed_dir: Path) -> dict[str, dict[str, list[float | None]]]:
         market = await _market_questions(store, access, seed_dir, buyers, "deal_aurora")
         result["market_off"] = await _score(engine, store, access, market, streams=False)
         result["market_on"] = await _score(engine, store, access, market, streams=True)
+        events = await market_events(
+            "deal_aurora", store=store, access=access, llm=build_mock_llm()
+        )
+        result["answer_text"] = await _answers(engine, store, access, market, None)
+        result["answer_events"] = await _answers(engine, store, access, market, events)
         return result
     finally:
         await store.close()
+
+
+async def _answers(
+    engine: RetrievalEngine,
+    store: Store,
+    access: Any,
+    questions: Sequence[tuple[str, str | None, dict[str, int]]],
+    events: Sequence[MarketEvent] | None,
+) -> dict[str, list[float | None]]:
+    """Per question: the full answer cites a report of the expected event (1) or not (0), and
+    whether it abstained."""
+    out: dict[str, list[float | None]] = {"cited": [], "abstained": []}
+    for text, deal_id, relevance in questions:
+        answer = await ask(
+            text,
+            store=store,
+            access=access,
+            deal_id=deal_id,
+            llm=build_mock_llm(),
+            config=PipelineConfig(answers_log=None),
+            engine=engine,
+            events=events,
+        )
+        cited = {c.chunk_id for claim in answer.claims for c in claim.citations}
+        out["cited"].append(1.0 if cited & set(relevance) else 0.0)
+        out["abstained"].append(1.0 if answer.abstained else 0.0)
+    return out
 
 
 def summarise(per_seed: dict[str, dict[str, dict[str, list[float | None]]]]) -> dict[str, Any]:
@@ -126,11 +162,18 @@ def summarise(per_seed: dict[str, dict[str, dict[str, list[float | None]]]]) -> 
         for setting, metrics in result.items():
             for metric, values in metrics.items():
                 pooled.setdefault(setting, {}).setdefault(metric, []).extend(values)
-    out: dict[str, Any] = {"n": {s: len(m["ndcg"]) for s, m in pooled.items()}, "pairs": {}}
+    n = {s: len(next(iter(m.values()))) for s, m in pooled.items()}
+    out: dict[str, Any] = {"n": n, "pairs": {}}
     pairs = {
         "news mixed in, fact questions (weights off vs no news)": ("fact_mixed_off", "fact_base"),
         "fact questions with news, stream weights on vs off": ("fact_mixed_on", "fact_mixed_off"),
         "market questions, stream weights on vs off": ("market_on", "market_off"),
+    }
+    answer_pairs = {
+        "market questions, full answer, routed to events vs text only": (
+            "answer_events",
+            "answer_text",
+        ),
     }
     for label, (a, b) in pairs.items():
         row: dict[str, Any] = {}
@@ -140,6 +183,15 @@ def summarise(per_seed: dict[str, dict[str, dict[str, list[float | None]]]]) -> 
             cmp = paired_bootstrap(sa, sb, weights)
             row[metric] = {"a": cmp.a, "b": cmp.b, "diff": cmp.diff}
         out["pairs"][label] = row
+    out["answers"] = {}
+    for label, (a, b) in answer_pairs.items():
+        row = {}
+        for metric in ("cited", "abstained"):
+            sa, sb = mean_sample(pooled[a][metric]), mean_sample(pooled[b][metric])
+            weights = bootstrap_weights(sa.n_units, seed=7, n_resamples=2000)
+            cmp = paired_bootstrap(sa, sb, weights)
+            row[metric] = {"a": cmp.a, "b": cmp.b, "diff": cmp.diff}
+        out["answers"][label] = row
     return out
 
 
@@ -165,6 +217,19 @@ def render(summary: dict[str, Any], seeds: list[str]) -> str:
         lines.append(
             f"| {label} | {_iv(row['ndcg']['a'])} | {_iv(row['ndcg']['b'])} | "
             f"{_iv(row['ndcg']['diff'])} | {_iv(row['recall']['diff'])} |"
+        )
+    lines += [
+        "",
+        "Full answers (D102): share of market questions whose answer cites a report of the "
+        "expected event, and share that abstain.",
+        "",
+        "| Comparison | Cites the event, A | B | Difference | Abstained difference |",
+        "|---|---|---|---|---|",
+    ]
+    for label, row in summary.get("answers", {}).items():
+        lines.append(
+            f"| {label} | {_iv(row['cited']['a'])} | {_iv(row['cited']['b'])} | "
+            f"{_iv(row['cited']['diff'])} | {_iv(row['abstained']['diff'])} |"
         )
     return "\n".join(lines) + "\n"
 

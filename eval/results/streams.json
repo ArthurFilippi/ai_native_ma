@@ -5,7 +5,9 @@
       "fact_mixed_off": 682,
       "fact_mixed_on": 682,
       "market_off": 152,
-      "market_on": 152
+      "market_on": 152,
+      "answer_text": 152,
+      "answer_events": 152
     },
     "pairs": {
       "news mixed in, fact questions (weights off vs no news)": {
@@ -42,6 +44,20 @@
           "a": "Interval(estimate=0.7154605263157895, lo=0.649671052631579, hi=0.78125)",
           "b": "Interval(estimate=0.7138157894736842, lo=0.6480263157894737, hi=0.7796052631578947)",
           "diff": "Interval(estimate=0.00164473684210531, lo=0.0, hi=0.004975328947368224)"
+        }
+      }
+    },
+    "answers": {
+      "market questions, full answer, routed to events vs text only": {
+        "cited": {
+          "a": "Interval(estimate=0.8881578947368421, lo=0.8421052631578947, hi=0.9407894736842105)",
+          "b": "Interval(estimate=0.3355263157894737, lo=0.26299342105263185, hi=0.4144736842105263)",
+          "diff": "Interval(estimate=0.5526315789473685, lo=0.46710526315789475, hi=0.631578947368421)"
+        },
+        "abstained": {
+          "a": "Interval(estimate=0.1118421052631579, lo=0.05921052631578947, hi=0.15789473684210525)",
+          "b": "Interval(estimate=0.6644736842105263, lo=0.5855263157894737, hi=0.7370065789473674)",
+          "diff": "Interval(estimate=-0.5526315789473685, lo=-0.631578947368421, hi=-0.4671052631578948)"
         }
       }
     }

@@ -99,6 +99,7 @@ Other measured quantities, same run:
 | News events found / precision / denied rumours reported as a fact (n=205, templated news read by rules) | 100.0 / 100.0 / 0.0 percent |
 | Out of distribution set (36 questions, 5 hand written documents, `eval/results/OOD.md`): Recall@10 A5 / answer accuracy / false abstention | 1.000 / 0.567 / 0.400 |
 | Stream weights by intent (`eval/results/STREAMS.md`): nDCG@10 change on fact questions with news mixed in | -0.014 [-0.020, -0.008], kept off |
+| Market questions whose answer cites the expected news event, routed to events / text only (`eval/results/STREAMS.md`, templated news) | 0.888 [0.842, 0.941] / 0.336 [0.263, 0.414] |
 | Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 42.11 ms / 275.82 ms |
 
 ### How to read these numbers
