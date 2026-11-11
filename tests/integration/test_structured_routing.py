@@ -104,3 +104,26 @@ async def test_growth_questions_stay_on_the_text_path(
         factbase=base,
     )
     assert all(c.origin == "text" for c in answer.claims)
+
+
+async def test_a_superseded_draft_is_still_shown_and_flagged(
+    corpus: tuple[SqliteStore, FactBase],
+) -> None:
+    """Regression: a routed answer cited only the current document and lost the superseded
+    draft (the text path shows it flagged), which the harness counted as cited without the flag."""
+    from ainma.contracts import Flag
+
+    store, base = corpus
+    access = await store.access_for("u_analyst")
+    answer = await ask(
+        "What is the enterprise value of Aurora Components in the SPA?",
+        store=store,
+        access=access,
+        deal_id="deal_aurora",
+        llm=build_mock_llm(),
+        config=CONFIG,
+        factbase=base,
+    )
+    structured = [c for c in answer.claims if c.origin == "structured"]
+    assert structured
+    assert any(Flag.SUPERSEDED in c.flags for c in structured)

@@ -63,6 +63,9 @@ class StructuredFact(Strict):
     unit: str
     provenance: Provenance
     others: list[SourcedValue] = Field(default_factory=list)
+    # values stated by superseded documents (a draft replaced by the executed version): never a
+    # source of record, shown flagged so the reader sees what changed
+    superseded: list[SourcedValue] = Field(default_factory=list)
 
     @property
     def disagreements(self) -> list[SourcedValue]:

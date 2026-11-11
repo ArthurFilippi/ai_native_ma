@@ -108,6 +108,8 @@ async def routed_claims(
     entries: list[tuple[float, list[Provenance]]] = [
         (record.value, [record.provenance, *agreeing]),  # the record, corroborated
         *((o.value, [o.provenance]) for o in record.disagreements),
+        # a superseded draft is shown too; `apply_flags` marks it superseded
+        *((o.value, [o.provenance]) for o in record.superseded),
     ]
     for offset, (value, provenances) in enumerate(entries):
         provenance = provenances[0]

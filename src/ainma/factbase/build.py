@@ -45,11 +45,15 @@ def build_factbase(
     entries = {e.id: e for e in manifest}
     buyer_by_name = {b.name: b.id for b in buyers}
     groups: dict[tuple[str | None, str, str, str], list[Fact]] = defaultdict(list)
+    replaced: dict[tuple[str | None, str, str, str], list[Fact]] = defaultdict(list)
     for fact in facts:
         entry = entries[fact.document_id]
-        if entry.status is not DocStatus.CURRENT:
-            continue  # superseded and withdrawn documents are never a source of record
-        groups[(fact.deal_id, fact.entity, fact.metric, fact.period)].append(fact)
+        key = (fact.deal_id, fact.entity, fact.metric, fact.period)
+        if entry.status is DocStatus.SUPERSEDED:
+            replaced[key].append(fact)  # shown flagged, never a source of record
+        elif entry.status is DocStatus.CURRENT:
+            groups[key].append(fact)
+        # withdrawn documents are excluded; the pipeline flags the claim instead
 
     def rank(fact: Fact) -> tuple[int, int, str]:
         entry = entries[fact.document_id]
@@ -84,10 +88,24 @@ def build_factbase(
                 unit=best.unit,
                 provenance=_provenance(best, entries[best.document_id]),
                 others=others,
+                superseded=[
+                    SourcedValue(value=f.value, provenance=_provenance(f, entries[f.document_id]))
+                    for f in _one_per_document(replaced.get(key, []))
+                ],
             )
         )
     companies = _companies(facts, deals)
     return FactBaseFile(companies=companies, facts=records)
+
+
+def _one_per_document(facts: Sequence[Fact]) -> list[Fact]:
+    seen: set[str] = set()
+    out: list[Fact] = []
+    for fact in sorted(facts, key=lambda f: (f.document_id, f.id)):
+        if fact.document_id not in seen:
+            seen.add(fact.document_id)
+            out.append(fact)
+    return out
 
 
 def _companies(facts: Sequence[Fact], deals: Sequence[Deal]) -> list[Company]:

@@ -589,7 +589,8 @@ async def _verify_factbase(
     )
     checked = 0
     for record in stored.facts:
-        for prov in [record.provenance, *(o.provenance for o in record.others)]:
+        sources = [*record.others, *record.superseded]
+        for prov in [record.provenance, *(o.provenance for o in sources)]:
             chunk = await store.get_chunk(prov.chunk_id, access)
             page = await store.get_page(prov.document_id, prov.page, access)
             if chunk is None or prov.quote not in chunk.text:
