@@ -60,12 +60,12 @@ The target team's rule is adopted as is: you do not improve what you do not meas
 
 | Principle metric | Value [95% CI] |
 |---|---|
-| Citation precision (verifier on) | 0.909 [0.892, 0.926] |
-| Citation recall (verifier on) | 0.926 [0.912, 0.940] |
+| Citation precision (verifier on) | 0.915 [0.898, 0.931] |
+| Citation recall (verifier on) | 0.987 [0.981, 0.992] |
 | Correct abstention, end to end | 0.920 [0.873, 0.960] |
-| False abstention, end to end | 0.082 [0.068, 0.098] |
-| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.585 |
-| Contradiction detection recall | 0.937 [0.897, 0.971] |
+| False abstention, end to end | 0.018 [0.011, 0.025] |
+| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.868 |
+| Contradiction detection recall | 1.000 [1.000, 1.000] |
 | Clicks to verify a claim | 1 by design; asserted by a jsdom test of the web client (one citation click, one passage request), not measured in the harness |
 
 Retrieval ablation (nDCG@10, 1188 test queries pooled over the seeds):
@@ -83,9 +83,10 @@ Other measured quantities, same run:
 | Quantity | Value |
 |---|---|
 | Correct abstention on hard unanswerable queries (they share vocabulary with the corpus) | 80.0 percent (n=65); easy ones 100.0 percent (n=85) |
+| Structured routing against text only: citation precision / recall difference (D92) | +0.006 [0.004, 0.008] / +0.061 [0.048, 0.074] |
 | Contradiction false positive rate (consistent controls, n=472) | 0.000 [0.000, 0.000] |
-| Superseded and withdrawn cases (n=42): flagged / cited without the flag / not surfaced | 34 / 4 / 4 |
-| Stale-only cases (n=125) flagged as stale or missing | 89.6 percent |
+| Superseded and withdrawn cases (n=42): flagged / cited without the flag / not surfaced | 38 / 4 / 0 |
+| Stale-only cases (n=125) flagged as stale or missing | 99.2 percent |
 | Verifier recall of not fully supported claims (adversarial, n=1400) | 0.934 [0.920, 0.948] |
 | Verifier recall on altered entities | 68.3 percent |
 | Judge Cohen's kappa against the constructed labels | 0.888 [0.863, 0.912] |
@@ -95,16 +96,21 @@ Other measured quantities, same run:
 | Screening unknown rate | 47.2 percent |
 | Screening, predicted met although not met | 0.002 [0.000, 0.005] |
 | Buyer ranking, Spearman against the truth score, floor of the score range (D86) / previous rule, same cards (mean +/- sd over 5 deal runs) | 0.545 +/- 0.173 / 0.528 +/- 0.160 |
-| Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 41.79 ms / 278.36 ms |
+| News events found / precision / denied rumours reported as a fact (n=205, templated news read by rules) | 100.0 / 100.0 / 0.0 percent |
+| Out of distribution set (36 questions, 5 hand written documents, `eval/results/OOD.md`): Recall@10 A5 / answer accuracy / false abstention | 1.000 / 0.567 / 0.400 |
+| Stream weights by intent (`eval/results/STREAMS.md`): nDCG@10 change on fact questions with news mixed in | -0.014 [-0.020, -0.008], kept off |
+| Ask, total latency p50 / p95 (wall clock, differs on every run; warm, in memory store, one machine) | 42.11 ms / 275.82 ms |
 
 ### How to read these numbers
 
 - **Synthetic and templated data.** Absolute scores are optimistic and say little about real documents. Only differences between systems under identical conditions are informative. The same author wrote the generator and the system, so design assumptions can leak into both. The retrieval figures of A4 and A5 are close to saturated for that reason.
+- **Most of the gain since `c55a6bd` comes from routing keyed questions to the structured fact base**, which is built from the same planted facts as the truth: on synthetic data it is close to an oracle for keyed values, so the recall gain says little about real data rooms.
+- **The hand written out of distribution set shows the real weak spot**: retrieval finds every gold passage, but the frozen `tau` (calibrated on synthetic scores) abstains on 12 of 30 answerable questions. Nothing was tuned on that set.
 - **The verifier removed nothing in this run.** With the mock writer, which builds claims from verbatim quotes, citation precision, recall and the unsupported-claim rate are identical with the verifier on and off, and it dropped 0 claims, including with the new binding check (number to role, period and column, D89). The binding check is proven only by unit tests on the two errors observed on hand written documents; the mock cannot show what the verifier is worth. A live model is needed for that.
 - **The ranking change is not a measured gain yet.** Ranking by the floor of the score range (D86) fixes the visible inversion (a 1.00 score at 12 percent coverage above 0.88 at 47 percent), but against the truth score it moves Spearman from 0.528 to 0.545, well inside the spread across seeds (5 deal runs). Screening agreement, unknown rate and false met rate are unchanged: prefilling stage 1 from the deal record (D87) reproduces the filters the harness used to inject.
 - **Citation precision is below one by design choice.** The system surfaces a second, flagged source (a superseded draft, a press figure), and those claims are not gold facts, so they count against precision.
 - **Screening agreement is conditional and capped.** The harness screens the way the demo does: the deal's region and size range as filters, every buyer that passes stage 1 reaches stage 2, and the simulated news feed is filed in the deal space first (decision D80). Two limits remain and were not tuned away: the buyer truth for antitrust assumes a target market share that no document states, so a system that does not guess leaves it `unknown`; and the deep truth also covers buyers that fail the sector prefilter, which the product does not deep-screen. This is why the unknown rate is high while accuracy where a status was given is 99.8 percent.
-- **Known weak spots.** A chunk-local judge cannot see a wrong company when the chunk names none (tables, "the company"), hence the altered-entity recall above; the pipeline avoids that case upstream with an entity gate. Hard unanswerable questions are abstained correctly less often than easy ones, and abstention precision is 0.585 at the frozen threshold: about four abstentions in ten are on answerable questions. The threshold curve in `RESULTS.md` shows the tradeoff, and the dev false abstention at the frozen `tau` ranges from 5.1 to 14.1 percent across seeds. `tau` must be recomputed by hand whenever retrieval changes.
+- **Known weak spots.** A chunk-local judge cannot see a wrong company when the chunk names none (tables, "the company"), hence the altered-entity recall above; the pipeline avoids that case upstream with an entity gate. Hard unanswerable questions are abstained correctly less often than easy ones (80.0 against 100.0 percent). The threshold curve in `RESULTS.md` shows the tradeoff, and the dev false abstention at the frozen `tau` ranges from 5.1 to 14.1 percent across seeds. `tau` must be recomputed by hand whenever retrieval changes.
 - **What was tuned on what.** Thresholds and retrieval constants were tuned on the dev split and on seeds 1 and 2; the reported numbers are on the test split of all five seeds. One bug (a stemmed company descriptor in the brand logic) was found after reading the failure categories of one seed on the test split, fixed generally with a regression test, and disclosed in `docs/DECISIONS.md` (D61). The metric glossary was written after reading the generator's phrasings, so the mock numbers are optimistic.
 - **Not evaluated.** Live LLM providers (no key was available: `make live-smoke` and section 9 of `RESULTS.md` say `live run not executed`), neural embedders and cross-encoders (the model host was blocked by the network of the run), real documents, production traffic, any user study. The hand-labelled sample that validates the constructed judge labels is generated by `make label-sample` and is not labelled yet, so the report says `not labelled yet` there.
 

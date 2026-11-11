@@ -4,7 +4,7 @@
 
 <!-- RUN-METADATA-BEGIN: differs between runs -->
 - Date: 2026-11-11
-- Git commit: 0fa24cf
+- Git commit: b817d95
 - Machine: Linux 6.18.44-fc-v378 x86_64, Python 3.13.18, 4 CPUs
 <!-- RUN-METADATA-END -->
 
@@ -360,12 +360,12 @@ Buyer screening criteria against the buyer truth table (a criterion the system d
 
 | Metric | Value |
 |---|---|
-| Agreement with buyer truth (n=1600 cells) | 0.695 [0.672, 0.717] |
-| Predicted met although not met | 0.007 [0.002, 0.014] |
-| Unknown rate | 46.7% |
-| Accuracy where a status was given | 98.5% |
-| Buyer ranking, Spearman vs truth score (floor of the range, D86), mean over 5 deal runs | 0.543 +/- 0.172 |
-| Buyer ranking, Spearman vs truth score (previous rule: score, then coverage), mean over 5 deal runs | 0.533 +/- 0.164 |
+| Agreement with buyer truth (n=1600 cells) | 0.702 [0.679, 0.724] |
+| Predicted met although not met | 0.002 [0.000, 0.005] |
+| Unknown rate | 47.2% |
+| Accuracy where a status was given | 99.8% |
+| Buyer ranking, Spearman vs truth score (floor of the range, D86), mean over 5 deal runs | 0.545 +/- 0.173 |
+| Buyer ranking, Spearman vs truth score (previous rule: score, then coverage), mean over 5 deal runs | 0.528 +/- 0.160 |
 | News events found (recall, n=205 truth events) | 100.0% |
 | News events, precision (n=205 extracted) | 100.0% |
 | News events, status correct among found | 100.0% |
@@ -423,17 +423,17 @@ Latency in milliseconds, test queries, warm in memory store, machine as in the h
 
 | Measure | n | p50 (ms, wall clock, differs on every run) | p95 (ms, wall clock, differs on every run) |
 |---|---|---|---|
-| search A1 | 1188 | 7.25 | 205.79 |
-| search A2 | 1188 | 6.98 | 189.18 |
-| search A3 | 1188 | 6.69 | 194.32 |
-| search A4 | 1188 | 34.52 | 242.72 |
-| search A5 | 1188 | 38.03 | 266.11 |
-| stage: contradictions | 1167 | 0.51 | 0.95 |
-| stage: retrieve | 1188 | 39.19 | 267.98 |
-| stage: understand | 1188 | 0.32 | 0.48 |
-| stage: verify | 1167 | 1.72 | 3.77 |
-| stage: write | 1167 | 0.03 | 2.68 |
-| ask, total wall clock | 1188 | 42.31 | 274.39 |
+| search A1 | 1188 | 6.73 | 197.15 |
+| search A2 | 1188 | 6.58 | 197.50 |
+| search A3 | 1188 | 6.66 | 197.05 |
+| search A4 | 1188 | 34.79 | 244.40 |
+| search A5 | 1188 | 37.88 | 244.54 |
+| stage: contradictions | 1167 | 0.49 | 0.97 |
+| stage: retrieve | 1188 | 38.98 | 271.78 |
+| stage: understand | 1188 | 0.31 | 0.48 |
+| stage: verify | 1167 | 1.68 | 3.73 |
+| stage: write | 1167 | 0.02 | 2.69 |
+| ask, total wall clock | 1188 | 42.11 | 275.82 |
 
 <!-- TIMING-END -->
 
