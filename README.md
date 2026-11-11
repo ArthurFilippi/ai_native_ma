@@ -152,6 +152,8 @@ Commands:
 | `make data` | generate and verify the corpus of one seed (default 1234) |
 | `make eval` | generate the five seeds, run the harness, write `eval/results/` (`PROVIDER` and `SEEDS` are options; a live provider writes `RESULTS_LIVE.md`, never `RESULTS.md`) |
 | `make live-smoke` | a few real queries through the pipeline with the configured live writer and judge; prints `live run not executed` without a key |
+| `make load-db` | load a seed into the configured store (`STORE_BACKEND=postgres` and `DATABASE_URL` for Supabase) |
+| `make eval-ood` / `make eval-streams` | out of distribution check / stream ablation, written to `eval/results/` |
 | `make label-sample` | write the 40 pair blind labelling sheet for the hand labels |
 | `make judge-daily` | replay the answer log through the judge |
 | `make inspect ID=<answer id>` | print the raw trace of a logged answer |
@@ -188,7 +190,7 @@ The generator is seeded and byte deterministic (tested by hashing every output t
 
 **Contracts (`contracts.py`).** `Document`, `Chunk` (with page and character offsets, the invariant being that the chunk text equals the page slice), `Citation`, `Claim`, `Contradiction`, `Answer` (with `value_contract` and a `Trace`), `BuyerCard`, `ScreeningResult`, `KpiValue`. The model of record is this file; the API, the web types and the tests derive from it.
 
-**Store (`store/`).** SQLite by default, no infrastructure. The access predicate (`deal_id` in the user's deals, or the general layer) is part of the SQL that selects candidates, so scoring never sees a forbidden chunk. A property test checks zero leakage across users.
+**Store (`store/`).** SQLite by default, no infrastructure; Postgres (Supabase) with `STORE_BACKEND=postgres` and `DATABASE_URL`: run `src/ainma/store/postgres_schema.sql` in the Supabase SQL editor (or let the API create it), then `make load-db`. The access predicate (`deal_id` in the user's deals, or the general layer) is part of the SQL that selects candidates, so scoring never sees a forbidden chunk. A property test checks zero leakage across users.
 
 **Ingestion (`ingest/`).** Parsers for PDF, DOCX, XLSX and text produce chunks with page and offsets; `load_corpus(store, seed_dir)` loads a generated corpus with its deals, users, memberships and buyers. PPTX and e-mail parsers are deferred.
 

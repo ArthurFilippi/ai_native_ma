@@ -34,9 +34,15 @@ class Runtime:
 
 async def open_runtime(settings: Settings | None = None) -> Runtime:
     settings = settings or get_settings()
-    if settings.store_backend != "sqlite":
-        raise NotImplementedError("the postgres store is a stretch milestone and not implemented")
-    store = await SqliteStore.open(settings.sqlite_path)
+    store: Store
+    if settings.store_backend == "postgres":
+        if not settings.database_url:
+            raise ValueError("STORE_BACKEND=postgres needs DATABASE_URL")
+        from ainma.store.postgres import PostgresStore
+
+        store = await PostgresStore.open(settings.database_url)
+    else:
+        store = await SqliteStore.open(settings.sqlite_path)
     return Runtime(
         settings=settings,
         store=store,
