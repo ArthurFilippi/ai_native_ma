@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from ainma.contracts import Chunk, DocumentMeta, Strict
+from ainma.contracts import Chunk, DocumentMeta, ScreeningRequest, Strict
 
 
 class AskRequest(Strict):
@@ -35,3 +35,16 @@ class PassageResponse(Strict):
 class MarketIntelRun(Strict):
     deal_id: str
     ingested: int = Field(ge=0)
+
+
+class LiveSearchBody(Strict):
+    """A live news query (D99)."""
+
+    query: str = Field(min_length=2, max_length=300)
+
+
+class RefineBody(Strict):
+    """A sentence that refines the current screening request (D98)."""
+
+    text: str = Field(min_length=1, max_length=2000)
+    current: ScreeningRequest

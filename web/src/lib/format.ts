@@ -12,5 +12,5 @@ export function latestDate(dates: readonly (string | null)[]): string | null {
 }
 
 export function formatNumber(value: number): string {
-  return Number.isInteger(value) ? String(value) : value.toFixed(2);
+  return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(2)));
 }

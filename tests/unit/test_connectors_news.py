@@ -226,3 +226,22 @@ def test_cli_ingests_into_the_configured_store(
     assert "ingested 4 simulated documents into deal_aurora" in capsys.readouterr().out
     assert main(argv) == 0  # a rerun does not add copies
     assert asyncio.run(_simulated_documents(db)) == 4
+
+
+async def test_filing_the_feed_in_a_second_deal_keeps_the_first_deals_copy(
+    store: SqliteStore, tmp_path: Path
+) -> None:
+    """Regression: the document id ignored the deal, so filing the same feed in deal B moved the
+    documents out of deal A (an `INSERT OR REPLACE` on the same id)."""
+    from ainma.contracts import Deal, Membership, Role
+
+    await store.put_deal(Deal(id="deal_other", name="Project Other", sector="software"))
+    await store.put_membership(Membership(deal_id="deal_other", user_id="u_lead", role=Role.LEAD))
+    lead = await store.access_for("u_lead")
+    seed = _seed(tmp_path)
+    first = await run_market_intel(DEAL_ID, store=store, access=lead, seed_dir=seed)
+    await run_market_intel("deal_other", store=store, access=lead, seed_dir=seed)
+    kept = [
+        d for d in await store.list_documents(lead, DEAL_ID) if d.origin == "simulated-connector"
+    ]
+    assert len(kept) == first

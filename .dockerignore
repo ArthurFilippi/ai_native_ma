@@ -1,0 +1,13 @@
+.env
+.env.*
+.git
+web
+eval
+tests
+docs
+data/cache
+data/synthetic/*
+!data/synthetic/1234
+**/__pycache__
+.venv
+node_modules

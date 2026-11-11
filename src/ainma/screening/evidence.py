@@ -130,3 +130,11 @@ class EvidenceFinder:
 
     async def cite(self, evidence: Evidence) -> Citation:
         return await self._citations.build(evidence.chunk, evidence.quote)
+
+    async def cite_quote(self, chunk: Chunk, quote: str) -> Citation:
+        """Citation of a verbatim `quote` of `chunk` (the caller checked that it is a span)."""
+        return await self._citations.build(chunk, quote)
+
+    @property
+    def access(self) -> AccessContext:
+        return self._access

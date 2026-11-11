@@ -1,0 +1,7 @@
+[
+  {"id": "doc_ood_halvorsen_im", "path": "docs/halvorsen_im.txt", "format": "txt", "deal_id": "deal_ood_halvorsen", "title": "Halvorsen Pumps AG: Information Memorandum", "doc_type": "deal_document", "published_on": "2025-02-14"},
+  {"id": "doc_ood_halvorsen_model", "path": "docs/halvorsen_model.txt", "format": "txt", "deal_id": "deal_ood_halvorsen", "title": "Halvorsen Pumps AG: financial summary", "doc_type": "deal_document", "published_on": "2025-02-14"},
+  {"id": "doc_ood_halvorsen_press", "path": "docs/halvorsen_press.txt", "format": "txt", "deal_id": "deal_ood_halvorsen", "title": "Pump maker Halvorsen explores a sale", "doc_type": "press_article", "published_on": "2025-03-10"},
+  {"id": "doc_ood_corvina_cim", "path": "docs/corvina_cim.txt", "format": "txt", "deal_id": "deal_ood_corvina", "title": "Corvina Logistics BV: Confidential Information Memorandum", "doc_type": "deal_document", "published_on": "2025-03-03"},
+  {"id": "doc_ood_corvina_mgmt", "path": "docs/corvina_mgmt.txt", "format": "txt", "deal_id": "deal_ood_corvina", "title": "Corvina Logistics: management presentation", "doc_type": "deal_document", "published_on": "2025-03-03"}
+]

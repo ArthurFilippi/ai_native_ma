@@ -1,0 +1,10 @@
+{
+  "query": "industrial components acquisition Europe",
+  "results": [
+    {"title": "Example: components maker agrees sale to industrial group", "url": "https://news.example.com/a", "content": "A components maker agreed to be acquired by an industrial group for an undisclosed sum, the companies said on Tuesday.", "score": 0.81, "published_date": "Tue, 04 Nov 2025 09:15:00 GMT"},
+    {"title": "Example: sector valuations steady in the third quarter", "url": "https://news.example.com/b", "content": "Valuations of listed components suppliers were broadly steady over the quarter, according to market data.", "score": 0.66, "published_date": "2025-10-28T07:00:00Z"},
+    {"title": "Example: old item", "url": "https://news.example.com/c", "content": "An item older than the cut-off date.", "score": 0.4, "published_date": "2024-01-02"},
+    {"title": "", "url": "https://news.example.com/d", "content": "No title, skipped.", "score": 0.3}
+  ],
+  "response_time": 1.2
+}

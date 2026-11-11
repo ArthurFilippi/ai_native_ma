@@ -104,6 +104,8 @@ export interface Claim {
   derived_from: string[];
   verification: Verification | null;
   flags: Flag[];
+  // "structured": value from the structured fact base, cited to its document of record (D92)
+  origin?: "text" | "structured" | "event";
 }
 
 export interface ContradictionSide {
@@ -162,6 +164,9 @@ export interface Answer {
   // a live call failed and the offline mock answered instead (D88)
   degraded?: boolean;
   degraded_reason?: string | null;
+  // one-glance level computed by code from the evidence (D97)
+  confidence?: "high" | "medium" | "low" | null;
+  confidence_reason?: string | null;
   trace: Trace;
   value_contract: string;
 }
@@ -228,6 +233,7 @@ export interface ScreeningRequest {
   filters: ScreeningFilters;
   weights: Record<string, number>;
   stage2_top_n: number;
+  llm_assist?: boolean; // D95
 }
 
 export interface ScreeningResult {
@@ -254,4 +260,19 @@ export interface Passage {
   page_text: string | null;
   highlight_start: number;
   highlight_end: number;
+}
+
+// Market events read from the news (D94): duplicates merged, denials and corrections applied.
+export interface MarketEvent {
+  id: string;
+  kind: "acquisition" | "leadership_change" | "rumour" | "price";
+  actor: string;
+  buyer_id: string | null;
+  counterparty: string;
+  event_date: string | null;
+  status: "confirmed" | "unconfirmed" | "denied" | "corrected";
+  value_eur_m: number | null;
+  citations: Citation[];
+  superseded_citations: Citation[];
+  n_reports: number;
 }

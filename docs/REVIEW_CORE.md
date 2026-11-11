@@ -146,3 +146,34 @@ retrieval did not change.
    Not started; the deep stage is still rules only (finding 14).
 6. Brief item E: an adversarial set measured with a live model, verifier on and off.
 7. The buyer universe is still global (finding 15); antitrust stays `unknown` by construction.
+
+## Outcome of the second branch (`core/factbase`)
+
+Mock provider, five seeds, test split, `eval/results/RESULTS.md` regenerated at the end of the
+branch. "Before" is `c55a6bd`.
+
+| Measure | Before | After |
+|---|---|---|
+| Citation precision / recall (verifier on) | 0.909 / 0.926 | 0.915 / 0.987 |
+| False abstention, end to end | 0.082 | 0.018 |
+| Abstention precision | 0.585 | 0.868 |
+| Contradiction detection recall | 0.937 | 1.000 |
+| Superseded and withdrawn: flagged / unflagged / not surfaced | 34 / 4 / 4 | 38 / 4 / 0 |
+| Stale-only cases flagged | 89.6% | 99.2% |
+| Screening agreement, unknown, false met | 0.702, 47.2%, 0.002 | 0.702, 47.2%, 0.002 |
+| News events found, denied rumours reported as fact | not measured | 100.0%, 0.0% |
+| Out of distribution: Recall@10 A5, answer accuracy, false abstention | not measured | 1.000, 0.567, 0.400 |
+
+Read honestly: the gain comes from routing keyed questions to a fact base built from the same
+planted facts as the truth, so it is close to an oracle on synthetic data; the out of distribution
+set, written by hand in another vocabulary, shows that the rule writer of the mock is the weak point
+on unfamiliar wording (8 of 12 failures), before the threshold (3 of 12), see D96. The news layer scores 100 percent because rules read templated headlines;
+it says nothing about real news. Stream weights were measured and kept off (D100).
+
+Defects found and fixed on this branch, each with a regression test: routed claims citing a single
+document (D92), routed answers hiding superseded drafts (D92), news documents moved between deals
+(D100), an appointment counted as an acquisition in screening (D93), the CI skipping the corpus
+tests (the corpus is now generated in CI).
+
+Still not measured: any live model (no key), live news (no key), neural dense and cross encoder
+(model host blocked during the work), human labels of the judge sample (not filled, by rule).

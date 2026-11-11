@@ -38,6 +38,7 @@ from ainma.evaluation.metrics.abstention import choose_tau
 from ainma.evaluation.regression import RegressionOutcome, load_cases, replay
 from ainma.evaluation.report import RunMeta, render_report
 from ainma.evaluation.stats import DEFAULT_RESAMPLES
+from ainma.factbase import FactBase
 from ainma.llm import LLM, build_llm, build_mock_llm
 from ainma.llm.factory import build_judge_llm
 from ainma.settings import Settings
@@ -111,7 +112,15 @@ async def _evaluate(
     split: EvalSplit,
     judge: LLM | None = None,
 ) -> tuple[SeedResult, Adapter]:
-    adapter = Adapter(store=store, llm=llm, buyers=truth.buyers, use_real=use_real, judge_llm=judge)
+    factbase = FactBase.load(truth.seed_dir) if truth.seed_dir is not None else None
+    adapter = Adapter(
+        store=store,
+        llm=llm,
+        buyers=truth.buyers,
+        use_real=use_real,
+        judge_llm=judge,
+        factbase=factbase,
+    )
     result = await evaluate_seed(
         label,
         store=store,

@@ -53,7 +53,7 @@ _NO_INVEST_END = re.compile(
 _INVEST_LENGTH = re.compile(r"(?P<n>\d+(?:\.\d+)?)[- ]year investment period", _I)
 _ACQUISITION = re.compile(
     r"\b(?:acquired(?!\s+by)|acquires|acquiring|acquisition of|completed the acquisition|"
-    r"agreed to acquire|has bought|bought|took over|takes over|add-on acquisition)\b",
+    r"agreed to acquire|has bought|bought|(?:took|takes) over(?!\s+as\b)|add-on acquisition)\b",
     _I,
 )
 _PCT = r"(?:%|percent|per\s+cent)"

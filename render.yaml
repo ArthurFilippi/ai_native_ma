@@ -1,0 +1,24 @@
+# Render blueprint for the API (docs/DEPLOY.md). The web client goes to Vercel, the data to Supabase.
+# Secrets (DATABASE_URL, keys) are set in the Render dashboard, never here: `sync: false`.
+services:
+  - type: web
+    name: ainma-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: STORE_BACKEND
+        value: postgres
+      - key: DATABASE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: LLM_PROVIDER
+        value: mock
+      - key: LLM_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false

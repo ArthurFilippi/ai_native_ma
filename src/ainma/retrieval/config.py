@@ -8,6 +8,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from ainma.contracts import TIER_WEIGHT, DocStatus, DocType, SourceTier
+from ainma.retrieval.streams import DEFAULT_STREAM_WEIGHTS
 from ainma.settings import DEFAULT_SEED
 
 System = Literal["A1", "A2", "A3", "A4", "A5"]
@@ -74,6 +75,14 @@ class RankerConfig(BaseModel):
     corroboration_step: float = 0.05
     corroboration_cap: int = 3
     corroboration_tolerance: float = 0.005
+    # multi-stream weighting (D100): off by default until the stream ablation decides
+    use_streams: bool = False
+    stream_weights: dict[str, dict[str, float]] = Field(
+        default_factory=lambda: {
+            str(intent): {str(stream): w for stream, w in weights.items()}
+            for intent, weights in DEFAULT_STREAM_WEIGHTS.items()
+        }
+    )
 
 
 class RetrievalConfig(BaseModel):

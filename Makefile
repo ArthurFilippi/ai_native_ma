@@ -1,4 +1,4 @@
-.PHONY: install lint typecheck test check data data-all eval live-smoke demo api web label-sample judge-daily inspect
+.PHONY: install lint typecheck test check data data-all eval eval-ood eval-streams live-smoke load-db demo api web label-sample judge-daily inspect
 
 install:
 	pip install -e ".[dev]"
@@ -30,6 +30,15 @@ data-all:
 
 eval: data-all
 	python -m ainma.evaluation.run --provider $(PROVIDER) --seeds $(SEEDS)
+
+eval-streams: data-all
+	python -m ainma.evaluation.streams --seeds $(SEEDS)
+
+eval-ood:
+	python -m ainma.evaluation.ood
+
+load-db: data
+	python -m ainma.store.load --seed $(SEED)
 
 live-smoke: data
 	python -m ainma.evaluation.live_smoke --seed $(SEED)

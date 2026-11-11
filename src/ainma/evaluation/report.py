@@ -287,8 +287,34 @@ def _citation(meta: RunMeta, s: Mapping[str, Any]) -> str:
             ],
             seed_rows,
         ),
+        *_routing_block(c, names),
     ]
     return section("2. Citation fidelity and verifier ablation", body)
+
+
+def _routing_block(c: Mapping[str, Any], names: Mapping[str, str]) -> list[str]:
+    """The structured routing ablation (D92): the product against text search only, verifier on
+    in both, same queries and resamples."""
+    routing = c.get("routing")
+    if not routing:
+        return []
+    rows = [
+        [
+            names[key],
+            interval(routing[key]["structured_on"]),
+            interval(routing[key]["text_only"]),
+            interval(routing[key]["difference"]),
+        ]
+        for key in names
+    ]
+    return [
+        "Structured routing ablation: keyed sub-questions answered from the structured fact base "
+        "(its provenance as citation) against text search only, verifier on in both:",
+        table(
+            ["Metric", "Structured routing [95% CI]", "Text only [95% CI]", "Difference [95% CI]"],
+            rows,
+        ),
+    ]
 
 
 def _verifier(meta: RunMeta, s: Mapping[str, Any]) -> str:
@@ -464,6 +490,8 @@ def _extraction(meta: RunMeta, s: Mapping[str, Any]) -> str:
         ["Unknown rate", pct(sc["point"]["unknown_rate"])],
         ["Accuracy where a status was given", pct(sc["point"]["accuracy_known"])],
         *_ranking_rows(sc.get("ranking")),
+        *_event_rows(sc.get("events")),
+        *_assisted_rows(sc.get("assisted")),
     ]
     body = [
         basis(meta, ["kpi", "screening"]),
@@ -482,6 +510,42 @@ def _extraction(meta: RunMeta, s: Mapping[str, Any]) -> str:
         table(["Metric", "Value"], screening_rows),
     ]
     return section("6. Extraction and screening", body)
+
+
+def _assisted_rows(assisted: Mapping[str, Any] | None) -> list[list[str]]:
+    """Model assisted stage 2 (D95): reported next to the rules, never instead of them."""
+    if not assisted:
+        return [["Model assisted stage 2 (D95)", "live run not executed"]]
+    n = assisted["n_cells"]
+    return [
+        [f"Model assisted stage 2, agreement (n={n} cells)", pct(assisted["agreement"])],
+        ["Model assisted stage 2, unknown rate", pct(assisted["unknown_rate"])],
+        ["Model assisted stage 2, predicted met although not met", pct(assisted["false_met_rate"])],
+    ]
+
+
+def _event_rows(events: Mapping[str, Any] | None) -> list[list[str]]:
+    """Market events read from the news (D94), pooled over the seeds."""
+    if not events:
+        return []
+    c = events["counts"]
+    return [
+        [
+            f"News events found (recall, n={c['n_truth']} truth events)",
+            pct(events["recall"]),
+        ],
+        [f"News events, precision (n={c['n_extracted']} extracted)", pct(events["precision"])],
+        ["News events, status correct among found", pct(events["status_accuracy"])],
+        [f"News prices, corrected value right (n={c['n_price']})", pct(events["price_accuracy"])],
+        [
+            f"Denied rumours reported as anything but denied (n={c['n_denied']}, the unsafe error)",
+            pct(events["denied_as_fact"]),
+        ],
+        [
+            f"Duplicated events merged into one with every report (n={c['n_duplicated']})",
+            pct(events["duplicates_merged"]),
+        ],
+    ]
 
 
 def _ranking_rows(ranking: Mapping[str, Any] | None) -> list[list[str]]:

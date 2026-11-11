@@ -123,3 +123,54 @@ Produced by `python -m ainma.synth generate` and checked by `python -m ainma.syn
 - Filler never contains numbers, so numeric extraction is not confused by incidental figures. Prose uses straight ASCII text, no scans, no OCR, no multi column layout.
 - The PDF parser relies on the writer's conventions (fonts, spacing), see D12. Dates, tiers and statuses are exact; real metadata is noisier.
 - Deal sectors and company names are fictional and can overlap lexically (similar names are planted on purpose as hard negatives).
+
+## Structured fact base (`structured/factbase.json`)
+
+Built by the generator from the planted facts of the seed (`ainma.factbase.build_factbase`), so
+it shares the seed and the ground truth. It is regenerated with the corpus and is not committed.
+It plays the role of a data vendor or an internal database: a keyed value with a source of
+record, never a value without a passage.
+
+| Field | Meaning |
+|---|---|
+| `companies[]` | `deal_id`, `name` (the deal's target: the entity of its revenue facts), `sector`, `geographies` |
+| `facts[].id` | `sf_00001` ... |
+| `facts[].deal_id`, `entity`, `entity_id` | scope (null: general layer), entity name, buyer id when the entity is a buyer |
+| `facts[].metric`, `period`, `value`, `unit` | the key (`period` is `FY2024` or `static`) and the value of record |
+| `facts[].provenance` | `document_id`, `doc_title`, `doc_type`, `tier`, `published_on`, `status`, `chunk_id`, `page`, `char_start`, `char_end` (page offsets, as a citation), `quote` (verbatim) |
+| `facts[].others[]` | every other current document stating the same key, with its value and provenance |
+
+Source of record: current documents only (superseded and withdrawn are never a source), best
+tier first, then the most recent, then the lowest document id. A value of `others` that differs
+by more than 0.5 percent is a disagreement; the question pipeline shows it as a contradiction
+with both sides cited.
+
+Seed 1234: 430 records, 651 provenances, 48 records with a disagreeing document (the 48 planted
+contradictions), 9 companies. `python -m ainma.synth verify` rebuilds the file from
+`truth/facts.json` and requires equality, and checks every provenance against the stored chunk
+(the quote is in the chunk, the page offsets point at it).
+
+Typed tools (`ainma.factbase.FactBase`), the only way to read it: `lookup(LookupRequest(metric,
+entity, period))`, `comparables(ComparablesRequest(metric, period, sector))`,
+`buyer_facts(BuyerFilterRequest(metric, min_value, max_value, buyer_ids))`. Requests are strict
+models (an unknown field is rejected); no query text is ever written by a model. The access
+predicate (the user's deals, or the general layer) is applied inside each tool before matching.
+
+Not yet in the base: precedent transactions with acquirer and date, broker estimates, earnings
+call statements, and news events. They come with the next corpus extension.
+
+## News event layer (`truth/news_events.json`)
+
+The feed (`news/items.json`) holds the 60 base items, unchanged, plus the items of an event layer
+drawn from its own random stream (`ainma.synth.news_events`). Seed 1234: 104 items, 42 events.
+
+| Kind | What is planted | Truth status |
+|---|---|---|
+| `acquisition` | every acquisition headline of the base feed; one in two is repeated by another outlet (`Trade wire: X buys Y`) | `confirmed`; a repeat is the same event |
+| `leadership_change` | about one buyer in three appoints a chief executive | `confirmed` |
+| `rumour` | for each deal company, a buyer "is said to weigh an offer"; two in three are denied later | `denied` or `unconfirmed` |
+| `price` | one acquisition in three gets a reported price; one in two is corrected later | `confirmed` or `corrected` (value is the corrected figure) |
+
+Each event lists every item title that reports it. `verify` checks that each title is in the
+feed, that the base feed still has 60 items, and that denials and corrections have their item.
+Event wordings avoid the acquisition verbs of the screening rules, so the buyer truth is unchanged.

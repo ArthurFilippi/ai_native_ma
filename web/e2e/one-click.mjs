@@ -15,10 +15,10 @@ page.on("request", (request) => {
 
 await page.goto(url);
 await page.getByLabel("Question about this deal").fill("What was FY2024 revenue?");
-await page.getByRole("button", { name: "Ask", exact: true }).click();
+await page.getByRole("button", { name: "Send", exact: true }).click();
 await page.getByTestId("answer").waitFor();
 
-const citation = page.locator("#claim-c1 button.citation").first();
+const citation = page.locator("ol.sources button.source").first();
 await citation.click();
 const mark = page.getByTestId("evidence-highlight");
 await mark.waitFor({ state: "visible" });

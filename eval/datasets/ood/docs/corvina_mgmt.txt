@@ -1,0 +1,11 @@
+SYNTHETIC DOCUMENT, fictional data. Written by hand for the out of distribution test.
+
+Corvina Logistics: management presentation (extract)
+
+KPIs | 2022 | 2023 | 2024
+Sales (EURm) | 63.5 | 69.1 | 74.8
+EBITDA (EURm) | 10.2 | 11.4 | 12.9
+Warehouses (#) | 8 | 8 | 9
+Employees (FTE) | 548 | 590 | 612
+
+Outlook: management targets one additional warehouse in 2025, subject to financing.

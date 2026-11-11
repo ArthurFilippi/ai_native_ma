@@ -20,13 +20,22 @@ from fastapi.security import APIKeyHeader
 
 from ainma.api import services
 from ainma.api.examples_openapi import ANSWER_EXAMPLES, SCREENING_EXAMPLES
-from ainma.api.schemas import AskRequest, HealthResponse, MarketIntelRun, PassageResponse
+from ainma.api.schemas import (
+    AskRequest,
+    HealthResponse,
+    LiveSearchBody,
+    MarketIntelRun,
+    PassageResponse,
+    RefineBody,
+)
+from ainma.connectors.tavily import LiveSearchUnavailable
 from ainma.contracts import (
     AccessContext,
     Answer,
     Deal,
     DocumentMeta,
     KpiValue,
+    MarketEvent,
     Role,
     ScreeningRequest,
     ScreeningResult,
@@ -34,6 +43,7 @@ from ainma.contracts import (
 )
 from ainma.llm import LLMError
 from ainma.runtime import Runtime
+from ainma.screening.refine import RefineOutcome
 from ainma.store import UnknownUserError
 
 logger = logging.getLogger(__name__)
@@ -171,9 +181,37 @@ def build_router(runtime: Runtime) -> APIRouter:
             raise HTTPException(422, "deal_id in the body does not match the path")
         return await services.screening(runtime, access, body)
 
+    @router.post(
+        "/deals/{deal_id}/screening/refine", response_model=RefineOutcome, tags=["screening"]
+    )
+    async def refine(body: RefineBody, deal: WriterOf, access: Access) -> RefineOutcome:
+        """Turn a sentence into a change of the screening request (D98); nothing is run."""
+        if body.current.deal_id != deal.id:
+            raise HTTPException(422, "deal_id in the body does not match the path")
+        return await services.refine(runtime, access, body.text, body.current)
+
     @router.get("/deals/{deal_id}/kpis", response_model=list[KpiValue], tags=["kpis"])
     async def kpis(deal: DealOf, access: Access) -> list[KpiValue]:
         return await services.kpis(runtime, access, deal.id)
+
+    @router.get("/deals/{deal_id}/events", response_model=list[MarketEvent], tags=["market"])
+    async def events(deal: DealOf, access: Access) -> list[MarketEvent]:
+        """Market events read from the deal's news: duplicates merged, denials and corrections
+        applied, every report cited verbatim. A denied rumour is never a fact."""
+        return await services.events(runtime, access, deal.id)
+
+    @router.post(
+        "/deals/{deal_id}/market-intel/live", response_model=list[DocumentMeta], tags=["market"]
+    )
+    async def live_search(
+        body: LiveSearchBody, deal: WriterOf, access: Access
+    ) -> list[DocumentMeta]:
+        """Search live news (Tavily) and file the results in the deal as press articles (D99).
+        Without TAVILY_API_KEY, or when the service fails, the answer is 503 with the reason."""
+        try:
+            return await services.live_search(runtime, access, deal.id, body.query)
+        except LiveSearchUnavailable as error:
+            raise HTTPException(503, str(error)) from error
 
     @router.post(
         "/deals/{deal_id}/market-intel/run", response_model=MarketIntelRun, tags=["market"]

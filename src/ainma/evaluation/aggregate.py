@@ -214,6 +214,19 @@ def _citation(results: Sequence[SeedResult], pool: Pooler) -> Summary:
             "difference": iv(cmp.diff),
             "share_positive": cmp.share_positive,
         }
+    if all("text_only" in r.citation for r in results):
+        # routing ablation (D92): the product against text search only, verifier on in both
+        out["routing"] = {}
+        for key, (num, den) in metrics.items():
+            routed = count_sample(column("on", num), column("on", den))
+            text_only = count_sample(column("text_only", num), column("text_only", den))
+            cmp = paired_bootstrap(routed, text_only, weights)
+            out["routing"][key] = {
+                "structured_on": iv(cmp.a),
+                "text_only": iv(cmp.b),
+                "difference": iv(cmp.diff),
+                "share_positive": cmp.share_positive,
+            }
     on_claims, off_claims = sum(column("on", "n_claims")), sum(column("off", "n_claims"))
     out["claims_with_verifier"] = on_claims
     out["claims_without_verifier"] = off_claims
@@ -555,6 +568,47 @@ def _screening(results: Sequence[SeedResult], pool: Pooler) -> Summary:
             "accuracy_known": scores.accuracy_known,
         },
         "ranking": _ranking(results),
+        "events": _events(results),
+        "assisted": _assisted(results),
+    }
+
+
+def _assisted(results: Sequence[SeedResult]) -> Summary:
+    """Model assisted stage 2 (D95), point estimates; empty when no live run measured it."""
+    pairs = [p for r in results for p in r.screening_assisted]
+    if not pairs:
+        return {}
+    scores = screening_scores(pairs)
+    return {
+        "n_cells": len(pairs),
+        "agreement": scores.agreement,
+        "unknown_rate": scores.unknown_rate,
+        "false_met_rate": scores.false_met_rate,
+        "accuracy_known": scores.accuracy_known,
+    }
+
+
+def _events(results: Sequence[SeedResult]) -> Summary:
+    """News events pooled over the seeds (counts and ratios), and per seed."""
+    pooled: dict[str, int] = {}
+    for r in results:
+        for key, value in r.events.items():
+            pooled[key] = pooled.get(key, 0) + int(value)
+    if not pooled:
+        return {}
+
+    def ratio(num: str, den: str) -> float | None:
+        return pooled[num] / pooled[den] if pooled.get(den) else None
+
+    return {
+        "counts": pooled,
+        "recall": ratio("n_matched", "n_truth"),
+        "precision": ratio("n_matched", "n_extracted"),
+        "status_accuracy": ratio("n_status_correct", "n_matched"),
+        "price_accuracy": ratio("n_price_value_correct", "n_price"),
+        "denied_as_fact": ratio("n_denied_as_fact", "n_denied"),
+        "duplicates_merged": ratio("n_duplicates_merged", "n_duplicated"),
+        "per_seed": {r.label: dict(r.events) for r in results},
     }
 
 

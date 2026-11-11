@@ -1,4 +1,4 @@
-import type { Api, MarketRun, Served } from "../lib/api";
+import type { Api, MarketRun, RefineOutcome, Served } from "../lib/api";
 import { ApiError } from "../lib/api";
 import type {
   Answer,
@@ -7,6 +7,7 @@ import type {
   Deal,
   DocumentMeta,
   KpiValue,
+  MarketEvent,
   Passage,
   ScreeningRequest,
   ScreeningResult,
@@ -37,6 +38,75 @@ const DEAL: Deal = {
 };
 
 const MEMBERS = new Set(["u_lead", "u_analyst"]);
+
+// Market events of the simulated feed (mock): one acquisition reported twice, a denied rumour,
+// a corrected price. Shown once the simulated connector has run, as in the API.
+function newsCitation(chunk: string, title: string, date: string, quote: string): Citation {
+  return {
+    chunk_id: chunk,
+    document_id: chunk.replace(/^ch_/, "doc_").replace(/_p\d+_\d+$/, ""),
+    doc_title: title,
+    doc_type: "press_article",
+    tier: 4,
+    published_on: date,
+    page: 1,
+    char_start: 0,
+    char_end: quote.length,
+    quote,
+  };
+}
+
+const EVENTS: MarketEvent[] = [
+  {
+    id: "ev_mock_1",
+    kind: "acquisition",
+    actor: "Orvane Capital",
+    buyer_id: "buyer_01",
+    counterparty: "Tessil Works",
+    event_date: "2025-01-02",
+    status: "confirmed",
+    value_eur_m: null,
+    citations: [
+      newsCitation("ch_news_m1_p1_01", "Orvane Capital completes acquisition of Tessil Works", "2025-01-02", "Orvane Capital completes acquisition of Tessil Works"),
+      newsCitation("ch_news_m2_p1_01", "Trade wire: Orvane Capital buys Tessil Works", "2025-01-04", "Trade wire: Orvane Capital buys Tessil Works"),
+    ],
+    superseded_citations: [],
+    n_reports: 2,
+  },
+  {
+    id: "ev_mock_2",
+    kind: "price",
+    actor: "Orvane Capital",
+    buyer_id: "buyer_01",
+    counterparty: "Tessil Works",
+    event_date: "2025-01-08",
+    status: "corrected",
+    value_eur_m: 102,
+    citations: [
+      newsCitation("ch_news_m4_p1_01", "Correction: price for Orvane Capital and Tessil Works", "2025-01-12", "Correction: price for Orvane Capital and Tessil Works was EUR 102 million"),
+    ],
+    superseded_citations: [
+      newsCitation("ch_news_m3_p1_01", "Price for Orvane Capital and Tessil Works put at EUR 120 million", "2025-01-08", "Price for Orvane Capital and Tessil Works put at EUR 120 million"),
+    ],
+    n_reports: 2,
+  },
+  {
+    id: "ev_mock_3",
+    kind: "rumour",
+    actor: "Brennan Industries",
+    buyer_id: "buyer_02",
+    counterparty: "Aurora Components",
+    event_date: "2025-02-14",
+    status: "denied",
+    value_eur_m: null,
+    citations: [
+      newsCitation("ch_news_m5_p1_01", "Brennan Industries is said to weigh an offer for Aurora Components", "2025-02-14", "Brennan Industries is said to weigh an offer for Aurora Components"),
+      newsCitation("ch_news_m6_p1_01", "Brennan Industries denies interest in Aurora Components", "2025-02-20", "Brennan Industries denies interest in Aurora Components"),
+    ],
+    superseded_citations: [],
+    n_reports: 2,
+  },
+];
 
 function documentMeta(
   id: string,
@@ -128,6 +198,7 @@ function allCitations(): Citation[] {
     for (const r of card.results) visit(r.citations);
   }
   for (const k of kpis as unknown as KpiValue[]) visit(k.citations);
+  for (const e of EVENTS) visit([...e.citations, ...e.superseded_citations]);
   return out;
 }
 
@@ -170,7 +241,16 @@ export class MockBackend {
       ask: async (dealId, question) => {
         requireDeal(dealId);
         const source = /revenue/i.test(question) ? contradiction : abstention;
-        const answer = { ...(source as unknown as Answer), question, user_id: userId, deal_id: dealId };
+        const base = source as unknown as Answer;
+        const answer: Answer = {
+          ...base,
+          question,
+          user_id: userId,
+          deal_id: dealId,
+          // the API computes it (D97); the example payloads predate the field
+          confidence: base.abstained ? null : "medium",
+          confidence_reason: base.abstained ? null : "Medium: sources disagree.",
+        };
         return served(answer);
       },
       passage: async (chunkId) => {
@@ -198,6 +278,48 @@ export class MockBackend {
         const run: MarketRun = { deal_id: dealId, ingested: SIMULATED_DOCUMENTS.length };
         return served(run);
       },
+      liveSearch: async () => {
+        throw new ApiError(503, "Live search is off in mock mode: run the API with TAVILY_API_KEY.");
+      },
+      refine: async (text, current) => {
+        requireDeal(current.deal_id);
+        return mockRefine(text, current);
+      },
+      events: async (dealId) => {
+        requireDeal(dealId);
+        return this.marketRun ? EVENTS : [];
+      },
     };
   }
+}
+
+// A few wordings, as the mock provider of the API reads them (D98).
+function mockRefine(text: string, current: ScreeningRequest): RefineOutcome {
+  const filters = { ...current.filters };
+  const understood: string[] = [];
+  if (/\b(financial|sponsors?|private equity|funds?)\b/i.test(text)) {
+    filters.buyer_types = ["financial"];
+    understood.push("type: financial");
+  } else if (/\b(strategic|corporates?|industrials?)\b/i.test(text)) {
+    filters.buyer_types = ["strategic"];
+    understood.push("type: strategic");
+  }
+  for (const region of ["DACH", "France", "Nordics", "Benelux", "Central Europe"]) {
+    if (new RegExp(`\\b${region}\\b`, "i").test(text)) {
+      filters.geographies = [...new Set([...filters.geographies, region])];
+      understood.push(`region: ${region}`);
+    }
+  }
+  const above = /\b(?:above|over|more than|at least)\s+(?:eur|€)?\s*([\d.,]+)\s*(bn|billion|m|million)?/i.exec(text);
+  if (above?.[1]) {
+    const scale = above[2] && /^b/i.test(above[2]) ? 1000 : 1;
+    filters.min_size_eur_m = Number(above[1].replace(",", "")) * scale;
+    understood.push(`size from EUR ${filters.min_size_eur_m}m`);
+  }
+  const weights = { ...current.weights };
+  if (/recent (acquisitions|acquirers|deals)|acquisitive/i.test(text)) {
+    weights.recent_activity = 4;
+    understood.push("prefer recent acquirers");
+  }
+  return { request: { ...current, filters, weights }, understood };
 }

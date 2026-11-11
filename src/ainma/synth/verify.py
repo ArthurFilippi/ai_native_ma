@@ -27,6 +27,7 @@ from ainma.contracts import (
     DocStatus,
     DocType,
 )
+from ainma.factbase import FACTBASE_PATH, FactBaseFile, build_factbase
 from ainma.ingest.loader import load_corpus, read_manifest
 from ainma.store import SqliteStore
 from ainma.synth.absent import BUYER_TOPICS, DEAL_TOPICS, GENERAL_TOPICS
@@ -39,6 +40,8 @@ from ainma.truth import (
     GenerationParams,
     JudgeLabel,
     KpiTruth,
+    ManifestEntry,
+    NewsEventTruth,
     NewsFeedItem,
     Query,
     StaleCase,
@@ -434,6 +437,7 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
 
     # ---- buyer truth --------------------------------------------------------------------------------
     await _verify_buyers(rep, buyers, btruth, facts, all_chunks, mdoc, news, aux, ref)
+    await _verify_factbase(seed_dir, store, rep, facts, manifest, deals, buyers)
 
     # ---- sizes and demo pieces -------------------------------------------------------------------------
     n_contra = sum(1 for c in contras if c.kind == "contradiction")
@@ -457,8 +461,7 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
         n_docs = sum(1 for e in manifest if e.entity_id == b.id)
         if not 3 <= n_docs <= 5:
             rep.err(f"{b.id}: {n_docs} documents, expected 3 to 5")
-    if len(news) != 60:
-        rep.err(f"expected 60 news items, found {len(news)}")
+    _verify_news_events(seed_dir, news, buyers, rep)
     kb_docs = [e for e in manifest if e.deal_id is None and e.entity_id is None]
     if not 28 <= len(kb_docs) <= 32:
         rep.err(f"general layer has {len(kb_docs)} documents, expected about 30")
@@ -520,6 +523,86 @@ async def _verify(seed_dir: Path, store: SqliteStore, rep: Report) -> None:
     if not any(t.criterion_key == "fund_lifecycle" and t.status.value == "unknown" for t in btruth):
         rep.err("no unlisted fund without a stated investment period end")
     rep.info("sizes: " + ", ".join(f"{k}={v}" for k, v in sizes.items()))
+
+
+def _verify_news_events(
+    seed_dir: Path, news: list[NewsFeedItem], buyers: list[BuyerProfile], rep: Report
+) -> None:
+    """The feed is the 60 base items plus the items of the event layer (D93); every event is
+    reported by items of the feed, and every event item belongs to one event."""
+    path = seed_dir / "truth" / "news_events.json"
+    if not path.exists():
+        rep.err("truth/news_events.json is missing")
+        return
+    events = TypeAdapter(list[NewsEventTruth]).validate_json(path.read_bytes())
+    titles = [n.title for n in news]
+    by_title = {n.title: n for n in news}
+    buyer_ids = {b.id for b in buyers}
+    claimed: dict[str, str] = {}
+    for event in events:
+        if event.entity not in buyer_ids:
+            rep.err(f"{event.id}: unknown buyer {event.entity}")
+        for title in event.item_titles:
+            if title not in by_title:
+                rep.err(f"{event.id}: item {title!r} is not in the feed")
+            elif event.kind != "acquisition" or title != event.item_titles[0]:
+                claimed[title] = event.id
+        if event.kind == "price" and event.value is None:
+            rep.err(f"{event.id}: a price event needs a value")
+        if event.status == "denied" and len(event.item_titles) < 2:
+            rep.err(f"{event.id}: a denied rumour needs its denial item")
+    base = len(titles) - len(claimed)
+    if base != 60:
+        rep.err(f"expected 60 base news items, found {base} (feed {len(titles)})")
+    kinds: dict[str, int] = defaultdict(int)
+    for event in events:
+        kinds[f"{event.kind}/{event.status}"] += 1
+    rep.info(
+        f"news events verified: {len(events)} events over {len(titles)} items ("
+        + ", ".join(f"{k}={v}" for k, v in sorted(kinds.items()))
+        + ")"
+    )
+
+
+async def _verify_factbase(
+    seed_dir: Path,
+    store: SqliteStore,
+    rep: Report,
+    facts: list[Fact],
+    manifest: list[ManifestEntry],
+    deals: list[Deal],
+    buyers: list[BuyerProfile],
+) -> None:
+    """The structured fact base is the deterministic build of the verified facts, and every
+    provenance (source of record and others) points at a verbatim span of a stored chunk."""
+    path = seed_dir / FACTBASE_PATH
+    if not path.exists():
+        rep.err(f"{FACTBASE_PATH} is missing")
+        return
+    stored = FactBaseFile.model_validate_json(path.read_bytes())
+    if stored != build_factbase(facts, manifest, deals, buyers):
+        rep.err(f"{FACTBASE_PATH} differs from the build of truth/facts.json")
+    access = AccessContext(
+        user_id="verify",
+        allowed_deal_ids=frozenset(d.id for d in deals),
+        include_general_layer=True,
+    )
+    checked = 0
+    for record in stored.facts:
+        sources = [*record.others, *record.superseded]
+        for prov in [record.provenance, *(o.provenance for o in sources)]:
+            chunk = await store.get_chunk(prov.chunk_id, access)
+            page = await store.get_page(prov.document_id, prov.page, access)
+            if chunk is None or prov.quote not in chunk.text:
+                rep.err(f"{record.id}: quote not in chunk {prov.chunk_id}")
+            elif page is None or page[prov.char_start : prov.char_end] != prov.quote:
+                rep.err(f"{record.id}: offsets do not point at the quote in {prov.document_id}")
+            checked += 1
+    n_dis = sum(bool(r.disagreements) for r in stored.facts)
+    rep.info(
+        f"factbase verified: {len(stored.facts)} records, {checked} provenances, "
+        f"{n_dis} records with a disagreeing document, {len(stored.companies)} companies"
+    )
 
 
 async def _n_pages(store: SqliteStore, access: AccessContext, doc_id: str) -> int:

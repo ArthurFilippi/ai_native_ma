@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARPA Data Hub UI kit</title>
+<!--
+  UI KIT: every component of the ARPA Data Hub, once, with fake data. The look lives in ui.css (same folder); this page is the catalogue.
+  Rules: see DESIGN.md. Copy a block, keep its classes, change the content. Do not invent new colours, radii or fonts: use the tokens.
+  The few lines of script at the bottom only make the demo clickable (menus, window, tabs). They are not part of the design.
+-->
+<link rel="stylesheet" href="ui.css">
+<style>
+  /* kit-only layout, not part of the system */
+  .kit-sec{margin-top:44px}
+  .kit-sec>h2{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:9px;margin-bottom:6px}
+  .kit-sec>h2::before{content:'';width:7px;height:7px;background:var(--ink)}
+  .kit-note{color:var(--muted);font-size:13px;max-width:78ch;margin-bottom:14px}
+  .kit-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .sw{width:132px}
+  .sw i{display:block;height:54px;border:1px solid var(--ink);border-radius:var(--rs)}
+  .sw b{display:block;font:500 12px var(--mono);margin-top:6px}
+  .sw span{font:400 11px var(--mono);color:var(--muted)}
+  .kit-chrome{position:static;padding:0}
+  .kit-chrome::before{display:none}
+  .ts>div{display:flex;align-items:baseline;gap:18px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .ts>div>span:first-child{flex:none;width:170px;font:400 11px var(--mono);color:var(--muted)}
+  .ts>div>span:last-child{flex:1;min-width:0}
+  .ddemo{position:relative;width:240px}
+  .ddemo .dd-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20}
+</style>
+</head>
+<body>
+
+<div class="chrome kit-chrome" style="padding:14px var(--gut) 0"><div class="chrome-in">
+  <!-- 1. TOP BAR: one hairline-framed row of cells. Brand | nav links (the current one is lime) | account strip. Sticky in the app. -->
+  <header class="cells top">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2.5" fill="#b9ecd0" stroke="#0a0a0a"/><rect x="13" y="1" width="10" height="10" rx="2.5" fill="#bcd6ff" stroke="#0a0a0a"/><rect x="1" y="13" width="10" height="10" rx="2.5" fill="#f6e58d" stroke="#0a0a0a"/><rect x="13" y="13" width="10" height="10" rx="2.5" fill="#0a0a0a"/></svg>
+      <b>ARPA</b><span class="mono dim">Data Hub</span>
+    </div>
+    <nav id="nav"><a class="na on" href="#">Overview</a><a class="na" href="#">Patients</a><a class="na" href="#">Submission</a><a class="na" href="#">Export</a><a class="na" href="#">Ledger</a><a class="na" href="#">Audit</a></nav>
+    <div class="who"><span class="who-id">afilippi</span><button class="who-out" type="button">Sign out<i>↗</i></button></div>
+  </header>
+</div></div>
+
+<div class="frame">
+
+  <!-- 2. SIMULATION BAR: pink on purpose (nobody may mistake simulated data for real data). Same cell row as the top bar. -->
+  <div class="cells sim">
+    <span class="sim-lab" style="flex:0 0 auto"><button class="sim-fold" type="button">Simulation</button></span>
+    <span class="sim-play" style="flex:0 0 auto"><button class="play" type="button"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M11 8.5v13l10-6.5z" fill="#0a0a0a"/></svg>Play</button></span>
+    <span class="sim-step" style="flex:0 0 auto"><button class="btn sm" type="button">Step</button></span>
+    <span class="sim-speed" style="flex:0 0 auto">Mode <span class="dd sm"><button class="dd-btn" type="button"><span class="dd-text"><b>Full</b></span><span class="dd-caret"></span></button></span></span>
+    <span class="sim-track" style="flex:3 1 160px"><span class="simtrack"><i style="width:38%"></i></span></span>
+    <span class="sim-count" style="flex:0 0 auto">3 990 / 10 516 files</span>
+    <span class="sim-word" style="flex:0 0 auto"><span class="dim">Paused</span></span>
+    <span class="sim-rst" style="flex:0 0 auto;margin-left:auto"><button class="btn sm danger" type="button">Reinitialize</button></span>
+  </div>
+
+  <!-- 3. PAGE HEAD: a light 60 px title (same size on EVERY page), optional block on the right (here the colour key). -->
+  <div class="head">
+    <div><h1 class="t1">Overview</h1></div>
+    <div class="ov-legend"><span><i class="ov-sw k-v"></i>Validated</span><span><i class="ov-sw k-y"></i>Failed or incomplete</span><span><i class="ov-sw k-m"></i>Missing</span></div>
+  </div>
+
+  <!-- 4. OVERVIEW MATRIX: one card, one table that fills the screen and scrolls INSIDE its box. Header row and patient column are frozen.
+          Header cell = modality name + percentage on one line, a progress bar under it (lime bar on a black-outlined track). -->
+  <section class="ov-sec">
+    <div class="ov-card flush"><div class="ov-fill fill" id="matrix" style="max-height:340px"></div></div>
+  </section>
+
+  <!-- 5. TOKENS -->
+  <section class="kit-sec">
+    <h2>Colour tokens</h2>
+    <p class="kit-note">Chrome is black on white. Colour is reserved for states: mint, butter, rose, sky. Lime marks where you are (current nav, selected row, hover on buttons). Pink is only the simulation bar.</p>
+    <div class="kit-row">
+      <div class="sw"><i style="background:var(--bg)"></i><b>--bg</b><span>#ffffff</span></div>
+      <div class="sw"><i style="background:var(--tint)"></i><b>--tint</b><span>#f3f5f2 hover, note, footer</span></div>
+      <div class="sw"><i style="background:var(--ink)"></i><b>--ink</b><span>#0a0a0a hairlines, solid</span></div>
+      <div class="sw"><i style="background:var(--text)"></i><b>--text</b><span>#161616</span></div>
+      <div class="sw"><i style="background:var(--muted)"></i><b>--muted</b><span>#575b58 labels</span></div>
+      <div class="sw"><i style="background:var(--line)"></i><b>--line</b><span>#d7dbd6 soft rules</span></div>
+      <div class="sw"><i style="background:var(--mint)"></i><b>--mint</b><span>ok</span></div>
+      <div class="sw"><i style="background:var(--butter)"></i><b>--butter</b><span>warning</span></div>
+      <div class="sw"><i style="background:var(--rose)"></i><b>--rose</b><span>failed</span></div>
+      <div class="sw"><i style="background:var(--sky)"></i><b>--sky</b><span>info, progress</span></div>
+      <div class="sw"><i style="background:var(--lime)"></i><b>--lime</b><span>you are here</span></div>
+      <div class="sw"><i style="background:var(--pink)"></i><b>--pink</b><span>simulation only</span></div>
+    </div>
+    <p class="kit-note" style="margin-top:18px">Matrix cell colours (Overview only, defined in overview.css): <code>k-v</code> green #7fd6a3, <code>k-y</code> yellow #f3d35c, <code>k-m</code> grey #d3d6d1; the modalities of other laboratories are pale (<code>k-pg</code> #d8f1e2, <code>k-pm</code> #eff1ee). Each has a darker edge <code>--e</code>.</p>
+    <div class="kit-row"><i class="ov-sw k-v" style="width:44px;height:22px"></i><i class="ov-sw k-y" style="width:44px;height:22px"></i><i class="ov-sw k-m" style="width:44px;height:22px"></i><i class="ov-sw k-pg" style="width:44px;height:22px"></i><i class="ov-sw k-pm" style="width:44px;height:22px"></i></div>
+  </section>
+
+  <section class="kit-sec">
+    <h2>Type</h2>
+    <p class="kit-note">Hanken Grotesk for text (weights 200 to 600, big things are LIGHT: 200 to 300), Geist Mono for everything that is a label, a number, an id, a button. Mono labels are UPPERCASE with letter-spacing. Page body is 15 px / 1.55.</p>
+    <div class="ts">
+      <div><span>.t1  300 / 60 px</span><span class="t1" style="font-size:48px;line-height:1">Ledger</span></div>
+      <div><span>.pw-title h2  200 / 44 px</span><span style="font-weight:200;font-size:44px;line-height:1;letter-spacing:-.02em">ARPA_004</span></div>
+      <div><span>.big  300 / 22 px</span><span class="big">ARPA_004 · CyTOF · D-7</span></div>
+      <div><span>.plate-h h2  400 / 21 px</span><span style="font-size:21px;letter-spacing:-.015em">Acquisition record</span></div>
+      <div><span>body 15 px</span><span>Received and kept, but at least one error check failed.</span></div>
+      <div><span>.sub  13 px muted</span><span class="sub">Secondary line under a title or a value.</span></div>
+      <div><span>.lab  mono 10.5 caps</span><span class="lab">Stored file</span></div>
+      <div><span>.mono  .9em</span><span class="mono">ARPA_004_cytof.csv · 2026-11-07 10:41:52</span></div>
+      <div><span>.eyebrow  mono 11 caps</span><span class="eyebrow">Section marker</span></div>
+    </div>
+  </section>
+
+  <!-- 6. CONTROLS -->
+  <section class="kit-sec">
+    <h2>Buttons</h2>
+    <p class="kit-note">Mono, uppercase, 8 px radius, 44 px tall (<code>.sm</code> = 36). Hover turns lime. Solid = black with white text. Pills (<code>.opt</code>, 99 px radius) are toggles: the selected one is black. <code>.go</code> = label + black arrow square, the primary call to action.</p>
+    <div class="kit-row">
+      <button class="btn" type="button">Default</button>
+      <button class="btn solid" type="button">Solid</button>
+      <button class="btn sm" type="button">Small</button>
+      <button class="btn" type="button" disabled>Disabled</button>
+      <button class="btn danger" type="button">Danger</button>
+      <button class="go" type="button"><span>Submit files</span><i>→</i></button>
+      <button class="play" type="button"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M11 8.5v13l10-6.5z" fill="#0a0a0a"/></svg>Play</button>
+      <span class="chips"><button class="opt on" type="button">Table</button><button class="opt" type="button">YAML</button></span>
+      <button class="link" type="button">verify</button>
+      <button class="plate-x" type="button" aria-label="Close"><span>×</span></button>
+    </div>
+  </section>
+
+  <section class="kit-sec">
+    <h2>Fields</h2>
+    <p class="kit-note">A field = mono <code>.lab</code> label above a 44 px input with a black 1 px border and 8 px radius. Native selects are not used: use the <code>.dd</code> dropdown (panel with mono uppercase rows, small dot marks the selected one, hover tint). Compact variant <code>.dd.sm</code> for filters and table cells.</p>
+    <div class="row">
+      <div class="field"><label class="lab" for="k1">Patient</label><input id="k1" type="text" placeholder="ARPA_001"></div>
+      <div class="field"><label class="lab" for="k2">Search</label><input id="k2" type="search" placeholder="rejected CyTOF files of patient 12"></div>
+      <div class="field" style="flex:0 1 240px"><label class="lab">Modality</label>
+        <div class="ddemo" style="width:100%">
+          <div class="dd" id="dd1"><button class="dd-btn" type="button" aria-haspopup="listbox"><span class="dd-text"><b>CyTOF</b></span><span class="dd-caret"></span></button>
+            <ul class="dd-list" role="listbox" hidden>
+              <li class="dd-opt sel"><span class="dd-mk"></span><b>CyTOF</b></li>
+              <li class="dd-opt"><span class="dd-mk"></span><b>MRI</b><span class="dd-sub">2 timepoints</span></li>
+              <li class="dd-opt"><span class="dd-mk"></span><b>Sleep EEG</b></li>
+              <li class="dd-opt off"><span class="dd-mk"></span><b>PSG</b><span class="dd-sub">not yours</span></li>
+            </ul></div></div></div>
+      <div class="field" style="flex:0 1 200px"><label class="lab">Compact (.dd.sm)</label><div class="dd sm"><button class="dd-btn" type="button"><span class="dd-text"><b>All</b></span><span class="dd-caret"></span></button></div></div>
+    </div>
+    <div class="lg-ask mt" style="max-width:720px"><input type="search" placeholder="Search, e.g. rejected CyTOF files of patient 12"><button class="btn solid" type="button">Search</button></div>
+    <div class="lg-said"><span class="sub">Showing rejected files of CyTOF.</span><button class="lg-chip" type="button">action: reject<i>×</i></button><button class="lg-chip" type="button">modality: CyTOF<i>×</i></button></div>
+  </section>
+
+  <section class="kit-sec">
+    <h2>Status chips, cells, bars</h2>
+    <p class="kit-note">Chip = outlined pill, 11 px mono. Colour = meaning: <code>ok</code> mint, <code>warn</code> butter, <code>bad</code> rose, <code>sky</code> info, <code>ink</code> black, none = neutral. One chip per state, same wording everywhere.</p>
+    <div class="kit-row">
+      <span class="st ok">Validated</span><span class="st warn">Received</span><span class="st bad">QC failed</span><span class="st ink">Rejected</span><span class="st sky">overwrite</span><span class="st">Missing</span>
+    </div>
+    <div class="kit-row mt">
+      <span class="cell v"></span><span class="cell p"></span><span class="cell h"></span><span class="cell q"></span><span class="cell x"></span><span class="cell m"></span><span class="cell e"></span><span class="cell n">3</span>
+      <span class="cell v flagged"></span>
+      <div style="width:220px"><div class="bar"><i style="width:62%"></i></div></div>
+      <div style="width:220px"><span class="simtrack"><i style="width:38%"></i></span></div>
+    </div>
+  </section>
+
+  <!-- 7. PLATE: the basic box. Black hairline, 12 px radius, header row with a 21 px title, body with 20 px padding. Bodies stack with a hairline between them. -->
+  <section class="kit-sec">
+    <h2>Plate, key/value rows, notes, flags</h2>
+    <div class="pair">
+      <section class="plate" style="margin-top:0">
+        <div class="plate-h"><h2><em>#618</em>Entry</h2><span class="sub">2026-11-07 10:41:08 UTC · uploader-gaudilliere</span></div>
+        <div class="plate-b">
+          <div class="dr"><div class="dk">Action</div><div class="dv"><span class="st sky">add</span></div></div>
+          <div class="dr"><div class="dk">Patient</div><div class="dv mono">ARPA_004</div></div>
+          <div class="dr"><div class="dk">Stored file</div><div class="dv mono">ARPA_004_cytof.csv</div></div>
+          <div class="dr"><div class="dk">Flags</div><div class="dv"><ul class="flaglist"><li><span class="st bad">missing columns</span><span>the contract of cytof needs the column population</span></li><li><span class="st warn">timepoint absent</span><span>D+7 is not in the file</span></li></ul></div></div>
+        </div>
+        <div class="plate-b tint"><span class="lab">Tinted body (filters, footers)</span></div>
+        <div class="pager lead"><button class="btn sm" type="button">Previous</button><button class="btn sm" type="button">Next</button></div>
+      </section>
+      <div>
+        <div class="note">Note: neutral, tinted, 1 px black border.</div>
+        <div class="note warn mt">Warning note (butter).</div>
+        <div class="note bad mt">Error note (rose).</div>
+        <div class="drop mt"><div class="big">Drop files here</div><p class="sub mt">Dashed border, large light text. <code>.drop.locked</code> = grey until a modality is chosen.</p></div>
+        <ul class="issues mt"><li>One bullet per issue, square marker</li><li>Second issue</li></ul>
+        <pre class="codebox mt">hub submit ARPA_004_cytof.csv</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TABLE: .tbl inside .fill gives a scroll box with a frozen header (set max-height with fitFill, see app-shell.html). -->
+  <section class="kit-sec">
+    <h2>Table with pager</h2>
+    <p class="kit-note">Header: mono 10.5 caps muted, black rule under it. Rows: 13.5 px, soft rule, hover tint, selected row lime. Clickable rows have <code>.click</code>.</p>
+    <section class="plate" style="margin-top:0">
+      <div class="plate-b flush">
+        <div class="fill" style="max-height:230px">
+          <table class="tbl"><thead><tr><th>Time (UTC)</th><th>Patient</th><th>Modality</th><th>TP</th><th>Action</th><th>By</th><th>Note</th></tr></thead><tbody>
+            <tr class="click"><td class="mono nowrap">2026-11-07 10:41:52</td><td class="mono">ARPA_004</td><td>CyTOF</td><td class="mono">D-7</td><td><span class="st sky">add</span></td><td class="mono nowrap">uploader-gaudilliere</td><td><span class="st bad">1 flag</span></td></tr>
+            <tr class="click sel"><td class="mono nowrap">2026-11-07 10:41:50</td><td class="mono">ARPA_003</td><td>MRI</td><td class="mono">D+7</td><td><span class="st sky">add</span></td><td class="mono nowrap">uploader-gaudilliere</td><td></td></tr>
+            <tr class="click"><td class="mono nowrap">2026-11-07 10:41:49</td><td class="mono">ARPA_003</td><td>MRI</td><td class="mono">D-7</td><td><span class="st sky">overwrite</span> <span class="st sky">replaces v1</span></td><td class="mono nowrap">uploader-gaudilliere</td><td></td></tr>
+            <tr class="click"><td class="mono nowrap">2026-11-07 10:41:47</td><td class="mono">ARPA_002</td><td>Sleep EEG</td><td class="mono">D-4</td><td><span class="st ink">reject</span></td><td class="mono nowrap">uploader-goldstein</td><td><span class="dim">unknown patient</span></td></tr>
+            <tr class="click"><td class="mono nowrap">2026-11-07 10:41:45</td><td class="mono">ARPA_001</td><td>CyTOF</td><td class="mono">D0</td><td><span class="st sky">add</span></td><td class="mono nowrap">uploader-gaudilliere</td><td></td></tr>
+          </tbody></table>
+        </div>
+        <div class="pager"><span class="sub">1-5 of 766</span><button class="btn sm solid lg-fresh" type="button">12 new entries, show</button><button class="btn sm" type="button" disabled>Newer</button><button class="btn sm" type="button">Older</button></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- 9. ACQUISITION RECORD: title + status chip, 5 cells, flags, first features as pills, version pills. Dashed rules between bodies. -->
+  <section class="kit-sec">
+    <h2>Acquisition record</h2>
+    <p class="kit-note">Opens under the patient window when a cell is clicked. Title without any sentence under it; the errors flagged on the file are listed (error chips rose, warnings butter), nothing hidden in the window itself.</p>
+    <section class="plate record pw-sheet" style="margin:0">
+      <div class="plate-h"><h2>Acquisition record</h2><button class="plate-x" type="button" aria-label="Close"><span>×</span></button></div>
+      <div class="plate-b sechead"><div><div class="big-name mono">ARPA_004 · CyTOF · D-7</div></div><span title="Received and kept, but at least one error check failed"><span class="st bad">QC failed</span></span></div>
+      <div class="plate-b rec-grid">
+        <div class="rec-i"><span class="rec-l">Stored file</span><span class="rec-v mono">ARPA_004_cytof.csv</span></div>
+        <div class="rec-i"><span class="rec-l">File check</span><span class="rec-v mono">intact, 146.4 kB</span></div>
+        <div class="rec-i"><span class="rec-l">Submission</span><span class="rec-v mono">SUB-0049</span></div>
+        <div class="rec-i"><span class="rec-l">Uploader</span><span class="rec-v mono">uploader-gaudilliere</span></div>
+        <div class="rec-i"><span class="rec-l">Date UTC</span><span class="rec-v mono">2026-11-07 10:41:52</span></div>
+      </div>
+      <div class="plate-b rec-flags"><span class="rec-l">Flags (1)</span><ul class="flaglist"><li><span class="st bad">missing columns</span><span>the contract of cytof needs the columns population, reagent, stimulation, time, feature</span></li></ul></div>
+      <div class="plate-b rec-feat"><span class="rec-l">First features</span><div class="rec-names mono"><span>Bcells_pSTAT1_Unstim</span><span>Bcells_pSTAT1_IFNa</span><span>CD4T_pSTAT5_IL2</span></div></div>
+      <div class="plate-b rec-ver"><span class="rec-l">Version</span><div class="rec-vers"><button class="ver" type="button">v1</button><button class="ver cur" type="button">v2 (in use)</button></div></div>
+    </section>
+  </section>
+
+  <section class="kit-sec">
+    <h2>Patient window (modal)</h2>
+    <p class="kit-note">Fixed overlay, dark 45 % backdrop, a 900 px white card with a 16 px radius. Light 44 px patient id, one row per modality (name and count left, cells right), the record inside it, a tinted footer with the legend and a link. Page scroll is locked while open. Escape or backdrop closes.</p>
+    <button class="btn solid" type="button" id="openpw">Open the patient window</button>
+  </section>
+
+  <section class="kit-sec">
+    <h2>Calendar, loader, toast</h2>
+    <div class="kit-row" style="align-items:flex-start;gap:28px">
+      <div class="cal" style="width:280px">
+        <div class="cal-h"><button class="cal-n" type="button">‹</button><div class="cal-t">November 2026</div><button class="cal-n" type="button">›</button></div>
+        <div class="cal-w"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+        <div class="cal-g" id="calg"></div>
+        <div class="cal-f"><button class="link" type="button">Today</button></div>
+      </div>
+      <div class="loading inline" style="min-height:0"><div class="spin"><svg viewBox="0 0 24 24" width="44" height="44"><rect x="1" y="1" width="10" height="10" rx="2.5" stroke="#0a0a0a" fill="#b9ecd0"/><rect x="13" y="1" width="10" height="10" rx="2.5" stroke="#0a0a0a" fill="#b9ecd0"/><rect x="1" y="13" width="10" height="10" rx="2.5" stroke="#0a0a0a" fill="#b9ecd0"/><rect x="13" y="13" width="10" height="10" rx="2.5" stroke="#0a0a0a" fill="#b9ecd0"/></svg></div></div>
+      <div class="toast" style="position:static;max-width:320px">Toast: black, white text, 8 px radius.</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- PATIENT WINDOW (hidden until opened) -->
+<div id="pwhost" hidden>
+  <div class="pw-overlay"><div class="pw-back"></div>
+    <div class="pw" role="dialog" aria-modal="true" aria-label="Patient ARPA_004">
+      <div class="pw-head"><div class="pw-title"><h2>ARPA_004</h2><span class="mono">76% done</span></div><button class="pw-x" type="button" aria-label="Close"><span>×</span></button></div>
+      <div class="pw-blocks">
+        <div class="pw-block-row"><div><div class="pw-name">CyTOF</div><div class="pw-count mono">2 / 3 timepoints</div></div>
+          <div class="pw-body"><div><div class="pw-cells"><button class="pw-c k-v" type="button"></button><button class="pw-c k-y" type="button"></button><button class="pw-c k-m" type="button" disabled></button></div><div class="pw-labels" style="gap:8px"><span style="width:44px;text-align:center;flex:none">D-7</span><span style="width:44px;text-align:center;flex:none">D0</span><span style="width:44px;text-align:center;flex:none">D+7</span></div></div></div></div>
+        <div class="pw-block-row"><div><div class="pw-name">Sleep EEG</div><div class="pw-count mono">20 / 43 timepoints</div></div>
+          <div class="pw-body"><div><div class="pw-strip" id="pwstrip"></div><div class="pw-hpos"><span style="left:1.2%">D-14</span><span style="left:34%">D0</span><span style="left:67%">D+14</span><span style="left:98%">D+28</span></div></div></div></div>
+      </div>
+      <div class="pw-record"></div>
+      <div class="pw-foot"><div class="ov-legend tight"><span><i class="ov-sw k-v"></i>Validated</span><span><i class="ov-sw k-y"></i>Failed or incomplete</span><span><i class="ov-sw k-m"></i>Missing</span></div><a class="pw-ledger" href="#">Open in the ledger</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- demo only ----
+  // Overview matrix: the grid is one CSS grid per row, same template as the header. Few timepoints = fixed 22 px cells (.ov-cells),
+  // many = a strip of thin cells that share the width (.ov-cells.strip). First column is sticky (patient id, centred, 104 px).
+  const mods = [{ n: 'CyTOF', k: 3, pct: 62 }, { n: 'MRI', k: 2, pct: 48 }, { n: 'Sleep EEG', k: 43, pct: 17 }];
+  const CELL = 22, GAP = 4, PAD = 14;
+  const w = (m) => (m.k > 6 ? 'minmax(300px,1fr)' : `${m.k * CELL + (m.k - 1) * GAP + PAD + 14}px`);
+  const cols = `104px ${mods.map(w).join(' ')}`;
+  const minW = mods.reduce((t, m) => t + (m.k > 6 ? 300 : m.k * CELL + (m.k - 1) * GAP + PAD + 14), 104 + 44) + 'px';
+  const kinds = ['v', 'v', 'v', 'y', 'm'];
+  const pick = (i, j) => kinds[(i * 7 + j * 3 + (i % 3 ? 0 : 2)) % kinds.length];
+  const mx = document.getElementById('matrix');
+  mx.innerHTML = `<div class="ov-head" style="grid-template-columns:${cols};min-width:${minW}">
+      <div class="ov-hcell first"><div class="ov-hline"><span class="ov-hname">Patient</span></div><div class="ov-hbar spacer"></div></div>
+      ${mods.map((m) => `<div class="ov-hcell"><div class="ov-hline"><span class="ov-hname">${m.n}</span><span class="ov-hpct mono">${m.pct}%</span></div><div class="ov-hbar"><div class="ov-track"><i style="width:${m.pct}%"></i></div></div></div>`).join('')}
+    </div>
+    <div class="ov-list">${Array.from({ length: 24 }, (_, i) => `<button class="ov-row" type="button" style="grid-template-columns:${cols};min-width:${minW}"><div class="ov-pid mono">ARPA_${String(i + 1).padStart(3, '0')}</div>${mods.map((m, j) => `<div class="ov-col"><div class="ov-cells ${m.k > 6 ? 'strip' : ''}">${Array.from({ length: m.k }, (_, c) => `<i class="ov-c k-${i > 14 ? 'm' : (m.k > 6 && c > 20 ? 'm' : pick(i + c, j))}" ${m.k > 6 ? '' : 'style="width:22px"'}></i>`).join('')}</div></div>`).join('')}</button>`).join('')}</div>`;
+  document.getElementById('pwstrip').innerHTML = Array.from({ length: 43 }, (_, c) => `<button class="pw-s k-${c < 20 ? (c === 9 || c === 17 ? 'y' : 'v') : 'm'}" type="button"></button>`).join('');
+  // dropdown: open/close
+  const dd = document.getElementById('dd1');
+  dd.querySelector('.dd-btn').onclick = () => { const l = dd.querySelector('.dd-list'); l.hidden = !l.hidden; dd.classList.toggle('open', !l.hidden); };
+  dd.querySelectorAll('.dd-opt:not(.off)').forEach((o) => o.onclick = () => { dd.querySelector('.dd-text b').textContent = o.querySelector('b').textContent; dd.querySelector('.dd-list').hidden = true; dd.classList.remove('open'); });
+  // calendar grid (November 2026 starts on a Sunday: 6 blanks with a Monday-first week)
+  document.getElementById('calg').innerHTML = '<span></span>'.repeat(6) + Array.from({ length: 30 }, (_, d) => `<button class="cal-d${d === 10 ? ' tod' : ''}${d === 6 ? ' sel' : ''}" type="button">${d + 1}</button>`).join('');
+  // patient window
+  const host = document.getElementById('pwhost');
+  const open = () => { host.hidden = false; document.body.style.overflow = 'hidden'; };
+  const close = () => { host.hidden = true; document.body.style.overflow = ''; };
+  document.getElementById('openpw').onclick = open;
+  mx.addEventListener('click', (e) => { if (e.target.closest('.ov-row')) open(); });
+  host.querySelector('.pw-back').onclick = close; host.querySelector('.pw-x').onclick = close;
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  host.querySelector('.pw-c.k-y').onclick = () => {
+    host.querySelector('.pw-record').innerHTML = document.querySelector('.record').outerHTML;
+    host.querySelector('.pw-record .plate-x').onclick = () => { host.querySelector('.pw-record').innerHTML = ''; };
+  };
+</script>
+</body>
+</html>

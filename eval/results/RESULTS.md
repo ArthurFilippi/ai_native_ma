@@ -3,16 +3,16 @@
 **OFFLINE MOCK BASELINE, not an LLM result.**
 
 <!-- RUN-METADATA-BEGIN: differs between runs -->
-- Date: 2026-11-10
-- Git commit: dd2a61f
-- Machine: Linux 6.18.44-fc-v338 x86_64, Python 3.13.18, 4 CPUs
+- Date: 2026-11-11
+- Git commit: b817d95
+- Machine: Linux 6.18.44-fc-v378 x86_64, Python 3.13.18, 4 CPUs
 <!-- RUN-METADATA-END -->
 
 - Writer: provider mock, model mock-extractive-v1
 - Judge: mock mock-extractive-v1 (same as the writer)
 - Seeds: 1234, 1, 2, 3, 4
 - Split: test
-- Configuration hash: a07de3d3832ab242
+- Configuration hash: 78ec4993f5c54c2c
 - Components: ask=real, checks=real, judge=real, kpi=real, screening=real, search=real
 - Backends: dense=lsa, reranker=features
 - Dataset: generated corpora under data/synthetic/<seed>/
@@ -34,12 +34,12 @@ Value contract: I summarise the evidence clearly and show you the sources, so th
 
 | Principle metric | Value [95% CI] |
 |---|---|
-| Citation precision (verifier on) | 0.909 [0.892, 0.926] |
-| Citation recall (verifier on) | 0.926 [0.912, 0.940] |
+| Citation precision (verifier on) | 0.915 [0.898, 0.931] |
+| Citation recall (verifier on) | 0.987 [0.981, 0.992] |
 | Correct abstention, end to end | 0.920 [0.873, 0.960] |
-| False abstention, end to end | 0.082 [0.068, 0.098] |
-| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.585 |
-| Contradiction detection recall | 0.937 [0.897, 0.971] |
+| False abstention, end to end | 0.018 [0.011, 0.025] |
+| Abstention precision (abstentions on unanswerable questions / all abstentions) | 0.868 |
+| Contradiction detection recall | 1.000 [1.000, 1.000] |
 | Clicks to verify a claim | 1 by design; asserted by the end to end test of the app, not measured here |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
@@ -159,29 +159,37 @@ Pipeline A5 on the test split of the answerable queries (1188 queries pooled), w
 
 | Metric | Verifier on [95% CI] | Verifier off [95% CI] | Difference [95% CI] | share>0 |
 |---|---|---|---|---|
-| Citation precision | 0.909 [0.892, 0.926] | 0.909 [0.892, 0.926] | 0.000 [0.000, 0.000] | 0.000 |
-| Citation recall | 0.926 [0.912, 0.940] | 0.926 [0.912, 0.940] | 0.000 [0.000, 0.000] | 0.000 |
-| Unsupported-claim rate | 0.005 [0.001, 0.008] | 0.005 [0.001, 0.008] | 0.000 [0.000, 0.000] | 0.000 |
+| Citation precision | 0.915 [0.898, 0.931] | 0.915 [0.898, 0.931] | 0.000 [0.000, 0.000] | 0.000 |
+| Citation recall | 0.987 [0.981, 0.992] | 0.987 [0.981, 0.992] | 0.000 [0.000, 0.000] | 0.000 |
+| Unsupported-claim rate | 0.004 [0.001, 0.008] | 0.004 [0.001, 0.008] | 0.000 [0.000, 0.000] | 0.000 |
 
-Sourced claims kept with the verifier: 1482; without: 1482; dropped by the verifier: 0.
+Sourced claims kept with the verifier: 1585; without: 1585; dropped by the verifier: 0.
 
 Mean and standard deviation across seeds:
 
 | Metric | Verifier on | Verifier off |
 |---|---|---|
-| Citation precision | 0.909 +/- 0.012 | 0.909 +/- 0.012 |
-| Citation recall | 0.926 +/- 0.011 | 0.926 +/- 0.011 |
-| Unsupported-claim rate | 0.005 +/- 0.003 | 0.005 +/- 0.003 |
+| Citation precision | 0.915 +/- 0.012 | 0.915 +/- 0.012 |
+| Citation recall | 0.987 +/- 0.008 | 0.987 +/- 0.008 |
+| Unsupported-claim rate | 0.004 +/- 0.003 | 0.004 +/- 0.003 |
 
 Per seed:
 
 | Seed | Precision on | Precision off | Recall on | Recall off | Unsupported on | Unsupported off |
 |---|---|---|---|---|---|---|
-| 1234 | 0.917 | 0.917 | 0.923 | 0.923 | 0.007 | 0.007 |
-| 1 | 0.898 | 0.898 | 0.932 | 0.932 | 0.000 | 0.000 |
-| 2 | 0.908 | 0.908 | 0.912 | 0.912 | 0.003 | 0.003 |
-| 3 | 0.926 | 0.926 | 0.941 | 0.941 | 0.007 | 0.007 |
-| 4 | 0.897 | 0.897 | 0.922 | 0.922 | 0.007 | 0.007 |
+| 1234 | 0.923 | 0.923 | 0.987 | 0.987 | 0.006 | 0.006 |
+| 1 | 0.904 | 0.904 | 0.988 | 0.988 | 0.000 | 0.000 |
+| 2 | 0.915 | 0.915 | 0.994 | 0.994 | 0.003 | 0.003 |
+| 3 | 0.930 | 0.930 | 0.991 | 0.991 | 0.006 | 0.006 |
+| 4 | 0.903 | 0.903 | 0.974 | 0.974 | 0.006 | 0.006 |
+
+Structured routing ablation: keyed sub-questions answered from the structured fact base (its provenance as citation) against text search only, verifier on in both:
+
+| Metric | Structured routing [95% CI] | Text only [95% CI] | Difference [95% CI] |
+|---|---|---|---|
+| Citation precision | 0.915 [0.898, 0.931] | 0.909 [0.892, 0.926] | 0.006 [0.004, 0.008] |
+| Citation recall | 0.987 [0.981, 0.992] | 0.926 [0.912, 0.940] | 0.061 [0.048, 0.074] |
+| Unsupported-claim rate | 0.004 [0.001, 0.008] | 0.005 [0.001, 0.008] | -0.000 [-0.001, -0.000] |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -220,18 +228,18 @@ One `tau` is frozen for every seed (`DEFAULT_TAU`, the value the API and the dem
 
 | Seed | tau applied | Dev tau of the seed | Dev false abstention at tau applied | Correct abstention | False abstention | Precision | End to end correct | End to end false |
 |---|---|---|---|---|---|---|---|---|
-| 1234 | 0.5952 | 0.5968 | 7.1% (target 10.0%, n=98) | 90.0% | 10.5% | 51.9% | 90.0% | 8.4% |
-| 1 | 0.5952 | 0.5877 | 11.5% (target 10.0%, n=96) | 93.3% | 9.4% | 56.0% | 93.3% | 8.1% |
-| 2 | 0.5952 | 0.5827 | 14.1% (target 10.0%, n=99) | 93.3% | 9.1% | 56.0% | 93.3% | 9.1% |
-| 3 | 0.5952 | 0.5991 | 5.1% (target 10.0%, n=98) | 90.0% | 8.0% | 58.7% | 90.0% | 6.3% |
-| 4 | 0.5952 | 0.5952 | 9.2% (target 10.0%, n=98) | 90.0% | 10.2% | 52.9% | 93.3% | 9.3% |
+| 1234 | 0.5952 | 0.5968 | 7.1% (target 10.0%, n=98) | 90.0% | 10.5% | 51.9% | 90.0% | 1.7% |
+| 1 | 0.5952 | 0.5877 | 11.5% (target 10.0%, n=96) | 93.3% | 9.4% | 56.0% | 93.3% | 1.7% |
+| 2 | 0.5952 | 0.5827 | 14.1% (target 10.0%, n=99) | 93.3% | 9.1% | 56.0% | 93.3% | 0.8% |
+| 3 | 0.5952 | 0.5991 | 5.1% (target 10.0%, n=98) | 90.0% | 8.0% | 58.7% | 90.0% | 1.3% |
+| 4 | 0.5952 | 0.5952 | 9.2% (target 10.0%, n=98) | 90.0% | 10.2% | 52.9% | 93.3% | 3.4% |
 
 Pooled over seeds, test split [95% CI]:
 
 | Metric | Score rule | End to end |
 |---|---|---|
 | Correct abstention rate (unanswerable) | 0.913 [0.867, 0.953] | 0.920 [0.873, 0.960] |
-| False abstention rate (answerable) | 0.094 [0.078, 0.113] | 0.082 [0.068, 0.098] |
+| False abstention rate (answerable) | 0.094 [0.078, 0.113] | 0.018 [0.011, 0.025] |
 
 Mean and standard deviation across seeds (score rule):
 
@@ -270,26 +278,26 @@ A planted pair is detected when the answer to its question contains a contradict
 
 | Metric | Value [95% CI] |
 |---|---|
-| Detection recall (planted pairs, n=174) | 0.937 [0.897, 0.971] |
+| Detection recall (planted pairs, n=174) | 1.000 [1.000, 1.000] |
 | False positive rate (consistent controls, n=472) | 0.000 [0.000, 0.000] |
 | Precision | 1.000 [1.000, 1.000] |
-| F1 | 0.967 [0.946, 0.984] |
+| F1 | 1.000 [1.000, 1.000] |
 
-Completeness: both sides cited in 100.0% of 163 detected pairs. Agreement of `stronger_side` with the truth (informative only, the system is not asked to decide): 100.0% of 163.
+Completeness: both sides cited in 100.0% of 174 detected pairs. Agreement of `stronger_side` with the truth (informative only, the system is not asked to decide): 100.0% of 174.
 
-Superseded and withdrawn cases (n=42), scored separately, the expected behaviour is a flag and not a contradiction: flagged 34, reported as contradiction 0, cited without the flag 4, not surfaced 4.
+Superseded and withdrawn cases (n=42), scored separately, the expected behaviour is a flag and not a contradiction: flagged 38, reported as contradiction 0, cited without the flag 4, not surfaced 0.
 
-Stale-only cases (n=125) flagged as stale or missing: 89.6%.
+Stale-only cases (n=125) flagged as stale or missing: 99.2%.
 
 Per seed:
 
 | Seed | Recall | False positive rate | F1 |
 |---|---|---|---|
-| 1234 | 93.9% | 0.0% | 0.969 |
-| 1 | 97.3% | 0.0% | 0.986 |
-| 2 | 85.7% | 0.0% | 0.923 |
-| 3 | 94.4% | 0.0% | 0.971 |
-| 4 | 97.0% | 0.0% | 0.985 |
+| 1234 | 100.0% | 0.0% | 1.000 |
+| 1 | 100.0% | 0.0% | 1.000 |
+| 2 | 100.0% | 0.0% | 1.000 |
+| 3 | 100.0% | 0.0% | 1.000 |
+| 4 | 100.0% | 0.0% | 1.000 |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -358,6 +366,13 @@ Buyer screening criteria against the buyer truth table (a criterion the system d
 | Accuracy where a status was given | 99.8% |
 | Buyer ranking, Spearman vs truth score (floor of the range, D86), mean over 5 deal runs | 0.545 +/- 0.173 |
 | Buyer ranking, Spearman vs truth score (previous rule: score, then coverage), mean over 5 deal runs | 0.528 +/- 0.160 |
+| News events found (recall, n=205 truth events) | 100.0% |
+| News events, precision (n=205 extracted) | 100.0% |
+| News events, status correct among found | 100.0% |
+| News prices, corrected value right (n=21) | 100.0% |
+| Denied rumours reported as anything but denied (n=34, the unsafe error) | 0.0% |
+| Duplicated events merged into one with every report (n=29) | 100.0% |
+| Model assisted stage 2 (D95) | live run not executed |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -408,17 +423,17 @@ Latency in milliseconds, test queries, warm in memory store, machine as in the h
 
 | Measure | n | p50 (ms, wall clock, differs on every run) | p95 (ms, wall clock, differs on every run) |
 |---|---|---|---|
-| search A1 | 1188 | 6.62 | 210.89 |
-| search A2 | 1188 | 5.99 | 215.66 |
-| search A3 | 1188 | 6.39 | 212.34 |
-| search A4 | 1188 | 34.46 | 258.54 |
-| search A5 | 1188 | 37.68 | 279.19 |
-| stage: contradictions | 1090 | 0.47 | 0.87 |
-| stage: retrieve | 1188 | 37.36 | 270.34 |
-| stage: understand | 1188 | 0.29 | 0.45 |
-| stage: verify | 1090 | 1.58 | 3.87 |
-| stage: write | 1090 | 1.58 | 4.62 |
-| ask, total wall clock | 1188 | 41.79 | 278.36 |
+| search A1 | 1188 | 6.73 | 197.15 |
+| search A2 | 1188 | 6.58 | 197.50 |
+| search A3 | 1188 | 6.66 | 197.05 |
+| search A4 | 1188 | 34.79 | 244.40 |
+| search A5 | 1188 | 37.88 | 244.54 |
+| stage: contradictions | 1167 | 0.49 | 0.97 |
+| stage: retrieve | 1188 | 38.98 | 271.78 |
+| stage: understand | 1188 | 0.31 | 0.48 |
+| stage: verify | 1167 | 1.68 | 3.73 |
+| stage: write | 1167 | 0.02 | 2.69 |
+| ask, total wall clock | 1188 | 42.11 | 275.82 |
 
 <!-- TIMING-END -->
 

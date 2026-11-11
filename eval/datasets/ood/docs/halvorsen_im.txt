@@ -1,0 +1,13 @@
+SYNTHETIC DOCUMENT, fictional data. Written by hand for the out of distribution test.
+
+Halvorsen Pumps AG: Information Memorandum (extract)
+
+Halvorsen Pumps AG designs and assembles centrifugal and dosing pumps for municipal water utilities and food processors. The group is headquartered in Linz and employs 1,240 FTEs across four assembly sites.
+
+Trading summary. Net sales reached €211.6m in FY24, against €196.3m in FY23 and €181.0m in FY22. Operating profit before depreciation and amortisation (EBITDA) came to €38.9m in FY24.
+
+Profitability. Gross margin (GM%) stood at 41.7% in FY24, a slight improvement on FY23.
+
+Customers. The single largest customer, a regional water authority, accounted for 9.8% of FY24 net sales; the top ten customers together represented 37.5%.
+
+Order intake. The order book stood at €92.3m at 31/12/2024.
