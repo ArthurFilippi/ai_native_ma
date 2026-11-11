@@ -278,6 +278,9 @@ export class MockBackend {
         const run: MarketRun = { deal_id: dealId, ingested: SIMULATED_DOCUMENTS.length };
         return served(run);
       },
+      liveSearch: async () => {
+        throw new ApiError(503, "Live search is off in mock mode: run the API with TAVILY_API_KEY.");
+      },
       refine: async (text, current) => {
         requireDeal(current.deal_id);
         return mockRefine(text, current);

@@ -141,9 +141,12 @@ describe("pages", () => {
     setup();
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: "Market" }));
-    await user.click(await screen.findByRole("button", { name: "Update news" }));
+    await user.click(await screen.findByRole("button", { name: "Update simulated feed" }));
     const table = await screen.findByRole("table", { name: "Market events" });
     expect(within(table).getByText("Denied")).toBeTruthy();
     expect(within(table).getByText("Corrected")).toBeTruthy();
+    await user.type(screen.getByLabelText("Search live news"), "components acquisitions");
+    await user.click(screen.getByRole("button", { name: "Search live" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("TAVILY_API_KEY");
   });
 });

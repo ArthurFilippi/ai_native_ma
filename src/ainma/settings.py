@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     # the judge model, distinct from the writer to avoid self preference; empty: same as writer
     judge_provider: Literal["", "mock", "gemini", "openai"] = ""
     judge_model: str = ""
+    # live news search (D99); empty: live search is off and says so
+    tavily_api_key: str = ""
 
     embeddings_backend: Literal["lsa", "fastembed"] = "lsa"
     embeddings_model: str = "BAAI/bge-small-en-v1.5"

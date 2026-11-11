@@ -23,10 +23,12 @@ from ainma.api.examples_openapi import ANSWER_EXAMPLES, SCREENING_EXAMPLES
 from ainma.api.schemas import (
     AskRequest,
     HealthResponse,
+    LiveSearchBody,
     MarketIntelRun,
     PassageResponse,
     RefineBody,
 )
+from ainma.connectors.tavily import LiveSearchUnavailable
 from ainma.contracts import (
     AccessContext,
     Answer,
@@ -197,6 +199,19 @@ def build_router(runtime: Runtime) -> APIRouter:
         """Market events read from the deal's news: duplicates merged, denials and corrections
         applied, every report cited verbatim. A denied rumour is never a fact."""
         return await services.events(runtime, access, deal.id)
+
+    @router.post(
+        "/deals/{deal_id}/market-intel/live", response_model=list[DocumentMeta], tags=["market"]
+    )
+    async def live_search(
+        body: LiveSearchBody, deal: WriterOf, access: Access
+    ) -> list[DocumentMeta]:
+        """Search live news (Tavily) and file the results in the deal as press articles (D99).
+        Without TAVILY_API_KEY, or when the service fails, the answer is 503 with the reason."""
+        try:
+            return await services.live_search(runtime, access, deal.id, body.query)
+        except LiveSearchUnavailable as error:
+            raise HTTPException(503, str(error)) from error
 
     @router.post(
         "/deals/{deal_id}/market-intel/run", response_model=MarketIntelRun, tags=["market"]

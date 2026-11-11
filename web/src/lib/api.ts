@@ -33,6 +33,7 @@ export interface Api {
   runMarketIntel(dealId: string): Promise<Served<MarketRun>>;
   events(dealId: string): Promise<MarketEvent[]>;
   refine(text: string, current: ScreeningRequest): Promise<RefineOutcome>;
+  liveSearch(dealId: string, query: string): Promise<DocumentMeta[]>;
 }
 
 export interface RefineOutcome {
@@ -64,7 +65,14 @@ export function createHttpApi(baseUrl: string, userId: string): Api {
       body: init?.body !== undefined ? JSON.stringify(init.body) : undefined,
     });
     if (!response.ok) {
-      throw new ApiError(response.status, `${response.status} ${response.statusText}`.trim());
+      let detail = "";
+      try {
+        const body = (await response.json()) as { detail?: unknown };
+        if (typeof body.detail === "string") detail = `: ${body.detail}`;
+      } catch {
+        // no JSON body
+      }
+      throw new ApiError(response.status, `${response.status} ${response.statusText}${detail}`.trim());
     }
     return {
       value: (await response.json()) as T,
@@ -94,6 +102,13 @@ export function createHttpApi(baseUrl: string, userId: string): Api {
     runMarketIntel: (dealId) =>
       call<MarketRun>(`/deals/${encodeURIComponent(dealId)}/market-intel/run`, { method: "POST" }),
     events: (dealId) => value<MarketEvent[]>(`/deals/${encodeURIComponent(dealId)}/events`),
+    liveSearch: async (dealId, query) =>
+      (
+        await call<DocumentMeta[]>(`/deals/${encodeURIComponent(dealId)}/market-intel/live`, {
+          method: "POST",
+          body: { query },
+        })
+      ).value,
     refine: async (text, current) =>
       (
         await call<RefineOutcome>(`/deals/${encodeURIComponent(current.deal_id)}/screening/refine`, {

@@ -4,10 +4,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ainma.connectors.run import run_market_intel
+from ainma.connectors.run import run_live_search, run_market_intel
+from ainma.connectors.tavily import TavilyNewsConnector
 from ainma.contracts import (
     AccessContext,
     Answer,
+    DocumentMeta,
     KpiValue,
     MarketEvent,
     ScreeningRequest,
@@ -55,6 +57,15 @@ async def kpis(runtime: Runtime, access: AccessContext, deal_id: str) -> list[Kp
 async def market_intel(runtime: Runtime, access: AccessContext, deal_id: str) -> int:
     return await run_market_intel(
         deal_id, store=runtime.store, access=access, seed_dir=seed_dir(runtime)
+    )
+
+
+async def live_search(
+    runtime: Runtime, access: AccessContext, deal_id: str, query: str
+) -> list[DocumentMeta]:
+    connector = TavilyNewsConnector(runtime.settings.tavily_api_key)
+    return await run_live_search(
+        deal_id, query, store=runtime.store, access=access, connector=connector
     )
 
 

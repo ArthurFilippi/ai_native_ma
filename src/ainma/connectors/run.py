@@ -44,7 +44,9 @@ def _page_text(item: ConnectorItem) -> str:
     return "\n\n".join(parts)
 
 
-async def _ingest_item(store: Store, deal_id: str, entity: str, item: ConnectorItem) -> None:
+async def _ingest_item(
+    store: Store, deal_id: str, entity: str, item: ConnectorItem
+) -> DocumentMeta:
     if item.doc_type not in _ALLOWED_TYPES:
         raise ValueError(f"connector items must be press articles or releases: {item.title!r}")
     page = _page_text(item)
@@ -62,6 +64,7 @@ async def _ingest_item(store: Store, deal_id: str, entity: str, item: ConnectorI
     )
     await store.put_document(meta, [page])
     await store.put_chunks(chunk_page(meta, page))
+    return meta
 
 
 async def run_market_intel(
@@ -93,6 +96,25 @@ async def ingest_from(
             count += 1
     logger.info("ingested %d documents from %s into %s", count, connector.name, deal_id)
     return count
+
+
+async def run_live_search(
+    deal_id: str,
+    query: str,
+    *,
+    store: Store,
+    access: AccessContext,
+    connector: Connector,
+    since: date = date.min,
+) -> list[DocumentMeta]:
+    """File the live news a connector returns for `query` in the deal space (D99).
+
+    Raises `LookupError` when the deal is not visible to `access`; a connector failure propagates
+    (the API answers 503), it is never replaced by simulated items."""
+    if await store.get_deal(deal_id, access) is None:
+        raise LookupError(f"deal {deal_id} not found")
+    items = await connector.fetch(entity=query, since=since)
+    return [await _ingest_item(store, deal_id, "live", item) for item in items]
 
 
 def _parser() -> argparse.ArgumentParser:

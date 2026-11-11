@@ -26,6 +26,23 @@ export function MarketPage({ api, dealId, onOpen }: { api: Api; dealId: string; 
   const [runs, setRuns] = useState(0);
   const [running, setRunning] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [liveError, setLiveError] = useState<string | null>(null);
+
+  async function live() {
+    if (query.trim().length < 2) return;
+    setRunning(true);
+    setLiveError(null);
+    try {
+      const docs = await api.liveSearch(dealId, query.trim());
+      setMessage(`${docs.length} live articles filed in this deal for "${query.trim()}".`);
+      setRuns((n) => n + 1);
+    } catch (e) {
+      setLiveError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setRunning(false);
+    }
+  }
   const load = useCallback(
     () => Promise.all([api.events(dealId), api.documents(dealId)]).then(([events, docs]) => ({ runs, events, docs })),
     [api, dealId, runs],
@@ -55,9 +72,35 @@ export function MarketPage({ api, dealId, onOpen }: { api: Api; dealId: string; 
 
   return (
     <>
-      <div className="market-bar">
-        <button type="button" className="btn solid" onClick={() => void refresh()} disabled={running}>
-          Update news
+      <form
+        className="lg-ask"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void live();
+        }}
+      >
+        <label htmlFor="live-q" className="sr">
+          Search live news
+        </label>
+        <input
+          id="live-q"
+          type="search"
+          placeholder="Search live news, e.g. industrial components acquisitions Europe"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit" className="btn solid" disabled={running || query.trim().length < 2}>
+          Search live
+        </button>
+      </form>
+      {liveError && (
+        <p className="note warn mt" role="alert">
+          {liveError}
+        </p>
+      )}
+      <div className="market-bar mt">
+        <button type="button" className="btn" onClick={() => void refresh()} disabled={running}>
+          Update simulated feed
         </button>
         <span className="sub" role="status">
           {message ?? "News feeds the answers and the buyer screening, ranked like any other source (tier 4)."}
@@ -78,7 +121,7 @@ export function MarketPage({ api, dealId, onOpen }: { api: Api; dealId: string; 
         </div>
         <div className="plate-b flush">
           {events.length === 0 ? (
-            <p className="plate-b sub">No news in this deal yet. Update news to fetch it.</p>
+            <p className="plate-b sub">No news in this deal yet: search live news or update the simulated feed.</p>
           ) : (
             <table className="tbl" aria-label="Market events">
               <thead>

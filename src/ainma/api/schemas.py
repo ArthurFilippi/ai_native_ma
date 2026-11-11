@@ -37,6 +37,12 @@ class MarketIntelRun(Strict):
     ingested: int = Field(ge=0)
 
 
+class LiveSearchBody(Strict):
+    """A live news query (D99)."""
+
+    query: str = Field(min_length=2, max_length=300)
+
+
 class RefineBody(Strict):
     """A sentence that refines the current screening request (D98)."""
 
