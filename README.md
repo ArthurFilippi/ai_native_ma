@@ -15,6 +15,8 @@ make demo        # generate the seeded corpus, start the API and the web client,
 make eval        # 5 seeds, mock provider, writes eval/results/RESULTS.md
 ```
 
+Deployment (Supabase, Render, Vercel): `docs/DEPLOY.md`.
+
 Contents: 1. Context and methods; 2. Repository structure; 3. Data expectations; 4. Modules; 5. Extending the system; provenance note.
 
 ---

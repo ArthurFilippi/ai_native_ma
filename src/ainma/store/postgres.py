@@ -78,7 +78,9 @@ class PostgresStore:
             import asyncpg  # type: ignore[import-untyped,unused-ignore]
         except ImportError as error:  # pragma: no cover - depends on the optional extra
             raise ImportError("the postgres store needs: pip install 'ainma[postgres]'") from error
-        pool = await asyncpg.create_pool(dsn, min_size=1, max_size=5)
+        # statement_cache_size=0: the Supabase pooler (transaction mode, port 6543) does not keep
+        # prepared statements between transactions
+        pool = await asyncpg.create_pool(dsn, min_size=1, max_size=5, statement_cache_size=0)
         if create_schema:
             async with pool.acquire() as conn:
                 await conn.execute(SCHEMA_PATH.read_text(encoding="utf-8"))
