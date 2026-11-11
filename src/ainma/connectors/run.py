@@ -31,9 +31,11 @@ logger = logging.getLogger(__name__)
 _ALLOWED_TYPES = (DocType.PRESS_ARTICLE, DocType.PRESS_RELEASE)
 
 
-def document_id_for(item: ConnectorItem, entity: str) -> str:
-    """Stable id: the same connector, entity, title and date always give the same id."""
-    key = "|".join((item.connector, entity, item.title, str(item.published_on)))
+def document_id_for(item: ConnectorItem, entity: str, deal_id: str | None = None) -> str:
+    """Stable id: the same deal, connector, entity, title and date always give the same id. The
+    deal is part of it, so filing a feed in a second deal never moves the first deal's copy."""
+    parts = (item.connector, entity, item.title, str(item.published_on))
+    key = "|".join((deal_id, *parts) if deal_id is not None else parts)
     return f"doc_news_{hashlib.sha256(key.encode('utf-8')).hexdigest()[:12]}"
 
 
@@ -51,7 +53,7 @@ async def _ingest_item(
         raise ValueError(f"connector items must be press articles or releases: {item.title!r}")
     page = _page_text(item)
     meta = DocumentMeta(
-        id=document_id_for(item, entity),
+        id=document_id_for(item, entity, deal_id),
         deal_id=deal_id,
         entity_id=entity,
         title=item.title,

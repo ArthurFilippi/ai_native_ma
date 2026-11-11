@@ -41,6 +41,7 @@ from ainma.retrieval.ranker import (
     final_score,
 )
 from ainma.retrieval.rerank import CrossEncoderReranker, FeatureReranker, Reranker
+from ainma.retrieval.streams import query_intent, stream_of
 from ainma.retrieval.text import tokenize
 from ainma.store.base import Store
 
@@ -289,6 +290,7 @@ class RetrievalEngine:
         )
         rows: list[tuple[int, dict[str, float], float, DocumentMeta]] = []
         wanted = entity_tokens(query)
+        intent = query_intent(query)
         for i in order:
             chunk = chunks[i]
             document = documents[chunk.document_id]
@@ -306,6 +308,12 @@ class RetrievalEngine:
                     document, index.facts(i), others, ranker.corroboration_tolerance
                 )
                 bonus = corroboration_bonus(n_others, ranker) * relevance[i] if status > 0 else 0.0
+            stream = stream_of(document)
+            stream_weight = (
+                ranker.stream_weights.get(intent, {}).get(stream, 1.0)
+                if config.system == "A5" and ranker.use_streams
+                else 1.0
+            )
             components = {
                 "bm25": float(bm25[i]),
                 "dense": float(dense[i]),
@@ -317,6 +325,7 @@ class RetrievalEngine:
                 "relevance": relevance[i],
                 "status": status,
                 "scope": scope,
+                "stream": stream_weight,
                 **({"entity": about} if about is not None else {}),
             }
             final = (
@@ -327,7 +336,7 @@ class RetrievalEngine:
                     status=status,
                     bonus=bonus,
                     exponent=ranker.trust_exponent,
-                    scope=scope,
+                    scope=scope * stream_weight,
                 )
                 if config.system == "A5"
                 else relevance[i]

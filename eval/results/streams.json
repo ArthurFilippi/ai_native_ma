@@ -1,0 +1,56 @@
+{
+  "summary": {
+    "n": {
+      "fact_base": 682,
+      "fact_mixed_off": 682,
+      "fact_mixed_on": 682,
+      "market_off": 152,
+      "market_on": 152
+    },
+    "pairs": {
+      "news mixed in, fact questions (weights off vs no news)": {
+        "ndcg": {
+          "a": "Interval(estimate=0.9548357596409939, lo=0.9480167802039619, hi=0.961564944892674)",
+          "b": "Interval(estimate=0.9540119152860336, lo=0.9469578577535943, hi=0.9608039128531337)",
+          "diff": "Interval(estimate=0.0008238443549603014, lo=-0.0011725618189942803, hi=0.0028432894144215554)"
+        },
+        "recall": {
+          "a": "Interval(estimate=0.9987781036168132, lo=0.9970674486803519, hi=1.0)",
+          "b": "Interval(estimate=0.9991446725317692, lo=0.9976783968719454, hi=1.0)",
+          "diff": "Interval(estimate=-0.0003665689149560114, lo=-0.0010997067448680342, hi=0.0)"
+        }
+      },
+      "fact questions with news, stream weights on vs off": {
+        "ndcg": {
+          "a": "Interval(estimate=0.9409801931370444, lo=0.9327111501349106, hi=0.9497353870815121)",
+          "b": "Interval(estimate=0.9548357596409939, lo=0.9480167802039619, hi=0.961564944892674)",
+          "diff": "Interval(estimate=-0.013855566503949479, lo=-0.020497714394883893, hi=-0.008150050578312222)"
+        },
+        "recall": {
+          "a": "Interval(estimate=0.9984115347018572, lo=0.9965756353861194, hi=0.999633431085044)",
+          "b": "Interval(estimate=0.9987781036168132, lo=0.9970674486803519, hi=1.0)",
+          "diff": "Interval(estimate=-0.0003665689149560114, lo=-0.0010997067448680342, hi=0.0)"
+        }
+      },
+      "market questions, stream weights on vs off": {
+        "ndcg": {
+          "a": "Interval(estimate=0.5902695586623927, lo=0.523723779543776, hi=0.6581333798274283)",
+          "b": "Interval(estimate=0.5893088240013986, lo=0.5224043799322032, hi=0.65723557269968)",
+          "diff": "Interval(estimate=0.0009607346609941114, lo=0.0, hi=0.0028843891079795396)"
+        },
+        "recall": {
+          "a": "Interval(estimate=0.7154605263157895, lo=0.649671052631579, hi=0.78125)",
+          "b": "Interval(estimate=0.7138157894736842, lo=0.6480263157894737, hi=0.7796052631578947)",
+          "diff": "Interval(estimate=0.00164473684210531, lo=0.0, hi=0.004975328947368224)"
+        }
+      }
+    }
+  },
+  "seeds": [
+    "1234",
+    "1",
+    "2",
+    "3",
+    "4"
+  ]
+}
