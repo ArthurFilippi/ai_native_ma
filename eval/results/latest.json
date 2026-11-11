@@ -52,6 +52,26 @@
               "superseded": 0.2,
               "withdrawn": 0.0
             },
+            "stream_weights": {
+              "fact": {
+                "buyers": 0.9,
+                "dataroom": 1.0,
+                "knowledge": 0.9,
+                "news": 0.8
+              },
+              "market": {
+                "buyers": 1.0,
+                "dataroom": 0.85,
+                "knowledge": 0.85,
+                "news": 1.0
+              },
+              "neutral": {
+                "buyers": 1.0,
+                "dataroom": 1.0,
+                "knowledge": 1.0,
+                "news": 1.0
+              }
+            },
             "tier_weights": {
               "1": 1.0,
               "2": 0.8,
@@ -60,7 +80,8 @@
               "5": 0.3
             },
             "trust_exponent": 0.1,
-            "undated_recency": 0.5
+            "undated_recency": 0.5,
+            "use_streams": false
           },
           "rerank_top": 30,
           "rerank_weight": 0.8,
@@ -131,6 +152,26 @@
             "superseded": 0.2,
             "withdrawn": 0.0
           },
+          "stream_weights": {
+            "fact": {
+              "buyers": 0.9,
+              "dataroom": 1.0,
+              "knowledge": 0.9,
+              "news": 0.8
+            },
+            "market": {
+              "buyers": 1.0,
+              "dataroom": 0.85,
+              "knowledge": 0.85,
+              "news": 1.0
+            },
+            "neutral": {
+              "buyers": 1.0,
+              "dataroom": 1.0,
+              "knowledge": 1.0,
+              "news": 1.0
+            }
+          },
           "tier_weights": {
             "1": 1.0,
             "2": 0.8,
@@ -139,7 +180,8 @@
             "5": 0.3
           },
           "trust_exponent": 0.1,
-          "undated_recency": 0.5
+          "undated_recency": 0.5,
+          "use_streams": false
         },
         "rerank_top": 30,
         "rerank_weight": 0.8,
@@ -171,8 +213,8 @@
       "reranker": "features"
     },
     "bootstrap_seed": 20240611,
-    "config_hash": "23e16ecee5fcb885",
-    "date": "2026-11-10",
+    "config_hash": "78ec4993f5c54c2c",
+    "date": "2026-11-11",
     "generation_params": {
       "1": {
         "generator_version": "synth-1.0;reference_date=2025-06-30",
@@ -205,11 +247,11 @@
         "seed": 4
       }
     },
-    "git_commit": "be70f6a",
+    "git_commit": "0fa24cf",
     "judge_model": "",
     "judge_provider": "",
     "label": "OFFLINE MOCK BASELINE, not an LLM result",
-    "machine": "Linux 6.18.44-fc-v338 x86_64, Python 3.13.18, 4 CPUs",
+    "machine": "Linux 6.18.44-fc-v378 x86_64, Python 3.13.18, 4 CPUs",
     "model": "mock-extractive-v1",
     "modes": {
       "ask": "real",
@@ -454,9 +496,9 @@
       "across_seeds": {
         "off": {
           "citation_precision": {
-            "mean": 0.9271946433872577,
+            "mean": 0.9148548015428595,
             "n": 5,
-            "sd": 0.014013842999575308
+            "sd": 0.011818748889184718
           },
           "citation_recall": {
             "mean": 0.9867116453722696,
@@ -464,16 +506,16 @@
             "sd": 0.0075956030842290675
           },
           "unsupported_claim_rate": {
-            "mean": 0.004535261840509162,
+            "mean": 0.004467059810958064,
             "n": 5,
-            "sd": 0.00294709903276744
+            "sd": 0.0029028069412112964
           }
         },
         "on": {
           "citation_precision": {
-            "mean": 0.9271946433872577,
+            "mean": 0.9148548015428595,
             "n": 5,
-            "sd": 0.014013842999575308
+            "sd": 0.011818748889184718
           },
           "citation_recall": {
             "mean": 0.9867116453722696,
@@ -481,14 +523,14 @@
             "sd": 0.0075956030842290675
           },
           "unsupported_claim_rate": {
-            "mean": 0.004535261840509162,
+            "mean": 0.004467059810958064,
             "n": 5,
-            "sd": 0.00294709903276744
+            "sd": 0.0029028069412112964
           }
         }
       },
-      "claims_with_verifier": 1564,
-      "claims_without_verifier": 1564,
+      "claims_with_verifier": 1585,
+      "claims_without_verifier": 1585,
       "dropped_claims": 0,
       "metrics": {
         "citation_precision": {
@@ -499,14 +541,14 @@
           },
           "share_positive": 0.0,
           "verifier_off": {
-            "estimate": 0.9271099744245525,
-            "hi": 0.942951319737357,
-            "lo": 0.9115213239974539
+            "estimate": 0.9148264984227129,
+            "hi": 0.9311016285136077,
+            "lo": 0.8983779864110519
           },
           "verifier_on": {
-            "estimate": 0.9271099744245525,
-            "hi": 0.942951319737357,
-            "lo": 0.9115213239974539
+            "estimate": 0.9148264984227129,
+            "hi": 0.9311016285136077,
+            "lo": 0.8983779864110519
           }
         },
         "citation_recall": {
@@ -535,14 +577,14 @@
           },
           "share_positive": 0.0,
           "verifier_off": {
-            "estimate": 0.004475703324808184,
-            "hi": 0.0077985458523133575,
-            "lo": 0.0012952948943956994
+            "estimate": 0.004416403785488959,
+            "hi": 0.007717414724699172,
+            "lo": 0.0012794681992393411
           },
           "verifier_on": {
-            "estimate": 0.004475703324808184,
-            "hi": 0.0077985458523133575,
-            "lo": 0.0012952948943956994
+            "estimate": 0.004416403785488959,
+            "hi": 0.007717414724699172,
+            "lo": 0.0012794681992393411
           }
         }
       },
@@ -550,77 +592,77 @@
       "per_seed": {
         "1": {
           "off": {
-            "citation_precision": 0.909375,
+            "citation_precision": 0.9037267080745341,
             "citation_recall": 0.9876543209876543,
             "unsupported_claim_rate": 0.0
           },
           "on": {
-            "citation_precision": 0.909375,
+            "citation_precision": 0.9037267080745341,
             "citation_recall": 0.9876543209876543,
             "unsupported_claim_rate": 0.0
           }
         },
         "1234": {
           "off": {
-            "citation_precision": 0.9348534201954397,
+            "citation_precision": 0.9228295819935691,
             "citation_recall": 0.9871794871794872,
-            "unsupported_claim_rate": 0.006514657980456026
+            "unsupported_claim_rate": 0.006430868167202572
           },
           "on": {
-            "citation_precision": 0.9348534201954397,
+            "citation_precision": 0.9228295819935691,
             "citation_recall": 0.9871794871794872,
-            "unsupported_claim_rate": 0.006514657980456026
+            "unsupported_claim_rate": 0.006430868167202572
           }
         },
         "2": {
           "off": {
-            "citation_precision": 0.9294478527607362,
+            "citation_precision": 0.9154078549848943,
             "citation_recall": 0.9939577039274925,
-            "unsupported_claim_rate": 0.003067484662576687
+            "unsupported_claim_rate": 0.0030211480362537764
           },
           "on": {
-            "citation_precision": 0.9294478527607362,
+            "citation_precision": 0.9154078549848943,
             "citation_recall": 0.9939577039274925,
-            "unsupported_claim_rate": 0.003067484662576687
+            "unsupported_claim_rate": 0.0030211480362537764
           }
         },
         "3": {
           "off": {
-            "citation_precision": 0.9448051948051948,
+            "citation_precision": 0.9297124600638977,
             "citation_recall": 0.9907407407407407,
-            "unsupported_claim_rate": 0.006493506493506494
+            "unsupported_claim_rate": 0.006389776357827476
           },
           "on": {
-            "citation_precision": 0.9448051948051948,
+            "citation_precision": 0.9297124600638977,
             "citation_recall": 0.9907407407407407,
-            "unsupported_claim_rate": 0.006493506493506494
+            "unsupported_claim_rate": 0.006389776357827476
           }
         },
         "4": {
           "off": {
-            "citation_precision": 0.9174917491749175,
+            "citation_precision": 0.9025974025974026,
             "citation_recall": 0.974025974025974,
-            "unsupported_claim_rate": 0.006600660066006601
+            "unsupported_claim_rate": 0.006493506493506494
           },
           "on": {
-            "citation_precision": 0.9174917491749175,
+            "citation_precision": 0.9025974025974026,
             "citation_recall": 0.974025974025974,
-            "unsupported_claim_rate": 0.006600660066006601
+            "unsupported_claim_rate": 0.006493506493506494
           }
         }
       },
       "routing": {
         "citation_precision": {
           "difference": {
-            "estimate": 0.01820309183345936,
-            "hi": 0.02414255773543389,
-            "lo": 0.012681241934492554
+            "estimate": 0.005919615831619818,
+            "hi": 0.00750184074337154,
+            "lo": 0.004461510112278161
           },
           "share_positive": 1.0,
           "structured_on": {
-            "estimate": 0.9271099744245525,
-            "hi": 0.942951319737357,
-            "lo": 0.9115213239974539
+            "estimate": 0.9148264984227129,
+            "hi": 0.9311016285136077,
+            "lo": 0.8983779864110519
           },
           "text_only": {
             "estimate": 0.9089068825910931,
@@ -648,15 +690,15 @@
         },
         "unsupported_claim_rate": {
           "difference": {
-            "estimate": -0.0002476435038018029,
-            "hi": -7.713860463216688e-05,
-            "lo": -0.00046424793160568966
+            "estimate": -0.0003069430431210281,
+            "hi": -9.387881234139689e-05,
+            "lo": -0.0005625692026053281
           },
           "share_positive": 0.0,
           "structured_on": {
-            "estimate": 0.004475703324808184,
-            "hi": 0.0077985458523133575,
-            "lo": 0.0012952948943956994
+            "estimate": 0.004416403785488959,
+            "hi": 0.007717414724699172,
+            "lo": 0.0012794681992393411
           },
           "text_only": {
             "estimate": 0.004723346828609987,
@@ -735,10 +777,10 @@
       },
       "superseded_withdrawn": {
         "contradicted_instead": 0,
-        "flagged": 21,
+        "flagged": 38,
         "n": 42,
         "not_surfaced": 0,
-        "unflagged": 21
+        "unflagged": 4
       }
     },
     "counts": {
@@ -1052,8 +1094,8 @@
     "performance": {
       "ask_wall_ms": {
         "n": 1188,
-        "p50": 41.31112350000876,
-        "p95": 276.71255775003357
+        "p50": 42.308956500050954,
+        "p95": 274.3875819499692
       },
       "cost_basis": "zero by definition (mock provider)",
       "cost_per_query_usd": 0.0,
@@ -1062,55 +1104,55 @@
       "search_ms": {
         "A1": {
           "n": 1188,
-          "p50": 7.399840000061886,
-          "p95": 224.72818474982427
+          "p50": 7.249475000094208,
+          "p95": 205.78666659999385
         },
         "A2": {
           "n": 1188,
-          "p50": 6.6074114997718425,
-          "p95": 209.38113710019465
+          "p50": 6.981109500088678,
+          "p95": 189.17768674999704
         },
         "A3": {
           "n": 1188,
-          "p50": 6.693822499983071,
-          "p95": 220.14301065025845
+          "p50": 6.688364499950694,
+          "p95": 194.31600854993567
         },
         "A4": {
           "n": 1188,
-          "p50": 34.9957065000126,
-          "p95": 258.4980636999258
+          "p50": 34.51681600000711,
+          "p95": 242.72227700006397
         },
         "A5": {
           "n": 1188,
-          "p50": 37.28353399992557,
-          "p95": 261.6820626000157
+          "p50": 38.03086950006218,
+          "p95": 266.1118366501114
         }
       },
       "stage_ms": {
         "contradictions": {
           "n": 1167,
-          "p50": 0.447,
-          "p95": 0.86
+          "p50": 0.513,
+          "p95": 0.947
         },
         "retrieve": {
           "n": 1188,
-          "p50": 38.369,
-          "p95": 273.4564
+          "p50": 39.191,
+          "p95": 267.98474999999996
         },
         "understand": {
           "n": 1188,
-          "p50": 0.293,
-          "p95": 0.462
+          "p50": 0.3165,
+          "p95": 0.48329999999999973
         },
         "verify": {
           "n": 1167,
-          "p50": 1.601,
-          "p95": 3.6676000000000015
+          "p50": 1.719,
+          "p95": 3.7669000000000006
         },
         "write": {
           "n": 1167,
-          "p50": 0.022,
-          "p95": 2.648000000000005
+          "p50": 0.025,
+          "p95": 2.678900000000003
         }
       }
     },

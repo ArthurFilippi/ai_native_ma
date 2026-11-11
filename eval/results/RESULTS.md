@@ -3,16 +3,16 @@
 **OFFLINE MOCK BASELINE, not an LLM result.**
 
 <!-- RUN-METADATA-BEGIN: differs between runs -->
-- Date: 2026-11-10
-- Git commit: be70f6a
-- Machine: Linux 6.18.44-fc-v338 x86_64, Python 3.13.18, 4 CPUs
+- Date: 2026-11-11
+- Git commit: 0fa24cf
+- Machine: Linux 6.18.44-fc-v378 x86_64, Python 3.13.18, 4 CPUs
 <!-- RUN-METADATA-END -->
 
 - Writer: provider mock, model mock-extractive-v1
 - Judge: mock mock-extractive-v1 (same as the writer)
 - Seeds: 1234, 1, 2, 3, 4
 - Split: test
-- Configuration hash: 23e16ecee5fcb885
+- Configuration hash: 78ec4993f5c54c2c
 - Components: ask=real, checks=real, judge=real, kpi=real, screening=real, search=real
 - Backends: dense=lsa, reranker=features
 - Dataset: generated corpora under data/synthetic/<seed>/
@@ -34,7 +34,7 @@ Value contract: I summarise the evidence clearly and show you the sources, so th
 
 | Principle metric | Value [95% CI] |
 |---|---|
-| Citation precision (verifier on) | 0.927 [0.912, 0.943] |
+| Citation precision (verifier on) | 0.915 [0.898, 0.931] |
 | Citation recall (verifier on) | 0.987 [0.981, 0.992] |
 | Correct abstention, end to end | 0.920 [0.873, 0.960] |
 | False abstention, end to end | 0.018 [0.011, 0.025] |
@@ -159,37 +159,37 @@ Pipeline A5 on the test split of the answerable queries (1188 queries pooled), w
 
 | Metric | Verifier on [95% CI] | Verifier off [95% CI] | Difference [95% CI] | share>0 |
 |---|---|---|---|---|
-| Citation precision | 0.927 [0.912, 0.943] | 0.927 [0.912, 0.943] | 0.000 [0.000, 0.000] | 0.000 |
+| Citation precision | 0.915 [0.898, 0.931] | 0.915 [0.898, 0.931] | 0.000 [0.000, 0.000] | 0.000 |
 | Citation recall | 0.987 [0.981, 0.992] | 0.987 [0.981, 0.992] | 0.000 [0.000, 0.000] | 0.000 |
 | Unsupported-claim rate | 0.004 [0.001, 0.008] | 0.004 [0.001, 0.008] | 0.000 [0.000, 0.000] | 0.000 |
 
-Sourced claims kept with the verifier: 1564; without: 1564; dropped by the verifier: 0.
+Sourced claims kept with the verifier: 1585; without: 1585; dropped by the verifier: 0.
 
 Mean and standard deviation across seeds:
 
 | Metric | Verifier on | Verifier off |
 |---|---|---|
-| Citation precision | 0.927 +/- 0.014 | 0.927 +/- 0.014 |
+| Citation precision | 0.915 +/- 0.012 | 0.915 +/- 0.012 |
 | Citation recall | 0.987 +/- 0.008 | 0.987 +/- 0.008 |
-| Unsupported-claim rate | 0.005 +/- 0.003 | 0.005 +/- 0.003 |
+| Unsupported-claim rate | 0.004 +/- 0.003 | 0.004 +/- 0.003 |
 
 Per seed:
 
 | Seed | Precision on | Precision off | Recall on | Recall off | Unsupported on | Unsupported off |
 |---|---|---|---|---|---|---|
-| 1234 | 0.935 | 0.935 | 0.987 | 0.987 | 0.007 | 0.007 |
-| 1 | 0.909 | 0.909 | 0.988 | 0.988 | 0.000 | 0.000 |
-| 2 | 0.929 | 0.929 | 0.994 | 0.994 | 0.003 | 0.003 |
-| 3 | 0.945 | 0.945 | 0.991 | 0.991 | 0.006 | 0.006 |
-| 4 | 0.917 | 0.917 | 0.974 | 0.974 | 0.007 | 0.007 |
+| 1234 | 0.923 | 0.923 | 0.987 | 0.987 | 0.006 | 0.006 |
+| 1 | 0.904 | 0.904 | 0.988 | 0.988 | 0.000 | 0.000 |
+| 2 | 0.915 | 0.915 | 0.994 | 0.994 | 0.003 | 0.003 |
+| 3 | 0.930 | 0.930 | 0.991 | 0.991 | 0.006 | 0.006 |
+| 4 | 0.903 | 0.903 | 0.974 | 0.974 | 0.006 | 0.006 |
 
 Structured routing ablation: keyed sub-questions answered from the structured fact base (its provenance as citation) against text search only, verifier on in both:
 
 | Metric | Structured routing [95% CI] | Text only [95% CI] | Difference [95% CI] |
 |---|---|---|---|
-| Citation precision | 0.927 [0.912, 0.943] | 0.909 [0.892, 0.926] | 0.018 [0.013, 0.024] |
+| Citation precision | 0.915 [0.898, 0.931] | 0.909 [0.892, 0.926] | 0.006 [0.004, 0.008] |
 | Citation recall | 0.987 [0.981, 0.992] | 0.926 [0.912, 0.940] | 0.061 [0.048, 0.074] |
-| Unsupported-claim rate | 0.004 [0.001, 0.008] | 0.005 [0.001, 0.008] | -0.000 [-0.000, -0.000] |
+| Unsupported-claim rate | 0.004 [0.001, 0.008] | 0.005 [0.001, 0.008] | -0.000 [-0.001, -0.000] |
 
 > Limitations. (1) Data is synthetic and templated: absolute scores are optimistic and say little about real documents; only differences between systems under identical conditions are informative. (2) The same author wrote the generator and the system, so design assumptions may leak into both. (3) The offline dense retriever is LSA, not a neural model; neural results are reported separately when produced. (4) Tier weights are hand-set priors, ablated, not learned. (5) The constructed judge labels are validated on a small hand-labelled sample only. (6) No production traffic, no clinician-grade blind review equivalent, no user study. (7) Bootstrap intervals assume exchangeable queries; the cluster bootstrap is a sensitivity check, not a proof.
 
@@ -285,7 +285,7 @@ A planted pair is detected when the answer to its question contains a contradict
 
 Completeness: both sides cited in 100.0% of 174 detected pairs. Agreement of `stronger_side` with the truth (informative only, the system is not asked to decide): 100.0% of 174.
 
-Superseded and withdrawn cases (n=42), scored separately, the expected behaviour is a flag and not a contradiction: flagged 21, reported as contradiction 0, cited without the flag 21, not surfaced 0.
+Superseded and withdrawn cases (n=42), scored separately, the expected behaviour is a flag and not a contradiction: flagged 38, reported as contradiction 0, cited without the flag 4, not surfaced 0.
 
 Stale-only cases (n=125) flagged as stale or missing: 99.2%.
 
@@ -423,17 +423,17 @@ Latency in milliseconds, test queries, warm in memory store, machine as in the h
 
 | Measure | n | p50 (ms, wall clock, differs on every run) | p95 (ms, wall clock, differs on every run) |
 |---|---|---|---|
-| search A1 | 1188 | 7.40 | 224.73 |
-| search A2 | 1188 | 6.61 | 209.38 |
-| search A3 | 1188 | 6.69 | 220.14 |
-| search A4 | 1188 | 35.00 | 258.50 |
-| search A5 | 1188 | 37.28 | 261.68 |
-| stage: contradictions | 1167 | 0.45 | 0.86 |
-| stage: retrieve | 1188 | 38.37 | 273.46 |
-| stage: understand | 1188 | 0.29 | 0.46 |
-| stage: verify | 1167 | 1.60 | 3.67 |
-| stage: write | 1167 | 0.02 | 2.65 |
-| ask, total wall clock | 1188 | 41.31 | 276.71 |
+| search A1 | 1188 | 7.25 | 205.79 |
+| search A2 | 1188 | 6.98 | 189.18 |
+| search A3 | 1188 | 6.69 | 194.32 |
+| search A4 | 1188 | 34.52 | 242.72 |
+| search A5 | 1188 | 38.03 | 266.11 |
+| stage: contradictions | 1167 | 0.51 | 0.95 |
+| stage: retrieve | 1188 | 39.19 | 267.98 |
+| stage: understand | 1188 | 0.32 | 0.48 |
+| stage: verify | 1167 | 1.72 | 3.77 |
+| stage: write | 1167 | 0.03 | 2.68 |
+| ask, total wall clock | 1188 | 42.31 | 274.39 |
 
 <!-- TIMING-END -->
 
